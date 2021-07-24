@@ -1,7 +1,7 @@
 name: dd_js_util
-description: A new Flutter project.
+description: Flutter web端 工具类
 version: 0.0.1
-homepage:
+homepage: https://github.com/mdddj/dd_js_util
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
