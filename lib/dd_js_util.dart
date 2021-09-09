@@ -12,7 +12,10 @@ class DdJsUtil {
     return version;
   }
 
+  /// 判断浏览器是否为微信浏览器
   static Future<bool> get isWeChatBrowser async {
     return await _channel.invokeMethod('isWeChatBrowser');
   }
+
+
 }
