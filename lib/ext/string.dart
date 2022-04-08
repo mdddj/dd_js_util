@@ -60,4 +60,17 @@ extension StringExtension on String {
     }
   }
 
+
+
+  ///
+  /// 将本地路径的一个图片保存到相册
+  /// "/data/a/b/c/demo.png".fileDownloadImage()
+  ///
+  Future<dynamic> fileDownloadImage() async {
+   File file = File(this);
+   Uint8List imageBytes = await file.readAsBytes();
+   final result = await ImageGallerySaver.saveImage(imageBytes);
+   return result;
+  }
+
 }
