@@ -1,3 +1,6 @@
+# 0.0.6
+* 新增`CountDown`倒计时组件
+
 # 0.0.4
 * 新增`String#downloadImage`扩展,可以下载网络图片或者资产图片到相册
 

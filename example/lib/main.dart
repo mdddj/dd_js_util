@@ -1,3 +1,4 @@
+import 'package:dd_js_util/widget/count_down.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -44,6 +45,11 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+
+  final data =DateTime.now().add(Duration(hours: 2));
+
+  final CountDownController _controller = new CountDownController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,7 +65,27 @@ class _MyAppState extends State<MyApp> {
             TextButton(onPressed: ()async {
               final result = await DdJsUtil.isWeChatBrowser;
               print(result);
-            }, child: Text('是否为微信浏览器'))
+            }, child: Text('是否为微信浏览器')),
+
+
+
+
+            CountDown(endTime: "${data.toIso8601String()}",onEnd: (){
+              print('倒计时结束');
+            },autoStart: false,controller: _controller,),
+
+
+            TextButton(onPressed: (){
+              _controller.start();
+            },child: Text('开始倒计时')),
+
+            TextButton(onPressed: (){
+              _controller.stop();
+            },child: Text('结束倒计时')),
+
+            TextButton(onPressed: (){
+              _controller.refresh();
+            },child: Text('刷新UI'))
           ],
         ),
       ),
