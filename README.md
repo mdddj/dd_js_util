@@ -19,3 +19,18 @@ final result = await DdJsUtil.isWeChatBrowser; // true or false
 // [isAsset]: 是否为本地资产图片,默认false
 "https://itbug.shop/logo.png".downloadImage(checkPermission:true,isAsset:false);
 ```
+
+# 组件
+
+* 倒计时组件
+```dart
+//示例
+CountDown(
+  endTime: "${data.toIso8601String()}",
+  onEnd: (){
+    print('倒计时结束');
+  },
+  autoStart: false,
+  controller: _controller,
+),
+```
