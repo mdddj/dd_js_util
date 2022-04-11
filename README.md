@@ -34,3 +34,14 @@ CountDown(
   controller: _controller,
 ),
 ```
+* 九宫格选择图片
+
+```dart
+PictureSelection(multipleChoice: true,controller: _pictureSelectionController,),
+```
+1) 用法
+```dart
+final files = _pictureSelectionController.getFiles;//获取全部图片
+_pictureSelectionController.clean();//清空用户选择的图片
+///更多方法查看控制器类
+```

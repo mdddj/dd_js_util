@@ -1,3 +1,6 @@
+# 0.0.7
+* 新增`ImageItemRender` 图片选择9宫格组件
+
 # 0.0.6
 * 新增`CountDown`倒计时组件
 

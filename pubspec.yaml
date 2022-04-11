@@ -1,6 +1,6 @@
 name: dd_js_util
 description: Flutterweb端工具类
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
@@ -14,7 +14,9 @@ dependencies:
   image_gallery_saver: any
   cached_network_image: any
   flutter_cache_manager: any
+  waterfall_flow: any
   common_utils: any
+  image_picker: any
   flutter_web_plugins:
     sdk: flutter
 

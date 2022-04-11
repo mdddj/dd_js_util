@@ -1,4 +1,5 @@
 import 'package:dd_js_util/widget/count_down.dart';
+import 'package:dd_js_util/widget/picture_selection.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -50,6 +51,8 @@ class _MyAppState extends State<MyApp> {
 
   final CountDownController _controller = new CountDownController();
 
+  final PictureSelectionController _pictureSelectionController = new PictureSelectionController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -57,36 +60,50 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Column(
-          children: [
-            Center(
-              child: Text('Running on: $_platformVersion\n'),
-            ),
-            TextButton(onPressed: ()async {
-              final result = await DdJsUtil.isWeChatBrowser;
-              print(result);
-            }, child: Text('是否为微信浏览器')),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Center(
+                child: Text('Running on: $_platformVersion\n'),
+              ),
+              TextButton(onPressed: ()async {
+                final result = await DdJsUtil.isWeChatBrowser;
+                print(result);
+              }, child: Text('是否为微信浏览器')),
 
 
 
 
-            CountDown(endTime: "${data.toIso8601String()}",onEnd: (){
-              print('倒计时结束');
-            },autoStart: false,controller: _controller,),
+              CountDown(endTime: "${data.toIso8601String()}",onEnd: (){
+                print('倒计时结束');
+              },autoStart: false,controller: _controller,),
 
 
-            TextButton(onPressed: (){
-              _controller.start();
-            },child: Text('开始倒计时')),
+              TextButton(onPressed: (){
+                _controller.start();
+              },child: Text('开始倒计时')),
 
-            TextButton(onPressed: (){
-              _controller.stop();
-            },child: Text('结束倒计时')),
+              TextButton(onPressed: (){
+                _controller.stop();
+              },child: Text('结束倒计时')),
 
-            TextButton(onPressed: (){
-              _controller.refresh();
-            },child: Text('刷新UI'))
-          ],
+              TextButton(onPressed: (){
+                _controller.refresh();
+              },child: Text('刷新UI')),
+
+
+              PictureSelection(multipleChoice: true,controller: _pictureSelectionController,),
+
+              TextButton(onPressed: (){
+                final files = _pictureSelectionController.getFiles;
+                print(files);
+              }, child: Text('获取全部图片'),),
+              TextButton(onPressed: (){
+                _pictureSelectionController.clean();
+              }, child: Text('清空全部图片'),)
+              
+            ],
+          ),
         ),
       ),
     );
