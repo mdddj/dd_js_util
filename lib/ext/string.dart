@@ -15,13 +15,14 @@ extension StringExtension on String {
   ///下载图片资源到相册
   ///[isAsset] - 是否为资产文件
   ///[checkPermission] - 是否需要检测相册权限
+  ///[imageName] - 保存到相册的文件名字
   ///
   /// 最好捕获一下异常,如果没有抛出异常则表示下载成功.
   ///
   /// 错误码[401] - 没有获取访问相册的权限
   /// 错误码[201] - 保存失败,重试
   ///
-  Future<void> downloadImage({bool? isAsset,bool? checkPermission}) async {
+  Future<void> downloadImage({bool? isAsset,bool? checkPermission,String? imageName}) async {
     try {
       // 访问相册权限检测
       if(checkPermission==true){
@@ -52,7 +53,7 @@ extension StringExtension on String {
         imageBytes = await file.readAsBytes();
       }
       // 保存图片
-      final result = await ImageGallerySaver.saveImage(imageBytes);
+      final result = await ImageGallerySaver.saveImage(imageBytes,name: imageName);
       if (result == null || result == '') throw '201'; // 保存失败,请重试
 
     } catch (e) {

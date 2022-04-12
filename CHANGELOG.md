@@ -1,3 +1,5 @@
+# 0.0.8
+* `String#downloadImage`扩展新增`imageName`属性来进行重命名操作
 # 0.0.7
 * 新增`ImageItemRender` 图片选择9宫格组件
 
