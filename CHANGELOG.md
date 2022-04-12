@@ -1,3 +1,6 @@
+# 0.0.9
+* 新增`covertFun`扩展 (List<dynamic>)
+
 # 0.0.8
 * `String#downloadImage`扩展新增`imageName`属性来进行重命名操作
 # 0.0.7
