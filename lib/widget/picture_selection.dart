@@ -63,12 +63,71 @@ class PictureSelection extends StatefulWidget {
   final ValueChanged<File>? removed;
 
   /// 自定义图片布局
+  ///
+  ///
+  ///
+  /// 例子
+  ///                 itemBuilder: ( context, file, size, onRemove){
+  ///                   return SizedBox(
+  ///                     width: size.width,
+  ///                     height: size.height,
+  ///                     child: GestureDetector(child: Image.file(file),onTap:(){
+  ///                       //点击图片删除
+  ///                       onRemove(file);
+  ///                     }),
+  ///                   );
+  ///                 },
+  ///
+  ///
   final ImageItemRender? itemBuilder;
 
   /// 自定义占位小部件
+  ///
+  ///
+  /// 例子
+  ///                 placeholderBuilder: (size) {
+  ///                   return SizedBox(
+  ///                       width: size.width,
+  ///                       height: size.height,
+  ///                       child: Center(
+  ///                         child: Column(
+  ///                           mainAxisAlignment: MainAxisAlignment.center,
+  ///                           children: [
+  ///                             Icon(Icons.add),
+  ///                             SizedBox(height: 2),
+  ///                             Text('添加图片'),
+  ///                           ],
+  ///                         ),
+  ///                       ));
+  ///                 },
+  ///
+  ///
   final PlaceholderBuilder? placeholderBuilder;
 
   /// 自定义弹出菜单布局
+  ///
+  /// [Function] - 参数1 - 相册选择方式回调函数
+  /// [Function] - 参数2 - 相机拍摄选择模式
+  ///
+  ///
+  /// 例子:
+  ///                 menusBuilder: (a,b){
+  ///                   return Container(
+  ///                     color: Colors.pink,
+  ///                     child: SingleChildScrollView(
+  ///                       child: Column(children: [
+  ///                         TextButton(child: Text('图库选择'),onPressed: () async {
+  ///                           await a();
+  ///                         },),
+  ///                         TextButton(child: Text('相机选择'),onPressed: () async {
+  ///                           await b();
+  ///                         },)
+  ///                       ],)
+  ///                     ),
+  ///                   );
+  ///                 },
+  ///
+  ///
   final MenusBuilder? menusBuilder;
 
   /// 组件的控制器
@@ -129,7 +188,7 @@ class _PictureSelectionState extends State<PictureSelection> {
   Widget _renderPlaceholderWidget() {
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
       if(widget.placeholderBuilder!=null){
-        return widget.placeholderBuilder!.call(Size(constraints.maxWidth, constraints.maxHeight)).addTap(showSelection);
+        return widget.placeholderBuilder!.call(Size(constraints.maxWidth,constraints.maxWidth)).addTap(showSelection);
       }
       return ImageAddIcon().addTap(showSelection);
     },);
@@ -144,7 +203,8 @@ class _PictureSelectionState extends State<PictureSelection> {
   Widget _renderImageItem(File file) {
     if(widget.itemBuilder!=null){
       return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-        return widget.itemBuilder!.call(context, file,Size(constraints.maxWidth, constraints.maxHeight), _removeFile);
+
+        return widget.itemBuilder!.call(context, file,Size(constraints.maxWidth, constraints.maxWidth), _removeFile);
       },);
     }
     /// 默认的布局

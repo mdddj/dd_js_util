@@ -30,8 +30,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await DdJsUtil.platformVersion ?? 'Unknown platform version';
+      platformVersion = await DdJsUtil.platformVersion ?? 'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -46,8 +45,7 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-
-  final data =DateTime.now().add(Duration(hours: 2));
+  final data = DateTime.now().add(Duration(hours: 2));
 
   final CountDownController _controller = new CountDownController();
 
@@ -66,42 +64,99 @@ class _MyAppState extends State<MyApp> {
               Center(
                 child: Text('Running on: $_platformVersion\n'),
               ),
-              TextButton(onPressed: ()async {
-                final result = await DdJsUtil.isWeChatBrowser;
-                print(result);
-              }, child: Text('是否为微信浏览器')),
-
-
-
-
-              CountDown(endTime: "${data.toIso8601String()}",onEnd: (){
-                print('倒计时结束');
-              },autoStart: false,controller: _controller,),
-
-
-              TextButton(onPressed: (){
-                _controller.start();
-              },child: Text('开始倒计时')),
-
-              TextButton(onPressed: (){
-                _controller.stop();
-              },child: Text('结束倒计时')),
-
-              TextButton(onPressed: (){
-                _controller.refresh();
-              },child: Text('刷新UI')),
-
-
-              PictureSelection(multipleChoice: true,controller: _pictureSelectionController,),
-
-              TextButton(onPressed: (){
-                final files = _pictureSelectionController.getFiles;
-                print(files);
-              }, child: Text('获取全部图片'),),
-              TextButton(onPressed: (){
-                _pictureSelectionController.clean();
-              }, child: Text('清空全部图片'),)
-              
+              TextButton(
+                  onPressed: () async {
+                    final result = await DdJsUtil.isWeChatBrowser;
+                    print(result);
+                  },
+                  child: Text('是否为微信浏览器')),
+              CountDown(
+                endTime: "${data.toIso8601String()}",
+                onEnd: () {
+                  print('倒计时结束');
+                },
+                autoStart: false,
+                controller: _controller,
+              ),
+              TextButton(
+                  onPressed: () {
+                    _controller.start();
+                  },
+                  child: Text('开始倒计时')),
+              TextButton(
+                  onPressed: () {
+                    _controller.stop();
+                  },
+                  child: Text('结束倒计时')),
+              TextButton(
+                  onPressed: () {
+                    _controller.refresh();
+                  },
+                  child: Text('刷新UI')),
+              PictureSelection(
+                multipleChoice: true,
+                controller: _pictureSelectionController,
+                menusBuilder: (a, b) {
+                  return Container(
+                    color: Colors.pink,
+                    child: SingleChildScrollView(
+                        child: Column(
+                      children: [
+                        TextButton(
+                          child: Text('图库选择'),
+                          onPressed: () async {
+                            await a();
+                          },
+                        ),
+                        TextButton(
+                          child: Text('相机选择'),
+                          onPressed: () async {
+                            await b();
+                          },
+                        )
+                      ],
+                    )),
+                  );
+                },
+                placeholderBuilder: (size) {
+                  return SizedBox(
+                      width: size.width,
+                      height: size.height,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.add),
+                            SizedBox(height: 2),
+                            Text('添加图片'),
+                          ],
+                        ),
+                      ));
+                },
+                itemBuilder: ( context, file, size, onRemove){
+                  return SizedBox(
+                    width: size.width,
+                    height: size.height,
+                    child: GestureDetector(child: Image.file(file),onTap:(){
+                      //点击图片删除
+                      onRemove(file);
+                    }),
+                  );
+                },
+              ),
+              TextButton(
+                onPressed: () {
+                  final files = _pictureSelectionController.getFiles;
+                  print(files);
+                },
+                child: Text('获取全部图片'),
+              ),
+              TextButton(
+                onPressed: () {
+                  _pictureSelectionController.clean();
+                },
+                child: Text('清空全部图片'),
+              )
             ],
           ),
         ),
