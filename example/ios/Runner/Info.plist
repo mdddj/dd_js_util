@@ -22,6 +22,8 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>是否允许访问您的相机?</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>Visit your photo album to talk to customer service</string>
 	<key>UILaunchStoryboardName</key>

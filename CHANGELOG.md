@@ -1,3 +1,6 @@
+# 0.1.0 
+* `PictureSelection`组件新增`PlaceholderBuilder`,`MenusBuilder`,`相机选择模式`
+
 # 0.0.9
 * 新增`covertFun`扩展 (List<dynamic>)
 

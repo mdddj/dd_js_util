@@ -16,6 +16,16 @@ extension WidgetTa on Widget {
 /// [onRemove] - 可以直接调用这个方法删除图片
 typedef ImageItemRender = Widget Function(BuildContext context,File file,Size size,Function(File file) onRemove);
 
+///自定义占位布局小部件
+///也就是替换默认的+号小部件
+///[size] - 组件宽高
+typedef PlaceholderBuilder = Widget Function(Size size);
+
+///自定义选择菜单
+/// [imagePicker] - 用户选择了相册回调函数
+/// [cameraPicker] - 用户选择了拍摄回调函数
+typedef MenusBuilder = Widget Function(Function imagePicker,Function cameraPicker);
+
 ///图片选择组件
 class PictureSelection extends StatefulWidget {
   /// 一行展示多少张图片
@@ -55,14 +65,23 @@ class PictureSelection extends StatefulWidget {
   /// 自定义图片布局
   final ImageItemRender? itemBuilder;
 
+  /// 自定义占位小部件
+  final PlaceholderBuilder? placeholderBuilder;
+
+  /// 自定义弹出菜单布局
+  final MenusBuilder? menusBuilder;
+
   /// 组件的控制器
   final PictureSelectionController? controller;
+
 
   const PictureSelection(
       {Key? key,
         this.columnCount = 3,
         this.maxCount = 9,
-        this.mainAxisSpacing, this.crossAxisSpacing,this.padding,this.removed,this.controller,this.itemBuilder,this.multipleChoice=false})
+        this.mainAxisSpacing, this.crossAxisSpacing,this.padding,this.removed,this.controller,this.itemBuilder,this.menusBuilder,
+        this.placeholderBuilder,
+        this.multipleChoice=false})
       : super(key: key);
 
   @override
@@ -85,7 +104,8 @@ class _PictureSelectionState extends State<PictureSelection> {
         physics: const NeverScrollableScrollPhysics(),
         children: [..._renderImages.map(_renderImageItem),
           if(_renderImages.length<widget.maxCount)
-          ImageAddIcon().addTap(showSelection)],
+            _renderPlaceholderWidget()
+          ],
       ),
     );
   }
@@ -103,6 +123,16 @@ class _PictureSelectionState extends State<PictureSelection> {
     if(oldWidget.controller != widget.controller){
       _bindController();
     }
+  }
+
+  /// 渲染"添加小部件"
+  Widget _renderPlaceholderWidget() {
+    return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+      if(widget.placeholderBuilder!=null){
+        return widget.placeholderBuilder!.call(Size(constraints.maxWidth, constraints.maxHeight)).addTap(showSelection);
+      }
+      return ImageAddIcon().addTap(showSelection);
+    },);
   }
 
   /// 绑定控制器
@@ -141,6 +171,16 @@ class _PictureSelectionState extends State<PictureSelection> {
     _refreshUi();
   }
 
+  /// 拍摄图片
+  Future<void> _shoot() async {
+    final file = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (file != null) {
+      _renderImages.add(File(file.path));
+      _refreshUi();
+      Navigator.pop(context);
+    }
+  }
+
   /// 从相册选择还是直接拍摄
   void showSelection() {
     showBottomSheet(
@@ -148,7 +188,10 @@ class _PictureSelectionState extends State<PictureSelection> {
         backgroundColor: Colors.white,
         elevation: 3,
         builder: (c) {
-          return SingleChildScrollView(
+          if(widget.menusBuilder!=null){
+            return widget.menusBuilder!.call(_photoAlbumSelect,_shoot);
+          }
+          return  SingleChildScrollView(
               child: Column(
             children: [
               ListTile(
@@ -157,6 +200,7 @@ class _PictureSelectionState extends State<PictureSelection> {
               ),
               ListTile(
                 title: Text('去拍摄'),
+                onTap: _shoot
               ),
             ],
           ));
