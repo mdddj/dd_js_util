@@ -16,7 +16,9 @@ dependencies:
   flutter_cache_manager: any
   waterfall_flow: any
   common_utils: any
+  flutter_smart_dialog: any
   image_picker: any
+  dio: any
   flutter_web_plugins:
     sdk: flutter
 

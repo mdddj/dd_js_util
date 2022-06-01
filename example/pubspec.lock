@@ -105,7 +105,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.8"
+    version: "0.1.0"
   decimal:
     dependency: transitive
     description:
@@ -113,6 +113,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  dio:
+    dependency: transitive
+    description:
+      name: dio
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.6"
   extended_list_library:
     dependency: transitive
     description:
@@ -167,6 +174,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
+  flutter_smart_dialog:
+    dependency: transitive
+    description:
+      name: flutter_smart_dialog
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.3.2+1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -512,5 +526,5 @@ packages:
     source: hosted
     version: "0.2.0+1"
 sdks:
-  dart: ">=2.16.0 <3.0.0"
-  flutter: ">=2.8.0"
+  dart: ">=2.17.0-0 <3.0.0"
+  flutter: ">=3.0.0"

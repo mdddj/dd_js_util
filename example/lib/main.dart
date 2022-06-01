@@ -96,53 +96,53 @@ class _MyAppState extends State<MyApp> {
               PictureSelection(
                 multipleChoice: true,
                 controller: _pictureSelectionController,
-                menusBuilder: (a, b) {
-                  return Container(
-                    color: Colors.pink,
-                    child: SingleChildScrollView(
-                        child: Column(
-                      children: [
-                        TextButton(
-                          child: Text('图库选择'),
-                          onPressed: () async {
-                            await a();
-                          },
-                        ),
-                        TextButton(
-                          child: Text('相机选择'),
-                          onPressed: () async {
-                            await b();
-                          },
-                        )
-                      ],
-                    )),
-                  );
-                },
-                placeholderBuilder: (size) {
-                  return SizedBox(
-                      width: size.width,
-                      height: size.height,
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.add),
-                            SizedBox(height: 2),
-                            Text('添加图片'),
-                          ],
-                        ),
-                      ));
-                },
-                itemBuilder: ( context, file, size, onRemove){
-                  return SizedBox(
-                    width: size.width,
-                    height: size.height,
-                    child: GestureDetector(child: Image.file(file),onTap:(){
-                      //点击图片删除
-                      onRemove(file);
-                    }),
-                  );
-                },
+                // menusBuilder: (a, b) {
+                //   return Container(
+                //     color: Colors.pink,
+                //     child: SingleChildScrollView(
+                //         child: Column(
+                //       children: [
+                //         TextButton(
+                //           child: Text('图库选择'),
+                //           onPressed: () async {
+                //             await a();
+                //           },
+                //         ),
+                //         TextButton(
+                //           child: Text('相机选择'),
+                //           onPressed: () async {
+                //             await b();
+                //           },
+                //         )
+                //       ],
+                //     )),
+                //   );
+                // },
+                // placeholderBuilder: (size) {
+                //   return SizedBox(
+                //       width: size.width,
+                //       height: size.height,
+                //       child: Center(
+                //         child: Column(
+                //           mainAxisAlignment: MainAxisAlignment.center,
+                //           children: [
+                //             Icon(Icons.add),
+                //             SizedBox(height: 2),
+                //             Text('添加图片'),
+                //           ],
+                //         ),
+                //       ));
+                // },
+                // itemBuilder: ( context, file, size, onRemove){
+                //   return SizedBox(
+                //     width: size.width,
+                //     height: size.height,
+                //     child: GestureDetector(child: Image.file(file),onTap:(){
+                //       //点击图片删除
+                //       onRemove(file);
+                //     }),
+                //   );
+                // },
               ),
               TextButton(
                 onPressed: () {
