@@ -1,3 +1,9 @@
+# 0.1.5
+
+* 新增api基本的封装
+* 新增mixin组件
+* 新增若干扩展类
+
 # 0.1.0 
 * `PictureSelection`组件新增`PlaceholderBuilder`,`MenusBuilder`,`相机选择模式`
 

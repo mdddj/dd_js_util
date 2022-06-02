@@ -1,6 +1,6 @@
 name: dd_js_util
 description: Flutterweb端工具类
-version: 0.1.0
+version: 0.1.6
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
@@ -18,7 +18,10 @@ dependencies:
   common_utils: any
   flutter_smart_dialog: any
   image_picker: any
+  flutter_image_compress: any
   dio: any
+  extended_image: any
+  flutter_swiper_null_safety_flutter3: any
   flutter_web_plugins:
     sdk: flutter
 

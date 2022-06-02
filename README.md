@@ -45,3 +45,11 @@ final files = _pictureSelectionController.getFiles;//获取全部图片
 _pictureSelectionController.clean();//清空用户选择的图片
 ///更多方法查看控制器类
 ```
+
+# 本地图片压缩
+```dart
+/// file <- 压缩后的文件
+/// 参数1 <- 要讲压缩后的图片保存到哪个路径
+/// 参数2 [quality] <- 压缩质量
+File? file = "file path".fileImageCompress("to file path",quality: 50);
+```
