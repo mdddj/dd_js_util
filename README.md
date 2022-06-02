@@ -1,6 +1,7 @@
 # dd_js_util
 
-flutter web 端 Api
+flutter 通用工具类
+pub地址: https://pub.dev/packages/dd_js_util
 
 ## 开始使用
 
