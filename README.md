@@ -53,3 +53,10 @@ _pictureSelectionController.clean();//清空用户选择的图片
 /// 参数2 [quality] <- 压缩质量
 File? file = "file path".fileImageCompress("to file path",quality: 50);
 ```
+
+# 图片放大
+```dart
+/// 参数1: 图片列表
+/// 参数2: 初始化显示第几张图片
+ImageView(images: ["网络图片","网络图片"],initCurrent: 0);
+```
