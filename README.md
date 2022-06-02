@@ -58,5 +58,6 @@ File? file = "file path".fileImageCompress("to file path",quality: 50);
 ```dart
 /// 参数1: 图片列表
 /// 参数2: 初始化显示第几张图片
-ImageView(images: ["网络图片","网络图片"],initCurrent: 0);
+/// 参数3: 是否为本地类型图片,如果是,参数1需要替换为File的路径
+ImageView(images: ["网络图片","网络图片"],initCurrent: 0,isFile: false);
 ```
