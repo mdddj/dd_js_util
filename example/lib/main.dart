@@ -1,13 +1,17 @@
+import 'dart:async';
+
+import 'package:dd_js_util/dd_js_util.dart';
 import 'package:dd_js_util/widget/count_down.dart';
 import 'package:dd_js_util/widget/image_cut.dart';
 import 'package:dd_js_util/widget/picture_selection.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-
 import 'package:flutter/services.dart';
-import 'package:dd_js_util/dd_js_util.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+
+import 'custom_year_picker.dart';
+import 'date_picker_2.dart';
 
 void main() {
   runApp(MyApp());
@@ -54,9 +58,21 @@ class _MyAppState extends State<MyApp> {
 
   final PictureSelectionController _pictureSelectionController = new PictureSelectionController();
 
+  var cy = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      localizationsDelegates: [
+        MyLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('zh', 'CH'),
+        const Locale('en', 'US'),
+      ],
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
@@ -162,17 +178,27 @@ class _MyAppState extends State<MyApp> {
               ),
               TextButton(
                 onPressed: () async {
-                final file = await  ImagePicker().pickImage(source: ImageSource.gallery);
-                print(file);
-                if(file!= null) {
-                 Get.to(()=>ImageCutWidget(imagePath: file.path,));
-                }else{
-
-                }
+                  final file = await ImagePicker().pickImage(source: ImageSource.gallery);
+                  print(file);
+                  if (file != null) {
+                    Get.to(() => ImageCutWidget(
+                          imagePath: file.path,
+                        ));
+                  } else {}
                 },
                 child: Text('选择一个图片编辑'),
               ),
-
+              SizedBox(
+                width: 700,
+                height: 200,
+                child: CupertinoDatePicker(
+                  hideDay: true,
+                  mode: CupertinoDatePickerMode.date,
+                  onDateTimeChanged: (DateTime value) {
+                    print(value);
+                  },
+                ),
+              )
             ],
           ),
         ),

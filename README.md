@@ -62,3 +62,47 @@ File? file = "file path".fileImageCompress("to file path",quality: 50);
 /// 参数3: 是否为本地类型图片,如果是,参数1需要替换为File的路径
 ImageView(images: ["网络图片","网络图片"],initCurrent: 0,isFile: false);
 ```
+
+# 日期选择组件
+
+1.导包
+```yaml
+  # 导入国际化包
+  flutter_localizations:
+    sdk: flutter
+```
+2.引入
+```dart
+GetMaterialApp(
+      localizationsDelegates: [
+        
+        //这个要在第一位
+        MyLocalizationsDelegate(), //导入1
+        GlobalMaterialLocalizations.delegate,//导入2
+        GlobalWidgetsLocalizations.delegate,//导入3
+        GlobalCupertinoLocalizations.delegate,//导入4
+
+      ],
+      supportedLocales: [
+        const Locale('zh', 'CH'),//导入1
+        const Locale('en', 'US'),//导入2
+      ],
+)
+```
+
+3.使用组件
+```dart
+              SizedBox(
+                width: 700,
+                height: 200,
+                child: CupertinoDatePicker(
+                  hideDay: true,
+                  mode: CupertinoDatePickerMode.date,
+                  onDateTimeChanged: (DateTime value) {
+                    print(value);
+                  },
+                ),
+              )
+```
+4.效果
+[![Xr1UR1.jpg](https://s1.ax1x.com/2022/06/08/Xr1UR1.jpg)](https://imgtu.com/i/Xr1UR1)
