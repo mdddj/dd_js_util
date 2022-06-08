@@ -1,10 +1,13 @@
 import 'package:dd_js_util/widget/count_down.dart';
+import 'package:dd_js_util/widget/image_cut.dart';
 import 'package:dd_js_util/widget/picture_selection.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:dd_js_util/dd_js_util.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,7 +56,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
@@ -156,7 +159,20 @@ class _MyAppState extends State<MyApp> {
                   _pictureSelectionController.clean();
                 },
                 child: Text('清空全部图片'),
-              )
+              ),
+              TextButton(
+                onPressed: () async {
+                final file = await  ImagePicker().pickImage(source: ImageSource.gallery);
+                print(file);
+                if(file!= null) {
+                 Get.to(()=>ImageCutWidget(imagePath: file.path,));
+                }else{
+
+                }
+                },
+                child: Text('选择一个图片编辑'),
+              ),
+
             ],
           ),
         ),

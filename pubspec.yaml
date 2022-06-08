@@ -15,6 +15,7 @@ dependencies:
   cached_network_image: any
   flutter_cache_manager: any
   waterfall_flow: any
+  image: any
   common_utils: any
   flutter_smart_dialog: any
   image_picker: any
