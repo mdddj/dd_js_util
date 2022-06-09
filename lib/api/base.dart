@@ -8,7 +8,6 @@ typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
 
 //list的扩展
 extension ListExt on List<dynamic> {
-
   @Doc(message: "将一个List<dynamic>数组转成对应的数组模型")
   List<T> parseObj<T>(ParseObject covert) {
     return List<T>.from(map((e) => covert(e))).toList();
@@ -44,10 +43,9 @@ abstract class BaseModel<T> {
 }
 
 abstract class BaseApi {
-  static late String iP;
-  static String host = 'http://$iP:8888';
+  static late String _host;
 
-  set ip(String ip) => iP = ip;
+  static set host(String h) => _host = h;
 
   final String url;
   final HttpMethod httpMethod;
@@ -61,7 +59,7 @@ abstract class BaseApi {
   Future<dynamic> request({bool showSuccessMsg = true, bool showErrorMsg = true, String? loadingText}) async {
     try {
       showLoading(loadingText: loadingText);
-      final response = await getDio().request(host + url, options: Options(method: methed), queryParameters: params, data: params);
+      final response = await getDio().request(_host + url, options: Options(method: methed), queryParameters: params, data: params);
       closeLoading();
       if (response.statusCode == 200) {
         final data = response.data;
