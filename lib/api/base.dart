@@ -4,6 +4,9 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 enum HttpMethod { post, get }
 
+
+const kMultipartFormDataHeader = 'multipart/form-data';
+
 typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
 
 //list的扩展
@@ -11,6 +14,11 @@ extension ListExt on List<dynamic> {
   @Doc(message: "将一个List<dynamic>数组转成对应的数组模型")
   List<T> parseObj<T>(ParseObject covert) {
     return List<T>.from(map((e) => covert(e))).toList();
+  }
+
+  @Doc(message: '将List<dynamic>转成List<String类型>')
+  List<String> get asStringList {
+    return List<String>.from(map((e) => e.toString())).toList();
   }
 }
 
@@ -50,16 +58,25 @@ abstract class BaseApi {
   final String url;
   final HttpMethod httpMethod;
   final Map<String, dynamic> params = <String, dynamic>{};
+  FormData formData = FormData.fromMap({});
+  List<Interceptor> intrtceptors = [];
 
   static Dio? dio;
 
   BaseApi(this.url, {this.httpMethod = HttpMethod.get});
 
   @Doc(message: "向服务器发起http请求")
-  Future<dynamic> request({bool showSuccessMsg = true, bool showErrorMsg = true, String? loadingText}) async {
+  Future<dynamic> request({bool showErrorMsg = true, String? loadingText, String contentType = "",Map<String,dynamic>? headers}) async {
     try {
       showLoading(loadingText: loadingText);
-      final response = await getDio().request(_host + url, options: Options(method: methed), queryParameters: params, data: params);
+      final dio = getDio();
+      dio.interceptors.addAll(intrtceptors);
+      final response = await dio.request(
+        _host + url,
+        options: Options(method: methed, contentType: contentType.isNotEmpty ? contentType : null,headers: headers),
+        queryParameters: params,
+        data: formData.files.isNotEmpty  ? formData : params,
+      );
       closeLoading();
       if (response.statusCode == 200) {
         final data = response.data;

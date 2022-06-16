@@ -14,7 +14,7 @@ extension WidgetTa on Widget {
 ///
 /// [size] - 图片容器的宽高
 /// [onRemove] - 可以直接调用这个方法删除图片
-typedef ImageItemRender = Widget Function(BuildContext context,File file,Size size,Function(File file) onRemove);
+typedef ImageItemRender = Widget Function(BuildContext context, File file, Size size, Function(File file) onRemove);
 
 ///自定义占位布局小部件
 ///也就是替换默认的+号小部件
@@ -24,7 +24,7 @@ typedef PlaceholderBuilder = Widget Function(Size size);
 ///自定义选择菜单
 /// [imagePicker] - 用户选择了相册回调函数
 /// [cameraPicker] - 用户选择了拍摄回调函数
-typedef MenusBuilder = Widget Function(Function imagePicker,Function cameraPicker);
+typedef MenusBuilder = Widget Function(Function imagePicker, Function cameraPicker);
 
 ///图片选择组件
 class PictureSelection extends StatefulWidget {
@@ -133,14 +133,19 @@ class PictureSelection extends StatefulWidget {
   /// 组件的控制器
   final PictureSelectionController? controller;
 
-
   const PictureSelection(
       {Key? key,
-        this.columnCount = 3,
-        this.maxCount = 9,
-        this.mainAxisSpacing, this.crossAxisSpacing,this.padding,this.removed,this.controller,this.itemBuilder,this.menusBuilder,
-        this.placeholderBuilder,
-        this.multipleChoice=false})
+      this.columnCount = 3,
+      this.maxCount = 9,
+      this.mainAxisSpacing,
+      this.crossAxisSpacing,
+      this.padding,
+      this.removed,
+      this.controller,
+      this.itemBuilder,
+      this.menusBuilder,
+      this.placeholderBuilder,
+      this.multipleChoice = false})
       : super(key: key);
 
   @override
@@ -161,14 +166,10 @@ class _PictureSelectionState extends State<PictureSelection> {
         mainAxisSpacing: widget.mainAxisSpacing ?? 12,
         crossAxisSpacing: widget.crossAxisSpacing ?? 12,
         physics: const NeverScrollableScrollPhysics(),
-        children: [..._renderImages.map(_renderImageItem),
-          if(_renderImages.length<widget.maxCount)
-            _renderPlaceholderWidget()
-          ],
+        children: [..._renderImages.map(_renderImageItem), if (_renderImages.length < widget.maxCount) _renderPlaceholderWidget()],
       ),
     );
   }
-
 
   @override
   void initState() {
@@ -179,54 +180,61 @@ class _PictureSelectionState extends State<PictureSelection> {
   @override
   void didUpdateWidget(covariant PictureSelection oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if(oldWidget.controller != widget.controller){
+    if (oldWidget.controller != widget.controller) {
       _bindController();
     }
   }
 
   /// 渲染"添加小部件"
   Widget _renderPlaceholderWidget() {
-    return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-      if(widget.placeholderBuilder!=null){
-        return widget.placeholderBuilder!.call(Size(constraints.maxWidth,constraints.maxWidth)).addTap(showSelection);
-      }
-      return ImageAddIcon().addTap(showSelection);
-    },);
+    if (!widget.multipleChoice && _renderImages.length == 1) {
+      return SizedBox();
+    }
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        if (widget.placeholderBuilder != null) {
+          return widget.placeholderBuilder!.call(Size(constraints.maxWidth, constraints.maxWidth)).addTap(showSelection);
+        }
+        return ImageAddIcon().addTap(showSelection);
+      },
+    );
   }
 
   /// 绑定控制器
-  void _bindController(){
+  void _bindController() {
     widget.controller?.bind(this);
   }
 
   /// 图片展示布局
   Widget _renderImageItem(File file) {
-    if(widget.itemBuilder!=null){
-      return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-
-        return widget.itemBuilder!.call(context, file,Size(constraints.maxWidth, constraints.maxWidth), _removeFile);
-      },);
+    if (widget.itemBuilder != null) {
+      return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return widget.itemBuilder!.call(context, file, Size(constraints.maxWidth, constraints.maxWidth), _removeFile);
+        },
+      );
     }
+
     /// 默认的布局
-    return ImageDefaultShow(file,onRemove: _removeFile);
+    return ImageDefaultShow(file, onRemove: _removeFile);
   }
 
   /// 删除某张图片
-  void _removeFile(File file){
+  void _removeFile(File file) {
     widget.removed?.call(file);
-    if(widget.removed==null){
+    if (widget.removed == null) {
       removeFile(file);
     }
   }
 
   /// 删除某张图片并刷新UI
-  void removeFile(File file){
+  void removeFile(File file) {
     _renderImages.removeWhere((element) => element.path == file.path);
     _refreshUi();
   }
 
   /// 清空全部图片
-  void removeAll(){
+  void removeAll() {
     _renderImages.clear();
     _refreshUi();
   }
@@ -248,20 +256,17 @@ class _PictureSelectionState extends State<PictureSelection> {
         backgroundColor: Colors.white,
         elevation: 3,
         builder: (c) {
-          if(widget.menusBuilder!=null){
-            return widget.menusBuilder!.call(_photoAlbumSelect,_shoot);
+          if (widget.menusBuilder != null) {
+            return widget.menusBuilder!.call(_photoAlbumSelect, _shoot);
           }
-          return  SingleChildScrollView(
+          return SingleChildScrollView(
               child: Column(
             children: [
               ListTile(
                 title: Text('相册'),
                 onTap: _photoAlbumSelect,
               ),
-              ListTile(
-                title: Text('去拍摄'),
-                onTap: _shoot
-              ),
+              ListTile(title: Text('去拍摄'), onTap: _shoot),
             ],
           ));
         });
@@ -269,20 +274,20 @@ class _PictureSelectionState extends State<PictureSelection> {
 
   /// 去相册选择
   Future<void> _photoAlbumSelect() async {
-    if(widget.multipleChoice) {
-     final files = await ImagePicker().pickMultiImage();
-     if(files!=null){
-       var fs = List<File>.from(files.map((e) => File(e.path))).toList();
-       // 计算还能存多少张图片
-       final h = widget.maxCount - _renderImages.length;
-       if(fs.length > h){
-         fs.removeRange(h, fs.length);
-       }
-       _renderImages.addAll(fs);
-       _refreshUi();
-       Navigator.pop(context);
-     }
-    }else{
+    if (widget.multipleChoice) {
+      final files = await ImagePicker().pickMultiImage();
+      if (files != null) {
+        var fs = List<File>.from(files.map((e) => File(e.path))).toList();
+        // 计算还能存多少张图片
+        final h = widget.maxCount - _renderImages.length;
+        if (fs.length > h) {
+          fs.removeRange(h, fs.length);
+        }
+        _renderImages.addAll(fs);
+        _refreshUi();
+        Navigator.pop(context);
+      }
+    } else {
       //单选模式
       final file = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (file != null) {
@@ -291,7 +296,6 @@ class _PictureSelectionState extends State<PictureSelection> {
         Navigator.pop(context);
       }
     }
-
   }
 
   void _refreshUi() {
@@ -306,7 +310,7 @@ class ImageDefaultShow extends StatelessWidget {
   final File file;
   final ValueChanged<File>? onRemove;
   final Widget? removeWidget;
-  const ImageDefaultShow(this.file, {Key? key,this.onRemove,this.removeWidget}) : super(key: key);
+  const ImageDefaultShow(this.file, {Key? key, this.onRemove, this.removeWidget}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -325,19 +329,14 @@ class ImageDefaultShow extends StatelessWidget {
           (removeWidget ?? SizedBox()).addTap(() {
             onRemove?.call(file);
           }),
-          if(removeWidget==null)
-          Positioned(
-              right: 6,
-              top: 6,
-              child: SizedBox(
-                width: 26,
-                  height: 26,
-                  child: CircleAvatar(
-                      backgroundColor: Colors.black45,
-                      child: Icon(Icons.delete,size: 12))).addTap(() {
-                        onRemove?.call(file);
-              }))
-
+          if (removeWidget == null)
+            Positioned(
+                right: 6,
+                top: 6,
+                child: SizedBox(width: 26, height: 26, child: CircleAvatar(backgroundColor: Colors.black45, child: Icon(Icons.delete, size: 12)))
+                    .addTap(() {
+                  onRemove?.call(file);
+                }))
         ],
       ),
     );
@@ -353,7 +352,7 @@ class ImageAddIcon extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1,
       child: Container(
-        decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade200),color: Colors.white),
+        decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade200), color: Colors.white),
         alignment: Alignment.center,
         child: Icon(
           Icons.add,
@@ -368,12 +367,12 @@ class ImageAddIcon extends StatelessWidget {
 class PictureSelectionController {
   _PictureSelectionState? _state;
 
-  void bind(_PictureSelectionState state){
+  void bind(_PictureSelectionState state) {
     this._state = state;
   }
 
   /// 删除某张图片
-  void remove(File file){
+  void remove(File file) {
     _state?.removeFile(file);
   }
 
