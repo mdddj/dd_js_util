@@ -14,6 +14,7 @@ mixin DialogSupport<T extends StatefulWidget> on State<T> {
 
   @Doc(message: "显示一个error类型弹窗")
   void pageErrorDialog(String msg){
+    SmartDialog.dismiss(tag: "error-dialog");
     SmartDialog.show(builder: (context){
       return AlertDialog(
         content: SingleChildScrollView(child: Column(
@@ -26,12 +27,17 @@ mixin DialogSupport<T extends StatefulWidget> on State<T> {
           ],
         )),
       );
-    });
+    },tag: "error-dialog");
   }
   
   @Doc(message: "关闭loading弹窗")
   void pageCloseLoadingDialog(){
     SmartDialog.dismiss();
+  }
+
+  @Doc(message: "关闭error弹窗")
+  void pageCloseErrorDialog(){
+    SmartDialog.dismiss(tag: "error-dialog");
   }
   
   @Doc(message: "简单toast弹窗")
