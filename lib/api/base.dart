@@ -28,7 +28,14 @@ extension DynamicExt on dynamic {
   List<dynamic> get asList {
     return this is List<dynamic> ? this as List<dynamic> : <dynamic>[];
   }
+
+  @Doc(message: "对象转换")
+  T parseTo<T extends BaseModel>(ParseObject parse) {
+    return parse(this) as T;
+  }
 }
+
+
 
 //组件扩展
 extension WidgetExt on Widget {
