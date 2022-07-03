@@ -222,7 +222,8 @@ class _MyAppState extends State<MyApp> {
                         ),
                         child: Text(str));
                   },
-                  onSelected: (v) {},
+                  onSelected: (v) {
+                  },
                   child: TextField(
                     onChanged: (v) {
                       searchController.show();

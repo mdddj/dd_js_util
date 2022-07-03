@@ -1,3 +1,4 @@
+import 'package:dd_js_util/api/base.dart';
 import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
 import 'package:flutter/material.dart';
 
@@ -109,7 +110,7 @@ class _SearchSupportState<T> extends State<SearchSupport> {
   Widget get _listWidget => SingleChildScrollView(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: _list.map((e) => widget.itemBuilder(e)).toList(),
+      children: _list.map((e) => widget.itemBuilder(e).click(()=>widget.onSelected.call(e))).toList(),
     ),
   );
 }
