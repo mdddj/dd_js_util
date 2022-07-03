@@ -16,7 +16,7 @@ class SearchSupport<T> extends StatefulWidget {
   final List<T> childrens;
 
   ///用户选中某个值
-  final ValueChanged<T> onSelected;
+  final ValueChanged<dynamic> onSelected;
 
   final ItemBuilder itemBuilder;
 
@@ -48,6 +48,7 @@ class _SearchSupportState<T> extends State<SearchSupport> {
   Widget get child => widget.child;
 
   StateSetter? ss;
+  State? contentState;
   var _list = <dynamic>[];
 
   @override
@@ -80,7 +81,7 @@ class _SearchSupportState<T> extends State<SearchSupport> {
   //执行刷新
   Future<void> doRefreshList(String? searchKey) async {
     final list = await widget.request(searchKey);
-    if (mounted) {
+    if (mounted && contentState?.mounted == true) {
       ss?.call(() {
         _list = list;
       });
@@ -91,8 +92,9 @@ class _SearchSupportState<T> extends State<SearchSupport> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, cpro) {
       return FFloat(
-        (setter) {
+        (setter, s) {
           ss = setter;
+          contentState = s;
           return SizedBox(
             width: cpro.maxWidth,
             child: widget.containerBuilder?.call(_listWidget) ?? _listWidget,
@@ -108,11 +110,16 @@ class _SearchSupportState<T> extends State<SearchSupport> {
   }
 
   Widget get _listWidget => SingleChildScrollView(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: _list.map((e) => widget.itemBuilder(e).click(()=>widget.onSelected.call(e))).toList(),
-    ),
-  );
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: _list
+              .map((e) => widget.itemBuilder(e).click(() {
+                    widget.onSelected.call(e as T);
+                    widget.controller.dismiss();
+                  }))
+              .toList(),
+        ),
+      );
 }
 
 class RefreshController {

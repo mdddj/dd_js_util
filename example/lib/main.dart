@@ -223,6 +223,7 @@ class _MyAppState extends State<MyApp> {
                         child: Text(str));
                   },
                   onSelected: (v) {
+                    print('选中了:$v');
                   },
                   child: TextField(
                     onChanged: (v) {
@@ -261,11 +262,8 @@ class _MyAppState extends State<MyApp> {
   );
 
   Future<List<String>> request(String? key) async {
-    await Future.delayed(Duration(milliseconds: 20));
     var s = ["开心一组","天天开心","天天鬼",key??"11"];
-    if(key == '') {
-      s.removeLast();
-    }
+    s.removeWhere((element) => !element.contains(key??""));
     return s;
   }
 }
