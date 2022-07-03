@@ -1,11 +1,11 @@
 name: dd_js_util
 description: Flutterweb端工具类
-version: 0.2.4
+version: 0.2.6
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.20.0"
+  sdk: ">=2.17.0 <3.0.0"
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
@@ -27,6 +27,8 @@ dependencies:
   flutter_swiper_null_safety_flutter3: any
   flutter_web_plugins:
     sdk: flutter
+  url_launcher: any
+  ffloat_nullsafety: ^3.0.0
 
 dev_dependencies:
   flutter_test:

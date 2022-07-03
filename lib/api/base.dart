@@ -36,7 +36,6 @@ extension DynamicExt on dynamic {
 }
 
 
-
 //组件扩展
 extension WidgetExt on Widget {
   @Doc(message: "给组件添加点击事件")
@@ -73,24 +72,33 @@ abstract class BaseApi {
   BaseApi(this.url, {this.httpMethod = HttpMethod.get});
 
   @Doc(message: "向服务器发起http请求")
-  Future<dynamic> request({bool showErrorMsg = true, String? loadingText, String contentType = "",Map<String,dynamic>? headers}) async {
+  Future<dynamic> request({bool showErrorMsg = true, String? loadingText, String contentType = "", Map<String, dynamic>? headers,bool showDefaultLoading = true}) async {
     try {
-      showLoading(loadingText: loadingText);
+
+      if(showDefaultLoading){
+        showLoading(loadingText: loadingText);
+      }
+
       final dio = getDio();
       dio.interceptors.addAll(intrtceptors);
       final response = await dio.request(
         _host + url,
-        options: Options(method: methed, contentType: contentType.isNotEmpty ? contentType : null,headers: headers),
+        options: Options(method: methed, contentType: contentType.isNotEmpty ? contentType : null, headers: headers),
         queryParameters: params,
-        data: formData.files.isNotEmpty  ? formData : params,
+        data: formData.files.isNotEmpty ? formData : params,
       );
-      closeLoading();
+      if(showDefaultLoading){
+        closeLoading();
+      }
+
       if (response.statusCode == 200) {
         final data = response.data;
         return data;
       }
     } on DioError catch (e) {
-      closeLoading();
+      if(showDefaultLoading){
+        closeLoading();
+      }
       switch (e.error) {
         case DioErrorType.connectTimeout:
           break;

@@ -4,6 +4,7 @@ import 'package:dd_js_util/dd_js_util.dart';
 import 'package:dd_js_util/widget/count_down.dart';
 import 'package:dd_js_util/widget/image_cut.dart';
 import 'package:dd_js_util/widget/picture_selection.dart';
+import 'package:dd_js_util/widget/search_support.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -58,7 +59,14 @@ class _MyAppState extends State<MyApp> {
 
   final PictureSelectionController _pictureSelectionController = new PictureSelectionController();
 
+  final SearchController searchController = SearchController();
+
+
+  final RefreshController refreshController = RefreshController();
+
   var cy = DateTime.now();
+
+  final strs = ["开心一组", "天天开心", "天天鬼"];
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +81,7 @@ class _MyAppState extends State<MyApp> {
         const Locale('zh', 'CH'),
         const Locale('en', 'US'),
       ],
+      theme: ThemeData(useMaterial3: true),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
@@ -80,38 +89,38 @@ class _MyAppState extends State<MyApp> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Center(
-                child: Text('Running on: $_platformVersion\n'),
-              ),
-              TextButton(
-                  onPressed: () async {
-                    final result = await DdJsUtil.isWeChatBrowser;
-                    print(result);
-                  },
-                  child: Text('是否为微信浏览器')),
-              CountDown(
-                endTime: "${data.toIso8601String()}",
-                onEnd: () {
-                  print('倒计时结束');
-                },
-                autoStart: false,
-                controller: _controller,
-              ),
-              TextButton(
-                  onPressed: () {
-                    _controller.start();
-                  },
-                  child: Text('开始倒计时')),
-              TextButton(
-                  onPressed: () {
-                    _controller.stop();
-                  },
-                  child: Text('结束倒计时')),
-              TextButton(
-                  onPressed: () {
-                    _controller.refresh();
-                  },
-                  child: Text('刷新UI')),
+              // Center(
+              //   child: Text('Running on: $_platformVersion\n'),
+              // ),
+              // TextButton(
+              //     onPressed: () async {
+              //       final result = await DdJsUtil.isWeChatBrowser;
+              //       print(result);
+              //     },
+              //     child: Text('是否为微信浏览器')),
+              // CountDown(
+              //   endTime: "${data.toIso8601String()}",
+              //   onEnd: () {
+              //     print('倒计时结束');
+              //   },
+              //   autoStart: false,
+              //   controller: _controller,
+              // ),
+              // TextButton(
+              //     onPressed: () {
+              //       _controller.start();
+              //     },
+              //     child: Text('开始倒计时')),
+              // TextButton(
+              //     onPressed: () {
+              //       _controller.stop();
+              //     },
+              //     child: Text('结束倒计时')),
+              // TextButton(
+              //     onPressed: () {
+              //       _controller.refresh();
+              //     },
+              //     child: Text('刷新UI')),
               PictureSelection(
                 multipleChoice: true,
                 controller: _pictureSelectionController,
@@ -163,39 +172,78 @@ class _MyAppState extends State<MyApp> {
                 //   );
                 // },
               ),
-              TextButton(
-                onPressed: () {
-                  final files = _pictureSelectionController.getFiles;
-                  print(files);
-                },
-                child: Text('获取全部图片'),
-              ),
-              TextButton(
-                onPressed: () {
-                  _pictureSelectionController.clean();
-                },
-                child: Text('清空全部图片'),
-              ),
-              TextButton(
-                onPressed: () async {
-                  final file = await ImagePicker().pickImage(source: ImageSource.gallery);
-                  print(file);
-                  if (file != null) {
-                    Get.to(() => ImageCutWidget(
-                          imagePath: file.path,
-                        ));
-                  } else {}
-                },
-                child: Text('选择一个图片编辑'),
-              ),
+              // TextButton(
+              //   onPressed: () {
+              //     final files = _pictureSelectionController.getFiles;
+              //     print(files);
+              //   },
+              //   child: Text('获取全部图片'),
+              // ),
+              // TextButton(
+              //   onPressed: () {
+              //     _pictureSelectionController.clean();
+              //   },
+              //   child: Text('清空全部图片'),
+              // ),
+              // TextButton(
+              //   onPressed: () async {
+              //     final file = await ImagePicker().pickImage(source: ImageSource.gallery);
+              //     print(file);
+              //     if (file != null) {
+              //       Get.to(() => ImageCutWidget(
+              //             imagePath: file.path,
+              //           ));
+              //     } else {}
+              //   },
+              //   child: Text('选择一个图片编辑'),
+              // ),
+              // SizedBox(
+              //   width: 700,
+              //   height: 200,
+              //   child: CupertinoDatePicker(
+              //     hideDay: true,
+              //     mode: CupertinoDatePickerMode.date,
+              //     onDateTimeChanged: (DateTime value) {
+              //       print(value);
+              //     },
+              //   ),
+              // ),
+
+              //下拉选择
               SizedBox(
-                width: 700,
-                height: 200,
-                child: CupertinoDatePicker(
-                  hideDay: true,
-                  mode: CupertinoDatePickerMode.date,
-                  onDateTimeChanged: (DateTime value) {
-                    print(value);
+                width: 200,
+                child: SearchSupport<String>(
+                  childrens: strs,
+                  itemBuilder: (str) {
+                    return Container(
+                      padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          color: Colors.white
+                        ),
+                        child: Text(str));
+                  },
+                  onSelected: (v) {},
+                  child: TextField(
+                    onChanged: (v) {
+                      searchController.show();
+                      refreshController.doRefresh(v);
+                    },
+                    decoration: InputDecoration(
+                      border: inputBorder,
+                      focusedBorder: inputBorder,
+                      disabledBorder: inputBorder
+                    ),
+                  ),
+                  controller: searchController,
+                  refreshController: refreshController,
+                  request: request,
+                  containerBuilder: (child){
+                    return Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white
+                      ),
+                        child: child);
                   },
                 ),
               )
@@ -204,5 +252,19 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
+  }
+
+  OutlineInputBorder get inputBorder =>  OutlineInputBorder(
+    borderRadius: BorderRadius.zero,
+    borderSide: BorderSide(color: Colors.grey)
+  );
+
+  Future<List<String>> request(String? key) async {
+    await Future.delayed(Duration(milliseconds: 20));
+    var s = ["开心一组","天天开心","天天鬼",key??"11"];
+    if(key == '') {
+      s.removeLast();
+    }
+    return s;
   }
 }
