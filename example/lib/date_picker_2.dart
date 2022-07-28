@@ -75,8 +75,7 @@ class _DatePickerLayoutDelegate extends MultiChildLayoutDelegate {
   _DatePickerLayoutDelegate({
     required this.columnWidths,
     required this.textDirectionFactor,
-  })  : assert(columnWidths != null),
-        assert(textDirectionFactor != null);
+  });
 
   // The list containing widths of all columns.
   final List<double> columnWidths;
@@ -88,7 +87,9 @@ class _DatePickerLayoutDelegate extends MultiChildLayoutDelegate {
   void performLayout(Size size) {
     double remainingWidth = size.width;
 
-    for (int i = 0; i < columnWidths.length; i++) remainingWidth -= columnWidths[i] + _kDatePickerPadSize * 2;
+    for (int i = 0; i < columnWidths.length; i++) {
+      remainingWidth -= columnWidths[i] + _kDatePickerPadSize * 2;
+    }
 
     double currentHorizontalOffset = 0.0;
 
@@ -268,15 +269,11 @@ class CupertinoDatePicker extends StatefulWidget {
       this.backgroundColor,
       this.hideDay})
       : initialDateTime = initialDateTime ?? DateTime.now(),
-        assert(mode != null),
-        assert(onDateTimeChanged != null),
-        assert(minimumYear != null),
         assert(
           minuteInterval > 0 && 60 % minuteInterval == 0,
           'minute interval is not a positive integer factor of 60',
         ),
         super(key: key) {
-    assert(this.initialDateTime != null);
     assert(
       mode != CupertinoDatePickerMode.dateAndTime || minimumDate == null || !this.initialDateTime.isBefore(minimumDate!),
       'initial date is before minimum date',
@@ -590,12 +587,7 @@ class _CupertinoDatePickerDateTimeState extends State<CupertinoDatePicker> {
   }
 
   void _handleSystemFontsChange() {
-    setState(() {
-      // System fonts change might cause the text layout width to change.
-      // Clears cached width to ensure that they get recalculated with the
-      // new system fonts.
-      estimatedColumnWidths.clear();
-    });
+    setState(estimatedColumnWidths.clear);
   }
 
   @override
@@ -691,9 +683,7 @@ class _CupertinoDatePickerDateTimeState extends State<CupertinoDatePicker> {
         magnification: _kMagnification,
         backgroundColor: widget.backgroundColor,
         squeeze: _kSqueeze,
-        onSelectedItemChanged: (int index) {
-          _onSelectedItemChange(index);
-        },
+        onSelectedItemChanged: _onSelectedItemChange,
         itemBuilder: (BuildContext context, int index) {
           final DateTime rangeStart = DateTime(
             initialDateTime.year,
@@ -918,7 +908,6 @@ class _CupertinoDatePickerDateTimeState extends State<CupertinoDatePicker> {
   }
 
   void _scrollToDate(DateTime newDate, DateTime fromDate) {
-    assert(newDate != null);
     SchedulerBinding.instance.addPostFrameCallback((Duration timestamp) {
       if (fromDate.year != newDate.year || fromDate.month != newDate.month || fromDate.day != newDate.day) {
         _animateColumnControllerToItem(dateController, selectedDayFromInitial);
@@ -992,7 +981,9 @@ class _CupertinoDatePickerDateTimeState extends State<CupertinoDatePicker> {
       if (i == 0) {
         offAxisFraction = -_kMaximumOffAxisFraction * textDirectionFactor;
         selectionOverlay = _startSelectionOverlay;
-      } else if (i >= 2 || columnWidths.length == 2) offAxisFraction = _kMaximumOffAxisFraction * textDirectionFactor;
+      } else if (i >= 2 || columnWidths.length == 2) {
+        offAxisFraction = _kMaximumOffAxisFraction * textDirectionFactor;
+      }
 
       EdgeInsets padding = const EdgeInsets.only(right: _kDatePickerPadSize);
       if (i == columnWidths.length - 1) {
@@ -1088,10 +1079,7 @@ class _CupertinoDatePickerDateState extends State<CupertinoDatePicker> {
   }
 
   void _handleSystemFontsChange() {
-    setState(() {
-      // System fonts change might cause the text layout width to change.
-      _refreshEstimatedColumnWidths();
-    });
+    setState(_refreshEstimatedColumnWidths);
   }
 
   @override
@@ -1301,7 +1289,6 @@ class _CupertinoDatePickerDateState extends State<CupertinoDatePicker> {
   }
 
   void _scrollToDate(DateTime newDate) {
-    assert(newDate != null);
     SchedulerBinding.instance.addPostFrameCallback((Duration timestamp) {
       if (selectedYear != newDate.year) {
         _animateColumnControllerToItem(yearController, newDate.year);
@@ -1387,9 +1374,11 @@ class _CupertinoDatePickerDateState extends State<CupertinoDatePicker> {
       if (textDirectionFactor == -1) padding = const EdgeInsets.only(left: _kDatePickerPadSize);
 
       Widget selectionOverlay = _centerSelectionOverlay;
-      if (i == 0)
+      if (i == 0) {
         selectionOverlay = _startSelectionOverlay;
-      else if (i == columnWidths.length - 1) selectionOverlay = _endSelectionOverlay;
+      } else if (i == columnWidths.length - 1) {
+        selectionOverlay = _endSelectionOverlay;
+      }
 
       pickers.add(LayoutId(
         id: i,
@@ -1514,15 +1503,12 @@ class CupertinoTimerPicker extends StatefulWidget {
     this.alignment = Alignment.center,
     this.backgroundColor,
     required this.onTimerDurationChanged,
-  })  : assert(mode != null),
-        assert(onTimerDurationChanged != null),
-        assert(initialTimerDuration >= Duration.zero),
+  })  : assert(initialTimerDuration >= Duration.zero),
         assert(initialTimerDuration < const Duration(days: 1)),
         assert(minuteInterval > 0 && 60 % minuteInterval == 0),
         assert(secondInterval > 0 && 60 % secondInterval == 0),
         assert(initialTimerDuration.inMinutes % minuteInterval == 0),
         assert(initialTimerDuration.inSeconds % secondInterval == 0),
-        assert(alignment != null),
         super(key: key);
 
   /// The mode of the timer picker.

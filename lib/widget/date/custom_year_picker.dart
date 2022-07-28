@@ -6,7 +6,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 const Duration _monthScrollDuration = Duration(milliseconds: 200);
 
@@ -81,15 +80,10 @@ class CalendarDatePicker extends StatefulWidget {
     this.onDisplayedMonthChanged,
     this.initialCalendarMode = DatePickerMode.day,
     this.selectableDayPredicate,
-  })  : assert(initialDate != null),
-        assert(firstDate != null),
-        assert(lastDate != null),
-        initialDate = DateUtils.dateOnly(initialDate),
+  })  : initialDate = DateUtils.dateOnly(initialDate),
         firstDate = DateUtils.dateOnly(firstDate),
         lastDate = DateUtils.dateOnly(lastDate),
         currentDate = DateUtils.dateOnly(currentDate ?? DateTime.now()),
-        assert(onDateChanged != null),
-        assert(initialCalendarMode != null),
         super(key: key) {
     assert(
       !this.lastDate.isBefore(this.firstDate),
@@ -429,12 +423,7 @@ class _MonthPicker extends StatefulWidget {
     required this.onChanged,
     required this.onDisplayedMonthChanged,
     this.selectableDayPredicate,
-  })  : assert(selectedDate != null),
-        assert(currentDate != null),
-        assert(onChanged != null),
-        assert(firstDate != null),
-        assert(lastDate != null),
-        assert(!firstDate.isAfter(lastDate)),
+  })  : assert(!firstDate.isAfter(lastDate)),
         assert(!selectedDate.isBefore(firstDate)),
         assert(!selectedDate.isAfter(lastDate)),
         super(key: key);
@@ -684,9 +673,11 @@ class _MonthPickerState extends State<_MonthPicker> {
   int _dayDirectionOffset(TraversalDirection traversalDirection, TextDirection textDirection) {
     // Swap left and right if the text direction if RTL
     if (textDirection == TextDirection.rtl) {
-      if (traversalDirection == TraversalDirection.left)
+      if (traversalDirection == TraversalDirection.left) {
         traversalDirection = TraversalDirection.right;
-      else if (traversalDirection == TraversalDirection.right) traversalDirection = TraversalDirection.left;
+      } else if (traversalDirection == TraversalDirection.right) {
+        traversalDirection = TraversalDirection.left;
+      }
     }
     return _directionOffset[traversalDirection]!;
   }
@@ -812,13 +803,7 @@ class _DayPicker extends StatefulWidget {
     required this.selectedDate,
     required this.onChanged,
     this.selectableDayPredicate,
-  })  : assert(currentDate != null),
-        assert(displayedMonth != null),
-        assert(firstDate != null),
-        assert(lastDate != null),
-        assert(selectedDate != null),
-        assert(onChanged != null),
-        assert(!firstDate.isAfter(lastDate)),
+  })  : assert(!firstDate.isAfter(lastDate)),
         assert(!selectedDate.isBefore(firstDate)),
         assert(!selectedDate.isAfter(lastDate)),
         super(key: key);
@@ -1082,11 +1067,7 @@ class MyYearPicker extends StatefulWidget {
     required this.onChanged,
     this.selectColor,
     this.dragStartBehavior = DragStartBehavior.start,
-  })  : assert(firstDate != null),
-        assert(lastDate != null),
-        assert(selectedDate != null),
-        assert(onChanged != null),
-        assert(!firstDate.isAfter(lastDate)),
+  })  : assert(!firstDate.isAfter(lastDate)),
         currentDate = DateUtils.dateOnly(currentDate ?? DateTime.now()),
         initialDate = DateUtils.dateOnly(initialDate ?? selectedDate),
         super(key: key);
@@ -1201,7 +1182,7 @@ class _YearPickerState extends State<MyYearPicker> {
           child: Semantics(
             selected: isSelected,
             button: true,
-            child: Text(year.toString() + "年", style: itemStyle),
+            child: Text("$year年", style: itemStyle),
           ),
         ),
       ),
@@ -1330,7 +1311,7 @@ class ZhCupertinoLocalizations implements CupertinoLocalizations {
   ];
 
   @override
-  String datePickerYear(int yearIndex) => yearIndex.toString() + '年';
+  String datePickerYear(int yearIndex) => '$yearIndex年';
 
   @override
   String datePickerMonth(int monthIndex) => _months[monthIndex - 1];
@@ -1342,7 +1323,7 @@ class ZhCupertinoLocalizations implements CupertinoLocalizations {
   String datePickerHour(int hour) => hour.toString();
 
   @override
-  String datePickerHourSemanticsLabel(int hour) => hour.toString() + " o'clock";
+  String datePickerHourSemanticsLabel(int hour) => "$hour o'clock";
 
   @override
   String datePickerMinute(int minute) => minute.toString().padLeft(2, '0');
@@ -1350,7 +1331,7 @@ class ZhCupertinoLocalizations implements CupertinoLocalizations {
   @override
   String datePickerMinuteSemanticsLabel(int minute) {
     if (minute == 1) return '1 分';
-    return minute.toString() + ' 分';
+    return '$minute 分';
   }
 
   @override

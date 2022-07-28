@@ -2,17 +2,14 @@ import 'dart:async';
 
 import 'package:dd_js_util/dd_js_util.dart';
 import 'package:dd_js_util/widget/count_down.dart';
-import 'package:dd_js_util/widget/image_cut.dart';
 import 'package:dd_js_util/widget/picture_selection.dart';
 import 'package:dd_js_util/widget/search_support.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 
 import 'custom_year_picker.dart';
-import 'date_picker_2.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,11 +50,11 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  final data = DateTime.now().add(Duration(hours: 2));
+  final data = DateTime.now().add(const Duration(hours: 2));
 
-  final CountDownController _controller = new CountDownController();
+  final CountDownController _controller = CountDownController();
 
-  final PictureSelectionController _pictureSelectionController = new PictureSelectionController();
+  final PictureSelectionController _pictureSelectionController = PictureSelectionController();
 
   final SearchController searchController = SearchController();
 
@@ -71,15 +68,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      localizationsDelegates: [
+      localizationsDelegates: const [
         MyLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale('zh', 'CH'),
-        const Locale('en', 'US'),
+      supportedLocales: const [
+        Locale('zh', 'CH'),
+        Locale('en', 'US'),
       ],
       theme: ThemeData(useMaterial3: true),
       home: Scaffold(
@@ -216,14 +213,25 @@ class _MyAppState extends State<MyApp> {
                   childrens: strs,
                   itemBuilder: (str) {
                     return Container(
-                      padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
+                      padding: const EdgeInsets.all(5),
+                        decoration: const BoxDecoration(
                           color: Colors.white
                         ),
                         child: Text(str));
                   },
                   onSelected: (v) {
                     print('选中了:$v');
+                  },
+                  controller: searchController,
+                  refreshController: refreshController,
+                  request: request,
+                  containerBuilder: (child){
+                    return Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        color: Colors.white
+                      ),
+                        child: child);
                   },
                   child: TextField(
                     onChanged: (v) {
@@ -236,17 +244,6 @@ class _MyAppState extends State<MyApp> {
                       disabledBorder: inputBorder
                     ),
                   ),
-                  controller: searchController,
-                  refreshController: refreshController,
-                  request: request,
-                  containerBuilder: (child){
-                    return Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        color: Colors.white
-                      ),
-                        child: child);
-                  },
                 ),
               )
             ],
@@ -256,7 +253,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  OutlineInputBorder get inputBorder =>  OutlineInputBorder(
+  OutlineInputBorder get inputBorder =>  const OutlineInputBorder(
     borderRadius: BorderRadius.zero,
     borderSide: BorderSide(color: Colors.grey)
   );

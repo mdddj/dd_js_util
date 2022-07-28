@@ -1,4 +1,4 @@
-import 'package:dd_js_util/api/base.dart';
+import '../api/base.dart';
 
 extension DynamicExt on dynamic {
   Map<String, dynamic> get asMap => this as Map<String, dynamic>;
@@ -13,7 +13,7 @@ extension DynamicExt on dynamic {
 
   @Doc(message: '将一个dynamic的值尝试转换成double类型,如果转换失败了, 则返回一个0.0的默认值')
   double get doubleValueIfNullReturnZero {
-    switch (this.runtimeType) {
+    switch (runtimeType) {
       case double:
         return this as double;
       case int:
@@ -27,7 +27,7 @@ extension DynamicExt on dynamic {
 
   @Doc(message: '将一个dynamic的值尝试转换成double类型,如果转换失败了, 则返回null')
   double? get tryParseToDoubleValue {
-    switch (this.runtimeType) {
+    switch (runtimeType) {
       case double:
         return this as double;
       case int:

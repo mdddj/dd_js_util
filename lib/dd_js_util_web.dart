@@ -47,6 +47,6 @@ class DdJsUtilWeb {
   /// 判断是否为微信浏览器
   bool isWeChatBrowser() {
     final ua = html.window.navigator.userAgent.toLowerCase();
-    return ua.indexOf('micromessenger') != -1;
+    return ua.contains('micromessenger');
   }
 }

@@ -31,7 +31,7 @@ class CountDown extends StatefulWidget {
   /// 100毫秒刷新一次
    final Duration? interval;
 
-   CountDown(
+   const CountDown(
       {Key? key, this.controller, this.endTime, this.onEnd, this.autoStart,this.builder,this.interval})
       : super(key: key);
 
@@ -109,7 +109,7 @@ class _CountDownState extends State<CountDown> {
   Widget _maohao() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 5),
-      child: Text(
+      child: const Text(
         ':',
       ),
     );
@@ -139,11 +139,11 @@ class _CountDownState extends State<CountDown> {
 
   DateTime refreshDiff(){
     final now = DateTime.now();
-    final _endDate = DateTime.parse(_endTime);
-    final diff = _endDate.difference(now); // 毫秒
+    final vEndDate = DateTime.parse(_endTime);
+    final diff = vEndDate.difference(now); // 毫秒
 
     /// diffDay < 1  小于一天才显示
-    if (now.isBefore(_endDate)) {
+    if (now.isBefore(vEndDate)) {
       _showComm = true;
       _day = diff.inDays;
       _hour = diff.inHours;
@@ -152,7 +152,7 @@ class _CountDownState extends State<CountDown> {
       _mill = diff.inMilliseconds % 60;
       _refreshUi();
     }
-    return _endDate;
+    return vEndDate;
   }
 
   /// 启动倒计时
@@ -165,11 +165,10 @@ class _CountDownState extends State<CountDown> {
     /// 优惠结束时间
     final endTime = _endTime;
     if (endTime.isNotEmpty) {
-      print('结束时间:$endTime');
-      timer = Timer.periodic(widget.interval ?? Duration(milliseconds: 100), (timer) {
-        final _endDate = refreshDiff();
+      timer = Timer.periodic(widget.interval ?? const Duration(milliseconds: 100), (timer) {
+        final vEndDate = refreshDiff();
         final now = DateTime.now();
-        if (now.isAfter(_endDate)) {
+        if (now.isAfter(vEndDate)) {
           /// 倒计时结束了
           _showComm = false;
           _refreshUi();

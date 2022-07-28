@@ -19,7 +19,7 @@ extension ListExt on List<dynamic> {
   /// list转模型
   /// [data] - 待装换的列表
   /// [covert] - 转换函数
-  List<T> covertFun<T>(List<dynamic> data,T covert(dynamic object)) {
+  List<T> covertFun<T>(List<dynamic> data,T Function(dynamic object) covert) {
     return List<T>.from(data.map((e) => covert(e))).toList();
   }
 

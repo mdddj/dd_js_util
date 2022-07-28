@@ -12,9 +12,7 @@ class _MyTimePickerState extends State<MyTimePicker> {
   Widget build(BuildContext context) {
     return CupertinoDatePicker(
       initialDateTime: DateTime.now(),
-      onDateTimeChanged: (DateTime value) {
-        print(value);
-      },
+      onDateTimeChanged: print,
     );
   }
 }

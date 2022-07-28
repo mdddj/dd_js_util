@@ -154,20 +154,18 @@ class PictureSelection extends StatefulWidget {
 
 class _PictureSelectionState extends State<PictureSelection> {
   /// 用户已选择的图片
-  List<File> _renderImages = [];
+  final List<File> _renderImages = [];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: WaterfallFlow.count(
-        crossAxisCount: widget.columnCount,
-        shrinkWrap: true,
-        padding: widget.padding ?? EdgeInsets.all(12),
-        mainAxisSpacing: widget.mainAxisSpacing ?? 12,
-        crossAxisSpacing: widget.crossAxisSpacing ?? 12,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [..._renderImages.map(_renderImageItem), if (_renderImages.length < widget.maxCount) _renderPlaceholderWidget()],
-      ),
+    return WaterfallFlow.count(
+      crossAxisCount: widget.columnCount,
+      shrinkWrap: true,
+      padding: widget.padding ?? const EdgeInsets.all(12),
+      mainAxisSpacing: widget.mainAxisSpacing ?? 12,
+      crossAxisSpacing: widget.crossAxisSpacing ?? 12,
+      physics: const NeverScrollableScrollPhysics(),
+      children: [..._renderImages.map(_renderImageItem), if (_renderImages.length < widget.maxCount) _renderPlaceholderWidget()],
     );
   }
 
@@ -188,14 +186,14 @@ class _PictureSelectionState extends State<PictureSelection> {
   /// 渲染"添加小部件"
   Widget _renderPlaceholderWidget() {
     if (!widget.multipleChoice && _renderImages.length == 1) {
-      return SizedBox();
+      return const SizedBox();
     }
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         if (widget.placeholderBuilder != null) {
           return widget.placeholderBuilder!.call(Size(constraints.maxWidth, constraints.maxWidth)).addTap(showSelection);
         }
-        return ImageAddIcon().addTap(showSelection);
+        return const ImageAddIcon().addTap(showSelection);
       },
     );
   }
@@ -241,11 +239,12 @@ class _PictureSelectionState extends State<PictureSelection> {
 
   /// 拍摄图片
   Future<void> _shoot() async {
+    final nav = Navigator.of(context);
     final file = await ImagePicker().pickImage(source: ImageSource.camera);
     if (file != null) {
       _renderImages.add(File(file.path));
       _refreshUi();
-      Navigator.pop(context);
+      nav.pop();
     }
   }
 
@@ -263,10 +262,10 @@ class _PictureSelectionState extends State<PictureSelection> {
               child: Column(
             children: [
               ListTile(
-                title: Text('相册'),
+                title: const Text('相册'),
                 onTap: _photoAlbumSelect,
               ),
-              ListTile(title: Text('去拍摄'), onTap: _shoot),
+              ListTile(title: const Text('去拍摄'), onTap: _shoot),
             ],
           ));
         });
@@ -274,6 +273,7 @@ class _PictureSelectionState extends State<PictureSelection> {
 
   /// 去相册选择
   Future<void> _photoAlbumSelect() async {
+    final navigator = Navigator.of(context);
     if (widget.multipleChoice) {
       final files = await ImagePicker().pickMultiImage();
       if (files != null) {
@@ -285,7 +285,7 @@ class _PictureSelectionState extends State<PictureSelection> {
         }
         _renderImages.addAll(fs);
         _refreshUi();
-        Navigator.pop(context);
+        navigator.pop();
       }
     } else {
       //单选模式
@@ -293,7 +293,7 @@ class _PictureSelectionState extends State<PictureSelection> {
       if (file != null) {
         _renderImages.add(File(file.path));
         _refreshUi();
-        Navigator.pop(context);
+        navigator.pop();
       }
     }
   }
@@ -326,14 +326,14 @@ class ImageDefaultShow extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          (removeWidget ?? SizedBox()).addTap(() {
+          (removeWidget ?? const SizedBox()).addTap(() {
             onRemove?.call(file);
           }),
           if (removeWidget == null)
             Positioned(
                 right: 6,
                 top: 6,
-                child: SizedBox(width: 26, height: 26, child: CircleAvatar(backgroundColor: Colors.black45, child: Icon(Icons.delete, size: 12)))
+                child: const SizedBox(width: 26, height: 26, child: CircleAvatar(backgroundColor: Colors.black45, child: Icon(Icons.delete, size: 12)))
                     .addTap(() {
                   onRemove?.call(file);
                 }))
@@ -354,7 +354,7 @@ class ImageAddIcon extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade200), color: Colors.white),
         alignment: Alignment.center,
-        child: Icon(
+        child: const Icon(
           Icons.add,
           color: Colors.grey,
         ),
