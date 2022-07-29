@@ -9,10 +9,14 @@ extension ContextExt on BuildContext {
   }
 
   @Doc(message: '主题')
-  TextTheme get kTextTheme => Theme.of(this).textTheme;
+  TextTheme get kTextTheme => theme.textTheme;
 
   @Doc(message: '主题2')
-  TextTheme get textTheme => Theme.of(this).textTheme;
+  TextTheme get textTheme => theme.textTheme;
+
+
+  ThemeData get theme => Theme.of(this);
+
 
   @Doc(message: '设备屏幕宽度')
   double get screenWidth => MediaQuery.of(this).size.width;
@@ -25,4 +29,9 @@ extension ContextExt on BuildContext {
 
   @Doc(message: '设备屏幕宽度')
   double get paddingTop => MediaQuery.of(this).padding.top;
+
+  ColorScheme get colorScheme => theme.colorScheme;
+  Color get backgroundColor => theme.backgroundColor;
+  Color get cardColor => theme.cardColor;
+  Color? get appbarBackgroundColor => theme.appBarTheme.backgroundColor;
 }
