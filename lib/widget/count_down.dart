@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-typedef CountDownBuilder = Widget Function(
-    BuildContext context,int day, int hour, int minute, int seconds,int millisecond);
+typedef CountDownBuilder = Widget Function(BuildContext context, int day, int hour, int minute, int seconds, int millisecond);
+
+typedef SecondBuild = Widget Function(int seconds);
 
 /// 倒计时组件
 class CountDown extends StatefulWidget {
@@ -24,15 +25,20 @@ class CountDown extends StatefulWidget {
   /// 构建小部件
   final CountDownBuilder? builder;
 
+  ///秒自定义构建
+  final SecondBuild? secondBuild;
+
   /// 倒计时刷新UI间隔
   ///
   /// 默认 Duration(milliseconds: 100)
   ///
   /// 100毫秒刷新一次
-   final Duration? interval;
+  final Duration? interval;
 
-   const CountDown(
-      {Key? key, this.controller, this.endTime, this.onEnd, this.autoStart,this.builder,this.interval})
+  ///开始倒计时回调
+  final VoidCallback? onStart;
+
+  const CountDown({Key? key, this.controller, this.endTime, this.onEnd, this.autoStart, this.builder, this.interval, this.onStart, this.secondBuild})
       : super(key: key);
 
   @override
@@ -82,26 +88,23 @@ class _CountDownState extends State<CountDown> {
       duration: const Duration(milliseconds: 300),
       height: _showComm ? 50 : 0,
       padding: const EdgeInsets.symmetric(horizontal: 12),
-      child:widget.builder!=null ? widget.builder!.call(
-        context,
-        _day,
-        _hour,
-        _minute,
-        _second,
-        _mill
-      ) : Row(
-        children: [
-          _renderNumberText('$_day天'),
-          _maohao(),
-          _renderNumberText('$_hour时'),
-          _maohao(),
-          _renderNumberText('$_minute分'),
-          _maohao(),
-          _renderNumberText('$_second秒'),
-          _maohao(),
-          _renderNumberText('$_mill毫秒'),
-        ],
-      ),
+      child: widget.secondBuild != null
+          ? widget.secondBuild!(_second)
+          : (widget.builder != null
+              ? widget.builder!.call(context, _day, _hour, _minute, _second, _mill)
+              : Row(
+                  children: [
+                    _renderNumberText('$_day天'),
+                    _maohao(),
+                    _renderNumberText('$_hour时'),
+                    _maohao(),
+                    _renderNumberText('$_minute分'),
+                    _maohao(),
+                    _renderNumberText('$_second秒'),
+                    _maohao(),
+                    _renderNumberText('$_mill毫秒'),
+                  ],
+                )),
     );
   }
 
@@ -125,8 +128,7 @@ class _CountDownState extends State<CountDown> {
       height: size,
       alignment: Alignment.center,
       padding: const EdgeInsets.all(6),
-      decoration: BoxDecoration(
-          color: Colors.grey, borderRadius: BorderRadius.circular(5)),
+      decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(5)),
       child: Text(
         text,
       ),
@@ -136,8 +138,7 @@ class _CountDownState extends State<CountDown> {
   // 倒计时结束时间
   String get _endTime => widget.endTime ?? '';
 
-
-  DateTime refreshDiff(){
+  DateTime refreshDiff() {
     final now = DateTime.now();
     final vEndDate = DateTime.parse(_endTime);
     final diff = vEndDate.difference(now); // 毫秒
@@ -157,14 +158,14 @@ class _CountDownState extends State<CountDown> {
 
   /// 启动倒计时
   void start() {
-
-
-    if(timer!=null && timer?.isActive==true){
+    if (timer != null && timer?.isActive == true) {
       return;
     }
+
     /// 优惠结束时间
     final endTime = _endTime;
     if (endTime.isNotEmpty) {
+      widget.onStart?.call();
       timer = Timer.periodic(widget.interval ?? const Duration(milliseconds: 100), (timer) {
         final vEndDate = refreshDiff();
         final now = DateTime.now();
@@ -189,8 +190,8 @@ class _CountDownState extends State<CountDown> {
     }
   }
 
-  void stop(){
-    if(timer != null && timer?.isActive==true) {
+  void stop() {
+    if (timer != null && timer?.isActive == true) {
       timer?.cancel();
       timer = null;
     }
@@ -221,17 +222,17 @@ class CountDownController {
   }
 
   /// 开始倒计时
-  void start(){
+  void start() {
     _state?.start();
   }
 
   ///结束倒计时
-  void stop(){
+  void stop() {
     _state?.stop();
   }
 
   ///刷新倒计时间隔和UI
-  void refresh(){
+  void refresh() {
     _state?.refreshDiff();
   }
 }

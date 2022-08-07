@@ -1,6 +1,6 @@
 name: dd_js_util
 description: Flutterweb端工具类
-version: 0.3.2
+version: 0.3.8
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
@@ -29,12 +29,13 @@ dependencies:
     sdk: flutter
   url_launcher: any
   ffloat_nullsafety: any
-
   easy_refresh: any
-
   riverpod: any
   hooks_riverpod: any
   flutter_lints: any
+  logger: any
+  hive: ^2.2.3
+  flutter_screenutil: ^5.5.3+2
 
 dev_dependencies:
   flutter_test:

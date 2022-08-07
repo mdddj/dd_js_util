@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:logger/logger.dart';
 
 enum HttpMethod { post, get }
 
@@ -72,22 +73,25 @@ abstract class BaseApi {
   BaseApi(this.url, {this.httpMethod = HttpMethod.get});
 
   @Doc(message: "向服务器发起http请求")
-  Future<dynamic> request({bool showErrorMsg = true, String? loadingText, String contentType = "", Map<String, dynamic>? headers,bool showDefaultLoading = true}) async {
+  Future<dynamic> request(
+      {bool showErrorMsg = true, String? loadingText, String contentType = "", Map<String, dynamic>? headers, bool showDefaultLoading = true, Map<
+          String,
+          dynamic>? data,ResponseType? responseType}) async {
     try {
-
-      if(showDefaultLoading){
+      if (showDefaultLoading) {
         showLoading(loadingText: loadingText);
       }
 
       final dio = getDio();
       dio.interceptors.addAll(intrtceptors);
+      Logger().wtf("URL>>>[$url]");
       final response = await dio.request(
         _host + url,
-        options: Options(method: methed, contentType: contentType.isNotEmpty ? contentType : null, headers: headers),
-        queryParameters: params,
-        data: formData.files.isNotEmpty ? formData : params,
+        options: Options(method: methed, contentType: contentType.isNotEmpty ? contentType : null, headers: headers,responseType:responseType ),
+        queryParameters: data ?? params,
+        data: formData.files.isNotEmpty ? formData : (data ?? params),
       );
-      if(showDefaultLoading){
+      if (showDefaultLoading) {
         closeLoading();
       }
 
@@ -95,8 +99,9 @@ abstract class BaseApi {
         final data = response.data;
         return data;
       }
-    } on DioError catch (e) {
-      if(showDefaultLoading){
+    } on DioError catch (e, s) {
+      debugPrint("进来了dioError:$e,\n$s");
+      if (showDefaultLoading) {
         closeLoading();
       }
       switch (e.error) {
@@ -107,6 +112,8 @@ abstract class BaseApi {
           break;
       }
       return null;
+    } catch (e, s) {
+      debugPrint("进来了:$e,\n$s");
     }
     return null;
   }

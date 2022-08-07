@@ -8,8 +8,8 @@ extension CircleExt on Widget {
   @Doc(message: '将组件裁切成一个圆形')
   Widget get circleWidget {
     return ClipRRect(
-      child: this,
       borderRadius: BorderRadius.circular(10000),
+      child: this,
     );
   }
 

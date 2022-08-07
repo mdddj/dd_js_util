@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../api/base.dart';
@@ -14,9 +15,9 @@ extension ContextExt on BuildContext {
   @Doc(message: '主题2')
   TextTheme get textTheme => theme.textTheme;
 
-
   ThemeData get theme => Theme.of(this);
 
+  ThemeData get kTheme => Theme.of(this);
 
   @Doc(message: '设备屏幕宽度')
   double get screenWidth => MediaQuery.of(this).size.width;
@@ -30,8 +31,40 @@ extension ContextExt on BuildContext {
   @Doc(message: '设备屏幕宽度')
   double get paddingTop => MediaQuery.of(this).padding.top;
 
+  double get kBodyHeight => screenHeight - paddingTop - kToolbarHeight;
+
   ColorScheme get colorScheme => theme.colorScheme;
+
   Color get backgroundColor => theme.backgroundColor;
+
   Color get cardColor => theme.cardColor;
+
   Color? get appbarBackgroundColor => theme.appBarTheme.backgroundColor;
+
+  @Doc(message: '导航跳转')
+  Future<T?> navToWidget<T>({required Widget to}) async {
+    return await Navigator.push<T>(this, MaterialPageRoute(builder: (_) => to));
+  }
+
+  NavigatorState get nav => Navigator.of(this);
+
+  @Doc(message: '回退页面')
+  void pop() => Navigator.pop(this);
+
+  @Doc(message: '显示一个简单的iOS提示弹窗')
+  Future<void> showSimpleDialog(String tip) async {
+    await showCupertinoDialog(
+        context: this,
+        builder: (c) {
+          return CupertinoAlertDialog(
+            title: const Text("提示"),
+            content: Text(tip),
+          );
+        });
+  }
+
+  @Doc(message: '底部弹窗')
+  Future<void> bottomSheet<T>({required Widget child}) async {
+    return await showModalBottomSheet(context: this, builder: (c) => child);
+  }
 }

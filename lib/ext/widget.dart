@@ -45,10 +45,33 @@ extension WidgetExt on Widget {
         child: this,
       );
 
+  @Doc(message: '边距')
+  Widget paddingOnly({double left = 0.0, double right = 0.0, double top = 0.0, double bottom = 0.0}) => Padding(
+        padding: EdgeInsets.only(top: top, right: right, bottom: bottom, left: left),
+        child: this,
+      );
+
   Widget get toSliverWidget => SliverToBoxAdapter(
         child: this,
       );
 
   @Doc(message: '点击空白区域隐藏键盘的能力')
   Widget get editPage => EditPage(child: this);
+
+  @Doc(message: '卡片组件')
+  Widget get cardWidget => Card(
+        child: this,
+      );
+
+  Widget get center => Center(
+        child: this,
+      );
+
+  Widget get expanded => Expanded(child: this);
+
+  Widget minHeight(double height) => ConstrainedBox(constraints: BoxConstraints(minHeight: height), child: this);
+
+  Widget paddingWithObj(EdgeInsets edgeInsets) => Padding(padding: edgeInsets);
+
+  Widget aspectRatio(double v) => AspectRatio(aspectRatio: v,child: this,);
 }

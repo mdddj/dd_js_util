@@ -9,4 +9,9 @@ extension StringExt on String {
   /// [https://blog.csdn.net/lhj_android/article/details/119737478]
   ///
   String get fixAutoLines => Characters(this).join('\u{200B}');
+
+
+
+  Widget fontSizeText(double fontSize,{Color? color,FontWeight? fontWeight}) => Text(this,style: TextStyle(fontSize: fontSize,color: color,fontWeight: fontWeight),);
+
 }
