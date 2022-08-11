@@ -2,9 +2,18 @@ import 'dart:async';
 
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../api/base.dart';
 import '../../ext/widget.dart';
+
+///要插入的widget
+class InsetWidget {
+  final int insertIndex;
+  final Widget child;
+
+  InsetWidget(this.child, this.insertIndex);
+}
 
 ///页面所需要的基本数据
 mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State<W> {
@@ -42,8 +51,7 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
           _loading = false;
         });
       }
-      if(vData.isEmpty){
-      }
+      if (vData.isEmpty) {}
     } on PageListException catch (e) {
       debugPrint('>>>$e');
       if (mounted) {
@@ -77,6 +85,9 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
 
   List<Widget> get footChildren => [];
 
+  @Doc(message: '要插入位置的小部件')
+  List<InsetWidget> get insetWidget => [];
+
   @override
   Widget build(BuildContext context) {
     return EasyRefresh(
@@ -94,20 +105,37 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
         child: CustomScrollView(
           slivers: [
             ...headerChildren,
-            // SliverToBoxAdapter(
-            //   child: AnimatedSwitcher(
-            //     duration: const Duration(milliseconds: 300),
-            //     child: _loading ? loadingWidget : const SizedBox(),
-            //   ),
-            // ),
             PageExceptionWidget(
               exception: pageListException,
             ),
             SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) => renderCell(context, index, _pageData[index]), childCount: _pageData.length)),
+                delegate: SliverChildBuilderDelegate((context, index) {
+                  if(_pageData.isEmpty){
+                    return const SizedBox();
+                  }
+              for (var i = 0; i < insetWidget.length; i++) {
+                final item = insetWidget[i];
+                if (index == item.insertIndex) {
+                  return item.child;
+                }
+              }
+              return renderCell(context, index, _pageData[index - _getAddCount(index)]);
+            }, childCount: _pageData.length + insetWidget.length)),
             ...footChildren
           ],
         ));
+  }
+
+  ///获取需要位移的数量
+  int _getAddCount(int index) {
+    var count = 0;
+    for (var i = 0; i < insetWidget.length; i++) {
+      final item = insetWidget[i];
+      if (item.insertIndex <= index) {
+        count++;
+      }
+    }
+    return count;
   }
 
   @Doc(message: '选择item布局')

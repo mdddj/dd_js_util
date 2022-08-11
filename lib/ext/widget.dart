@@ -70,8 +70,11 @@ extension WidgetExt on Widget {
   Widget get expanded => Expanded(child: this);
 
   Widget minHeight(double height) => ConstrainedBox(constraints: BoxConstraints(minHeight: height), child: this);
+  Widget minWidth(double width) => ConstrainedBox(constraints: BoxConstraints(minWidth: width), child: this);
 
   Widget paddingWithObj(EdgeInsets edgeInsets) => Padding(padding: edgeInsets);
 
   Widget aspectRatio(double v) => AspectRatio(aspectRatio: v,child: this,);
+
+  Route get materialRouter => MaterialPageRoute(builder: (_)=>this);
 }

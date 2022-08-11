@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../ext/widget/simple_appbar.dart';
+
 /// 对字符串的扩展
 extension StringExt on String {
   /// 修复中英文下文本自动被截断的bug。
@@ -13,5 +15,6 @@ extension StringExt on String {
 
 
   Widget fontSizeText(double fontSize,{Color? color,FontWeight? fontWeight}) => Text(this,style: TextStyle(fontSize: fontSize,color: color,fontWeight: fontWeight),);
+  PreferredSizeWidget get appbar => SimpleAppbar(title: this);
 
 }

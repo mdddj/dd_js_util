@@ -3,12 +3,15 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:logger/logger.dart';
 
-enum HttpMethod { post, get }
+const kProtobufContentType = 'application/x-protobuf';
 
+enum HttpMethod { post, get, probuf }
 
 const kMultipartFormDataHeader = 'multipart/form-data';
 
 typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
+
+typedef DioStart = void Function(Dio dio);
 
 //list的扩展
 extension ListExt on List<dynamic> {
@@ -35,7 +38,6 @@ extension DynamicExt on dynamic {
     return parse(this) as T;
   }
 }
-
 
 //组件扩展
 extension WidgetExt on Widget {
@@ -73,10 +75,13 @@ abstract class BaseApi {
   BaseApi(this.url, {this.httpMethod = HttpMethod.get});
 
   @Doc(message: "向服务器发起http请求")
-  Future<dynamic> request(
-      {bool showErrorMsg = true, String? loadingText, String contentType = "", Map<String, dynamic>? headers, bool showDefaultLoading = true, Map<
-          String,
-          dynamic>? data,ResponseType? responseType}) async {
+  Future<dynamic> request({bool showErrorMsg = true,
+    String? loadingText,
+    String contentType = "",
+    Map<String, dynamic>? headers,
+    bool showDefaultLoading = true,
+    dynamic? data,
+    ResponseType? responseType, bool? nullParams, RequestEncoder? requestEncoder,DioStart? dioStart}) async {
     try {
       if (showDefaultLoading) {
         showLoading(loadingText: loadingText);
@@ -84,12 +89,19 @@ abstract class BaseApi {
 
       final dio = getDio();
       dio.interceptors.addAll(intrtceptors);
-      Logger().wtf("URL>>>[$url]");
+      final contentTypeStr = contentType.isNotEmpty ? contentType : null;
+      final bodyParams = formData.files.isNotEmpty ? formData : (data ?? params);
+      dioStart?.call(dio);
       final response = await dio.request(
         _host + url,
-        options: Options(method: methed, contentType: contentType.isNotEmpty ? contentType : null, headers: headers,responseType:responseType ),
-        queryParameters: data ?? params,
-        data: formData.files.isNotEmpty ? formData : (data ?? params),
+        options: Options(
+            method: methed,
+            contentType: httpMethod == HttpMethod.probuf ? kProtobufContentType : contentTypeStr,
+            headers: headers,
+            responseType: responseType,
+            requestEncoder: requestEncoder),
+        queryParameters: nullParams == true ? null : data ?? params,
+        data: bodyParams,
       );
       if (showDefaultLoading) {
         closeLoading();

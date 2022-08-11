@@ -37,7 +37,13 @@ extension ContextExt on BuildContext {
 
   Color get backgroundColor => theme.backgroundColor;
 
+  Color get highlightColor => theme.highlightColor;
+
   Color get cardColor => theme.cardColor;
+
+  Color get primaryColor => theme.primaryColor;
+
+  Color? get iconColor => theme.iconTheme.color;
 
   Color? get appbarBackgroundColor => theme.appBarTheme.backgroundColor;
 
