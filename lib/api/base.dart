@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:logger/logger.dart';
 
+import 'exception.dart';
+
 const kProtobufContentType = 'application/x-protobuf';
 
 enum HttpMethod { post, get, probuf }
@@ -80,14 +82,16 @@ abstract class BaseApi {
     String contentType = "",
     Map<String, dynamic>? headers,
     bool showDefaultLoading = true,
-    dynamic? data,
+    dynamic data,
     ResponseType? responseType, bool? nullParams, RequestEncoder? requestEncoder,DioStart? dioStart}) async {
+
     try {
       if (showDefaultLoading) {
         showLoading(loadingText: loadingText);
       }
 
       final dio = getDio();
+      intrtceptors.add(ErrorInterceptor());
       dio.interceptors.addAll(intrtceptors);
       final contentTypeStr = contentType.isNotEmpty ? contentType : null;
       final bodyParams = formData.files.isNotEmpty ? formData : (data ?? params);
@@ -112,22 +116,15 @@ abstract class BaseApi {
         return data;
       }
     } on DioError catch (e, s) {
-      debugPrint("进来了dioError:$e,\n$s");
+      // debugPrint("出现异常:${e.error.runtimeType}\n$s");
       if (showDefaultLoading) {
         closeLoading();
       }
-      switch (e.error) {
-        case DioErrorType.connectTimeout:
-          break;
-        default:
-          toast(e.message);
-          break;
-      }
-      return null;
+      throw e.error as AppException;
     } catch (e, s) {
-      debugPrint("进来了:$e,\n$s");
+      throw AppException.appError();
     }
-    return null;
+    throw AppException.appError();
   }
 
   //请求方法,
