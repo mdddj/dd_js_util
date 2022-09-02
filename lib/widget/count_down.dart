@@ -84,10 +84,8 @@ class _CountDownState extends State<CountDown> {
   }
 
   Widget _renderCore() {
-    return AnimatedContainer(
+    return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),
-      height: _showComm ? 50 : 0,
-      padding: const EdgeInsets.symmetric(horizontal: 12),
       child: widget.secondBuild != null
           ? widget.secondBuild!(_second)
           : (widget.builder != null

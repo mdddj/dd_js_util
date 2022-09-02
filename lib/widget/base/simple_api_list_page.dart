@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 import '../../api/base.dart';
 import '../../ext/widget.dart';
+import 'loading.dart';
 
 ///要插入的widget
 class InsetWidget {
@@ -16,13 +16,18 @@ class InsetWidget {
 }
 
 ///页面所需要的基本数据
-mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State<W> {
+mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State<W>  {
   List<S> _pageData = []; //页面所需要的数组数据
   bool _loading = true; //加载中
   PageListException? pageListException; //页面异常
+
   int _page = 1; //第几页
 
   List<S>? get data => _pageData;
+
+  EasyRefreshController easyRefreshController = EasyRefreshController();
+
+  bool get loadingState => _loading;
 
   @override
   void initState() {
@@ -51,7 +56,9 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
           _loading = false;
         });
       }
-      if (vData.isEmpty) {}
+      if (vData.isEmpty) {
+        easyRefreshController.finishLoad(success: true,noMore: true);
+      }
     } on PageListException catch (e) {
       debugPrint('>>>$e');
       if (mounted) {
@@ -90,7 +97,17 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
 
   @override
   Widget build(BuildContext context) {
+    if(_loading){
+      return loadingWidget;
+    }
+    return coreWidget;
+  }
+
+  Widget get coreWidget {
     return EasyRefresh(
+        controller: easyRefreshController,
+        header: CustomLoadingHeader(),
+        footer: CustomLoadingFooter(),
         onRefresh: () async {
           setState(() {
             _pageData = [];
@@ -98,10 +115,9 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
           });
           return await _nextPage(page: 1);
         },
-        onLoad: _nextPage,
-        header: MaterialHeader(),
-        footer: MaterialFooter(),
-        refreshOnStart: true,
+        onLoad:enableOnLoad ?  () async {
+          await _nextPage();
+        } : null,
         child: CustomScrollView(
           slivers: [
             ...headerChildren,
@@ -110,17 +126,17 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
             ),
             SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
-                  if(_pageData.isEmpty){
+                  if (_pageData.isEmpty) {
                     return const SizedBox();
                   }
-              for (var i = 0; i < insetWidget.length; i++) {
-                final item = insetWidget[i];
-                if (index == item.insertIndex) {
-                  return item.child;
-                }
-              }
-              return renderCell(context, index, _pageData[index - _getAddCount(index)]);
-            }, childCount: _pageData.length + insetWidget.length)),
+                  for (var i = 0; i < insetWidget.length; i++) {
+                    final item = insetWidget[i];
+                    if (index == item.insertIndex) {
+                      return item.child;
+                    }
+                  }
+                  return renderCell(context, index, _pageData[index - _getAddCount(index)]);
+                }, childCount: _pageData.length + insetWidget.length)),
             ...footChildren
           ],
         ));
@@ -140,6 +156,8 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
 
   @Doc(message: '选择item布局')
   Widget renderCell(BuildContext context, int index, S item);
+
+  bool get enableOnLoad => true;
 
   @Doc(message: '加载下一页请求')
   T nextPageLoad(int page);

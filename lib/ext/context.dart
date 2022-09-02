@@ -47,6 +47,8 @@ extension ContextExt on BuildContext {
 
   Color? get appbarBackgroundColor => theme.appBarTheme.backgroundColor;
 
+  bool get isDarkModel => Theme.of(this).brightness == Brightness.dark;
+
   @Doc(message: '导航跳转')
   Future<T?> navToWidget<T>({required Widget to}) async {
     return await Navigator.push<T>(this, MaterialPageRoute(builder: (_) => to));
@@ -58,15 +60,18 @@ extension ContextExt on BuildContext {
   void pop() => Navigator.pop(this);
 
   @Doc(message: '显示一个简单的iOS提示弹窗')
-  Future<void> showSimpleDialog(String tip) async {
+  Future<void> showSimpleDialog(String tip,{String? title,String? cancelText}) async {
     await showCupertinoDialog(
         context: this,
         builder: (c) {
           return CupertinoAlertDialog(
-            title: const Text("提示"),
+            title:  Text(title ?? "提示"),
             content: Text(tip),
+            actions: [
+              CupertinoDialogAction(onPressed: this.pop, child: Text(cancelText??'Cancel'))
+            ],
           );
-        });
+        },);
   }
 
   @Doc(message: '底部弹窗')

@@ -59,7 +59,7 @@ extension StringExtension on String {
       if (result == null || result == '') throw '201'; // 保存失败,请重试
 
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -102,5 +102,10 @@ extension StringExtension on String {
     if(canLaunch){
       launchUrlString(this);
     }
+  }
+  
+  @Doc(message: '复制到剪贴板')
+  void copy() {
+    Clipboard.setData(ClipboardData(text: this));
   }
 }

@@ -112,7 +112,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.3.0"
+    version: "0.4.1"
   decimal:
     dependency: transitive
     description:
@@ -127,13 +127,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.6"
-  easy_refresh:
-    dependency: transitive
-    description:
-      name: easy_refresh
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.2+2"
   extended_image:
     dependency: transitive
     description:
@@ -202,6 +195,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
+  flutter_easyrefresh:
+    dependency: transitive
+    description:
+      name: flutter_easyrefresh
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.2"
   flutter_hooks:
     dependency: transitive
     description:
@@ -242,6 +242,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  flutter_screenutil:
+    dependency: transitive
+    description:
+      name: flutter_screenutil
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.5.3+2"
   flutter_smart_dialog:
     dependency: transitive
     description:
@@ -273,6 +280,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.6.5"
+  hive:
+    dependency: transitive
+    description:
+      name: hive
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.3"
   hooks_riverpod:
     dependency: transitive
     description:
@@ -371,6 +385,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  logger:
+    dependency: transitive
+    description:
+      name: logger
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   matcher:
     dependency: transitive
     description:
@@ -406,20 +427,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.1"
-  path_drawing:
-    dependency: transitive
-    description:
-      name: path_drawing
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
-  path_parsing:
-    dependency: transitive
-    description:
-      name: path_parsing
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   path_provider:
     dependency: transitive
     description:

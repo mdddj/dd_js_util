@@ -1,13 +1,20 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../api/base.dart';
+import '../../ext/context.dart';
 import '../../ext/widget.dart';
 
+///页面异常
+class PageException implements Exception {
+  final String msg;
+  const PageException(this.msg);
+}
 ///页面所需要的基本数据
 mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
   S? _pageData;
   bool _loading = true;
   bool _empty = false;
+  PageException? exception;
 
   @override
   void initState() {
@@ -15,9 +22,18 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
     Future.microtask(_requestApi);
   }
 
+  S get pageData {
+    return _pageData!;
+  }
+
   @Doc(message: '加载中')
   Future<void> _requestApi() async {
 
+    if(mounted){
+      setState(() {
+        exception = null;
+      });
+    }
     try{
       final response = await api.request(showDefaultLoading: false);
       if (response == null) {
@@ -52,6 +68,9 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
     if (_loading) {
       return loadingWidget;
     }
+    if(exception != null){
+      return Text('服务器出现了一些小问题:${exception!.msg}',style: context.kTextTheme.bodyText1?.copyWith(color: context.colorScheme.error),);
+    }
     if(_empty){
       return emptyWidget;
     }
@@ -69,5 +88,15 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
   T get api;
 
   @Doc(message: '转换为所需要的模型')
-  S responseHandle(final R response);
+  S? responseHandle(final R response);
+
+  @Doc(message: '抛出页面异常')
+  void throwPageException(String msg) {
+    if(mounted){
+      setState(() {
+        exception = PageException(msg);
+      });
+    }
+  }
+
 }

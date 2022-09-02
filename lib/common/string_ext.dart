@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../api/base.dart';
 import '../ext/widget/simple_appbar.dart';
 
 /// 对字符串的扩展
@@ -16,5 +17,8 @@ extension StringExt on String {
 
   Widget fontSizeText(double fontSize,{Color? color,FontWeight? fontWeight}) => Text(this,style: TextStyle(fontSize: fontSize,color: color,fontWeight: fontWeight),);
   PreferredSizeWidget get appbar => SimpleAppbar(title: this);
+
+  @Doc(message: '首字母大写')
+  String get firstChatToUpperCase => '${this[0].toUpperCase()}${substring(1)}';
 
 }

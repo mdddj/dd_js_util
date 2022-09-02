@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../api/base.dart';
 import '../common/edit_page.dart';
 import '../common/w.dart';
+import 'context.dart';
 
 extension WidgetExt on Widget {
   @Doc(message: '移除水波纹')
@@ -62,6 +63,11 @@ extension WidgetExt on Widget {
   Widget get cardWidget => Card(
         child: this,
       );
+  @Doc(message: '卡片组件')
+  Widget cardWidget2(double eve) => Card(
+        child: this,
+        elevation: eve,
+      );
 
   Widget get center => Center(
         child: this,
@@ -70,11 +76,30 @@ extension WidgetExt on Widget {
   Widget get expanded => Expanded(child: this);
 
   Widget minHeight(double height) => ConstrainedBox(constraints: BoxConstraints(minHeight: height), child: this);
+  Widget maxHeight(double height) => ConstrainedBox(constraints: BoxConstraints(maxHeight: height), child: this);
   Widget minWidth(double width) => ConstrainedBox(constraints: BoxConstraints(minWidth: width), child: this);
+  Widget maxWidth(double width) => ConstrainedBox(constraints: BoxConstraints(maxWidth: width), child: this);
 
   Widget paddingWithObj(EdgeInsets edgeInsets) => Padding(padding: edgeInsets);
 
-  Widget aspectRatio(double v) => AspectRatio(aspectRatio: v,child: this,);
+  Widget aspectRatio(double v) => AspectRatio(
+        aspectRatio: v,
+        child: this,
+      );
 
-  Route get materialRouter => MaterialPageRoute(builder: (_)=>this);
+  Route get materialRouter => MaterialPageRoute(builder: (_) => this);
+
+  Widget border(BuildContext context, {BoxDecoration? decoration, Color? borderColor, BorderRadius? borderRadius}) {
+    return Container(
+      decoration: decoration ?? BoxDecoration(border: Border.all(color: borderColor ?? context.theme.dividerColor), borderRadius: borderRadius),
+      child: this,
+    );
+  }
+
+  Widget get topBorder {
+    return Container(
+      decoration: BoxDecoration(border: Border(top: BorderSide(color: Colors.grey.shade100, width: 0.5))),
+      child: this,
+    );
+  }
 }
