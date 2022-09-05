@@ -18,6 +18,11 @@ extension MapExt on Map<String, dynamic> {
     return List<String>.from(([key]).map((e) => e.toString())).toList();
   }
 
+  @Doc(message: 'get List<dynamic>')
+  List<dynamic> getDynamicList(String key) {
+    return List<dynamic>.from(([key]).map((e) => e)).toList();
+  }
+
   Map<String, Object> get asMapObject {
     final map = <String, Object>{};
     forEach((key, value) {
@@ -25,6 +30,8 @@ extension MapExt on Map<String, dynamic> {
     });
     return map;
   }
+
+
 }
 
 class WrapJson {
@@ -57,6 +64,22 @@ class WrapJson {
       return a.toInt();
     }
     return defaultValue;
+  }
+
+
+  List<dynamic> getListValue(String key) {
+    final value = data['key'];
+    if(value == null){
+      return [];
+    }
+    if(value is List<dynamic>){
+      return value;
+    }
+    return [];
+  }
+
+  dynamic getValue(String key){
+    return data[key];
   }
 
   void print(){

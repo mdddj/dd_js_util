@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import '../../api/base.dart';
 import '../../ext/context.dart';
 import '../../ext/widget.dart';
-
+typedef WidgetBuilder = Widget Function();
 ///页面异常
 class PageException implements Exception {
   final String msg;
@@ -65,6 +65,12 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
 
   @override
   Widget build(BuildContext context) {
+    return buildCoreWidget((){
+      return renderBody(_pageData as S);
+    });
+  }
+
+  Widget buildCoreWidget(WidgetBuilder builder){
     if (_loading) {
       return loadingWidget;
     }
@@ -75,7 +81,7 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
       return emptyWidget;
     }
     if (_pageData != null) {
-      return renderBody(_pageData as S);
+      return builder.call();
     }
     return const SizedBox();
   }
