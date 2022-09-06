@@ -1,3 +1,8 @@
+# 0.4.5
+
+* 新增键盘扩展函数`KeyboardMixin` (需要使用riveroid)
+* 具体用法查看源码或者readme.md
+
 # 0.4.4
 
 * 新增`MinRow`小组件

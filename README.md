@@ -106,3 +106,35 @@ GetMaterialApp(
 ```
 4.效果
 [![Xr1UR1.jpg](https://s1.ax1x.com/2022/06/08/Xr1UR1.jpg)](https://imgtu.com/i/Xr1UR1)
+
+
+# 键盘工具
+
+`KeyboardMixin`核心类
+
+在`ConsumerState`混入使用扩展
+```dart
+class _ChatEditState extends ConsumerState<ChatEdit> with KeyboardMixin<ChatEdit>
+```
+
+
+##### 1.监听键盘高度
+
+
+`ref` 是框架`riverpod`状态管理中的类
+```dart
+ref.watchKeyBoardHeight; //键盘高度实时获取
+```
+
+##### 2.回调函数
+```dart
+///键盘展示回调
+///[height] - 键盘实时高度
+void onShow(double height){}
+
+///键盘关闭回调
+void onClose(){}
+
+///将键盘高度设置为0
+void reset(){}
+```
