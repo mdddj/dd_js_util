@@ -102,4 +102,9 @@ extension WidgetExt on Widget {
       child: this,
     );
   }
+
+  @Doc(message: '长按点击事件')
+  Widget longClick({required VoidCallback onLongPress}){
+    return GestureDetector(onLongPress: onLongPress,child: this);
+  }
 }

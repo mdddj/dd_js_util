@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:logger/logger.dart';
 
+import '../ext/map.dart';
 import 'exception.dart';
 
 const kProtobufContentType = 'application/x-protobuf';
@@ -13,7 +14,7 @@ const kMultipartFormDataHeader = 'multipart/form-data';
 
 typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
 
-typedef DioStart = void Function(Dio dio);
+typedef DioStart = void Function(Dio dio,String url);
 
 //list的扩展
 extension ListExt on List<dynamic> {
@@ -77,14 +78,17 @@ abstract class BaseApi {
   BaseApi(this.url, {this.httpMethod = HttpMethod.get});
 
   @Doc(message: "向服务器发起http请求")
-  Future<dynamic> request({bool showErrorMsg = true,
-    String? loadingText,
-    String contentType = "",
-    Map<String, dynamic>? headers,
-    bool showDefaultLoading = true,
-    dynamic data,
-    ResponseType? responseType, bool? nullParams, RequestEncoder? requestEncoder,DioStart? dioStart}) async {
-
+  Future<dynamic> request(
+      {bool showErrorMsg = true,
+      String? loadingText,
+      String contentType = "",
+      Map<String, dynamic>? headers,
+      bool showDefaultLoading = true,
+      dynamic data,
+      ResponseType? responseType,
+      bool? nullParams,
+      RequestEncoder? requestEncoder,
+      DioStart? dioStart}) async {
     try {
       if (showDefaultLoading) {
         showLoading(loadingText: loadingText);
@@ -95,7 +99,7 @@ abstract class BaseApi {
       dio.interceptors.addAll(intrtceptors);
       final contentTypeStr = contentType.isNotEmpty ? contentType : null;
       final bodyParams = formData.files.isNotEmpty ? formData : (data ?? params);
-      dioStart?.call(dio);
+      dioStart?.call(dio,_host + url);
       final response = await dio.request(
         _host + url,
         options: Options(
@@ -121,7 +125,7 @@ abstract class BaseApi {
         closeLoading();
       }
       throw e.error as AppException;
-    } catch (e, s) {
+    } catch (e) {
       throw AppException.appError();
     }
     throw AppException.appError();
@@ -163,4 +167,43 @@ class Doc {
   final String message;
 
   const Doc({required this.message});
+}
+
+///wrapjson类型的接口封装
+abstract class AppCoreApi extends BaseApi {
+  AppCoreApi(String url, {HttpMethod? httpMethod, List<Interceptor>? ints}) : super(url, httpMethod: httpMethod ?? HttpMethod.get) {
+    if (ints?.isNotEmpty == true) {
+      intrtceptors.addAll(ints!);
+    }
+  }
+
+  @override
+  Future<WrapJson> request(
+      {bool showErrorMsg = true,
+      String? loadingText,
+      String contentType = "",
+      Map<String, dynamic>? headers,
+      bool showDefaultLoading = true,
+      data,
+      ResponseType? responseType,
+      bool? nullParams,
+      RequestEncoder? requestEncoder,
+      DioStart? dioStart}) async {
+    try {
+      final r = await super.request(
+          showErrorMsg: showErrorMsg,
+          loadingText: loadingText,
+          contentType: contentType,
+          headers: headers,
+          showDefaultLoading: showDefaultLoading,
+          data: data,
+          responseType: responseType,
+          nullParams: nullParams,
+          requestEncoder: requestEncoder,
+          dioStart: dioStart);
+      return WrapJson(r);
+    } on AppException catch (e) {
+      return WrapJson.fromMyServerError(e);
+    }
+  }
 }

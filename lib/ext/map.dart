@@ -1,6 +1,7 @@
 import 'package:logger/logger.dart';
 
 import '../api/base.dart';
+import '../api/exception.dart';
 
 extension MapExt2 on Map<String, Object> {
   Map<String, dynamic> get asMapDynamic {
@@ -39,6 +40,13 @@ class WrapJson {
 
   WrapJson(this.data);
 
+  factory WrapJson.fromMyServerError(AppException exception){
+    return WrapJson({
+      'state': exception.code,
+      'message': exception.message
+    });
+  }
+
   String getString(String key, {String defaultValue = ''}) {
     final v = data[key];
     if (v == null) {
@@ -68,7 +76,7 @@ class WrapJson {
 
 
   List<dynamic> getListValue(String key) {
-    final value = data['key'];
+    final value = data[key];
     if(value == null){
       return [];
     }
@@ -84,5 +92,20 @@ class WrapJson {
 
   void print(){
     Logger().wtf(data);
+  }
+
+
+
+  ///---- 一些扩展工具类
+  bool get isSuccess {
+    return getInt('state',defaultValue: 0) == 200;
+  }
+
+  String get message {
+    return getString('message',defaultValue: '未知消息');
+  }
+
+  dynamic get resultApiData {
+    return getValue('data');
   }
 }

@@ -10,6 +10,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../api/base.dart';
+import 'int.dart';
 
 ///字符串相关扩展
 extension StringExtension on String {
@@ -107,5 +108,11 @@ extension StringExtension on String {
   @Doc(message: '复制到剪贴板')
   void copy() {
     Clipboard.setData(ClipboardData(text: this));
+  }
+
+  @Doc(message: '获取时间')
+  String get getMessageTimeWithString {
+    final date = DateTime.parse(this).millisecondsSinceEpoch;
+    return date.messageTime;
   }
 }

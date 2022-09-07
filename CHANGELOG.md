@@ -1,3 +1,7 @@
+# 0.4.6
+
+* bug修复
+
 # 0.4.5
 
 * 新增键盘扩展函数`KeyboardMixin` (需要使用riveroid)
