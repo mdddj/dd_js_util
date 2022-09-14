@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:logger/logger.dart';
 
 import '../ext/map.dart';
+import '../util/log.dart';
 import 'exception.dart';
 
 const kProtobufContentType = 'application/x-protobuf';
@@ -97,11 +100,11 @@ abstract class BaseApi {
       final dio = getDio();
       intrtceptors.add(ErrorInterceptor());
       dio.interceptors.addAll(intrtceptors);
-      final contentTypeStr = contentType.isNotEmpty ? contentType : null;
+      final contentTypeStr = contentType.isNotEmpty ? contentType : (httpMethod == HttpMethod.post ? ContentType.json.value : null);
       final bodyParams = formData.files.isNotEmpty ? formData : (data ?? params);
       dioStart?.call(dio,_host + url);
       final response = await dio.request(
-        _host + url,
+        (_host + url),
         options: Options(
             method: methed,
             contentType: httpMethod == HttpMethod.probuf ? kProtobufContentType : contentTypeStr,
@@ -120,28 +123,30 @@ abstract class BaseApi {
         return data;
       }
     } on DioError catch (e, s) {
-      // debugPrint("出现异常:${e.error.runtimeType}\n$s");
+      kLogErr("出现异常:${e.error.runtimeType}\n$s");
       if (showDefaultLoading) {
         closeLoading();
       }
       throw e.error as AppException;
-    } catch (e) {
+    } catch (e,s) {
+      kLogErr('error:$e\n$s');
       throw AppException.appError();
     }
     throw AppException.appError();
   }
 
   //请求方法,
-  String get methed => getMethod();
-
-  String getMethod() {
+  String get methed {
     switch (httpMethod) {
       case HttpMethod.get:
-        return 'GET';
+        return 'get';
+      case HttpMethod.post:
+        return 'post';
       default:
-        return "POST";
+        return "get";
     }
   }
+
 
   @Doc(message: "页面中间显示loading等待框")
   void showLoading({String? loadingText}) {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dd_js_util.iml" filepath="$PROJECT_DIR$/.idea/modules/dd_js_util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dd_js_util.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/dd_js_util.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dd_js_util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/dd_js_util.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dd_js_util.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/dd_js_util.unitTest.iml" />
+    </modules>
+  </component>
+</project>
