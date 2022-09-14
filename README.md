@@ -5,6 +5,43 @@ pub地址: https://pub.dev/packages/dd_js_util
 
 ## 开始使用
 
+
+# dio 封装
+
+
+
+
+```dart
+//1.初始化,换成你的域名
+BaseApi.host='https://itbug.shop';
+
+//2.声明接口
+class BlogsApi extends BaseApi {
+  BlogsApi():super("/blogs");
+}
+
+//3.使用接口
+void fetchBlogs(){
+  BlogsApi().request(); //发起请求
+}
+
+///-----------高级用法
+///如果有特殊需求,比如添加拦截器等等
+class UserProfileApi extends BaseApi{
+  UserProfileApi():super('/user/profile',httpMethod:HttpMethod.post){
+    //添加拦截器
+    intrtceptors.add(TokenIntrtceptors());
+  }
+
+  ///获取添加参数
+  set token(String tokenValue) => params['token'] = tokenValue
+}
+
+//使用
+final api = UserProfileApi()..token = 'your token';
+api.request(); //发起请求
+```
+
 * 判断是否微信浏览器
 ```dart
 final result = await DdJsUtil.isWeChatBrowser; // true or false
