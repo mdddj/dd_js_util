@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+// ignore: library_prefixes
 import 'package:image/image.dart' as Image;
 
 // 图片裁切处理
@@ -10,6 +11,7 @@ class ImageCutWidget extends StatefulWidget {
   const ImageCutWidget({Key? key,required this.imagePath}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ImageCutWidgetState createState() => _ImageCutWidgetState();
 }
 
@@ -86,7 +88,7 @@ class MyEditCup extends EditorCropLayerPainter {
   void paint(Canvas canvas, Size size, ExtendedImageCropLayerPainter painter) {
     paintMask(canvas, size, painter);
      //定义画笔
-  Paint _paint = new Paint()
+  Paint paint = Paint()
     ..color = Colors.grey
     ..strokeCap = StrokeCap.square
     ..isAntiAlias = true
@@ -94,7 +96,7 @@ class MyEditCup extends EditorCropLayerPainter {
     ..style = PaintingStyle
         .stroke; //画笔样式有填充PaintingStyle.fill 及没有填充PaintingStyle.stroke 两种
 
-  canvas.drawCircle(const Offset(200.0, 150.0), 150.0, _paint);
+  canvas.drawCircle(const Offset(200.0, 150.0), 150.0, paint);
   }
 
 }

@@ -6,7 +6,7 @@ import 'package:waterfall_flow/waterfall_flow.dart';
 
 extension WidgetTa on Widget {
   Widget addTap(VoidCallback onTap) {
-    return GestureDetector(child: this, onTap: onTap);
+    return GestureDetector(onTap: onTap, child: this);
   }
 }
 
@@ -367,8 +367,9 @@ class ImageAddIcon extends StatelessWidget {
 class PictureSelectionController {
   _PictureSelectionState? _state;
 
+  // ignore: library_private_types_in_public_api
   void bind(_PictureSelectionState state) {
-    this._state = state;
+    _state = state;
   }
 
   /// 删除某张图片

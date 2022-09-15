@@ -68,7 +68,7 @@ extension ContextExt on BuildContext {
             title:  Text(title ?? "提示"),
             content: Text(tip),
             actions: [
-              CupertinoDialogAction(onPressed: this.pop, child: Text(cancelText??'Cancel'))
+              CupertinoDialogAction(onPressed: pop, child: Text(cancelText??'Cancel'))
             ],
           );
         },);

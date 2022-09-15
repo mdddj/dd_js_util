@@ -381,6 +381,7 @@ class CupertinoDatePicker extends StatefulWidget {
   final Color? backgroundColor;
 
   @override
+  // ignore: no_logic_in_create_state
   State<StatefulWidget> createState() {
     switch (mode) {
       case CupertinoDatePickerMode.time:

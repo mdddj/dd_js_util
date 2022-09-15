@@ -52,6 +52,7 @@ class _FloatContainerState extends State<FloatContainer> {
       final local = box.localToGlobal(Offset.zero);
       return local.dy;
     }
+    return null;
   }
 
   @override

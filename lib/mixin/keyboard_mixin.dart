@@ -24,6 +24,7 @@ class KeyBoardDefaultHeight{
 final myKeyBoardHeight =  StateProvider((ref) => KeyBoardDefaultHeight.defaultHeight);
 
 mixin KeyboardMixin<T extends ConsumerStatefulWidget> on ConsumerState<T>   {
+  // ignore: library_private_types_in_public_api
   late _Binds binds;
 
 

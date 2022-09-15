@@ -3,7 +3,6 @@ import '../../api/base.dart';
 import '../../api/error_widget.dart';
 import '../../api/exception.dart';
 import '../../ext/map.dart';
-import '../../util/log.dart';
 
 mixin JsonWrapWidget<W extends StatefulWidget, T extends BaseApi, R extends WrapJson> on State<W> {
   bool loading = true;

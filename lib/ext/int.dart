@@ -126,13 +126,13 @@ extension IntExt on int {
     // 当前时间
     int time = (DateTime.now().millisecondsSinceEpoch / 1000).round();
     // 对比
-    int _distance = time - this;
-    if (_distance <= 60) {
+    int distance = time - this;
+    if (distance <= 60) {
       return '刚刚';
-    } else if (_distance <= 3600) {
-      return '${(_distance / 60).floor()}分钟前';
-    } else if (_distance <= 43200) {
-      return '${(_distance / 60 / 60).floor()}小时前';
+    } else if (distance <= 3600) {
+      return '${(distance / 60).floor()}分钟前';
+    } else if (distance <= 43200) {
+      return '${(distance / 60 / 60).floor()}小时前';
     } else if (DateTime.fromMillisecondsSinceEpoch(time * 1000).year == DateTime.fromMillisecondsSinceEpoch(this * 1000).year) {
       return customStampStr(timestamp: this, date: 'MM/DD hh:mm', toInt: false);
     } else {

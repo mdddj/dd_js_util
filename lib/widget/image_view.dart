@@ -14,6 +14,7 @@ class ImageView extends StatefulWidget {
       : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ImageViewState createState() => _ImageViewState();
 }
 
@@ -46,7 +47,7 @@ class _ImageViewState extends State<ImageView> {
           Column(children: <Widget>[
             Expanded(
               child: LayoutBuilder(builder: (con, BoxConstraints c) {
-                final size = con.size ?? Size(100, 100);
+                final size = con.size ?? const Size(100, 100);
                 return Theme(
                   data: ThemeData(primaryColor: Colors.red),
                   child: Swiper(

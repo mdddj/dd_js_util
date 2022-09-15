@@ -6,7 +6,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 const Duration _monthScrollDuration = Duration(milliseconds: 200);
 
@@ -1183,7 +1182,7 @@ class _YearPickerState extends State<MyYearPicker> {
           child: Semantics(
             selected: isSelected,
             button: true,
-            child: Text(year.toString() + "年", style: itemStyle),
+            child: Text("$year年", style: itemStyle),
           ),
         ),
       ),
@@ -1312,7 +1311,7 @@ class ZhCupertinoLocalizations implements CupertinoLocalizations {
   ];
 
   @override
-  String datePickerYear(int yearIndex) => yearIndex.toString() + '年';
+  String datePickerYear(int yearIndex) => '$yearIndex年';
 
   @override
   String datePickerMonth(int monthIndex) => _months[monthIndex - 1];
@@ -1324,7 +1323,7 @@ class ZhCupertinoLocalizations implements CupertinoLocalizations {
   String datePickerHour(int hour) => hour.toString();
 
   @override
-  String datePickerHourSemanticsLabel(int hour) => hour.toString() + " o'clock";
+  String datePickerHourSemanticsLabel(int hour) => "$hour o'clock";
 
   @override
   String datePickerMinute(int minute) => minute.toString().padLeft(2, '0');
@@ -1332,7 +1331,7 @@ class ZhCupertinoLocalizations implements CupertinoLocalizations {
   @override
   String datePickerMinuteSemanticsLabel(int minute) {
     if (minute == 1) return '1 分';
-    return minute.toString() + ' 分';
+    return '$minute 分';
   }
 
   @override

@@ -65,8 +65,8 @@ extension WidgetExt on Widget {
       );
   @Doc(message: '卡片组件')
   Widget cardWidget2(double eve) => Card(
-        child: this,
         elevation: eve,
+        child: this,
       );
 
   Widget get center => Center(

@@ -1,6 +1,7 @@
-import 'package:dd_js_util/api/base.dart';
 import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
 import 'package:flutter/material.dart';
+
+import '../api/base.dart';
 
 typedef ItemBuilder<T> = Widget Function(T item);
 typedef SearchController = FFloatController;

@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:logger/logger.dart';
 
 import '../ext/map.dart';
 import '../util/log.dart';
@@ -63,6 +62,10 @@ void toast(String msg) {
 
 abstract class BaseModel<T> {
   T fromJson(Map<String, dynamic> map);
+  @override
+  String toString() {
+    return "BaseModel: ${T.runtimeType}";
+  }
 }
 
 abstract class BaseApi {
@@ -189,7 +192,7 @@ abstract class AppCoreApi extends BaseApi {
       String contentType = "",
       Map<String, dynamic>? headers,
       bool showDefaultLoading = true,
-      data,
+      dynamic data,
       ResponseType? responseType,
       bool? nullParams,
       RequestEncoder? requestEncoder,

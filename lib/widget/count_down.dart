@@ -51,7 +51,7 @@ class _CountDownState extends State<CountDown> {
   var _minute = 00; // 分
   var _second = 00; // 秒
   var _mill = 00; // 毫秒
-  var _showComm = true; // 是否显示倒计时组件
+  bool showComm = true; // 是否显示倒计时组件
   Timer? timer;
 
   @override
@@ -143,7 +143,7 @@ class _CountDownState extends State<CountDown> {
 
     /// diffDay < 1  小于一天才显示
     if (now.isBefore(vEndDate)) {
-      _showComm = true;
+      showComm = true;
       _day = diff.inDays;
       _hour = diff.inHours;
       _minute = diff.inMinutes % 60;
@@ -169,7 +169,7 @@ class _CountDownState extends State<CountDown> {
         final now = DateTime.now();
         if (now.isAfter(vEndDate)) {
           /// 倒计时结束了
-          _showComm = false;
+          showComm = false;
           _refreshUi();
           if (timer.isActive) {
             timer.cancel();
@@ -208,8 +208,9 @@ class _CountDownState extends State<CountDown> {
 class CountDownController {
   _CountDownState? _state;
 
-  void bind(_CountDownState _s) {
-    _state = _s;
+  // ignore: library_private_types_in_public_api
+  void bind(_CountDownState s) {
+    _state = s;
   }
 
   /// 销毁

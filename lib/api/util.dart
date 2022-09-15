@@ -59,8 +59,8 @@ List<dynamic> tryCoverList(String result, String paramsKey) {
   try {
     final map = jsonDecode(result);
     if (map[paramsKey] is List<dynamic>) {
-      final _arr = map[paramsKey] as List<dynamic>;
-      return _arr;
+      final arr = map[paramsKey] as List<dynamic>;
+      return arr;
     }
   } catch (e) {
     return <dynamic>[];

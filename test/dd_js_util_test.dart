@@ -1,6 +1,6 @@
+import 'package:dd_js_util/dd_js_util.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:dd_js_util/dd_js_util.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('dd_js_util');
