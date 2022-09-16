@@ -89,9 +89,9 @@ extension WidgetExt on Widget {
 
   Route get materialRouter => MaterialPageRoute(builder: (_) => this);
 
-  Widget border(BuildContext context, {BoxDecoration? decoration, Color? borderColor, BorderRadius? borderRadius}) {
+  Widget border(BuildContext context, {BoxDecoration? decoration, Color? borderColor, BorderRadius? borderRadius,double width=1.0}) {
     return Container(
-      decoration: decoration ?? BoxDecoration(border: Border.all(color: borderColor ?? context.theme.dividerColor), borderRadius: borderRadius),
+      decoration: decoration ?? BoxDecoration(border: Border.all(color: borderColor ?? context.theme.dividerColor,width: width), borderRadius: borderRadius),
       child: this,
     );
   }

@@ -2,6 +2,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
+
 class FFConvert {
   FFConvert._();
 
@@ -68,3 +70,34 @@ List<dynamic> tryCoverList(String result, String paramsKey) {
 
   return <dynamic>[];
 }
+
+
+class TResult<T> {
+  int code;
+  final String message;
+  T? _data;
+  TResult(this.code,this.message,this._data);
+
+  factory TResult.defaultValue()=>TResult(10001, 'error', null);
+  static TResult get kDefault => TResult.defaultValue();
+
+  set setData(T? v)=>_data = v;
+  T? get getData => _data;
+
+  @override
+  String toString() {
+    return 'code:$code,message:$message,data:$_data';
+  }
+}
+
+class KEmptyErrorWidget extends StatelessWidget {
+  final Object error;
+  final StackTrace? stackTrace;
+  const KEmptyErrorWidget(this.error,this.stackTrace,{Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox();
+  }
+}
+

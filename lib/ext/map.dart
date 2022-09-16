@@ -1,7 +1,9 @@
+import 'package:fbroadcast_nullsafety/fbroadcast_nullsafety.dart';
 import 'package:logger/logger.dart';
 
 import '../api/base.dart';
 import '../api/exception.dart';
+import '../mixin/brocase/index.dart';
 
 extension MapExt2 on Map<String, Object> {
   Map<String, dynamic> get asMapDynamic {
@@ -39,6 +41,11 @@ class WrapJson {
   final Map<String, dynamic> data;
 
   WrapJson(this.data);
+  
+  @Doc(message: '发送给监听这个数据的广播')
+  void sendBroadcase(){
+    FBroadcast.systemInstance.broadcast(WrapJsonBroadcase.value.text,value: this);
+  }
 
   factory WrapJson.fromMyServerError(AppException exception){
     return WrapJson({
