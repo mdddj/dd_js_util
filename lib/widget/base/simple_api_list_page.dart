@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 import '../../api/base.dart';
+import '../../api/exception.dart';
+import '../../ext/context.dart';
 import '../../ext/widget.dart';
 import 'loading.dart';
 
@@ -45,6 +47,7 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
   FutureOr _requestApi({T? vApi}) async {
     try {
       final response = await (vApi ?? api).request(showDefaultLoading: false);
+
       if (response == null) {
         throw PageListException.nullResponse();
       }
@@ -60,13 +63,20 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
         easyRefreshController.finishLoad(success: true,noMore: true);
       }
     } on PageListException catch (e) {
-      debugPrint('>>>$e');
       if (mounted) {
         setState(() {
           _loading = false;
           pageListException = e;
         });
       }
+    }on AppException catch(e){
+      if (mounted) {
+        setState(() {
+          _loading = false;
+          pageListException = PageListException.fromAppException(e);
+        });
+      }
+    }catch(_){
     }
   }
 
@@ -78,6 +88,10 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
     });
     final result = await _requestApi(vApi: nextPageLoad(nextPage));
     return result;
+  }
+
+  Future<void> nextPageLoadFun() async {
+    await _nextPage();
   }
 
   Widget get loadingWidget {
@@ -100,6 +114,16 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
     if(_loading){
       return loadingWidget;
     }
+    if(pageListException != null){
+      return   PageExceptionWidget(
+        exception: pageListException,
+        isSliver: isSliver,
+      );
+    }
+    return customBuildWidget(data??[]);
+  }
+
+  Widget customBuildWidget(final List<S> data) {
     return coreWidget;
   }
 
@@ -121,9 +145,6 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
         child: CustomScrollView(
           slivers: [
             ...headerChildren,
-            PageExceptionWidget(
-              exception: pageListException,
-            ),
             SliverList(
                 delegate: SliverChildBuilderDelegate((context, index) {
                   if (_pageData.isEmpty) {
@@ -139,7 +160,9 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
                 }, childCount: _pageData.length + insetWidget.length)),
             ...footChildren
           ],
-        ));
+        ),
+
+    );
   }
 
   ///获取需要位移的数量
@@ -161,21 +184,44 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
 
   @Doc(message: '加载下一页请求')
   T nextPageLoad(int page);
+
+  bool get isSliver => true;
 }
 
 @Doc(message: '异常组件')
 class PageExceptionWidget extends StatelessWidget {
   final PageListException? exception;
+  final bool isSliver;
 
-  const PageExceptionWidget({Key? key, this.exception}) : super(key: key);
+  const PageExceptionWidget({Key? key, this.exception,this.isSliver = true}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return exception != null
-        ? Center(
-            child: Text(exception.toString()).marginOnly(left: 12, right: 12),
-          ).toSliverWidget
-        : const SliverToBoxAdapter();
+        ? (isSliver ? SliverToBoxAdapter(child: widget) : widget)
+        :  (isSliver ? const SliverToBoxAdapter() : const SizedBox());
+  }
+
+  Widget get widget {
+    if(exception == null){
+      return SizedBox();
+    }
+    return Center(
+      child: Card(child: Column(
+        children: [
+          Builder(
+            builder: (ctx) {
+              return CircleAvatar(
+                backgroundColor: ctx.cardColor,
+                child: const Icon(Icons.warning,color: Colors.orange,),
+              );
+            }
+          ),
+          Text(exception!.code.toString()).marginOnly(left: 12, right: 12),
+          Text(exception!.msg)
+        ],
+      )),
+    );
   }
 }
 
@@ -191,9 +237,11 @@ class PageListException implements Exception {
     return '可能有些问题出现,状态码:$code,消息:$msg,可以联系客服或者开发者';
   }
 
-  factory PageListException.nullResponse() => const PageListException(10000, '服务器没有成功响应客户端请求.');
+  factory PageListException.nullResponse() => const PageListException(10000, 'null response.');
 
-  factory PageListException.emptyData() => const PageListException(20000, '数据为空.');
+  factory PageListException.emptyData() => const PageListException(20000, 'empty data.');
 
-  factory PageListException.dataDecodeException() => const PageListException(30000, '数据解析错误.');
+  factory PageListException.dataDecodeException() => const PageListException(30000, 'Data parsing error.');
+
+  factory PageListException.fromAppException(AppException exception) => PageListException(exception.code, exception.message);
 }

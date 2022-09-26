@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -68,6 +69,12 @@ abstract class BaseModel<T> {
   }
 }
 
+///分页api
+mixin BasePagedApiMixin on BaseApi {
+  String get pageParamsKey => 'page';
+
+}
+
 abstract class BaseApi {
   static late String _host;
 
@@ -94,7 +101,7 @@ abstract class BaseApi {
       ResponseType? responseType,
       bool? nullParams,
       RequestEncoder? requestEncoder,
-      DioStart? dioStart}) async {
+      DioStart? dioStart,bool? returnIsString}) async {
     try {
       if (showDefaultLoading) {
         showLoading(loadingText: loadingText);
@@ -123,10 +130,19 @@ abstract class BaseApi {
 
       if (response.statusCode == 200) {
         final data = response.data;
+        if(data is String){
+          if(returnIsString == true){
+            return data;
+          }
+          try{
+           return jsonDecode(data);
+          }catch(e){
+            throw AppException.appError(code: 10003,msg: "Unable to process server data");
+          }
+        }
         return data;
       }
     } on DioError catch (e, s) {
-      kLogErr("出现异常:${e.error.runtimeType}\n$s");
       if (showDefaultLoading) {
         closeLoading();
       }
@@ -168,7 +184,14 @@ abstract class BaseApi {
     dio = Dio(BaseOptions(connectTimeout: 30000));
     return dio!;
   }
+
+  void handle(CallIf callIf , ValueChanged<BaseApi> call) {
+    if(callIf.call()){
+      call.call(this);
+    }
+  }
 }
+typedef CallIf = bool Function();
 
 /// 主动显示的注解
 class Doc {
@@ -196,7 +219,7 @@ abstract class AppCoreApi extends BaseApi {
       ResponseType? responseType,
       bool? nullParams,
       RequestEncoder? requestEncoder,
-      DioStart? dioStart}) async {
+      DioStart? dioStart,bool? returnIsString}) async {
     try {
       final r = await super.request(
           showErrorMsg: showErrorMsg,
@@ -208,7 +231,7 @@ abstract class AppCoreApi extends BaseApi {
           responseType: responseType,
           nullParams: nullParams,
           requestEncoder: requestEncoder,
-          dioStart: dioStart);
+          dioStart: dioStart,returnIsString: returnIsString);
       return WrapJson(r);
     } on AppException catch (e) {
       return WrapJson.fromMyServerError(e);

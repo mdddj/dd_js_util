@@ -341,8 +341,8 @@
         <entry key="image_picker">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.8.5/lib" />
               <option value="$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.8.5+3/lib" />
+              <option value="$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.8.5/lib" />
             </list>
           </value>
         </entry>
