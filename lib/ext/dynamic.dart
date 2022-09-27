@@ -36,4 +36,14 @@ extension DynamicExt on dynamic {
         return double.tryParse(asString);
     }
   }
+
+  @Doc(message: "将一个dynamic转换成一个数组,如果不是数组类型,则返回一个空数组")
+  List<dynamic> get asList {
+    return this is List<dynamic> ? this as List<dynamic> : <dynamic>[];
+  }
+
+  @Doc(message: "对象转换")
+  T parseTo<T extends BaseModel>(ParseObject parse) {
+    return parse(this) as T;
+  }
 }

@@ -107,4 +107,21 @@ extension WidgetExt on Widget {
   Widget longClick({required VoidCallback onLongPress}){
     return GestureDetector(onLongPress: onLongPress,child: this);
   }
+
+
+  /// 高度扩展
+  Widget height(double hei) {
+    return SizedBox(
+      height: hei,
+      child: this,
+    );
+  }
+
+   @Doc(message: "给组件添加点击事件")
+  Widget click(VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: this,
+    );
+  }
 }
