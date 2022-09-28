@@ -1,4 +1,5 @@
 import 'package:fbroadcast_nullsafety/fbroadcast_nullsafety.dart';
+import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
 import '../api/base.dart';
@@ -39,6 +40,7 @@ extension MapExt on Map<String, dynamic> {
 
 class WrapJson {
   final Map<String, dynamic> data;
+  Map<String,dynamic> extMap = {};
 
   WrapJson(this.data);
   
@@ -97,7 +99,8 @@ class WrapJson {
     return data[key];
   }
 
-  void print(){
+  void print([VoidCallback? doSomeing]){
+    doSomeing?.call();
     Logger().wtf(data);
   }
 
