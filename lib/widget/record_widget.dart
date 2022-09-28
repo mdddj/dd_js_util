@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../api/base.dart';
-import '../util/permission_util.dart';
+import '../dd_js_util.dart';
 
 ///录音状态
 enum RecordState {
@@ -44,6 +43,12 @@ class _RecordWidgetState extends State<RecordWidget> {
 
   ///录音文件路径
   String recordFilepath = '';
+
+  @override
+  void initState() {
+    super.initState();
+    delayFunction(_initRec);
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,11 @@
 
 * 添加模块导出
 
+# 0.5.3
+
+* 添加`delayFunction`函数
+* 一些dart hints 更新
+
 # 0.5.1
 
 

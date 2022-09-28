@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../api/base.dart';
-import '../common/edit_page.dart';
-import '../common/w.dart';
-import 'context.dart';
+import '../dd_js_util.dart';
+
+
+typedef DelayFetch = void Function();
+///延迟加载请求
+///一般在initState里面使用,执行初始化的一些操作
+///比如发起请求
+void delayFunction(final DelayFetch call,[int? milliseconds]) {
+  Future.microtask(()=>Future.delayed( Duration(milliseconds:milliseconds ?? 300),call));
+}
 
 extension WidgetExt on Widget {
   @Doc(message: '移除水波纹')
@@ -125,3 +131,5 @@ extension WidgetExt on Widget {
     );
   }
 }
+
+

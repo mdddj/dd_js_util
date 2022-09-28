@@ -204,7 +204,7 @@ class PageExceptionWidget extends StatelessWidget {
 
   Widget get widget {
     if(exception == null){
-      return SizedBox();
+      return const SizedBox();
     }
     return Center(
       child: Card(child: Column(

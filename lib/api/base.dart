@@ -107,7 +107,7 @@ abstract class BaseApi {
         }
         return data;
       }
-    } on DioError catch (e, s) {
+    } on DioError catch (e) {
       if (showDefaultLoading) {
         closeLoading();
       }
