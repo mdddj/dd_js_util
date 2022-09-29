@@ -1,14 +1,18 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-
+import 'package:html/parser.dart' as htmlparser;
+import 'package:html/dom.dart' as dom;
 import '../api/base.dart';
+import '../api/exception.dart';
+import '../dd_js_util.dart';
 import 'int.dart';
 
 ///字符串相关扩展
@@ -114,4 +118,42 @@ extension StringExtension on String {
     final date = DateTime.parse(this).millisecondsSinceEpoch;
     return date.messageTime;
   }
+  
+  @Doc(message: '获取网页的标题和icon')
+  Future<dynamic> get getHtmlTitleAndIcon async {
+    return _StringUtil.getHtmlTitleAndIcon(this);
+  }
+}
+
+
+///string 工具类
+class _StringUtil {
+
+  ///获取网页标题和图标
+  static Future<HtmlTitleAndIconModel?> getHtmlTitleAndIcon(String webUrl) async {
+    String title = "";
+    String icon = "";
+    final response = await Dio().get(webUrl,options: Options(responseType: ResponseType.plain));
+    if(response.statusCode!=200){
+      throw AppException.appError(code: response.statusCode,msg: response.statusMessage);
+    }
+    final htmlText = response.data.toString();
+    dom.Document document = htmlparser.parse(htmlText);
+    final titleList = document.getElementsByTagName("title");
+    if(titleList.isNotEmpty){
+      title = titleList.first.text;
+    }else{
+      throw AppException.appError(code: 10009,msg: "Not found title");
+    }
+    final uri = Uri.parse(webUrl);
+    icon = '${uri.scheme}://${uri.host}/favicon.ico';
+    kLog('title :$title\nicon: $icon');
+    return HtmlTitleAndIconModel(title: title,icon: icon);
+  }
+}
+
+class HtmlTitleAndIconModel {
+  final String title;
+  final String icon;
+  HtmlTitleAndIconModel({required this.title,required this.icon});
 }

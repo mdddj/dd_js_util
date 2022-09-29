@@ -100,6 +100,13 @@
             </list>
           </value>
         </entry>
+        <entry key="csslib">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/csslib-0.16.2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="cupertino_icons">
           <value>
             <list>
@@ -212,6 +219,13 @@
             </list>
           </value>
         </entry>
+        <entry key="flutter_html">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter_image_compress">
           <value>
             <list>
@@ -303,6 +317,13 @@
             </list>
           </value>
         </entry>
+        <entry key="html">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/html-0.14.0+4/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="http">
           <value>
             <list>
@@ -341,8 +362,8 @@
         <entry key="image_picker">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.8.5+3/lib" />
               <option value="$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.8.5/lib" />
+              <option value="$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.8.5+3/lib" />
             </list>
           </value>
         </entry>
@@ -776,6 +797,7 @@
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/convert-3.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/cross_file-0.3.2/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.1/lib" />
+      <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/csslib-0.16.2/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.4/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/decimal-2.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6/lib" />
@@ -791,6 +813,7 @@
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_cache_manager-3.3.0/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_easyrefresh-2.2.2/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_hooks-0.18.5+1/lib" />
+      <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_image_compress-1.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-2.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.5/lib" />
@@ -801,6 +824,7 @@
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/get-4.6.5/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/hive-2.2.3/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/hooks_riverpod-1.0.4/lib" />
+      <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/html-0.14.0+4/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.4/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/http_client_helper-2.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.0/lib" />

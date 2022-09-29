@@ -4,9 +4,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../ext/context.dart';
 extension MyRef on WidgetRef {
+
+  ///键盘高度
   double get watchKeyBoardHeight {
     return watch(myKeyBoardHeight);
   }
+
+  ///键盘是否展示
+  bool get boardIsShow => watchKeyBoardHeight >= 100;
 }
 class _Binds extends WidgetsBindingObserver {
   final VoidCallback didChangeMetricsFun;
@@ -18,7 +23,7 @@ class _Binds extends WidgetsBindingObserver {
   }
 }
 class KeyBoardDefaultHeight{
-  static double defaultHeight = 400;
+  static double defaultHeight = 0;
 }
 
 final myKeyBoardHeight =  StateProvider((ref) => KeyBoardDefaultHeight.defaultHeight);

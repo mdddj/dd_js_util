@@ -130,6 +130,9 @@ extension WidgetExt on Widget {
       child: this,
     );
   }
-}
 
+  Widget get positionedFill {
+    return Positioned.fill(child: this);
+  }
+}
 
