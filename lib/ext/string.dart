@@ -40,17 +40,17 @@ extension StringExtension on String {
         }
       }
       // 保存的图片数据
-      Uint8List imageBytes;
+      dynamic imageBytes;
       if (isAsset == true) {
         // 保存资产图片
-        ByteData bytes = await rootBundle.load(this);
+        final bytes = await rootBundle.load(this);
         imageBytes = bytes.buffer.asUint8List();
       } else {
         // 保存网络图片
-        CachedNetworkImage image = CachedNetworkImage(imageUrl: this);
-        BaseCacheManager manager = image.cacheManager ?? DefaultCacheManager();
-        Map<String, String>? headers = image.httpHeaders ?? {};
-        File file = await manager.getSingleFile(
+        final image = CachedNetworkImage(imageUrl: this);
+        final manager = image.cacheManager ?? DefaultCacheManager();
+        final headers = image.httpHeaders ?? {};
+        final file = await manager.getSingleFile(
           image.imageUrl,
           headers: headers,
         );
@@ -70,21 +70,12 @@ extension StringExtension on String {
   /// "/data/a/b/c/demo.png".fileDownloadImage()
   ///
   Future<dynamic> fileDownloadImage() async {
-    File file = File(this);
-    Uint8List imageBytes = await file.readAsBytes();
+    final file = File(this);
+    final imageBytes = await file.readAsBytes();
     final result = await ImageGallerySaver.saveImage(imageBytes);
     return result;
   }
 
-  /// 压缩本地图片扩展 assets -> Unit8List
-  /// [quality] 压缩质量 0-100之间
-  Future<Uint8List?> compressionAssets({int? quality}) async {
-    var list = await FlutterImageCompress.compressAssetImage(
-      this,
-      quality: quality ?? 96,
-    );
-    return list;
-  }
 
   /// 图片压缩 File -> File
   /// [targetPath] - 要保存压缩后文件的路径
