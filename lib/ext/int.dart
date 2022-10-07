@@ -139,6 +139,8 @@ extension IntExt on int {
       return customStampStr(timestamp: this, date: 'YY/MM/DD hh:mm', toInt: false);
     }
   }
+
+  int get add => this+1;
 }
 
 class Gap {

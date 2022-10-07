@@ -55,6 +55,7 @@ abstract class BaseApi {
 
   BaseApi(this.url, {this.httpMethod = HttpMethod.get});
 
+  /// [isFullUrl] - url传入的是否为完整的一个URL,如果为[true],将忽略[host]
   @Doc(message: "向服务器发起http请求")
   Future<dynamic> request(
       {bool showErrorMsg = true,
@@ -66,7 +67,7 @@ abstract class BaseApi {
       ResponseType? responseType,
       bool? nullParams,
       RequestEncoder? requestEncoder,
-      DioStart? dioStart,bool? returnIsString}) async {
+      DioStart? dioStart,bool? returnIsString,bool isFullUrl = false}) async {
     try {
       if (showDefaultLoading) {
         showLoading(loadingText: loadingText);
@@ -79,14 +80,14 @@ abstract class BaseApi {
       final bodyParams = formData.files.isNotEmpty ? formData : (data ?? params);
       dioStart?.call(dio,_host + url);
       final response = await dio.request(
-        (_host + url),
+        isFullUrl ? url : (_host + url),
         options: Options(
-            method: methed,
+            method: method,
             contentType: httpMethod == HttpMethod.probuf ? kProtobufContentType : contentTypeStr,
             headers: headers,
             responseType: responseType,
             requestEncoder: requestEncoder),
-        queryParameters: nullParams == true ? null : data ?? params,
+        queryParameters:httpMethod == HttpMethod.post ? null : (nullParams == true ? null : data ?? params),
         data: bodyParams,
       );
       if (showDefaultLoading) {
@@ -106,21 +107,23 @@ abstract class BaseApi {
           }
         }
         return data;
+      }else{
+        throw AppException(code: response.statusCode ?? 10004, message: response.statusMessage??"请求失败");
       }
     } on DioError catch (e) {
       if (showDefaultLoading) {
         closeLoading();
       }
+      kLogErr(e);
       throw e.error as AppException;
     } catch (e,s) {
-      kLogErr('error:$e\n$s');
+      kLogErr('Error:$e\n$s');
       throw AppException.appError();
     }
-    throw AppException.appError();
   }
 
   //请求方法,
-  String get methed {
+  String get method {
     switch (httpMethod) {
       case HttpMethod.get:
         return 'get';
@@ -184,7 +187,7 @@ abstract class AppCoreApi extends BaseApi {
       ResponseType? responseType,
       bool? nullParams,
       RequestEncoder? requestEncoder,
-      DioStart? dioStart,bool? returnIsString}) async {
+      DioStart? dioStart,bool? returnIsString,bool isFullUrl = false}) async {
     try {
       final r = await super.request(
           showErrorMsg: showErrorMsg,

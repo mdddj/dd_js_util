@@ -13,6 +13,7 @@ export './api/util.dart';
 export './common/circle.dart';
 export './common/edit_page.dart';
 export './common/ext.dart';
+export './common/fun.dart';
 export './common/hive.dart';
 export './common/string_ext.dart';
 export './common/w.dart';
