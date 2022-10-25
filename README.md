@@ -2,6 +2,8 @@
 #### ✅ 梁典典的工具插件包
 
 
+
+
 flutter 通用工具类
 pub地址: <https://pub.dev/packages/dd_js_util>
 
@@ -185,3 +187,6 @@ void onClose(){}
 ///将键盘高度设置为0
 void reset(){}
 ```
+
+# WrapJson 扩展
+让你的Map<String,dynamic>拥有强大的函数

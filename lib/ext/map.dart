@@ -16,6 +16,16 @@ extension MapExt2 on Map<String, Object> {
   }
 }
 
+extension MapExt3 on Map<dynamic, dynamic> {
+  Map<String, dynamic> get asMapDynamic {
+    final map = <String, dynamic>{};
+    forEach((key, value) {
+      map[key.toString()] = value.toString();
+    });
+    return map;
+  }
+}
+
 extension MapExt on Map<String, dynamic> {
   @Doc(message: 'List<dynamic> to List<String>')
   List<String> mapValueGetWithListString(String key) {

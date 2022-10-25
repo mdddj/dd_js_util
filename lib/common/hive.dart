@@ -1,23 +1,37 @@
 import 'package:hive/hive.dart';
 
-abstract class MyHiveCatch {
-  String boxName() => '';
-}
 
-abstract class CacheBase {
-  final MyHiveCatch myCatch;
-  CacheBase(this.myCatch);
-  Future<Box> openBox() async {
-    return await Hive.openBox(myCatch.boxName());
+abstract class CacheBase<E> {
+  String get boxName;
+
+
+  Future<Box<E>> openBox() async {
+    final  box = await Hive.openBox<E>(boxName);
+    return box;
   }
-  Future<void> setValue(String key, String value) async {
+
+  Future<void> setValue(String key, E value) async {
     final box = await openBox();
+    if(box.containsKey(key)){
+      await box.delete(key);
+    }
     await box.put(key, value);
+    await box.close();
   }
-  Future<dynamic> getValue(String key, {dynamic defaultValue}) async {
-    final box = await openBox();
-    return await box.get(key, defaultValue: defaultValue);
+
+  Future<E?> getValue(String key, {E? defaultValue}) async {
+    try{
+      final box = await openBox();
+      final v = box.get(key, defaultValue: defaultValue);
+      await box.close();
+      return v;
+    }catch(e,s){
+      print("获取缓存错误:${e}");
+      print(s);
+      return null;
+    }
   }
+
 }
 
 abstract class CacheFactory {
@@ -29,6 +43,7 @@ abstract class CacheFactory {
 
 class CatchException implements Exception {
   final String msg;
+
   CatchException(this.msg);
 
   @override

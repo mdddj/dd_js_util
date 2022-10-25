@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../dd_js_util.dart';
@@ -133,6 +136,16 @@ extension WidgetExt on Widget {
 
   Widget get positionedFill {
     return Positioned.fill(child: this);
+  }
+
+  ///添加滚动条
+  Widget  addScrollbar({ScrollController? controller}) {
+    if(Platform.isAndroid){
+      return Scrollbar(child: this,controller: controller,);
+    }else if (Platform.isIOS){
+      return CupertinoScrollbar(child: this,controller: controller,);
+    }
+    return this;
   }
 }
 

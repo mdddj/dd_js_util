@@ -79,15 +79,17 @@ abstract class BaseApi {
       final contentTypeStr = contentType.isNotEmpty ? contentType : (httpMethod == HttpMethod.post ? ContentType.json.value : null);
       final bodyParams = formData.files.isNotEmpty ? formData : (data ?? params);
       dioStart?.call(dio,_host + url);
+      final queryParameters = httpMethod == HttpMethod.post ? null : (nullParams == true ? null : data ?? params);
+      final contentTypeString = httpMethod == HttpMethod.probuf ? kProtobufContentType : contentTypeStr;
       final response = await dio.request(
         isFullUrl ? url : (_host + url),
         options: Options(
             method: method,
-            contentType: httpMethod == HttpMethod.probuf ? kProtobufContentType : contentTypeStr,
+            contentType: contentTypeString,
             headers: headers,
             responseType: responseType,
             requestEncoder: requestEncoder),
-        queryParameters:httpMethod == HttpMethod.post ? null : (nullParams == true ? null : data ?? params),
+        queryParameters: queryParameters,
         data: bodyParams,
       );
       if (showDefaultLoading) {
