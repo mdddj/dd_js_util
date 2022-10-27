@@ -51,6 +51,7 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
           _pageData = vData;
           _loading = false;
         });
+        loadedEnd();
       }
     }catch(e,s){
       debugPrint('出错了:$e,\n$s');
@@ -103,6 +104,10 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
         exception = PageException(msg);
       });
     }
+  }
+
+  void loadedEnd() {
+
   }
 
 }
