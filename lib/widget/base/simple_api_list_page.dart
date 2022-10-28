@@ -115,10 +115,7 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
       return loadingWidget;
     }
     if(pageListException != null){
-      return   PageExceptionWidget(
-        exception: pageListException,
-        isSliver: isSliver,
-      );
+      return   buildExceptionWidget(pageListException!);
     }
     return customBuildWidget(data??[]);
   }
@@ -186,6 +183,13 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
   T nextPageLoad(int page);
 
   bool get isSliver => true;
+
+  Widget buildExceptionWidget(PageListException exception) {
+    return PageExceptionWidget(
+      exception: pageListException,
+      isSliver: isSliver,
+    );
+  }
 }
 
 @Doc(message: '异常组件')

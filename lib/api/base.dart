@@ -116,7 +116,7 @@ abstract class BaseApi {
       if (showDefaultLoading) {
         closeLoading();
       }
-      kLogErr(e);
+      kLogErr('${e.error.runtimeType}');
       throw e.error as AppException;
     } catch (e,s) {
       kLogErr('Error:$e\n$s');

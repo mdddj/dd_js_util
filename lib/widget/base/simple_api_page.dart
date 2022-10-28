@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../api/base.dart';
+import '../../dd_js_util.dart';
 import '../../ext/context.dart';
 import '../../ext/widget.dart';
 typedef WidgetBuilder = Widget Function();
@@ -10,6 +11,7 @@ class PageException implements Exception {
   const PageException(this.msg);
 }
 ///页面所需要的基本数据
+///
 mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
   S? _pageData;
   bool _loading = true;
@@ -53,12 +55,21 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
         });
         loadedEnd();
       }
-    }catch(e,s){
-      debugPrint('出错了:$e,\n$s');
+      ///
+    }on AppException catch(e){
       if(mounted){
         setState(() {
           _empty = true;
           _loading = false;
+          exception = PageException(e.message);
+        });
+      }
+    } catch(e){
+      if(mounted){
+        setState(() {
+          _empty = true;
+          _loading = false;
+          exception = const PageException("网络繁忙,请稍后重试");
         });
       }
     }
@@ -106,8 +117,9 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
     }
   }
 
-  void loadedEnd() {
+  void loadedEnd() {}
 
+  Future<void> refresh() async {
+    await _requestApi();
   }
-
 }
