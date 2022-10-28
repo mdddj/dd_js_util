@@ -57,9 +57,16 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
         setState(() {
           _pageData = List.from(_pageData);
           _loading = false;
+          pageListException = null;
         });
       }
       if (vData.isEmpty) {
+        if(mounted){
+          setState(() {
+            _loading = false;
+            pageListException = null;
+          });
+        }
         easyRefreshController.finishLoad(success: true,noMore: true);
       }
     } on PageListException catch (e) {
