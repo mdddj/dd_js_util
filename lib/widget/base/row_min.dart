@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-
-import '../../ext/widget.dart';
-
+part of dd_js_util;
 class MinRows extends StatelessWidget {
   final List<Widget> children;
   final double? gap;

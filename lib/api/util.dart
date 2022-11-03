@@ -1,8 +1,4 @@
-
-import 'dart:convert';
-import 'dart:developer';
-
-import 'package:flutter/cupertino.dart';
+part of dd_js_util;
 
 class FFConvert {
   FFConvert._();
@@ -37,8 +33,7 @@ T? asT<T extends Object?>(dynamic value, [T? defaultValue]) {
         return FFConvert.convert<T>(value);
       }
     }
-  } catch (e, stackTrace) {
-    log('asT<$T>', error: e, stackTrace: stackTrace);
+  } catch (e) {
     return defaultValue;
   }
 
@@ -48,9 +43,7 @@ T? asT<T extends Object?>(dynamic value, [T? defaultValue]) {
 void tryCatch(Function? f) {
   try {
     f?.call();
-  } catch (e, stack) {
-    log('$e');
-    log('$stack');
+  } catch (_) {
   }
 }
 

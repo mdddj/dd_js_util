@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../../../dd_js_util.dart';
+part of dd_js_util;
 
 extension BuildContextExt on BuildContext {
   Future<T?> showSimpleListTileWidget<T>(List<T> datas, {SimpleListTileWidgetItemBuild<T>? itemBuild}) async {

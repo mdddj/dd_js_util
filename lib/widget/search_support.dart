@@ -1,7 +1,4 @@
-import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
-import 'package:flutter/material.dart';
-
-import '../dd_js_util.dart';
+part of dd_js_util;
 
 
 typedef ItemBuilder<T> = Widget Function(T item);

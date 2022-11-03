@@ -1,10 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
-
-import '../../common/string_ext.dart';
-import '../../ext/widget.dart';
-
+part of dd_js_util;
 
 Widget get kLoadingWidgetWithRefresh =>
     const CupertinoActivityIndicator().minHeight(100).center;

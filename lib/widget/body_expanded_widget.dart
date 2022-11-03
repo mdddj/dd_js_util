@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../ext/context.dart';
-import '../ext/widget.dart';
+part of dd_js_util;
 
 class BodyExpandedWidget extends StatelessWidget {
   final Widget child;

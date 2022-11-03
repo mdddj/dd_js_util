@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+part of dd_js_util;
 
 class SwitchAnimShow extends StatelessWidget {
   final bool condition; //条件

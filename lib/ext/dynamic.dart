@@ -1,4 +1,4 @@
-import '../api/base.dart';
+part of dd_js_util;
 
 extension DynamicExt on dynamic {
   Map<String, dynamic> get asMap => this as Map<String, dynamic>;

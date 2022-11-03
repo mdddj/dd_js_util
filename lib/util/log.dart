@@ -1,6 +1,5 @@
+part of dd_js_util;
 
-
-import 'package:logger/logger.dart';
 
 void kLog(dynamic msg){
   Logger().d(msg);

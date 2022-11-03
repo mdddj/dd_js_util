@@ -1,8 +1,4 @@
-import 'dart:io';
-
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:waterfall_flow/waterfall_flow.dart';
+part of dd_js_util;
 
 extension WidgetTa on Widget {
   Widget addTap(VoidCallback onTap) {

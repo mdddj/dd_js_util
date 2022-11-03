@@ -1,8 +1,5 @@
+part of dd_js_util;
 
-import 'package:flutter/material.dart';
-
-import '../ext/int.dart';
-import 'exception.dart';
 
 class MyErrorWidget extends StatelessWidget {
   final AppException exception;

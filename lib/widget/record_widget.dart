@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
+part of dd_js_util;
 
-import '../dd_js_util.dart';
 
 ///录音状态
 enum RecordState {

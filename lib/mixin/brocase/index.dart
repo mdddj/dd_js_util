@@ -1,8 +1,4 @@
-
-import 'package:fbroadcast_nullsafety/fbroadcast_nullsafety.dart';
-import 'package:flutter/material.dart';
-
-import '../../ext/map.dart';
+part of dd_js_util;
 
 enum WrapJsonBroadcase {
   value("wrap-json-value");

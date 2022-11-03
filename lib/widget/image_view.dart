@@ -1,8 +1,4 @@
-import 'dart:io';
-
-import 'package:extended_image/extended_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
+part of dd_js_util;
 
 /// 图片浏览
 class ImageView extends StatefulWidget {

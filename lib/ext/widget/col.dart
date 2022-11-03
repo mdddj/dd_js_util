@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of dd_js_util;
 
 class Col extends StatelessWidget {
   final List<Widget> children;

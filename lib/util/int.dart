@@ -1,3 +1,5 @@
+part of dd_js_util;
+
 // 时间戳转时间
 String customStampStr({
   int? timestamp, // 为空则显示当前时间

@@ -1,6 +1,4 @@
-import 'dart:math';
-
-import 'package:flutter/material.dart';
+part of dd_js_util;
 
 ///要展示的面
 enum FlipCardShowType{
@@ -110,7 +108,7 @@ class FlipCardComponentState extends State<FlipCardComponent>
     return Transform(
       transform: Matrix4.identity()
         ..setEntry(3, 2, 0.002)
-        ..rotateY(pi * value),
+        ..rotateY(math.pi * value),
       alignment: Alignment.center,
       child: IndexedStack(
         index: isFront ? 0 : 1,

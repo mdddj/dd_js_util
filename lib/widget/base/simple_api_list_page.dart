@@ -1,13 +1,4 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
-
-import '../../api/base.dart';
-import '../../api/exception.dart';
-import '../../ext/context.dart';
-import '../../ext/widget.dart';
-import 'loading.dart';
+part of dd_js_util;
 
 ///要插入的widget
 class InsetWidget {

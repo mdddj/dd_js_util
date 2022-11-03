@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of dd_js_util;
 
 /// 隐藏水波纹配置
 class NoShadowScrollBehavior extends ScrollBehavior {

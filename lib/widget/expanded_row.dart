@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of dd_js_util;
 
 typedef ItemBuild = Widget Function(BuildContext context, int index, bool isEmpty);
 

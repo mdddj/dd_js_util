@@ -1,9 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import '../../api/base.dart';
-import '../../api/error_widget.dart';
-import '../../api/exception.dart';
-import '../../ext/map.dart';
-
+part of dd_js_util;
 mixin JsonWrapWidget<W extends StatefulWidget, T extends BaseApi, R extends WrapJson> on State<W> {
   bool loading = true;
 

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of dd_js_util;
 
 /// 使用这个组件包裹的组件,点击TextFiled之外的位置可以取消输入框焦点
 class EditPage extends StatelessWidget {

@@ -1,8 +1,4 @@
-
-import 'package:flutter/cupertino.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../ext/context.dart';
+part of dd_js_util;
 extension MyRef on WidgetRef {
 
   ///键盘高度

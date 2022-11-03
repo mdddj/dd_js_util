@@ -1,6 +1,4 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
+part of dd_js_util;
 
 typedef CountDownBuilder = Widget Function(BuildContext context, int day, int hour, int minute, int seconds, int millisecond);
 

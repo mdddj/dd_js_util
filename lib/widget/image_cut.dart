@@ -1,9 +1,4 @@
-import 'dart:io';
-
-import 'package:extended_image/extended_image.dart';
-import 'package:flutter/material.dart';
-// ignore: library_prefixes
-import 'package:image/image.dart' as Image;
+part of dd_js_util;
 
 // 图片裁切处理
 class ImageCutWidget extends StatefulWidget {
@@ -60,16 +55,16 @@ class _ImageCutWidgetState extends State<ImageCutWidget> {
       nav.pop();
       return;
     }
-    Image.Image? src = Image.decodeImage(data);
+    image.Image? src = image.decodeImage(data);
 
     if(src==null){
       nav.pop();
       return;
     }
-    src = Image.copyCrop(src, cropRect.left.toInt(), cropRect.top.toInt(),
+    src = image.copyCrop(src, cropRect.left.toInt(), cropRect.top.toInt(),
         cropRect.width.toInt(), cropRect.height.toInt());
 
-    final byts = Image.encodeJpg(src , quality: 80);
+    final byts = image.encodeJpg(src , quality: 80);
     final hz = currPath.lastIndexOf('.'); // 图片后缀
     final wpa = '${currPath.substring(0,hz)}${DateTime.now().toIso8601String().replaceAll(" ", '')}';
     final path = '$wpa.${currPath.split('.').last}';

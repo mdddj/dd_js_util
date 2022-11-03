@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
-import '../api/base.dart';
+part of dd_js_util;
 
 extension ContextExt on BuildContext {
   @Doc(message: '隐藏键盘')

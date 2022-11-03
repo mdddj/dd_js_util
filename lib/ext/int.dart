@@ -1,31 +1,22 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+part of dd_js_util;
 
-import '../api/base.dart';
-import '../util/int.dart';
+//
+// import '../api/base.dart';
+// import '../util/int.dart';
+
 
 extension DoubleExt on double {
   Widget get h => SizedBox(height: this);
 
   Widget get w => SizedBox(width: this);
 
-  Widget get hs => SizedBox(height: sh);
-
-  Widget get ws => SizedBox(width: sw);
-
-  BorderSide borderSide({Color? color}) => color != null
-      ? BorderSide(width: this, color: color)
-      : BorderSide(width: this);
+  BorderSide borderSide({Color? color}) => color != null ? BorderSide(width: this, color: color) : BorderSide(width: this);
 }
 
 extension IntExt on int {
   Widget get h => SizedBox(height: toDouble());
 
   Widget get w => SizedBox(width: toDouble());
-
-  Widget get hs => SizedBox(height: double.parse('$this').sh);
-
-  Widget get ws => SizedBox(width: (double.parse('$this')).sw);
 
   Duration get sec => Duration(seconds: this);
 
@@ -79,12 +70,10 @@ extension IntExt on int {
       return '${(distance / 60).floor()}分钟前';
     } else if (distance <= 43200) {
       return '${(distance / 60 / 60).floor()}小时前';
-    } else if (DateTime.fromMillisecondsSinceEpoch(time * 1000).year ==
-        DateTime.fromMillisecondsSinceEpoch(this * 1000).year) {
+    } else if (DateTime.fromMillisecondsSinceEpoch(time * 1000).year == DateTime.fromMillisecondsSinceEpoch(this * 1000).year) {
       return customStampStr(timestamp: this, date: 'MM/DD hh:mm', toInt: false);
     } else {
-      return customStampStr(
-          timestamp: this, date: 'YY/MM/DD hh:mm', toInt: false);
+      return customStampStr(timestamp: this, date: 'YY/MM/DD hh:mm', toInt: false);
     }
   }
 
@@ -94,11 +83,19 @@ extension IntExt on int {
 class Gap {
   Gap._();
 
-  factory Gap() => Gap._();
+  static Gap get _instance => Gap._();
+
+  factory Gap() => _instance;
 
   static Widget get defaultV => const SizedBox(height: 12);
 
   static Widget get defaultH => const SizedBox(width: 12);
+
+  SizedBox w(double v) => SizedBox(width: v);
+
+  SizedBox h(double v) => SizedBox(
+        height: v,
+      );
 }
 
 Widget get k24Height => const SizedBox(
@@ -135,7 +132,6 @@ class MyIntUtil {
     if (month.toString().startsWith('0')) {
       month = int.parse(month.toString().replaceAll('0', ''));
     }
-
 
     switch (month) {
       case DateTime.january:
@@ -180,7 +176,7 @@ class MyIntUtil {
   }
 
   ///根据年月日获取年龄
-  int getAge(int y,int m,int d) {
+  int getAge(int y, int m, int d) {
     int age = 0;
     DateTime dateTime = DateTime.now();
 
@@ -202,24 +198,23 @@ class MyIntUtil {
     return age;
   }
 
-
   ///将类似于19960515 这种数据,转换成model
-  DateParseModel parseWithInt(int v){
+  DateParseModel parseWithInt(int v) {
     final str = v.toString();
-    final y = str.substring(0,4);
-    final m = str.substring(4,6);
-    final d = str.substring(6,8);
-    return DateParseModel(int.parse(y),int.parse(m),int.parse(d));
+    final y = str.substring(0, 4);
+    final m = str.substring(4, 6);
+    final d = str.substring(6, 8);
+    return DateParseModel(int.parse(y), int.parse(m), int.parse(d));
   }
-
 }
-
 
 class DateParseModel {
   int y;
   int m;
   int d;
-  DateParseModel(this.y,this.m,this.d);
+
+  DateParseModel(this.y, this.m, this.d);
+
   @override
   String toString() {
     return '年:$y 月:$m 日:$d';

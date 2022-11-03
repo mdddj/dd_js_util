@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
-
-import '../api/base.dart';
-
+part of dd_js_util;
 ///权限申请工具类
 class KPermissionUtil {
   @Doc(message: '问用户申请访问相册的权限')

@@ -1,10 +1,5 @@
-import 'package:fbroadcast_nullsafety/fbroadcast_nullsafety.dart';
-import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
-import '../api/base.dart';
-import '../api/exception.dart';
-import '../mixin/brocase/index.dart';
+part of dd_js_util;
 
 extension MapExt2 on Map<String, Object> {
   Map<String, dynamic> get asMapDynamic {

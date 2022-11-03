@@ -1,6 +1,4 @@
-
-
-import '../api/base.dart';
+part of dd_js_util;
 extension BoolExt on bool {
 
   @Doc(message: '取反')

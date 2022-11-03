@@ -1,11 +1,4 @@
-import 'dart:math' as math;
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
+part of dd_js_util;
 
 const Duration _monthScrollDuration = Duration(milliseconds: 200);
 
@@ -932,9 +925,8 @@ class _DayPickerState extends State<_DayPicker> {
         dayItems.add(Container());
       } else {
         final DateTime dayToBuild = DateTime(year, month, day);
-        final bool isDisabled = dayToBuild.isAfter(widget.lastDate) ||
-            dayToBuild.isBefore(widget.firstDate) ||
-            (widget.selectableDayPredicate != null && !widget.selectableDayPredicate!(dayToBuild));
+        final bool isDisabled =
+            dayToBuild.isAfter(widget.lastDate) || dayToBuild.isBefore(widget.firstDate) || (widget.selectableDayPredicate != null && !widget.selectableDayPredicate!(dayToBuild));
         final bool isSelectedDay = DateUtils.isSameDay(widget.selectedDate, dayToBuild);
         final bool isToday = DateUtils.isSameDay(widget.currentDate, dayToBuild);
 

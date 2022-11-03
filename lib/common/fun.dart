@@ -1,8 +1,8 @@
+part of dd_js_util;
 
 
 
 
-import 'package:flutter/material.dart';
 
 typedef IfBuild = Widget Function();
 typedef BoolBuild = bool Function();

@@ -1,9 +1,4 @@
-import 'package:flutter/cupertino.dart';
-
-import '../../api/base.dart';
-import '../../dd_js_util.dart';
-import '../../ext/context.dart';
-import '../../ext/widget.dart';
+part of dd_js_util;
 typedef WidgetBuilder = Widget Function();
 ///页面异常
 class PageException implements Exception {

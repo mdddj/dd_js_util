@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../api/base.dart';
-import '../ext/widget/simple_appbar.dart';
-
+part of dd_js_util;
 /// 对字符串的扩展
 extension StringExt on String {
   /// 修复中英文下文本自动被截断的bug。

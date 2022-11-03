@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+part of dd_js_util;
 
 
 abstract class CacheBase<E> {
@@ -25,9 +25,7 @@ abstract class CacheBase<E> {
       final v = box.get(key, defaultValue: defaultValue);
       await box.close();
       return v;
-    }catch(e,s){
-      print("获取缓存错误:${e}");
-      print(s);
+    }catch(e){
       return null;
     }
   }

@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../dd_js_util.dart';
+part of dd_js_util;
 
 ///隐藏键盘的小部件
 class HideKeyBoardIcon extends ConsumerWidget {

@@ -1,6 +1,4 @@
-import 'package:flutter/widgets.dart';
-
-import '../api/base.dart';
+part of dd_js_util;
 
 typedef BuildWidget = Widget Function(BoxConstraints size, Widget child);
 

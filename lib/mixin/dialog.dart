@@ -1,8 +1,4 @@
-
-import 'package:flutter/material.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-
-import '../api/base.dart';
+part of dd_js_util;
 
 ///添加系列弹窗支持
 mixin DialogSupport<T extends StatefulWidget> on State<T> {

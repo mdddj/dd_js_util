@@ -1,7 +1,4 @@
-
-import 'package:flutter/material.dart';
-
-import '../api/base.dart';
+part of dd_js_util;
 
 extension NavigatorExt on NavigatorState {
 

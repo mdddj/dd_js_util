@@ -1,7 +1,4 @@
-
-
-
-import '../dd_js_util.dart';
+part of dd_js_util;
 
 
 
