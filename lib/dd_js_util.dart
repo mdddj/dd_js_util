@@ -143,6 +143,7 @@ part 'theme/model.dart';
 part 'theme/model.g.dart';
 
 part 'theme/index.dart';
+part 'theme/theme_setting.dart';
 
 
 class DdJsUtil {

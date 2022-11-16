@@ -9,6 +9,39 @@ pub地址: <https://pub.dev/packages/dd_js_util>
 
 # 开始使用
 
+### 2022.11.16 更新: 让你的APP添加强大的更换主题能力
+
+只需要3步.
+
+* 注册
+```dart
+void main(){
+  AppThemeUtil().registerAdapterAndOpenBox();
+}
+```
+
+* 开始使用
+
+使用`ThemeBuildWidget`包裹`MaterialApp`
+```dart
+      ThemeBuildWidget(themeBuild: (appThemeSetting) {
+        return MaterialApp(
+          theme: MyAppTheme.getTheme(appThemeSetting.themeIndex),
+          themeMode: appThemeSetting.getThemeMode
+        );
+      })
+```
+
+* 前往更换主题设置页面
+```dart
+context.navToWidget(to: ThemeSettingPage());
+```
+
+* 更换主题API
+```dart
+AppThemeUtil().changeThemeWithEnum(CustomAppThemeData theme);//参数是主题枚举
+```
+
 # dio 封装
 
 ```dart

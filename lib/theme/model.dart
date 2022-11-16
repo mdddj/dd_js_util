@@ -14,8 +14,9 @@ class AppThemeUtil {
   factory AppThemeUtil()=> _instance;
 
   ///注册适配器
-  void registerAdapter() {
+  Future<void> registerAdapterAndOpenBox() async {
     Hive.registerAdapter(AppLocalSettingModelAdapter());
+    await Hive.openBox<AppLocalSettingModel>(ddJsUtilAppSettingHiveKey);
   }
 
   ///更换主题
@@ -49,9 +50,6 @@ class AppSettingCache extends CacheBase<AppLocalSettingModel>{
 
 @HiveType(typeId: 1119)
 class AppLocalSettingModel extends HiveObject {
-
-
-
 
 
   ///主题下标
