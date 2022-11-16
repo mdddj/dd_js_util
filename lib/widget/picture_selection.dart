@@ -262,6 +262,8 @@ class _PictureSelectionState extends State<PictureSelection> {
                 onTap: _photoAlbumSelect,
               ),
               ListTile(title: const Text('去拍摄'), onTap: _shoot),
+              ListTile(title: const Text('关闭'), onTap: ()=>context.pop()),
+              SizedBox(height: context.paddingBottom)
             ],
           ));
         });

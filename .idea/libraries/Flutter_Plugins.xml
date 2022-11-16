@@ -5,7 +5,6 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dartlang.org/url_launcher_windows-3.0.1" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dartlang.org/url_launcher_android-6.0.17" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dartlang.org/path_provider_ios-2.0.8" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dartlang.org/sqflite-2.0.2" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dartlang.org/url_launcher_ios-6.0.17" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.12" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.5" />
@@ -21,6 +20,7 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dartlang.org/image_gallery_saver-1.7.1" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dartlang.org/permission_handler-9.2.0" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dartlang.org/image_picker-0.8.5" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dartlang.org/sqflite-2.0.2" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

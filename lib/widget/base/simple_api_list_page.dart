@@ -34,6 +34,15 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
   @Doc(message: '转换数据')
   List<S> parseDynamicData(final A data);
 
+  ///刷新
+  Future<void> onRefresh() async {
+    setState(() {
+      _pageData = [];
+      _loading = true;
+    });
+    return await _nextPage(page: 1);
+  }
+
   @Doc(message: '执行请求')
   FutureOr _requestApi({T? vApi}) async {
     try {
@@ -127,13 +136,7 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
         controller: easyRefreshController,
         header: CustomLoadingHeader(),
         footer: CustomLoadingFooter(),
-        onRefresh: () async {
-          setState(() {
-            _pageData = [];
-            _loading = true;
-          });
-          return await _nextPage(page: 1);
-        },
+        onRefresh: onRefresh,
         onLoad:enableOnLoad ?  () async {
           await _nextPage();
         } : null,
