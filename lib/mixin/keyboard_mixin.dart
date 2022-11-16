@@ -31,7 +31,7 @@ mixin KeyboardMixin<T extends ConsumerStatefulWidget> on ConsumerState<T>   {
 
 
   void reset(){
-    Future.microtask(() => ref.read(myKeyBoardHeight.state).state = 0.0);
+    Future.microtask(() => ref.read(myKeyBoardHeight.notifier).state = 0.0);
   }
 
   ///当键盘高度变化时执行

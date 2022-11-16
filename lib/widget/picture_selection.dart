@@ -274,7 +274,7 @@ class _PictureSelectionState extends State<PictureSelection> {
     final navigator = Navigator.of(context);
     if (widget.multipleChoice) {
       final files = await ImagePicker().pickMultiImage();
-      if (files != null) {
+      if (files.isNotEmpty) {
         var fs = List<File>.from(files.map((e) => File(e.path))).toList();
         // 计算还能存多少张图片
         final h = widget.maxCount - _renderImages.length;
