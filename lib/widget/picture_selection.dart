@@ -129,6 +129,9 @@ class PictureSelection extends StatefulWidget {
   /// 组件的控制器
   final PictureSelectionController? controller;
 
+
+  final VoidCallback? addIconOnTap;
+
   const PictureSelection(
       {Key? key,
       this.columnCount = 3,
@@ -141,7 +144,7 @@ class PictureSelection extends StatefulWidget {
       this.itemBuilder,
       this.menusBuilder,
       this.placeholderBuilder,
-      this.multipleChoice = false})
+      this.multipleChoice = false, this.addIconOnTap})
       : super(key: key);
 
   @override
@@ -246,6 +249,7 @@ class _PictureSelectionState extends State<PictureSelection> {
 
   /// 从相册选择还是直接拍摄
   void showSelection() {
+    widget.addIconOnTap?.call();
     showBottomSheet(
         context: context,
         backgroundColor: Colors.white,
