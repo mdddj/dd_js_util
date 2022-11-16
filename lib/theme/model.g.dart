@@ -9,7 +9,7 @@ part of dd_js_util;
 
 class AppLocalSettingModelAdapter extends TypeAdapter<AppLocalSettingModel> {
   @override
-  final int typeId = 1119;
+  final int typeId = 88;
 
   @override
   AppLocalSettingModel read(BinaryReader reader) {

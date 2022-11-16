@@ -48,7 +48,7 @@ class AppSettingCache extends CacheBase<AppLocalSettingModel>{
   String get boxName => ddJsUtilAppSettingHiveKey;
 }
 
-@HiveType(typeId: 1119)
+@HiveType(typeId: 88)
 class AppLocalSettingModel extends HiveObject {
 
 
