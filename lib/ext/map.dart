@@ -123,4 +123,10 @@ class WrapJson {
   dynamic get resultApiData {
     return getValue('data');
   }
+
+  void ifNotNull(String key,ValueChanged<dynamic> value) {
+    if(data[key]!=null){
+      value.call(data[key]);
+    }
+  }
 }

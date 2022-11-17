@@ -1,3 +1,7 @@
+# 2.0.5
+
+* add `ifNotNull` function
+
 # 2.0.4
 
 * bug修复
