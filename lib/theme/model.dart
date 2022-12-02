@@ -94,14 +94,14 @@ class AppLocalSettingModel extends HiveObject {
 
 class MyAppTheme {
   ///默认主题
-  static ThemeData getTheme(int index) {
+  static ThemeData getTheme(int index,{FlexSubThemesData? subThemesData}) {
     return FlexThemeData.light(
         scheme: CustomAppThemeData.values[index].flexScheme,
         surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
         blendLevel: 20,
         appBarOpacity: 1,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true);
+        useMaterial3: true,subThemesData:subThemesData);
   }
 
   ///暗夜主题

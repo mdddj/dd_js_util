@@ -1,13 +1,16 @@
 part of dd_js_util;
+
+typedef CustomBuildThemeItems = Widget Function(BuildContext context, List<CustomAppThemeData> themes);
 ///主题设置页面
 class ThemeSettingPage extends StatelessWidget {
-  const ThemeSettingPage({Key? key}) : super(key: key);
+  final CustomBuildThemeItems? builder;
+  const ThemeSettingPage({Key? key, this.builder}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: '主题设置'.appbar,
-      body: ListView(
+      body:builder?.call(context,CustomAppThemeData.values.toList()) ?? ListView(
         padding: const EdgeInsets.all(12),
         children:CustomAppThemeData.values.map(ThemeItemShow.new).toList(),
       ),

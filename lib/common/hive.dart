@@ -4,10 +4,14 @@ part of dd_js_util;
 abstract class CacheBase<E> {
   String get boxName;
 
+  Box<E>? _box;
 
   Future<Box<E>> openBox() async {
-    final  box = await Hive.openBox<E>(boxName);
-    return box;
+    if(_box!=null){
+      return _box!;
+    }
+      _box = await Hive.openBox<E>(boxName);
+    return _box!;
   }
 
   Future<void> setValue(String key, E value) async {
@@ -16,18 +20,20 @@ abstract class CacheBase<E> {
       await box.delete(key);
     }
     await box.put(key, value);
-    await box.close();
   }
 
   Future<E?> getValue(String key, {E? defaultValue}) async {
     try{
       final box = await openBox();
       final v = box.get(key, defaultValue: defaultValue);
-      await box.close();
       return v;
     }catch(e){
       return null;
     }
+  }
+
+  Future<void> closeBox() async {
+    _box?.close();
   }
 
 }

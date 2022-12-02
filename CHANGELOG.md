@@ -1,3 +1,11 @@
+# 2.0.7
+
+* 添加自定义主题布局渲染
+
+# 2.0.6
+
+* remove box remove
+
 # 2.0.5
 
 * add `ifNotNull` function

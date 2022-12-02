@@ -4,13 +4,14 @@ part of dd_js_util;
 // import '../api/base.dart';
 // import '../util/int.dart';
 
-
 extension DoubleExt on double {
   Widget get h => SizedBox(height: this);
 
   Widget get w => SizedBox(width: this);
 
-  BorderSide borderSide({Color? color}) => color != null ? BorderSide(width: this, color: color) : BorderSide(width: this);
+  BorderSide borderSide({Color? color}) => color != null
+      ? BorderSide(width: this, color: color)
+      : BorderSide(width: this);
 }
 
 extension IntExt on int {
@@ -36,7 +37,9 @@ extension IntExt on int {
     int yearBirth = brt.year;
     int monthBirth = brt.month;
     int dayOfMonthBirth = brt.day;
-    return MyIntUtil().getAge(yearBirth, monthBirth, dayOfMonthBirth).toString();
+    return MyIntUtil()
+        .getAge(yearBirth, monthBirth, dayOfMonthBirth)
+        .toString();
   }
 
   String get getAgeV2 {
@@ -70,10 +73,12 @@ extension IntExt on int {
       return '${(distance / 60).floor()}分钟前';
     } else if (distance <= 43200) {
       return '${(distance / 60 / 60).floor()}小时前';
-    } else if (DateTime.fromMillisecondsSinceEpoch(time * 1000).year == DateTime.fromMillisecondsSinceEpoch(this * 1000).year) {
+    } else if (DateTime.fromMillisecondsSinceEpoch(time * 1000).year ==
+        DateTime.fromMillisecondsSinceEpoch(this * 1000).year) {
       return customStampStr(timestamp: this, date: 'MM/DD hh:mm', toInt: false);
     } else {
-      return customStampStr(timestamp: this, date: 'YY/MM/DD hh:mm', toInt: false);
+      return customStampStr(
+          timestamp: this, date: 'YY/MM/DD hh:mm', toInt: false);
     }
   }
 
@@ -91,11 +96,14 @@ class Gap {
 
   static Widget get defaultH => const SizedBox(width: 12);
 
-  SizedBox w(double v) => SizedBox(width: v);
+  SizedBox w(double v, [bool show = true]) =>
+      show ? SizedBox(width: v) : const SizedBox();
 
-  SizedBox h(double v) => SizedBox(
-        height: v,
-      );
+  SizedBox h(double v, [bool show = true]) => show
+      ? SizedBox(
+          height: v,
+        )
+      : const SizedBox();
 }
 
 Widget get k24Height => const SizedBox(
