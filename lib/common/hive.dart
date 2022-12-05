@@ -1,9 +1,13 @@
 part of dd_js_util;
 
 
+
+
 abstract class CacheBase<E> {
   String get boxName;
 
+  //默认的box名称
+  String get defaultBoxName => 'default';
   Box<E>? _box;
 
   Future<Box<E>> openBox() async {

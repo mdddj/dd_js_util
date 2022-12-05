@@ -1,6 +1,6 @@
 name: dd_js_util
-description: Flutterweb端工具类
-version: 2.0.8
+description: 梁典典的常用工具类封装
+version: 2.1.1
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:

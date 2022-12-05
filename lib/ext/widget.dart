@@ -142,5 +142,9 @@ extension WidgetExt on Widget {
     }
     return this;
   }
+
+  Widget ifShow(bool show){
+    return IfWidget(expression: ()=>show, trueBuild: ()=>this);
+  }
 }
 
