@@ -144,7 +144,7 @@ part 'theme/model.g.dart';
 
 part 'theme/index.dart';
 part 'theme/theme_setting.dart';
-
+part 'widget/lazy_stack_widget.dart';
 
 class DdJsUtil {
   static const MethodChannel _channel = MethodChannel('dd_js_util');

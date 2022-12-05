@@ -2,7 +2,7 @@
 // Use of this source code is governed by a MIT license that can be found in the
 // LICENSE file.
 
-import 'package:flutter/material.dart';
+part of dd_js_util;
 
 /// A lazy-[IndexedStack] written by [Alex Li](https://github.com/AlexV525) 💙.
 /// it lazily build children only when they are first activated.

@@ -1,3 +1,7 @@
+# 2.1.1+1
+
+* add part of dd_js_util
+
 # 2.1.1
 
 * 添加懒加载小部件`LazyIndexedStack`
