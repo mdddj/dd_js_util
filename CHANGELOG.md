@@ -1,3 +1,7 @@
+# 2.1.2
+
+* 新增`FBuildWidget`小部件
+
 # 2.1.1+1
 
 * add part of dd_js_util
