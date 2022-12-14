@@ -2,7 +2,7 @@ part of dd_js_util;
 typedef TakeIfFun = bool Function();
 
 //函数扩展
-extension FunctionExt on Function {
+extension FunctionExt on VoidCallback {
 
   ///判断执行
   void takeIf(TakeIfFun fun){
