@@ -102,16 +102,14 @@ abstract class BaseApi {
         }
         return data;
       }else{
-        throw AppException(code: response.statusCode ?? 10004, message: response.statusMessage??"请求失败");
+        throw AppException(code: response.statusCode ?? 10004, message: response.statusMessage??"ERROR");
       }
     } on DioError catch (e) {
       if (showDefaultLoading) {
         closeLoading();
       }
-      kLogErr('${e.error.runtimeType}');
       throw e.error as AppException;
-    } catch (e,s) {
-      kLogErr('Error:$e\n$s');
+    } catch (e) {
       throw AppException.appError();
     }
   }

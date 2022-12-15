@@ -4,14 +4,16 @@ part of dd_js_util;
 class AppException implements Exception {
   final String message;
   final int code;
+  final DioError? dioError;
 
-  AppException({
+  AppException( {
     required this.code,
     required this.message,
+    this.dioError
   });
 
-  factory AppException.appError({int? code,String? msg}){
-    return AppException(code: code ?? 10001, message: msg ?? 'APP出现错误');
+  factory AppException.appError({int? code,String? msg,DioError? dioError}){
+    return AppException(code: code ?? 10001, message: msg ?? 'app Error',dioError: dioError);
   }
 
   factory AppException.create(DioError error) {
@@ -29,19 +31,19 @@ class AppException implements Exception {
       case DioErrorType.cancel:
         {
           /// 请求取消
-          return BadRequestException(201, "Request cancellation");
+          return BadRequestException(201, "Request cancellation",dioError: error);
         }
       case DioErrorType.connectTimeout:
         {
-          return BadRequestException(-1, "Connection timed out");
+          return BadRequestException(-1, "Connection timed out",dioError: error);
         }
       case DioErrorType.sendTimeout:
         {
-          return BadRequestException(-1, "Connection timed out");
+          return BadRequestException(-1, "Connection timed out",dioError: error);
         }
       case DioErrorType.receiveTimeout:
         {
-          return BadRequestException(-1, "Response timeout");
+          return BadRequestException(-1, "Response timeout",dioError: error);
         }
       case DioErrorType.response:
         {
@@ -51,7 +53,7 @@ class AppException implements Exception {
               case 400:
                 {
                   /// 请求语法错误
-                  return BadRequestException(errCode!, msg ?? "Request syntax error");
+                  return BadRequestException(errCode!, msg ?? "Request syntax error",dioError: error);
                 }
               case 401:
                 {
@@ -59,77 +61,69 @@ class AppException implements Exception {
                   ///
                   ///
                   ///
-                  return UnauthorisedException(errCode!, msg ?? "Permission denied");
+                  return UnauthorisedException(errCode!, msg ?? "Permission denied",dioError: error);
                 }
               case 403:
                 {
                   /// 服务器拒绝执行
-                  return UnauthorisedException(errCode!, msg ?? "Server refused to execute");
+                  return UnauthorisedException(errCode!, msg ?? "Server refused to execute",dioError: error);
                 }
               case 404:
                 {
-                  return UnauthorisedException(errCode!, msg ?? "Can not connect to the server");
+                  return UnauthorisedException(errCode!, msg ?? "Can not connect to the server",dioError: error);
                 }
               case 405:
                 {
                   /// 请求方法被静止
-                  return UnauthorisedException(errCode!, msg ?? "Request method is forbidden");
+                  return UnauthorisedException(errCode!, msg ?? "Request method is forbidden",dioError: error);
                 }
               case 500:
                 {
                   /// 服务器内部错误
-                  return UnauthorisedException(errCode!, msg ?? "Server internal error");
+                  return UnauthorisedException(errCode!, msg ?? "Server internal error",dioError: error);
                 }
               case 502:
                 {
                   /// 无效的请求
-                  return UnauthorisedException(errCode!, msg ?? "Invalid request");
+                  return UnauthorisedException(errCode!, msg ?? "Invalid request",dioError: error);
                 }
               case 503:
                 {
                   /// 服务器挂了
-                  return UnauthorisedException(errCode!, msg ?? "Server hung up");
+                  return UnauthorisedException(errCode!, msg ?? "Server hung up",dioError: error);
                 }
               case 505:
                 {
                   /// 不支持http请求
-                  return UnauthorisedException(errCode!, msg ?? "Does not support HTTP protocol request");
+                  return UnauthorisedException(errCode!, msg ?? "Does not support HTTP protocol request",dioError: error);
                 }
               case 504:
                 {
-                  return UnauthorisedException(504, 'Processing timed out, please try again');
+                  return UnauthorisedException(504, 'Processing timed out, please try again',dioError: error);
                 }
               default:
                 {
                   return AppException(
                       code: errCode ?? 90001,
-                      message: 'Sorry, there are some errors in the program, please contact our online customer for processing.');
+                      message: 'Sorry, there are some errors in the program, please contact our online customer for processing.',dioError: error);
                 }
             }
           } on Exception {
-            return AppException(message: msg ?? "unknown mistake", code: -1);
+            return AppException(message: msg ?? "unknown mistake", code: -1,dioError: error);
           }
         }
-
-    /// other.
       default:
         {
           final otherErrorType = error.error.runtimeType;
           switch (otherErrorType) {
-
-          /// 网络异常
             case SocketException:
-              return AppException(code: -121, message: "Network error, please check and try again");
-
+              return AppException(code: -121, message: "Network error, please check and try again",dioError: error);
             case HandshakeException:
-              return AppException(code: -122, message: 'Please check your network connection');
+              return AppException(code: -122, message: 'Please check your network connection',dioError: error);
             case AppException:
               return error.error as AppException;
-
-          /// 未处理的异常
             default:
-              Logger().e(">>>其他异常:${error.requestOptions.uri} \n $data \n $otherErrorType  \n$error");
-              return AppException(message: "Service error, please try again", code: -122);
+              return AppException(message: "Service error, please try again", code: -122,dioError: error);
           }
         }
     }
@@ -144,12 +138,12 @@ class AppException implements Exception {
 
 /// 请求错误
 class BadRequestException extends AppException {
-  BadRequestException(int code, String message) : super(code: code, message: message);
+  BadRequestException(int code, String message,{DioError? dioError}) : super(code: code, message: message,dioError: dioError);
 }
 
 /// 未认证异常
 class UnauthorisedException extends AppException {
-  UnauthorisedException(int code, String message) : super(code: code, message: message);
+  UnauthorisedException(int code, String message,{DioError? dioError}) : super(code: code, message: message,dioError: dioError);
 }
 
 /// 拦截器
