@@ -1,16 +1,14 @@
 part of dd_js_util;
 
-// 图片裁切处理
 class ImageCutWidget extends StatefulWidget {
-  final String imagePath;
-  const ImageCutWidget({Key? key,required this.imagePath}) : super(key: key);
+  final io.File file;
+  const ImageCutWidget({Key? key,required this.file}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
-  _ImageCutWidgetState createState() => _ImageCutWidgetState();
+  ImageCutWidgetState createState() => ImageCutWidgetState();
 }
 
-class _ImageCutWidgetState extends State<ImageCutWidget> {
+class ImageCutWidgetState extends State<ImageCutWidget> {
 
   final GlobalKey<ExtendedImageEditorState> editorKey =GlobalKey<ExtendedImageEditorState>();
 
@@ -18,7 +16,7 @@ class _ImageCutWidgetState extends State<ImageCutWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ExtendedImage.file(
-        File(widget.imagePath),
+        widget.file,
         fit: BoxFit.contain,
         mode: ExtendedImageMode.editor,
         extendedImageEditorKey: editorKey,
@@ -73,7 +71,7 @@ class _ImageCutWidgetState extends State<ImageCutWidget> {
     nav.pop(file1);
   }
 
-  String get currPath => widget.imagePath;
+  String get currPath => widget.file.path;
 }
 
 
