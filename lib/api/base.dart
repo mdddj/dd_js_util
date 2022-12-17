@@ -68,7 +68,7 @@ abstract class BaseApi {
       final dio = getDio();
       intrtceptors.add(ErrorInterceptor());
       dio.interceptors.addAll(intrtceptors);
-      final contentTypeStr = contentType.isNotEmpty ? contentType : (httpMethod == HttpMethod.post ? ContentType.json.value : null);
+      final contentTypeStr = contentType.isNotEmpty ? contentType : (httpMethod == HttpMethod.post ? io.ContentType.json.value : null);
       final bodyParams = formData.files.isNotEmpty ? formData : (data ?? params);
       dioStart?.call(dio,_host + url);
       final queryParameters = httpMethod == HttpMethod.post ? null : (nullParams == true ? null : data ?? params);

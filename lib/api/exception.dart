@@ -116,9 +116,9 @@ class AppException implements Exception {
         {
           final otherErrorType = error.error.runtimeType;
           switch (otherErrorType) {
-            case SocketException:
+            case io.SocketException:
               return AppException(code: -121, message: "Network error, please check and try again",dioError: error);
-            case HandshakeException:
+            case io.HandshakeException:
               return AppException(code: -122, message: 'Please check your network connection',dioError: error);
             case AppException:
               return error.error as AppException;

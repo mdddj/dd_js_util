@@ -2,7 +2,7 @@ library dd_js_util;
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
+import 'dart:io' as io;
 import 'dart:math' as math;
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -22,7 +22,6 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:html/dom.dart' hide Text;
@@ -126,8 +125,6 @@ part './widget/flip_animated_card.dart';
 part './widget/hide_keyboard_widget.dart';
 
 part './widget/image_cut.dart';
-
-part './widget/image_view.dart';
 
 part './widget/picture_selection.dart';
 

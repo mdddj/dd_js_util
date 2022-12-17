@@ -18,7 +18,7 @@ class _ImageCutWidgetState extends State<ImageCutWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ExtendedImage.file(
-        File(widget.imagePath),
+        io.File(widget.imagePath),
         fit: BoxFit.contain,
         mode: ExtendedImageMode.editor,
         extendedImageEditorKey: editorKey,
@@ -68,7 +68,7 @@ class _ImageCutWidgetState extends State<ImageCutWidget> {
     final hz = currPath.lastIndexOf('.'); // 图片后缀
     final wpa = '${currPath.substring(0,hz)}${DateTime.now().toIso8601String().replaceAll(" ", '')}';
     final path = '$wpa.${currPath.split('.').last}';
-    File file = await File(path).create();
+    final file = await io.File(path).create();
     final file1 = await file.writeAsBytes(byts);
     nav.pop(file1);
   }

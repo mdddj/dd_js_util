@@ -135,9 +135,9 @@ extension WidgetExt on Widget {
 
   ///添加滚动条
   Widget  addScrollbar({ScrollController? controller}) {
-    if(Platform.isAndroid){
+    if(io.Platform.isAndroid){
       return Scrollbar(controller: controller,child: this,);
-    }else if (Platform.isIOS){
+    }else if (io.Platform.isIOS){
       return CupertinoScrollbar(controller: controller,child: this,);
     }
     return this;

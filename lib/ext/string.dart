@@ -57,7 +57,7 @@ extension StringExtension on String {
   /// "/data/a/b/c/demo.png".fileDownloadImage()
   ///
   Future<dynamic> fileDownloadImage() async {
-    final file = File(this);
+    final file = io.File(this);
     final imageBytes = await file.readAsBytes();
     final result = await ImageGallerySaver.saveImage(imageBytes);
     return result;
@@ -67,7 +67,7 @@ extension StringExtension on String {
   /// 图片压缩 File -> File
   /// [targetPath] - 要保存压缩后文件的路径
   /// [quality] - 压缩的质量
-  Future<File?> fileImageCompress(String targetPath, {int? quality}) async {
+  Future<io.File?> fileImageCompress(String targetPath, {int? quality}) async {
     var result = await FlutterImageCompress.compressAndGetFile(
       this,
       targetPath,
