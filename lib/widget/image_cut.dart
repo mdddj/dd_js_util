@@ -18,7 +18,7 @@ class _ImageCutWidgetState extends State<ImageCutWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ExtendedImage.file(
-        io.File(widget.imagePath),
+        File(widget.imagePath),
         fit: BoxFit.contain,
         mode: ExtendedImageMode.editor,
         extendedImageEditorKey: editorKey,

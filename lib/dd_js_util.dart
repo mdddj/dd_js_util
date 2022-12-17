@@ -8,6 +8,7 @@ import 'dart:math' as math;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:extended_image/extended_image.dart';
+import 'package:extended_image_library/extended_image_library.dart';
 import 'package:fbroadcast_nullsafety/fbroadcast_nullsafety.dart';
 import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
