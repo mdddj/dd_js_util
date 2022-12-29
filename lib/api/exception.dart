@@ -33,7 +33,7 @@ class AppException implements Exception {
           /// 请求取消
           return BadRequestException(201, "Request cancellation",dioError: error);
         }
-      case DioErrorType.connectTimeout:
+      case DioErrorType.connectionTimeout:
         {
           return BadRequestException(-1, "Connection timed out",dioError: error);
         }
@@ -45,7 +45,7 @@ class AppException implements Exception {
         {
           return BadRequestException(-1, "Response timeout",dioError: error);
         }
-      case DioErrorType.response:
+      case DioErrorType.badResponse:
         {
           try {
             int? errCode = error.response?.statusCode;
@@ -152,7 +152,7 @@ class ErrorInterceptor extends Interceptor {
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
     AppException appException = AppException.create(err);
-    err.error = appException;
-    super.onError(err, handler);
+    final ae = err.copyWith(error: appException);
+    super.onError(ae, handler);
   }
 }

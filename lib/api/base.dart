@@ -141,7 +141,7 @@ abstract class BaseApi {
     if (dio != null) {
       return dio!;
     }
-    dio = Dio(BaseOptions(connectTimeout: 30000));
+    dio = Dio(BaseOptions(connectTimeout: const Duration(milliseconds: 30000)));
     return dio!;
   }
 

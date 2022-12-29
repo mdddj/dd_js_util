@@ -1,7 +1,7 @@
 part of dd_js_util;
 
 class ImageCutWidget extends StatefulWidget {
-  final io.File file;
+  final ei.File file;
   const ImageCutWidget({Key? key,required this.file}) : super(key: key);
 
   @override

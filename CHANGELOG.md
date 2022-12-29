@@ -1,3 +1,11 @@
+# 2.1.8
+
+* 替换dio为diox
+
+# 2.1.7+6
+
+* bug fixed
+
 # 2.1.7+5
 
 * bug fixed
