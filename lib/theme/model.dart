@@ -1,4 +1,3 @@
-
 part of dd_js_util;
 // import 'package:flex_color_scheme/flex_color_scheme.dart';
 // import 'package:flutter/material.dart';
@@ -10,8 +9,10 @@ part of dd_js_util;
 
 class AppThemeUtil {
   AppThemeUtil._();
+
   static AppThemeUtil get _instance => AppThemeUtil._();
-  factory AppThemeUtil()=> _instance;
+
+  factory AppThemeUtil() => _instance;
 
   ///注册适配器
   Future<void> registerAdapterAndOpenBox() async {
@@ -25,21 +26,29 @@ class AppThemeUtil {
   }
 
   ///更换主题
-  void changeThemeWithEnum(CustomAppThemeData themeData){
+  void changeThemeWithEnum(CustomAppThemeData themeData) {
     AppSettingCache().changeTheme(CustomAppThemeData.values.indexOf(themeData));
+  }
+
+  ///前往切换主题页面
+  Future<void> toThemeSettingPage(BuildContext context, {CustomBuildThemeItems? builder, PreferredSizeWidget? appbar}) async {
+    await context.navToWidget(to: ThemeSettingPage(builder: builder, appbar: appbar));
   }
 }
 
+class AppSettingCache extends CacheBase<AppLocalSettingModel> {
+  String themeKey = 'theme-setting';
 
-class AppSettingCache extends CacheBase<AppLocalSettingModel>{
-   String themeKey = 'theme-setting';
-   AppSettingCache._();
+  AppSettingCache._();
+
   static AppSettingCache get _instance => AppSettingCache._();
-  factory AppSettingCache()=>_instance;
-  Future<AppLocalSettingModel> get localSetting async  => (await getValue(themeKey,defaultValue: AppLocalSettingModel.defaultSetting()))!;
+
+  factory AppSettingCache() => _instance;
+
+  Future<AppLocalSettingModel> get localSetting async => (await getValue(themeKey, defaultValue: AppLocalSettingModel.defaultSetting()))!;
 
   Future<void> changeTheme(int index) async {
-    final setting =await localSetting;
+    final setting = await localSetting;
     setting.themeIndex = index;
     await setting.save();
   }
@@ -50,8 +59,6 @@ class AppSettingCache extends CacheBase<AppLocalSettingModel>{
 
 @HiveType(typeId: 88)
 class AppLocalSettingModel extends HiveObject {
-
-
   ///主题下标
   @HiveField(0)
   int themeIndex;
@@ -65,11 +72,11 @@ class AppLocalSettingModel extends HiveObject {
 
   AppLocalSettingModel({required this.themeIndex, this.themeModel = 0});
 
-  factory AppLocalSettingModel.defaultSetting() => AppLocalSettingModel(themeIndex: 0,themeModel: 0);
+  factory AppLocalSettingModel.defaultSetting() => AppLocalSettingModel(themeIndex: 0, themeModel: 0);
 
   ///获取系统主题mode
   ThemeMode get getThemeMode {
-    switch(themeModel){
+    switch (themeModel) {
       case 0:
         return ThemeMode.system;
       case 1:
@@ -80,28 +87,23 @@ class AppLocalSettingModel extends HiveObject {
     return ThemeMode.system;
   }
 
-
   @override
   String toString() {
     return 'themeIndex  is $themeIndex , themeModel is $themeModel';
   }
-
 }
-
-
-
-
 
 class MyAppTheme {
   ///默认主题
-  static ThemeData getTheme(int index,{FlexSubThemesData? subThemesData}) {
+  static ThemeData getTheme(int index, {FlexSubThemesData? subThemesData}) {
     return FlexThemeData.light(
         scheme: CustomAppThemeData.values[index].flexScheme,
         surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
         blendLevel: 20,
         appBarOpacity: 1,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,subThemesData:subThemesData);
+        useMaterial3: true,
+        subThemesData: subThemesData);
   }
 
   ///暗夜主题
@@ -125,39 +127,39 @@ enum CustomAppThemeData {
   hippieBlue('嬉皮士蓝', FlexScheme.hippieBlue),
   aquaBlue('海洋蓝', FlexScheme.aquaBlue),
   brandBlue('品牌蓝', FlexScheme.brandBlue),
-  deepBlue('蓝色深渊',FlexScheme.deepBlue),
-  sakura('粉红色樱花',FlexScheme.sakura),
-  mandyRed('曼迪红和维京蓝',FlexScheme.mandyRed),
-  red('粉色',FlexScheme.red),
-  redWine('红酒色',FlexScheme.redWine),
-  purpleBrown('茄子棕色',FlexScheme.purpleBrown),
-  green('森林绿',FlexScheme.green),
-  money('金钱绿',FlexScheme.money),
-  jungle('丛林绿',FlexScheme.jungle),
-  greyLaw('忧郁蓝灰',FlexScheme.greyLaw),
-  wasabi('芥末绿',FlexScheme.wasabi),
-  gold('金色日落',FlexScheme.gold),
-  mango('芒果莫吉托',FlexScheme.mango),
-  amber('琥珀色',FlexScheme.amber),
-  vesuviusBurn('伊甸园绿',FlexScheme.vesuviusBurn),
-  deepPurple('紫色灌木',FlexScheme.deepPurple),
-  ebonyClay('黏土深灰',FlexScheme.ebonyClay),
-  barossa('卡丁绿',FlexScheme.barossa),
-  shark('鲨鱼灰',FlexScheme.shark),
-  bigStone('郁金香黄',FlexScheme.bigStone),
-  damask('缎黄色',FlexScheme.damask),
-  bahamaBlue('巴哈马蓝',FlexScheme.bahamaBlue),
-  mallardGreen('苹果绿',FlexScheme.mallardGreen),
-  espresso('浓缩咖啡色',FlexScheme.espresso),
-  outerSpace('红色舞台',FlexScheme.outerSpace),
-  blueWhale('探戈橙',FlexScheme.blueWhale),
-  sanJuanBlue('盛京蓝',FlexScheme.sanJuanBlue),
-  rosewood('红木色',FlexScheme.rosewood),
-  blumineBlue('藏红花',FlexScheme.blumineBlue),
-  verdunHemlock('矿物绿',FlexScheme.verdunHemlock),
-  flutterDash('Dash吉祥物主题',FlexScheme.flutterDash),
-  materialBaseline('默认主题升级版',FlexScheme.materialBaseline),
-  dellGenoa('戴尔绿',FlexScheme.dellGenoa);
+  deepBlue('蓝色深渊', FlexScheme.deepBlue),
+  sakura('粉红色樱花', FlexScheme.sakura),
+  mandyRed('曼迪红和维京蓝', FlexScheme.mandyRed),
+  red('粉色', FlexScheme.red),
+  redWine('红酒色', FlexScheme.redWine),
+  purpleBrown('茄子棕色', FlexScheme.purpleBrown),
+  green('森林绿', FlexScheme.green),
+  money('金钱绿', FlexScheme.money),
+  jungle('丛林绿', FlexScheme.jungle),
+  greyLaw('忧郁蓝灰', FlexScheme.greyLaw),
+  wasabi('芥末绿', FlexScheme.wasabi),
+  gold('金色日落', FlexScheme.gold),
+  mango('芒果莫吉托', FlexScheme.mango),
+  amber('琥珀色', FlexScheme.amber),
+  vesuviusBurn('伊甸园绿', FlexScheme.vesuviusBurn),
+  deepPurple('紫色灌木', FlexScheme.deepPurple),
+  ebonyClay('黏土深灰', FlexScheme.ebonyClay),
+  barossa('卡丁绿', FlexScheme.barossa),
+  shark('鲨鱼灰', FlexScheme.shark),
+  bigStone('郁金香黄', FlexScheme.bigStone),
+  damask('缎黄色', FlexScheme.damask),
+  bahamaBlue('巴哈马蓝', FlexScheme.bahamaBlue),
+  mallardGreen('苹果绿', FlexScheme.mallardGreen),
+  espresso('浓缩咖啡色', FlexScheme.espresso),
+  outerSpace('红色舞台', FlexScheme.outerSpace),
+  blueWhale('探戈橙', FlexScheme.blueWhale),
+  sanJuanBlue('盛京蓝', FlexScheme.sanJuanBlue),
+  rosewood('红木色', FlexScheme.rosewood),
+  blumineBlue('藏红花', FlexScheme.blumineBlue),
+  verdunHemlock('矿物绿', FlexScheme.verdunHemlock),
+  flutterDash('Dash吉祥物主题', FlexScheme.flutterDash),
+  materialBaseline('默认主题升级版', FlexScheme.materialBaseline),
+  dellGenoa('戴尔绿', FlexScheme.dellGenoa);
 
   const CustomAppThemeData(this.title, this.flexScheme);
 

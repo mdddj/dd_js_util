@@ -1,13 +1,17 @@
 part of dd_js_util;
+
 typedef WidgetBuilder = Widget Function();
+
 ///页面异常
 class PageException implements Exception {
   final String msg;
+
   const PageException(this.msg);
 }
+
 ///页面所需要的基本数据
 ///
-mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
+mixin MyBasePage<T extends BaseApi, S, W extends StatefulWidget, R> on State<W> {
   S? _pageData;
   bool _loading = true;
   bool _empty = false;
@@ -25,13 +29,12 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
 
   @Doc(message: '加载中')
   Future<void> _requestApi() async {
-
-    if(mounted){
+    if (mounted) {
       setState(() {
         exception = null;
       });
     }
-    try{
+    try {
       final response = await api.request(showDefaultLoading: false);
       if (response == null) {
         if (mounted) {
@@ -50,17 +53,18 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
         });
         loadedEnd();
       }
+
       ///
-    }on AppException catch(e){
-      if(mounted){
+    } on AppException catch (e) {
+      if (mounted) {
         setState(() {
           _empty = true;
           _loading = false;
           exception = PageException(e.message);
         });
       }
-    } catch(e){
-      if(mounted){
+    } catch (e) {
+      if (mounted) {
         setState(() {
           _empty = true;
           _loading = false;
@@ -72,19 +76,30 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
 
   @override
   Widget build(BuildContext context) {
-    return buildCoreWidget((){
+    return buildCoreWidget(() {
       return renderBody(_pageData as S);
     });
   }
 
-  Widget buildCoreWidget(WidgetBuilder builder){
+  Widget buildCoreWidget(WidgetBuilder builder) {
     if (_loading) {
       return loadingWidget;
     }
-    if(exception != null){
-      return Text('服务器出现了一些小问题:${exception!.msg}',style: context.kTextTheme.bodyText1?.copyWith(color: context.colorScheme.error),);
+    if (exception != null) {
+      return  buildException ?? Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            exception!.msg,
+            style: context.kTextTheme.bodyText1?.copyWith(color: context.colorScheme.error),
+          ).center.marginOnly(top: 20).click(refresh),
+          Gap().h(20),
+          OutlinedButton(onPressed: refresh, child: const Text("刷新试试"))
+        ],
+      );
     }
-    if(_empty){
+    if (_empty) {
       return emptyWidget;
     }
     if (_pageData != null) {
@@ -94,6 +109,7 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
   }
 
   Widget get loadingWidget => const CupertinoActivityIndicator().center;
+
   Widget get emptyWidget => const Text('空空如也').center;
 
   Widget renderBody(final S pageData);
@@ -105,7 +121,7 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
 
   @Doc(message: '抛出页面异常')
   void throwPageException(String msg) {
-    if(mounted){
+    if (mounted) {
       setState(() {
         exception = PageException(msg);
       });
@@ -117,4 +133,6 @@ mixin MyBasePage<T extends BaseApi, S,W extends StatefulWidget,R> on State<W> {
   Future<void> refresh() async {
     await _requestApi();
   }
+
+  Widget? get buildException => null;
 }
