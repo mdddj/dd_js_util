@@ -1,7 +1,6 @@
 part of dd_js_util;
 
-
-
+typedef HiveUpdateModel<E> = E Function<E>(E? oldValue);
 
 abstract class CacheBase<E> {
   String get boxName;
@@ -11,27 +10,27 @@ abstract class CacheBase<E> {
   Box<E>? _box;
 
   Future<Box<E>> openBox() async {
-    if(_box!=null){
+    if (_box != null) {
       return _box!;
     }
-      _box = await Hive.openBox<E>(boxName);
+    _box = await Hive.openBox<E>(boxName);
     return _box!;
   }
 
   Future<void> setValue(String key, E value) async {
     final box = await openBox();
-    if(box.containsKey(key)){
+    if (box.containsKey(key)) {
       await box.delete(key);
     }
     await box.put(key, value);
   }
 
   Future<E?> getValue(String key, {E? defaultValue}) async {
-    try{
+    try {
       final box = await openBox();
       final v = box.get(key, defaultValue: defaultValue);
       return v;
-    }catch(e){
+    } catch (e) {
       return null;
     }
   }
@@ -40,6 +39,12 @@ abstract class CacheBase<E> {
     _box?.close();
   }
 
+  Future<E> saveAndUpdate(HiveUpdateModel<E> handle, [String key = 'default']) async {
+    final oldV = await getValue(key);
+    final newV = handle.call(oldV);
+    await setValue(key, newV);
+    return newV;
+  }
 }
 
 abstract class CacheFactory {
