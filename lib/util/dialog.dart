@@ -6,10 +6,18 @@ void showToast(String msg) {
 }
 
 @Doc(message: '显示一个iOS弹窗')
-void showIosDialog(String msg) {
+void showIosDialog(String msg,{String? okText,List<Widget>? startActions,List<Widget>? endActions}) {
+  const tag = 's-dialog-simple-ok-btn';
   SmartDialog.show(builder: (_){
     return CupertinoAlertDialog(
       content: Text(msg),
+      actions:  [
+        if(startActions!=null)
+          ...startActions,
+        CupertinoDialogAction(child: const Text("Ok"),onPressed: ()=>SmartDialog.dismiss(tag: tag)),
+        if(endActions!=null)
+          ...endActions
+      ],
     );
-  });
+  },tag: tag);
 }
