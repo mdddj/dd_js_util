@@ -20,7 +20,7 @@ dependencies:
   cached_network_image: ^3.2.3
   flutter_cache_manager: ^3.3.0
   waterfall_flow: ^3.0.2
-  image: ^4.0.8
+  image: ^3.3.0
   common_utils: ^2.1.0
   flutter_smart_dialog: ^4.8.0
   image_picker: ^0.8.6

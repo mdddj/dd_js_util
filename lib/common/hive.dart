@@ -1,6 +1,6 @@
 part of dd_js_util;
 
-typedef HiveUpdateModel<E> = E Function<E>(E? oldValue);
+typedef HiveUpdateModel<E> = E Function(E? oldValue);
 
 abstract class CacheBase<E> {
   String get boxName;
@@ -39,8 +39,8 @@ abstract class CacheBase<E> {
     _box?.close();
   }
 
-  Future<E> saveAndUpdate(HiveUpdateModel<E> handle, [String key = 'default']) async {
-    final oldV = await getValue(key);
+  Future<E> saveAndUpdate(E Function(E? oldValue) handle , [String key = 'default',E? defaultValue]) async {
+    final oldV = await getValue(key,defaultValue: defaultValue);
     final newV = handle.call(oldV);
     await setValue(key, newV);
     return newV;

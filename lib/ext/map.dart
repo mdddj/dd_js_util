@@ -109,6 +109,14 @@ class WrapJson {
     Logger().wtf(data);
   }
 
+  Map<String,dynamic> getMap(String key,[Map<String,dynamic>? defaultValue]) {
+    final v = data[key];
+    if(v is Map<String,dynamic>){
+      return v;
+    }
+    return defaultValue ?? <String,dynamic>{};
+  }
+
 
 
   ///---- 一些扩展工具类
