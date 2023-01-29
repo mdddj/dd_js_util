@@ -92,7 +92,7 @@ mixin MyBasePage<T extends BaseApi, S, W extends StatefulWidget, R> on State<W> 
         children: [
           Text(
             exception!.msg,
-            style: context.kTextTheme.bodyText1?.copyWith(color: context.colorScheme.error),
+            style: context.kTextTheme.bodyLarge?.copyWith(color: context.colorScheme.error),
           ).center.marginOnly(top: 20).click(refresh),
           Gap().h(20),
           OutlinedButton(onPressed: refresh, child: const Text("刷新试试"))

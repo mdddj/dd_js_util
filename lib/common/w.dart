@@ -2,8 +2,9 @@ part of dd_js_util;
 
 /// 隐藏水波纹配置
 class NoShadowScrollBehavior extends ScrollBehavior {
+
   @override
-  Widget buildViewportChrome(BuildContext context, Widget child, AxisDirection axisDirection) {
+  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
     switch (getPlatform(context)) {
       case TargetPlatform.iOS:
       case TargetPlatform.macOS:
@@ -12,7 +13,7 @@ class NoShadowScrollBehavior extends ScrollBehavior {
         return GlowingOverscrollIndicator(
           showLeading: false,
           showTrailing: false,
-          axisDirection: axisDirection,
+          axisDirection: details.direction,
           color: Theme.of(context).colorScheme.secondary,
           child: child,
         );
@@ -24,12 +25,15 @@ class NoShadowScrollBehavior extends ScrollBehavior {
           showLeading: false,
           //不显示尾部水波纹
           showTrailing: false,
-          axisDirection: axisDirection,
+          axisDirection: details.direction,
           color: Theme.of(context).colorScheme.secondary,
           child: child,
         );
     }
   }
+
+
+
 }
 
 

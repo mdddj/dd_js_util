@@ -25,7 +25,7 @@ extension ContextExt on BuildContext {
 
   ColorScheme get colorScheme => theme.colorScheme;
 
-  Color get backgroundColor => theme.backgroundColor;
+  Color get backgroundColor => theme.colorScheme.background;
 
   Color get highlightColor => theme.highlightColor;
 

@@ -62,7 +62,8 @@ class ImageCutWidgetState extends State<ImageCutWidget> {
     //image: 4.x 版本
     // src = image.copyCrop(src, x: cropRect.left.toInt(), y: cropRect.top.toInt(),
     //    width: cropRect.width.toInt(), height: cropRect.height.toInt());
-    src = image.copyCrop(src, cropRect.left.toInt(), cropRect.top.toInt(), cropRect.width.toInt(), cropRect.height.toInt());
+    // image: 3.x 版本
+    // src = image.copyCrop(src, cropRect.left.toInt(), cropRect.top.toInt(), cropRect.width.toInt(), cropRect.height.toInt());
 
     final byts = image.encodeJpg(src , quality: 80);
     final hz = currPath.lastIndexOf('.'); // 图片后缀
