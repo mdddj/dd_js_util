@@ -1,10 +1,10 @@
 name: dd_js_util
 description: 梁典典的常用工具类封装
-version: 2.2.7
+version: 2.2.8
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
-  sdk: ">=2.18.6 <3.0.0"
+  sdk: ">=2.19.0 <4.0.0"
   flutter: ">=3.0.0"
 
 dependencies:

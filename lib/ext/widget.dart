@@ -1,12 +1,13 @@
 part of dd_js_util;
 
-
+typedef ValueCopyWith<T> = T Function(T value);
 typedef DelayFetch = void Function();
+
 ///延迟加载请求
 ///一般在initState里面使用,执行初始化的一些操作
 ///比如发起请求
-void delayFunction(final DelayFetch call,[int? milliseconds]) {
-  Future.microtask(()=>Future.delayed( Duration(milliseconds:milliseconds ?? 300),call));
+void delayFunction(final DelayFetch call, [int? milliseconds]) {
+  Future.microtask(() => Future.delayed(Duration(milliseconds: milliseconds ?? 300), call));
 }
 
 extension WidgetExt on Widget {
@@ -67,6 +68,7 @@ extension WidgetExt on Widget {
   Widget get cardWidget => Card(
         child: this,
       );
+
   @Doc(message: '卡片组件')
   Widget cardWidget2(double eve) => Card(
         elevation: eve,
@@ -80,8 +82,11 @@ extension WidgetExt on Widget {
   Widget get expanded => Expanded(child: this);
 
   Widget minHeight(double height) => ConstrainedBox(constraints: BoxConstraints(minHeight: height), child: this);
+
   Widget maxHeight(double height) => ConstrainedBox(constraints: BoxConstraints(maxHeight: height), child: this);
+
   Widget minWidth(double width) => ConstrainedBox(constraints: BoxConstraints(minWidth: width), child: this);
+
   Widget maxWidth(double width) => ConstrainedBox(constraints: BoxConstraints(maxWidth: width), child: this);
 
   Widget paddingWithObj(EdgeInsets edgeInsets) => Padding(padding: edgeInsets);
@@ -93,9 +98,9 @@ extension WidgetExt on Widget {
 
   Route get materialRouter => MaterialPageRoute(builder: (_) => this);
 
-  Widget border(BuildContext context, {BoxDecoration? decoration, Color? borderColor, BorderRadius? borderRadius,double width=1.0}) {
+  Widget border(BuildContext context, {BoxDecoration? decoration, Color? borderColor, BorderRadius? borderRadius, double width = 1.0}) {
     return Container(
-      decoration: decoration ?? BoxDecoration(border: Border.all(color: borderColor ?? context.theme.dividerColor,width: width), borderRadius: borderRadius),
+      decoration: decoration ?? BoxDecoration(border: Border.all(color: borderColor ?? context.theme.dividerColor, width: width), borderRadius: borderRadius),
       child: this,
     );
   }
@@ -108,10 +113,9 @@ extension WidgetExt on Widget {
   }
 
   @Doc(message: '长按点击事件')
-  Widget longClick({required VoidCallback onLongPress}){
-    return GestureDetector(onLongPress: onLongPress,child: this);
+  Widget longClick({required VoidCallback onLongPress}) {
+    return GestureDetector(onLongPress: onLongPress, child: this);
   }
-
 
   /// 高度扩展
   Widget height(double hei) {
@@ -121,7 +125,7 @@ extension WidgetExt on Widget {
     );
   }
 
-   @Doc(message: "给组件添加点击事件")
+  @Doc(message: "给组件添加点击事件")
   Widget click(VoidCallback onTap) {
     return GestureDetector(
       onTap: onTap,
@@ -134,17 +138,27 @@ extension WidgetExt on Widget {
   }
 
   ///添加滚动条
-  Widget  addScrollbar({ScrollController? controller}) {
-    if(io.Platform.isAndroid){
-      return Scrollbar(controller: controller,child: this,);
-    }else if (io.Platform.isIOS){
-      return CupertinoScrollbar(controller: controller,child: this,);
+  Widget addScrollbar({ScrollController? controller}) {
+    if (io.Platform.isAndroid) {
+      return Scrollbar(
+        controller: controller,
+        child: this,
+      );
+    } else if (io.Platform.isIOS) {
+      return CupertinoScrollbar(
+        controller: controller,
+        child: this,
+      );
     }
     return this;
   }
 
-  Widget ifShow(bool show){
-    return IfWidget(expression: ()=>show, trueBuild: ()=>this);
+  Widget ifShow(bool show) {
+    return IfWidget(expression: () => show, trueBuild: () => this);
+  }
+
+  Widget disableTextScaling(BuildContext context, ValueCopyWith<MediaQueryData> copyWith) {
+    final oldValue = MediaQuery.of(context);
+    return MediaQuery(data: copyWith.call(oldValue), child: this);
   }
 }
-
