@@ -46,7 +46,7 @@ mixin MyBasePageList<T extends BaseApi, S, W extends StatefulWidget, A> on State
   @Doc(message: '执行请求')
   FutureOr _requestApi({T? vApi}) async {
     try {
-      final response = await (vApi ?? api).request(showDefaultLoading: false);
+      final response = await (vApi ?? api).request( const RequestParams(showDefaultLoading: false));
 
       if (response == null) {
         throw PageListException.nullResponse();

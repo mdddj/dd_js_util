@@ -1,12 +1,14 @@
-part of dd_js_util;
-// import 'package:flex_color_scheme/flex_color_scheme.dart';
-// import 'package:flutter/material.dart';
-// import 'package:hive_flutter/hive_flutter.dart';
-//
-// import '../dd_js_util.dart';
-// //
-// part 'model.g.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
+import '../dd_js_util.dart';
+
+// import '../dd_js_util.dart';
+
+// //
+
+const ddJsUtilAppSettingHiveKey = 'ddjsutil-app-local-setting';
 class AppThemeUtil {
   AppThemeUtil._();
 

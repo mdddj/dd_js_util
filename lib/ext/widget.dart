@@ -161,4 +161,9 @@ extension WidgetExt on Widget {
     final oldValue = MediaQuery.of(context);
     return MediaQuery(data: copyWith.call(oldValue), child: this);
   }
+
+  @Doc(message: 'true 表示可见的 , false 为隐藏')
+  Widget visible(bool value) {
+    return IfWidget(expression: ()=>value, trueBuild: ()=>this);
+  }
 }

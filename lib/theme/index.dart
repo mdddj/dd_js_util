@@ -1,5 +1,5 @@
 part of dd_js_util;
-const ddJsUtilAppSettingHiveKey = 'ddjsutil-app-local-setting';
+
 
 typedef ThemeBuild = Widget Function(AppLocalSettingModel theme);
 class ThemeBuildWidget extends StatelessWidget {

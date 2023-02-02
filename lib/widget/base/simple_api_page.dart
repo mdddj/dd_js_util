@@ -35,7 +35,9 @@ mixin MyBasePage<T extends BaseApi, S, W extends StatefulWidget, R> on State<W> 
       });
     }
     try {
-      final response = await api.request(showDefaultLoading: false);
+      final response = await api.request(
+         const RequestParams(showDefaultLoading: false)
+      );
       if (response == null) {
         if (mounted) {
           setState(() {

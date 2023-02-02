@@ -39,10 +39,12 @@ abstract class CacheBase<E> {
     _box?.close();
   }
 
-  Future<E> saveAndUpdate(E Function(E? oldValue) handle , [String key = 'default',E? defaultValue]) async {
+  Future<E?> saveAndUpdate(E? Function(E? oldValue) handle , [String key = 'default',E? defaultValue]) async {
     final oldV = await getValue(key,defaultValue: defaultValue);
     final newV = handle.call(oldV);
-    await setValue(key, newV);
+    if(newV!=null){
+      await setValue(key, newV);
+    }
     return newV;
   }
 }

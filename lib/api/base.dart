@@ -1,6 +1,5 @@
 part of dd_js_util;
 
-
 const kProtobufContentType = 'application/x-protobuf';
 
 enum HttpMethod { post, get, probuf }
@@ -9,10 +8,6 @@ const kMultipartFormDataHeader = 'multipart/form-data';
 
 typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
 
-typedef DioStart = void Function(Dio dio,String url);
-
-
-
 @Doc(message: "简单toast弹窗")
 void toast(String msg) {
   SmartDialog.showToast(msg);
@@ -20,6 +15,7 @@ void toast(String msg) {
 
 abstract class BaseModel<T> {
   T fromJson(Map<String, dynamic> map);
+
   @override
   String toString() {
     return "BaseModel: ${T.runtimeType}";
@@ -29,7 +25,6 @@ abstract class BaseModel<T> {
 ///分页api
 mixin BasePagedApiMixin on BaseApi {
   String get pageParamsKey => 'page';
-
 }
 
 abstract class BaseApi {
@@ -49,63 +44,64 @@ abstract class BaseApi {
 
   /// [isFullUrl] - url传入的是否为完整的一个URL,如果为[true],将忽略[host]
   @Doc(message: "向服务器发起http请求")
-  Future<dynamic> request(
-      {bool showErrorMsg = true,
-      String? loadingText,
-      String contentType = "",
-      Map<String, dynamic>? headers,
-      bool showDefaultLoading = true,
-      dynamic data,
-      ResponseType? responseType,
-      bool? nullParams,
-      RequestEncoder? requestEncoder,
-      DioStart? dioStart,bool? returnIsString,bool isFullUrl = false}) async {
+  Future<dynamic> request([RequestParams? options]) async {
+    options ??= const RequestParams();
     try {
-      if (showDefaultLoading) {
-        showLoading(loadingText: loadingText);
+      if (options.showDefaultLoading) {
+        showLoading(loadingText: options.loadingText);
       }
 
       final dio = getDio();
       intrtceptors.add(ErrorInterceptor());
       dio.interceptors.addAll(intrtceptors);
-      final contentTypeStr = contentType.isNotEmpty ? contentType : (httpMethod == HttpMethod.post ? io.ContentType.json.value : null);
-      final bodyParams = formData.files.isNotEmpty ? formData : (data ?? params);
-      dioStart?.call(dio,_host + url);
-      final queryParameters = httpMethod == HttpMethod.post ? null : (nullParams == true ? null : data ?? params);
-      final contentTypeString = httpMethod == HttpMethod.probuf ? kProtobufContentType : contentTypeStr;
+      final contentTypeStr = options.contentType.isNotEmpty
+          ? options.contentType
+          : (httpMethod == HttpMethod.post ? io.ContentType.json.value : null);
+      final bodyParams =
+          formData.files.isNotEmpty ? formData : (options.data ?? params);
+      options.dioStart?.call(dio, _host + url);
+      final queryParameters = httpMethod == HttpMethod.post
+          ? null
+          : (options.nullParams == true ? null : options.data ?? params);
+      final contentTypeString = httpMethod == HttpMethod.probuf
+          ? kProtobufContentType
+          : contentTypeStr;
       final response = await dio.request(
-        isFullUrl ? url : (_host + url),
+        options.isFullUrl ? url : (_host + url),
         options: Options(
             method: method,
             contentType: contentTypeString,
-            headers: headers,
-            responseType: responseType,
-            requestEncoder: requestEncoder),
+            headers: options.headers,
+            responseType: options.responseType,
+            requestEncoder: options.requestEncoder),
         queryParameters: queryParameters,
         data: bodyParams,
       );
-      if (showDefaultLoading) {
+      if (options.showDefaultLoading) {
         closeLoading();
       }
 
       if (response.statusCode == 200) {
         final data = response.data;
-        if(data is String){
-          if(returnIsString == true){
+        if (data is String) {
+          if (options.returnIsString == true) {
             return data;
           }
-          try{
-           return jsonDecode(data);
-          }catch(e){
-            throw AppException.appError(code: 10003,msg: "Unable to process server data");
+          try {
+            return jsonDecode(data);
+          } catch (e) {
+            throw AppException.appError(
+                code: 10003, msg: "Unable to process server data");
           }
         }
         return data;
-      }else{
-        throw AppException(code: response.statusCode ?? 10004, message: response.statusMessage??"ERROR");
+      } else {
+        throw AppException(
+            code: response.statusCode ?? 10004,
+            message: response.statusMessage ?? "ERROR");
       }
     } on DioError catch (e) {
-      if (showDefaultLoading) {
+      if (options.showDefaultLoading) {
         closeLoading();
       }
       throw e.error as AppException;
@@ -126,7 +122,6 @@ abstract class BaseApi {
     }
   }
 
-
   @Doc(message: "页面中间显示loading等待框")
   void showLoading({String? loadingText}) {
     SmartDialog.showLoading(msg: loadingText ?? '加载中...');
@@ -145,12 +140,13 @@ abstract class BaseApi {
     return dio!;
   }
 
-  void handle(CallIf callIf , ValueChanged<BaseApi> call) {
-    if(callIf.call()){
+  void handle(CallIf callIf, ValueChanged<BaseApi> call) {
+    if (callIf.call()) {
       call.call(this);
     }
   }
 }
+
 typedef CallIf = bool Function();
 
 /// 主动显示的注解
@@ -162,36 +158,17 @@ class Doc {
 
 ///wrapjson类型的接口封装
 abstract class AppCoreApi extends BaseApi {
-  AppCoreApi(String url, {HttpMethod? httpMethod, List<Interceptor>? ints}) : super(url, httpMethod: httpMethod ?? HttpMethod.get) {
+  AppCoreApi(String url, {HttpMethod? httpMethod, List<Interceptor>? ints})
+      : super(url, httpMethod: httpMethod ?? HttpMethod.get) {
     if (ints?.isNotEmpty == true) {
       intrtceptors.addAll(ints!);
     }
   }
 
   @override
-  Future<WrapJson> request(
-      {bool showErrorMsg = true,
-      String? loadingText,
-      String contentType = "",
-      Map<String, dynamic>? headers,
-      bool showDefaultLoading = true,
-      dynamic data,
-      ResponseType? responseType,
-      bool? nullParams,
-      RequestEncoder? requestEncoder,
-      DioStart? dioStart,bool? returnIsString,bool isFullUrl = false}) async {
+  Future<WrapJson> request([RequestParams? options]) async {
     try {
-      final r = await super.request(
-          showErrorMsg: showErrorMsg,
-          loadingText: loadingText,
-          contentType: contentType,
-          headers: headers,
-          showDefaultLoading: showDefaultLoading,
-          data: data,
-          responseType: responseType,
-          nullParams: nullParams,
-          requestEncoder: requestEncoder,
-          dioStart: dioStart,returnIsString: returnIsString);
+      final r = await super.request(options);
       return WrapJson(r);
     } on AppException catch (e) {
       return WrapJson.fromMyServerError(e);

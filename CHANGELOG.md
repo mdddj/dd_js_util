@@ -1,3 +1,8 @@
+# 3.0.0
+
+* 有重大变更
+* BaseApi 新增 `RequestParams` 属性
+
 # 2.2.8
 
 * 适配flutter3.7.0
