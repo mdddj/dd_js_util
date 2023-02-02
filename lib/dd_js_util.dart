@@ -6,6 +6,7 @@ import 'dart:io' as io;
 import 'dart:math' as math;
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dd_js_util/theme/model.dart';
 import 'package:diox/diox.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:extended_image_library/extended_image_library.dart' as ei;
@@ -36,7 +37,6 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:waterfall_flow/waterfall_flow.dart';
 
 import 'api/request_params.dart';
-import 'theme/model.dart';
 
 part './api/base.dart';
 part './api/error_widget.dart';
