@@ -28,8 +28,8 @@ mixin BasePagedApiMixin on BaseApi {
 }
 
 abstract class BaseApi {
+  static bool showLog = false;
   static late String _host;
-
   static set host(String h) => _host = h;
 
   final String url;
@@ -66,8 +66,11 @@ abstract class BaseApi {
       final contentTypeString = httpMethod == HttpMethod.probuf
           ? kProtobufContentType
           : contentTypeStr;
+      final finalUrl = options.isFullUrl ? url : (_host + url);
+      printLog("url---$finalUrl");
+      printLog("params---$queryParameters");
       final response = await dio.request(
-        options.isFullUrl ? url : (_host + url),
+        finalUrl,
         options: Options(
             method: method,
             contentType: contentTypeString,
@@ -105,7 +108,10 @@ abstract class BaseApi {
         closeLoading();
       }
       throw e.error as AppException;
-    } catch (e) {
+    } catch (e, s) {
+      if (showLog) {
+        debugPrintStack(stackTrace: s, label: '$e');
+      }
       throw AppException.appError();
     }
   }
@@ -145,6 +151,13 @@ abstract class BaseApi {
       call.call(this);
     }
   }
+
+  void printLog(dynamic log) {
+    if (showLog) {
+      debugPrint('$log');
+    }
+  }
+
 }
 
 typedef CallIf = bool Function();
