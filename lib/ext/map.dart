@@ -40,6 +40,10 @@ extension MapExt on Map<String, dynamic> {
     return map;
   }
 
+  WrapJson get json {
+    return WrapJson(this);
+  }
+
 
 }
 
@@ -117,6 +121,16 @@ class WrapJson {
     return defaultValue ?? <String,dynamic>{};
   }
 
+  Map<String,dynamic> getMap2(String key1,String key2) {
+    final value1 = data[key1];
+    if(value1 is Map<String,dynamic>){
+      final value2 = value1[key2];
+      if(value2 is Map<String,dynamic>){
+        return value2;
+      }
+    }
+    return {};
+  }
 
 
   ///---- 一些扩展工具类

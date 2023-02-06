@@ -6,7 +6,11 @@ void showToast(String msg) {
 }
 
 @Doc(message: '显示一个iOS弹窗')
-void showIosDialog(String msg, {String? okText, List<Widget>? startActions, List<Widget>? endActions,Widget? title}) {
+void showIosDialog(String msg,
+    {String? okText,
+    List<Widget>? startActions,
+    List<Widget>? endActions,
+    Widget? title}) {
   const tag = 's-dialog-simple-ok-btn';
   SmartDialog.show(
       builder: (_) {
@@ -14,13 +18,36 @@ void showIosDialog(String msg, {String? okText, List<Widget>? startActions, List
         if (isIos) {
           return CupertinoAlertDialog(
             content: Text(msg),
-            actions: [if (startActions != null) ...startActions, CupertinoDialogAction(child: const Text("Ok"), onPressed: () => SmartDialog.dismiss(tag: tag)), if (endActions != null) ...endActions],
+            actions: [
+              if (startActions != null) ...startActions,
+              CupertinoDialogAction(
+                  child: const Text("Ok"),
+                  onPressed: () => SmartDialog.dismiss(tag: tag)),
+              if (endActions != null) ...endActions
+            ],
           );
         } else {
+          final allEmpty = startActions == null && endActions == null;
           return AlertDialog(
             title: title ?? const Text(''),
             content: Text(msg),
-            actions: [if (startActions != null) ...startActions, ElevatedButton(onPressed: () => SmartDialog.dismiss(tag: tag), child: const Text("OK")), if (endActions != null) ...endActions],
+            actions: allEmpty
+                ? [
+                    Row(
+                      children: [
+                        ElevatedButton(
+                            onPressed: () => SmartDialog.dismiss(tag: tag),
+                            child: Text(okText ?? "OK")).center
+                      ],
+                    )
+                  ]
+                : [
+                    if (startActions != null) ...startActions,
+                    ElevatedButton(
+                        onPressed: () => SmartDialog.dismiss(tag: tag),
+                        child: Text(okText ?? "OK")),
+                    if (endActions != null) ...endActions
+                  ],
           );
         }
       },

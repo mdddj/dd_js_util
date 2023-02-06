@@ -5,15 +5,21 @@ class AppException implements Exception {
   final String message;
   final int code;
   final DioError? dioError;
+  final dynamic data;
 
   AppException( {
     required this.code,
     required this.message,
-    this.dioError
+    this.dioError,
+    this.data
   });
 
-  factory AppException.appError({int? code,String? msg,DioError? dioError}){
-    return AppException(code: code ?? 10001, message: msg ?? 'app Error',dioError: dioError);
+  factory AppException.appError({int? code,String? msg,DioError? dioError,dynamic data}){
+    return AppException(code: code ?? 10001, message: msg ?? 'app Error',dioError: dioError,data:data);
+  }
+
+  String get getMessage {
+    return data is String ? data.toString() : message;
   }
 
   factory AppException.create(DioError error) {

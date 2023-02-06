@@ -10,6 +10,7 @@ typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
 
 @Doc(message: "简单toast弹窗")
 void toast(String msg) {
+  SmartDialog.dismiss(status: SmartStatus.toast);
   SmartDialog.showToast(msg);
 }
 
@@ -50,7 +51,6 @@ abstract class BaseApi {
       if (options.showDefaultLoading) {
         showLoading(loadingText: options.loadingText);
       }
-
       final dio = getDio();
       intrtceptors.add(ErrorInterceptor());
       dio.interceptors.addAll(intrtceptors);
@@ -94,7 +94,7 @@ abstract class BaseApi {
             return jsonDecode(data);
           } catch (e) {
             throw AppException.appError(
-                code: 10003, msg: "Unable to process server data");
+                code: 10003, msg: "Unable to process server data",data: data);
           }
         }
         return data;
@@ -108,11 +108,13 @@ abstract class BaseApi {
         closeLoading();
       }
       throw e.error as AppException;
+    } on AppException catch(_){
+      rethrow;
     } catch (e, s) {
       if (showLog) {
         debugPrintStack(stackTrace: s, label: '$e');
       }
-      throw AppException.appError();
+      throw AppException.appError(msg: e.toString());
     }
   }
 
