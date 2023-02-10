@@ -64,4 +64,8 @@ extension ContextExt on BuildContext {
   Future<void> bottomSheet<T>({required Widget child}) async {
     return await showModalBottomSheet(context: this, builder: (c) => child);
   }
+
+  Future<bool> askOk(AskOkDialogParams params) async {
+    return AskOkDialog.show(this,params);
+  }
 }

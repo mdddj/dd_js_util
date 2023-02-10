@@ -8,6 +8,8 @@ analyzer:
     - lib/generated
     - lib/l10n
     - lib/generated_plugin_registrant.dart
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
 
 linter:
   rules:

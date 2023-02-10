@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of dd_js_util;
+part of 'app_local_setting_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
