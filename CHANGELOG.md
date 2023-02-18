@@ -1,5 +1,9 @@
 # 3.0.2
 
+* update diox to dio
+
+# 3.0.2
+
 * dio to 5.0.0
 
 # 3.0.1
