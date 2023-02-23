@@ -109,7 +109,7 @@ class _StringUtil {
   static Future<HtmlTitleAndIconModel> getHtmlTitleAndIcon(String webUrl) async {
     String title = "";
     String icon = "";
-    final response = await Dio().get(webUrl,options: Options(responseType: ResponseType.plain));
+    final response = await dio.Dio().get(webUrl,options: dio.Options(responseType: dio.ResponseType.plain));
     if(response.statusCode!=200){
       throw AppException.appError(code: response.statusCode,msg: response.statusMessage);
     }

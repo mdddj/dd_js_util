@@ -4,7 +4,7 @@ part of dd_js_util;
 class AppException implements Exception {
   final String message;
   final int code;
-  final DioError? dioError;
+  final dio.DioError? dioError;
   final dynamic data;
 
   AppException( {
@@ -14,7 +14,7 @@ class AppException implements Exception {
     this.data
   });
 
-  factory AppException.appError({int? code,String? msg,DioError? dioError,dynamic data}){
+  factory AppException.appError({int? code,String? msg,dio.DioError? dioError,dynamic data}){
     return AppException(code: code ?? 10001, message: msg ?? 'app Error',dioError: dioError,data:data);
   }
 
@@ -22,7 +22,7 @@ class AppException implements Exception {
     return data is String ? data.toString() : message;
   }
 
-  factory AppException.create(DioError error) {
+  factory AppException.create(dio.DioError error) {
     final data = error.response?.data;
 
     String? msg;
@@ -34,24 +34,24 @@ class AppException implements Exception {
     } catch (_) {}
 
     switch (error.type) {
-      case DioErrorType.cancel:
+      case dio.DioErrorType.cancel:
         {
           /// 请求取消
           return BadRequestException(201, "Request cancellation",dioError: error);
         }
-      case DioErrorType.connectionTimeout:
+      case dio.DioErrorType.connectionTimeout:
         {
           return BadRequestException(-1, "Connection timed out",dioError: error);
         }
-      case DioErrorType.sendTimeout:
+      case dio.DioErrorType.sendTimeout:
         {
           return BadRequestException(-1, "Connection timed out",dioError: error);
         }
-      case DioErrorType.receiveTimeout:
+      case dio.DioErrorType.receiveTimeout:
         {
           return BadRequestException(-1, "Response timeout",dioError: error);
         }
-      case DioErrorType.badResponse:
+      case dio.DioErrorType.badResponse:
         {
           try {
             int? errCode = error.response?.statusCode;
@@ -144,19 +144,19 @@ class AppException implements Exception {
 
 /// 请求错误
 class BadRequestException extends AppException {
-  BadRequestException(int code, String message,{DioError? dioError}) : super(code: code, message: message,dioError: dioError);
+  BadRequestException(int code, String message,{dio.DioError? dioError}) : super(code: code, message: message,dioError: dioError);
 }
 
 /// 未认证异常
 class UnauthorisedException extends AppException {
-  UnauthorisedException(int code, String message,{DioError? dioError}) : super(code: code, message: message,dioError: dioError);
+  UnauthorisedException(int code, String message,{dio.DioError? dioError}) : super(code: code, message: message,dioError: dioError);
 }
 
 /// 拦截器
 /// 错误处理拦截器
-class ErrorInterceptor extends Interceptor {
+class ErrorInterceptor extends dio.Interceptor {
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(dio.DioError err, dio.ErrorInterceptorHandler handler) {
     AppException appException = AppException.create(err);
     final ae = err.copyWith(error: appException);
     super.onError(ae, handler);

@@ -5,8 +5,9 @@ const kProtobufContentType = 'application/x-protobuf';
 enum HttpMethod { post, get, probuf }
 
 const kMultipartFormDataHeader = 'multipart/form-data';
-
-typedef MyInterceptorWrapper = InterceptorsWrapper;
+typedef MyFormData = dio.FormData;
+typedef MyMultipartFile = dio.MultipartFile;
+typedef MyInterceptorWrapper = dio.InterceptorsWrapper;
 typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
 
 @Doc(message: "简单toast弹窗")
@@ -32,18 +33,18 @@ mixin BasePagedApiMixin on BaseApi {
 abstract class BaseApi {
   static bool showLog = false;
   static late String _host;
-  static BaseOptions options =
-      BaseOptions(connectTimeout: const Duration(milliseconds: 30000));
+  static dio.BaseOptions options =
+      dio.BaseOptions(connectTimeout: const Duration(milliseconds: 30000));
 
   static set host(String h) => _host = h;
 
   final String url;
   final HttpMethod httpMethod;
   final Map<String, dynamic> params = <String, dynamic>{};
-  FormData formData = FormData.fromMap({});
-  List<Interceptor> interceptions = [];
+  dio.FormData formData = dio.FormData.fromMap({});
+  List<dio.Interceptor> interceptions = [];
 
-  static Dio? dio;
+  static dio.Dio? _dio;
 
   BaseApi(this.url, {this.httpMethod = HttpMethod.get});
 
@@ -55,16 +56,16 @@ abstract class BaseApi {
       if (options.showDefaultLoading) {
         showLoading(loadingText: options.loadingText);
       }
-      final dio = getDio();
+      final d = getDio();
       interceptions.add(ErrorInterceptor());
-      dio.interceptors.addAll(
+      d.interceptors.addAll(
           options.interceptorCall?.call(interceptions) ?? interceptions);
       final contentTypeStr = options.contentType.isNotEmpty
           ? options.contentType
           : (httpMethod == HttpMethod.post ? io.ContentType.json.value : null);
       final bodyParams =
           formData.files.isNotEmpty ? formData : (options.data ?? params);
-      options.dioStart?.call(dio, _host + url);
+      options.dioStart?.call(d, _host + url);
       final queryParameters = httpMethod == HttpMethod.post
           ? null
           : (options.nullParams == true ? null : options.data ?? params);
@@ -74,9 +75,9 @@ abstract class BaseApi {
       final finalUrl = options.isFullUrl ? url : (_host + url);
       printLog("url---$finalUrl");
       printLog("params---$queryParameters");
-      final response = await dio.request(
+      final response = await d.request(
         finalUrl,
-        options: Options(
+        options: dio.Options(
             method: method,
             contentType: contentTypeString,
             headers: options.headers,
@@ -108,7 +109,7 @@ abstract class BaseApi {
             code: response.statusCode ?? 10004,
             message: response.statusMessage ?? "ERROR");
       }
-    } on DioError catch (e) {
+    } on dio.DioError catch (e) {
       if (options.showDefaultLoading) {
         closeLoading();
       }
@@ -145,9 +146,9 @@ abstract class BaseApi {
     SmartDialog.dismiss();
   }
 
-  static Dio getDio() {
-    dio ??= Dio(options);
-    return dio!;
+  static dio.Dio getDio() {
+    _dio ??= dio.Dio(options);
+    return _dio!;
   }
 
   void handle(CallIf callIf, ValueChanged<BaseApi> call) {
@@ -174,7 +175,7 @@ class Doc {
 
 ///wrapjson类型的接口封装
 abstract class AppCoreApi extends BaseApi {
-  AppCoreApi(String url, {HttpMethod? httpMethod, List<Interceptor>? ints})
+  AppCoreApi(String url, {HttpMethod? httpMethod, List<dio.Interceptor>? ints})
       : super(url, httpMethod: httpMethod ?? HttpMethod.get) {
     if (ints?.isNotEmpty == true) {
       interceptions.addAll(ints!);
