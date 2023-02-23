@@ -31,6 +31,7 @@ mixin BasePagedApiMixin on BaseApi {
 abstract class BaseApi {
   static bool showLog = false;
   static late String _host;
+
   static set host(String h) => _host = h;
 
   final String url;
@@ -53,7 +54,8 @@ abstract class BaseApi {
       }
       final dio = getDio();
       intrtceptors.add(ErrorInterceptor());
-      dio.interceptors.addAll(intrtceptors);
+      dio.interceptors
+          .addAll(options.interceptorCall?.call(intrtceptors) ?? intrtceptors);
       final contentTypeStr = options.contentType.isNotEmpty
           ? options.contentType
           : (httpMethod == HttpMethod.post ? io.ContentType.json.value : null);
@@ -94,7 +96,7 @@ abstract class BaseApi {
             return jsonDecode(data);
           } catch (e) {
             throw AppException.appError(
-                code: 10003, msg: "Unable to process server data",data: data);
+                code: 10003, msg: "Unable to process server data", data: data);
           }
         }
         return data;
@@ -108,7 +110,7 @@ abstract class BaseApi {
         closeLoading();
       }
       throw e.error as AppException;
-    } on AppException catch(_){
+    } on AppException catch (_) {
       rethrow;
     } catch (e, s) {
       if (showLog) {
@@ -159,7 +161,6 @@ abstract class BaseApi {
       debugPrint('$log');
     }
   }
-
 }
 
 typedef CallIf = bool Function();

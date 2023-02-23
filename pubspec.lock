@@ -5,18 +5,18 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: "569ddca58d535e601dd1584afa117710abc999d036c0cd2c51777fb257df78e8"
+      sha256: e440ac42679dfc04bbbefb58ed225c994bc7e07fccc8a68ec7d3631a127e5da9
       url: "https://pub.dev"
     source: hosted
-    version: "53.0.0"
+    version: "54.0.0"
   analyzer:
     dependency: "direct dev"
     description:
       name: analyzer
-      sha256: "10927c4b7c7c88b1adbca278c3d5531db92e2f4b4abf04e2919a800af965f3f5"
+      sha256: "2c2e3721ee9fb36de92faa060f3480c81b23e904352b087e5c64224b1a044427"
       url: "https://pub.dev"
     source: hosted
-    version: "5.5.0"
+    version: "5.6.0"
   archive:
     dependency: transitive
     description:
@@ -415,10 +415,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_smart_dialog
-      sha256: ab1dccf481ab0a353861e46a841fe47228cf4dc0c211d9cb8ebac007cfdcd29a
+      sha256: "2f2f3ed0dbd6c924b24e27b681bef44e36e7e5e3e78486706a7562088395f9fa"
       url: "https://pub.dev"
     source: hosted
-    version: "4.8.2+4"
+    version: "4.8.2+5"
   flutter_swiper_null_safety_flutter3:
     dependency: "direct main"
     description:
@@ -569,10 +569,10 @@ packages:
     dependency: "direct main"
     description:
       name: image_picker
-      sha256: d39cc12402dab8365fe5b5370e64694ae0223d675c36b15ff0490b7cc3d32551
+      sha256: "22207768556b82d55ec70166824350fee32298732d5efa4d6e756f848f51f66a"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.6+2"
+    version: "0.8.6+3"
   image_picker_android:
     dependency: transitive
     description:
@@ -657,10 +657,10 @@ packages:
     dependency: "direct main"
     description:
       name: logger
-      sha256: "5076f09225f91dc49289a4ccb92df2eeea9ea01cf7c26d49b3a1f04c6a49eec1"
+      sha256: "3584a87540706f7c2de29fa2b0bc0e0825bacab8a6deac736c2d8cb947331526"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.1"
   logging:
     dependency: transitive
     description:
@@ -1054,10 +1054,10 @@ packages:
     dependency: "direct main"
     description:
       name: url_launcher
-      sha256: e8f2efc804810c0f2f5b485f49e7942179f56eabcfe81dce3387fec4bb55876b
+      sha256: "75f2846facd11168d007529d6cd8fcb2b750186bea046af9711f10b907e1587e"
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.9"
+    version: "6.1.10"
   url_launcher_android:
     dependency: transitive
     description:
