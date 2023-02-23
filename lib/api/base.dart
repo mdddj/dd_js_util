@@ -6,6 +6,7 @@ enum HttpMethod { post, get, probuf }
 
 const kMultipartFormDataHeader = 'multipart/form-data';
 
+typedef MyInterceptorWrapper = InterceptorsWrapper;
 typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
 
 @Doc(message: "简单toast弹窗")
@@ -31,6 +32,8 @@ mixin BasePagedApiMixin on BaseApi {
 abstract class BaseApi {
   static bool showLog = false;
   static late String _host;
+  static BaseOptions options =
+      BaseOptions(connectTimeout: const Duration(milliseconds: 30000));
 
   static set host(String h) => _host = h;
 
@@ -38,7 +41,7 @@ abstract class BaseApi {
   final HttpMethod httpMethod;
   final Map<String, dynamic> params = <String, dynamic>{};
   FormData formData = FormData.fromMap({});
-  List<Interceptor> intrtceptors = [];
+  List<Interceptor> interceptions = [];
 
   static Dio? dio;
 
@@ -53,9 +56,9 @@ abstract class BaseApi {
         showLoading(loadingText: options.loadingText);
       }
       final dio = getDio();
-      intrtceptors.add(ErrorInterceptor());
-      dio.interceptors
-          .addAll(options.interceptorCall?.call(intrtceptors) ?? intrtceptors);
+      interceptions.add(ErrorInterceptor());
+      dio.interceptors.addAll(
+          options.interceptorCall?.call(interceptions) ?? interceptions);
       final contentTypeStr = options.contentType.isNotEmpty
           ? options.contentType
           : (httpMethod == HttpMethod.post ? io.ContentType.json.value : null);
@@ -143,10 +146,7 @@ abstract class BaseApi {
   }
 
   static Dio getDio() {
-    if (dio != null) {
-      return dio!;
-    }
-    dio = Dio(BaseOptions(connectTimeout: const Duration(milliseconds: 30000)));
+    dio ??= Dio(options);
     return dio!;
   }
 
@@ -177,7 +177,7 @@ abstract class AppCoreApi extends BaseApi {
   AppCoreApi(String url, {HttpMethod? httpMethod, List<Interceptor>? ints})
       : super(url, httpMethod: httpMethod ?? HttpMethod.get) {
     if (ints?.isNotEmpty == true) {
-      intrtceptors.addAll(ints!);
+      interceptions.addAll(ints!);
     }
   }
 
