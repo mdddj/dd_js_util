@@ -1,6 +1,6 @@
 name: dd_js_util
 description: 梁典典的常用工具类封装
-version: 3.1.5
+version: 3.1.6
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
@@ -43,9 +43,7 @@ dependencies:
   extended_image_library: ^3.4.1
   freezed_annotation: ^2.2.0
   fast_immutable_collections: ^8.2.0
-  loading_more_list:
-    git:
-      url: https://github.com/mdddj/loading_more_list
+  loading_more_list: ^5.0.3
 
 dev_dependencies:
   flutter_test:

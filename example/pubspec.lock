@@ -503,20 +503,18 @@ packages:
   loading_more_list:
     dependency: transitive
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "2c3ef71275e7349b6f57e7ee103bca2dee61504c"
-      url: "https://github.com/mdddj/loading_more_list"
-    source: git
-    version: "5.0.2"
+      name: loading_more_list
+      sha256: aa680edc81cf024c394dccfa7ba1db701a5efb23ec1b8c657308428ce9da11d1
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.3"
   loading_more_list_library:
     dependency: transitive
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "21d23f3123205b29581bf5df4548b50285052b79"
-      url: "https://github.com/mdddj/loading_more_list_library"
-    source: git
+      name: loading_more_list_library
+      sha256: "31348925a98748ffe04f661e4b47df37103fabad39442064fcf59148a5fee2dd"
+      url: "https://pub.dev"
+    source: hosted
     version: "2.0.1"
   logger:
     dependency: transitive

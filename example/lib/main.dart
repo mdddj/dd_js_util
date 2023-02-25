@@ -19,10 +19,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> implements SearchSupportActionListening {
   final sourceList = MyRepository();
-  final refreshController = RefreshController();
+  final refreshController = RefreshController<String>();
   final scrollerController = ScrollController();
-
-
 
   @override
   void initState() {
@@ -42,8 +40,9 @@ class _MyAppState extends State<MyApp> implements SearchSupportActionListening {
           child: Column(
             children: [
               SearchSupport<String>(
-                SearchSupportSliverList(SearchSupportConfig<String>(itemBuilder: itemBuild, sourceList: sourceList, showNoMore: false)),
-                params: SearchSupportParams(childBuilder: childBuilder, controller: refreshController,autoShow: false,listening: this),
+                params: SearchSupportParams(childBuilder: childBuilder, controller: refreshController, autoShow: false, listening: this),
+                itemBuilder: itemBuild,
+                sourceList: sourceList,
                 child: CupertinoTextField(onChanged: onChange),
               )
             ],
@@ -53,10 +52,13 @@ class _MyAppState extends State<MyApp> implements SearchSupportActionListening {
     );
   }
 
-  Widget itemBuild(BuildContext context, String item, int index) {
+  Widget itemBuild(BuildContext context, String item, int index, bool isSelect) {
     return Card(
+      color: isSelect ? context.primaryColor : context.cardColor,
       child: Text(item).defaultPadding12,
-    );
+    ).click(() {
+      refreshController.toSelectItem(item);
+    });
   }
 
   //执行搜索
@@ -71,7 +73,7 @@ class _MyAppState extends State<MyApp> implements SearchSupportActionListening {
       controller: scrollerController,
       thumbVisibility: true,
       child: Padding(
-        padding: const EdgeInsets.only(top: 6,right: 16,bottom: 16,left: 12),
+        padding: const EdgeInsets.only(top: 6, right: 16, bottom: 16, left: 12),
         child: PhysicalModel(
           color: ctx.cardColor,
           shadowColor: ctx.primaryColor,
@@ -116,7 +118,7 @@ class MyRepository extends SearchSupportRepository<String> {
   int page = 1;
 
   @override
-  Future<bool> loadData([bool isLoadMoreAction = false]) async {
+  Future<bool> loadData([bool isloadMoreAction = false]) async {
     await Future.delayed(const Duration(seconds: 1));
     addAll(List.generate(10, (index) => "$index")); //设置过滤结果
     setState(); //刷新UI

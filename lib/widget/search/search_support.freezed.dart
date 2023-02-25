@@ -15,10 +15,10 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$SearchSupportParams {
+mixin _$SearchSupportParams<T> {
   ///是否自动显示搜索结果
   bool get autoShow => throw _privateConstructorUsedError; //搜索控制器
-  RefreshController? get controller =>
+  RefreshController<T>? get controller =>
       throw _privateConstructorUsedError; //展示组件的容器,需要固定高度
   SearchSupportCoreUiBuild get childBuilder =>
       throw _privateConstructorUsedError;
@@ -26,26 +26,27 @@ mixin _$SearchSupportParams {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SearchSupportParamsCopyWith<SearchSupportParams> get copyWith =>
+  $SearchSupportParamsCopyWith<T, SearchSupportParams<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SearchSupportParamsCopyWith<$Res> {
-  factory $SearchSupportParamsCopyWith(
-          SearchSupportParams value, $Res Function(SearchSupportParams) then) =
-      _$SearchSupportParamsCopyWithImpl<$Res, SearchSupportParams>;
+abstract class $SearchSupportParamsCopyWith<T, $Res> {
+  factory $SearchSupportParamsCopyWith(SearchSupportParams<T> value,
+          $Res Function(SearchSupportParams<T>) then) =
+      _$SearchSupportParamsCopyWithImpl<T, $Res, SearchSupportParams<T>>;
   @useResult
   $Res call(
       {bool autoShow,
-      RefreshController? controller,
+      RefreshController<T>? controller,
       SearchSupportCoreUiBuild childBuilder,
       SearchSupportActionListening? listening});
 }
 
 /// @nodoc
-class _$SearchSupportParamsCopyWithImpl<$Res, $Val extends SearchSupportParams>
-    implements $SearchSupportParamsCopyWith<$Res> {
+class _$SearchSupportParamsCopyWithImpl<T, $Res,
+        $Val extends SearchSupportParams<T>>
+    implements $SearchSupportParamsCopyWith<T, $Res> {
   _$SearchSupportParamsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -69,7 +70,7 @@ class _$SearchSupportParamsCopyWithImpl<$Res, $Val extends SearchSupportParams>
       controller: freezed == controller
           ? _value.controller
           : controller // ignore: cast_nullable_to_non_nullable
-              as RefreshController?,
+              as RefreshController<T>?,
       childBuilder: null == childBuilder
           ? _value.childBuilder
           : childBuilder // ignore: cast_nullable_to_non_nullable
@@ -83,26 +84,27 @@ class _$SearchSupportParamsCopyWithImpl<$Res, $Val extends SearchSupportParams>
 }
 
 /// @nodoc
-abstract class _$$_SearchSupportParamsCopyWith<$Res>
-    implements $SearchSupportParamsCopyWith<$Res> {
-  factory _$$_SearchSupportParamsCopyWith(_$_SearchSupportParams value,
-          $Res Function(_$_SearchSupportParams) then) =
-      __$$_SearchSupportParamsCopyWithImpl<$Res>;
+abstract class _$$_SearchSupportParamsCopyWith<T, $Res>
+    implements $SearchSupportParamsCopyWith<T, $Res> {
+  factory _$$_SearchSupportParamsCopyWith(_$_SearchSupportParams<T> value,
+          $Res Function(_$_SearchSupportParams<T>) then) =
+      __$$_SearchSupportParamsCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call(
       {bool autoShow,
-      RefreshController? controller,
+      RefreshController<T>? controller,
       SearchSupportCoreUiBuild childBuilder,
       SearchSupportActionListening? listening});
 }
 
 /// @nodoc
-class __$$_SearchSupportParamsCopyWithImpl<$Res>
-    extends _$SearchSupportParamsCopyWithImpl<$Res, _$_SearchSupportParams>
-    implements _$$_SearchSupportParamsCopyWith<$Res> {
-  __$$_SearchSupportParamsCopyWithImpl(_$_SearchSupportParams _value,
-      $Res Function(_$_SearchSupportParams) _then)
+class __$$_SearchSupportParamsCopyWithImpl<T, $Res>
+    extends _$SearchSupportParamsCopyWithImpl<T, $Res,
+        _$_SearchSupportParams<T>>
+    implements _$$_SearchSupportParamsCopyWith<T, $Res> {
+  __$$_SearchSupportParamsCopyWithImpl(_$_SearchSupportParams<T> _value,
+      $Res Function(_$_SearchSupportParams<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -113,7 +115,7 @@ class __$$_SearchSupportParamsCopyWithImpl<$Res>
     Object? childBuilder = null,
     Object? listening = freezed,
   }) {
-    return _then(_$_SearchSupportParams(
+    return _then(_$_SearchSupportParams<T>(
       autoShow: null == autoShow
           ? _value.autoShow
           : autoShow // ignore: cast_nullable_to_non_nullable
@@ -121,7 +123,7 @@ class __$$_SearchSupportParamsCopyWithImpl<$Res>
       controller: freezed == controller
           ? _value.controller
           : controller // ignore: cast_nullable_to_non_nullable
-              as RefreshController?,
+              as RefreshController<T>?,
       childBuilder: null == childBuilder
           ? _value.childBuilder
           : childBuilder // ignore: cast_nullable_to_non_nullable
@@ -136,7 +138,7 @@ class __$$_SearchSupportParamsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SearchSupportParams implements _SearchSupportParams {
+class _$_SearchSupportParams<T> implements _SearchSupportParams<T> {
   const _$_SearchSupportParams(
       {this.autoShow = true,
       this.controller,
@@ -149,7 +151,7 @@ class _$_SearchSupportParams implements _SearchSupportParams {
   final bool autoShow;
 //搜索控制器
   @override
-  final RefreshController? controller;
+  final RefreshController<T>? controller;
 //展示组件的容器,需要固定高度
   @override
   final SearchSupportCoreUiBuild childBuilder;
@@ -158,14 +160,14 @@ class _$_SearchSupportParams implements _SearchSupportParams {
 
   @override
   String toString() {
-    return 'SearchSupportParams(autoShow: $autoShow, controller: $controller, childBuilder: $childBuilder, listening: $listening)';
+    return 'SearchSupportParams<$T>(autoShow: $autoShow, controller: $controller, childBuilder: $childBuilder, listening: $listening)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SearchSupportParams &&
+            other is _$_SearchSupportParams<T> &&
             (identical(other.autoShow, autoShow) ||
                 other.autoShow == autoShow) &&
             (identical(other.controller, controller) ||
@@ -183,30 +185,31 @@ class _$_SearchSupportParams implements _SearchSupportParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SearchSupportParamsCopyWith<_$_SearchSupportParams> get copyWith =>
-      __$$_SearchSupportParamsCopyWithImpl<_$_SearchSupportParams>(
+  _$$_SearchSupportParamsCopyWith<T, _$_SearchSupportParams<T>> get copyWith =>
+      __$$_SearchSupportParamsCopyWithImpl<T, _$_SearchSupportParams<T>>(
           this, _$identity);
 }
 
-abstract class _SearchSupportParams implements SearchSupportParams {
+abstract class _SearchSupportParams<T> implements SearchSupportParams<T> {
   const factory _SearchSupportParams(
-      {final bool autoShow,
-      final RefreshController? controller,
-      required final SearchSupportCoreUiBuild childBuilder,
-      final SearchSupportActionListening? listening}) = _$_SearchSupportParams;
+          {final bool autoShow,
+          final RefreshController<T>? controller,
+          required final SearchSupportCoreUiBuild childBuilder,
+          final SearchSupportActionListening? listening}) =
+      _$_SearchSupportParams<T>;
 
   @override
 
   ///是否自动显示搜索结果
   bool get autoShow;
   @override //搜索控制器
-  RefreshController? get controller;
+  RefreshController<T>? get controller;
   @override //展示组件的容器,需要固定高度
   SearchSupportCoreUiBuild get childBuilder;
   @override
   SearchSupportActionListening? get listening;
   @override
   @JsonKey(ignore: true)
-  _$$_SearchSupportParamsCopyWith<_$_SearchSupportParams> get copyWith =>
+  _$$_SearchSupportParamsCopyWith<T, _$_SearchSupportParams<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

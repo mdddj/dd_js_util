@@ -12,13 +12,13 @@ typedef SearchSupportCoreUiBuild = Widget Function(SearchSupportManager manager,
 
 ///参数列表
 @freezed
-class SearchSupportParams with _$SearchSupportParams {
+class SearchSupportParams<T> with _$SearchSupportParams<T> {
   const factory SearchSupportParams(
       {
       ///是否自动显示搜索结果
       @Default(true) bool autoShow,
       //搜索控制器
-      RefreshController? controller,
+      RefreshController<T>? controller,
       //展示组件的容器,需要固定高度
       required SearchSupportCoreUiBuild childBuilder,
       SearchSupportActionListening? listening}) = _SearchSupportParams;
@@ -35,4 +35,5 @@ abstract class SearchSupportActionListening {
 
   ///弹出层重构事件
   void onBuild(BuildContext context);
+
 }
