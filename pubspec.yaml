@@ -1,11 +1,11 @@
 name: dd_js_util
 description: 梁典典的常用工具类封装
-version: 3.1.4
+version: 3.1.5
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
-  sdk: ">=2.19.2 <4.0.0"
-  flutter: ">=3.7.4"
+  sdk: ">=2.18.0 <4.0.0"
+  flutter: ">=3.7.0"
 
 dependencies:
   flutter:
@@ -25,11 +25,11 @@ dependencies:
   flutter_smart_dialog: ^4.8.2+5
   image_picker: ^0.8.6+3
   flutter_image_compress: ^1.1.3
-  dio: ^5.0.0
+  dio: ^5.0.1
   extended_image: ^7.0.2
-  flutter_swiper_null_safety_flutter3: ^3.0.0
+  flutter_swiper_null_safety_flutter3: ^3.0.1
   url_launcher: ^6.1.10
-  ffloat_nullsafety: ^3.3.1
+  ffloat_nullsafety: ^3.3.6
   riverpod: ^2.2.0
   flutter_easyrefresh: ^2.2.2
   hooks_riverpod: ^2.2.0
@@ -42,7 +42,10 @@ dependencies:
   flex_color_scheme: ^6.1.2
   extended_image_library: ^3.4.1
   freezed_annotation: ^2.2.0
-
+  fast_immutable_collections: ^8.2.0
+  loading_more_list:
+    git:
+      url: https://github.com/mdddj/loading_more_list
 
 dev_dependencies:
   flutter_test:
@@ -54,17 +57,17 @@ dev_dependencies:
   freezed: ^2.3.2
 
 
-flutter:
-  plugin:
-    platforms:
-      android:
-        package: shop.itbug.dd_js_util
-        pluginClass: DdJsUtilPlugin
-      ios:
-        pluginClass: DdJsUtilPlugin
-      windows:
-        pluginClass: DdJsUtilPlugin
-      web:
-        pluginClass: DdJsUtilWeb
-        fileName: dd_js_util_web.dart
+#flutter:
+#  plugin:
+#    platforms:
+#      android:
+#        package: shop.itbug.dd_js_util
+#        pluginClass: DdJsUtilPlugin
+#      ios:
+#        pluginClass: DdJsUtilPlugin
+#      windows:
+#        pluginClass: DdJsUtilPlugin
+#      web:
+#        pluginClass: DdJsUtilWeb
+#        fileName: dd_js_util_web.dart
 

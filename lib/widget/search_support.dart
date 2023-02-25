@@ -1,124 +1,106 @@
 part of dd_js_util;
 
-
-typedef ItemBuilder<T> = Widget Function(T item);
-typedef SearchController = FFloatController;
-typedef SearchRequest<T> = Future<List<T>> Function(String? searchKey);
-typedef ContainerBuilder = Widget Function(Widget child);
+typedef SearchSupportRepository<T> = LoadingMoreBase<T>;
+typedef SearchSupportSliverList<T> = LoadingMoreSliverList<T>;
+typedef SearchSupportConfig<T> = SliverListConfig<T>;
+typedef SearchSupportScrollView = LoadingMoreCustomScrollView;
 
 ///超级搜索
 class SearchSupport<T> extends StatefulWidget {
-  ///子组件
+  //执行获取过滤列表
+  final SearchSupportSliverList<T> loadingMoreSliverList;
+  final SearchSupportParams params;
   final Widget child;
 
-  ///结果列表
-  final List<T> childrens;
-
-  ///用户选中某个值
-  final ValueChanged<dynamic> onSelected;
-
-  final ItemBuilder itemBuilder;
-
-  final SearchController controller;
-
-  final SearchRequest request;
-
-  final RefreshController? refreshController;
-
-  final ContainerBuilder? containerBuilder;
-
   const SearchSupport(
-      {Key? key,
-      required this.child,
-      required this.childrens,
-      required this.onSelected,
-      required this.itemBuilder,
-      required this.controller,
-      required this.request,
-      this.refreshController,
-      this.containerBuilder})
-      : super(key: key);
+    this.loadingMoreSliverList, {
+    Key? key,
+    required this.params,
+    required this.child,
+  }) : super(key: key);
 
   @override
   State<SearchSupport> createState() => _SearchSupportState<T>();
 }
 
 class _SearchSupportState<T> extends State<SearchSupport> {
-  Widget get child => widget.child;
+  SearchSupportParams get _params => widget.params;
 
-  StateSetter? ss;
-  State? contentState;
-  var _list = <dynamic>[];
+  Widget get child => widget.child;
+  final FFloatController _fFloatController = FFloatController();
+
+  late StateSetter _floatSetState;
+  late State _floatState;
 
   @override
   void initState() {
     super.initState();
     _bind();
+    delayFunction(() {
+      if (_params.autoShow == true) {
+        _log('初始化展示搜索结果');
+        _fFloatController.show();
+      }
+    });
   }
 
   @override
   void didUpdateWidget(covariant SearchSupport oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.refreshController != oldWidget.refreshController) {
+    if (_params.controller != oldWidget.params.controller) {
       _bind();
     }
   }
 
   @override
   void dispose() {
-    if (widget.controller.isShow) {
-      widget.controller.dismiss();
+    if (_fFloatController.isShow) {
+      _fFloatController.dismiss();
     }
     super.dispose();
-    widget.controller.dispose();
   }
 
   void _bind() {
-    widget.refreshController?._bind(this);
-  }
-
-  //执行刷新
-  Future<void> doRefreshList(String? searchKey) async {
-    final list = await widget.request(searchKey);
-    if (mounted && contentState?.mounted == true) {
-      ss?.call(() {
-        _list = list;
-      });
-    }
+    _params.controller?._bind(this);
   }
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, cpro) {
+    return LayoutBuilder(builder: (context, constraints) {
       return FFloat(
         (setter, s) {
-          ss = setter;
-          contentState = s;
-          return SizedBox(
-            width: cpro.maxWidth,
-            child: widget.containerBuilder?.call(_listWidget) ?? _listWidget,
-          );
+          _params.listening?.onBuild(s.context);
+          return _params.childBuilder.call(
+              SearchSupportManager(
+                context: s.context,
+                floatStateSetter: _floatSetState,
+                floatState: _floatState,
+              ),
+              widget.loadingMoreSliverList);
         },
         anchor: child,
-        controller: widget.controller,
+        controller: _fFloatController,
         alignment: FFloatAlignment.bottomLeft,
         shadowBlur: 0,
         shadowColor: Colors.transparent,
+        igBackground: false,
+        backgroundColor: Colors.transparent,
+        color: Colors.transparent,
+        onShow: (s) {
+          _params.listening?.initShow();
+          _floatState = s;
+          _floatSetState = s.setState;
+        },
+        onDispose: () {
+          _params.listening?.onHide();
+        },
       );
     });
   }
 
-  Widget get _listWidget => SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: _list
-              .map((e) => widget.itemBuilder(e).click(() {
-                    widget.onSelected.call(e as T);
-                    widget.controller.dismiss();
-                  }))
-              .toList(),
-        ),
-      );
+  void _log(dynamic msg) {
+    kLog(msg);
+  }
 }
 
 class RefreshController {
@@ -128,7 +110,25 @@ class RefreshController {
     _state = s;
   }
 
-  Future<void> doRefresh(String? searchKey) async {
-    await _state?.doRefreshList(searchKey);
+  //显示搜索结果
+  void show() {
+    _state?._fFloatController.show();
   }
+
+  bool get isShow => _state?._fFloatController.isShow ?? false;
+
+  //隐藏搜索结果
+  void hide() {
+    _state?._fFloatController.dismiss();
+  }
+
+  //刷新弹窗层UI,重新构建UI
+  void setState(){
+    if(_state?._floatState.mounted == true){
+      _state?._floatSetState((){});
+    }
+  }
+
+  //控制器
+  FFloatController? get floatController => _state?._fFloatController;
 }

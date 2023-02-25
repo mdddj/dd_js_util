@@ -9,7 +9,7 @@ typedef MyFormData = dio.FormData;
 typedef MyMultipartFile = dio.MultipartFile;
 typedef MyInterceptorWrapper = dio.InterceptorsWrapper;
 typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
-
+typedef ToastWrapper = FlutterSmartDialog;
 @Doc(message: "简单toast弹窗")
 void toast(String msg) {
   SmartDialog.dismiss(status: SmartStatus.toast);

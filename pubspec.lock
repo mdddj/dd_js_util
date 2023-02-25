@@ -237,10 +237,10 @@ packages:
     dependency: "direct main"
     description:
       name: dio
-      sha256: "9fdbf71baeb250fc9da847f6cb2052196f62c19906a3657adfc18631a667d316"
+      sha256: "3709d74615bba5e443eb141f6a7f4bcc4788f8fae6f743edadfb79c2a8e6287e"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0"
+    version: "5.0.1"
   extended_image:
     dependency: "direct main"
     description:
@@ -257,6 +257,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.4.1"
+  extended_list:
+    dependency: transitive
+    description:
+      name: extended_list
+      sha256: "7eb3c21cd8b7710b0092cb0606807cd24614e5832e65f370e5dee226d317de44"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   extended_list_library:
     dependency: transitive
     description:
@@ -273,6 +281,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
+  fast_immutable_collections:
+    dependency: "direct main"
+    description:
+      name: fast_immutable_collections
+      sha256: affdcd944170e14a31cc564f9ef19b67480ce110851a8ec4294f5dd36be30fbc
+      url: "https://pub.dev"
+    source: hosted
+    version: "8.2.0"
   fbroadcast_nullsafety:
     dependency: "direct main"
     description:
@@ -293,10 +309,10 @@ packages:
     dependency: "direct main"
     description:
       name: ffloat_nullsafety
-      sha256: "51d9a8ee48229ded961f92eaab09eb87ecb2dbac98c3c7f4654a16bbda35a962"
+      sha256: a5db61396f2217b49185adc2c72b3a5265a7c963f36a8265cf0dc901e714e011
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.1"
+    version: "3.3.6"
   file:
     dependency: transitive
     description:
@@ -423,10 +439,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_swiper_null_safety_flutter3
-      sha256: "7edeff42f65a09a1f4587c8e450430b68b2e5c084ee09b182bdfca4c11cc4b7d"
+      sha256: ebd62ab62a7a424bf25a647d2a7a9cc0ec66ab347d4f9748a28a6c566872fcd1
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -652,6 +668,24 @@ packages:
       sha256: "5e4a9cd06d447758280a8ac2405101e0e2094d2a1dbdd3756aec3fe7775ba593"
       url: "https://pub.dev"
     source: hosted
+    version: "2.0.1"
+  loading_more_list:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "2c3ef71275e7349b6f57e7ee103bca2dee61504c"
+      url: "https://github.com/mdddj/loading_more_list"
+    source: git
+    version: "5.0.2"
+  loading_more_list_library:
+    dependency: transitive
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "21d23f3123205b29581bf5df4548b50285052b79"
+      url: "https://github.com/mdddj/loading_more_list_library"
+    source: git
     version: "2.0.1"
   logger:
     dependency: "direct main"
@@ -1188,4 +1222,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=2.19.2 <3.0.0"
-  flutter: ">=3.7.4"
+  flutter: ">=3.7.0"

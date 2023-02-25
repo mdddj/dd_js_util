@@ -6,9 +6,11 @@ import 'dart:io' as io;
 import 'dart:math' as math;
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:dd_js_util/widget/search/search_support_manager.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:extended_image/extended_image.dart';
 import 'package:extended_image_library/extended_image_library.dart' as ei;
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:fbroadcast_nullsafety/fbroadcast_nullsafety.dart';
 import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
@@ -30,6 +32,7 @@ import 'package:html/parser.dart';
 import 'package:image/image.dart' as image;
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:loading_more_list/loading_more_list.dart';
 import 'package:logger/logger.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -38,6 +41,7 @@ import 'package:waterfall_flow/waterfall_flow.dart';
 import 'api/request_params.dart';
 import 'model/app_local_setting_model.dart';
 import 'model/ask_ok_dialog_params.dart';
+import 'widget/search/search_support.dart';
 import 'theme/model.dart';
 import 'widget/ask_ok_dialog.dart';
 

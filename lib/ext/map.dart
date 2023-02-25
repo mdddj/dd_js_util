@@ -152,3 +152,12 @@ class WrapJson {
     }
   }
 }
+
+
+extension IMapEx<K,V> on IMap<K,V> {
+  IMap<K,V> replace(K key,V value) {
+    final Map<K,V> newMap = Map<K,V>.from(unlock);
+    newMap[key] = value;
+    return newMap.lock;
+  }
+}
