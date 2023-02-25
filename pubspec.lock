@@ -1171,7 +1171,7 @@ packages:
     source: hosted
     version: "1.0.2"
   waterfall_flow:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: waterfall_flow
       sha256: "84486ac34f51977176990ada50b44d83be24726814fa03c22c1e10e3791cc3f2"

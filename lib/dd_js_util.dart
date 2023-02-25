@@ -6,7 +6,6 @@ import 'dart:io' as io;
 import 'dart:math' as math;
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dd_js_util/widget/search/search_support_manager.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:extended_image/extended_image.dart';
 import 'package:extended_image_library/extended_image_library.dart' as ei;
@@ -36,14 +35,14 @@ import 'package:loading_more_list/loading_more_list.dart';
 import 'package:logger/logger.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'package:waterfall_flow/waterfall_flow.dart';
 
 import 'api/request_params.dart';
 import 'model/app_local_setting_model.dart';
 import 'model/ask_ok_dialog_params.dart';
-import 'widget/search/search_support.dart';
 import 'theme/model.dart';
 import 'widget/ask_ok_dialog.dart';
+import 'widget/search/search_support.dart';
+import 'widget/search/search_support_manager.dart';
 
 part './api/base.dart';
 part './api/error_widget.dart';
