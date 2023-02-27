@@ -1,3 +1,7 @@
+# 3.2.0
+
+loading_more_list更换为loading_more_list_fast
+
 # 3.1.6
 
 重构弹窗层搜索功能

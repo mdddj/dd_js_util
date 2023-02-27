@@ -34,7 +34,7 @@ abstract class BaseApi {
   static bool showLog = false;
   static late String _host;
   static dio.BaseOptions options =
-      dio.BaseOptions(connectTimeout: const Duration(milliseconds: 30000));
+      dio.BaseOptions(connectTimeout: const Duration(milliseconds: 30000),receiveTimeout: const Duration(seconds: 5));
 
   static set host(String h) => _host = h;
 
@@ -65,7 +65,7 @@ abstract class BaseApi {
           : (httpMethod == HttpMethod.post ? io.ContentType.json.value : null);
       final bodyParams =
           formData.files.isNotEmpty ? formData : (options.data ?? params);
-      options.dioStart?.call(d, _host + url);
+
       final queryParameters = httpMethod == HttpMethod.post
           ? null
           : (options.nullParams == true ? null : options.data ?? params);
@@ -73,6 +73,7 @@ abstract class BaseApi {
           ? kProtobufContentType
           : contentTypeStr;
       final finalUrl = options.isFullUrl ? url : (_host + url);
+      await options.dioStart?.call(d, finalUrl);
       printLog("url---$finalUrl");
       printLog("params---$queryParameters");
       final response = await d.request(
@@ -82,7 +83,7 @@ abstract class BaseApi {
             contentType: contentTypeString,
             headers: options.headers,
             responseType: options.responseType,
-            requestEncoder: options.requestEncoder),
+            requestEncoder: options.requestEncoder,),
         queryParameters: queryParameters,
         data: bodyParams,
       );
@@ -99,6 +100,8 @@ abstract class BaseApi {
           try {
             return jsonDecode(data);
           } catch (e) {
+            kLogErr(data.runtimeType);
+            kLogErr(data);
             throw AppException.appError(
                 code: 10003, msg: "Unable to process server data", data: data);
           }

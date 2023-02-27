@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'request_params.freezed.dart';
 
-typedef DioStart = void Function(Dio dio, String url);
+typedef DioStart = Future<void> Function(Dio dio, String url);
 typedef InterceptorCall = List<Interceptor> Function(List<Interceptor> old);
 
 @freezed
