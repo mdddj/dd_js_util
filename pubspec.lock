@@ -415,10 +415,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_riverpod
-      sha256: "46a27b7a11dc13738054093076f2dc65692ddcd463979b15092accf5681aea20"
+      sha256: "40c0d7d03ccd24fa32ea08dcfc4df9bb92c4c26c9a91938945da3be10ed8ca83"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0"
+    version: "2.3.0"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -521,18 +521,18 @@ packages:
     dependency: "direct main"
     description:
       name: hooks_riverpod
-      sha256: a596bcb1eaf48eae6da1ce8b9e60ec9538ef7d15725e941c3626f29dfcc01d96
+      sha256: "048d5d912b9e5ef9db4d274d201a2bfe4270e5694ff5c6719b593d4ae9c512c7"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0"
+    version: "2.3.0"
   html:
     dependency: "direct main"
     description:
       name: html
-      sha256: d9793e10dbe0e6c364f4c59bf3e01fb33a9b2a674bc7a1081693dba0614b6269
+      sha256: "79d498e6d6761925a34ee5ea8fa6dfef38607781d2fa91e37523474282af55cb"
       url: "https://pub.dev"
     source: hosted
-    version: "0.15.1"
+    version: "0.15.2"
   http:
     dependency: transitive
     description:
@@ -585,10 +585,10 @@ packages:
     dependency: "direct main"
     description:
       name: image_picker
-      sha256: "22207768556b82d55ec70166824350fee32298732d5efa4d6e756f848f51f66a"
+      sha256: "715d68a53d6bcc2eae26005097dc74c375a04c0d7c0e657da84deebbbbbf51ed"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.6+3"
+    version: "0.8.6+4"
   image_picker_android:
     dependency: transitive
     description:
@@ -673,18 +673,18 @@ packages:
     dependency: "direct main"
     description:
       name: loading_more_list_fast
-      sha256: bc47cb2261cee10215f9e8e46e83ab944dc98966d107c817bb6c29c440f1d5cb
+      sha256: f6bd122cc1a77a537fa3c957eee3f27c342004e0ca168b295bf628011b06d6bb
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.0"
+    version: "6.0.0+1"
   loading_more_list_library_fast:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: loading_more_list_library_fast
-      sha256: "033a7caf06697d4958b7211c039a4e26b68f456b64331dcfb781b35445c8d52e"
+      sha256: "7fd44173785ae05b904f9a33009646d8073f09c09b64f88c1b2bb6d586c48ca2"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.0+1"
   logger:
     dependency: "direct main"
     description:
@@ -929,10 +929,10 @@ packages:
     dependency: "direct main"
     description:
       name: riverpod
-      sha256: "59a48de9c757aa61aa28e9fd625ffb360d43b6b54606f12536622c55be9e8c4b"
+      sha256: c5aea6c3fed340707f013a023a37ab388bf45611a8a4f7e76b5e9007eb76cd25
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0"
+    version: "2.3.0"
   rxdart:
     dependency: transitive
     description:

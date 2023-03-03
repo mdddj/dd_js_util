@@ -1,3 +1,53 @@
+# 3.2.1
+
+新增多个函数
+
+# nullCall
+```dart
+void nullCall<T>(T? value,void Function(T value) call){
+  if(value!=null){
+    call.call(value);
+  }
+}
+```
+
+# bool 类型的扩展
+
+`bool.trueCall`和`bool.falseCall`
+```dart
+  void trueCall(VoidCallback call) {
+    if (this) {
+      call.call();
+    }
+  }
+
+  void falseCall(VoidCallback call) {
+    if (this == false) {
+      call.call();
+    }
+  }
+```
+
+# IList的扩展
+```dart
+  //修改第一个满足条件的item,并返回一个新的IList
+  IList<T> updateItemFirstWhere(
+      bool Function(T element) where, T Function(T old) call) {
+    T item = firstWhere((element) => where(element));
+    return updateItemEx(item, call);
+  }
+
+  //修改某个item,并返回一个新的IList (常用)
+  IList<T> updateItemEx(T oldItem, T Function(T old) call) {
+    final int index = indexOf(oldItem);
+    if (index >= 0) {
+      final T newItem = call(this.get(index));
+      return replace(index, newItem);
+    }
+    return this;
+  }
+```
+
 # 3.2.0
 
 loading_more_list更换为loading_more_list_fast

@@ -11,7 +11,7 @@ class RequestParams with _$RequestParams {
   const factory RequestParams(
       {@Default(true) bool showErrorMsg,
       @Default("loading...") String loadingText,
-      @Default('') String contentType,
+      String? contentType,
       @Default({}) Map<String, dynamic> headers,
       @Default(true) bool showDefaultLoading,
       dynamic data,

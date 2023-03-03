@@ -57,6 +57,7 @@ part './common/fun.dart';
 part './common/hive.dart';
 part './common/string_ext.dart';
 part './common/w.dart';
+part './ext/ilist.dart';
 /// ext 模块
 part './ext/bool.dart';
 part './ext/context.dart';

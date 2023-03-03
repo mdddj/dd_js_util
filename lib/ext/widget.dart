@@ -150,4 +150,32 @@ extension WidgetExt on Widget {
   Widget visible(bool value) {
     return IfWidget(expression: ()=>value, trueBuild: ()=>this);
   }
+  
+  /// 如果`value`为true, 则展示trueWidget,否则展示为本身this
+  Widget ifTrue(bool value,Widget trueWidget,[Duration? duration]){
+      return AnimatedSwitcher(duration:duration ?? const Duration(milliseconds: 300),child: value?trueWidget : this);
+  }
+
+  Widget loading(bool value){
+    return ifTrue(value,const CupertinoActivityIndicator());
+  }
+  
 }
+
+typedef WidgetRenderT<T> = Widget Function(T value);
+
+class NullWidget<T> extends StatelessWidget {
+  final T? value;
+  final WidgetRenderT<T> render;
+  const NullWidget(this.value,this.render,{Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if(value != null){
+      return render.call(value as T);
+    }
+    return const SizedBox();
+  }
+}
+
+

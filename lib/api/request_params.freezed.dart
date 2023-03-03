@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RequestParams {
   bool get showErrorMsg => throw _privateConstructorUsedError;
   String get loadingText => throw _privateConstructorUsedError;
-  String get contentType => throw _privateConstructorUsedError;
+  String? get contentType => throw _privateConstructorUsedError;
   Map<String, dynamic> get headers => throw _privateConstructorUsedError;
   bool get showDefaultLoading => throw _privateConstructorUsedError;
   dynamic get data => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $RequestParamsCopyWith<$Res> {
   $Res call(
       {bool showErrorMsg,
       String loadingText,
-      String contentType,
+      String? contentType,
       Map<String, dynamic> headers,
       bool showDefaultLoading,
       dynamic data,
@@ -72,7 +72,7 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
   $Res call({
     Object? showErrorMsg = null,
     Object? loadingText = null,
-    Object? contentType = null,
+    Object? contentType = freezed,
     Object? headers = null,
     Object? showDefaultLoading = null,
     Object? data = freezed,
@@ -93,10 +93,10 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
           ? _value.loadingText
           : loadingText // ignore: cast_nullable_to_non_nullable
               as String,
-      contentType: null == contentType
+      contentType: freezed == contentType
           ? _value.contentType
           : contentType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       headers: null == headers
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
@@ -152,7 +152,7 @@ abstract class _$$_RequestParamsCopyWith<$Res>
   $Res call(
       {bool showErrorMsg,
       String loadingText,
-      String contentType,
+      String? contentType,
       Map<String, dynamic> headers,
       bool showDefaultLoading,
       dynamic data,
@@ -178,7 +178,7 @@ class __$$_RequestParamsCopyWithImpl<$Res>
   $Res call({
     Object? showErrorMsg = null,
     Object? loadingText = null,
-    Object? contentType = null,
+    Object? contentType = freezed,
     Object? headers = null,
     Object? showDefaultLoading = null,
     Object? data = freezed,
@@ -199,10 +199,10 @@ class __$$_RequestParamsCopyWithImpl<$Res>
           ? _value.loadingText
           : loadingText // ignore: cast_nullable_to_non_nullable
               as String,
-      contentType: null == contentType
+      contentType: freezed == contentType
           ? _value.contentType
           : contentType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       headers: null == headers
           ? _value._headers
           : headers // ignore: cast_nullable_to_non_nullable
@@ -253,7 +253,7 @@ class _$_RequestParams implements _RequestParams {
   const _$_RequestParams(
       {this.showErrorMsg = true,
       this.loadingText = "loading...",
-      this.contentType = '',
+      this.contentType,
       final Map<String, dynamic> headers = const {},
       this.showDefaultLoading = true,
       this.data,
@@ -273,8 +273,7 @@ class _$_RequestParams implements _RequestParams {
   @JsonKey()
   final String loadingText;
   @override
-  @JsonKey()
-  final String contentType;
+  final String? contentType;
   final Map<String, dynamic> _headers;
   @override
   @JsonKey()
@@ -369,7 +368,7 @@ abstract class _RequestParams implements RequestParams {
   const factory _RequestParams(
       {final bool showErrorMsg,
       final String loadingText,
-      final String contentType,
+      final String? contentType,
       final Map<String, dynamic> headers,
       final bool showDefaultLoading,
       final dynamic data,
@@ -386,7 +385,7 @@ abstract class _RequestParams implements RequestParams {
   @override
   String get loadingText;
   @override
-  String get contentType;
+  String? get contentType;
   @override
   Map<String, dynamic> get headers;
   @override
