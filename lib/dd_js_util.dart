@@ -49,6 +49,7 @@ part './api/base.dart';
 part './api/error_widget.dart';
 part './api/exception.dart';
 part './api/util.dart';
+part './common/functions.dart';
 ///组件模块
 part './common/circle.dart';
 part './common/edit_page.dart';

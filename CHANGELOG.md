@@ -1,3 +1,14 @@
+# 3.2.2
+
+ * new function
+ * up deps
+```dart
+void ifCall(bool value,VoidCallback call){
+  if(value) call.call();
+}
+```
+
+
 # 3.2.1
 
 新增多个函数
