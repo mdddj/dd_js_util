@@ -15,4 +15,17 @@ extension IListEx<T> on IList<T> {
     T item = firstWhere((element) => where(element));
     return updateItemEx(item, call);
   }
+
+  IList<T> updateLast(T Function(T old) callUpdate) {
+    return updateItemEx(last, callUpdate);
+  }
+
+  IList<T> updateFirst(T Function(T old) callUpdate) {
+    return updateItemEx(first, callUpdate);
+  }
+
+  IList<T> updateItemWithIndex(int index,T Function(T old) callUpdate) {
+    return updateItemEx(this.get(index), callUpdate);
+  }
+
 }

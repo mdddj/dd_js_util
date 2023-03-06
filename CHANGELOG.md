@@ -1,3 +1,57 @@
+# 3.2.6
+
+`IList`新增三个扩展`updateLast`,`updateFirst`,`updateItemWithIndex`
+```dart
+IList<T> updateLast(T Function(T old) callUpdate) {
+  return updateItemEx(last, callUpdate);
+}
+
+IList<T> updateFirst(T Function(T old) callUpdate) {
+  return updateItemEx(first, callUpdate);
+}
+
+IList<T> updateItemWithIndex(int index,T Function(T old) callUpdate) {
+  return updateItemEx(this.get(index), callUpdate);
+}
+```
+
+# 3.2.5
+
+改造`isNotNull`函数
+```dart
+S? isNotNull<S>(S Function(T value) call){
+    if(this!=null){
+      return call.call(this as T);
+    }
+    return null;
+  }
+```
+
+# 3.2.4
+
+ * new isNotNull call
+```dart
+extension DynamicEx<T> on T? {
+  void isNotNull(ValueChanged<T> call){
+    if(this!=null){
+      call.call(this as T);
+    }
+  }
+}
+```
+
+# 3.2.3
+
+ * new functions
+```dart
+T? isValue<T>(dynamic value) {
+  if(value is T) {
+    return value;
+  }
+  return null;
+}
+```
+
 # 3.2.2
 
  * new function
