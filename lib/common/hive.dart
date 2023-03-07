@@ -2,6 +2,19 @@ part of dd_js_util;
 
 typedef HiveUpdateModel<E> = E Function(E? oldValue);
 
+
+class HiveUtil {
+  HiveUtil._();
+  static HiveUtil get _instance => HiveUtil._();
+  factory HiveUtil() => _instance;
+
+  //初始化hive模块
+  Future<void> init({VoidCallback? inited}) async {
+    await Hive.initFlutter();
+    inited?.call();
+  }
+}
+
 abstract class CacheBase<E> {
   String get boxName;
 

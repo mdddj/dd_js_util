@@ -11,6 +11,7 @@ typedef MyMultipartFile = dio.MultipartFile;
 typedef MyInterceptorWrapper = dio.InterceptorsWrapper;
 typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
 typedef ToastWrapper = FlutterSmartDialog;
+typedef BaseApiOption = dio.BaseOptions;
 
 @Doc(message: "简单toast弹窗")
 void toast(String msg) {

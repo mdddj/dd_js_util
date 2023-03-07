@@ -33,11 +33,11 @@ class AskStringDialog extends StatelessWidget {
             height: 12,
           ),
           CupertinoTextField(
-            autofocus: true,
-            controller: controller,
-            textInputAction: TextInputAction.go,
-            placeholder: params.placeholder,
-          )
+              autofocus: true,
+              controller: controller,
+              textInputAction: TextInputAction.go,
+              placeholder: params.placeholder,
+              onSubmitted: (string) => ifCall(string.isNotEmpty, () => Navigator.pop(context, string)))
         ]),
       ),
       actions: [

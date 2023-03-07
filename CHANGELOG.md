@@ -1,3 +1,19 @@
+# 3.2.8
+
+新增第三方类型定义
+```dart
+typedef MyFormData = dio.FormData;
+typedef MyMultipartFile = dio.MultipartFile;
+typedef MyInterceptorWrapper = dio.InterceptorsWrapper;
+typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
+typedef ToastWrapper = FlutterSmartDialog;
+typedef BaseApiOption = dio.BaseOptions;
+```
+
+# 3.2.7
+
+add `HiveUtil().init()` function
+
 # 3.2.6
 
 `IList`新增三个扩展`updateLast`,`updateFirst`,`updateItemWithIndex`
