@@ -1,3 +1,13 @@
+# 3.2.9
+
+添加四个属性定义
+```dart
+typedef MyList<T> = IList<T>;
+typedef MyConstList<T> = IListConst<T>;
+typedef MyMap<K, V> = IMap<K, V>;
+typedef MyConstMap<K,V> = IMapConst<K,V>;
+```
+
 # 3.2.8
 
 新增第三方类型定义

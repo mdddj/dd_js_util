@@ -12,7 +12,10 @@ typedef MyInterceptorWrapper = dio.InterceptorsWrapper;
 typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
 typedef ToastWrapper = FlutterSmartDialog;
 typedef BaseApiOption = dio.BaseOptions;
-
+typedef MyList<T> = IList<T>;
+typedef MyConstList<T> = IListConst<T>;
+typedef MyMap<K, V> = IMap<K, V>;
+typedef MyConstMap<K,V> = IMapConst<K,V>;
 @Doc(message: "简单toast弹窗")
 void toast(String msg) {
   SmartDialog.dismiss(status: SmartStatus.toast);
@@ -36,7 +39,9 @@ mixin BasePagedApiMixin on BaseApi {
 abstract class BaseApi {
   static bool showLog = false;
   static late String _host;
-  static dio.BaseOptions options = dio.BaseOptions(connectTimeout: const Duration(milliseconds: 30000), receiveTimeout: const Duration(seconds: 5));
+  static dio.BaseOptions options = dio.BaseOptions(
+      connectTimeout: const Duration(milliseconds: 30000),
+      receiveTimeout: const Duration(seconds: 5));
 
   static set host(String h) => _host = h;
 
@@ -60,11 +65,20 @@ abstract class BaseApi {
       }
       final d = getDio();
       interceptions.add(ErrorInterceptor());
-      d.interceptors.addAll(options.interceptorCall?.call(interceptions) ?? interceptions);
-      final contentTypeStr = options.contentType ?? (httpMethod == HttpMethod.post ? io.ContentType.json.value : options.contentType);
-      final bodyParams = formData.files.isNotEmpty ? formData : (options.data ?? params);
-      final queryParameters = httpMethod == HttpMethod.post ? null : (options.nullParams == true ? null : options.data ?? params);
-      final contentTypeString = httpMethod == HttpMethod.probuf ? kProtobufContentType : contentTypeStr;
+      d.interceptors.addAll(
+          options.interceptorCall?.call(interceptions) ?? interceptions);
+      final contentTypeStr = options.contentType ??
+          (httpMethod == HttpMethod.post
+              ? io.ContentType.json.value
+              : options.contentType);
+      final bodyParams =
+          formData.files.isNotEmpty ? formData : (options.data ?? params);
+      final queryParameters = httpMethod == HttpMethod.post
+          ? null
+          : (options.nullParams == true ? null : options.data ?? params);
+      final contentTypeString = httpMethod == HttpMethod.probuf
+          ? kProtobufContentType
+          : contentTypeStr;
       final finalUrl = options.isFullUrl ? url : (_host + url);
       await options.dioStart?.call(d, finalUrl);
       printLog("url---$finalUrl");
@@ -96,12 +110,15 @@ abstract class BaseApi {
           } catch (e) {
             kLogErr(data.runtimeType);
             kLogErr(data);
-            throw AppException.appError(code: 10003, msg: "Unable to process server data", data: data);
+            throw AppException.appError(
+                code: 10003, msg: "Unable to process server data", data: data);
           }
         }
         return data;
       } else {
-        throw AppException(code: response.statusCode ?? 10004, message: response.statusMessage ?? "ERROR");
+        throw AppException(
+            code: response.statusCode ?? 10004,
+            message: response.statusMessage ?? "ERROR");
       }
     } on dio.DioError catch (e) {
       if (options.showDefaultLoading) {
@@ -169,7 +186,8 @@ class Doc {
 
 ///wrapjson类型的接口封装
 abstract class AppCoreApi extends BaseApi {
-  AppCoreApi(String url, {HttpMethod? httpMethod, List<dio.Interceptor>? ints}) : super(url, httpMethod: httpMethod ?? HttpMethod.get) {
+  AppCoreApi(String url, {HttpMethod? httpMethod, List<dio.Interceptor>? ints})
+      : super(url, httpMethod: httpMethod ?? HttpMethod.get) {
     if (ints?.isNotEmpty == true) {
       interceptions.addAll(ints!);
     }
