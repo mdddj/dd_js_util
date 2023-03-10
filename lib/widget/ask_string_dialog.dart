@@ -12,6 +12,20 @@ extension AskStringDialogEx on BuildContext {
 class AskStringDialog extends StatelessWidget {
   final AskStringDialogParams params;
 
+
+  /// ### Edit your dart document comments here
+  ///
+  /// [x] Support markdown syntax
+  ///
+  /// ```dart
+  ///  val hello = "world";
+  ///
+  /// void doPrint() {
+  ///   print(hello);
+  /// }
+  /// ```
+  ///
+  /// xxx
   static Future<String?> show(BuildContext context, {AskStringDialogParams? params}) async {
     return await showCupertinoDialog<String?>(
         context: context,
