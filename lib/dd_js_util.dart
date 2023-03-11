@@ -31,6 +31,7 @@ import 'package:html/parser.dart';
 import 'package:image/image.dart' as image;
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:loading_more_list_fast/loading_more_list_fast.dart';
 import 'package:loading_more_list_library_fast/loading_more_list_library_fast.dart';
 import 'package:logger/logger.dart';
@@ -59,6 +60,7 @@ part './common/hive.dart';
 part './common/string_ext.dart';
 part './common/w.dart';
 part './ext/ilist.dart';
+part './widget/simple_textfield_wrapper.dart';
 /// ext 模块
 part './ext/bool.dart';
 part './ext/context.dart';
