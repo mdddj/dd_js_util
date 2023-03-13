@@ -1,3 +1,16 @@
+# 3.3.3
+
+依赖升级
+
+# 3.3.2
+
+更新 `SimpleInputWrapper`小组件
+```dart
+KeyboardActionsConfig Function(KeyboardActionsConfig defaultConfig, FocusNode focusNode, BuildContext context);
+```
+
+
+
 # 3.3.1
 
 新增`SimpleInputWrapper`小组件

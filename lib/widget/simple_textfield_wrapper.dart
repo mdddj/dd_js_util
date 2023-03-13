@@ -1,7 +1,7 @@
 part of dd_js_util;
 
 typedef FocusNodeWidgetBuilder = Widget Function(FocusNode focusNode);
-typedef KeyboardActionsConfigBuilder = KeyboardActionsConfig Function(KeyboardActionsConfig defaultConfig, BuildContext context);
+typedef KeyboardActionsConfigBuilder = KeyboardActionsConfig Function(KeyboardActionsConfig defaultConfig, FocusNode focusNode, BuildContext context);
 
 class SimpleInputWrapper extends StatefulWidget {
   final FocusNodeWidgetBuilder builder;
@@ -27,7 +27,7 @@ class _SimpleInputWrapperState extends State<SimpleInputWrapper> {
   @override
   Widget build(BuildContext context) {
     return KeyboardActions(
-        config: widget.buildConfig?.call(_buildConfig(), context) ?? _buildConfig(), disableScroll: true, child: widget.builder(_focusNode));
+        config: widget.buildConfig?.call(_buildConfig(),_focusNode, context) ?? _buildConfig(), disableScroll: true, child: widget.builder(_focusNode));
   }
 
   @override
