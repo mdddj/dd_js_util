@@ -10,6 +10,8 @@ import '../model/app_local_setting_model.dart';
 
 
 const ddJsUtilAppSettingHiveKey = 'ddjsutil-app-local-setting';
+
+
 class AppThemeUtil {
   AppThemeUtil._();
 
@@ -59,12 +61,13 @@ class AppSettingCache extends CacheBase<AppLocalSettingModel> {
   @override
   String get boxName => ddJsUtilAppSettingHiveKey;
 }
-
+typedef BuildTheme = ThemeData Function(ThemeData defaultTheme);
 
 class MyAppTheme {
   ///默认主题
-  static ThemeData getTheme(int index, {FlexSubThemesData? subThemesData}) {
-    return FlexThemeData.light(
+  static ThemeData getTheme(int index, {FlexSubThemesData? subThemesData,BuildTheme? buildDefaultTheme}) {
+    final defaultTheme = FlexThemeData.light();
+    return buildDefaultTheme?.call(defaultTheme) ??  FlexThemeData.light(
         scheme: CustomAppThemeData.values[index].flexScheme,
         surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
         blendLevel: 20,
@@ -83,6 +86,12 @@ class MyAppTheme {
         appBarOpacity: 1,
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         useMaterial3: true);
+  }
+
+  ///构建暗夜模式主题
+  static ThemeData buildDarkTheme(BuildTheme themeBuild) {
+    final defaultDark = FlexThemeData.dark();
+    return themeBuild.call(defaultDark);
   }
 }
 

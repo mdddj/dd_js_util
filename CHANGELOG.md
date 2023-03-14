@@ -1,3 +1,23 @@
+# 3.3.6
+
+更新主题模块:
+新增`BuildTheme? buildDefaultTheme`属性
+```dart
+MyAppTheme.getTheme(int index, {FlexSubThemesData? subThemesData,BuildTheme? buildDefaultTheme});
+```
+
+新增自定义暗夜模式
+
+`MyAppTheme.buildDarkTheme`
+```dart
+  ///构建暗夜模式主题
+static ThemeData buildDarkTheme(BuildTheme themeBuild) {
+  final defaultDark = FlexThemeData.dark();
+  return themeBuild.call(defaultDark);
+}
+```
+
+
 # 3.3.5+1
 
 主题依赖更改为抢先预览版
