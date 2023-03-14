@@ -1,6 +1,6 @@
 name: dd_js_util
 description: 梁典典的常用工具类封装
-version: 3.3.5
+version: 3.3.5+1
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
@@ -38,7 +38,7 @@ dependencies:
   hive_flutter: ^1.1.0
   flutter_screenutil: ^5.7.0
   fbroadcast_nullsafety: ^3.0.0
-  flex_color_scheme: ^6.1.2
+  flex_color_scheme: ^7.0.0-dev.2
   extended_image_library: ^3.4.1
   freezed_annotation: ^2.2.0
   fast_immutable_collections: ^9.0.0

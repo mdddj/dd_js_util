@@ -1,3 +1,11 @@
+# 3.3.5+1
+
+主题依赖更改为抢先预览版
+```dart
+flex_color_scheme: ^7.0.0-dev.2
+```
+
+
 # 3.3.5
 
 透出loading more 组件

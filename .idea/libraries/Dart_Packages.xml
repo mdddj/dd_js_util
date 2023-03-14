@@ -300,7 +300,7 @@
         <entry key="flex_color_scheme">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flex_color_scheme-6.1.2/lib" />
+              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flex_color_scheme-7.0.0-dev.2/lib" />
             </list>
           </value>
         </entry>
@@ -1163,7 +1163,7 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/ffloat_nullsafety-3.3.6/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/file-6.1.4/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/fixnum-1.0.1/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flex_color_scheme-6.1.2/lib" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flex_color_scheme-7.0.0-dev.2/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flex_seed_scheme-1.2.1/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flex_seed_scheme-1.2.2/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/flutter_blurhash-0.7.0/lib" />
