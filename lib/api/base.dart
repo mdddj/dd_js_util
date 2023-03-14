@@ -16,6 +16,16 @@ typedef MyList<T> = IList<T>;
 typedef MyConstList<T> = IListConst<T>;
 typedef MyMap<K, V> = IMap<K, V>;
 typedef MyConstMap<K,V> = IMapConst<K,V>;
+
+///loading more 组件
+typedef MyLoadingModel<T> = LoadingModel<T>;
+typedef MyLoadingMoreList<T> = LoadingMoreList<T>;
+typedef MyLoadingMoreSliverList<T> = LoadingMoreSliverList<T>;
+typedef MyListConfig<T> = ListConfig<T>;
+typedef MySliverListConfig<T> = SliverListConfig<T>;
+typedef MyLoadingMoreCustomScrollView = LoadingMoreCustomScrollView;
+
+
 @Doc(message: "简单toast弹窗")
 void toast(String msg) {
   SmartDialog.dismiss(status: SmartStatus.toast);

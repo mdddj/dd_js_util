@@ -1,3 +1,15 @@
+# 3.3.5
+
+透出loading more 组件
+```dart
+typedef MyLoadingModel<T> = LoadingModel<T>;
+typedef MyLoadingMoreList<T> = LoadingMoreList<T>;
+typedef MyLoadingMoreSliverList<T> = LoadingMoreSliverList<T>;
+typedef MyListConfig<T> = ListConfig<T>;
+typedef MySliverListConfig<T> = SliverListConfig<T>;
+typedef MyLoadingMoreCustomScrollView = LoadingMoreCustomScrollView;
+```
+
 # 3.3.4
 
 图片保存插件更换为
