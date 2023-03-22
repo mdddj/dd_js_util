@@ -118,7 +118,7 @@ class MyRepository extends SearchSupportRepository<String> {
   int page = 1;
 
   @override
-  Future<bool> loadData([bool isloadMoreAction = false]) async {
+  Future<bool> loadData([bool isLoadMoreAction = false]) async {
     await Future.delayed(const Duration(seconds: 1));
     addAll(List.generate(10, (index) => "$index")); //设置过滤结果
     setState(); //刷新UI

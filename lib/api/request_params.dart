@@ -8,6 +8,8 @@ typedef InterceptorCall = List<Interceptor> Function(List<Interceptor> old);
 
 @freezed
 class RequestParams with _$RequestParams {
+  const RequestParams._();
+
   const factory RequestParams(
       {@Default(true) bool showErrorMsg,
       @Default("loading...") String loadingText,

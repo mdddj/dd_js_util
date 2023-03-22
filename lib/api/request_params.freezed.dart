@@ -249,7 +249,7 @@ class __$$_RequestParamsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RequestParams implements _RequestParams {
+class _$_RequestParams extends _RequestParams {
   const _$_RequestParams(
       {this.showErrorMsg = true,
       this.loadingText = "loading...",
@@ -264,7 +264,8 @@ class _$_RequestParams implements _RequestParams {
       this.returnIsString,
       this.isFullUrl = false,
       this.interceptorCall})
-      : _headers = headers;
+      : _headers = headers,
+        super._();
 
   @override
   @JsonKey()
@@ -364,7 +365,7 @@ class _$_RequestParams implements _RequestParams {
       __$$_RequestParamsCopyWithImpl<_$_RequestParams>(this, _$identity);
 }
 
-abstract class _RequestParams implements RequestParams {
+abstract class _RequestParams extends RequestParams {
   const factory _RequestParams(
       {final bool showErrorMsg,
       final String loadingText,
@@ -379,6 +380,7 @@ abstract class _RequestParams implements RequestParams {
       final bool? returnIsString,
       final bool isFullUrl,
       final InterceptorCall? interceptorCall}) = _$_RequestParams;
+  const _RequestParams._() : super._();
 
   @override
   bool get showErrorMsg;

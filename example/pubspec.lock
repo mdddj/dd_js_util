@@ -127,7 +127,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "3.3.5"
+    version: "3.4.0"
   decimal:
     dependency: transitive
     description:
@@ -140,10 +140,10 @@ packages:
     dependency: transitive
     description:
       name: dio
-      sha256: "2644a9e0965a7aa3deb09cb8ce4081db4450c178f472818c8cd34216a3070d7b"
+      sha256: "3e5c4a94d112540d0c9a6b7f3969832e1604eb8cde0f88d0808382f9f632100b"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.2"
+    version: "5.0.3"
   extended_image:
     dependency: transitive
     description:
@@ -228,10 +228,10 @@ packages:
     dependency: transitive
     description:
       name: flex_color_scheme
-      sha256: "3cde2b6953707a5fb4f4dcfc2d65b998350484058b4861dfc98dee5b31ef67eb"
+      sha256: "03a0ad67cc224b20aab9f9a775a6cef76c8f884887902a2d94635c187858b31b"
       url: "https://pub.dev"
     source: hosted
-    version: "7.0.0-dev.2"
+    version: "6.1.2"
   flex_seed_scheme:
     dependency: transitive
     description:
@@ -326,10 +326,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_smart_dialog
-      sha256: a477c9e5b5b93b481b7d565413858d038b2c1a5b3583db84f8627be7223d5ed7
+      sha256: de4c4ff47ee2c859df5bdcbf607ef9251ff1e8e698aaa533efb6de5ea4a56323
       url: "https://pub.dev"
     source: hosted
-    version: "4.9.0+3"
+    version: "4.9.0+4"
   flutter_swiper_null_safety_flutter3:
     dependency: transitive
     description:
@@ -736,10 +736,10 @@ packages:
     dependency: transitive
     description:
       name: saver_gallery
-      sha256: b55bc91a40fad283dd5aa04133a4821e099a3b6c58b8861b20e770d00730e80d
+      sha256: "3131bba4257f69901437c0f1ebd692201ca5f34512d42667513a3802f1c171d1"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -947,4 +947,4 @@ packages:
     version: "6.2.2"
 sdks:
   dart: ">=2.19.4 <3.0.0"
-  flutter: ">=3.7.0"
+  flutter: ">=3.7.7"
