@@ -7,6 +7,7 @@ import 'dart:math' as math;
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart' as dio;
+import 'package:dio/io.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:extended_image_library/extended_image_library.dart' as ei;
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';

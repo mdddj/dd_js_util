@@ -25,6 +25,7 @@ typedef MyListConfig<T> = ListConfig<T>;
 typedef MySliverListConfig<T> = SliverListConfig<T>;
 typedef MyLoadingMoreCustomScrollView = LoadingMoreCustomScrollView;
 typedef MyIndicatorStatus = IndicatorStatus;
+typedef R = RequestParams;
 
 
 @Doc(message: "简单toast弹窗")
@@ -183,6 +184,17 @@ abstract class BaseApi {
     if (showLog) {
       debugPrint('$log');
     }
+  }
+
+
+  ///添加代理
+  static void addProxy(String proxy) {
+    (getDio().httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate = (io.HttpClient client) {
+      client.findProxy = (uri) {
+        return proxy;
+      };
+      return null;
+    };
   }
 }
 
