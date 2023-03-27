@@ -216,7 +216,7 @@
         <entry key="dio">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/dio-5.0.3/lib" />
+              <option value="$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/dio-5.1.0/lib" />
             </list>
           </value>
         </entry>
@@ -1151,7 +1151,7 @@
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/cupertino_icons-1.0.5/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/dart_style-2.2.4/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/decimal-2.3.2/lib" />
-      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/dio-5.0.3/lib" />
+      <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/dio-5.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/extended_image-7.0.2/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/extended_image_library-3.4.1/lib" />
       <root url="file://$PROJECT_DIR$/../.pub-cache/hosted/pub.dev/extended_list-3.0.0/lib" />

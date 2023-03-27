@@ -9,6 +9,7 @@ const kMultipartFormDataHeader = 'multipart/form-data';
 typedef MyFormData = dio.FormData;
 typedef MyMultipartFile = dio.MultipartFile;
 typedef MyInterceptorWrapper = dio.InterceptorsWrapper;
+typedef MyInterceptor = dio.Interceptor;
 typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
 typedef ToastWrapper = FlutterSmartDialog;
 typedef BaseApiOption = dio.BaseOptions;
