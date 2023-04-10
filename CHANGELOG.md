@@ -1,3 +1,20 @@
+
+# 3.5.4
+
+改造图片选择器
+
+# 3.5.3
+
+优化dio请求封装
+
+# 3.5.2
+
+优化dio请求封装
+
+# 3.5.1
+
+add `MySliverWaterfallFlowDelegateWithFixedCrossAxisCount`变体
+
 # 3.5.0
 * 升级dio
 * 添加`MyInterceptor`

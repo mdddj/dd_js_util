@@ -1,5 +1,6 @@
 import 'package:dd_js_util/widget/search/search_support.dart';
 import 'package:dd_js_util/widget/search/search_support_manager.dart';
+import 'package:dd_js_util_example/pic_demo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -31,22 +32,26 @@ class _MyAppState extends State<MyApp> implements SearchSupportActionListening {
   Widget build(BuildContext context) {
     return MaterialApp(
       builder: ToastWrapper.init(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            children: [
-              SearchSupport<String>(
-                params: SearchSupportParams(childBuilder: childBuilder, controller: refreshController, autoShow: false, listening: this),
-                itemBuilder: itemBuild,
-                sourceList: sourceList,
-                child: CupertinoTextField(onChanged: onChange),
-              )
-            ],
-          ),
+      home: const PicDemo());
+  }
+
+
+  Widget get old {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Plugin example app'),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            SearchSupport<String>(
+              params: SearchSupportParams(childBuilder: childBuilder, controller: refreshController, autoShow: false, listening: this),
+              itemBuilder: itemBuild,
+              sourceList: sourceList,
+              child: CupertinoTextField(onChanged: onChange),
+            )
+          ],
         ),
       ),
     );

@@ -96,6 +96,12 @@ extension StringExtension on String {
   Future<HtmlTitleAndIconModel> get getHtmlTitleAndIcon async {
     return _StringUtil.getHtmlTitleAndIcon(this);
   }
+
+  @Doc(message: '判断是否为网络图片')
+  bool isNetworkImage([String regExpString = r'^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp)$']) {
+    RegExp regExp = RegExp(regExpString);
+    return regExp.hasMatch(this);
+  }
 }
 
 ///string 工具类

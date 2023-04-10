@@ -5,6 +5,7 @@ part 'request_params.freezed.dart';
 
 typedef DioStart = Future<void> Function(Dio dio, String url);
 typedef InterceptorCall = List<Interceptor> Function(List<Interceptor> old);
+typedef UrlParseFormat = String Function(String uri,dynamic queryParameters);
 
 @freezed
 class RequestParams with _$RequestParams {
@@ -23,5 +24,6 @@ class RequestParams with _$RequestParams {
       DioStart? dioStart,
       bool? returnIsString,
       @Default(false) bool isFullUrl,
-      InterceptorCall? interceptorCall}) = _RequestParams;
+      InterceptorCall? interceptorCall,
+      UrlParseFormat? urlParseFormat}) = _RequestParams;
 }

@@ -16,7 +16,8 @@ typedef BaseApiOption = dio.BaseOptions;
 typedef MyList<T> = IList<T>;
 typedef MyConstList<T> = IListConst<T>;
 typedef MyMap<K, V> = IMap<K, V>;
-typedef MyConstMap<K,V> = IMapConst<K,V>;
+typedef MyConstMap<K, V> = IMapConst<K, V>;
+typedef MySliverWaterfallFlowDelegateWithFixedCrossAxisCount = SliverWaterfallFlowDelegateWithFixedCrossAxisCount;
 
 ///loading more 组件
 typedef MyLoadingModel<T> = LoadingModel<T>;
@@ -27,7 +28,7 @@ typedef MySliverListConfig<T> = SliverListConfig<T>;
 typedef MyLoadingMoreCustomScrollView = LoadingMoreCustomScrollView;
 typedef MyIndicatorStatus = IndicatorStatus;
 typedef R = RequestParams;
-
+typedef MySwiper = Swiper;
 
 @Doc(message: "简单toast弹窗")
 void toast(String msg) {
@@ -52,9 +53,8 @@ mixin BasePagedApiMixin on BaseApi {
 abstract class BaseApi {
   static bool showLog = false;
   static late String _host;
-  static dio.BaseOptions options = dio.BaseOptions(
-      connectTimeout: const Duration(milliseconds: 30000),
-      receiveTimeout: const Duration(seconds: 5));
+  static dio.BaseOptions options =
+      dio.BaseOptions(connectTimeout: const Duration(milliseconds: 30000), receiveTimeout: const Duration(seconds: 5));
 
   static set host(String h) => _host = h;
 
@@ -78,26 +78,20 @@ abstract class BaseApi {
       }
       final d = getDio();
       interceptions.add(ErrorInterceptor());
-      d.interceptors.addAll(
-          options.interceptorCall?.call(interceptions) ?? interceptions);
-      final contentTypeStr = options.contentType ??
-          (httpMethod == HttpMethod.post
-              ? io.ContentType.json.value
-              : options.contentType);
-      final bodyParams =
-          formData.files.isNotEmpty ? formData : (options.data ?? params);
-      final queryParameters = httpMethod == HttpMethod.post
-          ? null
-          : (options.nullParams == true ? null : options.data ?? params);
-      final contentTypeString = httpMethod == HttpMethod.probuf
-          ? kProtobufContentType
-          : contentTypeStr;
+      d.interceptors.addAll(options.interceptorCall?.call(interceptions) ?? interceptions);
+      final contentTypeStr =
+          options.contentType ?? (httpMethod == HttpMethod.post ? io.ContentType.json.value : options.contentType);
+      final bodyParams = formData.files.isNotEmpty ? formData : (options.data ?? params);
+      final queryParameters =
+          httpMethod == HttpMethod.post ? null : (options.nullParams == true ? null : options.data ?? params);
+      final contentTypeString = httpMethod == HttpMethod.probuf ? kProtobufContentType : contentTypeStr;
       final finalUrl = options.isFullUrl ? url : (_host + url);
       await options.dioStart?.call(d, finalUrl);
       printLog("url---$finalUrl");
       printLog("params---$queryParameters");
+      var uri = (options.urlParseFormat ?? (v, p) => v).call(finalUrl, queryParameters);
       final response = await d.request(
-        finalUrl,
+        uri,
         options: dio.Options(
           method: method,
           contentType: contentTypeString,
@@ -123,15 +117,12 @@ abstract class BaseApi {
           } catch (e) {
             kLogErr(data.runtimeType);
             kLogErr(data);
-            throw AppException.appError(
-                code: 10003, msg: "Unable to process server data", data: data);
+            throw AppException.appError(code: 10003, msg: "Unable to process server data", data: data);
           }
         }
         return data;
       } else {
-        throw AppException(
-            code: response.statusCode ?? 10004,
-            message: response.statusMessage ?? "ERROR");
+        throw AppException(code: response.statusCode ?? 10004, message: response.statusMessage ?? "ERROR");
       }
     } on dio.DioError catch (e) {
       if (options.showDefaultLoading) {
@@ -186,7 +177,6 @@ abstract class BaseApi {
       debugPrint('$log');
     }
   }
-
 
   ///添加代理
   static void addProxy(String proxy) {

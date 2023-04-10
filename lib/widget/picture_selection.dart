@@ -10,12 +10,18 @@ extension WidgetTa on Widget {
 ///
 /// [size] - 图片容器的宽高
 /// [onRemove] - 可以直接调用这个方法删除图片
-typedef ImageItemRender = Widget Function(BuildContext context, io.File file, Size size, Function(io.File file) onRemove);
+typedef ImageItemRender = Widget Function(
+    BuildContext context, PictureSelectionItemModel file, Size size, Function(PictureSelectionItemModel file) onRemove);
 
 ///自定义占位布局小部件
 ///也就是替换默认的+号小部件
 ///[size] - 组件宽高
 typedef PlaceholderBuilder = Widget Function(Size size);
+
+///删除图片事件
+///bool - 返回true 表示删除成功,false为删除失败
+///
+typedef PictureSelectionRemoveFile = Future<bool> Function(PictureSelectionItemModel file);
 
 ///自定义选择菜单
 /// [imagePicker] - 用户选择了相册回调函数
@@ -56,7 +62,7 @@ class PictureSelection extends StatefulWidget {
 
   /// 删除某个图片回调
   /// 如果添加了这个参数,组件将不会执行默认的删除函数
-  final ValueChanged<io.File>? removed;
+  final PictureSelectionRemoveFile? removed;
 
   /// 自定义图片布局
   ///
@@ -129,8 +135,14 @@ class PictureSelection extends StatefulWidget {
   /// 组件的控制器
   final PictureSelectionController? controller;
 
-
+  ///弹出菜单回调
   final VoidCallback? addIconOnTap;
+
+  ///初始化图片列表
+  final List<PictureSelectionItemModel>? initUrls;
+
+  ///开启图片预览
+  final bool enableImagePreview;
 
   const PictureSelection(
       {Key? key,
@@ -144,7 +156,10 @@ class PictureSelection extends StatefulWidget {
       this.itemBuilder,
       this.menusBuilder,
       this.placeholderBuilder,
-      this.multipleChoice = false, this.addIconOnTap})
+      this.multipleChoice = false,
+      this.addIconOnTap,
+      this.initUrls,
+      this.enableImagePreview = true})
       : super(key: key);
 
   @override
@@ -153,7 +168,7 @@ class PictureSelection extends StatefulWidget {
 
 class _PictureSelectionState extends State<PictureSelection> {
   /// 用户已选择的图片
-  final List<io.File> _renderImages = [];
+  late final List<PictureSelectionItemModel> _renderImages = widget.initUrls ?? <PictureSelectionItemModel>[];
 
   @override
   Widget build(BuildContext context) {
@@ -164,7 +179,10 @@ class _PictureSelectionState extends State<PictureSelection> {
       mainAxisSpacing: widget.mainAxisSpacing ?? 12,
       crossAxisSpacing: widget.crossAxisSpacing ?? 12,
       physics: const NeverScrollableScrollPhysics(),
-      children: [..._renderImages.map(_renderImageItem), if (_renderImages.length < widget.maxCount) _renderPlaceholderWidget()],
+      children: [
+        ..._renderImages.map(_renderImageItem),
+        if (_renderImages.length < widget.maxCount) _renderPlaceholderWidget()
+      ],
     );
   }
 
@@ -190,7 +208,9 @@ class _PictureSelectionState extends State<PictureSelection> {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         if (widget.placeholderBuilder != null) {
-          return widget.placeholderBuilder!.call(Size(constraints.maxWidth, constraints.maxWidth)).addTap(showSelection);
+          return widget.placeholderBuilder!
+              .call(Size(constraints.maxWidth, constraints.maxWidth))
+              .addTap(showSelection);
         }
         return const ImageAddIcon().addTap(showSelection);
       },
@@ -203,30 +223,42 @@ class _PictureSelectionState extends State<PictureSelection> {
   }
 
   /// 图片展示布局
-  Widget _renderImageItem(io.File file) {
+  Widget _renderImageItem(PictureSelectionItemModel file) {
     if (widget.itemBuilder != null) {
       return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return widget.itemBuilder!.call(context, file, Size(constraints.maxWidth, constraints.maxWidth), _removeFile);
         },
-      );
+      ).click(() {
+        if (widget.enableImagePreview) {
+          context.navToWidget(to: ImagePreview(images: _renderImages, index: _renderImages.indexOf(file)));
+        }
+      });
     }
 
     /// 默认的布局
-    return ImageDefaultShow(file, onRemove: _removeFile);
+    return ImageDefaultShow(file, onRemove: _removeFile).click(() {
+      if (widget.enableImagePreview) {
+        context.navToWidget(to: ImagePreview(images: _renderImages, index: _renderImages.indexOf(file)));
+      }
+    });
   }
 
   /// 删除某张图片
-  void _removeFile(io.File file) {
-    widget.removed?.call(file);
-    if (widget.removed == null) {
+  Future<void> _removeFile(PictureSelectionItemModel file) async {
+    if (widget.removed != null) {
+      final isSuccess = await widget.removed!.call(file);
+      if (isSuccess) {
+        removeFile(file);
+      }
+    } else {
       removeFile(file);
     }
   }
 
   /// 删除某张图片并刷新UI
-  void removeFile(io.File file) {
-    _renderImages.removeWhere((element) => element.path == file.path);
+  void removeFile(PictureSelectionItemModel file) {
+    _renderImages.remove(file);
     _refreshUi();
   }
 
@@ -241,7 +273,7 @@ class _PictureSelectionState extends State<PictureSelection> {
     final nav = Navigator.of(context);
     final file = await ImagePicker().pickImage(source: ImageSource.camera);
     if (file != null) {
-      _renderImages.add(io.File(file.path));
+      _renderImages.add(PictureSelectionItemModel.file(file: io.File(file.path)));
       _refreshUi();
       nav.pop();
     }
@@ -266,7 +298,7 @@ class _PictureSelectionState extends State<PictureSelection> {
                 onTap: _photoAlbumSelect,
               ),
               ListTile(title: const Text('去拍摄'), onTap: _shoot),
-              ListTile(title: const Text('关闭'), onTap: ()=>context.pop()),
+              ListTile(title: const Text('关闭'), onTap: () => context.pop()),
               SizedBox(height: context.paddingBottom)
             ],
           ));
@@ -285,7 +317,7 @@ class _PictureSelectionState extends State<PictureSelection> {
         if (fs.length > h) {
           fs.removeRange(h, fs.length);
         }
-        _renderImages.addAll(fs);
+        _renderImages.addAll(fs.map((e) => PictureSelectionItemModel.file(file: e)));
         _refreshUi();
         navigator.pop();
       }
@@ -293,7 +325,7 @@ class _PictureSelectionState extends State<PictureSelection> {
       //单选模式
       final file = await ImagePicker().pickImage(source: ImageSource.gallery);
       if (file != null) {
-        _renderImages.add(io.File(file.path));
+        _renderImages.add(PictureSelectionItemModel.file(file: io.File(file.path)));
         _refreshUi();
         navigator.pop();
       }
@@ -309,9 +341,10 @@ class _PictureSelectionState extends State<PictureSelection> {
 
 // 默认的图片展示方式
 class ImageDefaultShow extends StatelessWidget {
-  final io.File file;
-  final ValueChanged<io.File>? onRemove;
+  final PictureSelectionItemModel file;
+  final ValueChanged<PictureSelectionItemModel>? onRemove;
   final Widget? removeWidget;
+
   const ImageDefaultShow(this.file, {Key? key, this.onRemove, this.removeWidget}) : super(key: key);
 
   @override
@@ -323,10 +356,12 @@ class ImageDefaultShow extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             height: double.infinity,
-            child: Image.file(
-              file,
-              fit: BoxFit.cover,
-            ),
+            child: file.isLocalFile
+                ? Image.file(
+                    (file as XXFile).file,
+                    fit: BoxFit.cover,
+                  )
+                : Image.network((file as XXImage).url),
           ),
           (removeWidget ?? const SizedBox()).addTap(() {
             onRemove?.call(file);
@@ -335,7 +370,10 @@ class ImageDefaultShow extends StatelessWidget {
             Positioned(
                 right: 6,
                 top: 6,
-                child: const SizedBox(width: 26, height: 26, child: CircleAvatar(backgroundColor: Colors.black45, child: Icon(Icons.delete, size: 12)))
+                child: const SizedBox(
+                        width: 26,
+                        height: 26,
+                        child: CircleAvatar(backgroundColor: Colors.black45, child: Icon(Icons.delete, size: 12)))
                     .addTap(() {
                   onRemove?.call(file);
                 }))
@@ -375,12 +413,12 @@ class PictureSelectionController {
   }
 
   /// 删除某张图片
-  void remove(io.File file) {
+  void remove(PictureSelectionItemModel file) {
     _state?.removeFile(file);
   }
 
   /// 获取全部图片
-  List<io.File> get getFiles => _state?._renderImages ?? [];
+  List<PictureSelectionItemModel> get getFiles => _state?._renderImages ?? [];
 
   /// 获取数量
   int get length => _state?._renderImages.length ?? 0;
