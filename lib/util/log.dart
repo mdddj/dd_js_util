@@ -2,11 +2,22 @@ part of dd_js_util;
 
 
 void kLog(dynamic msg){
-  Logger().d(msg);
+  if(kDebugMode){
+    Logger().d(msg);
+  }
+}
+
+
+void wtfLog(dynamic msg) {
+  if(kDebugMode) {
+    Logger().wtf(msg);
+  }
 }
 
 void kLogErr(dynamic m){
-  Logger().e(m);
+  if(!kDebugMode){
+    Logger().e(m);
+  }
 }
 
 

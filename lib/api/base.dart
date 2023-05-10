@@ -90,6 +90,8 @@ abstract class BaseApi {
       printLog("url---$finalUrl");
       printLog("params---$queryParameters");
       var uri = (options.urlParseFormat ?? (v, p) => v).call(finalUrl, queryParameters);
+      final bodyData = httpMethod == HttpMethod.get ? null : bodyParams;
+      printLog("body--$bodyData");
       final response = await d.request(
         uri,
         options: dio.Options(
@@ -100,8 +102,9 @@ abstract class BaseApi {
           requestEncoder: options.requestEncoder,
         ),
         queryParameters: httpMethod == HttpMethod.get ? queryParameters : null,
-        data: httpMethod == HttpMethod.get ? null : bodyParams,
+        data: bodyData,
       );
+      options.responseResultCallback?.call(response);
       if (options.showDefaultLoading) {
         closeLoading();
       }
@@ -165,6 +168,7 @@ abstract class BaseApi {
     _dio ??= dio.Dio(options);
     return _dio!;
   }
+
 
   void handle(CallIf callIf, ValueChanged<BaseApi> call) {
     if (callIf.call()) {

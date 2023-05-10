@@ -111,6 +111,7 @@ part 'theme/index.dart';
 part 'theme/theme_setting.dart';
 part 'widget/build_widget.dart';
 part 'widget/lazy_stack_widget.dart';
+part 'api/loading.dart';
 
 class DdJsUtil {
   static const MethodChannel _channel = MethodChannel('dd_js_util');

@@ -64,7 +64,7 @@ extension StringExtension on String {
   /// 图片压缩 File -> File
   /// [targetPath] - 要保存压缩后文件的路径
   /// [quality] - 压缩的质量
-  Future<io.File?> fileImageCompress(String targetPath, {int? quality}) async {
+  Future<XFile?> fileImageCompress(String targetPath, {int? quality}) async {
     var result = await FlutterImageCompress.compressAndGetFile(
       this,
       targetPath,

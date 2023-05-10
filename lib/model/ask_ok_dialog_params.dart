@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ask_ok_dialog_params.freezed.dart';
@@ -9,7 +10,8 @@ class AskOkDialogParams with _$AskOkDialogParams {
   const factory AskOkDialogParams({
     @Default("") String contentText,
     @Default("Ok") String okText,
-    @Default("Cancel") String cancelText
+    @Default("Cancel") String cancelText,
+    @JsonKey(toJson: null,fromJson: null,ignore: true) Widget? title
     }) = _AskOkDialogParams;
   
   factory AskOkDialogParams.fromJson(Map<String, dynamic> json) => _$AskOkDialogParamsFromJson(json);

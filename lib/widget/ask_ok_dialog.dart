@@ -19,6 +19,7 @@ class AskOkDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      title: params.title,
       content: Text(params.contentText),
       actions: [
         TextButton(onPressed: ()=>Navigator.pop(context,false), child: Text(params.cancelText)),

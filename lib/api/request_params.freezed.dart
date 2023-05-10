@@ -30,6 +30,8 @@ mixin _$RequestParams {
   bool get isFullUrl => throw _privateConstructorUsedError;
   InterceptorCall? get interceptorCall => throw _privateConstructorUsedError;
   UrlParseFormat? get urlParseFormat => throw _privateConstructorUsedError;
+  ResponseResultCallback? get responseResultCallback =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RequestParamsCopyWith<RequestParams> get copyWith =>
@@ -56,7 +58,8 @@ abstract class $RequestParamsCopyWith<$Res> {
       bool? returnIsString,
       bool isFullUrl,
       InterceptorCall? interceptorCall,
-      UrlParseFormat? urlParseFormat});
+      UrlParseFormat? urlParseFormat,
+      ResponseResultCallback? responseResultCallback});
 }
 
 /// @nodoc
@@ -86,6 +89,7 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
     Object? isFullUrl = null,
     Object? interceptorCall = freezed,
     Object? urlParseFormat = freezed,
+    Object? responseResultCallback = freezed,
   }) {
     return _then(_value.copyWith(
       showErrorMsg: null == showErrorMsg
@@ -144,6 +148,10 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
           ? _value.urlParseFormat
           : urlParseFormat // ignore: cast_nullable_to_non_nullable
               as UrlParseFormat?,
+      responseResultCallback: freezed == responseResultCallback
+          ? _value.responseResultCallback
+          : responseResultCallback // ignore: cast_nullable_to_non_nullable
+              as ResponseResultCallback?,
     ) as $Val);
   }
 }
@@ -170,7 +178,8 @@ abstract class _$$_RequestParamsCopyWith<$Res>
       bool? returnIsString,
       bool isFullUrl,
       InterceptorCall? interceptorCall,
-      UrlParseFormat? urlParseFormat});
+      UrlParseFormat? urlParseFormat,
+      ResponseResultCallback? responseResultCallback});
 }
 
 /// @nodoc
@@ -198,6 +207,7 @@ class __$$_RequestParamsCopyWithImpl<$Res>
     Object? isFullUrl = null,
     Object? interceptorCall = freezed,
     Object? urlParseFormat = freezed,
+    Object? responseResultCallback = freezed,
   }) {
     return _then(_$_RequestParams(
       showErrorMsg: null == showErrorMsg
@@ -256,6 +266,10 @@ class __$$_RequestParamsCopyWithImpl<$Res>
           ? _value.urlParseFormat
           : urlParseFormat // ignore: cast_nullable_to_non_nullable
               as UrlParseFormat?,
+      responseResultCallback: freezed == responseResultCallback
+          ? _value.responseResultCallback
+          : responseResultCallback // ignore: cast_nullable_to_non_nullable
+              as ResponseResultCallback?,
     ));
   }
 }
@@ -277,7 +291,8 @@ class _$_RequestParams extends _RequestParams {
       this.returnIsString,
       this.isFullUrl = false,
       this.interceptorCall,
-      this.urlParseFormat})
+      this.urlParseFormat,
+      this.responseResultCallback})
       : _headers = headers,
         super._();
 
@@ -320,10 +335,12 @@ class _$_RequestParams extends _RequestParams {
   final InterceptorCall? interceptorCall;
   @override
   final UrlParseFormat? urlParseFormat;
+  @override
+  final ResponseResultCallback? responseResultCallback;
 
   @override
   String toString() {
-    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, isFullUrl: $isFullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat)';
+    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, isFullUrl: $isFullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback)';
   }
 
   @override
@@ -356,7 +373,9 @@ class _$_RequestParams extends _RequestParams {
             (identical(other.interceptorCall, interceptorCall) ||
                 other.interceptorCall == interceptorCall) &&
             (identical(other.urlParseFormat, urlParseFormat) ||
-                other.urlParseFormat == urlParseFormat));
+                other.urlParseFormat == urlParseFormat) &&
+            (identical(other.responseResultCallback, responseResultCallback) ||
+                other.responseResultCallback == responseResultCallback));
   }
 
   @override
@@ -375,7 +394,8 @@ class _$_RequestParams extends _RequestParams {
       returnIsString,
       isFullUrl,
       interceptorCall,
-      urlParseFormat);
+      urlParseFormat,
+      responseResultCallback);
 
   @JsonKey(ignore: true)
   @override
@@ -399,7 +419,8 @@ abstract class _RequestParams extends RequestParams {
       final bool? returnIsString,
       final bool isFullUrl,
       final InterceptorCall? interceptorCall,
-      final UrlParseFormat? urlParseFormat}) = _$_RequestParams;
+      final UrlParseFormat? urlParseFormat,
+      final ResponseResultCallback? responseResultCallback}) = _$_RequestParams;
   const _RequestParams._() : super._();
 
   @override
@@ -430,6 +451,8 @@ abstract class _RequestParams extends RequestParams {
   InterceptorCall? get interceptorCall;
   @override
   UrlParseFormat? get urlParseFormat;
+  @override
+  ResponseResultCallback? get responseResultCallback;
   @override
   @JsonKey(ignore: true)
   _$$_RequestParamsCopyWith<_$_RequestParams> get copyWith =>
