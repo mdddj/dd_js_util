@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../dd_js_util.dart';
 import '../model/ask_int_dialog_params.dart';
 
-class AskIntDialog extends StatelessWidget {
+class AskIntDialog extends StatefulWidget {
   final AskIntDialogParams params;
 
-  static Future<int?> show(BuildContext context,
-      {AskIntDialogParams? params}) async {
+  static Future<int?> show(BuildContext context, {AskIntDialogParams? params}) async {
     return await showCupertinoDialog<int>(
         context: context,
         builder: (_) => AskIntDialog(
@@ -18,12 +18,21 @@ class AskIntDialog extends StatelessWidget {
   const AskIntDialog({Key? key, required this.params}) : super(key: key);
 
   @override
+  State<AskIntDialog> createState() => _AskIntDialogState();
+}
+
+class _AskIntDialogState extends State<AskIntDialog> {
+  String? errorMessage;
+  bool disableOkButton = false;
+
+final controller = TextEditingController();
+  @override
   Widget build(BuildContext context) {
-    final controller = TextEditingController();
+    
     return CupertinoAlertDialog(
       content: SingleChildScrollView(
         child: Column(children: [
-          Text(params.title).visible(params.title.isNotEmpty),
+          Text(widget.params.title).visible(widget.params.title.isNotEmpty),
           const SizedBox(
             height: 12,
           ),
@@ -32,8 +41,18 @@ class AskIntDialog extends StatelessWidget {
             controller: controller,
             textInputAction: TextInputAction.go,
             keyboardType: TextInputType.number,
-            placeholder: params.placeholder,
-          )
+            style: TextStyle(color: context.primaryColor),
+            placeholder: widget.params.placeholder,
+            onChanged: (value) {
+              final intValue = int.tryParse(value) ?? 0;
+              errorMessage = widget.params.errorMessage?.call(intValue);
+              disableOkButton = widget.params.disableOkButton?.call(intValue) ?? false;
+              setState(() {});
+            },
+          ),
+          if(errorMessage!=null)
+            Text(errorMessage!,style: const TextStyle(color: Colors.red),).marginOnly(top: 12)
+          
         ]),
       ),
       actions: [
@@ -42,10 +61,10 @@ class AskIntDialog extends StatelessWidget {
             context.pop();
           },
           isDestructiveAction: true,
-          child: Text(params.cancelBtnText),
+          child: Text(widget.params.cancelBtnText),
         ),
         CupertinoActionSheetAction(
-          onPressed: () {
+          onPressed: disableOkButton ? (){} : () {
             final text = controller.text;
             if (text.isNotEmpty) {
               final count = int.tryParse(controller.text);
@@ -56,11 +75,18 @@ class AskIntDialog extends StatelessWidget {
           },
           isDefaultAction: true,
           child: Text(
-            params.okBtnText,
-            style: TextStyle(color: context.primaryColor),
+            widget.params.okBtnText,
+            style: TextStyle(color: disableOkButton? Colors.grey : context.primaryColor),
           ),
         )
       ],
     );
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
   }
 }

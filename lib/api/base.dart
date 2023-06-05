@@ -2,7 +2,12 @@ part of dd_js_util;
 
 const kProtobufContentType = 'application/x-protobuf';
 
-enum HttpMethod { post, get, probuf }
+
+enum HttpMethod {
+  post("post"),get("get"),probuf("probuf"),delete('delete'),put("put"),update("update");
+  final String method;
+  const HttpMethod(this.method);
+}
 
 const kMultipartFormDataHeader = 'multipart/form-data';
 
@@ -81,7 +86,7 @@ abstract class BaseApi {
       d.interceptors.addAll(options.interceptorCall?.call(interceptions) ?? interceptions);
       final contentTypeStr =
           options.contentType ?? (httpMethod == HttpMethod.post ? io.ContentType.json.value : options.contentType);
-      final bodyParams = formData.files.isNotEmpty ? formData : (options.data ?? params);
+      final bodyParams = formData.fields.isNotEmpty ? formData : (options.data ?? params);
       final queryParameters =
           httpMethod == HttpMethod.post ? null : (options.nullParams == true ? null : options.data ?? params);
       final contentTypeString = httpMethod == HttpMethod.probuf ? kProtobufContentType : contentTypeStr;
@@ -95,7 +100,7 @@ abstract class BaseApi {
       final response = await d.request(
         uri,
         options: dio.Options(
-          method: method,
+          method: httpMethod.method,
           contentType: contentTypeString,
           headers: options.headers,
           responseType: options.responseType,
@@ -142,17 +147,6 @@ abstract class BaseApi {
     }
   }
 
-  //请求方法,
-  String get method {
-    switch (httpMethod) {
-      case HttpMethod.get:
-        return 'get';
-      case HttpMethod.post:
-        return 'post';
-      default:
-        return "get";
-    }
-  }
 
   @Doc(message: "页面中间显示loading等待框")
   void showLoading({String? loadingText}) {

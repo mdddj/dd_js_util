@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'request_params.freezed.dart';
@@ -25,6 +26,7 @@ class RequestParams with _$RequestParams {
       bool? returnIsString,
       @Default(false) bool isFullUrl,
       InterceptorCall? interceptorCall,
-      UrlParseFormat? urlParseFormat, ResponseResultCallback? responseResultCallback
+      UrlParseFormat? urlParseFormat, ResponseResultCallback? responseResultCallback,
+      VoidCallback? loginedSuccess
       }) = _RequestParams;
 }

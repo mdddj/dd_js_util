@@ -235,6 +235,18 @@ mixin _$AskIntDialogParams {
   String get title => throw _privateConstructorUsedError;
   String get okBtnText => throw _privateConstructorUsedError;
   String get cancelBtnText => throw _privateConstructorUsedError;
+  @JsonKey(
+      fromJson: null,
+      toJson: null,
+      includeFromJson: false,
+      includeToJson: false)
+  bool Function(int)? get disableOkButton => throw _privateConstructorUsedError;
+  @JsonKey(
+      fromJson: null,
+      toJson: null,
+      includeFromJson: false,
+      includeToJson: false)
+  String? Function(int)? get errorMessage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -252,7 +264,11 @@ abstract class $AskIntDialogParamsCopyWith<$Res> {
       {String placeholder,
       String title,
       String okBtnText,
-      String cancelBtnText});
+      String cancelBtnText,
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
+          bool Function(int)? disableOkButton,
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
+          String? Function(int)? errorMessage});
 }
 
 /// @nodoc
@@ -272,6 +288,8 @@ class _$AskIntDialogParamsCopyWithImpl<$Res, $Val extends AskIntDialogParams>
     Object? title = null,
     Object? okBtnText = null,
     Object? cancelBtnText = null,
+    Object? disableOkButton = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       placeholder: null == placeholder
@@ -290,6 +308,14 @@ class _$AskIntDialogParamsCopyWithImpl<$Res, $Val extends AskIntDialogParams>
           ? _value.cancelBtnText
           : cancelBtnText // ignore: cast_nullable_to_non_nullable
               as String,
+      disableOkButton: freezed == disableOkButton
+          ? _value.disableOkButton
+          : disableOkButton // ignore: cast_nullable_to_non_nullable
+              as bool Function(int)?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String? Function(int)?,
     ) as $Val);
   }
 }
@@ -306,7 +332,11 @@ abstract class _$$_AskIntDialogParamsCopyWith<$Res>
       {String placeholder,
       String title,
       String okBtnText,
-      String cancelBtnText});
+      String cancelBtnText,
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
+          bool Function(int)? disableOkButton,
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
+          String? Function(int)? errorMessage});
 }
 
 /// @nodoc
@@ -324,6 +354,8 @@ class __$$_AskIntDialogParamsCopyWithImpl<$Res>
     Object? title = null,
     Object? okBtnText = null,
     Object? cancelBtnText = null,
+    Object? disableOkButton = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$_AskIntDialogParams(
       placeholder: null == placeholder
@@ -342,6 +374,14 @@ class __$$_AskIntDialogParamsCopyWithImpl<$Res>
           ? _value.cancelBtnText
           : cancelBtnText // ignore: cast_nullable_to_non_nullable
               as String,
+      disableOkButton: freezed == disableOkButton
+          ? _value.disableOkButton
+          : disableOkButton // ignore: cast_nullable_to_non_nullable
+              as bool Function(int)?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String? Function(int)?,
     ));
   }
 }
@@ -353,7 +393,11 @@ class _$_AskIntDialogParams implements _AskIntDialogParams {
       {this.placeholder = "",
       this.title = "",
       this.okBtnText = "Ok",
-      this.cancelBtnText = "Cancel"});
+      this.cancelBtnText = "Cancel",
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
+          this.disableOkButton,
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
+          this.errorMessage});
 
   factory _$_AskIntDialogParams.fromJson(Map<String, dynamic> json) =>
       _$$_AskIntDialogParamsFromJson(json);
@@ -370,10 +414,24 @@ class _$_AskIntDialogParams implements _AskIntDialogParams {
   @override
   @JsonKey()
   final String cancelBtnText;
+  @override
+  @JsonKey(
+      fromJson: null,
+      toJson: null,
+      includeFromJson: false,
+      includeToJson: false)
+  final bool Function(int)? disableOkButton;
+  @override
+  @JsonKey(
+      fromJson: null,
+      toJson: null,
+      includeFromJson: false,
+      includeToJson: false)
+  final String? Function(int)? errorMessage;
 
   @override
   String toString() {
-    return 'AskIntDialogParams(placeholder: $placeholder, title: $title, okBtnText: $okBtnText, cancelBtnText: $cancelBtnText)';
+    return 'AskIntDialogParams(placeholder: $placeholder, title: $title, okBtnText: $okBtnText, cancelBtnText: $cancelBtnText, disableOkButton: $disableOkButton, errorMessage: $errorMessage)';
   }
 
   @override
@@ -387,13 +445,17 @@ class _$_AskIntDialogParams implements _AskIntDialogParams {
             (identical(other.okBtnText, okBtnText) ||
                 other.okBtnText == okBtnText) &&
             (identical(other.cancelBtnText, cancelBtnText) ||
-                other.cancelBtnText == cancelBtnText));
+                other.cancelBtnText == cancelBtnText) &&
+            (identical(other.disableOkButton, disableOkButton) ||
+                other.disableOkButton == disableOkButton) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, placeholder, title, okBtnText, cancelBtnText);
+  int get hashCode => Object.hash(runtimeType, placeholder, title, okBtnText,
+      cancelBtnText, disableOkButton, errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -415,7 +477,11 @@ abstract class _AskIntDialogParams implements AskIntDialogParams {
       {final String placeholder,
       final String title,
       final String okBtnText,
-      final String cancelBtnText}) = _$_AskIntDialogParams;
+      final String cancelBtnText,
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
+          final bool Function(int)? disableOkButton,
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
+          final String? Function(int)? errorMessage}) = _$_AskIntDialogParams;
 
   factory _AskIntDialogParams.fromJson(Map<String, dynamic> json) =
       _$_AskIntDialogParams.fromJson;
@@ -428,6 +494,20 @@ abstract class _AskIntDialogParams implements AskIntDialogParams {
   String get okBtnText;
   @override
   String get cancelBtnText;
+  @override
+  @JsonKey(
+      fromJson: null,
+      toJson: null,
+      includeFromJson: false,
+      includeToJson: false)
+  bool Function(int)? get disableOkButton;
+  @override
+  @JsonKey(
+      fromJson: null,
+      toJson: null,
+      includeFromJson: false,
+      includeToJson: false)
+  String? Function(int)? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$_AskIntDialogParamsCopyWith<_$_AskIntDialogParams> get copyWith =>

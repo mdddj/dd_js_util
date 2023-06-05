@@ -25,9 +25,10 @@ class AskIntDialogParams with _$AskIntDialogParams {
     @Default("") String placeholder,
     @Default("") String title,
     @Default("Ok") String okBtnText,
-    @Default("Cancel") String cancelBtnText
+    @Default("Cancel") String cancelBtnText,
+    @JsonKey(fromJson: null,toJson: null,includeFromJson: false,includeToJson: false) bool Function(int value)? disableOkButton,
+    @JsonKey(fromJson: null,toJson: null,includeFromJson: false,includeToJson: false) String? Function(int value)? errorMessage,
     }) = _AskIntDialogParams;
   
   factory AskIntDialogParams.fromJson(Map<String, dynamic> json) => _$AskIntDialogParamsFromJson(json);
 }
-

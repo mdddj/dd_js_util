@@ -80,6 +80,8 @@ class _SearchSupportState<T> extends State<SearchSupport<T>> {
       return FFloat(
         (setter, s) {
           _params.listening?.onBuild(s.context);
+          _floatSetState = setter;
+          _floatState = s;
           return _params.childBuilder.call(
               SearchSupportManager(
                 context: s.context,

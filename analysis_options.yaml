@@ -1,7 +1,5 @@
 include: package:flutter_lints/flutter.yaml
 analyzer:
-  strong-mode:
-    implicit-dynamic: true
   errors:
     todo: ignore
   exclude:
@@ -10,7 +8,8 @@ analyzer:
     - lib/generated_plugin_registrant.dart
     - "**/*.g.dart"
     - "**/*.freezed.dart"
-
+  plugins:
+    - custom_lint
 linter:
   rules:
     - camel_case_types
@@ -36,7 +35,6 @@ linter:
     - unnecessary_brace_in_string_interps # avoid
     - prefer_iterable_whereType
     - unnecessary_lambdas
-    - prefer_equal_for_default_values
     - avoid_init_to_null
     #   - unnecessary_getters_setters
     - unnecessary_this

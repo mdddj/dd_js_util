@@ -26,7 +26,7 @@ extension PictureSelectionItemModelEx on PictureSelectionItemModel {
   ///获取本地的路径
   File? get localFilePath {
     if(isLocalFile){
-      return (this as XXFile).localFilePath;
+      return (this as XXFile).file;
     }
     return null;
   }

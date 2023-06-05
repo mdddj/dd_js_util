@@ -238,7 +238,7 @@ class _CalendarDatePickerState extends State<CalendarDatePicker> {
   Widget _buildPicker() {
     switch (_mode) {
       case DatePickerMode.day:
-        return _MonthPicker(
+        return MonthPicker(
           key: _monthPickerKey,
           initialMonth: _currentDisplayedMonthDate,
           currentDate: widget.currentDate,
@@ -277,7 +277,7 @@ class _CalendarDatePickerState extends State<CalendarDatePicker> {
           child: _buildPicker(),
         ),
         // Put the mode toggle button on top so that it won't be covered up by the _MonthPicker
-        _DatePickerModeToggleButton(
+        DatePickerModeToggleButton(
           mode: _mode,
           title: _localizations.formatMonthYear(_currentDisplayedMonthDate),
           onTitlePressed: () {
@@ -294,8 +294,8 @@ class _CalendarDatePickerState extends State<CalendarDatePicker> {
 ///
 /// This appears above the calendar grid and allows the user to toggle the
 /// [DatePickerMode] to display either the calendar view or the year list.
-class _DatePickerModeToggleButton extends StatefulWidget {
-  const _DatePickerModeToggleButton({
+class DatePickerModeToggleButton extends StatefulWidget {
+  const DatePickerModeToggleButton({super.key,
     required this.mode,
     required this.title,
     required this.onTitlePressed,
@@ -311,10 +311,10 @@ class _DatePickerModeToggleButton extends StatefulWidget {
   final VoidCallback onTitlePressed;
 
   @override
-  _DatePickerModeToggleButtonState createState() => _DatePickerModeToggleButtonState();
+  DatePickerModeToggleButtonState createState() => DatePickerModeToggleButtonState();
 }
 
-class _DatePickerModeToggleButtonState extends State<_DatePickerModeToggleButton> with SingleTickerProviderStateMixin {
+class DatePickerModeToggleButtonState extends State<DatePickerModeToggleButton> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -329,7 +329,7 @@ class _DatePickerModeToggleButtonState extends State<_DatePickerModeToggleButton
   }
 
   @override
-  void didUpdateWidget(_DatePickerModeToggleButton oldWidget) {
+  void didUpdateWidget(DatePickerModeToggleButton oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.mode == widget.mode) {
       return;
@@ -404,9 +404,9 @@ class _DatePickerModeToggleButtonState extends State<_DatePickerModeToggleButton
   }
 }
 
-class _MonthPicker extends StatefulWidget {
+class MonthPicker extends StatefulWidget {
   /// Creates a month picker.
-  _MonthPicker({
+  MonthPicker({
     Key? key,
     required this.initialMonth,
     required this.currentDate,
@@ -454,10 +454,10 @@ class _MonthPicker extends StatefulWidget {
   final SelectableDayPredicate? selectableDayPredicate;
 
   @override
-  _MonthPickerState createState() => _MonthPickerState();
+  MonthPickerState createState() => MonthPickerState();
 }
 
-class _MonthPickerState extends State<_MonthPicker> {
+class MonthPickerState extends State<MonthPicker> {
   final GlobalKey _pageViewKey = GlobalKey();
   late DateTime _currentMonth;
   late PageController _pageController;
@@ -495,7 +495,7 @@ class _MonthPickerState extends State<_MonthPicker> {
   }
 
   @override
-  void didUpdateWidget(_MonthPicker oldWidget) {
+  void didUpdateWidget(MonthPicker oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.initialMonth != oldWidget.initialMonth && widget.initialMonth != _currentMonth) {
       // We can't interrupt this widget build with a scroll, so do it next frame
@@ -829,10 +829,10 @@ class _DayPicker extends StatefulWidget {
   final SelectableDayPredicate? selectableDayPredicate;
 
   @override
-  _DayPickerState createState() => _DayPickerState();
+  DayPickerState createState() => DayPickerState();
 }
 
-class _DayPickerState extends State<_DayPicker> {
+class DayPickerState extends State<_DayPicker> {
   /// List of [FocusNode]s, one for each day of the month.
   late List<FocusNode> _dayFocusNodes;
 
@@ -1308,8 +1308,8 @@ class ZhCupertinoLocalizations implements CupertinoLocalizations {
   @override
   String datePickerMonth(int monthIndex) => _months[monthIndex - 1];
 
-  @override
-  String datePickerDayOfMonth(int dayIndex) => dayIndex.toString();
+  // @override
+  // String datePickerDayOfMonth(int dayIndex) => dayIndex.toString();
 
   @override
   String datePickerHour(int hour) => hour.toString();
@@ -1390,7 +1390,6 @@ class ZhCupertinoLocalizations implements CupertinoLocalizations {
   static const LocalizationsDelegate<CupertinoLocalizations> delegate = MyLocalizationsDelegate();
 
   @override
-  // TODO: implement modalBarrierDismissLabel
   String get modalBarrierDismissLabel => throw UnimplementedError();
 
   @override
@@ -1399,19 +1398,23 @@ class ZhCupertinoLocalizations implements CupertinoLocalizations {
 
   @override
   String tabSemanticsLabel({required int tabIndex, required int tabCount}) {
-    // TODO: implement tabSemanticsLabel
     throw UnimplementedError();
   }
 
   @override
-  // TODO: implement timerPickerHourLabels
   List<String> get timerPickerHourLabels => throw UnimplementedError();
 
   @override
-  // TODO: implement timerPickerMinuteLabels
   List<String> get timerPickerMinuteLabels => throw UnimplementedError();
 
   @override
-  // TODO: implement timerPickerSecondLabels
   List<String> get timerPickerSecondLabels => throw UnimplementedError();
+
+  @override
+  String get noSpellCheckReplacementsLabel => throw UnimplementedError();
+
+  @override
+  String datePickerDayOfMonth(int dayIndex, [int? weekDay]) {
+    return dayIndex.toString();
+  }
 }

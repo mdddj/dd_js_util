@@ -3,7 +3,7 @@ part of dd_js_util;
 typedef LB = BaseApiDialogBuilder;
 
 class BaseApiDialogBuilder {
-  static void show<M, A extends BaseApi>(A api, {required ValueChanged<M> successResult, R? params}) {
+  static void show<M, A extends BaseApi>(A api, {required ValueChanged<M> successResult, R? params,bool enableLog = false,Widget? loadingWidget}) {
     const tag = 'loading-dialog-api';
     SmartDialog.show(
         builder: (ctx) {
@@ -14,9 +14,13 @@ class BaseApiDialogBuilder {
             },
             params: params,
             api: api,
+            enableLog: enableLog,
+            loadingWidget: loadingWidget,
           );
         },
         tag: tag,
+        clickMaskDismiss: false,
+        animationType: SmartAnimationType.centerFade_otherSlide,
         maskColor: Colors.white30);
   }
 }
@@ -25,8 +29,10 @@ class BaseApiDialog<M, A extends BaseApi> extends ConsumerStatefulWidget {
   final void Function(M model) result;
   final R? params;
   final A api;
+  final bool enableLog;
+  final Widget? loadingWidget;
 
-  const BaseApiDialog({Key? key, required this.result, this.params, required this.api}) : super(key: key);
+  const BaseApiDialog({Key? key, required this.result, this.params, required this.api,this.enableLog = false,this.loadingWidget}) : super(key: key);
 
   @override
   ConsumerState<BaseApiDialog<M, A>> createState() => _LoadingApiDialogState<M, A>();
@@ -34,16 +40,24 @@ class BaseApiDialog<M, A extends BaseApi> extends ConsumerStatefulWidget {
 
 class _LoadingApiDialogState<M, A extends BaseApi> extends ConsumerState<BaseApiDialog<M, A>>
     with ApiMixin<M, A, BaseApiDialog<M, A>> {
+
+
+  void _log(dynamic msg) {
+    if(widget.enableLog){
+      debugPrint('$msg');
+    }
+  }
+
+
   @override
   Widget builder(BuildContext context, M data) {
-    return Container(
-      alignment: Alignment.center,
-      child: const CupertinoActivityIndicator(),
-    );
+    _log('builder执行了 $data  $pageState');
+    return const SizedBox.shrink();
   }
 
   @override
   void responseModelHandle(M model) {
+    _log("response model handle : $model");
     super.responseModelHandle(model);
     widget.result.call(model);
   }
@@ -53,16 +67,19 @@ class _LoadingApiDialogState<M, A extends BaseApi> extends ConsumerState<BaseApi
 
   @override
   Widget builderLoadingWidget() {
-    return const SizedBox();
+    _log('builderLoadingWidget...');
+    return widget.loadingWidget ?? const SizedBox();
   }
 
   @override
   Widget builderErrorWidget() {
+    _log('builderErrorWidget...');
     return const SizedBox();
   }
 
   @override
   void onError(AppException exception) {
+    _log('on error  : $exception');
     super.onError(exception);
     SmartDialog.dismiss(tag: 'loading-dialog-api');
     toast(exception.getMessage);
@@ -80,15 +97,23 @@ mixin ApiMixin<M, T extends BaseApi, S extends StatefulWidget> on State<S> {
   late PageState pageState = initModel != null ? PageState.hasData : PageState.loading;
   late M? stateModel = initModel;
 
+
+  bool get showLoading => false;
+
   @override
   void initState() {
     super.initState();
     delayFunction(startRequest, 0);
   }
 
+  void requestBefore(){}
+  void requestEnd(bool isError){}
+
   @Doc(message: '开始发起请求')
   Future<void> startRequest() async {
+    requestBefore();
     if (igRequest) {
+      requestEnd(false);
       return;
     }
     try {
@@ -98,11 +123,18 @@ mixin ApiMixin<M, T extends BaseApi, S extends StatefulWidget> on State<S> {
       final r = await api.request(requestParams);
       responseModelHandle(r);
       setState(() => pageState = PageState.hasData);
+      requestEnd(false);
     } on AppException catch (exception) {
+      requestEnd(true);
       onError(exception);
+      setState(() => pageState = PageState.error);
+    } catch(e,s){
+      requestEnd(true);
+      onError(AppException.appError(code: -1,msg: '$e',data: s));
       setState(() => pageState = PageState.error);
     }
   }
+
 
   @Doc(message: '请求配置')
   R get requestParams => const R(showDefaultLoading: false);
