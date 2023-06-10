@@ -11,7 +11,7 @@ class AskOkDialogParams with _$AskOkDialogParams {
     @Default("") String contentText,
     @Default("Ok") String okText,
     @Default("Cancel") String cancelText,
-    @JsonKey(toJson: null,fromJson: null,ignore: true) Widget? title
+    @JsonKey(toJson: null,fromJson: null,includeToJson: false,includeFromJson: false) Widget? title
     }) = _AskOkDialogParams;
   
   factory AskOkDialogParams.fromJson(Map<String, dynamic> json) => _$AskOkDialogParamsFromJson(json);

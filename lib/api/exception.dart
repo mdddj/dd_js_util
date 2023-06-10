@@ -4,7 +4,7 @@ part of dd_js_util;
 class AppException implements Exception {
   final String message;
   final int code;
-  final dio.DioError? dioError;
+  final dio.DioException? dioError;
   final dynamic data;
 
   AppException( {
@@ -14,7 +14,7 @@ class AppException implements Exception {
     this.data
   });
 
-  factory AppException.appError({int? code,String? msg,dio.DioError? dioError,dynamic data}){
+  factory AppException.appError({int? code,String? msg,dio.DioException? dioError,dynamic data}){
     return AppException(code: code ?? 10001, message: msg ?? 'app Error',dioError: dioError,data:data);
   }
 
@@ -22,7 +22,7 @@ class AppException implements Exception {
     return data is String ? data.toString() : message;
   }
 
-  factory AppException.create(dio.DioError error) {
+  factory AppException.create(dio.DioException error) {
     final data = error.response?.data;
 
     String? msg;
@@ -34,24 +34,24 @@ class AppException implements Exception {
     } catch (_) {}
 
     switch (error.type) {
-      case dio.DioErrorType.cancel:
+      case dio.DioExceptionType.cancel:
         {
           /// 请求取消
           return BadRequestException(201, "Request cancellation",dioError: error);
         }
-      case dio.DioErrorType.connectionTimeout:
+      case dio.DioExceptionType.connectionTimeout:
         {
           return BadRequestException(-1, "Connection timed out",dioError: error);
         }
-      case dio.DioErrorType.sendTimeout:
+      case dio.DioExceptionType.sendTimeout:
         {
           return BadRequestException(-1, "Connection timed out",dioError: error);
         }
-      case dio.DioErrorType.receiveTimeout:
+      case dio.DioExceptionType.receiveTimeout:
         {
           return BadRequestException(-1, "Response timeout",dioError: error);
         }
-      case dio.DioErrorType.badResponse:
+      case dio.DioExceptionType.badResponse:
         {
           try {
             int? errCode = error.response?.statusCode;
@@ -144,19 +144,19 @@ class AppException implements Exception {
 
 /// 请求错误
 class BadRequestException extends AppException {
-  BadRequestException(int code, String message,{dio.DioError? dioError}) : super(code: code, message: message,dioError: dioError);
+  BadRequestException(int code, String message,{dio.DioException? dioError}) : super(code: code, message: message,dioError: dioError);
 }
 
 /// 未认证异常
 class UnauthorisedException extends AppException {
-  UnauthorisedException(int code, String message,{dio.DioError? dioError}) : super(code: code, message: message,dioError: dioError);
+  UnauthorisedException(int code, String message,{dio.DioException? dioError}) : super(code: code, message: message,dioError: dioError);
 }
 
 /// 拦截器
 /// 错误处理拦截器
 class ErrorInterceptor extends dio.Interceptor {
   @override
-  void onError(dio.DioError err, dio.ErrorInterceptorHandler handler) {
+  void onError(dio.DioException err, dio.ErrorInterceptorHandler handler) {
     AppException appException = AppException.create(err);
     final ae = err.copyWith(error: appException);
     super.onError(ae, handler);

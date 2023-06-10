@@ -7,10 +7,13 @@ void showToast(String msg) {
 
 @Doc(message: '显示一个iOS弹窗')
 void showIosDialog(String msg,
-    {String? okText,
+    {String okText = 'Ok',
     List<Widget>? startActions,
     List<Widget>? endActions,
-    Widget? title}) {
+    Widget? title,
+    String cancelText = 'Cancel',
+      Widget? content
+    }) {
   const tag = 's-dialog-simple-ok-btn';
   SmartDialog.show(
       builder: (_) {
@@ -30,14 +33,18 @@ void showIosDialog(String msg,
           final allEmpty = startActions == null && endActions == null;
           return AlertDialog(
             title: title ?? const Text(''),
-            content: Text(msg),
+            content: content ?? Text(msg),
             actions: allEmpty
                 ? [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        ElevatedButton(
+                        TextButton(onPressed: (){
+                          SmartDialog.dismiss(tag: tag);
+                        }, child: Text(cancelText)),
+                        FilledButton(
                             onPressed: () => SmartDialog.dismiss(tag: tag),
-                            child: Text(okText ?? "OK")).center
+                            child: Text(okText)).center
                       ],
                     )
                   ]
@@ -45,7 +52,7 @@ void showIosDialog(String msg,
                     if (startActions != null) ...startActions,
                     ElevatedButton(
                         onPressed: () => SmartDialog.dismiss(tag: tag),
-                        child: Text(okText ?? "OK")),
+                        child: Text(okText)),
                     if (endActions != null) ...endActions
                   ],
           );

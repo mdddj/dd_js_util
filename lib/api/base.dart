@@ -132,7 +132,7 @@ abstract class BaseApi {
       } else {
         throw AppException(code: response.statusCode ?? 10004, message: response.statusMessage ?? "ERROR");
       }
-    } on dio.DioError catch (e) {
+    } on dio.DioException catch (e) {
       if (options.showDefaultLoading) {
         closeLoading();
       }
@@ -178,11 +178,12 @@ abstract class BaseApi {
 
   ///添加代理
   static void addProxy(String proxy) {
-    (getDio().httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate = (io.HttpClient client) {
+    (getDio().httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
+      final client = io.HttpClient()..idleTimeout = const Duration(seconds: 3);
       client.findProxy = (uri) {
         return proxy;
       };
-      return null;
+      return client;
     };
   }
 }

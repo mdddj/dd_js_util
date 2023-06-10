@@ -1,15 +1,16 @@
 include: package:flutter_lints/flutter.yaml
 analyzer:
+  plugins:
+    - custom_lint
   errors:
     todo: ignore
+    invalid_annotation_target: ignore
   exclude:
     - lib/generated
     - lib/l10n
     - lib/generated_plugin_registrant.dart
     - "**/*.g.dart"
     - "**/*.freezed.dart"
-  plugins:
-    - custom_lint
 linter:
   rules:
     - camel_case_types

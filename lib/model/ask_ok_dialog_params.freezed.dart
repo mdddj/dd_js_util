@@ -23,7 +23,11 @@ mixin _$AskOkDialogParams {
   String get contentText => throw _privateConstructorUsedError;
   String get okText => throw _privateConstructorUsedError;
   String get cancelText => throw _privateConstructorUsedError;
-  @JsonKey(toJson: null, fromJson: null, ignore: true)
+  @JsonKey(
+      toJson: null,
+      fromJson: null,
+      includeToJson: false,
+      includeFromJson: false)
   Widget? get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +46,8 @@ abstract class $AskOkDialogParamsCopyWith<$Res> {
       {String contentText,
       String okText,
       String cancelText,
-      @JsonKey(toJson: null, fromJson: null, ignore: true) Widget? title});
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
+          Widget? title});
 }
 
 /// @nodoc
@@ -96,7 +101,8 @@ abstract class _$$_AskOkDialogParamsCopyWith<$Res>
       {String contentText,
       String okText,
       String cancelText,
-      @JsonKey(toJson: null, fromJson: null, ignore: true) Widget? title});
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
+          Widget? title});
 }
 
 /// @nodoc
@@ -143,7 +149,8 @@ class _$_AskOkDialogParams implements _AskOkDialogParams {
       {this.contentText = "",
       this.okText = "Ok",
       this.cancelText = "Cancel",
-      @JsonKey(toJson: null, fromJson: null, ignore: true) this.title});
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
+          this.title});
 
   factory _$_AskOkDialogParams.fromJson(Map<String, dynamic> json) =>
       _$$_AskOkDialogParamsFromJson(json);
@@ -158,7 +165,11 @@ class _$_AskOkDialogParams implements _AskOkDialogParams {
   @JsonKey()
   final String cancelText;
   @override
-  @JsonKey(toJson: null, fromJson: null, ignore: true)
+  @JsonKey(
+      toJson: null,
+      fromJson: null,
+      includeToJson: false,
+      includeFromJson: false)
   final Widget? title;
 
   @override
@@ -204,7 +215,7 @@ abstract class _AskOkDialogParams implements AskOkDialogParams {
       {final String contentText,
       final String okText,
       final String cancelText,
-      @JsonKey(toJson: null, fromJson: null, ignore: true)
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
           final Widget? title}) = _$_AskOkDialogParams;
 
   factory _AskOkDialogParams.fromJson(Map<String, dynamic> json) =
@@ -217,7 +228,11 @@ abstract class _AskOkDialogParams implements AskOkDialogParams {
   @override
   String get cancelText;
   @override
-  @JsonKey(toJson: null, fromJson: null, ignore: true)
+  @JsonKey(
+      toJson: null,
+      fromJson: null,
+      includeToJson: false,
+      includeFromJson: false)
   Widget? get title;
   @override
   @JsonKey(ignore: true)
