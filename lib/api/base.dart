@@ -128,6 +128,7 @@ abstract class BaseApi {
             throw AppException.appError(code: 10003, msg: "Unable to process server data", data: data);
           }
         }
+        wtfLog(data);
         return data;
       } else {
         throw AppException(code: response.statusCode ?? 10004, message: response.statusMessage ?? "ERROR");

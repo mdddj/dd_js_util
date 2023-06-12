@@ -15,7 +15,7 @@ void wtfLog(dynamic msg) {
 }
 
 void kLogErr(dynamic m){
-  if(!kDebugMode){
+  if(kDebugMode){
     Logger().e(m);
   }
 }

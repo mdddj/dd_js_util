@@ -28,6 +28,12 @@ mixin _$AskOkDialogParams {
       fromJson: null,
       includeToJson: false,
       includeFromJson: false)
+  Widget? get content => throw _privateConstructorUsedError;
+  @JsonKey(
+      toJson: null,
+      fromJson: null,
+      includeToJson: false,
+      includeFromJson: false)
   Widget? get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,6 +52,8 @@ abstract class $AskOkDialogParamsCopyWith<$Res> {
       {String contentText,
       String okText,
       String cancelText,
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
+          Widget? content,
       @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
           Widget? title});
 }
@@ -66,6 +74,7 @@ class _$AskOkDialogParamsCopyWithImpl<$Res, $Val extends AskOkDialogParams>
     Object? contentText = null,
     Object? okText = null,
     Object? cancelText = null,
+    Object? content = freezed,
     Object? title = freezed,
   }) {
     return _then(_value.copyWith(
@@ -81,6 +90,10 @@ class _$AskOkDialogParamsCopyWithImpl<$Res, $Val extends AskOkDialogParams>
           ? _value.cancelText
           : cancelText // ignore: cast_nullable_to_non_nullable
               as String,
+      content: freezed == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as Widget?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -102,6 +115,8 @@ abstract class _$$_AskOkDialogParamsCopyWith<$Res>
       String okText,
       String cancelText,
       @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
+          Widget? content,
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
           Widget? title});
 }
 
@@ -119,6 +134,7 @@ class __$$_AskOkDialogParamsCopyWithImpl<$Res>
     Object? contentText = null,
     Object? okText = null,
     Object? cancelText = null,
+    Object? content = freezed,
     Object? title = freezed,
   }) {
     return _then(_$_AskOkDialogParams(
@@ -134,6 +150,10 @@ class __$$_AskOkDialogParamsCopyWithImpl<$Res>
           ? _value.cancelText
           : cancelText // ignore: cast_nullable_to_non_nullable
               as String,
+      content: freezed == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as Widget?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -149,6 +169,8 @@ class _$_AskOkDialogParams implements _AskOkDialogParams {
       {this.contentText = "",
       this.okText = "Ok",
       this.cancelText = "Cancel",
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
+          this.content,
       @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
           this.title});
 
@@ -170,11 +192,18 @@ class _$_AskOkDialogParams implements _AskOkDialogParams {
       fromJson: null,
       includeToJson: false,
       includeFromJson: false)
+  final Widget? content;
+  @override
+  @JsonKey(
+      toJson: null,
+      fromJson: null,
+      includeToJson: false,
+      includeFromJson: false)
   final Widget? title;
 
   @override
   String toString() {
-    return 'AskOkDialogParams(contentText: $contentText, okText: $okText, cancelText: $cancelText, title: $title)';
+    return 'AskOkDialogParams(contentText: $contentText, okText: $okText, cancelText: $cancelText, content: $content, title: $title)';
   }
 
   @override
@@ -187,13 +216,14 @@ class _$_AskOkDialogParams implements _AskOkDialogParams {
             (identical(other.okText, okText) || other.okText == okText) &&
             (identical(other.cancelText, cancelText) ||
                 other.cancelText == cancelText) &&
+            (identical(other.content, content) || other.content == content) &&
             (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, contentText, okText, cancelText, title);
+      Object.hash(runtimeType, contentText, okText, cancelText, content, title);
 
   @JsonKey(ignore: true)
   @override
@@ -216,6 +246,8 @@ abstract class _AskOkDialogParams implements AskOkDialogParams {
       final String okText,
       final String cancelText,
       @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
+          final Widget? content,
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
           final Widget? title}) = _$_AskOkDialogParams;
 
   factory _AskOkDialogParams.fromJson(Map<String, dynamic> json) =
@@ -227,6 +259,13 @@ abstract class _AskOkDialogParams implements AskOkDialogParams {
   String get okText;
   @override
   String get cancelText;
+  @override
+  @JsonKey(
+      toJson: null,
+      fromJson: null,
+      includeToJson: false,
+      includeFromJson: false)
+  Widget? get content;
   @override
   @JsonKey(
       toJson: null,

@@ -20,7 +20,7 @@ class AskOkDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: params.title,
-      content: Text(params.contentText),
+      content: params.content ?? Text(params.contentText),
       actions: [
         TextButton(onPressed: ()=>Navigator.pop(context,false), child: Text(params.cancelText)),
         const SizedBox(width: 12),

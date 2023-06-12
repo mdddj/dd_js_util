@@ -41,7 +41,7 @@ void showIosDialog(String msg,
                       children: [
                         TextButton(onPressed: (){
                           SmartDialog.dismiss(tag: tag);
-                        }, child: Text(cancelText)),
+                        }, child: Text(cancelText)).marginOnly(right: 12),
                         FilledButton(
                             onPressed: () => SmartDialog.dismiss(tag: tag),
                             child: Text(okText)).center
