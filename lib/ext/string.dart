@@ -61,17 +61,6 @@ extension StringExtension on String {
     return await SaverGallery.saveFile(file: this, name: name, androidExistNotSave: false);
   }
 
-  /// 图片压缩 File -> File
-  /// [targetPath] - 要保存压缩后文件的路径
-  /// [quality] - 压缩的质量
-  Future<XFile?> fileImageCompress(String targetPath, {int? quality}) async {
-    var result = await FlutterImageCompress.compressAndGetFile(
-      this,
-      targetPath,
-      quality: quality ?? 88,
-    );
-    return result;
-  }
 
   @Doc(message: '打开浏览器访问页面')
   Future<void> browser() async {

@@ -23,7 +23,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -38,6 +37,7 @@ import 'package:loading_more_list_library_fast/loading_more_list_library_fast.da
 import 'package:logger/logger.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:saver_gallery/saver_gallery.dart';
+import 'package:synchronized/synchronized.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'api/request_params.dart';

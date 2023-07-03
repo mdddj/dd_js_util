@@ -56,6 +56,7 @@ mixin BasePagedApiMixin on BaseApi {
 }
 
 abstract class BaseApi {
+  static Lock lock = Lock(reentrant: true);
   static bool showLog = false;
   static late String _host;
   static dio.BaseOptions options =
@@ -97,18 +98,21 @@ abstract class BaseApi {
       var uri = (options.urlParseFormat ?? (v, p) => v).call(finalUrl, queryParameters);
       final bodyData = httpMethod == HttpMethod.get ? null : bodyParams;
       printLog("body--$bodyData");
-      final response = await d.request(
-        uri,
-        options: dio.Options(
-          method: httpMethod.method,
-          contentType: contentTypeString,
-          headers: options.headers,
-          responseType: options.responseType,
-          requestEncoder: options.requestEncoder,
-        ),
-        queryParameters: httpMethod == HttpMethod.get ? queryParameters : null,
-        data: bodyData,
-      );
+      final response =  await lock.synchronized<dio.Response>(() async {
+        final r = await d.request(
+          uri,
+          options: dio.Options(
+            method: httpMethod.method,
+            contentType: contentTypeString,
+            headers: options!.headers,
+            responseType: options.responseType,
+            requestEncoder: options.requestEncoder,
+          ),
+          queryParameters: httpMethod == HttpMethod.get ? queryParameters : null,
+          data: bodyData,
+        );
+        return r;
+      });
       options.responseResultCallback?.call(response);
       if (options.showDefaultLoading) {
         closeLoading();
@@ -128,7 +132,6 @@ abstract class BaseApi {
             throw AppException.appError(code: 10003, msg: "Unable to process server data", data: data);
           }
         }
-        wtfLog(data);
         return data;
       } else {
         throw AppException(code: response.statusCode ?? 10004, message: response.statusMessage ?? "ERROR");
@@ -217,3 +220,4 @@ abstract class AppCoreApi extends BaseApi {
     }
   }
 }
+

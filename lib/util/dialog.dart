@@ -20,11 +20,12 @@ void showIosDialog(String msg,
         final isIos = io.Platform.isIOS;
         if (isIos) {
           return CupertinoAlertDialog(
-            content: Text(msg),
+            title: title,
+            content: content ?? Text(msg),
             actions: [
               if (startActions != null) ...startActions,
               CupertinoDialogAction(
-                  child: const Text("Ok"),
+                  child:  Text(okText),
                   onPressed: () => SmartDialog.dismiss(tag: tag)),
               if (endActions != null) ...endActions
             ],
