@@ -32,7 +32,7 @@ mixin _$RequestParams {
   UrlParseFormat? get urlParseFormat => throw _privateConstructorUsedError;
   ResponseResultCallback? get responseResultCallback =>
       throw _privateConstructorUsedError;
-  VoidCallback? get loginedSuccess => throw _privateConstructorUsedError;
+  ReLoginSuccess? get reLoginSuccess => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RequestParamsCopyWith<RequestParams> get copyWith =>
@@ -61,7 +61,7 @@ abstract class $RequestParamsCopyWith<$Res> {
       InterceptorCall? interceptorCall,
       UrlParseFormat? urlParseFormat,
       ResponseResultCallback? responseResultCallback,
-      VoidCallback? loginedSuccess});
+      ReLoginSuccess? reLoginSuccess});
 }
 
 /// @nodoc
@@ -92,7 +92,7 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
     Object? interceptorCall = freezed,
     Object? urlParseFormat = freezed,
     Object? responseResultCallback = freezed,
-    Object? loginedSuccess = freezed,
+    Object? reLoginSuccess = freezed,
   }) {
     return _then(_value.copyWith(
       showErrorMsg: null == showErrorMsg
@@ -155,10 +155,10 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
           ? _value.responseResultCallback
           : responseResultCallback // ignore: cast_nullable_to_non_nullable
               as ResponseResultCallback?,
-      loginedSuccess: freezed == loginedSuccess
-          ? _value.loginedSuccess
-          : loginedSuccess // ignore: cast_nullable_to_non_nullable
-              as VoidCallback?,
+      reLoginSuccess: freezed == reLoginSuccess
+          ? _value.reLoginSuccess
+          : reLoginSuccess // ignore: cast_nullable_to_non_nullable
+              as ReLoginSuccess?,
     ) as $Val);
   }
 }
@@ -187,7 +187,7 @@ abstract class _$$_RequestParamsCopyWith<$Res>
       InterceptorCall? interceptorCall,
       UrlParseFormat? urlParseFormat,
       ResponseResultCallback? responseResultCallback,
-      VoidCallback? loginedSuccess});
+      ReLoginSuccess? reLoginSuccess});
 }
 
 /// @nodoc
@@ -216,7 +216,7 @@ class __$$_RequestParamsCopyWithImpl<$Res>
     Object? interceptorCall = freezed,
     Object? urlParseFormat = freezed,
     Object? responseResultCallback = freezed,
-    Object? loginedSuccess = freezed,
+    Object? reLoginSuccess = freezed,
   }) {
     return _then(_$_RequestParams(
       showErrorMsg: null == showErrorMsg
@@ -279,10 +279,10 @@ class __$$_RequestParamsCopyWithImpl<$Res>
           ? _value.responseResultCallback
           : responseResultCallback // ignore: cast_nullable_to_non_nullable
               as ResponseResultCallback?,
-      loginedSuccess: freezed == loginedSuccess
-          ? _value.loginedSuccess
-          : loginedSuccess // ignore: cast_nullable_to_non_nullable
-              as VoidCallback?,
+      reLoginSuccess: freezed == reLoginSuccess
+          ? _value.reLoginSuccess
+          : reLoginSuccess // ignore: cast_nullable_to_non_nullable
+              as ReLoginSuccess?,
     ));
   }
 }
@@ -306,7 +306,7 @@ class _$_RequestParams extends _RequestParams {
       this.interceptorCall,
       this.urlParseFormat,
       this.responseResultCallback,
-      this.loginedSuccess})
+      this.reLoginSuccess})
       : _headers = headers,
         super._();
 
@@ -352,11 +352,11 @@ class _$_RequestParams extends _RequestParams {
   @override
   final ResponseResultCallback? responseResultCallback;
   @override
-  final VoidCallback? loginedSuccess;
+  final ReLoginSuccess? reLoginSuccess;
 
   @override
   String toString() {
-    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, isFullUrl: $isFullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback, loginedSuccess: $loginedSuccess)';
+    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, isFullUrl: $isFullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback, reLoginSuccess: $reLoginSuccess)';
   }
 
   @override
@@ -392,8 +392,8 @@ class _$_RequestParams extends _RequestParams {
                 other.urlParseFormat == urlParseFormat) &&
             (identical(other.responseResultCallback, responseResultCallback) ||
                 other.responseResultCallback == responseResultCallback) &&
-            (identical(other.loginedSuccess, loginedSuccess) ||
-                other.loginedSuccess == loginedSuccess));
+            (identical(other.reLoginSuccess, reLoginSuccess) ||
+                other.reLoginSuccess == reLoginSuccess));
   }
 
   @override
@@ -414,7 +414,7 @@ class _$_RequestParams extends _RequestParams {
       interceptorCall,
       urlParseFormat,
       responseResultCallback,
-      loginedSuccess);
+      reLoginSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -440,7 +440,7 @@ abstract class _RequestParams extends RequestParams {
       final InterceptorCall? interceptorCall,
       final UrlParseFormat? urlParseFormat,
       final ResponseResultCallback? responseResultCallback,
-      final VoidCallback? loginedSuccess}) = _$_RequestParams;
+      final ReLoginSuccess? reLoginSuccess}) = _$_RequestParams;
   const _RequestParams._() : super._();
 
   @override
@@ -474,7 +474,7 @@ abstract class _RequestParams extends RequestParams {
   @override
   ResponseResultCallback? get responseResultCallback;
   @override
-  VoidCallback? get loginedSuccess;
+  ReLoginSuccess? get reLoginSuccess;
   @override
   @JsonKey(ignore: true)
   _$$_RequestParamsCopyWith<_$_RequestParams> get copyWith =>

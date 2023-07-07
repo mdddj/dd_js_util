@@ -11,7 +11,7 @@ class ThemeBuildWidget extends StatelessWidget {
     return ValueListenableBuilder<Box<AppLocalSettingModel>>(
       valueListenable: Hive.box<AppLocalSettingModel>(ddJsUtilAppSettingHiveKey).listenable(),
       builder: (BuildContext context, Box<AppLocalSettingModel> value, Widget? child) {
-        return themeBuild.call(value.get(AppSettingCache().themeKey,defaultValue: AppLocalSettingModel.defaultSetting())!);
+        return themeBuild.call(value.get(AppSettingCache().themeKey,defaultValue: const AppLocalSettingModel())!);
       },
     );
   }

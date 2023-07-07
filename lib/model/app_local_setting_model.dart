@@ -1,25 +1,26 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
 part 'app_local_setting_model.g.dart';
-@HiveType(typeId: 88)
-class AppLocalSettingModel extends HiveObject {
-  ///主题下标
-  @HiveField(0)
-  int themeIndex;
 
-  ///选择的模式
-  /// [0] - 跟随系统 (默认)
-  /// [1] - 亮色模式
-  /// [2] - 深色模式
-  @HiveField(1)
-  int themeModel;
+part 'app_local_setting_model.freezed.dart';
 
-  AppLocalSettingModel({required this.themeIndex, this.themeModel = 0});
+extension ThemeModeEx on ThemeMode {
+  ///根据主题获取下标
+  int get getThemeModeIndex {
+    switch (this) {
+      case ThemeMode.system:
+        return 0;
+      case ThemeMode.light:
+        return 1;
+      case ThemeMode.dark:
+        return 2;
+    }
+  }
+}
 
-  factory AppLocalSettingModel.defaultSetting() => AppLocalSettingModel(themeIndex: 0, themeModel: 0);
-
+extension AppLocalSettingModelEx on AppLocalSettingModel {
   ///获取系统主题mode
   ThemeMode get getThemeMode {
     switch (themeModel) {
@@ -33,8 +34,21 @@ class AppLocalSettingModel extends HiveObject {
     return ThemeMode.system;
   }
 
-  @override
-  String toString() {
-    return 'themeIndex  is $themeIndex , themeModel is $themeModel';
-  }
+
+}
+
+///选择的模式
+/// [0] - 跟随系统 (默认)
+/// [1] - 亮色模式
+/// [2] - 深色模式
+@HiveType(typeId: 88)
+@freezed
+class AppLocalSettingModel with _$AppLocalSettingModel {
+  const AppLocalSettingModel._();
+
+  const factory AppLocalSettingModel(
+      {@HiveField(0, defaultValue: 0) @Default(0) int themeIndex,
+      @HiveField(1, defaultValue: 0) @Default(0) int themeModel}) = _AppLocalSettingModel;
+
+  factory AppLocalSettingModel.fromJson(Map<String, dynamic> json) => _$AppLocalSettingModelFromJson(json);
 }

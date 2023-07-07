@@ -17,8 +17,8 @@ class AppLocalSettingModelAdapter extends TypeAdapter<AppLocalSettingModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return AppLocalSettingModel(
-      themeIndex: fields[0] as int,
-      themeModel: fields[1] as int,
+      themeIndex: fields[0] == null ? 0 : fields[0] as int,
+      themeModel: fields[1] == null ? 0 : fields[1] as int,
     );
   }
 
@@ -42,3 +42,21 @@ class AppLocalSettingModelAdapter extends TypeAdapter<AppLocalSettingModel> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$_AppLocalSettingModel _$$_AppLocalSettingModelFromJson(
+        Map<String, dynamic> json) =>
+    _$_AppLocalSettingModel(
+      themeIndex: json['themeIndex'] as int? ?? 0,
+      themeModel: json['themeModel'] as int? ?? 0,
+    );
+
+Map<String, dynamic> _$$_AppLocalSettingModelToJson(
+        _$_AppLocalSettingModel instance) =>
+    <String, dynamic>{
+      'themeIndex': instance.themeIndex,
+      'themeModel': instance.themeModel,
+    };

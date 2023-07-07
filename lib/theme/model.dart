@@ -39,6 +39,10 @@ class AppThemeUtil {
   Future<void> toThemeSettingPage(BuildContext context, {CustomBuildThemeItems? builder, PreferredSizeWidget? appbar}) async {
     await context.navToWidget(to: ThemeSettingPage(builder: builder, appbar: appbar));
   }
+
+  Future<void> changeThemeMode(ThemeMode themeModel) async {
+    await AppSettingCache().saveAndUpdate((oldValue) => oldValue?.copyWith(themeModel: themeModel.getThemeModeIndex),AppSettingCache().themeKey,const AppLocalSettingModel());
+  }
 }
 
 class AppSettingCache extends CacheBase<AppLocalSettingModel> {
@@ -50,12 +54,12 @@ class AppSettingCache extends CacheBase<AppLocalSettingModel> {
 
   factory AppSettingCache() => _instance;
 
-  Future<AppLocalSettingModel> get localSetting async => (await getValue(themeKey, defaultValue: AppLocalSettingModel.defaultSetting()))!;
+  Future<AppLocalSettingModel> get localSetting async => (await getValue(themeKey, defaultValue: const AppLocalSettingModel()))!;
 
   Future<void> changeTheme(int index) async {
     final setting = await localSetting;
-    setting.themeIndex = index;
-    await setting.save();
+    final newSetting =  setting.copyWith(themeIndex: index);
+    await setValue(themeKey, newSetting);
   }
 
   @override
