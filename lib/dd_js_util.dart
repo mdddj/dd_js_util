@@ -109,6 +109,10 @@ part 'widget/build_widget.dart';
 part 'widget/lazy_stack_widget.dart';
 part 'api/loading.dart';
 
+
+
+typedef MyHiveBox<T> = Box<T>;
+
 class DdJsUtil {
   static const MethodChannel _channel = MethodChannel('dd_js_util');
 

@@ -110,7 +110,7 @@ class WrapJson {
 
   void print([VoidCallback? doSomeing]){
     doSomeing?.call();
-    Logger().wtf(data);
+    Logger().f(data);
   }
 
   Map<String,dynamic> getMap(String key,[Map<String,dynamic>? defaultValue]) {

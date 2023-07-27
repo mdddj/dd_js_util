@@ -10,7 +10,7 @@ void kLog(dynamic msg){
 
 void wtfLog(dynamic msg) {
   if(kDebugMode) {
-    Logger().wtf(msg);
+    Logger().f(msg);
   }
 }
 
