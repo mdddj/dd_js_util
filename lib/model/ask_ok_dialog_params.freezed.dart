@@ -52,10 +52,18 @@ abstract class $AskOkDialogParamsCopyWith<$Res> {
       {String contentText,
       String okText,
       String cancelText,
-      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
-          Widget? content,
-      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
-          Widget? title});
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeToJson: false,
+          includeFromJson: false)
+      Widget? content,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeToJson: false,
+          includeFromJson: false)
+      Widget? title});
 }
 
 /// @nodoc
@@ -114,10 +122,18 @@ abstract class _$$_AskOkDialogParamsCopyWith<$Res>
       {String contentText,
       String okText,
       String cancelText,
-      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
-          Widget? content,
-      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
-          Widget? title});
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeToJson: false,
+          includeFromJson: false)
+      Widget? content,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeToJson: false,
+          includeFromJson: false)
+      Widget? title});
 }
 
 /// @nodoc
@@ -169,10 +185,18 @@ class _$_AskOkDialogParams implements _AskOkDialogParams {
       {this.contentText = "",
       this.okText = "Ok",
       this.cancelText = "Cancel",
-      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
-          this.content,
-      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
-          this.title});
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeToJson: false,
+          includeFromJson: false)
+      this.content,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeToJson: false,
+          includeFromJson: false)
+      this.title});
 
   factory _$_AskOkDialogParams.fromJson(Map<String, dynamic> json) =>
       _$$_AskOkDialogParamsFromJson(json);
@@ -245,10 +269,18 @@ abstract class _AskOkDialogParams implements AskOkDialogParams {
       {final String contentText,
       final String okText,
       final String cancelText,
-      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
-          final Widget? content,
-      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
-          final Widget? title}) = _$_AskOkDialogParams;
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeToJson: false,
+          includeFromJson: false)
+      final Widget? content,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeToJson: false,
+          includeFromJson: false)
+      final Widget? title}) = _$_AskOkDialogParams;
 
   factory _AskOkDialogParams.fromJson(Map<String, dynamic> json) =
       _$_AskOkDialogParams.fromJson;

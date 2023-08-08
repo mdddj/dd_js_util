@@ -67,17 +67,33 @@ abstract class $ImageParamsCopyWith<$Res> {
       {double? width,
       double? height,
       double? size,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          BoxFit? fit,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          BorderRadius? borderRadius,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          BoxShape? shape,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      BoxFit? fit,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      BorderRadius? borderRadius,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      BoxShape? shape,
       bool enableMemoryCache,
       String? heroTag,
       bool isSelected,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          Widget? errorWidget});
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      Widget? errorWidget});
 }
 
 /// @nodoc
@@ -161,17 +177,33 @@ abstract class _$$_ImageParamsCopyWith<$Res>
       {double? width,
       double? height,
       double? size,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          BoxFit? fit,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          BorderRadius? borderRadius,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          BoxShape? shape,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      BoxFit? fit,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      BorderRadius? borderRadius,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      BoxShape? shape,
       bool enableMemoryCache,
       String? heroTag,
       bool isSelected,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          Widget? errorWidget});
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      Widget? errorWidget});
 }
 
 /// @nodoc
@@ -248,17 +280,33 @@ class _$_ImageParams extends _ImageParams {
       {this.width,
       this.height,
       this.size,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          this.fit,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          this.borderRadius,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          this.shape,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      this.fit,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      this.borderRadius,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      this.shape,
       this.enableMemoryCache = true,
       this.heroTag,
       this.isSelected = false,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          this.errorWidget})
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      this.errorWidget})
       : super._();
 
   factory _$_ImageParams.fromJson(Map<String, dynamic> json) =>
@@ -357,17 +405,33 @@ abstract class _ImageParams extends ImageParams {
       {final double? width,
       final double? height,
       final double? size,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          final BoxFit? fit,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          final BorderRadius? borderRadius,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          final BoxShape? shape,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      final BoxFit? fit,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      final BorderRadius? borderRadius,
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      final BoxShape? shape,
       final bool enableMemoryCache,
       final String? heroTag,
       final bool isSelected,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-          final Widget? errorWidget}) = _$_ImageParams;
+      @JsonKey(
+          toJson: null,
+          fromJson: null,
+          includeFromJson: false,
+          includeToJson: false)
+      final Widget? errorWidget}) = _$_ImageParams;
   const _ImageParams._() : super._();
 
   factory _ImageParams.fromJson(Map<String, dynamic> json) =

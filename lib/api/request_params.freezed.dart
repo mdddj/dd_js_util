@@ -32,6 +32,7 @@ mixin _$RequestParams {
   UrlParseFormat? get urlParseFormat => throw _privateConstructorUsedError;
   ResponseResultCallback? get responseResultCallback =>
       throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
   ReLoginSuccess? get reLoginSuccess => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -61,6 +62,7 @@ abstract class $RequestParamsCopyWith<$Res> {
       InterceptorCall? interceptorCall,
       UrlParseFormat? urlParseFormat,
       ResponseResultCallback? responseResultCallback,
+      @JsonKey(includeFromJson: false, includeToJson: false)
       ReLoginSuccess? reLoginSuccess});
 }
 
@@ -187,6 +189,7 @@ abstract class _$$_RequestParamsCopyWith<$Res>
       InterceptorCall? interceptorCall,
       UrlParseFormat? urlParseFormat,
       ResponseResultCallback? responseResultCallback,
+      @JsonKey(includeFromJson: false, includeToJson: false)
       ReLoginSuccess? reLoginSuccess});
 }
 
@@ -306,6 +309,7 @@ class _$_RequestParams extends _RequestParams {
       this.interceptorCall,
       this.urlParseFormat,
       this.responseResultCallback,
+      @JsonKey(includeFromJson: false, includeToJson: false)
       this.reLoginSuccess})
       : _headers = headers,
         super._();
@@ -352,6 +356,7 @@ class _$_RequestParams extends _RequestParams {
   @override
   final ResponseResultCallback? responseResultCallback;
   @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   final ReLoginSuccess? reLoginSuccess;
 
   @override
@@ -440,6 +445,7 @@ abstract class _RequestParams extends RequestParams {
       final InterceptorCall? interceptorCall,
       final UrlParseFormat? urlParseFormat,
       final ResponseResultCallback? responseResultCallback,
+      @JsonKey(includeFromJson: false, includeToJson: false)
       final ReLoginSuccess? reLoginSuccess}) = _$_RequestParams;
   const _RequestParams._() : super._();
 
@@ -474,6 +480,7 @@ abstract class _RequestParams extends RequestParams {
   @override
   ResponseResultCallback? get responseResultCallback;
   @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   ReLoginSuccess? get reLoginSuccess;
   @override
   @JsonKey(ignore: true)

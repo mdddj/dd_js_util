@@ -1,6 +1,6 @@
 name: dd_js_util
 description: flutter tools and widgets and extends
-version: 4.2.5
+version: 4.2.6
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
@@ -21,10 +21,10 @@ dependencies:
   flutter_cache_manager: ^3.3.1
   image: ^4.0.17
   common_utils: ^2.1.0
-  flutter_smart_dialog: ^4.9.3+2
-  image_picker: ^1.0.1
+  flutter_smart_dialog: ^4.9.4
+  image_picker: ^1.0.2
   synchronized: ^3.1.0
-  dio: ^5.3.0
+  dio: ^5.3.2
   extended_image: ^8.0.2
   flutter_swiper_null_safety_flutter3: ^3.0.1
   url_launcher: ^6.1.12
@@ -51,7 +51,7 @@ dev_dependencies:
     sdk: flutter
   build_runner: ^2.4.6
   json_serializable: ^6.7.1
-  hive_generator: ^2.0.0
-  freezed: ^2.4.1
-  custom_lint: ^0.5.0
+#  hive_generator:
+#    path: ../../hlx/github/hive/hive_generator
+  freezed: ^2.4.2
 

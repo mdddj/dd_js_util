@@ -5,9 +5,10 @@ part 'request_params.freezed.dart';
 
 typedef DioStart = Future<void> Function(Dio dio, String url);
 typedef InterceptorCall = List<Interceptor> Function(List<Interceptor> old);
-typedef UrlParseFormat = String Function(String uri,dynamic queryParameters);
-typedef ResponseResultCallback = void Function(dynamic response);//接口返回回调
-typedef ReLoginSuccess = void   Function();
+typedef UrlParseFormat = String Function(String uri, dynamic queryParameters);
+typedef ResponseResultCallback = void Function(dynamic response); //接口返回回调
+typedef ReLoginSuccess = void Function();
+
 @freezed
 class RequestParams with _$RequestParams {
   const RequestParams._();
@@ -26,7 +27,7 @@ class RequestParams with _$RequestParams {
       bool? returnIsString,
       @Default(false) bool isFullUrl,
       InterceptorCall? interceptorCall,
-      UrlParseFormat? urlParseFormat, ResponseResultCallback? responseResultCallback,
-          ReLoginSuccess? reLoginSuccess
-      }) = _RequestParams;
+      UrlParseFormat? urlParseFormat,
+      ResponseResultCallback? responseResultCallback,
+      @JsonKey(includeFromJson: false,includeToJson: false,) ReLoginSuccess? reLoginSuccess}) = _RequestParams;
 }
