@@ -32,8 +32,7 @@ mixin _$RequestParams {
   UrlParseFormat? get urlParseFormat => throw _privateConstructorUsedError;
   ResponseResultCallback? get responseResultCallback =>
       throw _privateConstructorUsedError;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  ReLoginSuccess? get reLoginSuccess => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get extra => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RequestParamsCopyWith<RequestParams> get copyWith =>
@@ -62,8 +61,7 @@ abstract class $RequestParamsCopyWith<$Res> {
       InterceptorCall? interceptorCall,
       UrlParseFormat? urlParseFormat,
       ResponseResultCallback? responseResultCallback,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      ReLoginSuccess? reLoginSuccess});
+      Map<String, dynamic>? extra});
 }
 
 /// @nodoc
@@ -94,7 +92,7 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
     Object? interceptorCall = freezed,
     Object? urlParseFormat = freezed,
     Object? responseResultCallback = freezed,
-    Object? reLoginSuccess = freezed,
+    Object? extra = freezed,
   }) {
     return _then(_value.copyWith(
       showErrorMsg: null == showErrorMsg
@@ -157,10 +155,10 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
           ? _value.responseResultCallback
           : responseResultCallback // ignore: cast_nullable_to_non_nullable
               as ResponseResultCallback?,
-      reLoginSuccess: freezed == reLoginSuccess
-          ? _value.reLoginSuccess
-          : reLoginSuccess // ignore: cast_nullable_to_non_nullable
-              as ReLoginSuccess?,
+      extra: freezed == extra
+          ? _value.extra
+          : extra // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ) as $Val);
   }
 }
@@ -189,8 +187,7 @@ abstract class _$$_RequestParamsCopyWith<$Res>
       InterceptorCall? interceptorCall,
       UrlParseFormat? urlParseFormat,
       ResponseResultCallback? responseResultCallback,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      ReLoginSuccess? reLoginSuccess});
+      Map<String, dynamic>? extra});
 }
 
 /// @nodoc
@@ -219,7 +216,7 @@ class __$$_RequestParamsCopyWithImpl<$Res>
     Object? interceptorCall = freezed,
     Object? urlParseFormat = freezed,
     Object? responseResultCallback = freezed,
-    Object? reLoginSuccess = freezed,
+    Object? extra = freezed,
   }) {
     return _then(_$_RequestParams(
       showErrorMsg: null == showErrorMsg
@@ -282,10 +279,10 @@ class __$$_RequestParamsCopyWithImpl<$Res>
           ? _value.responseResultCallback
           : responseResultCallback // ignore: cast_nullable_to_non_nullable
               as ResponseResultCallback?,
-      reLoginSuccess: freezed == reLoginSuccess
-          ? _value.reLoginSuccess
-          : reLoginSuccess // ignore: cast_nullable_to_non_nullable
-              as ReLoginSuccess?,
+      extra: freezed == extra
+          ? _value._extra
+          : extra // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ));
   }
 }
@@ -309,9 +306,9 @@ class _$_RequestParams extends _RequestParams {
       this.interceptorCall,
       this.urlParseFormat,
       this.responseResultCallback,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      this.reLoginSuccess})
+      final Map<String, dynamic>? extra})
       : _headers = headers,
+        _extra = extra,
         super._();
 
   @override
@@ -355,13 +352,19 @@ class _$_RequestParams extends _RequestParams {
   final UrlParseFormat? urlParseFormat;
   @override
   final ResponseResultCallback? responseResultCallback;
+  final Map<String, dynamic>? _extra;
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final ReLoginSuccess? reLoginSuccess;
+  Map<String, dynamic>? get extra {
+    final value = _extra;
+    if (value == null) return null;
+    if (_extra is EqualUnmodifiableMapView) return _extra;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
-    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, isFullUrl: $isFullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback, reLoginSuccess: $reLoginSuccess)';
+    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, isFullUrl: $isFullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback, extra: $extra)';
   }
 
   @override
@@ -397,8 +400,7 @@ class _$_RequestParams extends _RequestParams {
                 other.urlParseFormat == urlParseFormat) &&
             (identical(other.responseResultCallback, responseResultCallback) ||
                 other.responseResultCallback == responseResultCallback) &&
-            (identical(other.reLoginSuccess, reLoginSuccess) ||
-                other.reLoginSuccess == reLoginSuccess));
+            const DeepCollectionEquality().equals(other._extra, _extra));
   }
 
   @override
@@ -419,7 +421,7 @@ class _$_RequestParams extends _RequestParams {
       interceptorCall,
       urlParseFormat,
       responseResultCallback,
-      reLoginSuccess);
+      const DeepCollectionEquality().hash(_extra));
 
   @JsonKey(ignore: true)
   @override
@@ -445,8 +447,7 @@ abstract class _RequestParams extends RequestParams {
       final InterceptorCall? interceptorCall,
       final UrlParseFormat? urlParseFormat,
       final ResponseResultCallback? responseResultCallback,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      final ReLoginSuccess? reLoginSuccess}) = _$_RequestParams;
+      final Map<String, dynamic>? extra}) = _$_RequestParams;
   const _RequestParams._() : super._();
 
   @override
@@ -480,8 +481,7 @@ abstract class _RequestParams extends RequestParams {
   @override
   ResponseResultCallback? get responseResultCallback;
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  ReLoginSuccess? get reLoginSuccess;
+  Map<String, dynamic>? get extra;
   @override
   @JsonKey(ignore: true)
   _$$_RequestParamsCopyWith<_$_RequestParams> get copyWith =>

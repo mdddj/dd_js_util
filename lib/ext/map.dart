@@ -1,6 +1,7 @@
 
 part of dd_js_util;
 
+
 extension MapExt2 on Map<String, Object> {
   Map<String, dynamic> get asMapDynamic {
     final map = <String, dynamic>{};
@@ -53,10 +54,6 @@ class WrapJson {
 
   WrapJson(this.data);
   
-  @Doc(message: '发送给监听这个数据的广播')
-  void sendBroadcase(){
-    FBroadcast.systemInstance.broadcast(WrapJsonBroadcase.value.text,value: this);
-  }
 
   factory WrapJson.fromMyServerError(AppException exception){
     return WrapJson({

@@ -29,5 +29,5 @@ class RequestParams with _$RequestParams {
       InterceptorCall? interceptorCall,
       UrlParseFormat? urlParseFormat,
       ResponseResultCallback? responseResultCallback,
-      @JsonKey(includeFromJson: false,includeToJson: false,) ReLoginSuccess? reLoginSuccess}) = _RequestParams;
+      Map<String,dynamic>? extra }) = _RequestParams;
 }
