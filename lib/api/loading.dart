@@ -2,8 +2,11 @@ part of dd_js_util;
 
 typedef LB = BaseApiDialogBuilder;
 
+typedef BaseApiDialogErrorHandle = String Function(Object exception, Object errorStack);
+
 class BaseApiDialogBuilder {
-  static void show<M, A extends BaseApi>(A api, {required ValueChanged<M> successResult, R? params,bool enableLog = false,Widget? loadingWidget}) {
+  static void show<M, A extends BaseApi>(A api,
+      {required ValueChanged<M> successResult, R? params, bool enableLog = false, Widget? loadingWidget,BaseApiDialogErrorHandle? errorHandle}) {
     const tag = 'loading-dialog-api';
     SmartDialog.show(
         builder: (ctx) {
@@ -16,6 +19,7 @@ class BaseApiDialogBuilder {
             api: api,
             enableLog: enableLog,
             loadingWidget: loadingWidget,
+            error: errorHandle,
           );
         },
         tag: tag,
@@ -25,14 +29,24 @@ class BaseApiDialogBuilder {
   }
 }
 
+
 class BaseApiDialog<M, A extends BaseApi> extends ConsumerStatefulWidget {
   final void Function(M model) result;
   final R? params;
   final A api;
   final bool enableLog;
   final Widget? loadingWidget;
+  final BaseApiDialogErrorHandle? error;
 
-  const BaseApiDialog({Key? key, required this.result, this.params, required this.api,this.enableLog = false,this.loadingWidget}) : super(key: key);
+  const BaseApiDialog(
+      {Key? key,
+      required this.result,
+      this.params,
+      required this.api,
+      this.enableLog = false,
+      this.loadingWidget,
+      this.error})
+      : super(key: key);
 
   @override
   ConsumerState<BaseApiDialog<M, A>> createState() => _LoadingApiDialogState<M, A>();
@@ -40,14 +54,11 @@ class BaseApiDialog<M, A extends BaseApi> extends ConsumerStatefulWidget {
 
 class _LoadingApiDialogState<M, A extends BaseApi> extends ConsumerState<BaseApiDialog<M, A>>
     with ApiMixin<M, A, BaseApiDialog<M, A>> {
-
-
   void _log(dynamic msg) {
-    if(widget.enableLog){
+    if (widget.enableLog) {
       debugPrint('$msg');
     }
   }
-
 
   @override
   Widget builder(BuildContext context, M data) {
@@ -78,11 +89,10 @@ class _LoadingApiDialogState<M, A extends BaseApi> extends ConsumerState<BaseApi
   }
 
   @override
-  void onError(AppException exception) {
-    _log('on error  : $exception');
-    super.onError(exception);
+  void onError(Object exception, Object s) {
+    super.onError(exception, s);
     SmartDialog.dismiss(tag: 'loading-dialog-api');
-    toast(exception.getMessage);
+    toast(widget.error?.call(exception, s) ?? exception.toString());
   }
 
   @override
@@ -97,7 +107,6 @@ mixin ApiMixin<M, T extends BaseApi, S extends StatefulWidget> on State<S> {
   late PageState pageState = initModel != null ? PageState.hasData : PageState.loading;
   late M? stateModel = initModel;
 
-
   bool get showLoading => false;
 
   @override
@@ -106,8 +115,9 @@ mixin ApiMixin<M, T extends BaseApi, S extends StatefulWidget> on State<S> {
     delayFunction(startRequest, 0);
   }
 
-  void requestBefore(){}
-  void requestEnd(bool isError){}
+  void requestBefore() {}
+
+  void requestEnd(bool isError) {}
 
   @Doc(message: '开始发起请求')
   Future<void> startRequest() async {
@@ -124,17 +134,12 @@ mixin ApiMixin<M, T extends BaseApi, S extends StatefulWidget> on State<S> {
       responseModelHandle(r);
       setState(() => pageState = PageState.hasData);
       requestEnd(false);
-    } on AppException catch (exception) {
+    } catch (e, s) {
       requestEnd(true);
-      onError(exception);
-      setState(() => pageState = PageState.error);
-    } catch(e,s){
-      requestEnd(true);
-      onError(AppException.appError(code: -1,msg: '$e',data: s));
+      onError(e, s);
       setState(() => pageState = PageState.error);
     }
   }
-
 
   @Doc(message: '请求配置')
   R get requestParams => const R(showDefaultLoading: false);
@@ -181,5 +186,5 @@ mixin ApiMixin<M, T extends BaseApi, S extends StatefulWidget> on State<S> {
     return const Text('error');
   }
 
-  void onError(AppException exception) {}
+  void onError(Object exception, Object s) {}
 }
