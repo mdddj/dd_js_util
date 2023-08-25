@@ -489,6 +489,8 @@ MyImage _$MyImageFromJson(Map<String, dynamic> json) {
       return MyNetworkImage.fromJson(json);
     case 'base64':
       return MyBase64Image.fromJson(json);
+    case 'filePath':
+      return MyFilePathImage.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'MyImage',
@@ -503,18 +505,21 @@ mixin _$MyImage {
   TResult when<TResult extends Object?>({
     required TResult Function(String url, ImageParams params) network,
     required TResult Function(String base64Code, ImageParams params) base64,
+    required TResult Function(String filePath, ImageParams params) filePath,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String url, ImageParams params)? network,
     TResult? Function(String base64Code, ImageParams params)? base64,
+    TResult? Function(String filePath, ImageParams params)? filePath,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, ImageParams params)? network,
     TResult Function(String base64Code, ImageParams params)? base64,
+    TResult Function(String filePath, ImageParams params)? filePath,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -522,18 +527,21 @@ mixin _$MyImage {
   TResult map<TResult extends Object?>({
     required TResult Function(MyNetworkImage value) network,
     required TResult Function(MyBase64Image value) base64,
+    required TResult Function(MyFilePathImage value) filePath,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MyNetworkImage value)? network,
     TResult? Function(MyBase64Image value)? base64,
+    TResult? Function(MyFilePathImage value)? filePath,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MyNetworkImage value)? network,
     TResult Function(MyBase64Image value)? base64,
+    TResult Function(MyFilePathImage value)? filePath,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -676,6 +684,7 @@ class _$MyNetworkImage extends MyNetworkImage {
   TResult when<TResult extends Object?>({
     required TResult Function(String url, ImageParams params) network,
     required TResult Function(String base64Code, ImageParams params) base64,
+    required TResult Function(String filePath, ImageParams params) filePath,
   }) {
     return network(url, params);
   }
@@ -685,6 +694,7 @@ class _$MyNetworkImage extends MyNetworkImage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String url, ImageParams params)? network,
     TResult? Function(String base64Code, ImageParams params)? base64,
+    TResult? Function(String filePath, ImageParams params)? filePath,
   }) {
     return network?.call(url, params);
   }
@@ -694,6 +704,7 @@ class _$MyNetworkImage extends MyNetworkImage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, ImageParams params)? network,
     TResult Function(String base64Code, ImageParams params)? base64,
+    TResult Function(String filePath, ImageParams params)? filePath,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -707,6 +718,7 @@ class _$MyNetworkImage extends MyNetworkImage {
   TResult map<TResult extends Object?>({
     required TResult Function(MyNetworkImage value) network,
     required TResult Function(MyBase64Image value) base64,
+    required TResult Function(MyFilePathImage value) filePath,
   }) {
     return network(this);
   }
@@ -716,6 +728,7 @@ class _$MyNetworkImage extends MyNetworkImage {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MyNetworkImage value)? network,
     TResult? Function(MyBase64Image value)? base64,
+    TResult? Function(MyFilePathImage value)? filePath,
   }) {
     return network?.call(this);
   }
@@ -725,6 +738,7 @@ class _$MyNetworkImage extends MyNetworkImage {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MyNetworkImage value)? network,
     TResult Function(MyBase64Image value)? base64,
+    TResult Function(MyFilePathImage value)? filePath,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -851,6 +865,7 @@ class _$MyBase64Image extends MyBase64Image {
   TResult when<TResult extends Object?>({
     required TResult Function(String url, ImageParams params) network,
     required TResult Function(String base64Code, ImageParams params) base64,
+    required TResult Function(String filePath, ImageParams params) filePath,
   }) {
     return base64(base64Code, params);
   }
@@ -860,6 +875,7 @@ class _$MyBase64Image extends MyBase64Image {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String url, ImageParams params)? network,
     TResult? Function(String base64Code, ImageParams params)? base64,
+    TResult? Function(String filePath, ImageParams params)? filePath,
   }) {
     return base64?.call(base64Code, params);
   }
@@ -869,6 +885,7 @@ class _$MyBase64Image extends MyBase64Image {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String url, ImageParams params)? network,
     TResult Function(String base64Code, ImageParams params)? base64,
+    TResult Function(String filePath, ImageParams params)? filePath,
     required TResult orElse(),
   }) {
     if (base64 != null) {
@@ -882,6 +899,7 @@ class _$MyBase64Image extends MyBase64Image {
   TResult map<TResult extends Object?>({
     required TResult Function(MyNetworkImage value) network,
     required TResult Function(MyBase64Image value) base64,
+    required TResult Function(MyFilePathImage value) filePath,
   }) {
     return base64(this);
   }
@@ -891,6 +909,7 @@ class _$MyBase64Image extends MyBase64Image {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(MyNetworkImage value)? network,
     TResult? Function(MyBase64Image value)? base64,
+    TResult? Function(MyFilePathImage value)? filePath,
   }) {
     return base64?.call(this);
   }
@@ -900,6 +919,7 @@ class _$MyBase64Image extends MyBase64Image {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MyNetworkImage value)? network,
     TResult Function(MyBase64Image value)? base64,
+    TResult Function(MyFilePathImage value)? filePath,
     required TResult orElse(),
   }) {
     if (base64 != null) {
@@ -931,5 +951,187 @@ abstract class MyBase64Image extends MyImage {
   @override
   @JsonKey(ignore: true)
   _$$MyBase64ImageCopyWith<_$MyBase64Image> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MyFilePathImageCopyWith<$Res>
+    implements $MyImageCopyWith<$Res> {
+  factory _$$MyFilePathImageCopyWith(
+          _$MyFilePathImage value, $Res Function(_$MyFilePathImage) then) =
+      __$$MyFilePathImageCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String filePath, ImageParams params});
+
+  @override
+  $ImageParamsCopyWith<$Res> get params;
+}
+
+/// @nodoc
+class __$$MyFilePathImageCopyWithImpl<$Res>
+    extends _$MyImageCopyWithImpl<$Res, _$MyFilePathImage>
+    implements _$$MyFilePathImageCopyWith<$Res> {
+  __$$MyFilePathImageCopyWithImpl(
+      _$MyFilePathImage _value, $Res Function(_$MyFilePathImage) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? filePath = null,
+    Object? params = null,
+  }) {
+    return _then(_$MyFilePathImage(
+      filePath: null == filePath
+          ? _value.filePath
+          : filePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      params: null == params
+          ? _value.params
+          : params // ignore: cast_nullable_to_non_nullable
+              as ImageParams,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$MyFilePathImage extends MyFilePathImage {
+  _$MyFilePathImage(
+      {required this.filePath,
+      this.params = const ImageParams(),
+      final String? $type})
+      : $type = $type ?? 'filePath',
+        super._();
+
+  factory _$MyFilePathImage.fromJson(Map<String, dynamic> json) =>
+      _$$MyFilePathImageFromJson(json);
+
+  @override
+  final String filePath;
+  @override
+  @JsonKey()
+  final ImageParams params;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'MyImage.filePath(filePath: $filePath, params: $params)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MyFilePathImage &&
+            (identical(other.filePath, filePath) ||
+                other.filePath == filePath) &&
+            (identical(other.params, params) || other.params == params));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, filePath, params);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MyFilePathImageCopyWith<_$MyFilePathImage> get copyWith =>
+      __$$MyFilePathImageCopyWithImpl<_$MyFilePathImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String url, ImageParams params) network,
+    required TResult Function(String base64Code, ImageParams params) base64,
+    required TResult Function(String filePath, ImageParams params) filePath,
+  }) {
+    return filePath(this.filePath, params);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String url, ImageParams params)? network,
+    TResult? Function(String base64Code, ImageParams params)? base64,
+    TResult? Function(String filePath, ImageParams params)? filePath,
+  }) {
+    return filePath?.call(this.filePath, params);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String url, ImageParams params)? network,
+    TResult Function(String base64Code, ImageParams params)? base64,
+    TResult Function(String filePath, ImageParams params)? filePath,
+    required TResult orElse(),
+  }) {
+    if (filePath != null) {
+      return filePath(this.filePath, params);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MyNetworkImage value) network,
+    required TResult Function(MyBase64Image value) base64,
+    required TResult Function(MyFilePathImage value) filePath,
+  }) {
+    return filePath(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MyNetworkImage value)? network,
+    TResult? Function(MyBase64Image value)? base64,
+    TResult? Function(MyFilePathImage value)? filePath,
+  }) {
+    return filePath?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MyNetworkImage value)? network,
+    TResult Function(MyBase64Image value)? base64,
+    TResult Function(MyFilePathImage value)? filePath,
+    required TResult orElse(),
+  }) {
+    if (filePath != null) {
+      return filePath(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MyFilePathImageToJson(
+      this,
+    );
+  }
+}
+
+abstract class MyFilePathImage extends MyImage {
+  factory MyFilePathImage(
+      {required final String filePath,
+      final ImageParams params}) = _$MyFilePathImage;
+  MyFilePathImage._() : super._();
+
+  factory MyFilePathImage.fromJson(Map<String, dynamic> json) =
+      _$MyFilePathImage.fromJson;
+
+  String get filePath;
+  @override
+  ImageParams get params;
+  @override
+  @JsonKey(ignore: true)
+  _$$MyFilePathImageCopyWith<_$MyFilePathImage> get copyWith =>
       throw _privateConstructorUsedError;
 }

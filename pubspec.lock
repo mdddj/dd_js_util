@@ -541,6 +541,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  hive_generator_plus:
+    dependency: "direct dev"
+    description:
+      name: hive_generator_plus
+      sha256: badf737e2dfc7309e7060104ac1c48eea23008f6d99ffc82016f8e082a83f717
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
   hooks_riverpod:
     dependency: "direct main"
     description:
@@ -1214,10 +1222,10 @@ packages:
     dependency: transitive
     description:
       name: watcher
-      sha256: "6a7f46926b01ce81bfc339da6a7f20afbe7733eff9846f6d6a5466aa4c6667c0"
+      sha256: "3d2ad6751b3c16cf07c7fca317a1413b3f26530319181b37e3b9039b84fc01d8"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.2"
+    version: "1.1.0"
   waterfall_flow:
     dependency: transitive
     description:

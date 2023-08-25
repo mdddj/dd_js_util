@@ -1,4 +1,5 @@
 part of dd_js_util;
+
 /// base 64 图片的展示
 class ImageView extends StatelessWidget {
   final MyImage image;
@@ -12,12 +13,12 @@ class ImageView extends StatelessWidget {
         : _isSelectedWrapper(context);
   }
 
-  Widget  _isSelectedWrapper(BuildContext context) {
+  Widget _isSelectedWrapper(BuildContext context) {
     return params.isSelected ? _selectedRender(context) : _render;
   }
 
   ///渲染选中样式
-  Widget  _selectedRender(BuildContext context) {
+  Widget _selectedRender(BuildContext context) {
     return Stack(
       children: [
         _render,
@@ -28,8 +29,7 @@ class ImageView extends StatelessWidget {
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
                 color: context.colorScheme.primaryContainer,
-                borderRadius: BorderRadius.circular(20)
-            ),
+                borderRadius: BorderRadius.circular(20)),
             child: Icon(
               Icons.check,
               size: 16,
@@ -56,10 +56,13 @@ class ImageView extends StatelessWidget {
     );
   }
 
-
   ImageProvider get getImage {
-    return image.when(network: _buildNetwork, base64: _buildBaseImage);
-
+    return image.when(
+        network: _buildNetwork,
+        base64: _buildBaseImage,
+        filePath: (String filePath, ImageParams params) {
+          return FileImage(io.File(filePath));
+        });
   }
 
   double? get getWidth {
@@ -78,7 +81,8 @@ class ImageView extends StatelessWidget {
             height: getHeight ?? 0,
             borderRadius: params.borderRadius);
       case LoadState.completed:
-        return ExtendedRawImage(image: state.extendedImageInfo?.image,fit: params.fit);
+        return ExtendedRawImage(
+            image: state.extendedImageInfo?.image, fit: params.fit);
       case LoadState.failed:
         return Container(
           width: getWidth,
@@ -99,7 +103,6 @@ class ImageView extends StatelessWidget {
     return MemoryImage(base64Decode(base64Code));
   }
 }
-
 
 class Skeleton extends StatefulWidget {
   final double height;
@@ -137,10 +140,10 @@ class SkeletonState extends State<Skeleton>
     ).animate(
       CurvedAnimation(parent: _controller, curve: Curves.linear),
     )..addListener(
-          () {
-        setState(() {});
-      },
-    );
+        () {
+          setState(() {});
+        },
+      );
 
     _controller.repeat();
   }

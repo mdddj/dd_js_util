@@ -57,3 +57,19 @@ Map<String, dynamic> _$$MyBase64ImageToJson(_$MyBase64Image instance) =>
       'params': instance.params,
       'runtimeType': instance.$type,
     };
+
+_$MyFilePathImage _$$MyFilePathImageFromJson(Map<String, dynamic> json) =>
+    _$MyFilePathImage(
+      filePath: json['filePath'] as String,
+      params: json['params'] == null
+          ? const ImageParams()
+          : ImageParams.fromJson(json['params'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$MyFilePathImageToJson(_$MyFilePathImage instance) =>
+    <String, dynamic>{
+      'filePath': instance.filePath,
+      'params': instance.params,
+      'runtimeType': instance.$type,
+    };
