@@ -471,10 +471,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_swiper_null_safety_flutter3
-      sha256: ebd62ab62a7a424bf25a647d2a7a9cc0ec66ab347d4f9748a28a6c566872fcd1
+      sha256: "19e37d999c128f39502a570989e05376bf7d5fd4f9ab3c0e2118244e7047d5ed"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.1"
+    version: "4.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
