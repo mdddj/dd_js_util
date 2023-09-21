@@ -33,6 +33,7 @@ mixin _$RequestParams {
   ResponseResultCallback? get responseResultCallback =>
       throw _privateConstructorUsedError;
   Map<String, dynamic>? get extra => throw _privateConstructorUsedError;
+  CancelToken? get cancelToken => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RequestParamsCopyWith<RequestParams> get copyWith =>
@@ -61,7 +62,8 @@ abstract class $RequestParamsCopyWith<$Res> {
       InterceptorCall? interceptorCall,
       UrlParseFormat? urlParseFormat,
       ResponseResultCallback? responseResultCallback,
-      Map<String, dynamic>? extra});
+      Map<String, dynamic>? extra,
+      CancelToken? cancelToken});
 }
 
 /// @nodoc
@@ -93,6 +95,7 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
     Object? urlParseFormat = freezed,
     Object? responseResultCallback = freezed,
     Object? extra = freezed,
+    Object? cancelToken = freezed,
   }) {
     return _then(_value.copyWith(
       showErrorMsg: null == showErrorMsg
@@ -159,6 +162,10 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
           ? _value.extra
           : extra // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
+      cancelToken: freezed == cancelToken
+          ? _value.cancelToken
+          : cancelToken // ignore: cast_nullable_to_non_nullable
+              as CancelToken?,
     ) as $Val);
   }
 }
@@ -187,7 +194,8 @@ abstract class _$$_RequestParamsCopyWith<$Res>
       InterceptorCall? interceptorCall,
       UrlParseFormat? urlParseFormat,
       ResponseResultCallback? responseResultCallback,
-      Map<String, dynamic>? extra});
+      Map<String, dynamic>? extra,
+      CancelToken? cancelToken});
 }
 
 /// @nodoc
@@ -217,6 +225,7 @@ class __$$_RequestParamsCopyWithImpl<$Res>
     Object? urlParseFormat = freezed,
     Object? responseResultCallback = freezed,
     Object? extra = freezed,
+    Object? cancelToken = freezed,
   }) {
     return _then(_$_RequestParams(
       showErrorMsg: null == showErrorMsg
@@ -283,6 +292,10 @@ class __$$_RequestParamsCopyWithImpl<$Res>
           ? _value._extra
           : extra // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
+      cancelToken: freezed == cancelToken
+          ? _value.cancelToken
+          : cancelToken // ignore: cast_nullable_to_non_nullable
+              as CancelToken?,
     ));
   }
 }
@@ -306,7 +319,8 @@ class _$_RequestParams extends _RequestParams {
       this.interceptorCall,
       this.urlParseFormat,
       this.responseResultCallback,
-      final Map<String, dynamic>? extra})
+      final Map<String, dynamic>? extra,
+      this.cancelToken})
       : _headers = headers,
         _extra = extra,
         super._();
@@ -363,8 +377,11 @@ class _$_RequestParams extends _RequestParams {
   }
 
   @override
+  final CancelToken? cancelToken;
+
+  @override
   String toString() {
-    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, isFullUrl: $isFullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback, extra: $extra)';
+    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, isFullUrl: $isFullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback, extra: $extra, cancelToken: $cancelToken)';
   }
 
   @override
@@ -400,7 +417,9 @@ class _$_RequestParams extends _RequestParams {
                 other.urlParseFormat == urlParseFormat) &&
             (identical(other.responseResultCallback, responseResultCallback) ||
                 other.responseResultCallback == responseResultCallback) &&
-            const DeepCollectionEquality().equals(other._extra, _extra));
+            const DeepCollectionEquality().equals(other._extra, _extra) &&
+            (identical(other.cancelToken, cancelToken) ||
+                other.cancelToken == cancelToken));
   }
 
   @override
@@ -421,7 +440,8 @@ class _$_RequestParams extends _RequestParams {
       interceptorCall,
       urlParseFormat,
       responseResultCallback,
-      const DeepCollectionEquality().hash(_extra));
+      const DeepCollectionEquality().hash(_extra),
+      cancelToken);
 
   @JsonKey(ignore: true)
   @override
@@ -447,7 +467,8 @@ abstract class _RequestParams extends RequestParams {
       final InterceptorCall? interceptorCall,
       final UrlParseFormat? urlParseFormat,
       final ResponseResultCallback? responseResultCallback,
-      final Map<String, dynamic>? extra}) = _$_RequestParams;
+      final Map<String, dynamic>? extra,
+      final CancelToken? cancelToken}) = _$_RequestParams;
   const _RequestParams._() : super._();
 
   @override
@@ -482,6 +503,8 @@ abstract class _RequestParams extends RequestParams {
   ResponseResultCallback? get responseResultCallback;
   @override
   Map<String, dynamic>? get extra;
+  @override
+  CancelToken? get cancelToken;
   @override
   @JsonKey(ignore: true)
   _$$_RequestParamsCopyWith<_$_RequestParams> get copyWith =>

@@ -1,10 +1,10 @@
 name: dd_js_util
 description: flutter tools and widgets and extends
-version: 4.3.5
+version: 4.5.1
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=2.17.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -14,24 +14,24 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   html: ^0.15.4
-  permission_handler: ^10.4.3
+  permission_handler: ^11.0.0
   cached_network_image: ^3.2.3
   saver_gallery: ^2.0.1
   flutter_cache_manager: ^3.3.1
   image: ^4.0.17
   common_utils: ^2.1.0
   flutter_smart_dialog: ^4.9.4
-  image_picker: ^1.0.3
+  image_picker: ^1.0.4
   synchronized: ^3.1.0
   dio: ^5.3.2
-  extended_image: ^8.1.0
+  extended_image: ^8.1.1
   flutter_swiper_null_safety_flutter3: ^4.0.0
-  url_launcher: ^6.1.12
+  url_launcher: ^6.1.14
   ffloat_nullsafety: ^3.3.6
-  riverpod: ^2.3.10
-  hooks_riverpod: ^2.3.10
+  riverpod: ^2.4.0
+  hooks_riverpod: ^2.4.0
   flutter_lints: ^2.0.3
-  logger: ^2.0.1
+  logger: ^2.0.2
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   flex_color_scheme: ^7.3.1
@@ -41,7 +41,6 @@ dependencies:
   loading_more_list_library_fast: ^3.0.1
   keyboard_actions: ^4.2.0
   json_annotation: ^4.8.1
-  file_selector: ^1.0.1
   extended_image_library: ^3.6.0
 
 dev_dependencies:

@@ -26,14 +26,6 @@ extension WidgetExt on Widget {
 
   Widget get defaultPadding12 => padding(12);
 
-  Widget mb(double v) => Container(margin: EdgeInsets.only(bottom: v), child: this);
-
-  Widget ml(double v) => Container(margin: EdgeInsets.only(left: v), child: this);
-
-  Widget mr(double v) => Container(margin: EdgeInsets.only(right: v), child: this);
-
-  Widget mt(double v) => Container(margin: EdgeInsets.only(top: v), child: this);
-
   Widget margin(double v) => Container(margin: EdgeInsets.all(v), child: this);
 
   Widget marginOnly({double left = 0.0, double right = 0.0, double top = 0.0, double bottom = 0.0}) => Container(
@@ -56,11 +48,6 @@ extension WidgetExt on Widget {
         child: this,
       );
 
-  Widget cardWidget2(double eve) => Card(
-        elevation: eve,
-        child: this,
-      );
-
   Widget get center => Center(
         child: this,
       );
@@ -77,6 +64,8 @@ extension WidgetExt on Widget {
 
   Widget paddingWithObj(EdgeInsets edgeInsets) => Padding(padding: edgeInsets);
 
+  Widget get maxWidthButton => SizedBox(width: double.infinity,child: this);
+
   Widget aspectRatio(double v) => AspectRatio(
         aspectRatio: v,
         child: this,
@@ -84,9 +73,13 @@ extension WidgetExt on Widget {
 
   Route get materialRouter => MaterialPageRoute(builder: (_) => this);
 
-  Widget border(BuildContext context, {BoxDecoration? decoration, Color? borderColor, BorderRadius? borderRadius, double width = 1.0}) {
+  Widget border(BuildContext context,
+      {BoxDecoration? decoration, Color? borderColor, BorderRadius? borderRadius, double width = 1.0}) {
     return Container(
-      decoration: decoration ?? BoxDecoration(border: Border.all(color: borderColor ?? context.theme.dividerColor, width: width), borderRadius: borderRadius),
+      decoration: decoration ??
+          BoxDecoration(
+              border: Border.all(color: borderColor ?? context.theme.dividerColor, width: width),
+              borderRadius: borderRadius),
       child: this,
     );
   }
@@ -100,14 +93,6 @@ extension WidgetExt on Widget {
 
   Widget longClick({required VoidCallback onLongPress}) {
     return GestureDetector(onLongPress: onLongPress, child: this);
-  }
-
-  /// 高度扩展
-  Widget height(double hei) {
-    return SizedBox(
-      height: hei,
-      child: this,
-    );
   }
 
   Widget click(VoidCallback onTap) {
@@ -148,18 +133,22 @@ extension WidgetExt on Widget {
 
   @Doc(message: 'true 表示可见的 , false 为隐藏')
   Widget visible(bool value) {
-    return IfWidget(expression: ()=>value, trueBuild: ()=>this);
-  }
-  
-  /// 如果`value`为true, 则展示trueWidget,否则展示为本身this
-  Widget ifTrue(bool value,Widget trueWidget,[Duration? duration]){
-      return AnimatedSwitcher(duration:duration ?? const Duration(milliseconds: 300),child: value?trueWidget : this);
+    return IfWidget(expression: () => value, trueBuild: () => this);
   }
 
-  Widget loading(bool value){
-    return ifTrue(value,const CupertinoActivityIndicator());
+  @Doc(message: 'true 表示可见的 , false 为隐藏')
+  Widget? visibleOrNull(bool value) {
+    return value ? this : null;
   }
-  
+
+  /// 如果`value`为true, 则展示trueWidget,否则展示为本身this
+  Widget ifTrue(bool value, Widget trueWidget, [Duration? duration]) {
+    return AnimatedSwitcher(duration: duration ?? const Duration(milliseconds: 300), child: value ? trueWidget : this);
+  }
+
+  Widget loading(bool value) {
+    return ifTrue(value, const CupertinoActivityIndicator());
+  }
 }
 
 typedef WidgetRenderT<T> = Widget Function(T value);
@@ -167,15 +156,14 @@ typedef WidgetRenderT<T> = Widget Function(T value);
 class NullWidget<T> extends StatelessWidget {
   final T? value;
   final WidgetRenderT<T> render;
-  const NullWidget(this.value,this.render,{Key? key}) : super(key: key);
+
+  const NullWidget(this.value, this.render, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if(value != null){
+    if (value != null) {
       return render.call(value as T);
     }
     return const SizedBox();
   }
 }
-
-

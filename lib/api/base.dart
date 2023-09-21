@@ -110,6 +110,7 @@ abstract class BaseApi {
           ),
           queryParameters: httpMethod == HttpMethod.get ? queryParameters : null,
           data: bodyData,
+          cancelToken: options.cancelToken
         );
         return r;
       });

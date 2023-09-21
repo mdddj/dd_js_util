@@ -29,5 +29,6 @@ class RequestParams with _$RequestParams {
       InterceptorCall? interceptorCall,
       UrlParseFormat? urlParseFormat,
       ResponseResultCallback? responseResultCallback,
-      Map<String,dynamic>? extra }) = _RequestParams;
+      Map<String,dynamic>? extra, CancelToken? cancelToken
+      }) = _RequestParams;
 }

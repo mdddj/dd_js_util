@@ -91,6 +91,9 @@ extension StringExtension on String {
     RegExp regExp = RegExp(regExpString);
     return regExp.hasMatch(this);
   }
+
+  @Doc(message: '是否为邮箱')
+  bool get stringIsEmail => _isEmailValid(this);
 }
 
 ///string 工具类
@@ -124,3 +127,12 @@ class HtmlTitleAndIconModel {
 
   HtmlTitleAndIconModel({required this.title, required this.icon});
 }
+
+
+
+bool _isEmailValid(String email) {
+  return RegExp(
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+      .hasMatch(email);
+}
+

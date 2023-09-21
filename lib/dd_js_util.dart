@@ -52,6 +52,7 @@ part './api/error_widget.dart';
 part './api/exception.dart';
 part './api/util.dart';
 part './common/functions.dart';
+
 ///组件模块
 part './common/circle.dart';
 part './common/edit_page.dart';
@@ -62,6 +63,7 @@ part './common/string_ext.dart';
 part './common/w.dart';
 part './ext/ilist.dart';
 part './widget/simple_textfield_wrapper.dart';
+
 /// ext 模块
 part './ext/bool.dart';
 part './ext/context.dart';
@@ -73,7 +75,6 @@ part './ext/splash_factory.dart';
 part './ext/string.dart';
 part './ext/widget.dart';
 part './ext/widget/bottom_sheet/simple_list_tile.dart';
-part './ext/widget/col.dart';
 part './ext/widget/simple_appbar.dart';
 part './mixin/dialog.dart';
 part './mixin/keyboard_mixin.dart';
@@ -106,8 +107,6 @@ part 'theme/theme_setting.dart';
 part 'widget/build_widget.dart';
 part 'widget/lazy_stack_widget.dart';
 part 'api/loading.dart';
-
-
 
 typedef MyHiveBox<T> = Box<T>;
 

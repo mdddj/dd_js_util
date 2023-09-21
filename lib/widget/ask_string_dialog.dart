@@ -72,7 +72,6 @@ class AskStringDialog extends StatelessWidget {
           isDefaultAction: true,
           child: Text(
             params.okBtnText,
-            style: TextStyle(color: context.primaryColor),
           ),
         )
       ],
