@@ -10,8 +10,7 @@ extension IListEx<T> on IList<T> {
     return this;
   }
 
-  IList<T> updateItemFirstWhere(
-      bool Function(T element) where, T Function(T old) call) {
+  IList<T> updateItemFirstWhere(bool Function(T element) where, T Function(T old) call) {
     T item = firstWhere((element) => where(element));
     return updateItemEx(item, call);
   }
@@ -24,8 +23,27 @@ extension IListEx<T> on IList<T> {
     return updateItemEx(first, callUpdate);
   }
 
-  IList<T> updateItemWithIndex(int index,T Function(T old) callUpdate) {
+  IList<T> updateItemWithIndex(int index, T Function(T old) callUpdate) {
     return updateItemEx(this.get(index), callUpdate);
   }
 
+  ///修改列表全部的元素
+  IList<T> updateAll(ValueCopyWith<T> update) {
+    var list = this;
+    for (var element in list) {
+      list = list.updateItemEx(element, update);
+    }
+    return list;
+  }
+
+  ///有条件的修改全部
+  IList<T> updateAllWhere(bool Function(T element) where, ValueCopyWith<T> update) {
+    var list = this;
+    for (var element in list) {
+      if (where(element)) {
+        list = list.updateItemEx(element, update);
+      }
+    }
+    return list;
+  }
 }
