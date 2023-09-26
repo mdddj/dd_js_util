@@ -31,7 +31,7 @@ typedef MyLoadingMoreSliverList<T> = LoadingMoreSliverList<T>;
 typedef MyListConfig<T> = ListConfig<T>;
 typedef MySliverListConfig<T> = SliverListConfig<T>;
 typedef MyLoadingMoreCustomScrollView = LoadingMoreCustomScrollView;
-typedef MyIndicatorStatus = IndicatorStatus;
+typedef MyIndicatorStatus = IndicatorStatusModel;
 typedef R = RequestParams;
 typedef MySwiper = Swiper;
 
