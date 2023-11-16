@@ -1,3 +1,7 @@
+# 5.0.3
+
+适配 flutter3.16.0
+
 # 5.0.2
 
 * 修复访问相册权限时的错误 （Android 平台）
@@ -239,8 +243,8 @@ MyAppTheme.getTheme(int index, {FlexSubThemesData? subThemesData,BuildTheme? bui
 ```dart
   ///构建暗夜模式主题
 static ThemeData buildDarkTheme(BuildTheme themeBuild) {
-  final defaultDark = FlexThemeData.dark();
-  return themeBuild.call(defaultDark);
+final defaultDark = FlexThemeData.dark();
+return themeBuild.call(defaultDark);
 }
 ```
 
@@ -339,11 +343,11 @@ IList<T> updateItemWithIndex(int index,T Function(T old) callUpdate) {
 改造`isNotNull`函数
 ```dart
 S? isNotNull<S>(S Function(T value) call){
-    if(this!=null){
-      return call.call(this as T);
-    }
-    return null;
+  if(this!=null){
+    return call.call(this as T);
   }
+  return null;
+}
 ```
 
 # 3.2.4
@@ -399,36 +403,35 @@ void nullCall<T>(T? value,void Function(T value) call){
 `bool.trueCall`和`bool.falseCall`
 ```dart
   void trueCall(VoidCallback call) {
-    if (this) {
-      call.call();
-    }
+  if (this) {
+    call.call();
   }
+}
 
-  void falseCall(VoidCallback call) {
-    if (this == false) {
-      call.call();
-    }
+void falseCall(VoidCallback call) {
+  if (this == false) {
+    call.call();
   }
+}
 ```
 
 # IList的扩展
 ```dart
   //修改第一个满足条件的item,并返回一个新的IList
-  IList<T> updateItemFirstWhere(
-      bool Function(T element) where, T Function(T old) call) {
-    T item = firstWhere((element) => where(element));
-    return updateItemEx(item, call);
-  }
+IList<T> updateItemFirstWhere(bool Function(T element) where, T Function(T old) call) {
+  T item = firstWhere((element) => where(element));
+  return updateItemEx(item, call);
+}
 
-  //修改某个item,并返回一个新的IList (常用)
-  IList<T> updateItemEx(T oldItem, T Function(T old) call) {
-    final int index = indexOf(oldItem);
-    if (index >= 0) {
-      final T newItem = call(this.get(index));
-      return replace(index, newItem);
-    }
-    return this;
+//修改某个item,并返回一个新的IList (常用)
+IList<T> updateItemEx(T oldItem, T Function(T old) call) {
+  final int index = indexOf(oldItem);
+  if (index >= 0) {
+    final T newItem = call(this.get(index));
+    return replace(index, newItem);
   }
+  return this;
+}
 ```
 
 # 3.2.0

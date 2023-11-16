@@ -256,7 +256,6 @@ class _CalendarDatePickerState extends State<CalendarDatePicker> {
             currentDate: widget.currentDate,
             firstDate: widget.firstDate,
             lastDate: widget.lastDate,
-            initialDate: _currentDisplayedMonthDate,
             selectedDate: _selectedDate,
             onChanged: _handleYearChanged,
           ),
@@ -1245,7 +1244,7 @@ class MyLocalizationsDelegate extends LocalizationsDelegate<CupertinoLocalizatio
   bool isSupported(Locale locale) => locale.languageCode == 'zh';
 
   @override
-  Future<CupertinoLocalizations> load(Locale locale) => ZhCupertinoLocalizations.load(locale);
+  Future<CupertinoLocalizations> load(Locale locale) => MyZhCupertinoLocalizations.load(locale);
 
   @override
   bool shouldReload(MyLocalizationsDelegate old) => false;
@@ -1254,8 +1253,8 @@ class MyLocalizationsDelegate extends LocalizationsDelegate<CupertinoLocalizatio
   String toString() => 'DefaultCupertinoLocalizations.delegate(zh)';
 }
 
-class ZhCupertinoLocalizations implements CupertinoLocalizations {
-  const ZhCupertinoLocalizations();
+class MyZhCupertinoLocalizations implements CupertinoLocalizations {
+  const MyZhCupertinoLocalizations();
 
   static const List<String> _shortWeekdays = <String>[
     '自周一',
@@ -1377,7 +1376,7 @@ class ZhCupertinoLocalizations implements CupertinoLocalizations {
   String get selectAllButtonLabel => '选择全部';
 
   static Future<CupertinoLocalizations> load(Locale locale) {
-    return SynchronousFuture<CupertinoLocalizations>(const ZhCupertinoLocalizations());
+    return SynchronousFuture<CupertinoLocalizations>(const MyZhCupertinoLocalizations());
   }
 
   /// A [LocalizationsDelegate] that uses [DefaultCupertinoLocalizations.load]
@@ -1412,4 +1411,21 @@ class ZhCupertinoLocalizations implements CupertinoLocalizations {
   String datePickerDayOfMonth(int dayIndex, [int? weekDay]) {
     return dayIndex.toString();
   }
+
+  @override
+  String datePickerStandaloneMonth(int monthIndex) {
+    return _shortMonths.get(monthIndex);
+  }
+
+  @override
+  String get lookUpButtonLabel => "查找";
+
+  @override
+  String get menuDismissLabel => "关闭";
+
+  @override
+  String get searchWebButtonLabel => "在网页中搜索";
+
+  @override
+  String get shareButtonLabel => "分享";
 }
