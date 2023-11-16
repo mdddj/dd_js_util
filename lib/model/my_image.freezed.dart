@@ -166,22 +166,17 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
 }
 
 /// @nodoc
-abstract class _$$_ImageParamsCopyWith<$Res>
-    implements $ImageParamsCopyWith<$Res> {
-  factory _$$_ImageParamsCopyWith(
-          _$_ImageParams value, $Res Function(_$_ImageParams) then) =
-      __$$_ImageParamsCopyWithImpl<$Res>;
+abstract class _$$ImageParamsImplCopyWith<$Res> implements $ImageParamsCopyWith<$Res> {
+  factory _$$ImageParamsImplCopyWith(_$ImageParamsImpl value, $Res Function(_$ImageParamsImpl) then) =
+      __$$ImageParamsImplCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
       {double? width,
       double? height,
       double? size,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
+      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
       BoxFit? fit,
       @JsonKey(
           toJson: null,
@@ -207,11 +202,9 @@ abstract class _$$_ImageParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ImageParamsCopyWithImpl<$Res>
-    extends _$ImageParamsCopyWithImpl<$Res, _$_ImageParams>
-    implements _$$_ImageParamsCopyWith<$Res> {
-  __$$_ImageParamsCopyWithImpl(
-      _$_ImageParams _value, $Res Function(_$_ImageParams) _then)
+class __$$ImageParamsImplCopyWithImpl<$Res> extends _$ImageParamsCopyWithImpl<$Res, _$ImageParamsImpl>
+    implements _$$ImageParamsImplCopyWith<$Res> {
+  __$$ImageParamsImplCopyWithImpl(_$ImageParamsImpl _value, $Res Function(_$ImageParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -228,7 +221,7 @@ class __$$_ImageParamsCopyWithImpl<$Res>
     Object? isSelected = null,
     Object? errorWidget = freezed,
   }) {
-    return _then(_$_ImageParams(
+    return _then(_$ImageParamsImpl(
       width: freezed == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
@@ -275,19 +268,13 @@ class __$$_ImageParamsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ImageParams extends _ImageParams {
-  const _$_ImageParams(
+class _$ImageParamsImpl extends _ImageParams {
+  const _$ImageParamsImpl(
       {this.width,
       this.height,
       this.size,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      this.fit,
-      @JsonKey(
-          toJson: null,
+      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false) this.fit,
+      @JsonKey(toJson: null,
           fromJson: null,
           includeFromJson: false,
           includeToJson: false)
@@ -301,16 +288,10 @@ class _$_ImageParams extends _ImageParams {
       this.enableMemoryCache = true,
       this.heroTag,
       this.isSelected = false,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      this.errorWidget})
+      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false) this.errorWidget})
       : super._();
 
-  factory _$_ImageParams.fromJson(Map<String, dynamic> json) =>
-      _$$_ImageParamsFromJson(json);
+  factory _$ImageParamsImpl.fromJson(Map<String, dynamic> json) => _$$ImageParamsImplFromJson(json);
 
   @override
   final double? width;
@@ -319,9 +300,7 @@ class _$_ImageParams extends _ImageParams {
   @override
   final double? size;
   @override
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
+  @JsonKey(toJson: null, fromJson: null,
       includeFromJson: false,
       includeToJson: false)
   final BoxFit? fit;
@@ -364,7 +343,7 @@ class _$_ImageParams extends _ImageParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ImageParams &&
+            other is _$ImageParamsImpl &&
             (identical(other.width, width) || other.width == width) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(other.size, size) || other.size == size) &&
@@ -389,12 +368,12 @@ class _$_ImageParams extends _ImageParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ImageParamsCopyWith<_$_ImageParams> get copyWith =>
-      __$$_ImageParamsCopyWithImpl<_$_ImageParams>(this, _$identity);
+  _$$ImageParamsImplCopyWith<_$ImageParamsImpl> get copyWith =>
+      __$$ImageParamsImplCopyWithImpl<_$ImageParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ImageParamsToJson(
+    return _$$ImageParamsImplToJson(
       this,
     );
   }
@@ -420,22 +399,15 @@ abstract class _ImageParams extends ImageParams {
       @JsonKey(
           toJson: null,
           fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      final BoxShape? shape,
+          includeFromJson: false, includeToJson: false) final BoxShape? shape,
       final bool enableMemoryCache,
       final String? heroTag,
       final bool isSelected,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      final Widget? errorWidget}) = _$_ImageParams;
+      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
+      final Widget? errorWidget}) = _$ImageParamsImpl;
   const _ImageParams._() : super._();
 
-  factory _ImageParams.fromJson(Map<String, dynamic> json) =
-      _$_ImageParams.fromJson;
+  factory _ImageParams.fromJson(Map<String, dynamic> json) = _$ImageParamsImpl.fromJson;
 
   @override
   double? get width;
@@ -470,17 +442,14 @@ abstract class _ImageParams extends ImageParams {
   String? get heroTag;
   @override
   bool get isSelected;
+
   @override
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+  @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
   Widget? get errorWidget;
+
   @override
   @JsonKey(ignore: true)
-  _$$_ImageParamsCopyWith<_$_ImageParams> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ImageParamsImplCopyWith<_$ImageParamsImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 MyImage _$MyImageFromJson(Map<String, dynamic> json) {
@@ -593,11 +562,9 @@ class _$MyImageCopyWithImpl<$Res, $Val extends MyImage>
 }
 
 /// @nodoc
-abstract class _$$MyNetworkImageCopyWith<$Res>
-    implements $MyImageCopyWith<$Res> {
-  factory _$$MyNetworkImageCopyWith(
-          _$MyNetworkImage value, $Res Function(_$MyNetworkImage) then) =
-      __$$MyNetworkImageCopyWithImpl<$Res>;
+abstract class _$$MyNetworkImageImplCopyWith<$Res> implements $MyImageCopyWith<$Res> {
+  factory _$$MyNetworkImageImplCopyWith(_$MyNetworkImageImpl value, $Res Function(_$MyNetworkImageImpl) then) =
+      __$$MyNetworkImageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String url, ImageParams params});
@@ -607,11 +574,9 @@ abstract class _$$MyNetworkImageCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MyNetworkImageCopyWithImpl<$Res>
-    extends _$MyImageCopyWithImpl<$Res, _$MyNetworkImage>
-    implements _$$MyNetworkImageCopyWith<$Res> {
-  __$$MyNetworkImageCopyWithImpl(
-      _$MyNetworkImage _value, $Res Function(_$MyNetworkImage) _then)
+class __$$MyNetworkImageImplCopyWithImpl<$Res> extends _$MyImageCopyWithImpl<$Res, _$MyNetworkImageImpl>
+    implements _$$MyNetworkImageImplCopyWith<$Res> {
+  __$$MyNetworkImageImplCopyWithImpl(_$MyNetworkImageImpl _value, $Res Function(_$MyNetworkImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -620,7 +585,7 @@ class __$$MyNetworkImageCopyWithImpl<$Res>
     Object? url = null,
     Object? params = null,
   }) {
-    return _then(_$MyNetworkImage(
+    return _then(_$MyNetworkImageImpl(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -635,16 +600,12 @@ class __$$MyNetworkImageCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MyNetworkImage extends MyNetworkImage {
-  _$MyNetworkImage(
-      {required this.url,
-      this.params = const ImageParams(),
-      final String? $type})
+class _$MyNetworkImageImpl extends MyNetworkImage {
+  _$MyNetworkImageImpl({required this.url, this.params = const ImageParams(), final String? $type})
       : $type = $type ?? 'network',
         super._();
 
-  factory _$MyNetworkImage.fromJson(Map<String, dynamic> json) =>
-      _$$MyNetworkImageFromJson(json);
+  factory _$MyNetworkImageImpl.fromJson(Map<String, dynamic> json) => _$$MyNetworkImageImplFromJson(json);
 
   @override
   final String url;
@@ -664,7 +625,7 @@ class _$MyNetworkImage extends MyNetworkImage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyNetworkImage &&
+            other is _$MyNetworkImageImpl &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.params, params) || other.params == params));
   }
@@ -676,8 +637,8 @@ class _$MyNetworkImage extends MyNetworkImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MyNetworkImageCopyWith<_$MyNetworkImage> get copyWith =>
-      __$$MyNetworkImageCopyWithImpl<_$MyNetworkImage>(this, _$identity);
+  _$$MyNetworkImageImplCopyWith<_$MyNetworkImageImpl> get copyWith =>
+      __$$MyNetworkImageImplCopyWithImpl<_$MyNetworkImageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -749,35 +710,30 @@ class _$MyNetworkImage extends MyNetworkImage {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MyNetworkImageToJson(
+    return _$$MyNetworkImageImplToJson(
       this,
     );
   }
 }
 
 abstract class MyNetworkImage extends MyImage {
-  factory MyNetworkImage(
-      {required final String url, final ImageParams params}) = _$MyNetworkImage;
+  factory MyNetworkImage({required final String url, final ImageParams params}) = _$MyNetworkImageImpl;
   MyNetworkImage._() : super._();
 
-  factory MyNetworkImage.fromJson(Map<String, dynamic> json) =
-      _$MyNetworkImage.fromJson;
+  factory MyNetworkImage.fromJson(Map<String, dynamic> json) = _$MyNetworkImageImpl.fromJson;
 
   String get url;
   @override
   ImageParams get params;
   @override
   @JsonKey(ignore: true)
-  _$$MyNetworkImageCopyWith<_$MyNetworkImage> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MyNetworkImageImplCopyWith<_$MyNetworkImageImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$MyBase64ImageCopyWith<$Res>
-    implements $MyImageCopyWith<$Res> {
-  factory _$$MyBase64ImageCopyWith(
-          _$MyBase64Image value, $Res Function(_$MyBase64Image) then) =
-      __$$MyBase64ImageCopyWithImpl<$Res>;
+abstract class _$$MyBase64ImageImplCopyWith<$Res> implements $MyImageCopyWith<$Res> {
+  factory _$$MyBase64ImageImplCopyWith(_$MyBase64ImageImpl value, $Res Function(_$MyBase64ImageImpl) then) =
+      __$$MyBase64ImageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String base64Code, ImageParams params});
@@ -787,11 +743,9 @@ abstract class _$$MyBase64ImageCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MyBase64ImageCopyWithImpl<$Res>
-    extends _$MyImageCopyWithImpl<$Res, _$MyBase64Image>
-    implements _$$MyBase64ImageCopyWith<$Res> {
-  __$$MyBase64ImageCopyWithImpl(
-      _$MyBase64Image _value, $Res Function(_$MyBase64Image) _then)
+class __$$MyBase64ImageImplCopyWithImpl<$Res> extends _$MyImageCopyWithImpl<$Res, _$MyBase64ImageImpl>
+    implements _$$MyBase64ImageImplCopyWith<$Res> {
+  __$$MyBase64ImageImplCopyWithImpl(_$MyBase64ImageImpl _value, $Res Function(_$MyBase64ImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -800,7 +754,7 @@ class __$$MyBase64ImageCopyWithImpl<$Res>
     Object? base64Code = null,
     Object? params = null,
   }) {
-    return _then(_$MyBase64Image(
+    return _then(_$MyBase64ImageImpl(
       base64Code: null == base64Code
           ? _value.base64Code
           : base64Code // ignore: cast_nullable_to_non_nullable
@@ -815,16 +769,12 @@ class __$$MyBase64ImageCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MyBase64Image extends MyBase64Image {
-  _$MyBase64Image(
-      {required this.base64Code,
-      this.params = const ImageParams(),
-      final String? $type})
+class _$MyBase64ImageImpl extends MyBase64Image {
+  _$MyBase64ImageImpl({required this.base64Code, this.params = const ImageParams(), final String? $type})
       : $type = $type ?? 'base64',
         super._();
 
-  factory _$MyBase64Image.fromJson(Map<String, dynamic> json) =>
-      _$$MyBase64ImageFromJson(json);
+  factory _$MyBase64ImageImpl.fromJson(Map<String, dynamic> json) => _$$MyBase64ImageImplFromJson(json);
 
   @override
   final String base64Code;
@@ -844,9 +794,8 @@ class _$MyBase64Image extends MyBase64Image {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyBase64Image &&
-            (identical(other.base64Code, base64Code) ||
-                other.base64Code == base64Code) &&
+            other is _$MyBase64ImageImpl &&
+            (identical(other.base64Code, base64Code) || other.base64Code == base64Code) &&
             (identical(other.params, params) || other.params == params));
   }
 
@@ -857,8 +806,8 @@ class _$MyBase64Image extends MyBase64Image {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MyBase64ImageCopyWith<_$MyBase64Image> get copyWith =>
-      __$$MyBase64ImageCopyWithImpl<_$MyBase64Image>(this, _$identity);
+  _$$MyBase64ImageImplCopyWith<_$MyBase64ImageImpl> get copyWith =>
+      __$$MyBase64ImageImplCopyWithImpl<_$MyBase64ImageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -930,36 +879,30 @@ class _$MyBase64Image extends MyBase64Image {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MyBase64ImageToJson(
+    return _$$MyBase64ImageImplToJson(
       this,
     );
   }
 }
 
 abstract class MyBase64Image extends MyImage {
-  factory MyBase64Image(
-      {required final String base64Code,
-      final ImageParams params}) = _$MyBase64Image;
+  factory MyBase64Image({required final String base64Code, final ImageParams params}) = _$MyBase64ImageImpl;
   MyBase64Image._() : super._();
 
-  factory MyBase64Image.fromJson(Map<String, dynamic> json) =
-      _$MyBase64Image.fromJson;
+  factory MyBase64Image.fromJson(Map<String, dynamic> json) = _$MyBase64ImageImpl.fromJson;
 
   String get base64Code;
   @override
   ImageParams get params;
   @override
   @JsonKey(ignore: true)
-  _$$MyBase64ImageCopyWith<_$MyBase64Image> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MyBase64ImageImplCopyWith<_$MyBase64ImageImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$MyFilePathImageCopyWith<$Res>
-    implements $MyImageCopyWith<$Res> {
-  factory _$$MyFilePathImageCopyWith(
-          _$MyFilePathImage value, $Res Function(_$MyFilePathImage) then) =
-      __$$MyFilePathImageCopyWithImpl<$Res>;
+abstract class _$$MyFilePathImageImplCopyWith<$Res> implements $MyImageCopyWith<$Res> {
+  factory _$$MyFilePathImageImplCopyWith(_$MyFilePathImageImpl value, $Res Function(_$MyFilePathImageImpl) then) =
+      __$$MyFilePathImageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String filePath, ImageParams params});
@@ -969,11 +912,9 @@ abstract class _$$MyFilePathImageCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MyFilePathImageCopyWithImpl<$Res>
-    extends _$MyImageCopyWithImpl<$Res, _$MyFilePathImage>
-    implements _$$MyFilePathImageCopyWith<$Res> {
-  __$$MyFilePathImageCopyWithImpl(
-      _$MyFilePathImage _value, $Res Function(_$MyFilePathImage) _then)
+class __$$MyFilePathImageImplCopyWithImpl<$Res> extends _$MyImageCopyWithImpl<$Res, _$MyFilePathImageImpl>
+    implements _$$MyFilePathImageImplCopyWith<$Res> {
+  __$$MyFilePathImageImplCopyWithImpl(_$MyFilePathImageImpl _value, $Res Function(_$MyFilePathImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -982,7 +923,7 @@ class __$$MyFilePathImageCopyWithImpl<$Res>
     Object? filePath = null,
     Object? params = null,
   }) {
-    return _then(_$MyFilePathImage(
+    return _then(_$MyFilePathImageImpl(
       filePath: null == filePath
           ? _value.filePath
           : filePath // ignore: cast_nullable_to_non_nullable
@@ -997,16 +938,12 @@ class __$$MyFilePathImageCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MyFilePathImage extends MyFilePathImage {
-  _$MyFilePathImage(
-      {required this.filePath,
-      this.params = const ImageParams(),
-      final String? $type})
+class _$MyFilePathImageImpl extends MyFilePathImage {
+  _$MyFilePathImageImpl({required this.filePath, this.params = const ImageParams(), final String? $type})
       : $type = $type ?? 'filePath',
         super._();
 
-  factory _$MyFilePathImage.fromJson(Map<String, dynamic> json) =>
-      _$$MyFilePathImageFromJson(json);
+  factory _$MyFilePathImageImpl.fromJson(Map<String, dynamic> json) => _$$MyFilePathImageImplFromJson(json);
 
   @override
   final String filePath;
@@ -1026,9 +963,8 @@ class _$MyFilePathImage extends MyFilePathImage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MyFilePathImage &&
-            (identical(other.filePath, filePath) ||
-                other.filePath == filePath) &&
+            other is _$MyFilePathImageImpl &&
+            (identical(other.filePath, filePath) || other.filePath == filePath) &&
             (identical(other.params, params) || other.params == params));
   }
 
@@ -1039,8 +975,8 @@ class _$MyFilePathImage extends MyFilePathImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MyFilePathImageCopyWith<_$MyFilePathImage> get copyWith =>
-      __$$MyFilePathImageCopyWithImpl<_$MyFilePathImage>(this, _$identity);
+  _$$MyFilePathImageImplCopyWith<_$MyFilePathImageImpl> get copyWith =>
+      __$$MyFilePathImageImplCopyWithImpl<_$MyFilePathImageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1112,26 +1048,22 @@ class _$MyFilePathImage extends MyFilePathImage {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MyFilePathImageToJson(
+    return _$$MyFilePathImageImplToJson(
       this,
     );
   }
 }
 
 abstract class MyFilePathImage extends MyImage {
-  factory MyFilePathImage(
-      {required final String filePath,
-      final ImageParams params}) = _$MyFilePathImage;
+  factory MyFilePathImage({required final String filePath, final ImageParams params}) = _$MyFilePathImageImpl;
   MyFilePathImage._() : super._();
 
-  factory MyFilePathImage.fromJson(Map<String, dynamic> json) =
-      _$MyFilePathImage.fromJson;
+  factory MyFilePathImage.fromJson(Map<String, dynamic> json) = _$MyFilePathImageImpl.fromJson;
 
   String get filePath;
   @override
   ImageParams get params;
   @override
   @JsonKey(ignore: true)
-  _$$MyFilePathImageCopyWith<_$MyFilePathImage> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MyFilePathImageImplCopyWith<_$MyFilePathImageImpl> get copyWith => throw _privateConstructorUsedError;
 }

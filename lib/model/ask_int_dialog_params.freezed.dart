@@ -86,26 +86,22 @@ class _$AskStringDialogParamsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AskStringDialogParamsCopyWith<$Res>
-    implements $AskStringDialogParamsCopyWith<$Res> {
-  factory _$$_AskStringDialogParamsCopyWith(_$_AskStringDialogParams value,
-          $Res Function(_$_AskStringDialogParams) then) =
-      __$$_AskStringDialogParamsCopyWithImpl<$Res>;
+abstract class _$$AskStringDialogParamsImplCopyWith<$Res> implements $AskStringDialogParamsCopyWith<$Res> {
+  factory _$$AskStringDialogParamsImplCopyWith(
+          _$AskStringDialogParamsImpl value, $Res Function(_$AskStringDialogParamsImpl) then) =
+      __$$AskStringDialogParamsImplCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call(
-      {String placeholder,
-      String title,
-      String okBtnText,
-      String cancelBtnText});
+  $Res call({String placeholder, String title, String okBtnText, String cancelBtnText});
 }
 
 /// @nodoc
-class __$$_AskStringDialogParamsCopyWithImpl<$Res>
-    extends _$AskStringDialogParamsCopyWithImpl<$Res, _$_AskStringDialogParams>
-    implements _$$_AskStringDialogParamsCopyWith<$Res> {
-  __$$_AskStringDialogParamsCopyWithImpl(_$_AskStringDialogParams _value,
-      $Res Function(_$_AskStringDialogParams) _then)
+class __$$AskStringDialogParamsImplCopyWithImpl<$Res>
+    extends _$AskStringDialogParamsCopyWithImpl<$Res, _$AskStringDialogParamsImpl>
+    implements _$$AskStringDialogParamsImplCopyWith<$Res> {
+  __$$AskStringDialogParamsImplCopyWithImpl(
+      _$AskStringDialogParamsImpl _value, $Res Function(_$AskStringDialogParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,7 +112,7 @@ class __$$_AskStringDialogParamsCopyWithImpl<$Res>
     Object? okBtnText = null,
     Object? cancelBtnText = null,
   }) {
-    return _then(_$_AskStringDialogParams(
+    return _then(_$AskStringDialogParamsImpl(
       placeholder: null == placeholder
           ? _value.placeholder
           : placeholder // ignore: cast_nullable_to_non_nullable
@@ -139,15 +135,11 @@ class __$$_AskStringDialogParamsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AskStringDialogParams implements _AskStringDialogParams {
-  const _$_AskStringDialogParams(
-      {this.placeholder = "",
-      this.title = "",
-      this.okBtnText = "Ok",
-      this.cancelBtnText = "Cancel"});
+class _$AskStringDialogParamsImpl implements _AskStringDialogParams {
+  const _$AskStringDialogParamsImpl(
+      {this.placeholder = "", this.title = "", this.okBtnText = "Ok", this.cancelBtnText = "Cancel"});
 
-  factory _$_AskStringDialogParams.fromJson(Map<String, dynamic> json) =>
-      _$$_AskStringDialogParamsFromJson(json);
+  factory _$AskStringDialogParamsImpl.fromJson(Map<String, dynamic> json) => _$$AskStringDialogParamsImplFromJson(json);
 
   @override
   @JsonKey()
@@ -171,9 +163,8 @@ class _$_AskStringDialogParams implements _AskStringDialogParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AskStringDialogParams &&
-            (identical(other.placeholder, placeholder) ||
-                other.placeholder == placeholder) &&
+            other is _$AskStringDialogParamsImpl &&
+            (identical(other.placeholder, placeholder) || other.placeholder == placeholder) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.okBtnText, okBtnText) ||
                 other.okBtnText == okBtnText) &&
@@ -189,13 +180,12 @@ class _$_AskStringDialogParams implements _AskStringDialogParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AskStringDialogParamsCopyWith<_$_AskStringDialogParams> get copyWith =>
-      __$$_AskStringDialogParamsCopyWithImpl<_$_AskStringDialogParams>(
-          this, _$identity);
+  _$$AskStringDialogParamsImplCopyWith<_$AskStringDialogParamsImpl> get copyWith =>
+      __$$AskStringDialogParamsImplCopyWithImpl<_$AskStringDialogParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AskStringDialogParamsToJson(
+    return _$$AskStringDialogParamsImplToJson(
       this,
     );
   }
@@ -206,10 +196,9 @@ abstract class _AskStringDialogParams implements AskStringDialogParams {
       {final String placeholder,
       final String title,
       final String okBtnText,
-      final String cancelBtnText}) = _$_AskStringDialogParams;
+      final String cancelBtnText}) = _$AskStringDialogParamsImpl;
 
-  factory _AskStringDialogParams.fromJson(Map<String, dynamic> json) =
-      _$_AskStringDialogParams.fromJson;
+  factory _AskStringDialogParams.fromJson(Map<String, dynamic> json) = _$AskStringDialogParamsImpl.fromJson;
 
   @override
   String get placeholder;
@@ -217,12 +206,13 @@ abstract class _AskStringDialogParams implements AskStringDialogParams {
   String get title;
   @override
   String get okBtnText;
+
   @override
   String get cancelBtnText;
+
   @override
   @JsonKey(ignore: true)
-  _$$_AskStringDialogParamsCopyWith<_$_AskStringDialogParams> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AskStringDialogParamsImplCopyWith<_$AskStringDialogParamsImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 AskIntDialogParams _$AskIntDialogParamsFromJson(Map<String, dynamic> json) {
@@ -329,11 +319,11 @@ class _$AskIntDialogParamsCopyWithImpl<$Res, $Val extends AskIntDialogParams>
 }
 
 /// @nodoc
-abstract class _$$_AskIntDialogParamsCopyWith<$Res>
-    implements $AskIntDialogParamsCopyWith<$Res> {
-  factory _$$_AskIntDialogParamsCopyWith(_$_AskIntDialogParams value,
-          $Res Function(_$_AskIntDialogParams) then) =
-      __$$_AskIntDialogParamsCopyWithImpl<$Res>;
+abstract class _$$AskIntDialogParamsImplCopyWith<$Res> implements $AskIntDialogParamsCopyWith<$Res> {
+  factory _$$AskIntDialogParamsImplCopyWith(
+          _$AskIntDialogParamsImpl value, $Res Function(_$AskIntDialogParamsImpl) then) =
+      __$$AskIntDialogParamsImplCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
@@ -341,10 +331,7 @@ abstract class _$$_AskIntDialogParamsCopyWith<$Res>
       String title,
       String okBtnText,
       String cancelBtnText,
-      @JsonKey(
-          fromJson: null,
-          toJson: null,
-          includeFromJson: false,
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false,
           includeToJson: false)
       bool Function(int)? disableOkButton,
       @JsonKey(
@@ -356,11 +343,10 @@ abstract class _$$_AskIntDialogParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AskIntDialogParamsCopyWithImpl<$Res>
-    extends _$AskIntDialogParamsCopyWithImpl<$Res, _$_AskIntDialogParams>
-    implements _$$_AskIntDialogParamsCopyWith<$Res> {
-  __$$_AskIntDialogParamsCopyWithImpl(
-      _$_AskIntDialogParams _value, $Res Function(_$_AskIntDialogParams) _then)
+class __$$AskIntDialogParamsImplCopyWithImpl<$Res>
+    extends _$AskIntDialogParamsCopyWithImpl<$Res, _$AskIntDialogParamsImpl>
+    implements _$$AskIntDialogParamsImplCopyWith<$Res> {
+  __$$AskIntDialogParamsImplCopyWithImpl(_$AskIntDialogParamsImpl _value, $Res Function(_$AskIntDialogParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -373,7 +359,7 @@ class __$$_AskIntDialogParamsCopyWithImpl<$Res>
     Object? disableOkButton = freezed,
     Object? errorMessage = freezed,
   }) {
-    return _then(_$_AskIntDialogParams(
+    return _then(_$AskIntDialogParamsImpl(
       placeholder: null == placeholder
           ? _value.placeholder
           : placeholder // ignore: cast_nullable_to_non_nullable
@@ -404,27 +390,16 @@ class __$$_AskIntDialogParamsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AskIntDialogParams implements _AskIntDialogParams {
-  const _$_AskIntDialogParams(
+class _$AskIntDialogParamsImpl implements _AskIntDialogParams {
+  const _$AskIntDialogParamsImpl(
       {this.placeholder = "",
       this.title = "",
       this.okBtnText = "Ok",
       this.cancelBtnText = "Cancel",
-      @JsonKey(
-          fromJson: null,
-          toJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      this.disableOkButton,
-      @JsonKey(
-          fromJson: null,
-          toJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      this.errorMessage});
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false) this.disableOkButton,
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false) this.errorMessage});
 
-  factory _$_AskIntDialogParams.fromJson(Map<String, dynamic> json) =>
-      _$$_AskIntDialogParamsFromJson(json);
+  factory _$AskIntDialogParamsImpl.fromJson(Map<String, dynamic> json) => _$$AskIntDialogParamsImplFromJson(json);
 
   @override
   @JsonKey()
@@ -462,9 +437,8 @@ class _$_AskIntDialogParams implements _AskIntDialogParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AskIntDialogParams &&
-            (identical(other.placeholder, placeholder) ||
-                other.placeholder == placeholder) &&
+            other is _$AskIntDialogParamsImpl &&
+            (identical(other.placeholder, placeholder) || other.placeholder == placeholder) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.okBtnText, okBtnText) ||
                 other.okBtnText == okBtnText) &&
@@ -484,13 +458,12 @@ class _$_AskIntDialogParams implements _AskIntDialogParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AskIntDialogParamsCopyWith<_$_AskIntDialogParams> get copyWith =>
-      __$$_AskIntDialogParamsCopyWithImpl<_$_AskIntDialogParams>(
-          this, _$identity);
+  _$$AskIntDialogParamsImplCopyWith<_$AskIntDialogParamsImpl> get copyWith =>
+      __$$AskIntDialogParamsImplCopyWithImpl<_$AskIntDialogParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AskIntDialogParamsToJson(
+    return _$$AskIntDialogParamsImplToJson(
       this,
     );
   }
@@ -502,21 +475,12 @@ abstract class _AskIntDialogParams implements AskIntDialogParams {
       final String title,
       final String okBtnText,
       final String cancelBtnText,
-      @JsonKey(
-          fromJson: null,
-          toJson: null,
-          includeFromJson: false,
-          includeToJson: false)
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
       final bool Function(int)? disableOkButton,
-      @JsonKey(
-          fromJson: null,
-          toJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      final String? Function(int)? errorMessage}) = _$_AskIntDialogParams;
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
+      final String? Function(int)? errorMessage}) = _$AskIntDialogParamsImpl;
 
-  factory _AskIntDialogParams.fromJson(Map<String, dynamic> json) =
-      _$_AskIntDialogParams.fromJson;
+  factory _AskIntDialogParams.fromJson(Map<String, dynamic> json) = _$AskIntDialogParamsImpl.fromJson;
 
   @override
   String get placeholder;
@@ -533,15 +497,12 @@ abstract class _AskIntDialogParams implements AskIntDialogParams {
       includeFromJson: false,
       includeToJson: false)
   bool Function(int)? get disableOkButton;
+
   @override
-  @JsonKey(
-      fromJson: null,
-      toJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+  @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
   String? Function(int)? get errorMessage;
+
   @override
   @JsonKey(ignore: true)
-  _$$_AskIntDialogParamsCopyWith<_$_AskIntDialogParams> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AskIntDialogParamsImplCopyWith<_$AskIntDialogParamsImpl> get copyWith => throw _privateConstructorUsedError;
 }

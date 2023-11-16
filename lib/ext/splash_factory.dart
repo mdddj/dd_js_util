@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 class NoSplashFactory extends InteractiveInkFeatureFactory {
   @override
@@ -19,8 +19,7 @@ class NoSplashFactory extends InteractiveInkFeatureFactory {
 }
 
 class _NoInteractiveInkFeature extends InteractiveInkFeature {
-  _NoInteractiveInkFeature({required MaterialInkController controller, required RenderBox referenceBox, required Color color})
-      : super(controller: controller, referenceBox: referenceBox, color: color);
+  _NoInteractiveInkFeature({required super.controller, required super.referenceBox, required super.color});
 
   @override
   void paintFeature(Canvas canvas, Matrix4 transform) {}

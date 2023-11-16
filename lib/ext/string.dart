@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 ///字符串相关扩展
 extension StringExtension on String {
@@ -17,11 +17,11 @@ extension StringExtension on String {
     try {
       // 访问相册权限检测
       if (checkPermission == true) {
-        PermissionStatus storageStatus = await Permission.storage.status;
+        final permission = await KPermissionUtil.instance.getAndroidSdkPermissionWithPicture();
+        PermissionStatus storageStatus = await permission.status;
         if (storageStatus != PermissionStatus.granted) {
-          storageStatus = await Permission.storage.request();
+          storageStatus = await permission.request();
           if (storageStatus != PermissionStatus.granted) {
-            // 请先授权访问相册的权限
             throw '401';
           }
         }
@@ -81,11 +81,6 @@ extension StringExtension on String {
     return date.messageTime;
   }
 
-  @Doc(message: '获取网页的标题和icon')
-  Future<HtmlTitleAndIconModel> get getHtmlTitleAndIcon async {
-    return _StringUtil.getHtmlTitleAndIcon(this);
-  }
-
   @Doc(message: '判断是否为网络图片')
   bool isNetworkImage([String regExpString = r'^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp)$']) {
     RegExp regExp = RegExp(regExpString);
@@ -94,31 +89,8 @@ extension StringExtension on String {
 
   @Doc(message: '是否为邮箱')
   bool get stringIsEmail => _isEmailValid(this);
-}
 
-///string 工具类
-class _StringUtil {
-  ///获取网页标题和图标
-  static Future<HtmlTitleAndIconModel> getHtmlTitleAndIcon(String webUrl) async {
-    String title = "";
-    String icon = "";
-    final response = await dio.Dio().get(webUrl, options: dio.Options(responseType: dio.ResponseType.plain));
-    if (response.statusCode != 200) {
-      throw AppException.appError(code: response.statusCode, msg: response.statusMessage);
-    }
-    final htmlText = response.data.toString();
-    Document document = parse(htmlText);
-    final titleList = document.getElementsByTagName("title");
-    if (titleList.isNotEmpty) {
-      title = titleList.first.text;
-    } else {
-      throw AppException.appError(code: 10009, msg: "Not found title");
-    }
-    final uri = Uri.parse(webUrl);
-    icon = '${uri.scheme}://${uri.host}/favicon.ico';
-    kLog('title :$title\nicon: $icon');
-    return HtmlTitleAndIconModel(title: title, icon: icon);
-  }
+  T? decodeModel<T>(T Function(Map<String, dynamic> jsonMap) decode) => decodeModelOrNull(this, decode);
 }
 
 class HtmlTitleAndIconModel {
@@ -127,8 +99,6 @@ class HtmlTitleAndIconModel {
 
   HtmlTitleAndIconModel({required this.title, required this.icon});
 }
-
-
 
 bool _isEmailValid(String email) {
   return RegExp(

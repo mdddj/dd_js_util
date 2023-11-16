@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 //
 // import '../api/base.dart';

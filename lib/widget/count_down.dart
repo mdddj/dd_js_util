@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 typedef CountDownBuilder = Widget Function(BuildContext context, int day, int hour, int minute, int seconds, int millisecond);
 
@@ -36,8 +36,16 @@ class CountDown extends StatefulWidget {
   ///开始倒计时回调
   final VoidCallback? onStart;
 
-  const CountDown({Key? key, this.controller, this.endTime, this.onEnd, this.autoStart, this.builder, this.interval, this.onStart, this.secondBuild})
-      : super(key: key);
+  const CountDown(
+      {super.key,
+      this.controller,
+      this.endTime,
+      this.onEnd,
+      this.autoStart,
+      this.builder,
+      this.interval,
+      this.onStart,
+      this.secondBuild});
 
   @override
   State<CountDown> createState() => _CountDownState();

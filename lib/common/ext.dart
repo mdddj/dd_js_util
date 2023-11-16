@@ -1,6 +1,4 @@
-part of dd_js_util;
-
-
+part of '../dd_js_util.dart';
 
 extension ListExt on List<dynamic> {
 

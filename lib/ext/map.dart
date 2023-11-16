@@ -1,6 +1,5 @@
 
-part of dd_js_util;
-
+part of '../dd_js_util.dart';
 
 extension MapExt2 on Map<String, Object> {
   Map<String, dynamic> get asMapDynamic {
@@ -53,14 +52,6 @@ class WrapJson {
   Map<String,dynamic> extMap = {};
 
   WrapJson(this.data);
-  
-
-  factory WrapJson.fromMyServerError(AppException exception){
-    return WrapJson({
-      'state': exception.code,
-      'message': exception.message
-    });
-  }
 
   String getString(String key, {String defaultValue = ''}) {
     final v = data[key];

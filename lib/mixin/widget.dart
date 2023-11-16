@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 mixin WidgetBodyBuildMixin {
   ///构建主显示的小部件

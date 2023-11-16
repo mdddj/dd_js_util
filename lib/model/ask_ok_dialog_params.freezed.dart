@@ -111,22 +111,17 @@ class _$AskOkDialogParamsCopyWithImpl<$Res, $Val extends AskOkDialogParams>
 }
 
 /// @nodoc
-abstract class _$$_AskOkDialogParamsCopyWith<$Res>
-    implements $AskOkDialogParamsCopyWith<$Res> {
-  factory _$$_AskOkDialogParamsCopyWith(_$_AskOkDialogParams value,
-          $Res Function(_$_AskOkDialogParams) then) =
-      __$$_AskOkDialogParamsCopyWithImpl<$Res>;
+abstract class _$$AskOkDialogParamsImplCopyWith<$Res> implements $AskOkDialogParamsCopyWith<$Res> {
+  factory _$$AskOkDialogParamsImplCopyWith(_$AskOkDialogParamsImpl value, $Res Function(_$AskOkDialogParamsImpl) then) =
+      __$$AskOkDialogParamsImplCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
       {String contentText,
       String okText,
       String cancelText,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeToJson: false,
-          includeFromJson: false)
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
       Widget? content,
       @JsonKey(
           toJson: null,
@@ -137,11 +132,9 @@ abstract class _$$_AskOkDialogParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AskOkDialogParamsCopyWithImpl<$Res>
-    extends _$AskOkDialogParamsCopyWithImpl<$Res, _$_AskOkDialogParams>
-    implements _$$_AskOkDialogParamsCopyWith<$Res> {
-  __$$_AskOkDialogParamsCopyWithImpl(
-      _$_AskOkDialogParams _value, $Res Function(_$_AskOkDialogParams) _then)
+class __$$AskOkDialogParamsImplCopyWithImpl<$Res> extends _$AskOkDialogParamsCopyWithImpl<$Res, _$AskOkDialogParamsImpl>
+    implements _$$AskOkDialogParamsImplCopyWith<$Res> {
+  __$$AskOkDialogParamsImplCopyWithImpl(_$AskOkDialogParamsImpl _value, $Res Function(_$AskOkDialogParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -153,7 +146,7 @@ class __$$_AskOkDialogParamsCopyWithImpl<$Res>
     Object? content = freezed,
     Object? title = freezed,
   }) {
-    return _then(_$_AskOkDialogParams(
+    return _then(_$AskOkDialogParamsImpl(
       contentText: null == contentText
           ? _value.contentText
           : contentText // ignore: cast_nullable_to_non_nullable
@@ -180,26 +173,15 @@ class __$$_AskOkDialogParamsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AskOkDialogParams implements _AskOkDialogParams {
-  const _$_AskOkDialogParams(
+class _$AskOkDialogParamsImpl implements _AskOkDialogParams {
+  const _$AskOkDialogParamsImpl(
       {this.contentText = "",
       this.okText = "Ok",
       this.cancelText = "Cancel",
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeToJson: false,
-          includeFromJson: false)
-      this.content,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeToJson: false,
-          includeFromJson: false)
-      this.title});
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false) this.content,
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false) this.title});
 
-  factory _$_AskOkDialogParams.fromJson(Map<String, dynamic> json) =>
-      _$$_AskOkDialogParamsFromJson(json);
+  factory _$AskOkDialogParamsImpl.fromJson(Map<String, dynamic> json) => _$$AskOkDialogParamsImplFromJson(json);
 
   @override
   @JsonKey()
@@ -234,9 +216,8 @@ class _$_AskOkDialogParams implements _AskOkDialogParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AskOkDialogParams &&
-            (identical(other.contentText, contentText) ||
-                other.contentText == contentText) &&
+            other is _$AskOkDialogParamsImpl &&
+            (identical(other.contentText, contentText) || other.contentText == contentText) &&
             (identical(other.okText, okText) || other.okText == okText) &&
             (identical(other.cancelText, cancelText) ||
                 other.cancelText == cancelText) &&
@@ -252,13 +233,12 @@ class _$_AskOkDialogParams implements _AskOkDialogParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AskOkDialogParamsCopyWith<_$_AskOkDialogParams> get copyWith =>
-      __$$_AskOkDialogParamsCopyWithImpl<_$_AskOkDialogParams>(
-          this, _$identity);
+  _$$AskOkDialogParamsImplCopyWith<_$AskOkDialogParamsImpl> get copyWith =>
+      __$$AskOkDialogParamsImplCopyWithImpl<_$AskOkDialogParamsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AskOkDialogParamsToJson(
+    return _$$AskOkDialogParamsImplToJson(
       this,
     );
   }
@@ -269,21 +249,11 @@ abstract class _AskOkDialogParams implements AskOkDialogParams {
       {final String contentText,
       final String okText,
       final String cancelText,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeToJson: false,
-          includeFromJson: false)
-      final Widget? content,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeToJson: false,
-          includeFromJson: false)
-      final Widget? title}) = _$_AskOkDialogParams;
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false) final Widget? content,
+          @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false) final Widget? title}) =
+      _$AskOkDialogParamsImpl;
 
-  factory _AskOkDialogParams.fromJson(Map<String, dynamic> json) =
-      _$_AskOkDialogParams.fromJson;
+  factory _AskOkDialogParams.fromJson(Map<String, dynamic> json) = _$AskOkDialogParamsImpl.fromJson;
 
   @override
   String get contentText;
@@ -298,15 +268,12 @@ abstract class _AskOkDialogParams implements AskOkDialogParams {
       includeToJson: false,
       includeFromJson: false)
   Widget? get content;
+
   @override
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeToJson: false,
-      includeFromJson: false)
+  @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
   Widget? get title;
+
   @override
   @JsonKey(ignore: true)
-  _$$_AskOkDialogParamsCopyWith<_$_AskOkDialogParams> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AskOkDialogParamsImplCopyWith<_$AskOkDialogParamsImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -73,24 +73,22 @@ class _$AppLocalSettingModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AppLocalSettingModelCopyWith<$Res>
-    implements $AppLocalSettingModelCopyWith<$Res> {
-  factory _$$_AppLocalSettingModelCopyWith(_$_AppLocalSettingModel value,
-          $Res Function(_$_AppLocalSettingModel) then) =
-      __$$_AppLocalSettingModelCopyWithImpl<$Res>;
+abstract class _$$AppLocalSettingModelImplCopyWith<$Res> implements $AppLocalSettingModelCopyWith<$Res> {
+  factory _$$AppLocalSettingModelImplCopyWith(
+          _$AppLocalSettingModelImpl value, $Res Function(_$AppLocalSettingModelImpl) then) =
+      __$$AppLocalSettingModelImplCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call(
-      {@HiveField(0, defaultValue: 0) int themeIndex,
-      @HiveField(1, defaultValue: 0) int themeModel});
+  $Res call({@HiveField(0, defaultValue: 0) int themeIndex, @HiveField(1, defaultValue: 0) int themeModel});
 }
 
 /// @nodoc
-class __$$_AppLocalSettingModelCopyWithImpl<$Res>
-    extends _$AppLocalSettingModelCopyWithImpl<$Res, _$_AppLocalSettingModel>
-    implements _$$_AppLocalSettingModelCopyWith<$Res> {
-  __$$_AppLocalSettingModelCopyWithImpl(_$_AppLocalSettingModel _value,
-      $Res Function(_$_AppLocalSettingModel) _then)
+class __$$AppLocalSettingModelImplCopyWithImpl<$Res>
+    extends _$AppLocalSettingModelCopyWithImpl<$Res, _$AppLocalSettingModelImpl>
+    implements _$$AppLocalSettingModelImplCopyWith<$Res> {
+  __$$AppLocalSettingModelImplCopyWithImpl(
+      _$AppLocalSettingModelImpl _value, $Res Function(_$AppLocalSettingModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +97,7 @@ class __$$_AppLocalSettingModelCopyWithImpl<$Res>
     Object? themeIndex = null,
     Object? themeModel = null,
   }) {
-    return _then(_$_AppLocalSettingModel(
+    return _then(_$AppLocalSettingModelImpl(
       themeIndex: null == themeIndex
           ? _value.themeIndex
           : themeIndex // ignore: cast_nullable_to_non_nullable
@@ -114,14 +112,12 @@ class __$$_AppLocalSettingModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppLocalSettingModel extends _AppLocalSettingModel {
-  const _$_AppLocalSettingModel(
-      {@HiveField(0, defaultValue: 0) this.themeIndex = 0,
-      @HiveField(1, defaultValue: 0) this.themeModel = 0})
+class _$AppLocalSettingModelImpl extends _AppLocalSettingModel {
+  const _$AppLocalSettingModelImpl(
+      {@HiveField(0, defaultValue: 0) this.themeIndex = 0, @HiveField(1, defaultValue: 0) this.themeModel = 0})
       : super._();
 
-  factory _$_AppLocalSettingModel.fromJson(Map<String, dynamic> json) =>
-      _$$_AppLocalSettingModelFromJson(json);
+  factory _$AppLocalSettingModelImpl.fromJson(Map<String, dynamic> json) => _$$AppLocalSettingModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -141,9 +137,8 @@ class _$_AppLocalSettingModel extends _AppLocalSettingModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppLocalSettingModel &&
-            (identical(other.themeIndex, themeIndex) ||
-                other.themeIndex == themeIndex) &&
+            other is _$AppLocalSettingModelImpl &&
+            (identical(other.themeIndex, themeIndex) || other.themeIndex == themeIndex) &&
             (identical(other.themeModel, themeModel) ||
                 other.themeModel == themeModel));
   }
@@ -155,13 +150,12 @@ class _$_AppLocalSettingModel extends _AppLocalSettingModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppLocalSettingModelCopyWith<_$_AppLocalSettingModel> get copyWith =>
-      __$$_AppLocalSettingModelCopyWithImpl<_$_AppLocalSettingModel>(
-          this, _$identity);
+  _$$AppLocalSettingModelImplCopyWith<_$AppLocalSettingModelImpl> get copyWith =>
+      __$$AppLocalSettingModelImplCopyWithImpl<_$AppLocalSettingModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppLocalSettingModelToJson(
+    return _$$AppLocalSettingModelImplToJson(
       this,
     );
   }
@@ -169,22 +163,21 @@ class _$_AppLocalSettingModel extends _AppLocalSettingModel {
 
 abstract class _AppLocalSettingModel extends AppLocalSettingModel {
   const factory _AppLocalSettingModel(
-          {@HiveField(0, defaultValue: 0) final int themeIndex,
-          @HiveField(1, defaultValue: 0) final int themeModel}) =
-      _$_AppLocalSettingModel;
+      {@HiveField(0, defaultValue: 0) final int themeIndex,
+      @HiveField(1, defaultValue: 0) final int themeModel}) = _$AppLocalSettingModelImpl;
   const _AppLocalSettingModel._() : super._();
 
-  factory _AppLocalSettingModel.fromJson(Map<String, dynamic> json) =
-      _$_AppLocalSettingModel.fromJson;
+  factory _AppLocalSettingModel.fromJson(Map<String, dynamic> json) = _$AppLocalSettingModelImpl.fromJson;
 
   @override
   @HiveField(0, defaultValue: 0)
   int get themeIndex;
+
   @override
   @HiveField(1, defaultValue: 0)
   int get themeModel;
+
   @override
   @JsonKey(ignore: true)
-  _$$_AppLocalSettingModelCopyWith<_$_AppLocalSettingModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AppLocalSettingModelImplCopyWith<_$AppLocalSettingModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

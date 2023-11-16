@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../../dd_js_util.dart';
 
 const Duration _monthScrollDuration = Duration(milliseconds: 200);
 
@@ -64,7 +64,7 @@ class CalendarDatePicker extends StatefulWidget {
   /// If [selectableDayPredicate] is non-null, it must return `true` for the
   /// [initialDate].
   CalendarDatePicker({
-    Key? key,
+    super.key,
     required DateTime initialDate,
     required DateTime firstDate,
     required DateTime lastDate,
@@ -76,8 +76,7 @@ class CalendarDatePicker extends StatefulWidget {
   })  : initialDate = DateUtils.dateOnly(initialDate),
         firstDate = DateUtils.dateOnly(firstDate),
         lastDate = DateUtils.dateOnly(lastDate),
-        currentDate = DateUtils.dateOnly(currentDate ?? DateTime.now()),
-        super(key: key) {
+        currentDate = DateUtils.dateOnly(currentDate ?? DateTime.now()) {
     assert(
       !this.lastDate.isBefore(this.firstDate),
       'lastDate ${this.lastDate} must be on or after firstDate ${this.firstDate}.',
@@ -407,7 +406,7 @@ class DatePickerModeToggleButtonState extends State<DatePickerModeToggleButton> 
 class MonthPicker extends StatefulWidget {
   /// Creates a month picker.
   MonthPicker({
-    Key? key,
+    super.key,
     required this.initialMonth,
     required this.currentDate,
     required this.firstDate,
@@ -418,8 +417,7 @@ class MonthPicker extends StatefulWidget {
     this.selectableDayPredicate,
   })  : assert(!firstDate.isAfter(lastDate)),
         assert(!selectedDate.isBefore(firstDate)),
-        assert(!selectedDate.isAfter(lastDate)),
-        super(key: key);
+        assert(!selectedDate.isAfter(lastDate));
 
   /// The initial month to display.
   final DateTime initialMonth;
@@ -763,10 +761,9 @@ class MonthPickerState extends State<MonthPicker> {
 /// what the currently focused date (if any) should be.
 class _FocusedDate extends InheritedWidget {
   const _FocusedDate({
-    Key? key,
-    required Widget child,
+    required super.child,
     this.date,
-  }) : super(key: key, child: child);
+  });
 
   final DateTime? date;
 
@@ -788,7 +785,7 @@ class _FocusedDate extends InheritedWidget {
 class _DayPicker extends StatefulWidget {
   /// Creates a day picker.
   _DayPicker({
-    Key? key,
+    super.key,
     required this.currentDate,
     required this.displayedMonth,
     required this.firstDate,
@@ -798,8 +795,7 @@ class _DayPicker extends StatefulWidget {
     this.selectableDayPredicate,
   })  : assert(!firstDate.isAfter(lastDate)),
         assert(!selectedDate.isBefore(firstDate)),
-        assert(!selectedDate.isAfter(lastDate)),
-        super(key: key);
+        assert(!selectedDate.isAfter(lastDate));
 
   /// The currently selected date.
   ///
@@ -1050,7 +1046,7 @@ class MyYearPicker extends StatefulWidget {
   /// The [firstDate], [lastDate], [selectedDate], and [onChanged]
   /// arguments must be non-null. The [lastDate] must be after the [firstDate].
   MyYearPicker({
-    Key? key,
+    super.key,
     DateTime? currentDate,
     required this.firstDate,
     required this.lastDate,
@@ -1061,8 +1057,7 @@ class MyYearPicker extends StatefulWidget {
     this.dragStartBehavior = DragStartBehavior.start,
   })  : assert(!firstDate.isAfter(lastDate)),
         currentDate = DateUtils.dateOnly(currentDate ?? DateTime.now()),
-        initialDate = DateUtils.dateOnly(initialDate ?? selectedDate),
-        super(key: key);
+        initialDate = DateUtils.dateOnly(initialDate ?? selectedDate);
 
   /// The current date.
   ///

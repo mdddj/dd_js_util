@@ -1,16 +1,20 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 class ImagePreview extends StatelessWidget {
   final List<PictureSelectionItemModel> images;
   final int index;
+  final Color? background;
+  final MySwiperPluginIndexBuilder? indexBuilder;
 
-  const ImagePreview({required this.images, this.index = 0, Key? key}) : super(key: key);
+  const ImagePreview({required this.images, this.index = 0, super.key, this.background, this.indexBuilder});
 
   @override
   Widget build(BuildContext context) {
     return PicSwiper(
       images,
       initIndex: index,
+      background: background,
+      indexBuilder: indexBuilder,
     );
   }
 }
@@ -18,8 +22,10 @@ class ImagePreview extends StatelessWidget {
 class PicSwiper extends StatefulWidget {
   final int initIndex;
   final List<PictureSelectionItemModel> pics;
+  final Color? background;
+  final MySwiperPluginIndexBuilder? indexBuilder;
 
-  const PicSwiper(this.pics, {Key? key, this.initIndex = 0}) : super(key: key);
+  const PicSwiper(this.pics, {super.key, this.initIndex = 0, this.background, this.indexBuilder});
 
   @override
   PicSwiperState createState() => PicSwiperState();
@@ -56,8 +62,7 @@ class PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMixi
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Theme.of(context).colorScheme.background,
-      shadowColor: Colors.transparent,
+      color: widget.background ?? Theme.of(context).colorScheme.background,
       child: LayoutBuilder(builder: (context, constraints) {
         return ExtendedImageSlidePage(
           slideAxis: SlideAxis.both,
@@ -82,7 +87,6 @@ class PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMixi
                     mode: ExtendedImageMode.gesture,
                     initGestureConfigHandler: (state) {
                       double? initialScale = 1.0;
-
                       if (state.extendedImageInfo != null) {
                         initialScale = _initalScale(
                             size: Size(constraints.maxWidth, constraints.maxHeight),
@@ -95,8 +99,6 @@ class PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMixi
                           initialScale: initialScale!,
                           maxScale: max(initialScale, 5.0),
                           animationMaxScale: max(initialScale, 5.0),
-                          //you can cache gesture state even though page view page change.
-                          //remember call clearGestureDetailsCache() method at the right time.(for example,this page dispose)
                           cacheGesture: false);
                     },
                     onDoubleTap: (ExtendedImageGestureState state) {
@@ -119,7 +121,6 @@ class PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMixi
                       _animationController!.forward();
                     },
                   );
-
                   return ui;
                 },
                 itemCount: widget.pics.length,
@@ -136,13 +137,17 @@ class PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMixi
               ),
               StreamBuilder<bool>(
                 builder: (c, d) {
-                  if (d.data == null || !d.data!) return Container();
-
+                  if (d.data == null || !d.data!) return const SizedBox();
                   return Positioned(
                     bottom: 0.0,
                     left: 0.0,
                     right: 0.0,
-                    child: MySwiperPlugin(widget.pics, currentIndex, rebuildIndex),
+                    child: MySwiperPlugin(
+                      widget.pics,
+                      currentIndex,
+                      rebuildIndex,
+                      indexBuilder: widget.indexBuilder,
+                    ),
                   );
                 },
                 initialData: true,
@@ -183,40 +188,44 @@ class PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMixi
   }
 }
 
+typedef MySwiperPluginIndexBuilder = Widget Function(int current, int totalCount);
+
 class MySwiperPlugin extends StatelessWidget {
   final List<PictureSelectionItemModel> pics;
   final int? index;
   final StreamController<int> reBuild;
+  final MySwiperPluginIndexBuilder? indexBuilder;
 
-  const MySwiperPlugin(this.pics, this.index, this.reBuild, {Key? key}) : super(key: key);
+  const MySwiperPlugin(this.pics, this.index, this.reBuild, {super.key, this.indexBuilder});
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<int>(
       builder: (BuildContext context, data) {
-        return DefaultTextStyle(
-          style: const TextStyle(color: Colors.white),
-          child: SizedBox(
-            height: 50.0,
-            width: double.infinity,
-            child: Row(
-              children: <Widget>[
-                Container(
-                  width: 10.0,
+        return indexBuilder?.call(data.data ?? 0, pics.length) ??
+            DefaultTextStyle(
+              style: const TextStyle(color: Colors.white),
+              child: SizedBox(
+                height: 50.0,
+                width: double.infinity,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      width: 10.0,
+                    ),
+                    Text(
+                      '${data.data! + 1}',
+                    ),
+                    Text(
+                      ' / ${pics.length}',
+                    ),
+                    Container(
+                      width: 10.0,
+                    ),
+                  ],
                 ),
-                Text(
-                  '${data.data! + 1}',
-                ),
-                Text(
-                  ' / ${pics.length}',
-                ),
-                Container(
-                  width: 10.0,
-                ),
-              ],
-            ),
-          ).marginOnly(bottom: context.paddingBottom + 12, left: 12, right: 12),
-        );
+              ).marginOnly(bottom: context.paddingBottom + 12, left: 12, right: 12),
+            );
       },
       initialData: index,
       stream: reBuild.stream,

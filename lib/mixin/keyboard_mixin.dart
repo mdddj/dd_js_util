@@ -1,4 +1,5 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
+
 extension MyRef on WidgetRef {
 
   ///键盘高度

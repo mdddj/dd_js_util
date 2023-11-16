@@ -1,3 +1,35 @@
+# 5.0.2
+
+* 修复访问相册权限时的错误 （Android 平台）
+
+# 5.0.1
+
+* 依赖升级
+
+# 5.0.0
+
+* 修改了版本号
+
+# 4.6.3
+
+* 诸多新特性更改
+
+# 4.6.2
+
+* 诸多新特性更改
+
+# 4.6.1
+
+* 诸多新特性更改
+
+# 4.6.0
+
+* 诸多新特性更改
+
+# 4.5.3
+
+* 升级部分依赖
+
 # 4.5.1
 
 * 修改依赖约束:">=2.17.0 <4.0.0"
@@ -30,7 +62,6 @@
 
 * 细节优化
 
-
 # 4.3.1
 
 * 细节优化
@@ -51,11 +82,9 @@
 
 * 依赖升级
 
-
 # 4.2.6
 
 * 依赖升级
-
 
 # 4.2.5
 
@@ -64,7 +93,6 @@
 # 4.2.4
 
 * 依赖升级
-
 
 # 4.2.3 
 
@@ -98,7 +126,6 @@
 
 删除若干组件
 升级部分依赖
-
 
 # 4.1.3
 
@@ -143,7 +170,6 @@ bug fix
 
 support dart 3.0
 
-
 # 4.0.0
 
 support dart 3.0
@@ -159,7 +185,6 @@ bug fixed
 # 3.5.6
 
 bug fixed
-
 
 # 3.5.5
 
@@ -196,7 +221,6 @@ add `MySliverWaterfallFlowDelegateWithFixedCrossAxisCount`变体
 依赖升级
 新增`MyIndicatorStatus`
 
-
 # 3.4.0
 
 依赖升级
@@ -220,14 +244,12 @@ static ThemeData buildDarkTheme(BuildTheme themeBuild) {
 }
 ```
 
-
 # 3.3.5+1
 
 主题依赖更改为抢先预览版
 ```dart
 flex_color_scheme: ^7.0.0-dev.2
 ```
-
 
 # 3.3.5
 
@@ -248,7 +270,6 @@ typedef MyLoadingMoreCustomScrollView = LoadingMoreCustomScrollView;
 saver_gallery: ^2.0.0
 ```
 
-
 # 3.3.3
 
 依赖升级
@@ -259,8 +280,6 @@ saver_gallery: ^2.0.0
 ```dart
 KeyboardActionsConfig Function(KeyboardActionsConfig defaultConfig, FocusNode focusNode, BuildContext context);
 ```
-
-
 
 # 3.3.1
 
@@ -329,7 +348,7 @@ S? isNotNull<S>(S Function(T value) call){
 
 # 3.2.4
 
- * new isNotNull call
+* new isNotNull call
 ```dart
 extension DynamicEx<T> on T? {
   void isNotNull(ValueChanged<T> call){
@@ -342,7 +361,7 @@ extension DynamicEx<T> on T? {
 
 # 3.2.3
 
- * new functions
+* new functions
 ```dart
 T? isValue<T>(dynamic value) {
   if(value is T) {
@@ -354,14 +373,13 @@ T? isValue<T>(dynamic value) {
 
 # 3.2.2
 
- * new function
- * up deps
+* new function
+* up deps
 ```dart
 void ifCall(bool value,VoidCallback call){
   if(value) call.call();
 }
 ```
-
 
 # 3.2.1
 
@@ -421,7 +439,6 @@ loading_more_list更换为loading_more_list_fast
 
 重构弹窗层搜索功能
 
-
 # 3.1.5
 
 重构弹窗层搜索功能
@@ -473,7 +490,7 @@ loading_more_list更换为loading_more_list_fast
 
 # 2.2.0
 
-*  hive添加`saveAndUpdate`快捷更新设置方法
+* hive添加`saveAndUpdate`快捷更新设置方法
 
 # 2.1.9
 
@@ -494,7 +511,6 @@ loading_more_list更换为loading_more_list_fast
 # 2.1.7+4
 
 * 细节优化
-
 
 # 2.1.7+3
 
@@ -523,7 +539,6 @@ loading_more_list更换为loading_more_list_fast
 # 2.1.4
 
 * 移除了一些注解
-
 
 # 2.1.3
 
@@ -576,7 +591,6 @@ loading_more_list更换为loading_more_list_fast
 # 1.0.7
 
 * bug 修复
-
 
 # 1.0.6
 
@@ -632,7 +646,6 @@ loading_more_list更换为loading_more_list_fast
 * 一些dart hints 更新
 
 # 0.5.1
-
 
 * 新增3D转换卡片`FlipCardComponent`组件
 

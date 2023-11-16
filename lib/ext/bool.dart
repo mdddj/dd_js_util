@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 extension BoolExt on bool {
   bool get not => !this;

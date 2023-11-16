@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 extension IListEx<T> on IList<T> {
   IList<T> updateItemEx(T oldItem, T Function(T old) call) {

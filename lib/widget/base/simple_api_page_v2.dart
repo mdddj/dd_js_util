@@ -8,7 +8,7 @@ typedef SimpleApiPageV2WidgetCall = Widget Function(
 class SimpleApiPageV2 extends StatefulWidget {
   final BaseApi api;
   final SimpleApiPageV2WidgetCall build;
-  const SimpleApiPageV2({Key? key, required this.api, required this.build}) : super(key: key);
+  const SimpleApiPageV2({super.key, required this.api, required this.build});
 
   @override
   State<SimpleApiPageV2> createState() => SimpleApiPageV2State();

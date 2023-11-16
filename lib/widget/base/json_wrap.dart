@@ -1,9 +1,10 @@
-part of dd_js_util;
+part of '../../dd_js_util.dart';
+
 mixin JsonWrapWidget<W extends StatefulWidget, T extends BaseApi, R extends WrapJson> on State<W> {
   bool loading = true;
 
   late WrapJson serverData;
-  AppException? exception;
+  BaseApiException? exception;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +28,7 @@ mixin JsonWrapWidget<W extends StatefulWidget, T extends BaseApi, R extends Wrap
   ///
   /// 判断是否需要显示错误信息组件
   /// [json] - 服务器数据,获取本地dio错误数据
-  Widget buildErrorWidget(AppException exception) {
-    return MyErrorWidget(exception: exception);
-  }
+  Widget buildErrorWidget(BaseApiException exception);
 
   @override
   void initState() {
@@ -49,8 +48,8 @@ mixin JsonWrapWidget<W extends StatefulWidget, T extends BaseApi, R extends Wrap
       serverData = r as R;
       loading = false;
       refreshUi();
-    } catch (e) {
-      exception = e as AppException;
+    } on BaseApiException catch (e) {
+      exception = e;
       loading = false;
       refreshUi();
     }

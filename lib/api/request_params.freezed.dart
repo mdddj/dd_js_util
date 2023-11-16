@@ -14,30 +14,58 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+RequestParams _$RequestParamsFromJson(Map<String, dynamic> json) {
+  return _RequestParams.fromJson(json);
+}
+
 /// @nodoc
 mixin _$RequestParams {
   bool get showErrorMsg => throw _privateConstructorUsedError;
+
   String get loadingText => throw _privateConstructorUsedError;
+
   String? get contentType => throw _privateConstructorUsedError;
+
   Map<String, dynamic> get headers => throw _privateConstructorUsedError;
+
   bool get showDefaultLoading => throw _privateConstructorUsedError;
+
+  @JsonKey(name: 'data', toJson: _dataToJson)
   dynamic get data => throw _privateConstructorUsedError;
+
   ResponseType? get responseType => throw _privateConstructorUsedError;
+
   bool? get nullParams => throw _privateConstructorUsedError;
+
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   RequestEncoder? get requestEncoder => throw _privateConstructorUsedError;
+
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   DioStart? get dioStart => throw _privateConstructorUsedError;
+
   bool? get returnIsString => throw _privateConstructorUsedError;
+
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   bool get isFullUrl => throw _privateConstructorUsedError;
+
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   InterceptorCall? get interceptorCall => throw _privateConstructorUsedError;
+
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   UrlParseFormat? get urlParseFormat => throw _privateConstructorUsedError;
-  ResponseResultCallback? get responseResultCallback =>
-      throw _privateConstructorUsedError;
+
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  ResponseResultCallback? get responseResultCallback => throw _privateConstructorUsedError;
+
   Map<String, dynamic>? get extra => throw _privateConstructorUsedError;
+
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   CancelToken? get cancelToken => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $RequestParamsCopyWith<RequestParams> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RequestParamsCopyWith<RequestParams> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -52,18 +80,22 @@ abstract class $RequestParamsCopyWith<$Res> {
       String? contentType,
       Map<String, dynamic> headers,
       bool showDefaultLoading,
-      dynamic data,
+      @JsonKey(name: 'data', toJson: _dataToJson) dynamic data,
       ResponseType? responseType,
       bool? nullParams,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       RequestEncoder? requestEncoder,
-      DioStart? dioStart,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) DioStart? dioStart,
       bool? returnIsString,
-      bool isFullUrl,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) bool isFullUrl,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       InterceptorCall? interceptorCall,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       UrlParseFormat? urlParseFormat,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       ResponseResultCallback? responseResultCallback,
       Map<String, dynamic>? extra,
-      CancelToken? cancelToken});
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) CancelToken? cancelToken});
 }
 
 /// @nodoc
@@ -171,11 +203,10 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
 }
 
 /// @nodoc
-abstract class _$$_RequestParamsCopyWith<$Res>
-    implements $RequestParamsCopyWith<$Res> {
-  factory _$$_RequestParamsCopyWith(
-          _$_RequestParams value, $Res Function(_$_RequestParams) then) =
-      __$$_RequestParamsCopyWithImpl<$Res>;
+abstract class _$$RequestParamsImplCopyWith<$Res> implements $RequestParamsCopyWith<$Res> {
+  factory _$$RequestParamsImplCopyWith(_$RequestParamsImpl value, $Res Function(_$RequestParamsImpl) then) =
+      __$$RequestParamsImplCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
@@ -184,26 +215,28 @@ abstract class _$$_RequestParamsCopyWith<$Res>
       String? contentType,
       Map<String, dynamic> headers,
       bool showDefaultLoading,
-      dynamic data,
+      @JsonKey(name: 'data', toJson: _dataToJson) dynamic data,
       ResponseType? responseType,
       bool? nullParams,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       RequestEncoder? requestEncoder,
-      DioStart? dioStart,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) DioStart? dioStart,
       bool? returnIsString,
-      bool isFullUrl,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) bool isFullUrl,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       InterceptorCall? interceptorCall,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       UrlParseFormat? urlParseFormat,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       ResponseResultCallback? responseResultCallback,
       Map<String, dynamic>? extra,
-      CancelToken? cancelToken});
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) CancelToken? cancelToken});
 }
 
 /// @nodoc
-class __$$_RequestParamsCopyWithImpl<$Res>
-    extends _$RequestParamsCopyWithImpl<$Res, _$_RequestParams>
-    implements _$$_RequestParamsCopyWith<$Res> {
-  __$$_RequestParamsCopyWithImpl(
-      _$_RequestParams _value, $Res Function(_$_RequestParams) _then)
+class __$$RequestParamsImplCopyWithImpl<$Res> extends _$RequestParamsCopyWithImpl<$Res, _$RequestParamsImpl>
+    implements _$$RequestParamsImplCopyWith<$Res> {
+  __$$RequestParamsImplCopyWithImpl(_$RequestParamsImpl _value, $Res Function(_$RequestParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -227,7 +260,7 @@ class __$$_RequestParamsCopyWithImpl<$Res>
     Object? extra = freezed,
     Object? cancelToken = freezed,
   }) {
-    return _then(_$_RequestParams(
+    return _then(_$RequestParamsImpl(
       showErrorMsg: null == showErrorMsg
           ? _value.showErrorMsg
           : showErrorMsg // ignore: cast_nullable_to_non_nullable
@@ -301,29 +334,31 @@ class __$$_RequestParamsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-class _$_RequestParams extends _RequestParams {
-  const _$_RequestParams(
+@JsonSerializable()
+class _$RequestParamsImpl extends _RequestParams {
+  const _$RequestParamsImpl(
       {this.showErrorMsg = true,
       this.loadingText = "loading...",
       this.contentType,
       final Map<String, dynamic> headers = const {},
       this.showDefaultLoading = true,
-      this.data,
+      @JsonKey(name: 'data', toJson: _dataToJson) this.data,
       this.responseType,
       this.nullParams,
-      this.requestEncoder,
-      this.dioStart,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.requestEncoder,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.dioStart,
       this.returnIsString,
-      this.isFullUrl = false,
-      this.interceptorCall,
-      this.urlParseFormat,
-      this.responseResultCallback,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.isFullUrl = false,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.interceptorCall,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.urlParseFormat,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.responseResultCallback,
       final Map<String, dynamic>? extra,
-      this.cancelToken})
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.cancelToken})
       : _headers = headers,
         _extra = extra,
         super._();
+
+  factory _$RequestParamsImpl.fromJson(Map<String, dynamic> json) => _$$RequestParamsImplFromJson(json);
 
   @override
   @JsonKey()
@@ -346,25 +381,31 @@ class _$_RequestParams extends _RequestParams {
   @JsonKey()
   final bool showDefaultLoading;
   @override
+  @JsonKey(name: 'data', toJson: _dataToJson)
   final dynamic data;
   @override
   final ResponseType? responseType;
   @override
   final bool? nullParams;
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   final RequestEncoder? requestEncoder;
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   final DioStart? dioStart;
   @override
   final bool? returnIsString;
   @override
-  @JsonKey()
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   final bool isFullUrl;
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   final InterceptorCall? interceptorCall;
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   final UrlParseFormat? urlParseFormat;
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   final ResponseResultCallback? responseResultCallback;
   final Map<String, dynamic>? _extra;
   @override
@@ -377,6 +418,7 @@ class _$_RequestParams extends _RequestParams {
   }
 
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   final CancelToken? cancelToken;
 
   @override
@@ -388,9 +430,8 @@ class _$_RequestParams extends _RequestParams {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RequestParams &&
-            (identical(other.showErrorMsg, showErrorMsg) ||
-                other.showErrorMsg == showErrorMsg) &&
+            other is _$RequestParamsImpl &&
+            (identical(other.showErrorMsg, showErrorMsg) || other.showErrorMsg == showErrorMsg) &&
             (identical(other.loadingText, loadingText) ||
                 other.loadingText == loadingText) &&
             (identical(other.contentType, contentType) ||
@@ -422,6 +463,7 @@ class _$_RequestParams extends _RequestParams {
                 other.cancelToken == cancelToken));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -446,8 +488,15 @@ class _$_RequestParams extends _RequestParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RequestParamsCopyWith<_$_RequestParams> get copyWith =>
-      __$$_RequestParamsCopyWithImpl<_$_RequestParams>(this, _$identity);
+  _$$RequestParamsImplCopyWith<_$RequestParamsImpl> get copyWith =>
+      __$$RequestParamsImplCopyWithImpl<_$RequestParamsImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RequestParamsImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _RequestParams extends RequestParams {
@@ -457,56 +506,87 @@ abstract class _RequestParams extends RequestParams {
       final String? contentType,
       final Map<String, dynamic> headers,
       final bool showDefaultLoading,
-      final dynamic data,
+      @JsonKey(name: 'data', toJson: _dataToJson) final dynamic data,
       final ResponseType? responseType,
       final bool? nullParams,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       final RequestEncoder? requestEncoder,
-      final DioStart? dioStart,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) final DioStart? dioStart,
       final bool? returnIsString,
-      final bool isFullUrl,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) final bool isFullUrl,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       final InterceptorCall? interceptorCall,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       final UrlParseFormat? urlParseFormat,
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
       final ResponseResultCallback? responseResultCallback,
       final Map<String, dynamic>? extra,
-      final CancelToken? cancelToken}) = _$_RequestParams;
+      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+      final CancelToken? cancelToken}) = _$RequestParamsImpl;
+
   const _RequestParams._() : super._();
+
+  factory _RequestParams.fromJson(Map<String, dynamic> json) = _$RequestParamsImpl.fromJson;
 
   @override
   bool get showErrorMsg;
+
   @override
   String get loadingText;
+
   @override
   String? get contentType;
+
   @override
   Map<String, dynamic> get headers;
+
   @override
   bool get showDefaultLoading;
+
   @override
+  @JsonKey(name: 'data', toJson: _dataToJson)
   dynamic get data;
   @override
   ResponseType? get responseType;
+
   @override
   bool? get nullParams;
+
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   RequestEncoder? get requestEncoder;
+
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   DioStart? get dioStart;
+
   @override
   bool? get returnIsString;
+
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   bool get isFullUrl;
+
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   InterceptorCall? get interceptorCall;
+
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   UrlParseFormat? get urlParseFormat;
+
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   ResponseResultCallback? get responseResultCallback;
+
   @override
   Map<String, dynamic>? get extra;
+
   @override
+  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
   CancelToken? get cancelToken;
+
   @override
   @JsonKey(ignore: true)
-  _$$_RequestParamsCopyWith<_$_RequestParams> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RequestParamsImplCopyWith<_$RequestParamsImpl> get copyWith => throw _privateConstructorUsedError;
 }

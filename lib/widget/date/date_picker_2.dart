@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../../dd_js_util.dart';
 
 // Values derived from https://developer.apple.com/design/resources/ and on iOS
 // simulators with "Debug View Hierarchy".
@@ -247,7 +247,7 @@ class CupertinoDatePicker extends StatefulWidget {
   /// [dateOrder] determines the order of the columns inside [CupertinoDatePicker] in date mode.
   /// Defaults to the locale's default date format/order.
   CupertinoDatePicker(
-      {Key? key,
+      {super.key,
       this.mode = CupertinoDatePickerMode.dateAndTime,
       required this.onDateTimeChanged,
       DateTime? initialDateTime,
@@ -264,10 +264,11 @@ class CupertinoDatePicker extends StatefulWidget {
         assert(
           minuteInterval > 0 && 60 % minuteInterval == 0,
           'minute interval is not a positive integer factor of 60',
-        ),
-        super(key: key) {
+        ) {
     assert(
-      mode != CupertinoDatePickerMode.dateAndTime || minimumDate == null || !this.initialDateTime.isBefore(minimumDate!),
+      mode != CupertinoDatePickerMode.dateAndTime ||
+          minimumDate == null ||
+          !this.initialDateTime.isBefore(minimumDate!),
       'initial date is before minimum date',
     );
     assert(
@@ -1483,7 +1484,7 @@ class CupertinoTimerPicker extends StatefulWidget {
   /// [secondInterval] is the granularity of the second spinner. Must be a
   /// positive integer factor of 60.
   CupertinoTimerPicker({
-    Key? key,
+    super.key,
     this.mode = CupertinoTimerPickerMode.hms,
     this.initialTimerDuration = Duration.zero,
     this.minuteInterval = 1,
@@ -1496,8 +1497,7 @@ class CupertinoTimerPicker extends StatefulWidget {
         assert(minuteInterval > 0 && 60 % minuteInterval == 0),
         assert(secondInterval > 0 && 60 % secondInterval == 0),
         assert(initialTimerDuration.inMinutes % minuteInterval == 0),
-        assert(initialTimerDuration.inSeconds % secondInterval == 0),
-        super(key: key);
+        assert(initialTimerDuration.inSeconds % secondInterval == 0);
 
   /// The mode of the timer picker.
   final CupertinoTimerPickerMode mode;

@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 typedef CustomBuildThemeItems = Widget Function(BuildContext context, List<CustomAppThemeData> themes);
 
@@ -6,7 +6,8 @@ typedef CustomBuildThemeItems = Widget Function(BuildContext context, List<Custo
 class ThemeSettingPage extends StatelessWidget {
   final CustomBuildThemeItems? builder;
   final PreferredSizeWidget? appbar;
-  const ThemeSettingPage({Key? key, this.builder, this.appbar}) : super(key: key);
+
+  const ThemeSettingPage({super.key, this.builder, this.appbar});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,8 @@ class ThemeSettingPage extends StatelessWidget {
 
 class ThemeItemShow extends StatelessWidget {
   final CustomAppThemeData themeItem;
-  const ThemeItemShow(this.themeItem,{Key? key}) : super(key: key);
+
+  const ThemeItemShow(this.themeItem, {super.key});
 
   @override
   Widget build(BuildContext context) {

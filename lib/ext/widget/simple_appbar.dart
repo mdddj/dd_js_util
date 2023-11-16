@@ -1,8 +1,9 @@
-part of dd_js_util;
+part of '../../dd_js_util.dart';
 
 class SimpleAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const SimpleAppbar({Key? key, required this.title}) : super(key: key);
+
+  const SimpleAppbar({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../../../dd_js_util.dart';
 
 typedef CustomRenderWidget = Widget Function(
     BuildContext context, List<Widget> child);
@@ -33,12 +33,7 @@ class SimpleListTileWidget<T> extends StatelessWidget {
   final CustomRenderWidget? customRenderWidget;
 
   const SimpleListTileWidget(
-      {Key? key,
-      this.itemBuild,
-      required this.datas,
-      this.cancelText,
-      this.customRenderWidget})
-      : super(key: key);
+      {super.key, this.itemBuild, required this.datas, this.cancelText, this.customRenderWidget});
 
   @override
   Widget build(BuildContext context) {

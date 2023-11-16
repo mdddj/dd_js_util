@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 class FFConvert {
   FFConvert._();
@@ -86,7 +86,8 @@ class TResult<T> {
 class KEmptyErrorWidget extends StatelessWidget {
   final Object error;
   final StackTrace? stackTrace;
-  const KEmptyErrorWidget(this.error,this.stackTrace,{Key? key}) : super(key: key);
+
+  const KEmptyErrorWidget(this.error, this.stackTrace, {super.key});
 
   @override
   Widget build(BuildContext context) {

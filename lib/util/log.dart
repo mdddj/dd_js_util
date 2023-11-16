@@ -1,5 +1,4 @@
-part of dd_js_util;
-
+part of '../dd_js_util.dart';
 
 void kLog(dynamic msg){
   if(kDebugMode){
@@ -21,7 +20,8 @@ void kLogErr(dynamic m){
 }
 
 
+///
 void logCurrentTime([String? msg]) {
   final time = DateTime.now();
-  kLog('${msg??"当前时间"}:$time');
+  debugPrint('$time:${msg ?? "当前时间"}:');
 }

@@ -1,11 +1,17 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 const kProtobufContentType = 'application/x-protobuf';
 
-
 enum HttpMethod {
-  post("post"),get("get"),probuf("probuf"),delete('delete'),put("put"),update("update");
+  post("post"),
+  get("get"),
+  probuf("probuf"),
+  delete('delete'),
+  put("put"),
+  update("update");
+
   final String method;
+
   const HttpMethod(this.method);
 }
 
@@ -49,45 +55,50 @@ abstract class BaseModel<T> {
     return "BaseModel: ${T.runtimeType}";
   }
 }
+extension Tex3<T> on T? {
+  T ifNullThrowBizException([String message = ""]) {
+    if (this == null) {
+      throw BaseApiException.businessException(message: message);
+    }
+    return this!;
+  }
+}
 
 ///分页api
 mixin BasePagedApiMixin on BaseApi {
   String get pageParamsKey => 'page';
 }
 
-abstract class BaseApi {
-  static Lock lock = Lock(reentrant: true);
-  static bool showLog = false;
-  static late String _host;
-  static dio.BaseOptions options =
+abstract class BaseApi<T> {
+  Lock lock = Lock(reentrant: true);
+  bool showLog = false;
+  String _host = '';
+  dio.BaseOptions options =
       dio.BaseOptions(connectTimeout: const Duration(milliseconds: 30000), receiveTimeout: const Duration(seconds: 5));
-
-  static set host(String h) => _host = h;
 
   final String url;
   final HttpMethod httpMethod;
   final Map<String, dynamic> params = <String, dynamic>{};
-  dio.FormData formData = dio.FormData.fromMap({});
-  List<dio.Interceptor> interceptions = [];
+  dio.FormData? formData;
+  ISet<dio.Interceptor> interceptions = ISet();
 
-  static dio.Dio? _dio;
+  dio.Dio? _dio;
 
   BaseApi(this.url, {this.httpMethod = HttpMethod.get});
 
   /// [isFullUrl] - url传入的是否为完整的一个URL,如果为[true],将忽略[host]
   @Doc(message: "向服务器发起http请求")
-  Future<dynamic> request([RequestParams? options]) async {
-    options ??= const RequestParams();
+  Future<T> request([RequestParams options = const RequestParams()]) async {
     try {
       if (options.showDefaultLoading) {
         showLoading(loadingText: options.loadingText);
       }
-      final d = getDio();
-      interceptions.add(ErrorInterceptor());
+      final baseOptions = await getOptions(options);
+      final d = await getDio(baseOptions);
       d.interceptors.addAll(options.interceptorCall?.call(interceptions) ?? interceptions);
       final contentTypeStr =
           options.contentType ?? (httpMethod == HttpMethod.post ? io.ContentType.json.value : options.contentType);
-      final bodyParams = formData.fields.isNotEmpty ? formData : (options.data ?? params);
+      final bodyParams = formData ?? (options.data ?? params);
       final queryParameters =
           httpMethod == HttpMethod.post ? null : (options.nullParams == true ? null : options.data ?? params);
       final contentTypeString = httpMethod == HttpMethod.probuf ? kProtobufContentType : contentTypeStr;
@@ -98,20 +109,18 @@ abstract class BaseApi {
       var uri = (options.urlParseFormat ?? (v, p) => v).call(finalUrl, queryParameters);
       final bodyData = httpMethod == HttpMethod.get ? null : bodyParams;
       printLog("body--$bodyData");
-      final response =  await lock.synchronized<dio.Response>(() async {
-        final r = await d.request(
-          uri,
-          options: dio.Options(
-            method: httpMethod.method,
-            contentType: contentTypeString,
-            headers: options!.headers,
-            responseType: options.responseType,
-            requestEncoder: options.requestEncoder,
-          ),
-          queryParameters: httpMethod == HttpMethod.get ? queryParameters : null,
-          data: bodyData,
-          cancelToken: options.cancelToken
-        );
+      final response = await lock.synchronized<dio.Response>(() async {
+        final r = await d.request(uri,
+            options: dio.Options(
+              method: httpMethod.method,
+              contentType: contentTypeString,
+              headers: options.headers,
+              responseType: options.responseType,
+              requestEncoder: options.requestEncoder,
+            ),
+            queryParameters: httpMethod == HttpMethod.get ? queryParameters : null,
+            data: bodyData,
+            cancelToken: options.cancelToken);
         return r;
       });
       options.responseResultCallback?.call(response);
@@ -119,39 +128,19 @@ abstract class BaseApi {
         closeLoading();
       }
 
-      if (response.statusCode == 200) {
-        final data = response.data;
-        if (data is String) {
-          if (options.returnIsString == true) {
-            return data;
-          }
-          try {
-            return jsonDecode(data);
-          } catch (e) {
-            kLogErr(data.runtimeType);
-            kLogErr(data);
-            throw AppException.appError(code: 10003, msg: "Unable to process server data", data: data);
-          }
-        }
-        return data;
-      } else {
-        throw AppException(code: response.statusCode ?? 10004, message: response.statusMessage ?? "ERROR");
-      }
+      final data = response.data;
+      var model = DartTypeModel.createFrom(data);
+      return covertToModel(model, options);
     } on dio.DioException catch (e) {
+      throw BaseApiException.createFromDioException(e);
+    } finally {
       if (options.showDefaultLoading) {
         closeLoading();
       }
-      throw e.error as AppException;
-    } on AppException catch (_) {
-      rethrow;
-    } catch (e, s) {
-      if (showLog) {
-        debugPrintStack(stackTrace: s, label: '$e');
-      }
-      throw AppException.appError(msg: e.toString());
     }
   }
 
+  T covertToModel(DartTypeModel data, RequestParams param);
 
   @Doc(message: "页面中间显示loading等待框")
   void showLoading({String? loadingText}) {
@@ -163,11 +152,16 @@ abstract class BaseApi {
     SmartDialog.dismiss();
   }
 
-  static dio.Dio getDio() {
-    _dio ??= dio.Dio(options);
+  Future<dio.BaseOptions> getOptions(RequestParams param) async => dio.BaseOptions();
+
+  Future<dio.Dio> getDio(dio.BaseOptions baseOptions) async {
+    if (_dio != null) {
+      return _dio!;
+    }
+    _host = baseOptions.baseUrl;
+    _dio ??= dio.Dio(baseOptions);
     return _dio!;
   }
-
 
   void handle(CallIf callIf, ValueChanged<BaseApi> call) {
     if (callIf.call()) {
@@ -181,16 +175,7 @@ abstract class BaseApi {
     }
   }
 
-  ///添加代理
-  static void addProxy(String proxy) {
-    (getDio().httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
-      final client = io.HttpClient()..idleTimeout = const Duration(seconds: 3);
-      client.findProxy = (uri) {
-        return proxy;
-      };
-      return client;
-    };
-  }
+  String getMediaType(String filename) => lookupMimeType(filename) ?? '';
 }
 
 typedef CallIf = bool Function();
@@ -201,24 +186,3 @@ class Doc {
 
   const Doc({required this.message});
 }
-
-///wrapjson类型的接口封装
-abstract class AppCoreApi extends BaseApi {
-  AppCoreApi(String url, {HttpMethod? httpMethod, List<dio.Interceptor>? ints})
-      : super(url, httpMethod: httpMethod ?? HttpMethod.get) {
-    if (ints?.isNotEmpty == true) {
-      interceptions.addAll(ints!);
-    }
-  }
-
-  @override
-  Future<WrapJson> request([RequestParams? options]) async {
-    try {
-      final r = await super.request(options);
-      return WrapJson(r);
-    } on AppException catch (e) {
-      return WrapJson.fromMyServerError(e);
-    }
-  }
-}
-

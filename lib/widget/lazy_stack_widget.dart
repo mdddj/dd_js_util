@@ -2,7 +2,7 @@
 // Use of this source code is governed by a MIT license that can be found in the
 // LICENSE file.
 
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 /// A lazy-[IndexedStack] written by [Alex Li](https://github.com/AlexV525) 💙.
 /// it lazily build children only when they are first activated.
@@ -14,13 +14,13 @@ part of dd_js_util;
 /// https://github.com/AlexV525/dartpad_workshops/tree/main/implement_lazy_indexed_stack
 class LazyIndexedStack extends StatefulWidget {
   const LazyIndexedStack({
-    Key? key,
+    super.key,
     this.alignment = AlignmentDirectional.topStart,
     this.textDirection,
     this.sizing = StackFit.loose,
     this.index = 0,
     this.children = const <Widget>[],
-  }) : super(key: key);
+  });
 
   final AlignmentGeometry alignment;
   final TextDirection? textDirection;

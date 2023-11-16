@@ -1,4 +1,5 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
+
 typedef TakeIfFun = bool Function();
 
 //函数扩展

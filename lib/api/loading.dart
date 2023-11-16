@@ -1,12 +1,18 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 typedef LB = BaseApiDialogBuilder;
 
 typedef BaseApiDialogErrorHandle = String Function(Object exception, Object errorStack);
 
 class BaseApiDialogBuilder {
-  static void show<M, A extends BaseApi>(A api,
-      {required ValueChanged<M> successResult, R? params, bool enableLog = false, Widget? loadingWidget,BaseApiDialogErrorHandle? errorHandle}) {
+  static void show<M, A extends BaseApi<M>>(A api,
+      {required ValueChanged<M> successResult,
+      R? params,
+      bool enableLog = false,
+      Widget? loadingWidget,
+      BaseApiDialogErrorHandle? errorHandle,
+      Color? maskColor,
+      Duration? animationTime}) {
     const tag = 'loading-dialog-api';
     SmartDialog.show(
         builder: (ctx) {
@@ -25,12 +31,13 @@ class BaseApiDialogBuilder {
         tag: tag,
         clickMaskDismiss: false,
         animationType: SmartAnimationType.centerFade_otherSlide,
-        maskColor: Colors.white30);
+        maskColor: maskColor ?? Colors.white30,
+        animationTime: animationTime);
   }
 }
 
 
-class BaseApiDialog<M, A extends BaseApi> extends ConsumerStatefulWidget {
+class BaseApiDialog<M, A extends BaseApi<M>> extends ConsumerStatefulWidget {
   final void Function(M model) result;
   final R? params;
   final A api;
@@ -39,20 +46,19 @@ class BaseApiDialog<M, A extends BaseApi> extends ConsumerStatefulWidget {
   final BaseApiDialogErrorHandle? error;
 
   const BaseApiDialog(
-      {Key? key,
+      {super.key,
       required this.result,
       this.params,
       required this.api,
       this.enableLog = false,
       this.loadingWidget,
-      this.error})
-      : super(key: key);
+      this.error});
 
   @override
   ConsumerState<BaseApiDialog<M, A>> createState() => _LoadingApiDialogState<M, A>();
 }
 
-class _LoadingApiDialogState<M, A extends BaseApi> extends ConsumerState<BaseApiDialog<M, A>>
+class _LoadingApiDialogState<M, A extends BaseApi<M>> extends ConsumerState<BaseApiDialog<M, A>>
     with ApiMixin<M, A, BaseApiDialog<M, A>> {
   void _log(dynamic msg) {
     if (widget.enableLog) {
@@ -83,7 +89,7 @@ class _LoadingApiDialogState<M, A extends BaseApi> extends ConsumerState<BaseApi
   }
 
   @override
-  Widget builderErrorWidget() {
+  Widget builderErrorWidget(Object error) {
     _log('builderErrorWidget...');
     return const SizedBox();
   }
@@ -101,13 +107,15 @@ class _LoadingApiDialogState<M, A extends BaseApi> extends ConsumerState<BaseApi
 
 enum PageState { loading, hasData, error }
 
-mixin ApiMixin<M, T extends BaseApi, S extends StatefulWidget> on State<S> {
+mixin ApiMixin<M, T extends BaseApi<M>, S extends StatefulWidget> on State<S> {
   T get api;
 
   late PageState pageState = initModel != null ? PageState.hasData : PageState.loading;
   late M? stateModel = initModel;
 
   bool get showLoading => false;
+
+  Object? _error;
 
   @override
   void initState() {
@@ -126,6 +134,9 @@ mixin ApiMixin<M, T extends BaseApi, S extends StatefulWidget> on State<S> {
       requestEnd(false);
       return;
     }
+    setState(() {
+      _error = null;
+    });
     try {
       if (pageState != PageState.hasData && pageState != PageState.loading) {
         setState(() => pageState = PageState.loading);
@@ -135,11 +146,17 @@ mixin ApiMixin<M, T extends BaseApi, S extends StatefulWidget> on State<S> {
       setState(() => pageState = PageState.hasData);
       requestEnd(false);
     } catch (e, s) {
+      if (showLogs) {
+        Logger().e("请求失败.", error: e, stackTrace: s);
+      }
+      _error = e;
       requestEnd(true);
       onError(e, s);
       setState(() => pageState = PageState.error);
     }
   }
+
+  bool get showLogs => false;
 
   @Doc(message: '请求配置')
   R get requestParams => const R(showDefaultLoading: false);
@@ -166,7 +183,7 @@ mixin ApiMixin<M, T extends BaseApi, S extends StatefulWidget> on State<S> {
       case PageState.hasData:
         return builder(context, stateModel as M);
       case PageState.error:
-        return builderErrorWidget();
+        return builderErrorWidget(_error!);
     }
   }
 
@@ -182,7 +199,7 @@ mixin ApiMixin<M, T extends BaseApi, S extends StatefulWidget> on State<S> {
     );
   }
 
-  Widget builderErrorWidget() {
+  Widget builderErrorWidget(Object error) {
     return const Text('error');
   }
 

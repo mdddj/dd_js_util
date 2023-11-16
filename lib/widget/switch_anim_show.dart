@@ -1,11 +1,11 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 class SwitchAnimShow extends StatelessWidget {
   final bool condition; //条件
   final Widget show;
   final Widget elseShow;
 
-  const SwitchAnimShow({Key? key, required this.condition, required this.show, required this.elseShow}) : super(key: key);
+  const SwitchAnimShow({super.key, required this.condition, required this.show, required this.elseShow});
 
   @override
   Widget build(BuildContext context) {

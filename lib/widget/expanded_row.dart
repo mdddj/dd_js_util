@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 typedef ItemBuild = Widget Function(BuildContext context, int index, bool isEmpty);
 
@@ -6,7 +6,7 @@ class ExpandedRow extends StatelessWidget {
   final int dataCount;
   final ItemBuild itemBuild;
 
-  const ExpandedRow({Key? key, required this.dataCount, required this.itemBuild}) : super(key: key);
+  const ExpandedRow({super.key, required this.dataCount, required this.itemBuild});
 
   @override
   Widget build(BuildContext context) {

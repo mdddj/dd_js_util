@@ -1,5 +1,4 @@
-part of dd_js_util;
-
+part of '../dd_js_util.dart';
 
 extension DynamicEx<T> on T? {
   S? isNotNull<S>(S Function(T value) call){

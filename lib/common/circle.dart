@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 typedef BuildWidget = Widget Function(BoxConstraints size, Widget child);
 

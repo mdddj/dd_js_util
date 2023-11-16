@@ -1,9 +1,10 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
+
 //初始化小部件
 class FloatBuild extends StatelessWidget {
   final Widget child;
 
-  const FloatBuild({Key? key, required this.child}) : super(key: key);
+  const FloatBuild({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class FloatContainer extends StatefulWidget {
   final Widget child; //展示的组件
   final GlobalKey globalKey;
 
-  const FloatContainer({Key? key, required this.child, required this.globalKey}) : super(key: key);
+  const FloatContainer({super.key, required this.child, required this.globalKey});
 
   @override
   State<FloatContainer> createState() => _FloatContainerState();

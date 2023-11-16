@@ -7,8 +7,8 @@ import 'dart:math' as math;
 import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart' as dio;
-import 'package:dio/io.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
@@ -25,14 +25,14 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:html/dom.dart' hide Text;
-import 'package:html/parser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:loading_more_list_fast/loading_more_list_fast.dart';
 import 'package:loading_more_list_library_fast/loading_more_list_library_fast.dart';
 import 'package:loading_more_list_library_fast/model/status.dart';
 import 'package:logger/logger.dart';
+import 'package:mime/mime.dart';
+import 'package:path/path.dart' as path;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:saver_gallery/saver_gallery.dart';
 import 'package:synchronized/synchronized.dart';
@@ -41,7 +41,10 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'api/request_params.dart';
 import 'model/app_local_setting_model.dart';
 import 'model/ask_ok_dialog_params.dart';
+import 'model/base_api_exception.dart';
+import 'model/dart_type_model.dart';
 import 'model/my_image.dart';
+import 'model/my_platform.dart';
 import 'model/picture_selection_item.dart';
 import 'theme/model.dart';
 import 'widget/ask_ok_dialog.dart';
@@ -49,9 +52,9 @@ import 'widget/search/search_support.dart';
 import 'widget/search/search_support_manager.dart';
 
 part './api/base.dart';
-part './api/error_widget.dart';
-part './api/exception.dart';
+
 part './api/util.dart';
+
 ///组件模块
 part './common/circle.dart';
 part './common/edit_page.dart';
@@ -100,12 +103,23 @@ part './widget/search_support.dart';
 part './widget/simple_textfield_wrapper.dart';
 part './widget/switch_anim_show.dart';
 part './widget/time.dart';
+
 part 'api/loading.dart';
+
+part 'ext/file.dart';
+
 part 'ext/function.dart';
 part 'theme/index.dart';
+
 part 'theme/theme_setting.dart';
+
+part 'util/always_scrollable_clamping_scroll_physics.dart';
+
 part 'widget/build_widget.dart';
+
 part 'widget/lazy_stack_widget.dart';
+
+part 'util/platforms.dart';
 
 typedef MyHiveBox<T> = Box<T>;
 

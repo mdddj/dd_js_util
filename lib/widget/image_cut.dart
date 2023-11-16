@@ -6,7 +6,7 @@ import 'package:image/image.dart' as image;
 
 class ImageCutWidget extends StatefulWidget {
   final File file;
-  const ImageCutWidget({Key? key, required this.file}) : super(key: key);
+  const ImageCutWidget({super.key, required this.file});
 
   @override
   ImageCutWidgetState createState() => ImageCutWidgetState();

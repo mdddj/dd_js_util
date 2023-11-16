@@ -1,9 +1,10 @@
-part of dd_js_util;
+part of '../../dd_js_util.dart';
+
 class MinRows extends StatelessWidget {
   final List<Widget> children;
   final double? gap;
 
-  const MinRows(this.children, {Key? key, this.gap}) : super(key: key);
+  const MinRows(this.children, {super.key, this.gap});
 
   @override
   Widget build(BuildContext context) {

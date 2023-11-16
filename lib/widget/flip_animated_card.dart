@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 ///要展示的面
 enum FlipCardShowType{
@@ -29,8 +29,15 @@ class FlipCardComponent extends StatefulWidget {
 
   ///开始执行动画回调
   final VoidCallback? onStartAnimate;
-  const FlipCardComponent({ Key? key, required this.frontComponent, required this.backComponent,required this.controller, this.onComplate, this.onStartAnimate, this.valueChanged})
-      : super(key: key);
+
+  const FlipCardComponent(
+      {super.key,
+      required this.frontComponent,
+      required this.backComponent,
+      required this.controller,
+      this.onComplate,
+      this.onStartAnimate,
+      this.valueChanged});
 
   @override
   FlipCardComponentState createState() => FlipCardComponentState();

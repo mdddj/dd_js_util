@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 typedef FocusNodeWidgetBuilder = Widget Function(FocusNode focusNode);
 typedef KeyboardActionsConfigBuilder = KeyboardActionsConfig Function(KeyboardActionsConfig defaultConfig, FocusNode focusNode, BuildContext context);

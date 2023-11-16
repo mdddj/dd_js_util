@@ -6,8 +6,7 @@ part of 'my_image.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ImageParams _$$_ImageParamsFromJson(Map<String, dynamic> json) =>
-    _$_ImageParams(
+_$ImageParamsImpl _$$ImageParamsImplFromJson(Map<String, dynamic> json) => _$ImageParamsImpl(
       width: (json['width'] as num?)?.toDouble(),
       height: (json['height'] as num?)?.toDouble(),
       size: (json['size'] as num?)?.toDouble(),
@@ -16,8 +15,7 @@ _$_ImageParams _$$_ImageParamsFromJson(Map<String, dynamic> json) =>
       isSelected: json['isSelected'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_ImageParamsToJson(_$_ImageParams instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$ImageParamsImplToJson(_$ImageParamsImpl instance) => <String, dynamic>{
       'width': instance.width,
       'height': instance.height,
       'size': instance.size,
@@ -26,49 +24,40 @@ Map<String, dynamic> _$$_ImageParamsToJson(_$_ImageParams instance) =>
       'isSelected': instance.isSelected,
     };
 
-_$MyNetworkImage _$$MyNetworkImageFromJson(Map<String, dynamic> json) =>
-    _$MyNetworkImage(
+_$MyNetworkImageImpl _$$MyNetworkImageImplFromJson(Map<String, dynamic> json) => _$MyNetworkImageImpl(
       url: json['url'] as String,
-      params: json['params'] == null
-          ? const ImageParams()
-          : ImageParams.fromJson(json['params'] as Map<String, dynamic>),
+      params:
+          json['params'] == null ? const ImageParams() : ImageParams.fromJson(json['params'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$MyNetworkImageToJson(_$MyNetworkImage instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$MyNetworkImageImplToJson(_$MyNetworkImageImpl instance) => <String, dynamic>{
       'url': instance.url,
       'params': instance.params,
       'runtimeType': instance.$type,
     };
 
-_$MyBase64Image _$$MyBase64ImageFromJson(Map<String, dynamic> json) =>
-    _$MyBase64Image(
+_$MyBase64ImageImpl _$$MyBase64ImageImplFromJson(Map<String, dynamic> json) => _$MyBase64ImageImpl(
       base64Code: json['base64Code'] as String,
-      params: json['params'] == null
-          ? const ImageParams()
-          : ImageParams.fromJson(json['params'] as Map<String, dynamic>),
+      params:
+          json['params'] == null ? const ImageParams() : ImageParams.fromJson(json['params'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$MyBase64ImageToJson(_$MyBase64Image instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$MyBase64ImageImplToJson(_$MyBase64ImageImpl instance) => <String, dynamic>{
       'base64Code': instance.base64Code,
       'params': instance.params,
       'runtimeType': instance.$type,
     };
 
-_$MyFilePathImage _$$MyFilePathImageFromJson(Map<String, dynamic> json) =>
-    _$MyFilePathImage(
+_$MyFilePathImageImpl _$$MyFilePathImageImplFromJson(Map<String, dynamic> json) => _$MyFilePathImageImpl(
       filePath: json['filePath'] as String,
-      params: json['params'] == null
-          ? const ImageParams()
-          : ImageParams.fromJson(json['params'] as Map<String, dynamic>),
+      params:
+          json['params'] == null ? const ImageParams() : ImageParams.fromJson(json['params'] as Map<String, dynamic>),
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$MyFilePathImageToJson(_$MyFilePathImage instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$MyFilePathImageImplToJson(_$MyFilePathImageImpl instance) => <String, dynamic>{
       'filePath': instance.filePath,
       'params': instance.params,
       'runtimeType': instance.$type,

@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../../dd_js_util.dart';
 
 typedef WidgetBuilder = Widget Function();
 
@@ -57,12 +57,12 @@ mixin MyBasePage<T extends BaseApi, S, W extends StatefulWidget, R> on State<W> 
       }
 
       ///
-    } on AppException catch (e) {
+    } on BaseApiException catch (e) {
       if (mounted) {
         setState(() {
           _empty = true;
           _loading = false;
-          exception = PageException(e.message);
+          exception = PageException(getErrorMessage(e));
         });
       }
     } catch (e) {
@@ -75,6 +75,8 @@ mixin MyBasePage<T extends BaseApi, S, W extends StatefulWidget, R> on State<W> 
       }
     }
   }
+
+  String getErrorMessage(BaseApiException exception);
 
   @override
   Widget build(BuildContext context) {

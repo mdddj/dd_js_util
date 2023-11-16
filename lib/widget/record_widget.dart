@@ -1,5 +1,4 @@
-part of dd_js_util;
-
+part of '../dd_js_util.dart';
 
 ///录音状态
 enum RecordState {
@@ -27,7 +26,7 @@ class RecordWidget extends StatefulWidget {
   final CustomRecordWidget? customBuild;
 
 
-  const RecordWidget({Key? key,this.customBuild}) : super(key: key);
+  const RecordWidget({super.key, this.customBuild});
 
   @override
   State<RecordWidget> createState() => _RecordWidgetState();

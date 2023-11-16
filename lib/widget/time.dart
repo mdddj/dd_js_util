@@ -1,7 +1,7 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 class MyTimePicker extends StatefulWidget {
-  const MyTimePicker({Key? key}) : super(key: key);
+  const MyTimePicker({super.key});
 
   @override
   State<MyTimePicker> createState() => _MyTimePickerState();

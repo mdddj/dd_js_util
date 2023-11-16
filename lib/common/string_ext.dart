@@ -1,4 +1,5 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
+
 /// 对字符串的扩展
 extension StringExt on String {
   /// 修复中英文下文本自动被截断的bug。

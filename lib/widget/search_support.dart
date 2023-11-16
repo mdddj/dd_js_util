@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 typedef SearchSupportRepository<T> = LoadingMoreBase<T>;
 typedef SearchSupportSliverList<T> = LoadingMoreSliverList<T>;
@@ -15,12 +15,12 @@ class SearchSupport<T> extends StatefulWidget {
   final Widget child;
 
   const SearchSupport({
-    Key? key,
+    super.key,
     required this.params,
     required this.child,
     required this.itemBuilder,
     required this.sourceList,
-  }) : super(key: key);
+  });
 
   @override
   State<SearchSupport<T>> createState() => _SearchSupportState<T>();

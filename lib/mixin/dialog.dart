@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 ///添加系列弹窗支持
 mixin DialogSupport<T extends StatefulWidget> on State<T> {

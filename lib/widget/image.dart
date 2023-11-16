@@ -1,10 +1,10 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 /// base 64 图片的展示
 class ImageView extends StatelessWidget {
   final MyImage image;
 
-  const ImageView({Key? key, required this.image}) : super(key: key);
+  const ImageView({super.key, required this.image});
   ImageParams get params => image.params;
   @override
   Widget build(BuildContext context) {
@@ -110,11 +110,11 @@ class Skeleton extends StatefulWidget {
   final BorderRadius? borderRadius;
 
   const Skeleton({
-    Key? key,
+    super.key,
     this.height = 20,
     this.width = 200,
     this.borderRadius,
-  }) : super(key: key);
+  });
 
   @override
   SkeletonState createState() => SkeletonState();

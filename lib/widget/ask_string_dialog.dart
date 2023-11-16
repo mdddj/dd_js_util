@@ -34,7 +34,7 @@ class AskStringDialog extends StatelessWidget {
             ));
   }
 
-  const AskStringDialog({Key? key, required this.params}) : super(key: key);
+  const AskStringDialog({super.key, required this.params});
 
   @override
   Widget build(BuildContext context) {

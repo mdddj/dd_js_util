@@ -69,33 +69,31 @@ class _$PictureSelectionItemModelCopyWithImpl<$Res,
     implements $PictureSelectionItemModelCopyWith<$Res> {
   _$PictureSelectionItemModelCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
+// ignore: unused_field
   final $Val _value;
-  // ignore: unused_field
+// ignore: unused_field
   final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class _$$XXFileCopyWith<$Res> {
-  factory _$$XXFileCopyWith(_$XXFile value, $Res Function(_$XXFile) then) =
-      __$$XXFileCopyWithImpl<$Res>;
+abstract class _$$XXFileImplCopyWith<$Res> {
+  factory _$$XXFileImplCopyWith(_$XXFileImpl value, $Res Function(_$XXFileImpl) then) =
+      __$$XXFileImplCopyWithImpl<$Res>;
   @useResult
   $Res call({File file});
 }
 
 /// @nodoc
-class __$$XXFileCopyWithImpl<$Res>
-    extends _$PictureSelectionItemModelCopyWithImpl<$Res, _$XXFile>
-    implements _$$XXFileCopyWith<$Res> {
-  __$$XXFileCopyWithImpl(_$XXFile _value, $Res Function(_$XXFile) _then)
-      : super(_value, _then);
+class __$$XXFileImplCopyWithImpl<$Res> extends _$PictureSelectionItemModelCopyWithImpl<$Res, _$XXFileImpl>
+    implements _$$XXFileImplCopyWith<$Res> {
+  __$$XXFileImplCopyWithImpl(_$XXFileImpl _value, $Res Function(_$XXFileImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? file = null,
   }) {
-    return _then(_$XXFile(
+    return _then(_$XXFileImpl(
       file: null == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
@@ -106,8 +104,8 @@ class __$$XXFileCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$XXFile extends XXFile {
-  _$XXFile({required this.file}) : super._();
+class _$XXFileImpl extends XXFile {
+  _$XXFileImpl({required this.file}) : super._();
 
   @override
   final File file;
@@ -121,7 +119,7 @@ class _$XXFile extends XXFile {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$XXFile &&
+            other is _$XXFileImpl &&
             (identical(other.file, file) || other.file == file));
   }
 
@@ -131,8 +129,7 @@ class _$XXFile extends XXFile {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$XXFileCopyWith<_$XXFile> get copyWith =>
-      __$$XXFileCopyWithImpl<_$XXFile>(this, _$identity);
+  _$$XXFileImplCopyWith<_$XXFileImpl> get copyWith => __$$XXFileImplCopyWithImpl<_$XXFileImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -198,36 +195,33 @@ class _$XXFile extends XXFile {
 }
 
 abstract class XXFile extends PictureSelectionItemModel {
-  factory XXFile({required final File file}) = _$XXFile;
+  factory XXFile({required final File file}) = _$XXFileImpl;
   XXFile._() : super._();
 
   File get file;
   @JsonKey(ignore: true)
-  _$$XXFileCopyWith<_$XXFile> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$XXFileImplCopyWith<_$XXFileImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$XXImageCopyWith<$Res> {
-  factory _$$XXImageCopyWith(_$XXImage value, $Res Function(_$XXImage) then) =
-      __$$XXImageCopyWithImpl<$Res>;
+abstract class _$$XXImageImplCopyWith<$Res> {
+  factory _$$XXImageImplCopyWith(_$XXImageImpl value, $Res Function(_$XXImageImpl) then) =
+      __$$XXImageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String url});
 }
 
 /// @nodoc
-class __$$XXImageCopyWithImpl<$Res>
-    extends _$PictureSelectionItemModelCopyWithImpl<$Res, _$XXImage>
-    implements _$$XXImageCopyWith<$Res> {
-  __$$XXImageCopyWithImpl(_$XXImage _value, $Res Function(_$XXImage) _then)
-      : super(_value, _then);
+class __$$XXImageImplCopyWithImpl<$Res> extends _$PictureSelectionItemModelCopyWithImpl<$Res, _$XXImageImpl>
+    implements _$$XXImageImplCopyWith<$Res> {
+  __$$XXImageImplCopyWithImpl(_$XXImageImpl _value, $Res Function(_$XXImageImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? url = null,
   }) {
-    return _then(_$XXImage(
+    return _then(_$XXImageImpl(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -238,8 +232,8 @@ class __$$XXImageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$XXImage extends XXImage {
-  _$XXImage({required this.url}) : super._();
+class _$XXImageImpl extends XXImage {
+  _$XXImageImpl({required this.url}) : super._();
 
   @override
   final String url;
@@ -252,9 +246,7 @@ class _$XXImage extends XXImage {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$XXImage &&
-            (identical(other.url, url) || other.url == url));
+        (other.runtimeType == runtimeType && other is _$XXImageImpl && (identical(other.url, url) || other.url == url));
   }
 
   @override
@@ -263,8 +255,7 @@ class _$XXImage extends XXImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$XXImageCopyWith<_$XXImage> get copyWith =>
-      __$$XXImageCopyWithImpl<_$XXImage>(this, _$identity);
+  _$$XXImageImplCopyWith<_$XXImageImpl> get copyWith => __$$XXImageImplCopyWithImpl<_$XXImageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -330,11 +321,10 @@ class _$XXImage extends XXImage {
 }
 
 abstract class XXImage extends PictureSelectionItemModel {
-  factory XXImage({required final String url}) = _$XXImage;
+  factory XXImage({required final String url}) = _$XXImageImpl;
   XXImage._() : super._();
 
   String get url;
   @JsonKey(ignore: true)
-  _$$XXImageCopyWith<_$XXImage> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$XXImageImplCopyWith<_$XXImageImpl> get copyWith => throw _privateConstructorUsedError;
 }

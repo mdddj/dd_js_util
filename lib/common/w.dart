@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 /// 隐藏水波纹配置
 class NoShadowScrollBehavior extends ScrollBehavior {

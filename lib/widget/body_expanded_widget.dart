@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 class BodyExpandedWidget extends StatelessWidget {
   final Widget child;
@@ -6,7 +6,8 @@ class BodyExpandedWidget extends StatelessWidget {
   final bool igAppbarHeight;
   final double? height;
 
-  const BodyExpandedWidget({Key? key, required this.child, required this.bottom, this.igAppbarHeight = false, this.height}) : super(key: key);
+  const BodyExpandedWidget(
+      {super.key, required this.child, required this.bottom, this.igAppbarHeight = false, this.height});
 
   @override
   Widget build(BuildContext context) {

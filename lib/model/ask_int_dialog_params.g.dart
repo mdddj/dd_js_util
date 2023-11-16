@@ -6,36 +6,29 @@ part of 'ask_int_dialog_params.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AskStringDialogParams _$$_AskStringDialogParamsFromJson(
-        Map<String, dynamic> json) =>
-    _$_AskStringDialogParams(
+_$AskStringDialogParamsImpl _$$AskStringDialogParamsImplFromJson(Map<String, dynamic> json) =>
+    _$AskStringDialogParamsImpl(
       placeholder: json['placeholder'] as String? ?? "",
       title: json['title'] as String? ?? "",
       okBtnText: json['okBtnText'] as String? ?? "Ok",
       cancelBtnText: json['cancelBtnText'] as String? ?? "Cancel",
     );
 
-Map<String, dynamic> _$$_AskStringDialogParamsToJson(
-        _$_AskStringDialogParams instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$AskStringDialogParamsImplToJson(_$AskStringDialogParamsImpl instance) => <String, dynamic>{
       'placeholder': instance.placeholder,
       'title': instance.title,
       'okBtnText': instance.okBtnText,
       'cancelBtnText': instance.cancelBtnText,
     };
 
-_$_AskIntDialogParams _$$_AskIntDialogParamsFromJson(
-        Map<String, dynamic> json) =>
-    _$_AskIntDialogParams(
+_$AskIntDialogParamsImpl _$$AskIntDialogParamsImplFromJson(Map<String, dynamic> json) => _$AskIntDialogParamsImpl(
       placeholder: json['placeholder'] as String? ?? "",
       title: json['title'] as String? ?? "",
       okBtnText: json['okBtnText'] as String? ?? "Ok",
       cancelBtnText: json['cancelBtnText'] as String? ?? "Cancel",
     );
 
-Map<String, dynamic> _$$_AskIntDialogParamsToJson(
-        _$_AskIntDialogParams instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$AskIntDialogParamsImplToJson(_$AskIntDialogParamsImpl instance) => <String, dynamic>{
       'placeholder': instance.placeholder,
       'title': instance.title,
       'okBtnText': instance.okBtnText,

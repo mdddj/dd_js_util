@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 typedef ValueCopyWith<T> = T Function(T value);
 typedef DelayFetch = void Function();
@@ -157,7 +157,7 @@ class NullWidget<T> extends StatelessWidget {
   final T? value;
   final WidgetRenderT<T> render;
 
-  const NullWidget(this.value, this.render, {Key? key}) : super(key: key);
+  const NullWidget(this.value, this.render, {super.key});
 
   @override
   Widget build(BuildContext context) {

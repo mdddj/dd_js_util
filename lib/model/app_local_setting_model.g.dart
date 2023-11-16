@@ -47,16 +47,12 @@ class AppLocalSettingModelAdapter extends TypeAdapter<AppLocalSettingModel> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AppLocalSettingModel _$$_AppLocalSettingModelFromJson(
-        Map<String, dynamic> json) =>
-    _$_AppLocalSettingModel(
+_$AppLocalSettingModelImpl _$$AppLocalSettingModelImplFromJson(Map<String, dynamic> json) => _$AppLocalSettingModelImpl(
       themeIndex: json['themeIndex'] as int? ?? 0,
       themeModel: json['themeModel'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_AppLocalSettingModelToJson(
-        _$_AppLocalSettingModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$AppLocalSettingModelImplToJson(_$AppLocalSettingModelImpl instance) => <String, dynamic>{
       'themeIndex': instance.themeIndex,
       'themeModel': instance.themeModel,
     };

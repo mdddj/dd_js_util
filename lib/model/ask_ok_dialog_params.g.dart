@@ -6,16 +6,13 @@ part of 'ask_ok_dialog_params.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AskOkDialogParams _$$_AskOkDialogParamsFromJson(Map<String, dynamic> json) =>
-    _$_AskOkDialogParams(
+_$AskOkDialogParamsImpl _$$AskOkDialogParamsImplFromJson(Map<String, dynamic> json) => _$AskOkDialogParamsImpl(
       contentText: json['contentText'] as String? ?? "",
       okText: json['okText'] as String? ?? "Ok",
       cancelText: json['cancelText'] as String? ?? "Cancel",
     );
 
-Map<String, dynamic> _$$_AskOkDialogParamsToJson(
-        _$_AskOkDialogParams instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$$AskOkDialogParamsImplToJson(_$AskOkDialogParamsImpl instance) => <String, dynamic>{
       'contentText': instance.contentText,
       'okText': instance.okText,
       'cancelText': instance.cancelText,

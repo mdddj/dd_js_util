@@ -1,4 +1,4 @@
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 extension WidgetTa on Widget {
   Widget addTap(VoidCallback onTap) {
@@ -159,7 +159,7 @@ class PictureSelection extends StatefulWidget {
   final CustomRenderBody? customRender;
 
   const PictureSelection(
-      {Key? key,
+      {super.key,
       this.columnCount = 3,
       this.maxCount = 9,
       this.mainAxisSpacing,
@@ -174,8 +174,7 @@ class PictureSelection extends StatefulWidget {
       this.addIconOnTap,
       this.initUrls,
       this.enableImagePreview = true,
-      this.customRender})
-      : super(key: key);
+      this.customRender});
 
   @override
   State<PictureSelection> createState() => _PictureSelectionState();
@@ -379,9 +378,7 @@ class ImageDefaultShow extends StatelessWidget {
   final ValueChanged<PictureSelectionItemModel>? onRemove;
   final Widget? removeWidget;
 
-  const ImageDefaultShow(this.file,
-      {Key? key, this.onRemove, this.removeWidget})
-      : super(key: key);
+  const ImageDefaultShow(this.file, {super.key, this.onRemove, this.removeWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -423,7 +420,7 @@ class ImageDefaultShow extends StatelessWidget {
 
 // 添加相册的图标
 class ImageAddIcon extends StatelessWidget {
-  const ImageAddIcon({Key? key}) : super(key: key);
+  const ImageAddIcon({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -15,7 +15,7 @@ class AskIntDialog extends StatefulWidget {
             ));
   }
 
-  const AskIntDialog({Key? key, required this.params}) : super(key: key);
+  const AskIntDialog({super.key, required this.params});
 
   @override
   State<AskIntDialog> createState() => _AskIntDialogState();
