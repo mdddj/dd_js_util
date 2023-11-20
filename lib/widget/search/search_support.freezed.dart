@@ -148,6 +148,7 @@ class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
 //搜索控制器
   @override
   final RefreshController<T>? controller;
+
 //展示组件的容器,需要固定高度
   @override
   final SearchSupportCoreUiBuild childBuilder;
@@ -165,8 +166,7 @@ class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
         (other.runtimeType == runtimeType &&
             other is _$SearchSupportParamsImpl<T> &&
             (identical(other.autoShow, autoShow) || other.autoShow == autoShow) &&
-            (identical(other.controller, controller) ||
-                other.controller == controller) &&
+            (identical(other.controller, controller) || other.controller == controller) &&
             (identical(other.childBuilder, childBuilder) ||
                 other.childBuilder == childBuilder) &&
             (identical(other.listening, listening) ||

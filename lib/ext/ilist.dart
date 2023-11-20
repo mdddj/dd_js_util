@@ -46,4 +46,12 @@ extension IListEx<T> on IList<T> {
     }
     return list;
   }
+
+  T? find(bool Function(T element) filter) {
+    try {
+      return firstWhere(filter);
+    } catch (_) {
+      return null;
+    }
+  }
 }

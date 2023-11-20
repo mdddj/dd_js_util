@@ -61,7 +61,6 @@ mixin _$BaseApiException {
         businessException,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? cancel,

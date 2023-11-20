@@ -432,8 +432,7 @@ class _$RequestParamsImpl extends _RequestParams {
         (other.runtimeType == runtimeType &&
             other is _$RequestParamsImpl &&
             (identical(other.showErrorMsg, showErrorMsg) || other.showErrorMsg == showErrorMsg) &&
-            (identical(other.loadingText, loadingText) ||
-                other.loadingText == loadingText) &&
+            (identical(other.loadingText, loadingText) || other.loadingText == loadingText) &&
             (identical(other.contentType, contentType) ||
                 other.contentType == contentType) &&
             const DeepCollectionEquality().equals(other._headers, _headers) &&
@@ -542,7 +541,6 @@ abstract class _RequestParams extends RequestParams {
 
   @override
   bool get showDefaultLoading;
-
   @override
   @JsonKey(name: 'data', toJson: _dataToJson)
   dynamic get data;

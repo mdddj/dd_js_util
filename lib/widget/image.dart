@@ -76,20 +76,18 @@ class ImageView extends StatelessWidget {
   Widget? _stateChange(ExtendedImageState state) {
     switch (state.extendedImageLoadState) {
       case LoadState.loading:
-        return Skeleton(
-            width: getWidth ?? 0,
-            height: getHeight ?? 0,
-            borderRadius: params.borderRadius);
+        return Skeleton(width: getWidth ?? 0, height: getHeight ?? 0, borderRadius: params.borderRadius);
       case LoadState.completed:
-        return ExtendedRawImage(
-            image: state.extendedImageInfo?.image, fit: params.fit);
+        return GestureDetector(
+          onTap: params.onTap,
+          child: ExtendedRawImage(image: state.extendedImageInfo?.image, fit: params.fit),
+        );
       case LoadState.failed:
         return Container(
           width: getWidth,
           height: getHeight,
           alignment: Alignment.center,
-          decoration: BoxDecoration(
-              borderRadius: params.borderRadius, color: Colors.grey.shade200),
+          decoration: BoxDecoration(borderRadius: params.borderRadius, color: Colors.grey.shade200),
           child: params.errorWidget,
         ).click(state.reLoadImage);
     }

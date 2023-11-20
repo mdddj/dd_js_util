@@ -1,14 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'base_api_exception.freezed.dart';
 part 'base_api_exception.g.dart';
 
-part 'base_api_exception.freezed.dart';
-
-@JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
-class IgJson {
-  const IgJson();
-}
+const igFreezedJson = JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false);
 
 @freezed
 class BaseApiException with _$BaseApiException {

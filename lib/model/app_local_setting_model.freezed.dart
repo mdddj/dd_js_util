@@ -139,8 +139,7 @@ class _$AppLocalSettingModelImpl extends _AppLocalSettingModel {
         (other.runtimeType == runtimeType &&
             other is _$AppLocalSettingModelImpl &&
             (identical(other.themeIndex, themeIndex) || other.themeIndex == themeIndex) &&
-            (identical(other.themeModel, themeModel) ||
-                other.themeModel == themeModel));
+            (identical(other.themeModel, themeModel) || other.themeModel == themeModel));
   }
 
   @JsonKey(ignore: true)
@@ -165,6 +164,7 @@ abstract class _AppLocalSettingModel extends AppLocalSettingModel {
   const factory _AppLocalSettingModel(
       {@HiveField(0, defaultValue: 0) final int themeIndex,
       @HiveField(1, defaultValue: 0) final int themeModel}) = _$AppLocalSettingModelImpl;
+
   const _AppLocalSettingModel._() : super._();
 
   factory _AppLocalSettingModel.fromJson(Map<String, dynamic> json) = _$AppLocalSettingModelImpl.fromJson;

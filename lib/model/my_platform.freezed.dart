@@ -27,7 +27,6 @@ mixin _$MyPlatform {
     required TResult Function() fuchsia,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? android,
@@ -51,7 +50,6 @@ mixin _$MyPlatform {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AndroidPlatform value) android,
@@ -63,7 +61,6 @@ mixin _$MyPlatform {
     required TResult Function(FuchsiaPlatform value) fuchsia,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AndroidPlatform value)? android,

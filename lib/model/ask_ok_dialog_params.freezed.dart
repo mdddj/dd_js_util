@@ -121,14 +121,8 @@ abstract class _$$AskOkDialogParamsImplCopyWith<$Res> implements $AskOkDialogPar
       {String contentText,
       String okText,
       String cancelText,
-      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
-      Widget? content,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeToJson: false,
-          includeFromJson: false)
-      Widget? title});
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false) Widget? content,
+      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false) Widget? title});
 }
 
 /// @nodoc
@@ -246,10 +240,10 @@ class _$AskOkDialogParamsImpl implements _AskOkDialogParams {
 
 abstract class _AskOkDialogParams implements AskOkDialogParams {
   const factory _AskOkDialogParams(
-      {final String contentText,
-      final String okText,
-      final String cancelText,
-      @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false) final Widget? content,
+          {final String contentText,
+          final String okText,
+          final String cancelText,
+          @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false) final Widget? content,
           @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false) final Widget? title}) =
       _$AskOkDialogParamsImpl;
 
@@ -257,16 +251,15 @@ abstract class _AskOkDialogParams implements AskOkDialogParams {
 
   @override
   String get contentText;
+
   @override
   String get okText;
+
   @override
   String get cancelText;
+
   @override
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeToJson: false,
-      includeFromJson: false)
+  @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
   Widget? get content;
 
   @override

@@ -50,7 +50,6 @@ mixin _$DartTypeModel {
     required TResult Function() nil,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String value)? string,
@@ -74,7 +73,6 @@ mixin _$DartTypeModel {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(StringData value) string,
@@ -86,7 +84,6 @@ mixin _$DartTypeModel {
     required TResult Function(NullData value) nil,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StringData value)? string,

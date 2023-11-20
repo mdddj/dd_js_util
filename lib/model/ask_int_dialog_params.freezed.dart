@@ -202,8 +202,10 @@ abstract class _AskStringDialogParams implements AskStringDialogParams {
 
   @override
   String get placeholder;
+
   @override
   String get title;
+
   @override
   String get okBtnText;
 
@@ -331,14 +333,9 @@ abstract class _$$AskIntDialogParamsImplCopyWith<$Res> implements $AskIntDialogP
       String title,
       String okBtnText,
       String cancelBtnText,
-      @JsonKey(fromJson: null, toJson: null, includeFromJson: false,
-          includeToJson: false)
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
       bool Function(int)? disableOkButton,
-      @JsonKey(
-          fromJson: null,
-          toJson: null,
-          includeFromJson: false,
-          includeToJson: false)
+      @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
       String? Function(int)? errorMessage});
 }
 
@@ -484,18 +481,18 @@ abstract class _AskIntDialogParams implements AskIntDialogParams {
 
   @override
   String get placeholder;
+
   @override
   String get title;
+
   @override
   String get okBtnText;
+
   @override
   String get cancelBtnText;
+
   @override
-  @JsonKey(
-      fromJson: null,
-      toJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+  @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
   bool Function(int)? get disableOkButton;
 
   @override

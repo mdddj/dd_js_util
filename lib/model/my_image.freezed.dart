@@ -23,38 +23,31 @@ mixin _$ImageParams {
   double? get width => throw _privateConstructorUsedError;
   double? get height => throw _privateConstructorUsedError;
   double? get size => throw _privateConstructorUsedError;
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+  @igFreezedJson
   BoxFit? get fit => throw _privateConstructorUsedError;
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+
+  @igFreezedJson
   BorderRadius? get borderRadius => throw _privateConstructorUsedError;
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+
+  @igFreezedJson
   BoxShape? get shape => throw _privateConstructorUsedError;
+
   bool get enableMemoryCache => throw _privateConstructorUsedError;
+
   String? get heroTag => throw _privateConstructorUsedError;
+
   bool get isSelected => throw _privateConstructorUsedError;
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+
+  @igFreezedJson
   Widget? get errorWidget => throw _privateConstructorUsedError;
 
+  @igFreezedJson
+  VoidCallback? get onTap => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $ImageParamsCopyWith<ImageParams> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ImageParamsCopyWith<ImageParams> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -67,33 +60,14 @@ abstract class $ImageParamsCopyWith<$Res> {
       {double? width,
       double? height,
       double? size,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      BoxFit? fit,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      BorderRadius? borderRadius,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      BoxShape? shape,
+      @igFreezedJson BoxFit? fit,
+      @igFreezedJson BorderRadius? borderRadius,
+      @igFreezedJson BoxShape? shape,
       bool enableMemoryCache,
       String? heroTag,
       bool isSelected,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      Widget? errorWidget});
+      @igFreezedJson Widget? errorWidget,
+      @igFreezedJson VoidCallback? onTap});
 }
 
 /// @nodoc
@@ -119,6 +93,7 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
     Object? heroTag = freezed,
     Object? isSelected = null,
     Object? errorWidget = freezed,
+    Object? onTap = freezed,
   }) {
     return _then(_value.copyWith(
       width: freezed == width
@@ -161,6 +136,10 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
           ? _value.errorWidget
           : errorWidget // ignore: cast_nullable_to_non_nullable
               as Widget?,
+      onTap: freezed == onTap
+          ? _value.onTap
+          : onTap // ignore: cast_nullable_to_non_nullable
+              as VoidCallback?,
     ) as $Val);
   }
 }
@@ -176,29 +155,14 @@ abstract class _$$ImageParamsImplCopyWith<$Res> implements $ImageParamsCopyWith<
       {double? width,
       double? height,
       double? size,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-      BoxFit? fit,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      BorderRadius? borderRadius,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      BoxShape? shape,
+      @igFreezedJson BoxFit? fit,
+      @igFreezedJson BorderRadius? borderRadius,
+      @igFreezedJson BoxShape? shape,
       bool enableMemoryCache,
       String? heroTag,
       bool isSelected,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      Widget? errorWidget});
+      @igFreezedJson Widget? errorWidget,
+      @igFreezedJson VoidCallback? onTap});
 }
 
 /// @nodoc
@@ -220,6 +184,7 @@ class __$$ImageParamsImplCopyWithImpl<$Res> extends _$ImageParamsCopyWithImpl<$R
     Object? heroTag = freezed,
     Object? isSelected = null,
     Object? errorWidget = freezed,
+    Object? onTap = freezed,
   }) {
     return _then(_$ImageParamsImpl(
       width: freezed == width
@@ -262,6 +227,10 @@ class __$$ImageParamsImplCopyWithImpl<$Res> extends _$ImageParamsCopyWithImpl<$R
           ? _value.errorWidget
           : errorWidget // ignore: cast_nullable_to_non_nullable
               as Widget?,
+      onTap: freezed == onTap
+          ? _value.onTap
+          : onTap // ignore: cast_nullable_to_non_nullable
+              as VoidCallback?,
     ));
   }
 }
@@ -273,22 +242,14 @@ class _$ImageParamsImpl extends _ImageParams {
       {this.width,
       this.height,
       this.size,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false) this.fit,
-      @JsonKey(toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      this.borderRadius,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      this.shape,
+      @igFreezedJson this.fit,
+      @igFreezedJson this.borderRadius,
+      @igFreezedJson this.shape,
       this.enableMemoryCache = true,
       this.heroTag,
       this.isSelected = false,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false) this.errorWidget})
+      @igFreezedJson this.errorWidget,
+      @igFreezedJson this.onTap})
       : super._();
 
   factory _$ImageParamsImpl.fromJson(Map<String, dynamic> json) => _$$ImageParamsImplFromJson(json);
@@ -300,23 +261,13 @@ class _$ImageParamsImpl extends _ImageParams {
   @override
   final double? size;
   @override
-  @JsonKey(toJson: null, fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+  @igFreezedJson
   final BoxFit? fit;
   @override
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+  @igFreezedJson
   final BorderRadius? borderRadius;
   @override
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+  @igFreezedJson
   final BoxShape? shape;
   @override
   @JsonKey()
@@ -327,16 +278,15 @@ class _$ImageParamsImpl extends _ImageParams {
   @JsonKey()
   final bool isSelected;
   @override
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+  @igFreezedJson
   final Widget? errorWidget;
+  @override
+  @igFreezedJson
+  final VoidCallback? onTap;
 
   @override
   String toString() {
-    return 'ImageParams(width: $width, height: $height, size: $size, fit: $fit, borderRadius: $borderRadius, shape: $shape, enableMemoryCache: $enableMemoryCache, heroTag: $heroTag, isSelected: $isSelected, errorWidget: $errorWidget)';
+    return 'ImageParams(width: $width, height: $height, size: $size, fit: $fit, borderRadius: $borderRadius, shape: $shape, enableMemoryCache: $enableMemoryCache, heroTag: $heroTag, isSelected: $isSelected, errorWidget: $errorWidget, onTap: $onTap)';
   }
 
   @override
@@ -348,22 +298,19 @@ class _$ImageParamsImpl extends _ImageParams {
             (identical(other.height, height) || other.height == height) &&
             (identical(other.size, size) || other.size == size) &&
             (identical(other.fit, fit) || other.fit == fit) &&
-            (identical(other.borderRadius, borderRadius) ||
-                other.borderRadius == borderRadius) &&
+            (identical(other.borderRadius, borderRadius) || other.borderRadius == borderRadius) &&
             (identical(other.shape, shape) || other.shape == shape) &&
-            (identical(other.enableMemoryCache, enableMemoryCache) ||
-                other.enableMemoryCache == enableMemoryCache) &&
+            (identical(other.enableMemoryCache, enableMemoryCache) || other.enableMemoryCache == enableMemoryCache) &&
             (identical(other.heroTag, heroTag) || other.heroTag == heroTag) &&
-            (identical(other.isSelected, isSelected) ||
-                other.isSelected == isSelected) &&
-            (identical(other.errorWidget, errorWidget) ||
-                other.errorWidget == errorWidget));
+            (identical(other.isSelected, isSelected) || other.isSelected == isSelected) &&
+            (identical(other.errorWidget, errorWidget) || other.errorWidget == errorWidget) &&
+            (identical(other.onTap, onTap) || other.onTap == onTap));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, width, height, size, fit,
-      borderRadius, shape, enableMemoryCache, heroTag, isSelected, errorWidget);
+  int get hashCode => Object.hash(runtimeType, width, height, size, fit, borderRadius, shape, enableMemoryCache,
+      heroTag, isSelected, errorWidget, onTap);
 
   @JsonKey(ignore: true)
   @override
@@ -384,68 +331,56 @@ abstract class _ImageParams extends ImageParams {
       {final double? width,
       final double? height,
       final double? size,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      final BoxFit? fit,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false,
-          includeToJson: false)
-      final BorderRadius? borderRadius,
-      @JsonKey(
-          toJson: null,
-          fromJson: null,
-          includeFromJson: false, includeToJson: false) final BoxShape? shape,
+      @igFreezedJson final BoxFit? fit,
+      @igFreezedJson final BorderRadius? borderRadius,
+      @igFreezedJson final BoxShape? shape,
       final bool enableMemoryCache,
       final String? heroTag,
       final bool isSelected,
-      @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
-      final Widget? errorWidget}) = _$ImageParamsImpl;
+      @igFreezedJson final Widget? errorWidget,
+      @igFreezedJson final VoidCallback? onTap}) = _$ImageParamsImpl;
+
   const _ImageParams._() : super._();
 
   factory _ImageParams.fromJson(Map<String, dynamic> json) = _$ImageParamsImpl.fromJson;
 
   @override
   double? get width;
+
   @override
   double? get height;
+
   @override
   double? get size;
+
   @override
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+  @igFreezedJson
   BoxFit? get fit;
+
   @override
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+  @igFreezedJson
   BorderRadius? get borderRadius;
+
   @override
-  @JsonKey(
-      toJson: null,
-      fromJson: null,
-      includeFromJson: false,
-      includeToJson: false)
+  @igFreezedJson
   BoxShape? get shape;
+
   @override
   bool get enableMemoryCache;
+
   @override
   String? get heroTag;
+
   @override
   bool get isSelected;
 
   @override
-  @JsonKey(toJson: null, fromJson: null, includeFromJson: false, includeToJson: false)
+  @igFreezedJson
   Widget? get errorWidget;
+
+  @override
+  @igFreezedJson
+  VoidCallback? get onTap;
 
   @override
   @JsonKey(ignore: true)
