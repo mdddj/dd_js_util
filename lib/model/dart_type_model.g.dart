@@ -73,3 +73,13 @@ _$NullDataImpl _$$NullDataImplFromJson(Map<String, dynamic> json) => _$NullDataI
 Map<String, dynamic> _$$NullDataImplToJson(_$NullDataImpl instance) => <String, dynamic>{
       'runtimeType': instance.$type,
     };
+
+_$JsonStringDataImpl _$$JsonStringDataImplFromJson(Map<String, dynamic> json) => _$JsonStringDataImpl(
+      json['jsonString'] as String,
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$JsonStringDataImplToJson(_$JsonStringDataImpl instance) => <String, dynamic>{
+      'jsonString': instance.jsonString,
+      'runtimeType': instance.$type,
+    };

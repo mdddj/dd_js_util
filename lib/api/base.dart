@@ -55,6 +55,7 @@ abstract class BaseModel<T> {
     return "BaseModel: ${T.runtimeType}";
   }
 }
+
 extension Tex3<T> on T? {
   T ifNullThrowBizException([String message = ""]) {
     if (this == null) {
@@ -120,6 +121,8 @@ abstract class BaseApi<T> {
             ),
             queryParameters: httpMethod == HttpMethod.get ? queryParameters : null,
             data: bodyData,
+            onReceiveProgress: options.onReceiveProgress,
+            onSendProgress: options.onSendCallback,
             cancelToken: options.cancelToken);
         return r;
       });
@@ -149,7 +152,7 @@ abstract class BaseApi<T> {
 
   @Doc(message: "关闭loading框")
   void closeLoading() {
-    SmartDialog.dismiss();
+    SmartDialog.dismiss(status: SmartStatus.loading);
   }
 
   Future<dio.BaseOptions> getOptions(RequestParams param) async => dio.BaseOptions();

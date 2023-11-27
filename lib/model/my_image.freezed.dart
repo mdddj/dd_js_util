@@ -25,27 +25,19 @@ mixin _$ImageParams {
   double? get size => throw _privateConstructorUsedError;
   @igFreezedJson
   BoxFit? get fit => throw _privateConstructorUsedError;
-
   @igFreezedJson
   BorderRadius? get borderRadius => throw _privateConstructorUsedError;
-
   @igFreezedJson
   BoxShape? get shape => throw _privateConstructorUsedError;
-
   bool get enableMemoryCache => throw _privateConstructorUsedError;
-
   String? get heroTag => throw _privateConstructorUsedError;
-
   bool get isSelected => throw _privateConstructorUsedError;
-
   @igFreezedJson
   Widget? get errorWidget => throw _privateConstructorUsedError;
-
   @igFreezedJson
   VoidCallback? get onTap => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ImageParamsCopyWith<ImageParams> get copyWith => throw _privateConstructorUsedError;
 }
@@ -356,24 +348,18 @@ abstract class _ImageParams extends ImageParams {
   @override
   @igFreezedJson
   BoxFit? get fit;
-
   @override
   @igFreezedJson
   BorderRadius? get borderRadius;
-
   @override
   @igFreezedJson
   BoxShape? get shape;
-
   @override
   bool get enableMemoryCache;
-
   @override
   String? get heroTag;
-
   @override
   bool get isSelected;
-
   @override
   @igFreezedJson
   Widget? get errorWidget;

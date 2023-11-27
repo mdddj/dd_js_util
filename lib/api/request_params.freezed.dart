@@ -21,46 +21,44 @@ RequestParams _$RequestParamsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$RequestParams {
   bool get showErrorMsg => throw _privateConstructorUsedError;
-
   String get loadingText => throw _privateConstructorUsedError;
-
   String? get contentType => throw _privateConstructorUsedError;
-
   Map<String, dynamic> get headers => throw _privateConstructorUsedError;
-
   bool get showDefaultLoading => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'data', toJson: _dataToJson)
   dynamic get data => throw _privateConstructorUsedError;
-
   ResponseType? get responseType => throw _privateConstructorUsedError;
-
   bool? get nullParams => throw _privateConstructorUsedError;
-
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   RequestEncoder? get requestEncoder => throw _privateConstructorUsedError;
 
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   DioStart? get dioStart => throw _privateConstructorUsedError;
 
   bool? get returnIsString => throw _privateConstructorUsedError;
 
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   bool get isFullUrl => throw _privateConstructorUsedError;
 
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   InterceptorCall? get interceptorCall => throw _privateConstructorUsedError;
 
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   UrlParseFormat? get urlParseFormat => throw _privateConstructorUsedError;
 
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   ResponseResultCallback? get responseResultCallback => throw _privateConstructorUsedError;
 
   Map<String, dynamic>? get extra => throw _privateConstructorUsedError;
 
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   CancelToken? get cancelToken => throw _privateConstructorUsedError;
+
+  @igFreezedJson
+  ProgressCallback? get onSendCallback => throw _privateConstructorUsedError;
+
+  @igFreezedJson
+  ProgressCallback? get onReceiveProgress => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
@@ -83,19 +81,17 @@ abstract class $RequestParamsCopyWith<$Res> {
       @JsonKey(name: 'data', toJson: _dataToJson) dynamic data,
       ResponseType? responseType,
       bool? nullParams,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      RequestEncoder? requestEncoder,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) DioStart? dioStart,
+      @igFreezedJson RequestEncoder? requestEncoder,
+      @igFreezedJson DioStart? dioStart,
       bool? returnIsString,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) bool isFullUrl,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      InterceptorCall? interceptorCall,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      UrlParseFormat? urlParseFormat,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      ResponseResultCallback? responseResultCallback,
+      @igFreezedJson bool isFullUrl,
+      @igFreezedJson InterceptorCall? interceptorCall,
+      @igFreezedJson UrlParseFormat? urlParseFormat,
+      @igFreezedJson ResponseResultCallback? responseResultCallback,
       Map<String, dynamic>? extra,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) CancelToken? cancelToken});
+      @igFreezedJson CancelToken? cancelToken,
+      @igFreezedJson ProgressCallback? onSendCallback,
+      @igFreezedJson ProgressCallback? onReceiveProgress});
 }
 
 /// @nodoc
@@ -128,6 +124,8 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
     Object? responseResultCallback = freezed,
     Object? extra = freezed,
     Object? cancelToken = freezed,
+    Object? onSendCallback = freezed,
+    Object? onReceiveProgress = freezed,
   }) {
     return _then(_value.copyWith(
       showErrorMsg: null == showErrorMsg
@@ -198,6 +196,14 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
           ? _value.cancelToken
           : cancelToken // ignore: cast_nullable_to_non_nullable
               as CancelToken?,
+      onSendCallback: freezed == onSendCallback
+          ? _value.onSendCallback
+          : onSendCallback // ignore: cast_nullable_to_non_nullable
+              as ProgressCallback?,
+      onReceiveProgress: freezed == onReceiveProgress
+          ? _value.onReceiveProgress
+          : onReceiveProgress // ignore: cast_nullable_to_non_nullable
+              as ProgressCallback?,
     ) as $Val);
   }
 }
@@ -218,19 +224,17 @@ abstract class _$$RequestParamsImplCopyWith<$Res> implements $RequestParamsCopyW
       @JsonKey(name: 'data', toJson: _dataToJson) dynamic data,
       ResponseType? responseType,
       bool? nullParams,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      RequestEncoder? requestEncoder,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) DioStart? dioStart,
+      @igFreezedJson RequestEncoder? requestEncoder,
+      @igFreezedJson DioStart? dioStart,
       bool? returnIsString,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) bool isFullUrl,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      InterceptorCall? interceptorCall,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      UrlParseFormat? urlParseFormat,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      ResponseResultCallback? responseResultCallback,
+      @igFreezedJson bool isFullUrl,
+      @igFreezedJson InterceptorCall? interceptorCall,
+      @igFreezedJson UrlParseFormat? urlParseFormat,
+      @igFreezedJson ResponseResultCallback? responseResultCallback,
       Map<String, dynamic>? extra,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) CancelToken? cancelToken});
+      @igFreezedJson CancelToken? cancelToken,
+      @igFreezedJson ProgressCallback? onSendCallback,
+      @igFreezedJson ProgressCallback? onReceiveProgress});
 }
 
 /// @nodoc
@@ -259,6 +263,8 @@ class __$$RequestParamsImplCopyWithImpl<$Res> extends _$RequestParamsCopyWithImp
     Object? responseResultCallback = freezed,
     Object? extra = freezed,
     Object? cancelToken = freezed,
+    Object? onSendCallback = freezed,
+    Object? onReceiveProgress = freezed,
   }) {
     return _then(_$RequestParamsImpl(
       showErrorMsg: null == showErrorMsg
@@ -329,6 +335,14 @@ class __$$RequestParamsImplCopyWithImpl<$Res> extends _$RequestParamsCopyWithImp
           ? _value.cancelToken
           : cancelToken // ignore: cast_nullable_to_non_nullable
               as CancelToken?,
+      onSendCallback: freezed == onSendCallback
+          ? _value.onSendCallback
+          : onSendCallback // ignore: cast_nullable_to_non_nullable
+              as ProgressCallback?,
+      onReceiveProgress: freezed == onReceiveProgress
+          ? _value.onReceiveProgress
+          : onReceiveProgress // ignore: cast_nullable_to_non_nullable
+              as ProgressCallback?,
     ));
   }
 }
@@ -345,15 +359,17 @@ class _$RequestParamsImpl extends _RequestParams {
       @JsonKey(name: 'data', toJson: _dataToJson) this.data,
       this.responseType,
       this.nullParams,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.requestEncoder,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.dioStart,
+      @igFreezedJson this.requestEncoder,
+      @igFreezedJson this.dioStart,
       this.returnIsString,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.isFullUrl = false,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.interceptorCall,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.urlParseFormat,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.responseResultCallback,
+      @igFreezedJson this.isFullUrl = false,
+      @igFreezedJson this.interceptorCall,
+      @igFreezedJson this.urlParseFormat,
+      @igFreezedJson this.responseResultCallback,
       final Map<String, dynamic>? extra,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) this.cancelToken})
+      @igFreezedJson this.cancelToken,
+      @igFreezedJson this.onSendCallback,
+      @igFreezedJson this.onReceiveProgress})
       : _headers = headers,
         _extra = extra,
         super._();
@@ -388,24 +404,24 @@ class _$RequestParamsImpl extends _RequestParams {
   @override
   final bool? nullParams;
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   final RequestEncoder? requestEncoder;
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   final DioStart? dioStart;
   @override
   final bool? returnIsString;
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   final bool isFullUrl;
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   final InterceptorCall? interceptorCall;
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   final UrlParseFormat? urlParseFormat;
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   final ResponseResultCallback? responseResultCallback;
   final Map<String, dynamic>? _extra;
   @override
@@ -418,12 +434,18 @@ class _$RequestParamsImpl extends _RequestParams {
   }
 
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   final CancelToken? cancelToken;
+  @override
+  @igFreezedJson
+  final ProgressCallback? onSendCallback;
+  @override
+  @igFreezedJson
+  final ProgressCallback? onReceiveProgress;
 
   @override
   String toString() {
-    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, isFullUrl: $isFullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback, extra: $extra, cancelToken: $cancelToken)';
+    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, isFullUrl: $isFullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback, extra: $extra, cancelToken: $cancelToken, onSendCallback: $onSendCallback, onReceiveProgress: $onReceiveProgress)';
   }
 
   @override
@@ -433,8 +455,7 @@ class _$RequestParamsImpl extends _RequestParams {
             other is _$RequestParamsImpl &&
             (identical(other.showErrorMsg, showErrorMsg) || other.showErrorMsg == showErrorMsg) &&
             (identical(other.loadingText, loadingText) || other.loadingText == loadingText) &&
-            (identical(other.contentType, contentType) ||
-                other.contentType == contentType) &&
+            (identical(other.contentType, contentType) || other.contentType == contentType) &&
             const DeepCollectionEquality().equals(other._headers, _headers) &&
             (identical(other.showDefaultLoading, showDefaultLoading) ||
                 other.showDefaultLoading == showDefaultLoading) &&
@@ -449,40 +470,41 @@ class _$RequestParamsImpl extends _RequestParams {
                 other.dioStart == dioStart) &&
             (identical(other.returnIsString, returnIsString) ||
                 other.returnIsString == returnIsString) &&
-            (identical(other.isFullUrl, isFullUrl) ||
-                other.isFullUrl == isFullUrl) &&
-            (identical(other.interceptorCall, interceptorCall) ||
-                other.interceptorCall == interceptorCall) &&
-            (identical(other.urlParseFormat, urlParseFormat) ||
-                other.urlParseFormat == urlParseFormat) &&
+            (identical(other.isFullUrl, isFullUrl) || other.isFullUrl == isFullUrl) &&
+            (identical(other.interceptorCall, interceptorCall) || other.interceptorCall == interceptorCall) &&
+            (identical(other.urlParseFormat, urlParseFormat) || other.urlParseFormat == urlParseFormat) &&
             (identical(other.responseResultCallback, responseResultCallback) ||
                 other.responseResultCallback == responseResultCallback) &&
             const DeepCollectionEquality().equals(other._extra, _extra) &&
-            (identical(other.cancelToken, cancelToken) ||
-                other.cancelToken == cancelToken));
+            (identical(other.cancelToken, cancelToken) || other.cancelToken == cancelToken) &&
+            (identical(other.onSendCallback, onSendCallback) || other.onSendCallback == onSendCallback) &&
+            (identical(other.onReceiveProgress, onReceiveProgress) || other.onReceiveProgress == onReceiveProgress));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      showErrorMsg,
-      loadingText,
-      contentType,
-      const DeepCollectionEquality().hash(_headers),
-      showDefaultLoading,
-      const DeepCollectionEquality().hash(data),
-      responseType,
-      nullParams,
-      requestEncoder,
-      dioStart,
-      returnIsString,
-      isFullUrl,
-      interceptorCall,
-      urlParseFormat,
-      responseResultCallback,
-      const DeepCollectionEquality().hash(_extra),
-      cancelToken);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        showErrorMsg,
+        loadingText,
+        contentType,
+        const DeepCollectionEquality().hash(_headers),
+        showDefaultLoading,
+        const DeepCollectionEquality().hash(data),
+        responseType,
+        nullParams,
+        requestEncoder,
+        dioStart,
+        returnIsString,
+        isFullUrl,
+        interceptorCall,
+        urlParseFormat,
+        responseResultCallback,
+        const DeepCollectionEquality().hash(_extra),
+        cancelToken,
+        onSendCallback,
+        onReceiveProgress
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -508,20 +530,17 @@ abstract class _RequestParams extends RequestParams {
       @JsonKey(name: 'data', toJson: _dataToJson) final dynamic data,
       final ResponseType? responseType,
       final bool? nullParams,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      final RequestEncoder? requestEncoder,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) final DioStart? dioStart,
+      @igFreezedJson final RequestEncoder? requestEncoder,
+      @igFreezedJson final DioStart? dioStart,
       final bool? returnIsString,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) final bool isFullUrl,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      final InterceptorCall? interceptorCall,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      final UrlParseFormat? urlParseFormat,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      final ResponseResultCallback? responseResultCallback,
+      @igFreezedJson final bool isFullUrl,
+      @igFreezedJson final InterceptorCall? interceptorCall,
+      @igFreezedJson final UrlParseFormat? urlParseFormat,
+      @igFreezedJson final ResponseResultCallback? responseResultCallback,
       final Map<String, dynamic>? extra,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      final CancelToken? cancelToken}) = _$RequestParamsImpl;
+      @igFreezedJson final CancelToken? cancelToken,
+      @igFreezedJson final ProgressCallback? onSendCallback,
+      @igFreezedJson final ProgressCallback? onReceiveProgress}) = _$RequestParamsImpl;
 
   const _RequestParams._() : super._();
 
@@ -546,43 +565,49 @@ abstract class _RequestParams extends RequestParams {
   dynamic get data;
   @override
   ResponseType? get responseType;
-
   @override
   bool? get nullParams;
 
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   RequestEncoder? get requestEncoder;
 
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   DioStart? get dioStart;
-
   @override
   bool? get returnIsString;
 
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   bool get isFullUrl;
 
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   InterceptorCall? get interceptorCall;
 
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   UrlParseFormat? get urlParseFormat;
 
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   ResponseResultCallback? get responseResultCallback;
 
   @override
   Map<String, dynamic>? get extra;
 
   @override
-  @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
+  @igFreezedJson
   CancelToken? get cancelToken;
+
+  @override
+  @igFreezedJson
+  ProgressCallback? get onSendCallback;
+
+  @override
+  @igFreezedJson
+  ProgressCallback? get onReceiveProgress;
 
   @override
   @JsonKey(ignore: true)

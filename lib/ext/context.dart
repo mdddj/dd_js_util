@@ -29,7 +29,7 @@ extension ContextExt on BuildContext {
 
   Color get highlightColor => theme.highlightColor;
 
-  Color get cardColor => theme.cardColor;
+  Color get cardColor => theme.cardTheme.color ?? theme.cardColor;
 
   Color get primaryColor => theme.primaryColor;
 

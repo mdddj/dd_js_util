@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../model/base_api_exception.dart';
 import '../model/dart_type_model.dart';
 
 part 'request_params.freezed.dart';
-
 part 'request_params.g.dart';
 
 typedef DioStart = Future<void> Function(Dio dio, String url);
@@ -33,22 +33,17 @@ class RequestParams with _$RequestParams {
       @JsonKey(name: 'data', toJson: _dataToJson) dynamic data,
       ResponseType? responseType,
       bool? nullParams,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      RequestEncoder? requestEncoder,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null) DioStart? dioStart,
+      @igFreezedJson RequestEncoder? requestEncoder,
+      @igFreezedJson DioStart? dioStart,
       bool? returnIsString,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      @Default(false)
-      bool isFullUrl,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      InterceptorCall? interceptorCall,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      UrlParseFormat? urlParseFormat,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      ResponseResultCallback? responseResultCallback,
+      @igFreezedJson @Default(false) bool isFullUrl,
+      @igFreezedJson InterceptorCall? interceptorCall,
+      @igFreezedJson UrlParseFormat? urlParseFormat,
+      @igFreezedJson ResponseResultCallback? responseResultCallback,
       Map<String, dynamic>? extra,
-      @JsonKey(includeToJson: false, includeFromJson: false, fromJson: null, toJson: null)
-      CancelToken? cancelToken}) = _RequestParams;
+      @igFreezedJson CancelToken? cancelToken,
+      @igFreezedJson ProgressCallback? onSendCallback,
+      @igFreezedJson ProgressCallback? onReceiveProgress}) = _RequestParams;
 
   factory RequestParams.fromJson(Map<String, dynamic> json) => _$RequestParamsFromJson(json);
 }

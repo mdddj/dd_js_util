@@ -1,10 +1,10 @@
 name: dd_js_util
 description: flutter tools and widgets and extends
-version: 5.0.5
+version: 5.1.0
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
-  sdk: ">=2.19.4 <4.0.0"
+  sdk: ">=2.17.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -15,7 +15,7 @@ dependencies:
     sdk: flutter
   path: ^1.8.3
   html: ^0.15.4
-  permission_handler: ^11.0.1
+  permission_handler: ^11.1.0
   cached_network_image: ^3.3.0
   saver_gallery: ^3.0.1
   flutter_cache_manager: ^3.3.1
@@ -24,13 +24,13 @@ dependencies:
   flutter_smart_dialog: ^4.9.5+1
   image_picker: ^1.0.4
   synchronized: ^3.1.0
-  dio: ^5.3.3
+  dio: ^5.3.4
   extended_image: ^8.2.0
   flutter_swiper_null_safety_flutter3: ^4.0.2
   url_launcher: ^6.2.1
   ffloat_nullsafety: ^3.3.6
-  riverpod: ^2.4.6
-  hooks_riverpod: ^2.4.6
+  riverpod: ^2.4.9
+  hooks_riverpod: ^2.4.9
   logger: ^2.0.2+1
   hive: ^2.2.3
   hive_flutter: ^1.1.0
@@ -43,8 +43,8 @@ dependencies:
   json_annotation: ^4.8.1
   extended_image_library: ^4.0.1
   mime: ^1.0.4
-  package_info_plus: ^4.2.0
-  device_info_plus: ^9.1.0
+  package_info_plus: ^5.0.1
+  device_info_plus: ^9.1.1
 
 dev_dependencies:
   flutter_test:
@@ -53,8 +53,8 @@ dev_dependencies:
   flutter_lints: ^3.0.1
   json_serializable: ^6.7.1
   freezed: ^2.4.5
-  hive_generator_plus: ^3.0.2
+  hive_generator_plus: ^3.0.3
 
 
 dependency_overrides:
-  meta: ^1.10.0
+  meta: ^1.11.0

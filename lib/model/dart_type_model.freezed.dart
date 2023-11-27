@@ -30,6 +30,8 @@ DartTypeModel _$DartTypeModelFromJson(Map<String, dynamic> json) {
       return DynamicData.fromJson(json);
     case 'nil':
       return NullData.fromJson(json);
+    case 'jsonString':
+      return JsonStringData.fromJson(json);
 
     default:
       throw CheckedFromJsonException(
@@ -48,6 +50,7 @@ mixin _$DartTypeModel {
     required TResult Function(Map<String, dynamic> value) json,
     required TResult Function(dynamic value) dynamic,
     required TResult Function() nil,
+    required TResult Function(String jsonString) jsonString,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +62,7 @@ mixin _$DartTypeModel {
     TResult? Function(Map<String, dynamic> value)? json,
     TResult? Function(dynamic value)? dynamic,
     TResult? Function()? nil,
+    TResult? Function(String jsonString)? jsonString,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +74,7 @@ mixin _$DartTypeModel {
     TResult Function(Map<String, dynamic> value)? json,
     TResult Function(dynamic value)? dynamic,
     TResult Function()? nil,
+    TResult Function(String jsonString)? jsonString,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -82,6 +87,7 @@ mixin _$DartTypeModel {
     required TResult Function(JsonData value) json,
     required TResult Function(DynamicData value) dynamic,
     required TResult Function(NullData value) nil,
+    required TResult Function(JsonStringData value) jsonString,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +99,7 @@ mixin _$DartTypeModel {
     TResult? Function(JsonData value)? json,
     TResult? Function(DynamicData value)? dynamic,
     TResult? Function(NullData value)? nil,
+    TResult? Function(JsonStringData value)? jsonString,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -104,6 +111,7 @@ mixin _$DartTypeModel {
     TResult Function(JsonData value)? json,
     TResult Function(DynamicData value)? dynamic,
     TResult Function(NullData value)? nil,
+    TResult Function(JsonStringData value)? jsonString,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -156,7 +164,7 @@ class __$$StringDataImplCopyWithImpl<$Res> extends _$DartTypeModelCopyWithImpl<$
 /// @nodoc
 @JsonSerializable()
 class _$StringDataImpl extends StringData {
-  _$StringDataImpl(this.value, {final String? $type})
+  const _$StringDataImpl(this.value, {final String? $type})
       : $type = $type ?? 'string',
         super._();
 
@@ -201,6 +209,7 @@ class _$StringDataImpl extends StringData {
     required TResult Function(Map<String, dynamic> value) json,
     required TResult Function(dynamic value) dynamic,
     required TResult Function() nil,
+    required TResult Function(String jsonString) jsonString,
   }) {
     return string(value);
   }
@@ -215,6 +224,7 @@ class _$StringDataImpl extends StringData {
     TResult? Function(Map<String, dynamic> value)? json,
     TResult? Function(dynamic value)? dynamic,
     TResult? Function()? nil,
+    TResult? Function(String jsonString)? jsonString,
   }) {
     return string?.call(value);
   }
@@ -229,6 +239,7 @@ class _$StringDataImpl extends StringData {
     TResult Function(Map<String, dynamic> value)? json,
     TResult Function(dynamic value)? dynamic,
     TResult Function()? nil,
+    TResult Function(String jsonString)? jsonString,
     required TResult orElse(),
   }) {
     if (string != null) {
@@ -247,6 +258,7 @@ class _$StringDataImpl extends StringData {
     required TResult Function(JsonData value) json,
     required TResult Function(DynamicData value) dynamic,
     required TResult Function(NullData value) nil,
+    required TResult Function(JsonStringData value) jsonString,
   }) {
     return string(this);
   }
@@ -261,6 +273,7 @@ class _$StringDataImpl extends StringData {
     TResult? Function(JsonData value)? json,
     TResult? Function(DynamicData value)? dynamic,
     TResult? Function(NullData value)? nil,
+    TResult? Function(JsonStringData value)? jsonString,
   }) {
     return string?.call(this);
   }
@@ -275,6 +288,7 @@ class _$StringDataImpl extends StringData {
     TResult Function(JsonData value)? json,
     TResult Function(DynamicData value)? dynamic,
     TResult Function(NullData value)? nil,
+    TResult Function(JsonStringData value)? jsonString,
     required TResult orElse(),
   }) {
     if (string != null) {
@@ -292,8 +306,8 @@ class _$StringDataImpl extends StringData {
 }
 
 abstract class StringData extends DartTypeModel {
-  factory StringData(final String value) = _$StringDataImpl;
-  StringData._() : super._();
+  const factory StringData(final String value) = _$StringDataImpl;
+  const StringData._() : super._();
 
   factory StringData.fromJson(Map<String, dynamic> json) = _$StringDataImpl.fromJson;
 
@@ -332,7 +346,7 @@ class __$$NumDataImplCopyWithImpl<$Res> extends _$DartTypeModelCopyWithImpl<$Res
 /// @nodoc
 @JsonSerializable()
 class _$NumDataImpl extends NumData {
-  _$NumDataImpl(this.value, {final String? $type})
+  const _$NumDataImpl(this.value, {final String? $type})
       : $type = $type ?? 'num',
         super._();
 
@@ -376,6 +390,7 @@ class _$NumDataImpl extends NumData {
     required TResult Function(Map<String, dynamic> value) json,
     required TResult Function(dynamic value) dynamic,
     required TResult Function() nil,
+    required TResult Function(String jsonString) jsonString,
   }) {
     return num(value);
   }
@@ -390,6 +405,7 @@ class _$NumDataImpl extends NumData {
     TResult? Function(Map<String, dynamic> value)? json,
     TResult? Function(dynamic value)? dynamic,
     TResult? Function()? nil,
+    TResult? Function(String jsonString)? jsonString,
   }) {
     return num?.call(value);
   }
@@ -404,6 +420,7 @@ class _$NumDataImpl extends NumData {
     TResult Function(Map<String, dynamic> value)? json,
     TResult Function(dynamic value)? dynamic,
     TResult Function()? nil,
+    TResult Function(String jsonString)? jsonString,
     required TResult orElse(),
   }) {
     if (num != null) {
@@ -422,6 +439,7 @@ class _$NumDataImpl extends NumData {
     required TResult Function(JsonData value) json,
     required TResult Function(DynamicData value) dynamic,
     required TResult Function(NullData value) nil,
+    required TResult Function(JsonStringData value) jsonString,
   }) {
     return num(this);
   }
@@ -436,6 +454,7 @@ class _$NumDataImpl extends NumData {
     TResult? Function(JsonData value)? json,
     TResult? Function(DynamicData value)? dynamic,
     TResult? Function(NullData value)? nil,
+    TResult? Function(JsonStringData value)? jsonString,
   }) {
     return num?.call(this);
   }
@@ -450,6 +469,7 @@ class _$NumDataImpl extends NumData {
     TResult Function(JsonData value)? json,
     TResult Function(DynamicData value)? dynamic,
     TResult Function(NullData value)? nil,
+    TResult Function(JsonStringData value)? jsonString,
     required TResult orElse(),
   }) {
     if (num != null) {
@@ -467,8 +487,8 @@ class _$NumDataImpl extends NumData {
 }
 
 abstract class NumData extends DartTypeModel {
-  factory NumData(final num value) = _$NumDataImpl;
-  NumData._() : super._();
+  const factory NumData(final num value) = _$NumDataImpl;
+  const NumData._() : super._();
 
   factory NumData.fromJson(Map<String, dynamic> json) = _$NumDataImpl.fromJson;
 
@@ -507,7 +527,7 @@ class __$$BoolDataImplCopyWithImpl<$Res> extends _$DartTypeModelCopyWithImpl<$Re
 /// @nodoc
 @JsonSerializable()
 class _$BoolDataImpl extends BoolData {
-  _$BoolDataImpl(this.value, {final String? $type})
+  const _$BoolDataImpl(this.value, {final String? $type})
       : $type = $type ?? 'bool',
         super._();
 
@@ -552,6 +572,7 @@ class _$BoolDataImpl extends BoolData {
     required TResult Function(Map<String, dynamic> value) json,
     required TResult Function(dynamic value) dynamic,
     required TResult Function() nil,
+    required TResult Function(String jsonString) jsonString,
   }) {
     return bool(value);
   }
@@ -566,6 +587,7 @@ class _$BoolDataImpl extends BoolData {
     TResult? Function(Map<String, dynamic> value)? json,
     TResult? Function(dynamic value)? dynamic,
     TResult? Function()? nil,
+    TResult? Function(String jsonString)? jsonString,
   }) {
     return bool?.call(value);
   }
@@ -580,6 +602,7 @@ class _$BoolDataImpl extends BoolData {
     TResult Function(Map<String, dynamic> value)? json,
     TResult Function(dynamic value)? dynamic,
     TResult Function()? nil,
+    TResult Function(String jsonString)? jsonString,
     required TResult orElse(),
   }) {
     if (bool != null) {
@@ -598,6 +621,7 @@ class _$BoolDataImpl extends BoolData {
     required TResult Function(JsonData value) json,
     required TResult Function(DynamicData value) dynamic,
     required TResult Function(NullData value) nil,
+    required TResult Function(JsonStringData value) jsonString,
   }) {
     return bool(this);
   }
@@ -612,6 +636,7 @@ class _$BoolDataImpl extends BoolData {
     TResult? Function(JsonData value)? json,
     TResult? Function(DynamicData value)? dynamic,
     TResult? Function(NullData value)? nil,
+    TResult? Function(JsonStringData value)? jsonString,
   }) {
     return bool?.call(this);
   }
@@ -626,6 +651,7 @@ class _$BoolDataImpl extends BoolData {
     TResult Function(JsonData value)? json,
     TResult Function(DynamicData value)? dynamic,
     TResult Function(NullData value)? nil,
+    TResult Function(JsonStringData value)? jsonString,
     required TResult orElse(),
   }) {
     if (bool != null) {
@@ -643,8 +669,8 @@ class _$BoolDataImpl extends BoolData {
 }
 
 abstract class BoolData extends DartTypeModel {
-  factory BoolData(final bool value) = _$BoolDataImpl;
-  BoolData._() : super._();
+  const factory BoolData(final bool value) = _$BoolDataImpl;
+  const BoolData._() : super._();
 
   factory BoolData.fromJson(Map<String, dynamic> json) = _$BoolDataImpl.fromJson;
 
@@ -683,7 +709,7 @@ class __$$ListDataImplCopyWithImpl<$Res> extends _$DartTypeModelCopyWithImpl<$Re
 /// @nodoc
 @JsonSerializable()
 class _$ListDataImpl extends ListData {
-  _$ListDataImpl(final List<dynamic> value, {final String? $type})
+  const _$ListDataImpl(final List<dynamic> value, {final String? $type})
       : _value = value,
         $type = $type ?? 'list',
         super._();
@@ -734,6 +760,7 @@ class _$ListDataImpl extends ListData {
     required TResult Function(Map<String, dynamic> value) json,
     required TResult Function(dynamic value) dynamic,
     required TResult Function() nil,
+    required TResult Function(String jsonString) jsonString,
   }) {
     return list(value);
   }
@@ -748,6 +775,7 @@ class _$ListDataImpl extends ListData {
     TResult? Function(Map<String, dynamic> value)? json,
     TResult? Function(dynamic value)? dynamic,
     TResult? Function()? nil,
+    TResult? Function(String jsonString)? jsonString,
   }) {
     return list?.call(value);
   }
@@ -762,6 +790,7 @@ class _$ListDataImpl extends ListData {
     TResult Function(Map<String, dynamic> value)? json,
     TResult Function(dynamic value)? dynamic,
     TResult Function()? nil,
+    TResult Function(String jsonString)? jsonString,
     required TResult orElse(),
   }) {
     if (list != null) {
@@ -780,6 +809,7 @@ class _$ListDataImpl extends ListData {
     required TResult Function(JsonData value) json,
     required TResult Function(DynamicData value) dynamic,
     required TResult Function(NullData value) nil,
+    required TResult Function(JsonStringData value) jsonString,
   }) {
     return list(this);
   }
@@ -794,6 +824,7 @@ class _$ListDataImpl extends ListData {
     TResult? Function(JsonData value)? json,
     TResult? Function(DynamicData value)? dynamic,
     TResult? Function(NullData value)? nil,
+    TResult? Function(JsonStringData value)? jsonString,
   }) {
     return list?.call(this);
   }
@@ -808,6 +839,7 @@ class _$ListDataImpl extends ListData {
     TResult Function(JsonData value)? json,
     TResult Function(DynamicData value)? dynamic,
     TResult Function(NullData value)? nil,
+    TResult Function(JsonStringData value)? jsonString,
     required TResult orElse(),
   }) {
     if (list != null) {
@@ -825,8 +857,8 @@ class _$ListDataImpl extends ListData {
 }
 
 abstract class ListData extends DartTypeModel {
-  factory ListData(final List<dynamic> value) = _$ListDataImpl;
-  ListData._() : super._();
+  const factory ListData(final List<dynamic> value) = _$ListDataImpl;
+  const ListData._() : super._();
 
   factory ListData.fromJson(Map<String, dynamic> json) = _$ListDataImpl.fromJson;
 
@@ -865,7 +897,7 @@ class __$$JsonDataImplCopyWithImpl<$Res> extends _$DartTypeModelCopyWithImpl<$Re
 /// @nodoc
 @JsonSerializable()
 class _$JsonDataImpl extends JsonData {
-  _$JsonDataImpl(final Map<String, dynamic> value, {final String? $type})
+  const _$JsonDataImpl(final Map<String, dynamic> value, {final String? $type})
       : _value = value,
         $type = $type ?? 'json',
         super._();
@@ -916,6 +948,7 @@ class _$JsonDataImpl extends JsonData {
     required TResult Function(Map<String, dynamic> value) json,
     required TResult Function(dynamic value) dynamic,
     required TResult Function() nil,
+    required TResult Function(String jsonString) jsonString,
   }) {
     return json(value);
   }
@@ -930,6 +963,7 @@ class _$JsonDataImpl extends JsonData {
     TResult? Function(Map<String, dynamic> value)? json,
     TResult? Function(dynamic value)? dynamic,
     TResult? Function()? nil,
+    TResult? Function(String jsonString)? jsonString,
   }) {
     return json?.call(value);
   }
@@ -944,6 +978,7 @@ class _$JsonDataImpl extends JsonData {
     TResult Function(Map<String, dynamic> value)? json,
     TResult Function(dynamic value)? dynamic,
     TResult Function()? nil,
+    TResult Function(String jsonString)? jsonString,
     required TResult orElse(),
   }) {
     if (json != null) {
@@ -962,6 +997,7 @@ class _$JsonDataImpl extends JsonData {
     required TResult Function(JsonData value) json,
     required TResult Function(DynamicData value) dynamic,
     required TResult Function(NullData value) nil,
+    required TResult Function(JsonStringData value) jsonString,
   }) {
     return json(this);
   }
@@ -976,6 +1012,7 @@ class _$JsonDataImpl extends JsonData {
     TResult? Function(JsonData value)? json,
     TResult? Function(DynamicData value)? dynamic,
     TResult? Function(NullData value)? nil,
+    TResult? Function(JsonStringData value)? jsonString,
   }) {
     return json?.call(this);
   }
@@ -990,6 +1027,7 @@ class _$JsonDataImpl extends JsonData {
     TResult Function(JsonData value)? json,
     TResult Function(DynamicData value)? dynamic,
     TResult Function(NullData value)? nil,
+    TResult Function(JsonStringData value)? jsonString,
     required TResult orElse(),
   }) {
     if (json != null) {
@@ -1007,8 +1045,8 @@ class _$JsonDataImpl extends JsonData {
 }
 
 abstract class JsonData extends DartTypeModel {
-  factory JsonData(final Map<String, dynamic> value) = _$JsonDataImpl;
-  JsonData._() : super._();
+  const factory JsonData(final Map<String, dynamic> value) = _$JsonDataImpl;
+  const JsonData._() : super._();
 
   factory JsonData.fromJson(Map<String, dynamic> json) = _$JsonDataImpl.fromJson;
 
@@ -1048,7 +1086,7 @@ class __$$DynamicDataImplCopyWithImpl<$Res> extends _$DartTypeModelCopyWithImpl<
 /// @nodoc
 @JsonSerializable()
 class _$DynamicDataImpl extends DynamicData {
-  _$DynamicDataImpl(this.value, {final String? $type})
+  const _$DynamicDataImpl(this.value, {final String? $type})
       : $type = $type ?? 'dynamic',
         super._();
 
@@ -1093,6 +1131,7 @@ class _$DynamicDataImpl extends DynamicData {
     required TResult Function(Map<String, dynamic> value) json,
     required TResult Function(dynamic value) dynamic,
     required TResult Function() nil,
+    required TResult Function(String jsonString) jsonString,
   }) {
     return dynamic(value);
   }
@@ -1107,6 +1146,7 @@ class _$DynamicDataImpl extends DynamicData {
     TResult? Function(Map<String, dynamic> value)? json,
     TResult? Function(dynamic value)? dynamic,
     TResult? Function()? nil,
+    TResult? Function(String jsonString)? jsonString,
   }) {
     return dynamic?.call(value);
   }
@@ -1121,6 +1161,7 @@ class _$DynamicDataImpl extends DynamicData {
     TResult Function(Map<String, dynamic> value)? json,
     TResult Function(dynamic value)? dynamic,
     TResult Function()? nil,
+    TResult Function(String jsonString)? jsonString,
     required TResult orElse(),
   }) {
     if (dynamic != null) {
@@ -1139,6 +1180,7 @@ class _$DynamicDataImpl extends DynamicData {
     required TResult Function(JsonData value) json,
     required TResult Function(DynamicData value) dynamic,
     required TResult Function(NullData value) nil,
+    required TResult Function(JsonStringData value) jsonString,
   }) {
     return dynamic(this);
   }
@@ -1153,6 +1195,7 @@ class _$DynamicDataImpl extends DynamicData {
     TResult? Function(JsonData value)? json,
     TResult? Function(DynamicData value)? dynamic,
     TResult? Function(NullData value)? nil,
+    TResult? Function(JsonStringData value)? jsonString,
   }) {
     return dynamic?.call(this);
   }
@@ -1167,6 +1210,7 @@ class _$DynamicDataImpl extends DynamicData {
     TResult Function(JsonData value)? json,
     TResult Function(DynamicData value)? dynamic,
     TResult Function(NullData value)? nil,
+    TResult Function(JsonStringData value)? jsonString,
     required TResult orElse(),
   }) {
     if (dynamic != null) {
@@ -1184,8 +1228,8 @@ class _$DynamicDataImpl extends DynamicData {
 }
 
 abstract class DynamicData extends DartTypeModel {
-  factory DynamicData(final dynamic value) = _$DynamicDataImpl;
-  DynamicData._() : super._();
+  const factory DynamicData(final dynamic value) = _$DynamicDataImpl;
+  const DynamicData._() : super._();
 
   factory DynamicData.fromJson(Map<String, dynamic> json) = _$DynamicDataImpl.fromJson;
 
@@ -1242,6 +1286,7 @@ class _$NullDataImpl extends NullData {
     required TResult Function(Map<String, dynamic> value) json,
     required TResult Function(dynamic value) dynamic,
     required TResult Function() nil,
+    required TResult Function(String jsonString) jsonString,
   }) {
     return nil();
   }
@@ -1256,6 +1301,7 @@ class _$NullDataImpl extends NullData {
     TResult? Function(Map<String, dynamic> value)? json,
     TResult? Function(dynamic value)? dynamic,
     TResult? Function()? nil,
+    TResult? Function(String jsonString)? jsonString,
   }) {
     return nil?.call();
   }
@@ -1270,6 +1316,7 @@ class _$NullDataImpl extends NullData {
     TResult Function(Map<String, dynamic> value)? json,
     TResult Function(dynamic value)? dynamic,
     TResult Function()? nil,
+    TResult Function(String jsonString)? jsonString,
     required TResult orElse(),
   }) {
     if (nil != null) {
@@ -1288,6 +1335,7 @@ class _$NullDataImpl extends NullData {
     required TResult Function(JsonData value) json,
     required TResult Function(DynamicData value) dynamic,
     required TResult Function(NullData value) nil,
+    required TResult Function(JsonStringData value) jsonString,
   }) {
     return nil(this);
   }
@@ -1302,6 +1350,7 @@ class _$NullDataImpl extends NullData {
     TResult? Function(JsonData value)? json,
     TResult? Function(DynamicData value)? dynamic,
     TResult? Function(NullData value)? nil,
+    TResult? Function(JsonStringData value)? jsonString,
   }) {
     return nil?.call(this);
   }
@@ -1316,6 +1365,7 @@ class _$NullDataImpl extends NullData {
     TResult Function(JsonData value)? json,
     TResult Function(DynamicData value)? dynamic,
     TResult Function(NullData value)? nil,
+    TResult Function(JsonStringData value)? jsonString,
     required TResult orElse(),
   }) {
     if (nil != null) {
@@ -1337,4 +1387,187 @@ abstract class NullData extends DartTypeModel {
   const NullData._() : super._();
 
   factory NullData.fromJson(Map<String, dynamic> json) = _$NullDataImpl.fromJson;
+}
+
+/// @nodoc
+abstract class _$$JsonStringDataImplCopyWith<$Res> {
+  factory _$$JsonStringDataImplCopyWith(_$JsonStringDataImpl value, $Res Function(_$JsonStringDataImpl) then) =
+      __$$JsonStringDataImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String jsonString});
+}
+
+/// @nodoc
+class __$$JsonStringDataImplCopyWithImpl<$Res> extends _$DartTypeModelCopyWithImpl<$Res, _$JsonStringDataImpl>
+    implements _$$JsonStringDataImplCopyWith<$Res> {
+  __$$JsonStringDataImplCopyWithImpl(_$JsonStringDataImpl _value, $Res Function(_$JsonStringDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? jsonString = null,
+  }) {
+    return _then(_$JsonStringDataImpl(
+      null == jsonString
+          ? _value.jsonString
+          : jsonString // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$JsonStringDataImpl extends JsonStringData {
+  const _$JsonStringDataImpl(this.jsonString, {final String? $type})
+      : $type = $type ?? 'jsonString',
+        super._();
+
+  factory _$JsonStringDataImpl.fromJson(Map<String, dynamic> json) => _$$JsonStringDataImplFromJson(json);
+
+  @override
+  final String jsonString;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'DartTypeModel.jsonString(jsonString: $jsonString)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$JsonStringDataImpl &&
+            (identical(other.jsonString, jsonString) || other.jsonString == jsonString));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, jsonString);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JsonStringDataImplCopyWith<_$JsonStringDataImpl> get copyWith =>
+      __$$JsonStringDataImplCopyWithImpl<_$JsonStringDataImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String value) string,
+    required TResult Function(num value) num,
+    required TResult Function(bool value) bool,
+    required TResult Function(List<dynamic> value) list,
+    required TResult Function(Map<String, dynamic> value) json,
+    required TResult Function(dynamic value) dynamic,
+    required TResult Function() nil,
+    required TResult Function(String jsonString) jsonString,
+  }) {
+    return jsonString(this.jsonString);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? string,
+    TResult? Function(num value)? num,
+    TResult? Function(bool value)? bool,
+    TResult? Function(List<dynamic> value)? list,
+    TResult? Function(Map<String, dynamic> value)? json,
+    TResult? Function(dynamic value)? dynamic,
+    TResult? Function()? nil,
+    TResult? Function(String jsonString)? jsonString,
+  }) {
+    return jsonString?.call(this.jsonString);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? string,
+    TResult Function(num value)? num,
+    TResult Function(bool value)? bool,
+    TResult Function(List<dynamic> value)? list,
+    TResult Function(Map<String, dynamic> value)? json,
+    TResult Function(dynamic value)? dynamic,
+    TResult Function()? nil,
+    TResult Function(String jsonString)? jsonString,
+    required TResult orElse(),
+  }) {
+    if (jsonString != null) {
+      return jsonString(this.jsonString);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StringData value) string,
+    required TResult Function(NumData value) num,
+    required TResult Function(BoolData value) bool,
+    required TResult Function(ListData value) list,
+    required TResult Function(JsonData value) json,
+    required TResult Function(DynamicData value) dynamic,
+    required TResult Function(NullData value) nil,
+    required TResult Function(JsonStringData value) jsonString,
+  }) {
+    return jsonString(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StringData value)? string,
+    TResult? Function(NumData value)? num,
+    TResult? Function(BoolData value)? bool,
+    TResult? Function(ListData value)? list,
+    TResult? Function(JsonData value)? json,
+    TResult? Function(DynamicData value)? dynamic,
+    TResult? Function(NullData value)? nil,
+    TResult? Function(JsonStringData value)? jsonString,
+  }) {
+    return jsonString?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StringData value)? string,
+    TResult Function(NumData value)? num,
+    TResult Function(BoolData value)? bool,
+    TResult Function(ListData value)? list,
+    TResult Function(JsonData value)? json,
+    TResult Function(DynamicData value)? dynamic,
+    TResult Function(NullData value)? nil,
+    TResult Function(JsonStringData value)? jsonString,
+    required TResult orElse(),
+  }) {
+    if (jsonString != null) {
+      return jsonString(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$JsonStringDataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class JsonStringData extends DartTypeModel {
+  const factory JsonStringData(final String jsonString) = _$JsonStringDataImpl;
+  const JsonStringData._() : super._();
+
+  factory JsonStringData.fromJson(Map<String, dynamic> json) = _$JsonStringDataImpl.fromJson;
+
+  String get jsonString;
+  @JsonKey(ignore: true)
+  _$$JsonStringDataImplCopyWith<_$JsonStringDataImpl> get copyWith => throw _privateConstructorUsedError;
 }

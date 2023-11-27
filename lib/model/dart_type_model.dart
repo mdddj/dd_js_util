@@ -1,32 +1,51 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'dart_type_model.g.dart';
-
 part 'dart_type_model.freezed.dart';
+part 'dart_type_model.g.dart';
 
 extension DartTypeModelDynEx on dynamic {
   DartTypeModel get dartModel => DartTypeModel.createFrom(this);
+}
+
+extension JsonStringDataEx on JsonStringData {
+  ///获取 json
+  Map<String, dynamic>? tryGetMap({ValueChanged<Map<String, dynamic>>? run}) {
+    if (jsonString.isEmpty) {
+      return null;
+    }
+    try {
+      final mapData = jsonDecode(jsonString);
+      if (map is Map<String, dynamic>) {
+        run?.call(mapData);
+        return mapData;
+      }
+    } catch (_) {}
+    return null;
+  }
 }
 
 @freezed
 class DartTypeModel with _$DartTypeModel {
   const DartTypeModel._();
 
-  factory DartTypeModel.string(String value) = StringData;
+  const factory DartTypeModel.string(String value) = StringData;
 
-  factory DartTypeModel.num(num value) = NumData;
+  const factory DartTypeModel.num(num value) = NumData;
 
-  factory DartTypeModel.bool(bool value) = BoolData;
+  const factory DartTypeModel.bool(bool value) = BoolData;
 
-  factory DartTypeModel.list(List<dynamic> value) = ListData;
+  const factory DartTypeModel.list(List<dynamic> value) = ListData;
 
-  factory DartTypeModel.json(Map<String, dynamic> value) = JsonData;
+  const factory DartTypeModel.json(Map<String, dynamic> value) = JsonData;
 
-  factory DartTypeModel.dynamic(dynamic value) = DynamicData;
+  const factory DartTypeModel.dynamic(dynamic value) = DynamicData;
 
   const factory DartTypeModel.nil() = NullData;
+
+  const factory DartTypeModel.jsonString(String jsonString) = JsonStringData;
 
   factory DartTypeModel.fromJson(Map<String, dynamic> json) => _$DartTypeModelFromJson(json);
 

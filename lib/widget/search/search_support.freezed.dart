@@ -167,8 +167,7 @@ class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
             other is _$SearchSupportParamsImpl<T> &&
             (identical(other.autoShow, autoShow) || other.autoShow == autoShow) &&
             (identical(other.controller, controller) || other.controller == controller) &&
-            (identical(other.childBuilder, childBuilder) ||
-                other.childBuilder == childBuilder) &&
+            (identical(other.childBuilder, childBuilder) || other.childBuilder == childBuilder) &&
             (identical(other.listening, listening) ||
                 other.listening == listening));
   }

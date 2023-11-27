@@ -45,6 +45,7 @@ import 'model/base_api_exception.dart';
 import 'model/dart_type_model.dart';
 import 'model/my_image.dart';
 import 'model/my_platform.dart';
+import 'model/picture_selection_i18n_config.dart';
 import 'model/picture_selection_item.dart';
 import 'theme/model.dart';
 import 'widget/ask_ok_dialog.dart';
@@ -52,9 +53,7 @@ import 'widget/search/search_support.dart';
 import 'widget/search/search_support_manager.dart';
 
 part './api/base.dart';
-
 part './api/util.dart';
-
 ///组件模块
 part './common/circle.dart';
 part './common/edit_page.dart';
@@ -103,23 +102,15 @@ part './widget/search_support.dart';
 part './widget/simple_textfield_wrapper.dart';
 part './widget/switch_anim_show.dart';
 part './widget/time.dart';
-
 part 'api/loading.dart';
-
 part 'ext/file.dart';
-
 part 'ext/function.dart';
 part 'theme/index.dart';
-
 part 'theme/theme_setting.dart';
-
 part 'util/always_scrollable_clamping_scroll_physics.dart';
-
-part 'widget/build_widget.dart';
-
-part 'widget/lazy_stack_widget.dart';
-
 part 'util/platforms.dart';
+part 'widget/build_widget.dart';
+part 'widget/lazy_stack_widget.dart';
 
 typedef MyHiveBox<T> = Box<T>;
 
