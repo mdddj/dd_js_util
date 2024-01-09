@@ -5,12 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../dd_js_util.dart';
 import '../model/app_local_setting_model.dart';
 
-
-
-
-
 const ddJsUtilAppSettingHiveKey = 'ddjsutil-app-local-setting';
-
 
 class AppThemeUtil {
   AppThemeUtil._();
@@ -36,12 +31,14 @@ class AppThemeUtil {
   }
 
   ///前往切换主题页面
-  Future<void> toThemeSettingPage(BuildContext context, {CustomBuildThemeItems? builder, PreferredSizeWidget? appbar}) async {
+  Future<void> toThemeSettingPage(BuildContext context,
+      {CustomBuildThemeItems? builder, PreferredSizeWidget? appbar}) async {
     await context.navToWidget(to: ThemeSettingPage(builder: builder, appbar: appbar));
   }
 
   Future<void> changeThemeMode(ThemeMode themeModel) async {
-    await AppSettingCache().saveAndUpdate((oldValue) => oldValue?.copyWith(themeModel: themeModel.getThemeModeIndex),AppSettingCache().themeKey,const AppLocalSettingModel());
+    await AppSettingCache().saveAndUpdate((oldValue) => oldValue?.copyWith(themeModel: themeModel.getThemeModeIndex),
+        AppSettingCache().themeKey, const AppLocalSettingModel());
   }
 }
 
@@ -54,37 +51,40 @@ class AppSettingCache extends CacheBase<AppLocalSettingModel> {
 
   factory AppSettingCache() => _instance;
 
-  Future<AppLocalSettingModel> get localSetting async => (await getValue(themeKey, defaultValue: const AppLocalSettingModel()))!;
+  Future<AppLocalSettingModel> get localSetting async =>
+      (await getValue(themeKey, defaultValue: const AppLocalSettingModel()))!;
 
   Future<void> changeTheme(int index) async {
     final setting = await localSetting;
-    final newSetting =  setting.copyWith(themeIndex: index);
+    final newSetting = setting.copyWith(themeIndex: index);
     await setValue(themeKey, newSetting);
   }
 
   @override
   String get boxName => ddJsUtilAppSettingHiveKey;
 }
+
 typedef BuildTheme = ThemeData Function(ThemeData defaultTheme);
 
 class MyAppTheme {
   ///默认主题
-  static ThemeData getTheme(int index, {FlexSubThemesData? subThemesData,BuildTheme? buildDefaultTheme}) {
+  static ThemeData getTheme(int index, {FlexSubThemesData? subThemesData, BuildTheme? buildDefaultTheme}) {
     final defaultTheme = FlexThemeData.light();
-    return buildDefaultTheme?.call(defaultTheme) ??  FlexThemeData.light(
-        scheme: CustomAppThemeData.values[index].flexScheme,
-        surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
-        blendLevel: 20,
-        appBarOpacity: 1,
-        visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,
-        subThemesData: subThemesData);
+    return buildDefaultTheme?.call(defaultTheme) ??
+        FlexThemeData.light(
+            scheme: CustomAppThemeData.values[index].flexScheme,
+            surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
+            blendLevel: 20,
+            appBarOpacity: 1,
+            visualDensity: FlexColorScheme.comfortablePlatformDensity,
+            useMaterial3: true,
+            subThemesData: subThemesData);
   }
 
   ///暗夜主题
-  static ThemeData get darkTheme {
+  static ThemeData getDarkTheme({FlexScheme? scheme}) {
     return FlexThemeData.dark(
-        scheme: FlexScheme.sakura,
+        scheme: scheme ?? FlexScheme.sakura,
         surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
         blendLevel: 15,
         appBarOpacity: 1,
@@ -140,7 +140,8 @@ enum CustomAppThemeData {
   verdunHemlock('矿物绿', FlexScheme.verdunHemlock),
   flutterDash('Dash吉祥物主题', FlexScheme.flutterDash),
   materialBaseline('默认主题升级版', FlexScheme.materialBaseline),
-  dellGenoa('戴尔绿', FlexScheme.dellGenoa);
+  dellGenoa('戴尔绿', FlexScheme.dellGenoa),
+  myPink("自定义", FlexScheme.custom);
 
   const CustomAppThemeData(this.title, this.flexScheme);
 

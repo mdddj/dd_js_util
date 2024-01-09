@@ -2,7 +2,6 @@ part of '../dd_js_util.dart';
 
 typedef HiveUpdateModel<E> = E Function(E? oldValue);
 
-
 class HiveUtil {
   HiveUtil._();
 
@@ -107,4 +106,31 @@ class CatchException implements Exception {
   String toString() {
     return "异常:$msg";
   }
+}
+
+abstract class HiveConsumerWidget<S> extends StatelessWidget {
+  const HiveConsumerWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<Box<S>>(
+      future: AsyncMemoizer<Box<S>>().runOnce(() => box),
+      builder: (context, snapshot) {
+        final openedBox = snapshot.data;
+        if (openedBox != null) {
+          return ValueListenableBuilder<Box<S>>(
+            valueListenable: openedBox.listenable(),
+            builder: builder,
+          );
+        }
+        return errorWidget;
+      },
+    );
+  }
+
+  Future<Box<S>> get box;
+
+  Widget builder(BuildContext context, Box<S> hiveBox, Widget? child);
+
+  Widget get errorWidget => const SizedBox.shrink();
 }

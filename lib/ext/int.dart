@@ -5,19 +5,10 @@ part of '../dd_js_util.dart';
 // import '../util/int.dart';
 
 extension DoubleExt on double {
-  Widget get h => SizedBox(height: this);
 
-  Widget get w => SizedBox(width: this);
-
-  BorderSide borderSide({Color? color}) => color != null
-      ? BorderSide(width: this, color: color)
-      : BorderSide(width: this);
 }
 
 extension IntExt on int {
-  Widget get h => SizedBox(height: toDouble());
-
-  Widget get w => SizedBox(width: toDouble());
 
   Duration get sec => Duration(seconds: this);
 
@@ -96,14 +87,7 @@ class Gap {
 
   static Widget get defaultH => const SizedBox(width: 12);
 
-  SizedBox w(double v, [bool show = true]) =>
-      show ? SizedBox(width: v) : const SizedBox();
 
-  SizedBox h(double v, [bool show = true]) => show
-      ? SizedBox(
-          height: v,
-        )
-      : const SizedBox();
 }
 
 Widget get k24Height => const SizedBox(

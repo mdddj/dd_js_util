@@ -71,7 +71,6 @@ mixin BasePagedApiMixin on BaseApi {
 }
 
 abstract class BaseApi<T> {
-  Lock lock = Lock(reentrant: true);
   bool showLog = false;
   String _host = '';
   dio.BaseOptions options =
@@ -110,22 +109,19 @@ abstract class BaseApi<T> {
       var uri = (options.urlParseFormat ?? (v, p) => v).call(finalUrl, queryParameters);
       final bodyData = httpMethod == HttpMethod.get ? null : bodyParams;
       printLog("body--$bodyData");
-      final response = await lock.synchronized<dio.Response>(() async {
-        final r = await d.request(uri,
-            options: dio.Options(
-              method: httpMethod.method,
-              contentType: contentTypeString,
-              headers: options.headers,
-              responseType: options.responseType,
-              requestEncoder: options.requestEncoder,
-            ),
-            queryParameters: httpMethod == HttpMethod.get ? queryParameters : null,
-            data: bodyData,
-            onReceiveProgress: options.onReceiveProgress,
-            onSendProgress: options.onSendCallback,
-            cancelToken: options.cancelToken);
-        return r;
-      });
+      final response = await d.request(uri,
+          options: dio.Options(
+            method: httpMethod.method,
+            contentType: contentTypeString,
+            headers: options.headers,
+            responseType: options.responseType,
+            requestEncoder: options.requestEncoder,
+          ),
+          queryParameters: httpMethod == HttpMethod.get ? queryParameters : null,
+          data: bodyData,
+          onReceiveProgress: options.onReceiveProgress,
+          onSendProgress: options.onSendCallback,
+          cancelToken: options.cancelToken);
       options.responseResultCallback?.call(response);
       if (options.showDefaultLoading) {
         closeLoading();
@@ -181,6 +177,20 @@ abstract class BaseApi<T> {
   String getMediaType(String filename) => lookupMimeType(filename) ?? '';
 }
 
+///请求参数去重
+String removeDuplicateParams(String url) {
+  Uri uri = Uri.parse(url);
+  Map<String, List<String>> queryParams = uri.queryParametersAll;
+
+  Map<String, List<String>> uniqueParams = {};
+  queryParams.forEach((key, value) {
+    uniqueParams[key] = value.toSet().toList();
+  });
+
+  Uri updatedUri = uri.replace(queryParameters: uniqueParams);
+  return updatedUri.toString();
+}
+
 typedef CallIf = bool Function();
 
 /// 主动显示的注解
@@ -188,4 +198,31 @@ class Doc {
   final String message;
 
   const Doc({required this.message});
+}
+
+///加载原始数据
+class FetchRawByUrl extends BaseApi<DartTypeModel> {
+  final String requestUrl;
+
+  FetchRawByUrl(this.requestUrl) : super(requestUrl);
+
+  @override
+  DartTypeModel covertToModel(DartTypeModel data, RequestParams param) {
+    return data;
+  }
+
+  @override
+  Future<DartTypeModel> request([RequestParams options = const RequestParams()]) {
+    return super.request(RequestParams(
+        showDefaultLoading: false, urlParseFormat: (uri, queryParameters) => requestUrl, isFullUrl: true));
+  }
+}
+
+String myPrintFormattedJson(dynamic jsonObject, {bool doPrint = true}) {
+  var encoder = const JsonEncoder.withIndent('  '); // 两个空格用于缩进
+  String prettyPrint = encoder.convert(jsonObject);
+  if (doPrint) {
+    debugPrint(prettyPrint);
+  }
+  return prettyPrint;
 }

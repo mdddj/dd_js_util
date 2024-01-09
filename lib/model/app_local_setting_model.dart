@@ -48,7 +48,8 @@ class AppLocalSettingModel with _$AppLocalSettingModel {
 
   const factory AppLocalSettingModel(
       {@HiveField(0, defaultValue: 0) @Default(0) int themeIndex,
-      @HiveField(1, defaultValue: 0) @Default(0) int themeModel}) = _AppLocalSettingModel;
+    @HiveField(1, defaultValue: 0) @Default(0) int themeModel,
+  }) = _AppLocalSettingModel;
 
   factory AppLocalSettingModel.fromJson(Map<String, dynamic> json) => _$AppLocalSettingModelFromJson(json);
 }

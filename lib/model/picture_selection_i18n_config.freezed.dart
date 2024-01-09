@@ -22,11 +22,9 @@ PictureSelectionI18nConfig _$PictureSelectionI18nConfigFromJson(Map<String, dyna
 mixin _$PictureSelectionI18nConfig {
   @JsonKey(name: 'photoAlbumMenuText')
   String get photoAlbumMenuText => throw _privateConstructorUsedError;
-
   String get goShootText => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PictureSelectionI18nConfigCopyWith<PictureSelectionI18nConfig> get copyWith => throw _privateConstructorUsedError;
 }
@@ -36,7 +34,6 @@ abstract class $PictureSelectionI18nConfigCopyWith<$Res> {
   factory $PictureSelectionI18nConfigCopyWith(
           PictureSelectionI18nConfig value, $Res Function(PictureSelectionI18nConfig) then) =
       _$PictureSelectionI18nConfigCopyWithImpl<$Res, PictureSelectionI18nConfig>;
-
   @useResult
   $Res call({@JsonKey(name: 'photoAlbumMenuText') String photoAlbumMenuText, String goShootText});
 }
@@ -48,7 +45,6 @@ class _$PictureSelectionI18nConfigCopyWithImpl<$Res, $Val extends PictureSelecti
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -73,10 +69,9 @@ class _$PictureSelectionI18nConfigCopyWithImpl<$Res, $Val extends PictureSelecti
 
 /// @nodoc
 abstract class _$$PictureSelectionI18nConfigImplCopyWith<$Res> implements $PictureSelectionI18nConfigCopyWith<$Res> {
-  factory _$$PictureSelectionI18nConfigImplCopyWith(
-          _$PictureSelectionI18nConfigImpl value, $Res Function(_$PictureSelectionI18nConfigImpl) then) =
+  factory _$$PictureSelectionI18nConfigImplCopyWith(_$PictureSelectionI18nConfigImpl value,
+      $Res Function(_$PictureSelectionI18nConfigImpl) then) =
       __$$PictureSelectionI18nConfigImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({@JsonKey(name: 'photoAlbumMenuText') String photoAlbumMenuText, String goShootText});
@@ -86,8 +81,8 @@ abstract class _$$PictureSelectionI18nConfigImplCopyWith<$Res> implements $Pictu
 class __$$PictureSelectionI18nConfigImplCopyWithImpl<$Res>
     extends _$PictureSelectionI18nConfigCopyWithImpl<$Res, _$PictureSelectionI18nConfigImpl>
     implements _$$PictureSelectionI18nConfigImplCopyWith<$Res> {
-  __$$PictureSelectionI18nConfigImplCopyWithImpl(
-      _$PictureSelectionI18nConfigImpl _value, $Res Function(_$PictureSelectionI18nConfigImpl) _then)
+  __$$PictureSelectionI18nConfigImplCopyWithImpl(_$PictureSelectionI18nConfigImpl _value,
+      $Res Function(_$PictureSelectionI18nConfigImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,8 +107,8 @@ class __$$PictureSelectionI18nConfigImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PictureSelectionI18nConfigImpl extends _PictureSelectionI18nConfig {
-  const _$PictureSelectionI18nConfigImpl(
-      {@JsonKey(name: 'photoAlbumMenuText') this.photoAlbumMenuText = '相册', this.goShootText = '去拍摄'})
+  const _$PictureSelectionI18nConfigImpl({@JsonKey(name: 'photoAlbumMenuText') this.photoAlbumMenuText = '相册',
+    this.goShootText = '去拍摄'})
       : super._();
 
   factory _$PictureSelectionI18nConfigImpl.fromJson(Map<String, dynamic> json) =>
@@ -132,7 +127,7 @@ class _$PictureSelectionI18nConfigImpl extends _PictureSelectionI18nConfig {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PictureSelectionI18nConfigImpl &&
@@ -163,7 +158,6 @@ abstract class _PictureSelectionI18nConfig extends PictureSelectionI18nConfig {
   const factory _PictureSelectionI18nConfig(
       {@JsonKey(name: 'photoAlbumMenuText') final String photoAlbumMenuText,
       final String goShootText}) = _$PictureSelectionI18nConfigImpl;
-
   const _PictureSelectionI18nConfig._() : super._();
 
   factory _PictureSelectionI18nConfig.fromJson(Map<String, dynamic> json) = _$PictureSelectionI18nConfigImpl.fromJson;
@@ -171,10 +165,8 @@ abstract class _PictureSelectionI18nConfig extends PictureSelectionI18nConfig {
   @override
   @JsonKey(name: 'photoAlbumMenuText')
   String get photoAlbumMenuText;
-
   @override
   String get goShootText;
-
   @override
   @JsonKey(ignore: true)
   _$$PictureSelectionI18nConfigImplCopyWith<_$PictureSelectionI18nConfigImpl> get copyWith =>

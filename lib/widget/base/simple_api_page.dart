@@ -98,8 +98,10 @@ mixin MyBasePage<T extends BaseApi, S, W extends StatefulWidget, R> on State<W> 
             exception!.msg,
             style: context.kTextTheme.bodyLarge?.copyWith(color: context.colorScheme.error),
           ).center.marginOnly(top: 20).click(refresh),
-          Gap().h(20),
-          OutlinedButton(onPressed: refresh, child: const Text("刷新试试"))
+              const SizedBox(
+                height: 20,
+              ),
+              OutlinedButton(onPressed: refresh, child: const Text("刷新试试"))
         ],
       );
     }

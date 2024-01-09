@@ -47,6 +47,34 @@ extension MapExt on Map<String, dynamic> {
 
 }
 
+///递归处理函数
+Map<String, dynamic> deepCastMap(Map<Object?, Object?> original) {
+  final Map<String, dynamic> result = {};
+  original.forEach((key, value) {
+    if (value is Map<Object?, Object?>) {
+      // 如果值是 Map 类型，递归调用 deepCastMap 函数。
+      result['$key'] = deepCastMap(value);
+    } else {
+      // 否则，直接将值添加到结果 Map 中。
+      result['$key'] = value;
+    }
+  });
+  return result;
+}
+
+///freezed工具
+class FreezedTool {
+  static double? toDouble(dynamic v) => v is double ? v : (double.tryParse('$v'));
+
+  static String toStringValue(dynamic v) => v is String ? v : '$v';
+}
+
+extension ObjectObjectExt on Map<Object?, Object?> {
+  Map<String, dynamic> get asToDynamicMap {
+    return deepCastMap(this);
+  }
+}
+
 class WrapJson {
   final Map<String, dynamic> data;
   Map<String,dynamic> extMap = {};

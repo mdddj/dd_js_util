@@ -182,7 +182,7 @@ class _$StringDataImpl extends StringData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StringDataImpl &&
@@ -364,7 +364,7 @@ class _$NumDataImpl extends NumData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NumDataImpl &&
@@ -545,7 +545,7 @@ class _$BoolDataImpl extends BoolData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BoolDataImpl &&
@@ -720,7 +720,7 @@ class _$ListDataImpl extends ListData {
   @override
   List<dynamic> get value {
     if (_value is EqualUnmodifiableListView) return _value;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_value);
   }
 
@@ -733,7 +733,7 @@ class _$ListDataImpl extends ListData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ListDataImpl &&
@@ -908,7 +908,7 @@ class _$JsonDataImpl extends JsonData {
   @override
   Map<String, dynamic> get value {
     if (_value is EqualUnmodifiableMapView) return _value;
-// ignore: implicit_dynamic_type
+    // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_value);
   }
 
@@ -921,7 +921,7 @@ class _$JsonDataImpl extends JsonData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$JsonDataImpl &&
@@ -1104,7 +1104,7 @@ class _$DynamicDataImpl extends DynamicData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DynamicDataImpl &&
@@ -1268,7 +1268,7 @@ class _$NullDataImpl extends NullData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$NullDataImpl);
   }
 
@@ -1438,7 +1438,7 @@ class _$JsonStringDataImpl extends JsonStringData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$JsonStringDataImpl &&

@@ -88,7 +88,6 @@ abstract class _$$SearchSupportParamsImplCopyWith<T, $Res> implements $SearchSup
   factory _$$SearchSupportParamsImplCopyWith(
           _$SearchSupportParamsImpl<T> value, $Res Function(_$SearchSupportParamsImpl<T>) then) =
       __$$SearchSupportParamsImplCopyWithImpl<T, $Res>;
-
   @override
   @useResult
   $Res call(
@@ -144,11 +143,9 @@ class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
   @override
   @JsonKey()
   final bool autoShow;
-
 //搜索控制器
   @override
   final RefreshController<T>? controller;
-
 //展示组件的容器,需要固定高度
   @override
   final SearchSupportCoreUiBuild childBuilder;
@@ -161,7 +158,7 @@ class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SearchSupportParamsImpl<T> &&
@@ -184,11 +181,11 @@ class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
 }
 
 abstract class _SearchSupportParams<T> implements SearchSupportParams<T> {
-  const factory _SearchSupportParams(
-      {final bool autoShow,
-      final RefreshController<T>? controller,
-      required final SearchSupportCoreUiBuild childBuilder,
-      final SearchSupportActionListening? listening}) = _$SearchSupportParamsImpl<T>;
+  const factory _SearchSupportParams({final bool autoShow,
+    final RefreshController<T>? controller,
+    required final SearchSupportCoreUiBuild childBuilder,
+    final SearchSupportActionListening? listening}) =
+  _$SearchSupportParamsImpl<T>;
 
   @override
 
@@ -198,10 +195,8 @@ abstract class _SearchSupportParams<T> implements SearchSupportParams<T> {
   RefreshController<T>? get controller;
   @override //展示组件的容器,需要固定高度
   SearchSupportCoreUiBuild get childBuilder;
-
   @override
   SearchSupportActionListening? get listening;
-
   @override
   @JsonKey(ignore: true)
   _$$SearchSupportParamsImplCopyWith<T, _$SearchSupportParamsImpl<T>> get copyWith =>

@@ -116,7 +116,7 @@ class _$XXFileImpl extends XXFile {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$XXFileImpl &&
@@ -244,7 +244,7 @@ class _$XXImageImpl extends XXImage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$XXImageImpl && (identical(other.url, url) || other.url == url));
   }

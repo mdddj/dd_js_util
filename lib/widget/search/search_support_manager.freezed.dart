@@ -77,7 +77,6 @@ abstract class _$$SearchSupportManagerImplCopyWith<$Res> implements $SearchSuppo
   factory _$$SearchSupportManagerImplCopyWith(
           _$SearchSupportManagerImpl value, $Res Function(_$SearchSupportManagerImpl) then) =
       __$$SearchSupportManagerImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({BuildContext context, StateSetter floatStateSetter, State<StatefulWidget> floatState});
@@ -133,7 +132,7 @@ class _$SearchSupportManagerImpl implements _SearchSupportManager {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SearchSupportManagerImpl &&
@@ -156,19 +155,17 @@ class _$SearchSupportManagerImpl implements _SearchSupportManager {
 }
 
 abstract class _SearchSupportManager implements SearchSupportManager {
-  const factory _SearchSupportManager(
-      {required final BuildContext context,
-      required final StateSetter floatStateSetter,
-      required final State<StatefulWidget> floatState}) = _$SearchSupportManagerImpl;
+  const factory _SearchSupportManager({required final BuildContext context,
+    required final StateSetter floatStateSetter,
+    required final State<StatefulWidget> floatState}) =
+  _$SearchSupportManagerImpl;
 
   @override
   BuildContext get context;
   @override
   StateSetter get floatStateSetter;
-
   @override
   State<StatefulWidget> get floatState;
-
   @override
   @JsonKey(ignore: true)
   _$$SearchSupportManagerImplCopyWith<_$SearchSupportManagerImpl> get copyWith => throw _privateConstructorUsedError;

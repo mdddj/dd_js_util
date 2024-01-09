@@ -15,18 +15,6 @@ extension WidgetExt on Widget {
     return ScrollConfiguration(behavior: NoShadowScrollBehavior(), child: this);
   }
 
-  Widget padding(double v) {
-    return Padding(
-      padding: EdgeInsets.all(v),
-      child: this,
-    );
-  }
-
-  Widget get defaultPadding8 => padding(8);
-
-  Widget get defaultPadding12 => padding(12);
-
-  Widget margin(double v) => Container(margin: EdgeInsets.all(v), child: this);
 
   Widget marginOnly({double left = 0.0, double right = 0.0, double top = 0.0, double bottom = 0.0}) => Container(
         margin: EdgeInsets.only(top: top, right: right, bottom: bottom, left: left),

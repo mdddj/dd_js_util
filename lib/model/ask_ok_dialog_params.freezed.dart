@@ -114,7 +114,6 @@ class _$AskOkDialogParamsCopyWithImpl<$Res, $Val extends AskOkDialogParams>
 abstract class _$$AskOkDialogParamsImplCopyWith<$Res> implements $AskOkDialogParamsCopyWith<$Res> {
   factory _$$AskOkDialogParamsImplCopyWith(_$AskOkDialogParamsImpl value, $Res Function(_$AskOkDialogParamsImpl) then) =
       __$$AskOkDialogParamsImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -207,7 +206,7 @@ class _$AskOkDialogParamsImpl implements _AskOkDialogParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AskOkDialogParamsImpl &&
@@ -239,33 +238,34 @@ class _$AskOkDialogParamsImpl implements _AskOkDialogParams {
 }
 
 abstract class _AskOkDialogParams implements AskOkDialogParams {
-  const factory _AskOkDialogParams(
-          {final String contentText,
-          final String okText,
-          final String cancelText,
-          @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false) final Widget? content,
-          @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false) final Widget? title}) =
-      _$AskOkDialogParamsImpl;
+  const factory _AskOkDialogParams({final String contentText,
+    final String okText,
+    final String cancelText,
+    @JsonKey(
+        toJson: null,
+        fromJson: null,
+        includeToJson: false,
+        includeFromJson: false) final Widget? content,
+    @JsonKey(
+        toJson: null,
+        fromJson: null,
+        includeToJson: false,
+        includeFromJson: false) final Widget? title}) = _$AskOkDialogParamsImpl;
 
   factory _AskOkDialogParams.fromJson(Map<String, dynamic> json) = _$AskOkDialogParamsImpl.fromJson;
 
   @override
   String get contentText;
-
   @override
   String get okText;
-
   @override
   String get cancelText;
-
   @override
   @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
   Widget? get content;
-
   @override
   @JsonKey(toJson: null, fromJson: null, includeToJson: false, includeFromJson: false)
   Widget? get title;
-
   @override
   @JsonKey(ignore: true)
   _$$AskOkDialogParamsImplCopyWith<_$AskOkDialogParamsImpl> get copyWith => throw _privateConstructorUsedError;

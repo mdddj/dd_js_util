@@ -6,6 +6,7 @@ import 'dart:io' as io;
 import 'dart:math' as math;
 import 'dart:math';
 
+import 'package:async/async.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart' as dio;
@@ -35,9 +36,7 @@ import 'package:mime/mime.dart';
 import 'package:path/path.dart' as path;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:saver_gallery/saver_gallery.dart';
-import 'package:synchronized/synchronized.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-
 import 'api/request_params.dart';
 import 'model/app_local_setting_model.dart';
 import 'model/ask_ok_dialog_params.dart';
@@ -52,7 +51,6 @@ import 'widget/ask_ok_dialog.dart';
 import 'widget/search/search_support.dart';
 import 'widget/search/search_support_manager.dart';
 
-part './api/base.dart';
 part './api/util.dart';
 ///组件模块
 part './common/circle.dart';
@@ -102,15 +100,21 @@ part './widget/search_support.dart';
 part './widget/simple_textfield_wrapper.dart';
 part './widget/switch_anim_show.dart';
 part './widget/time.dart';
+
+part 'api/base.dart';
 part 'api/loading.dart';
 part 'ext/file.dart';
 part 'ext/function.dart';
 part 'theme/index.dart';
 part 'theme/theme_setting.dart';
 part 'util/always_scrollable_clamping_scroll_physics.dart';
+
+part 'util/image.dart';
 part 'util/platforms.dart';
 part 'widget/build_widget.dart';
 part 'widget/lazy_stack_widget.dart';
+
+part 'widget/right_popup_menu.dart';
 
 typedef MyHiveBox<T> = Box<T>;
 

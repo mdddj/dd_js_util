@@ -55,7 +55,16 @@ class DartTypeModel with _$DartTypeModel {
     }
     var model = DartTypeModel.dynamic(data);
     if (data is String) {
-      model = DartTypeModel.string(data);
+      try {
+        final dec = jsonDecode(data);
+        if (dec is Map<String, dynamic>) {
+          model = DartTypeModel.fromJson(dec);
+        } else if (dec is List) {
+          model = DartTypeModel.list(dec);
+        }
+      } catch (e) {
+        model = DartTypeModel.string(data);
+      }
     } else if (data is Map<String, dynamic>) {
       model = DartTypeModel.json(data);
     } else if (data is List<dynamic>) {

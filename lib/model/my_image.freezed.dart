@@ -37,6 +37,59 @@ mixin _$ImageParams {
   @igFreezedJson
   VoidCallback? get onTap => throw _privateConstructorUsedError;
 
+  @igFreezedJson
+  Color? get color => throw _privateConstructorUsedError;
+
+  bool get clearMemoryCacheIfFailed => throw _privateConstructorUsedError;
+
+  bool get gaplessPlayback => throw _privateConstructorUsedError;
+
+  @igFreezedJson
+  BlendMode? get colorBlendMode => throw _privateConstructorUsedError; //---net
+  double? get scale => throw _privateConstructorUsedError;
+
+  Map<String, String> get headers => throw _privateConstructorUsedError;
+
+  bool get cache => throw _privateConstructorUsedError;
+
+  int get retries => throw _privateConstructorUsedError;
+
+  @igFreezedJson
+  Duration? get timeLimit => throw _privateConstructorUsedError;
+
+  @igFreezedJson
+  Duration get timeRetry => throw _privateConstructorUsedError;
+
+  @igFreezedJson
+  CancellationToken? get cancelToken => throw _privateConstructorUsedError;
+
+  String? get cacheKey => throw _privateConstructorUsedError;
+
+  bool get printError => throw _privateConstructorUsedError;
+
+  bool get cacheRawData => throw _privateConstructorUsedError;
+
+  String? get imageCacheName => throw _privateConstructorUsedError;
+
+  @igFreezedJson
+  Duration? get cacheMaxAge => throw _privateConstructorUsedError;
+
+  int? get cacheWidth => throw _privateConstructorUsedError;
+
+  int? get cacheHeight => throw _privateConstructorUsedError;
+
+  double? get compressionRatio => throw _privateConstructorUsedError;
+
+  int? get maxBytes => throw _privateConstructorUsedError; //--- net end
+  String? get package => throw _privateConstructorUsedError;
+
+  @igFreezedJson
+  AssetBundle? get bundle => throw _privateConstructorUsedError;
+
+  @Doc(message: '自定义完成小部件')
+  @igFreezedJson
+  CustomCompletedWidget? get customCompletedWidget => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ImageParamsCopyWith<ImageParams> get copyWith => throw _privateConstructorUsedError;
@@ -59,7 +112,30 @@ abstract class $ImageParamsCopyWith<$Res> {
       String? heroTag,
       bool isSelected,
       @igFreezedJson Widget? errorWidget,
-      @igFreezedJson VoidCallback? onTap});
+      @igFreezedJson VoidCallback? onTap,
+      @igFreezedJson Color? color,
+      bool clearMemoryCacheIfFailed,
+      bool gaplessPlayback,
+      @igFreezedJson BlendMode? colorBlendMode,
+      double? scale,
+      Map<String, String> headers,
+      bool cache,
+      int retries,
+      @igFreezedJson Duration? timeLimit,
+      @igFreezedJson Duration timeRetry,
+      @igFreezedJson CancellationToken? cancelToken,
+      String? cacheKey,
+      bool printError,
+      bool cacheRawData,
+      String? imageCacheName,
+      @igFreezedJson Duration? cacheMaxAge,
+      int? cacheWidth,
+      int? cacheHeight,
+      double? compressionRatio,
+      int? maxBytes,
+      String? package,
+      @igFreezedJson AssetBundle? bundle,
+      @Doc(message: '自定义完成小部件') @igFreezedJson CustomCompletedWidget? customCompletedWidget});
 }
 
 /// @nodoc
@@ -86,6 +162,29 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
     Object? isSelected = null,
     Object? errorWidget = freezed,
     Object? onTap = freezed,
+    Object? color = freezed,
+    Object? clearMemoryCacheIfFailed = null,
+    Object? gaplessPlayback = null,
+    Object? colorBlendMode = freezed,
+    Object? scale = freezed,
+    Object? headers = null,
+    Object? cache = null,
+    Object? retries = null,
+    Object? timeLimit = freezed,
+    Object? timeRetry = null,
+    Object? cancelToken = freezed,
+    Object? cacheKey = freezed,
+    Object? printError = null,
+    Object? cacheRawData = null,
+    Object? imageCacheName = freezed,
+    Object? cacheMaxAge = freezed,
+    Object? cacheWidth = freezed,
+    Object? cacheHeight = freezed,
+    Object? compressionRatio = freezed,
+    Object? maxBytes = freezed,
+    Object? package = freezed,
+    Object? bundle = freezed,
+    Object? customCompletedWidget = freezed,
   }) {
     return _then(_value.copyWith(
       width: freezed == width
@@ -132,6 +231,98 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
           ? _value.onTap
           : onTap // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      clearMemoryCacheIfFailed: null == clearMemoryCacheIfFailed
+          ? _value.clearMemoryCacheIfFailed
+          : clearMemoryCacheIfFailed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      gaplessPlayback: null == gaplessPlayback
+          ? _value.gaplessPlayback
+          : gaplessPlayback // ignore: cast_nullable_to_non_nullable
+              as bool,
+      colorBlendMode: freezed == colorBlendMode
+          ? _value.colorBlendMode
+          : colorBlendMode // ignore: cast_nullable_to_non_nullable
+              as BlendMode?,
+      scale: freezed == scale
+          ? _value.scale
+          : scale // ignore: cast_nullable_to_non_nullable
+              as double?,
+      headers: null == headers
+          ? _value.headers
+          : headers // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+      cache: null == cache
+          ? _value.cache
+          : cache // ignore: cast_nullable_to_non_nullable
+              as bool,
+      retries: null == retries
+          ? _value.retries
+          : retries // ignore: cast_nullable_to_non_nullable
+              as int,
+      timeLimit: freezed == timeLimit
+          ? _value.timeLimit
+          : timeLimit // ignore: cast_nullable_to_non_nullable
+              as Duration?,
+      timeRetry: null == timeRetry
+          ? _value.timeRetry
+          : timeRetry // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      cancelToken: freezed == cancelToken
+          ? _value.cancelToken
+          : cancelToken // ignore: cast_nullable_to_non_nullable
+              as CancellationToken?,
+      cacheKey: freezed == cacheKey
+          ? _value.cacheKey
+          : cacheKey // ignore: cast_nullable_to_non_nullable
+              as String?,
+      printError: null == printError
+          ? _value.printError
+          : printError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      cacheRawData: null == cacheRawData
+          ? _value.cacheRawData
+          : cacheRawData // ignore: cast_nullable_to_non_nullable
+              as bool,
+      imageCacheName: freezed == imageCacheName
+          ? _value.imageCacheName
+          : imageCacheName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cacheMaxAge: freezed == cacheMaxAge
+          ? _value.cacheMaxAge
+          : cacheMaxAge // ignore: cast_nullable_to_non_nullable
+              as Duration?,
+      cacheWidth: freezed == cacheWidth
+          ? _value.cacheWidth
+          : cacheWidth // ignore: cast_nullable_to_non_nullable
+              as int?,
+      cacheHeight: freezed == cacheHeight
+          ? _value.cacheHeight
+          : cacheHeight // ignore: cast_nullable_to_non_nullable
+              as int?,
+      compressionRatio: freezed == compressionRatio
+          ? _value.compressionRatio
+          : compressionRatio // ignore: cast_nullable_to_non_nullable
+              as double?,
+      maxBytes: freezed == maxBytes
+          ? _value.maxBytes
+          : maxBytes // ignore: cast_nullable_to_non_nullable
+              as int?,
+      package: freezed == package
+          ? _value.package
+          : package // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bundle: freezed == bundle
+          ? _value.bundle
+          : bundle // ignore: cast_nullable_to_non_nullable
+              as AssetBundle?,
+      customCompletedWidget: freezed == customCompletedWidget
+          ? _value.customCompletedWidget
+          : customCompletedWidget // ignore: cast_nullable_to_non_nullable
+              as CustomCompletedWidget?,
     ) as $Val);
   }
 }
@@ -140,7 +331,6 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
 abstract class _$$ImageParamsImplCopyWith<$Res> implements $ImageParamsCopyWith<$Res> {
   factory _$$ImageParamsImplCopyWith(_$ImageParamsImpl value, $Res Function(_$ImageParamsImpl) then) =
       __$$ImageParamsImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -154,7 +344,30 @@ abstract class _$$ImageParamsImplCopyWith<$Res> implements $ImageParamsCopyWith<
       String? heroTag,
       bool isSelected,
       @igFreezedJson Widget? errorWidget,
-      @igFreezedJson VoidCallback? onTap});
+      @igFreezedJson VoidCallback? onTap,
+      @igFreezedJson Color? color,
+      bool clearMemoryCacheIfFailed,
+      bool gaplessPlayback,
+      @igFreezedJson BlendMode? colorBlendMode,
+      double? scale,
+      Map<String, String> headers,
+      bool cache,
+      int retries,
+      @igFreezedJson Duration? timeLimit,
+      @igFreezedJson Duration timeRetry,
+      @igFreezedJson CancellationToken? cancelToken,
+      String? cacheKey,
+      bool printError,
+      bool cacheRawData,
+      String? imageCacheName,
+      @igFreezedJson Duration? cacheMaxAge,
+      int? cacheWidth,
+      int? cacheHeight,
+      double? compressionRatio,
+      int? maxBytes,
+      String? package,
+      @igFreezedJson AssetBundle? bundle,
+      @Doc(message: '自定义完成小部件') @igFreezedJson CustomCompletedWidget? customCompletedWidget});
 }
 
 /// @nodoc
@@ -177,6 +390,29 @@ class __$$ImageParamsImplCopyWithImpl<$Res> extends _$ImageParamsCopyWithImpl<$R
     Object? isSelected = null,
     Object? errorWidget = freezed,
     Object? onTap = freezed,
+    Object? color = freezed,
+    Object? clearMemoryCacheIfFailed = null,
+    Object? gaplessPlayback = null,
+    Object? colorBlendMode = freezed,
+    Object? scale = freezed,
+    Object? headers = null,
+    Object? cache = null,
+    Object? retries = null,
+    Object? timeLimit = freezed,
+    Object? timeRetry = null,
+    Object? cancelToken = freezed,
+    Object? cacheKey = freezed,
+    Object? printError = null,
+    Object? cacheRawData = null,
+    Object? imageCacheName = freezed,
+    Object? cacheMaxAge = freezed,
+    Object? cacheWidth = freezed,
+    Object? cacheHeight = freezed,
+    Object? compressionRatio = freezed,
+    Object? maxBytes = freezed,
+    Object? package = freezed,
+    Object? bundle = freezed,
+    Object? customCompletedWidget = freezed,
   }) {
     return _then(_$ImageParamsImpl(
       width: freezed == width
@@ -223,6 +459,98 @@ class __$$ImageParamsImplCopyWithImpl<$Res> extends _$ImageParamsCopyWithImpl<$R
           ? _value.onTap
           : onTap // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
+      color: freezed == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      clearMemoryCacheIfFailed: null == clearMemoryCacheIfFailed
+          ? _value.clearMemoryCacheIfFailed
+          : clearMemoryCacheIfFailed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      gaplessPlayback: null == gaplessPlayback
+          ? _value.gaplessPlayback
+          : gaplessPlayback // ignore: cast_nullable_to_non_nullable
+              as bool,
+      colorBlendMode: freezed == colorBlendMode
+          ? _value.colorBlendMode
+          : colorBlendMode // ignore: cast_nullable_to_non_nullable
+              as BlendMode?,
+      scale: freezed == scale
+          ? _value.scale
+          : scale // ignore: cast_nullable_to_non_nullable
+              as double?,
+      headers: null == headers
+          ? _value._headers
+          : headers // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
+      cache: null == cache
+          ? _value.cache
+          : cache // ignore: cast_nullable_to_non_nullable
+              as bool,
+      retries: null == retries
+          ? _value.retries
+          : retries // ignore: cast_nullable_to_non_nullable
+              as int,
+      timeLimit: freezed == timeLimit
+          ? _value.timeLimit
+          : timeLimit // ignore: cast_nullable_to_non_nullable
+              as Duration?,
+      timeRetry: null == timeRetry
+          ? _value.timeRetry
+          : timeRetry // ignore: cast_nullable_to_non_nullable
+              as Duration,
+      cancelToken: freezed == cancelToken
+          ? _value.cancelToken
+          : cancelToken // ignore: cast_nullable_to_non_nullable
+              as CancellationToken?,
+      cacheKey: freezed == cacheKey
+          ? _value.cacheKey
+          : cacheKey // ignore: cast_nullable_to_non_nullable
+              as String?,
+      printError: null == printError
+          ? _value.printError
+          : printError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      cacheRawData: null == cacheRawData
+          ? _value.cacheRawData
+          : cacheRawData // ignore: cast_nullable_to_non_nullable
+              as bool,
+      imageCacheName: freezed == imageCacheName
+          ? _value.imageCacheName
+          : imageCacheName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cacheMaxAge: freezed == cacheMaxAge
+          ? _value.cacheMaxAge
+          : cacheMaxAge // ignore: cast_nullable_to_non_nullable
+              as Duration?,
+      cacheWidth: freezed == cacheWidth
+          ? _value.cacheWidth
+          : cacheWidth // ignore: cast_nullable_to_non_nullable
+              as int?,
+      cacheHeight: freezed == cacheHeight
+          ? _value.cacheHeight
+          : cacheHeight // ignore: cast_nullable_to_non_nullable
+              as int?,
+      compressionRatio: freezed == compressionRatio
+          ? _value.compressionRatio
+          : compressionRatio // ignore: cast_nullable_to_non_nullable
+              as double?,
+      maxBytes: freezed == maxBytes
+          ? _value.maxBytes
+          : maxBytes // ignore: cast_nullable_to_non_nullable
+              as int?,
+      package: freezed == package
+          ? _value.package
+          : package // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bundle: freezed == bundle
+          ? _value.bundle
+          : bundle // ignore: cast_nullable_to_non_nullable
+              as AssetBundle?,
+      customCompletedWidget: freezed == customCompletedWidget
+          ? _value.customCompletedWidget
+          : customCompletedWidget // ignore: cast_nullable_to_non_nullable
+              as CustomCompletedWidget?,
     ));
   }
 }
@@ -241,8 +569,32 @@ class _$ImageParamsImpl extends _ImageParams {
       this.heroTag,
       this.isSelected = false,
       @igFreezedJson this.errorWidget,
-      @igFreezedJson this.onTap})
-      : super._();
+      @igFreezedJson this.onTap,
+      @igFreezedJson this.color,
+      this.clearMemoryCacheIfFailed = true,
+      this.gaplessPlayback = true,
+      @igFreezedJson this.colorBlendMode,
+      this.scale,
+      final Map<String, String> headers = const {},
+      this.cache = true,
+      this.retries = 3,
+      @igFreezedJson this.timeLimit,
+      @igFreezedJson this.timeRetry = const Duration(seconds: 3),
+      @igFreezedJson this.cancelToken,
+      this.cacheKey,
+      this.printError = false,
+      this.cacheRawData = true,
+      this.imageCacheName,
+      @igFreezedJson this.cacheMaxAge,
+      this.cacheWidth,
+      this.cacheHeight,
+      this.compressionRatio,
+      this.maxBytes,
+      this.package,
+      @igFreezedJson this.bundle,
+      @Doc(message: '自定义完成小部件') @igFreezedJson this.customCompletedWidget})
+      : _headers = headers,
+        super._();
 
   factory _$ImageParamsImpl.fromJson(Map<String, dynamic> json) => _$$ImageParamsImplFromJson(json);
 
@@ -275,14 +627,87 @@ class _$ImageParamsImpl extends _ImageParams {
   @override
   @igFreezedJson
   final VoidCallback? onTap;
+  @override
+  @igFreezedJson
+  final Color? color;
+  @override
+  @JsonKey()
+  final bool clearMemoryCacheIfFailed;
+  @override
+  @JsonKey()
+  final bool gaplessPlayback;
+  @override
+  @igFreezedJson
+  final BlendMode? colorBlendMode;
+
+//---net
+  @override
+  final double? scale;
+  final Map<String, String> _headers;
 
   @override
-  String toString() {
-    return 'ImageParams(width: $width, height: $height, size: $size, fit: $fit, borderRadius: $borderRadius, shape: $shape, enableMemoryCache: $enableMemoryCache, heroTag: $heroTag, isSelected: $isSelected, errorWidget: $errorWidget, onTap: $onTap)';
+  @JsonKey()
+  Map<String, String> get headers {
+    if (_headers is EqualUnmodifiableMapView) return _headers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_headers);
   }
 
   @override
-  bool operator ==(dynamic other) {
+  @JsonKey()
+  final bool cache;
+  @override
+  @JsonKey()
+  final int retries;
+  @override
+  @igFreezedJson
+  final Duration? timeLimit;
+  @override
+  @igFreezedJson
+  final Duration timeRetry;
+  @override
+  @igFreezedJson
+  final CancellationToken? cancelToken;
+  @override
+  final String? cacheKey;
+  @override
+  @JsonKey()
+  final bool printError;
+  @override
+  @JsonKey()
+  final bool cacheRawData;
+  @override
+  final String? imageCacheName;
+  @override
+  @igFreezedJson
+  final Duration? cacheMaxAge;
+  @override
+  final int? cacheWidth;
+  @override
+  final int? cacheHeight;
+  @override
+  final double? compressionRatio;
+  @override
+  final int? maxBytes;
+
+//--- net end
+  @override
+  final String? package;
+  @override
+  @igFreezedJson
+  final AssetBundle? bundle;
+  @override
+  @Doc(message: '自定义完成小部件')
+  @igFreezedJson
+  final CustomCompletedWidget? customCompletedWidget;
+
+  @override
+  String toString() {
+    return 'ImageParams(width: $width, height: $height, size: $size, fit: $fit, borderRadius: $borderRadius, shape: $shape, enableMemoryCache: $enableMemoryCache, heroTag: $heroTag, isSelected: $isSelected, errorWidget: $errorWidget, onTap: $onTap, color: $color, clearMemoryCacheIfFailed: $clearMemoryCacheIfFailed, gaplessPlayback: $gaplessPlayback, colorBlendMode: $colorBlendMode, scale: $scale, headers: $headers, cache: $cache, retries: $retries, timeLimit: $timeLimit, timeRetry: $timeRetry, cancelToken: $cancelToken, cacheKey: $cacheKey, printError: $printError, cacheRawData: $cacheRawData, imageCacheName: $imageCacheName, cacheMaxAge: $cacheMaxAge, cacheWidth: $cacheWidth, cacheHeight: $cacheHeight, compressionRatio: $compressionRatio, maxBytes: $maxBytes, package: $package, bundle: $bundle, customCompletedWidget: $customCompletedWidget)';
+  }
+
+  @override
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImageParamsImpl &&
@@ -296,13 +721,73 @@ class _$ImageParamsImpl extends _ImageParams {
             (identical(other.heroTag, heroTag) || other.heroTag == heroTag) &&
             (identical(other.isSelected, isSelected) || other.isSelected == isSelected) &&
             (identical(other.errorWidget, errorWidget) || other.errorWidget == errorWidget) &&
-            (identical(other.onTap, onTap) || other.onTap == onTap));
+            (identical(other.onTap, onTap) || other.onTap == onTap) &&
+            (identical(other.color, color) || other.color == color) &&
+            (identical(other.clearMemoryCacheIfFailed, clearMemoryCacheIfFailed) ||
+                other.clearMemoryCacheIfFailed == clearMemoryCacheIfFailed) &&
+            (identical(other.gaplessPlayback, gaplessPlayback) || other.gaplessPlayback == gaplessPlayback) &&
+            (identical(other.colorBlendMode, colorBlendMode) || other.colorBlendMode == colorBlendMode) &&
+            (identical(other.scale, scale) || other.scale == scale) &&
+            const DeepCollectionEquality().equals(other._headers, _headers) &&
+            (identical(other.cache, cache) || other.cache == cache) &&
+            (identical(other.retries, retries) || other.retries == retries) &&
+            (identical(other.timeLimit, timeLimit) || other.timeLimit == timeLimit) &&
+            (identical(other.timeRetry, timeRetry) || other.timeRetry == timeRetry) &&
+            (identical(other.cancelToken, cancelToken) || other.cancelToken == cancelToken) &&
+            (identical(other.cacheKey, cacheKey) || other.cacheKey == cacheKey) &&
+            (identical(other.printError, printError) || other.printError == printError) &&
+            (identical(other.cacheRawData, cacheRawData) || other.cacheRawData == cacheRawData) &&
+            (identical(other.imageCacheName, imageCacheName) || other.imageCacheName == imageCacheName) &&
+            (identical(other.cacheMaxAge, cacheMaxAge) || other.cacheMaxAge == cacheMaxAge) &&
+            (identical(other.cacheWidth, cacheWidth) || other.cacheWidth == cacheWidth) &&
+            (identical(other.cacheHeight, cacheHeight) || other.cacheHeight == cacheHeight) &&
+            (identical(other.compressionRatio, compressionRatio) || other.compressionRatio == compressionRatio) &&
+            (identical(other.maxBytes, maxBytes) || other.maxBytes == maxBytes) &&
+            (identical(other.package, package) || other.package == package) &&
+            (identical(other.bundle, bundle) || other.bundle == bundle) &&
+            (identical(other.customCompletedWidget, customCompletedWidget) ||
+                other.customCompletedWidget == customCompletedWidget));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, width, height, size, fit, borderRadius, shape, enableMemoryCache,
-      heroTag, isSelected, errorWidget, onTap);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        width,
+        height,
+        size,
+        fit,
+        borderRadius,
+        shape,
+        enableMemoryCache,
+        heroTag,
+        isSelected,
+        errorWidget,
+        onTap,
+        color,
+        clearMemoryCacheIfFailed,
+        gaplessPlayback,
+        colorBlendMode,
+        scale,
+        const DeepCollectionEquality().hash(_headers),
+        cache,
+        retries,
+        timeLimit,
+        timeRetry,
+        cancelToken,
+        cacheKey,
+        printError,
+        cacheRawData,
+        imageCacheName,
+        cacheMaxAge,
+        cacheWidth,
+        cacheHeight,
+        compressionRatio,
+        maxBytes,
+        package,
+        bundle,
+        customCompletedWidget
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -330,21 +815,40 @@ abstract class _ImageParams extends ImageParams {
       final String? heroTag,
       final bool isSelected,
       @igFreezedJson final Widget? errorWidget,
-      @igFreezedJson final VoidCallback? onTap}) = _$ImageParamsImpl;
-
+      @igFreezedJson final VoidCallback? onTap,
+      @igFreezedJson final Color? color,
+      final bool clearMemoryCacheIfFailed,
+      final bool gaplessPlayback,
+      @igFreezedJson final BlendMode? colorBlendMode,
+      final double? scale,
+      final Map<String, String> headers,
+      final bool cache,
+      final int retries,
+      @igFreezedJson final Duration? timeLimit,
+      @igFreezedJson final Duration timeRetry,
+      @igFreezedJson final CancellationToken? cancelToken,
+      final String? cacheKey,
+      final bool printError,
+      final bool cacheRawData,
+      final String? imageCacheName,
+      @igFreezedJson final Duration? cacheMaxAge,
+      final int? cacheWidth,
+      final int? cacheHeight,
+      final double? compressionRatio,
+      final int? maxBytes,
+      final String? package,
+      @igFreezedJson final AssetBundle? bundle,
+      @Doc(message: '自定义完成小部件') @igFreezedJson final CustomCompletedWidget? customCompletedWidget}) = _$ImageParamsImpl;
   const _ImageParams._() : super._();
 
   factory _ImageParams.fromJson(Map<String, dynamic> json) = _$ImageParamsImpl.fromJson;
 
   @override
   double? get width;
-
   @override
   double? get height;
-
   @override
   double? get size;
-
   @override
   @igFreezedJson
   BoxFit? get fit;
@@ -363,11 +867,87 @@ abstract class _ImageParams extends ImageParams {
   @override
   @igFreezedJson
   Widget? get errorWidget;
-
   @override
   @igFreezedJson
   VoidCallback? get onTap;
 
+  @override
+  @igFreezedJson
+  Color? get color;
+
+  @override
+  bool get clearMemoryCacheIfFailed;
+
+  @override
+  bool get gaplessPlayback;
+
+  @override
+  @igFreezedJson
+  BlendMode? get colorBlendMode;
+
+  @override //---net
+  double? get scale;
+
+  @override
+  Map<String, String> get headers;
+
+  @override
+  bool get cache;
+
+  @override
+  int get retries;
+
+  @override
+  @igFreezedJson
+  Duration? get timeLimit;
+
+  @override
+  @igFreezedJson
+  Duration get timeRetry;
+
+  @override
+  @igFreezedJson
+  CancellationToken? get cancelToken;
+
+  @override
+  String? get cacheKey;
+
+  @override
+  bool get printError;
+
+  @override
+  bool get cacheRawData;
+
+  @override
+  String? get imageCacheName;
+
+  @override
+  @igFreezedJson
+  Duration? get cacheMaxAge;
+
+  @override
+  int? get cacheWidth;
+
+  @override
+  int? get cacheHeight;
+
+  @override
+  double? get compressionRatio;
+
+  @override
+  int? get maxBytes;
+
+  @override //--- net end
+  String? get package;
+
+  @override
+  @igFreezedJson
+  AssetBundle? get bundle;
+
+  @override
+  @Doc(message: '自定义完成小部件')
+  @igFreezedJson
+  CustomCompletedWidget? get customCompletedWidget;
   @override
   @JsonKey(ignore: true)
   _$$ImageParamsImplCopyWith<_$ImageParamsImpl> get copyWith => throw _privateConstructorUsedError;
@@ -381,6 +961,8 @@ MyImage _$MyImageFromJson(Map<String, dynamic> json) {
       return MyBase64Image.fromJson(json);
     case 'filePath':
       return MyFilePathImage.fromJson(json);
+    case 'asset':
+      return MyAssetImage.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'MyImage',
@@ -396,6 +978,7 @@ mixin _$MyImage {
     required TResult Function(String url, ImageParams params) network,
     required TResult Function(String base64Code, ImageParams params) base64,
     required TResult Function(String filePath, ImageParams params) filePath,
+    required TResult Function(String assetPath, ImageParams params) asset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -403,6 +986,7 @@ mixin _$MyImage {
     TResult? Function(String url, ImageParams params)? network,
     TResult? Function(String base64Code, ImageParams params)? base64,
     TResult? Function(String filePath, ImageParams params)? filePath,
+    TResult? Function(String assetPath, ImageParams params)? asset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -410,6 +994,7 @@ mixin _$MyImage {
     TResult Function(String url, ImageParams params)? network,
     TResult Function(String base64Code, ImageParams params)? base64,
     TResult Function(String filePath, ImageParams params)? filePath,
+    TResult Function(String assetPath, ImageParams params)? asset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -418,6 +1003,7 @@ mixin _$MyImage {
     required TResult Function(MyNetworkImage value) network,
     required TResult Function(MyBase64Image value) base64,
     required TResult Function(MyFilePathImage value) filePath,
+    required TResult Function(MyAssetImage value) asset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -425,6 +1011,7 @@ mixin _$MyImage {
     TResult? Function(MyNetworkImage value)? network,
     TResult? Function(MyBase64Image value)? base64,
     TResult? Function(MyFilePathImage value)? filePath,
+    TResult? Function(MyAssetImage value)? asset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -432,6 +1019,7 @@ mixin _$MyImage {
     TResult Function(MyNetworkImage value)? network,
     TResult Function(MyBase64Image value)? base64,
     TResult Function(MyFilePathImage value)? filePath,
+    TResult Function(MyAssetImage value)? asset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -543,7 +1131,7 @@ class _$MyNetworkImageImpl extends MyNetworkImage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MyNetworkImageImpl &&
@@ -567,6 +1155,7 @@ class _$MyNetworkImageImpl extends MyNetworkImage {
     required TResult Function(String url, ImageParams params) network,
     required TResult Function(String base64Code, ImageParams params) base64,
     required TResult Function(String filePath, ImageParams params) filePath,
+    required TResult Function(String assetPath, ImageParams params) asset,
   }) {
     return network(url, params);
   }
@@ -577,6 +1166,7 @@ class _$MyNetworkImageImpl extends MyNetworkImage {
     TResult? Function(String url, ImageParams params)? network,
     TResult? Function(String base64Code, ImageParams params)? base64,
     TResult? Function(String filePath, ImageParams params)? filePath,
+    TResult? Function(String assetPath, ImageParams params)? asset,
   }) {
     return network?.call(url, params);
   }
@@ -587,6 +1177,7 @@ class _$MyNetworkImageImpl extends MyNetworkImage {
     TResult Function(String url, ImageParams params)? network,
     TResult Function(String base64Code, ImageParams params)? base64,
     TResult Function(String filePath, ImageParams params)? filePath,
+    TResult Function(String assetPath, ImageParams params)? asset,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -601,6 +1192,7 @@ class _$MyNetworkImageImpl extends MyNetworkImage {
     required TResult Function(MyNetworkImage value) network,
     required TResult Function(MyBase64Image value) base64,
     required TResult Function(MyFilePathImage value) filePath,
+    required TResult Function(MyAssetImage value) asset,
   }) {
     return network(this);
   }
@@ -611,6 +1203,7 @@ class _$MyNetworkImageImpl extends MyNetworkImage {
     TResult? Function(MyNetworkImage value)? network,
     TResult? Function(MyBase64Image value)? base64,
     TResult? Function(MyFilePathImage value)? filePath,
+    TResult? Function(MyAssetImage value)? asset,
   }) {
     return network?.call(this);
   }
@@ -621,6 +1214,7 @@ class _$MyNetworkImageImpl extends MyNetworkImage {
     TResult Function(MyNetworkImage value)? network,
     TResult Function(MyBase64Image value)? base64,
     TResult Function(MyFilePathImage value)? filePath,
+    TResult Function(MyAssetImage value)? asset,
     required TResult orElse(),
   }) {
     if (network != null) {
@@ -712,7 +1306,7 @@ class _$MyBase64ImageImpl extends MyBase64Image {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MyBase64ImageImpl &&
@@ -736,6 +1330,7 @@ class _$MyBase64ImageImpl extends MyBase64Image {
     required TResult Function(String url, ImageParams params) network,
     required TResult Function(String base64Code, ImageParams params) base64,
     required TResult Function(String filePath, ImageParams params) filePath,
+    required TResult Function(String assetPath, ImageParams params) asset,
   }) {
     return base64(base64Code, params);
   }
@@ -746,6 +1341,7 @@ class _$MyBase64ImageImpl extends MyBase64Image {
     TResult? Function(String url, ImageParams params)? network,
     TResult? Function(String base64Code, ImageParams params)? base64,
     TResult? Function(String filePath, ImageParams params)? filePath,
+    TResult? Function(String assetPath, ImageParams params)? asset,
   }) {
     return base64?.call(base64Code, params);
   }
@@ -756,6 +1352,7 @@ class _$MyBase64ImageImpl extends MyBase64Image {
     TResult Function(String url, ImageParams params)? network,
     TResult Function(String base64Code, ImageParams params)? base64,
     TResult Function(String filePath, ImageParams params)? filePath,
+    TResult Function(String assetPath, ImageParams params)? asset,
     required TResult orElse(),
   }) {
     if (base64 != null) {
@@ -770,6 +1367,7 @@ class _$MyBase64ImageImpl extends MyBase64Image {
     required TResult Function(MyNetworkImage value) network,
     required TResult Function(MyBase64Image value) base64,
     required TResult Function(MyFilePathImage value) filePath,
+    required TResult Function(MyAssetImage value) asset,
   }) {
     return base64(this);
   }
@@ -780,6 +1378,7 @@ class _$MyBase64ImageImpl extends MyBase64Image {
     TResult? Function(MyNetworkImage value)? network,
     TResult? Function(MyBase64Image value)? base64,
     TResult? Function(MyFilePathImage value)? filePath,
+    TResult? Function(MyAssetImage value)? asset,
   }) {
     return base64?.call(this);
   }
@@ -790,6 +1389,7 @@ class _$MyBase64ImageImpl extends MyBase64Image {
     TResult Function(MyNetworkImage value)? network,
     TResult Function(MyBase64Image value)? base64,
     TResult Function(MyFilePathImage value)? filePath,
+    TResult Function(MyAssetImage value)? asset,
     required TResult orElse(),
   }) {
     if (base64 != null) {
@@ -881,7 +1481,7 @@ class _$MyFilePathImageImpl extends MyFilePathImage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MyFilePathImageImpl &&
@@ -905,6 +1505,7 @@ class _$MyFilePathImageImpl extends MyFilePathImage {
     required TResult Function(String url, ImageParams params) network,
     required TResult Function(String base64Code, ImageParams params) base64,
     required TResult Function(String filePath, ImageParams params) filePath,
+    required TResult Function(String assetPath, ImageParams params) asset,
   }) {
     return filePath(this.filePath, params);
   }
@@ -915,6 +1516,7 @@ class _$MyFilePathImageImpl extends MyFilePathImage {
     TResult? Function(String url, ImageParams params)? network,
     TResult? Function(String base64Code, ImageParams params)? base64,
     TResult? Function(String filePath, ImageParams params)? filePath,
+    TResult? Function(String assetPath, ImageParams params)? asset,
   }) {
     return filePath?.call(this.filePath, params);
   }
@@ -925,6 +1527,7 @@ class _$MyFilePathImageImpl extends MyFilePathImage {
     TResult Function(String url, ImageParams params)? network,
     TResult Function(String base64Code, ImageParams params)? base64,
     TResult Function(String filePath, ImageParams params)? filePath,
+    TResult Function(String assetPath, ImageParams params)? asset,
     required TResult orElse(),
   }) {
     if (filePath != null) {
@@ -939,6 +1542,7 @@ class _$MyFilePathImageImpl extends MyFilePathImage {
     required TResult Function(MyNetworkImage value) network,
     required TResult Function(MyBase64Image value) base64,
     required TResult Function(MyFilePathImage value) filePath,
+    required TResult Function(MyAssetImage value) asset,
   }) {
     return filePath(this);
   }
@@ -949,6 +1553,7 @@ class _$MyFilePathImageImpl extends MyFilePathImage {
     TResult? Function(MyNetworkImage value)? network,
     TResult? Function(MyBase64Image value)? base64,
     TResult? Function(MyFilePathImage value)? filePath,
+    TResult? Function(MyAssetImage value)? asset,
   }) {
     return filePath?.call(this);
   }
@@ -959,6 +1564,7 @@ class _$MyFilePathImageImpl extends MyFilePathImage {
     TResult Function(MyNetworkImage value)? network,
     TResult Function(MyBase64Image value)? base64,
     TResult Function(MyFilePathImage value)? filePath,
+    TResult Function(MyAssetImage value)? asset,
     required TResult orElse(),
   }) {
     if (filePath != null) {
@@ -987,4 +1593,179 @@ abstract class MyFilePathImage extends MyImage {
   @override
   @JsonKey(ignore: true)
   _$$MyFilePathImageImplCopyWith<_$MyFilePathImageImpl> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MyAssetImageImplCopyWith<$Res> implements $MyImageCopyWith<$Res> {
+  factory _$$MyAssetImageImplCopyWith(_$MyAssetImageImpl value, $Res Function(_$MyAssetImageImpl) then) =
+      __$$MyAssetImageImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String assetPath, ImageParams params});
+
+  @override
+  $ImageParamsCopyWith<$Res> get params;
+}
+
+/// @nodoc
+class __$$MyAssetImageImplCopyWithImpl<$Res> extends _$MyImageCopyWithImpl<$Res, _$MyAssetImageImpl>
+    implements _$$MyAssetImageImplCopyWith<$Res> {
+  __$$MyAssetImageImplCopyWithImpl(_$MyAssetImageImpl _value, $Res Function(_$MyAssetImageImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? assetPath = null,
+    Object? params = null,
+  }) {
+    return _then(_$MyAssetImageImpl(
+      assetPath: null == assetPath
+          ? _value.assetPath
+          : assetPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      params: null == params
+          ? _value.params
+          : params // ignore: cast_nullable_to_non_nullable
+              as ImageParams,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$MyAssetImageImpl extends MyAssetImage {
+  _$MyAssetImageImpl({required this.assetPath, this.params = const ImageParams(), final String? $type})
+      : $type = $type ?? 'asset',
+        super._();
+
+  factory _$MyAssetImageImpl.fromJson(Map<String, dynamic> json) => _$$MyAssetImageImplFromJson(json);
+
+  @override
+  final String assetPath;
+  @override
+  @JsonKey()
+  final ImageParams params;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'MyImage.asset(assetPath: $assetPath, params: $params)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MyAssetImageImpl &&
+            (identical(other.assetPath, assetPath) || other.assetPath == assetPath) &&
+            (identical(other.params, params) || other.params == params));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, assetPath, params);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MyAssetImageImplCopyWith<_$MyAssetImageImpl> get copyWith =>
+      __$$MyAssetImageImplCopyWithImpl<_$MyAssetImageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String url, ImageParams params) network,
+    required TResult Function(String base64Code, ImageParams params) base64,
+    required TResult Function(String filePath, ImageParams params) filePath,
+    required TResult Function(String assetPath, ImageParams params) asset,
+  }) {
+    return asset(assetPath, params);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String url, ImageParams params)? network,
+    TResult? Function(String base64Code, ImageParams params)? base64,
+    TResult? Function(String filePath, ImageParams params)? filePath,
+    TResult? Function(String assetPath, ImageParams params)? asset,
+  }) {
+    return asset?.call(assetPath, params);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String url, ImageParams params)? network,
+    TResult Function(String base64Code, ImageParams params)? base64,
+    TResult Function(String filePath, ImageParams params)? filePath,
+    TResult Function(String assetPath, ImageParams params)? asset,
+    required TResult orElse(),
+  }) {
+    if (asset != null) {
+      return asset(assetPath, params);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MyNetworkImage value) network,
+    required TResult Function(MyBase64Image value) base64,
+    required TResult Function(MyFilePathImage value) filePath,
+    required TResult Function(MyAssetImage value) asset,
+  }) {
+    return asset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MyNetworkImage value)? network,
+    TResult? Function(MyBase64Image value)? base64,
+    TResult? Function(MyFilePathImage value)? filePath,
+    TResult? Function(MyAssetImage value)? asset,
+  }) {
+    return asset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MyNetworkImage value)? network,
+    TResult Function(MyBase64Image value)? base64,
+    TResult Function(MyFilePathImage value)? filePath,
+    TResult Function(MyAssetImage value)? asset,
+    required TResult orElse(),
+  }) {
+    if (asset != null) {
+      return asset(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MyAssetImageImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class MyAssetImage extends MyImage {
+  factory MyAssetImage({required final String assetPath, final ImageParams params}) = _$MyAssetImageImpl;
+  MyAssetImage._() : super._();
+
+  factory MyAssetImage.fromJson(Map<String, dynamic> json) = _$MyAssetImageImpl.fromJson;
+
+  String get assetPath;
+  @override
+  ImageParams get params;
+  @override
+  @JsonKey(ignore: true)
+  _$$MyAssetImageImplCopyWith<_$MyAssetImageImpl> get copyWith => throw _privateConstructorUsedError;
 }

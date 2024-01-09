@@ -69,8 +69,11 @@ mixin _$BaseApiException {
     TResult? Function()? receiveTimeout,
     TResult? Function()? badCertificate,
     TResult? Function()? connectionError,
-    TResult? Function(
-            @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
+    TResult? Function(@JsonKey(
+        fromJson: null,
+        toJson: null,
+        includeFromJson: false,
+        includeToJson: false)
             Response<dynamic>? response,
             int? statusCode)?
         badResponse,
@@ -195,7 +198,7 @@ class _$BaseApiCancelExceptionImpl extends BaseApiCancelException {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$BaseApiCancelExceptionImpl);
   }
 
@@ -377,7 +380,7 @@ class _$BaseApiConnectionTimeoutExceptionImpl extends BaseApiConnectionTimeoutEx
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$BaseApiConnectionTimeoutExceptionImpl);
   }
@@ -561,7 +564,7 @@ class _$BaseApiSendTimeoutExceptionImpl extends BaseApiSendTimeoutException {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$BaseApiSendTimeoutExceptionImpl);
   }
 
@@ -743,7 +746,7 @@ class _$BaseApiReceiveTimeoutExceptionImpl extends BaseApiReceiveTimeoutExceptio
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$BaseApiReceiveTimeoutExceptionImpl);
   }
@@ -927,7 +930,7 @@ class _$BaseApiBadCertificateExceptionImpl extends BaseApiBadCertificateExceptio
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$BaseApiBadCertificateExceptionImpl);
   }
@@ -1111,7 +1114,7 @@ class _$BaseApiConnectionErrorExceptionImpl extends BaseApiConnectionErrorExcept
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$BaseApiConnectionErrorExceptionImpl);
   }
@@ -1326,7 +1329,7 @@ class _$BaseApiBadResponseExceptionImpl extends BaseApiBadResponseException {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BaseApiBadResponseExceptionImpl &&
@@ -1485,7 +1488,11 @@ abstract class BaseApiBadResponseException extends BaseApiException {
 
   factory BaseApiBadResponseException.fromJson(Map<String, dynamic> json) = _$BaseApiBadResponseExceptionImpl.fromJson;
 
-  @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
+  @JsonKey(
+fromJson: null,
+toJson: null,
+includeFromJson: false,
+includeToJson: false)
   Response<dynamic>? get response;
   int? get statusCode;
   @JsonKey(ignore: true)
@@ -1566,7 +1573,7 @@ class _$BaseApiBusinessExceptionImpl extends BaseApiBusinessException {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BaseApiBusinessExceptionImpl &&

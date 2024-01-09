@@ -77,7 +77,6 @@ abstract class _$$AppLocalSettingModelImplCopyWith<$Res> implements $AppLocalSet
   factory _$$AppLocalSettingModelImplCopyWith(
           _$AppLocalSettingModelImpl value, $Res Function(_$AppLocalSettingModelImpl) then) =
       __$$AppLocalSettingModelImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({@HiveField(0, defaultValue: 0) int themeIndex, @HiveField(1, defaultValue: 0) int themeModel});
@@ -113,8 +112,8 @@ class __$$AppLocalSettingModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AppLocalSettingModelImpl extends _AppLocalSettingModel {
-  const _$AppLocalSettingModelImpl(
-      {@HiveField(0, defaultValue: 0) this.themeIndex = 0, @HiveField(1, defaultValue: 0) this.themeModel = 0})
+  const _$AppLocalSettingModelImpl({@HiveField(0, defaultValue: 0) this.themeIndex = 0,
+    @HiveField(1, defaultValue: 0) this.themeModel = 0})
       : super._();
 
   factory _$AppLocalSettingModelImpl.fromJson(Map<String, dynamic> json) => _$$AppLocalSettingModelImplFromJson(json);
@@ -134,7 +133,7 @@ class _$AppLocalSettingModelImpl extends _AppLocalSettingModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppLocalSettingModelImpl &&
@@ -161,10 +160,9 @@ class _$AppLocalSettingModelImpl extends _AppLocalSettingModel {
 }
 
 abstract class _AppLocalSettingModel extends AppLocalSettingModel {
-  const factory _AppLocalSettingModel(
-      {@HiveField(0, defaultValue: 0) final int themeIndex,
-      @HiveField(1, defaultValue: 0) final int themeModel}) = _$AppLocalSettingModelImpl;
-
+  const factory _AppLocalSettingModel({@HiveField(0, defaultValue: 0) final int themeIndex,
+    @HiveField(1, defaultValue: 0) final int themeModel}) =
+  _$AppLocalSettingModelImpl;
   const _AppLocalSettingModel._() : super._();
 
   factory _AppLocalSettingModel.fromJson(Map<String, dynamic> json) = _$AppLocalSettingModelImpl.fromJson;
@@ -172,11 +170,9 @@ abstract class _AppLocalSettingModel extends AppLocalSettingModel {
   @override
   @HiveField(0, defaultValue: 0)
   int get themeIndex;
-
   @override
   @HiveField(1, defaultValue: 0)
   int get themeModel;
-
   @override
   @JsonKey(ignore: true)
   _$$AppLocalSettingModelImplCopyWith<_$AppLocalSettingModelImpl> get copyWith => throw _privateConstructorUsedError;

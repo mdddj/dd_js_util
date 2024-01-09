@@ -13,6 +13,24 @@ _$ImageParamsImpl _$$ImageParamsImplFromJson(Map<String, dynamic> json) => _$Ima
       enableMemoryCache: json['enableMemoryCache'] as bool? ?? true,
       heroTag: json['heroTag'] as String?,
       isSelected: json['isSelected'] as bool? ?? false,
+      clearMemoryCacheIfFailed: json['clearMemoryCacheIfFailed'] as bool? ?? true,
+      gaplessPlayback: json['gaplessPlayback'] as bool? ?? true,
+      scale: (json['scale'] as num?)?.toDouble(),
+      headers: (json['headers'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, e as String),
+          ) ??
+          const {},
+      cache: json['cache'] as bool? ?? true,
+      retries: json['retries'] as int? ?? 3,
+      cacheKey: json['cacheKey'] as String?,
+      printError: json['printError'] as bool? ?? false,
+      cacheRawData: json['cacheRawData'] as bool? ?? true,
+      imageCacheName: json['imageCacheName'] as String?,
+      cacheWidth: json['cacheWidth'] as int?,
+      cacheHeight: json['cacheHeight'] as int?,
+      compressionRatio: (json['compressionRatio'] as num?)?.toDouble(),
+      maxBytes: json['maxBytes'] as int?,
+      package: json['package'] as String?,
     );
 
 Map<String, dynamic> _$$ImageParamsImplToJson(_$ImageParamsImpl instance) => <String, dynamic>{
@@ -22,6 +40,21 @@ Map<String, dynamic> _$$ImageParamsImplToJson(_$ImageParamsImpl instance) => <St
       'enableMemoryCache': instance.enableMemoryCache,
       'heroTag': instance.heroTag,
       'isSelected': instance.isSelected,
+      'clearMemoryCacheIfFailed': instance.clearMemoryCacheIfFailed,
+      'gaplessPlayback': instance.gaplessPlayback,
+      'scale': instance.scale,
+      'headers': instance.headers,
+      'cache': instance.cache,
+      'retries': instance.retries,
+      'cacheKey': instance.cacheKey,
+      'printError': instance.printError,
+      'cacheRawData': instance.cacheRawData,
+      'imageCacheName': instance.imageCacheName,
+      'cacheWidth': instance.cacheWidth,
+      'cacheHeight': instance.cacheHeight,
+      'compressionRatio': instance.compressionRatio,
+      'maxBytes': instance.maxBytes,
+      'package': instance.package,
     };
 
 _$MyNetworkImageImpl _$$MyNetworkImageImplFromJson(Map<String, dynamic> json) => _$MyNetworkImageImpl(
@@ -59,6 +92,19 @@ _$MyFilePathImageImpl _$$MyFilePathImageImplFromJson(Map<String, dynamic> json) 
 
 Map<String, dynamic> _$$MyFilePathImageImplToJson(_$MyFilePathImageImpl instance) => <String, dynamic>{
       'filePath': instance.filePath,
+      'params': instance.params,
+      'runtimeType': instance.$type,
+    };
+
+_$MyAssetImageImpl _$$MyAssetImageImplFromJson(Map<String, dynamic> json) => _$MyAssetImageImpl(
+      assetPath: json['assetPath'] as String,
+      params:
+          json['params'] == null ? const ImageParams() : ImageParams.fromJson(json['params'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
+    );
+
+Map<String, dynamic> _$$MyAssetImageImplToJson(_$MyAssetImageImpl instance) => <String, dynamic>{
+      'assetPath': instance.assetPath,
       'params': instance.params,
       'runtimeType': instance.$type,
     };

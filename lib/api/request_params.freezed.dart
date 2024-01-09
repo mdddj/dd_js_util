@@ -31,37 +31,26 @@ mixin _$RequestParams {
   bool? get nullParams => throw _privateConstructorUsedError;
   @igFreezedJson
   RequestEncoder? get requestEncoder => throw _privateConstructorUsedError;
-
   @igFreezedJson
   DioStart? get dioStart => throw _privateConstructorUsedError;
-
   bool? get returnIsString => throw _privateConstructorUsedError;
-
   @igFreezedJson
   bool get isFullUrl => throw _privateConstructorUsedError;
-
   @igFreezedJson
   InterceptorCall? get interceptorCall => throw _privateConstructorUsedError;
-
   @igFreezedJson
   UrlParseFormat? get urlParseFormat => throw _privateConstructorUsedError;
-
   @igFreezedJson
   ResponseResultCallback? get responseResultCallback => throw _privateConstructorUsedError;
-
   Map<String, dynamic>? get extra => throw _privateConstructorUsedError;
-
   @igFreezedJson
   CancelToken? get cancelToken => throw _privateConstructorUsedError;
-
   @igFreezedJson
   ProgressCallback? get onSendCallback => throw _privateConstructorUsedError;
-
   @igFreezedJson
   ProgressCallback? get onReceiveProgress => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $RequestParamsCopyWith<RequestParams> get copyWith => throw _privateConstructorUsedError;
 }
@@ -212,7 +201,6 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
 abstract class _$$RequestParamsImplCopyWith<$Res> implements $RequestParamsCopyWith<$Res> {
   factory _$$RequestParamsImplCopyWith(_$RequestParamsImpl value, $Res Function(_$RequestParamsImpl) then) =
       __$$RequestParamsImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -449,7 +437,7 @@ class _$RequestParamsImpl extends _RequestParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RequestParamsImpl &&
@@ -521,43 +509,38 @@ class _$RequestParamsImpl extends _RequestParams {
 }
 
 abstract class _RequestParams extends RequestParams {
-  const factory _RequestParams(
-      {final bool showErrorMsg,
-      final String loadingText,
-      final String? contentType,
-      final Map<String, dynamic> headers,
-      final bool showDefaultLoading,
-      @JsonKey(name: 'data', toJson: _dataToJson) final dynamic data,
-      final ResponseType? responseType,
-      final bool? nullParams,
-      @igFreezedJson final RequestEncoder? requestEncoder,
-      @igFreezedJson final DioStart? dioStart,
-      final bool? returnIsString,
-      @igFreezedJson final bool isFullUrl,
-      @igFreezedJson final InterceptorCall? interceptorCall,
-      @igFreezedJson final UrlParseFormat? urlParseFormat,
-      @igFreezedJson final ResponseResultCallback? responseResultCallback,
-      final Map<String, dynamic>? extra,
-      @igFreezedJson final CancelToken? cancelToken,
-      @igFreezedJson final ProgressCallback? onSendCallback,
-      @igFreezedJson final ProgressCallback? onReceiveProgress}) = _$RequestParamsImpl;
-
+  const factory _RequestParams({final bool showErrorMsg,
+    final String loadingText,
+    final String? contentType,
+    final Map<String, dynamic> headers,
+    final bool showDefaultLoading,
+    @JsonKey(name: 'data', toJson: _dataToJson) final dynamic data,
+    final ResponseType? responseType,
+    final bool? nullParams,
+    @igFreezedJson final RequestEncoder? requestEncoder,
+    @igFreezedJson final DioStart? dioStart,
+    final bool? returnIsString,
+    @igFreezedJson final bool isFullUrl,
+    @igFreezedJson final InterceptorCall? interceptorCall,
+    @igFreezedJson final UrlParseFormat? urlParseFormat,
+    @igFreezedJson final ResponseResultCallback? responseResultCallback,
+    final Map<String, dynamic>? extra,
+    @igFreezedJson final CancelToken? cancelToken,
+    @igFreezedJson final ProgressCallback? onSendCallback,
+    @igFreezedJson final ProgressCallback? onReceiveProgress}) =
+  _$RequestParamsImpl;
   const _RequestParams._() : super._();
 
   factory _RequestParams.fromJson(Map<String, dynamic> json) = _$RequestParamsImpl.fromJson;
 
   @override
   bool get showErrorMsg;
-
   @override
   String get loadingText;
-
   @override
   String? get contentType;
-
   @override
   Map<String, dynamic> get headers;
-
   @override
   bool get showDefaultLoading;
   @override
@@ -567,48 +550,37 @@ abstract class _RequestParams extends RequestParams {
   ResponseType? get responseType;
   @override
   bool? get nullParams;
-
   @override
   @igFreezedJson
   RequestEncoder? get requestEncoder;
-
   @override
   @igFreezedJson
   DioStart? get dioStart;
   @override
   bool? get returnIsString;
-
   @override
   @igFreezedJson
   bool get isFullUrl;
-
   @override
   @igFreezedJson
   InterceptorCall? get interceptorCall;
-
   @override
   @igFreezedJson
   UrlParseFormat? get urlParseFormat;
-
   @override
   @igFreezedJson
   ResponseResultCallback? get responseResultCallback;
-
   @override
   Map<String, dynamic>? get extra;
-
   @override
   @igFreezedJson
   CancelToken? get cancelToken;
-
   @override
   @igFreezedJson
   ProgressCallback? get onSendCallback;
-
   @override
   @igFreezedJson
   ProgressCallback? get onReceiveProgress;
-
   @override
   @JsonKey(ignore: true)
   _$$RequestParamsImplCopyWith<_$RequestParamsImpl> get copyWith => throw _privateConstructorUsedError;

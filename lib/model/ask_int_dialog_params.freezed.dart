@@ -87,10 +87,9 @@ class _$AskStringDialogParamsCopyWithImpl<$Res,
 
 /// @nodoc
 abstract class _$$AskStringDialogParamsImplCopyWith<$Res> implements $AskStringDialogParamsCopyWith<$Res> {
-  factory _$$AskStringDialogParamsImplCopyWith(
-          _$AskStringDialogParamsImpl value, $Res Function(_$AskStringDialogParamsImpl) then) =
+  factory _$$AskStringDialogParamsImplCopyWith(_$AskStringDialogParamsImpl value,
+      $Res Function(_$AskStringDialogParamsImpl) then) =
       __$$AskStringDialogParamsImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String placeholder, String title, String okBtnText, String cancelBtnText});
@@ -136,8 +135,10 @@ class __$$AskStringDialogParamsImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AskStringDialogParamsImpl implements _AskStringDialogParams {
-  const _$AskStringDialogParamsImpl(
-      {this.placeholder = "", this.title = "", this.okBtnText = "Ok", this.cancelBtnText = "Cancel"});
+  const _$AskStringDialogParamsImpl({this.placeholder = "",
+    this.title = "",
+    this.okBtnText = "Ok",
+    this.cancelBtnText = "Cancel"});
 
   factory _$AskStringDialogParamsImpl.fromJson(Map<String, dynamic> json) => _$$AskStringDialogParamsImplFromJson(json);
 
@@ -160,7 +161,7 @@ class _$AskStringDialogParamsImpl implements _AskStringDialogParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AskStringDialogParamsImpl &&
@@ -202,16 +203,12 @@ abstract class _AskStringDialogParams implements AskStringDialogParams {
 
   @override
   String get placeholder;
-
   @override
   String get title;
-
   @override
   String get okBtnText;
-
   @override
   String get cancelBtnText;
-
   @override
   @JsonKey(ignore: true)
   _$$AskStringDialogParamsImplCopyWith<_$AskStringDialogParamsImpl> get copyWith => throw _privateConstructorUsedError;
@@ -325,7 +322,6 @@ abstract class _$$AskIntDialogParamsImplCopyWith<$Res> implements $AskIntDialogP
   factory _$$AskIntDialogParamsImplCopyWith(
           _$AskIntDialogParamsImpl value, $Res Function(_$AskIntDialogParamsImpl) then) =
       __$$AskIntDialogParamsImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -431,7 +427,7 @@ class _$AskIntDialogParamsImpl implements _AskIntDialogParams {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AskIntDialogParamsImpl &&
@@ -481,24 +477,18 @@ abstract class _AskIntDialogParams implements AskIntDialogParams {
 
   @override
   String get placeholder;
-
   @override
   String get title;
-
   @override
   String get okBtnText;
-
   @override
   String get cancelBtnText;
-
   @override
   @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
   bool Function(int)? get disableOkButton;
-
   @override
   @JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false)
   String? Function(int)? get errorMessage;
-
   @override
   @JsonKey(ignore: true)
   _$$AskIntDialogParamsImplCopyWith<_$AskIntDialogParamsImpl> get copyWith => throw _privateConstructorUsedError;

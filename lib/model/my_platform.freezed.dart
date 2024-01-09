@@ -132,7 +132,7 @@ class _$AndroidPlatformImpl with DiagnosticableTreeMixin implements AndroidPlatf
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$AndroidPlatformImpl);
   }
 
@@ -266,7 +266,7 @@ class _$IosPlatformImpl with DiagnosticableTreeMixin implements IosPlatform {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$IosPlatformImpl);
   }
 
@@ -400,7 +400,7 @@ class _$MacosPlatformImpl with DiagnosticableTreeMixin implements MacosPlatform 
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$MacosPlatformImpl);
   }
 
@@ -534,7 +534,7 @@ class _$WebPlatformImpl with DiagnosticableTreeMixin implements WebPlatform {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$WebPlatformImpl);
   }
 
@@ -668,7 +668,7 @@ class _$LinuxPlatformImpl with DiagnosticableTreeMixin implements LinuxPlatform 
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$LinuxPlatformImpl);
   }
 
@@ -802,7 +802,7 @@ class _$WindowsPlatformImpl with DiagnosticableTreeMixin implements WindowsPlatf
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$WindowsPlatformImpl);
   }
 
@@ -936,7 +936,7 @@ class _$FuchsiaPlatformImpl with DiagnosticableTreeMixin implements FuchsiaPlatf
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) || (other.runtimeType == runtimeType && other is _$FuchsiaPlatformImpl);
   }
 

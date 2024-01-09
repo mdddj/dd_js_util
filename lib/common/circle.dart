@@ -11,7 +11,6 @@ extension CircleExt on Widget {
     );
   }
 
-  Widget width(double size) => SizedBox(width: size, child: this);
 
 
   Widget sizeBox(double w, double h) => SizedBox(width: w, height: h, child: this);
