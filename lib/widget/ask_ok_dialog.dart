@@ -1,10 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
-import '../dd_js_util.dart';
-import '../model/ask_ok_dialog_params.dart';
-import '../model/my_platform.dart';
-
+part of '../dd_js_util.dart';
 ///询问弹窗
 class AskOkDialog extends StatelessWidget {
   final AskOkDialogParams params;

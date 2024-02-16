@@ -18,7 +18,8 @@ class HiveUtil {
 
 typedef CacheBaseBoxHandle<E> = Future<void> Function(Box<E> box);
 
-abstract class CacheBase<E> {
+abstract class CacheBase<E> extends ChangeNotifier {
+
   String get boxName;
 
   //默认的box名称

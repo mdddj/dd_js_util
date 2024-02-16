@@ -84,9 +84,10 @@ class _$SearchSupportParamsCopyWithImpl<T, $Res,
 }
 
 /// @nodoc
-abstract class _$$SearchSupportParamsImplCopyWith<T, $Res> implements $SearchSupportParamsCopyWith<T, $Res> {
-  factory _$$SearchSupportParamsImplCopyWith(
-          _$SearchSupportParamsImpl<T> value, $Res Function(_$SearchSupportParamsImpl<T>) then) =
+abstract class _$$SearchSupportParamsImplCopyWith<T, $Res>
+    implements $SearchSupportParamsCopyWith<T, $Res> {
+  factory _$$SearchSupportParamsImplCopyWith(_$SearchSupportParamsImpl<T> value,
+          $Res Function(_$SearchSupportParamsImpl<T>) then) =
       __$$SearchSupportParamsImplCopyWithImpl<T, $Res>;
   @override
   @useResult
@@ -99,10 +100,11 @@ abstract class _$$SearchSupportParamsImplCopyWith<T, $Res> implements $SearchSup
 
 /// @nodoc
 class __$$SearchSupportParamsImplCopyWithImpl<T, $Res>
-    extends _$SearchSupportParamsCopyWithImpl<T, $Res, _$SearchSupportParamsImpl<T>>
+    extends _$SearchSupportParamsCopyWithImpl<T, $Res,
+        _$SearchSupportParamsImpl<T>>
     implements _$$SearchSupportParamsImplCopyWith<T, $Res> {
-  __$$SearchSupportParamsImplCopyWithImpl(
-      _$SearchSupportParamsImpl<T> _value, $Res Function(_$SearchSupportParamsImpl<T>) _then)
+  __$$SearchSupportParamsImplCopyWithImpl(_$SearchSupportParamsImpl<T> _value,
+      $Res Function(_$SearchSupportParamsImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -137,7 +139,11 @@ class __$$SearchSupportParamsImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
-  const _$SearchSupportParamsImpl({this.autoShow = true, this.controller, required this.childBuilder, this.listening});
+  const _$SearchSupportParamsImpl(
+      {this.autoShow = true,
+      this.controller,
+      required this.childBuilder,
+      this.listening});
 
   ///是否自动显示搜索结果
   @override
@@ -162,9 +168,12 @@ class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SearchSupportParamsImpl<T> &&
-            (identical(other.autoShow, autoShow) || other.autoShow == autoShow) &&
-            (identical(other.controller, controller) || other.controller == controller) &&
-            (identical(other.childBuilder, childBuilder) || other.childBuilder == childBuilder) &&
+            (identical(other.autoShow, autoShow) ||
+                other.autoShow == autoShow) &&
+            (identical(other.controller, controller) ||
+                other.controller == controller) &&
+            (identical(other.childBuilder, childBuilder) ||
+                other.childBuilder == childBuilder) &&
             (identical(other.listening, listening) ||
                 other.listening == listening));
   }
@@ -176,16 +185,18 @@ class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SearchSupportParamsImplCopyWith<T, _$SearchSupportParamsImpl<T>> get copyWith =>
-      __$$SearchSupportParamsImplCopyWithImpl<T, _$SearchSupportParamsImpl<T>>(this, _$identity);
+  _$$SearchSupportParamsImplCopyWith<T, _$SearchSupportParamsImpl<T>>
+      get copyWith => __$$SearchSupportParamsImplCopyWithImpl<T,
+          _$SearchSupportParamsImpl<T>>(this, _$identity);
 }
 
 abstract class _SearchSupportParams<T> implements SearchSupportParams<T> {
-  const factory _SearchSupportParams({final bool autoShow,
-    final RefreshController<T>? controller,
-    required final SearchSupportCoreUiBuild childBuilder,
-    final SearchSupportActionListening? listening}) =
-  _$SearchSupportParamsImpl<T>;
+  const factory _SearchSupportParams(
+          {final bool autoShow,
+          final RefreshController<T>? controller,
+          required final SearchSupportCoreUiBuild childBuilder,
+          final SearchSupportActionListening? listening}) =
+      _$SearchSupportParamsImpl<T>;
 
   @override
 
@@ -199,6 +210,6 @@ abstract class _SearchSupportParams<T> implements SearchSupportParams<T> {
   SearchSupportActionListening? get listening;
   @override
   @JsonKey(ignore: true)
-  _$$SearchSupportParamsImplCopyWith<T, _$SearchSupportParamsImpl<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SearchSupportParamsImplCopyWith<T, _$SearchSupportParamsImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }

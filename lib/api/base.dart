@@ -21,14 +21,14 @@ typedef MyFormData = dio.FormData;
 typedef MyMultipartFile = dio.MultipartFile;
 typedef MyInterceptorWrapper = dio.InterceptorsWrapper;
 typedef MyInterceptor = dio.Interceptor;
-typedef ParseObject = BaseModel Function(Map<String, dynamic> originMap);
 typedef ToastWrapper = FlutterSmartDialog;
 typedef BaseApiOption = dio.BaseOptions;
 typedef MyList<T> = IList<T>;
 typedef MyConstList<T> = IListConst<T>;
 typedef MyMap<K, V> = IMap<K, V>;
 typedef MyConstMap<K, V> = IMapConst<K, V>;
-typedef MySliverWaterfallFlowDelegateWithFixedCrossAxisCount = SliverWaterfallFlowDelegateWithFixedCrossAxisCount;
+typedef MySliverWaterfallFlowDelegateWithFixedCrossAxisCount
+    = SliverWaterfallFlowDelegateWithFixedCrossAxisCount;
 
 ///loading more 组件
 typedef MyLoadingModel<T> = LoadingModel<T>;
@@ -47,15 +47,6 @@ void toast(String msg) {
   SmartDialog.showToast(msg);
 }
 
-abstract class BaseModel<T> {
-  T fromJson(Map<String, dynamic> map);
-
-  @override
-  String toString() {
-    return "BaseModel: ${T.runtimeType}";
-  }
-}
-
 extension Tex3<T> on T? {
   T ifNullThrowBizException([String message = ""]) {
     if (this == null) {
@@ -66,22 +57,31 @@ extension Tex3<T> on T? {
 }
 
 ///分页api
-mixin BasePagedApiMixin on BaseApi {
+mixin BasePagedApiMixin<T> on BaseApi<T> {
   String get pageParamsKey => 'page';
 }
 
-abstract class BaseApi<T> {
+extension BaseApiProviderEx<T> on BaseApi<T> {
+  ChangeNotifierProvider<BaseApi<T>> get provider =>
+      ChangeNotifierProvider((ref) => this);
+  AutoDisposeFutureProviderFamily<T, RequestParams> get cancelFuture =>
+      FutureProvider.autoDispose
+          .family<T, RequestParams>((ref, params) => request(params));
+  FutureProviderFamily<T, RequestParams> get future =>
+      FutureProvider.family<T, RequestParams>((ref, params) => request(params));
+}
+
+abstract class BaseApi<T> extends ChangeNotifier {
+  dio.BaseOptions options = dio.BaseOptions(
+      connectTimeout: const Duration(milliseconds: 30000),
+      receiveTimeout: const Duration(seconds: 5));
   bool showLog = false;
   String _host = '';
-  dio.BaseOptions options =
-      dio.BaseOptions(connectTimeout: const Duration(milliseconds: 30000), receiveTimeout: const Duration(seconds: 5));
-
   final String url;
   final HttpMethod httpMethod;
   final Map<String, dynamic> params = <String, dynamic>{};
   dio.FormData? formData;
   ISet<dio.Interceptor> interceptions = ISet();
-
   dio.Dio? _dio;
 
   BaseApi(this.url, {this.httpMethod = HttpMethod.get});
@@ -89,26 +89,31 @@ abstract class BaseApi<T> {
   /// [isFullUrl] - url传入的是否为完整的一个URL,如果为[true],将忽略[host]
   @Doc(message: "向服务器发起http请求")
   Future<T> request([RequestParams options = const RequestParams()]) async {
+    final fullUrl = options.fullUrl;
     try {
       if (options.showDefaultLoading) {
         showLoading(loadingText: options.loadingText);
       }
       final baseOptions = await getOptions(options);
       final d = await getDio(baseOptions);
-      d.interceptors.addAll(options.interceptorCall?.call(interceptions) ?? interceptions);
-      final contentTypeStr =
-          options.contentType ?? (httpMethod == HttpMethod.post ? io.ContentType.json.value : options.contentType);
+      d.interceptors.addAll(
+          options.interceptorCall?.call(interceptions) ?? interceptions);
+      final contentTypeStr = options.contentType ??
+          (httpMethod == HttpMethod.post
+              ? io.ContentType.json.value
+              : options.contentType);
       final bodyParams = formData ?? (options.data ?? params);
-      final queryParameters =
-          httpMethod == HttpMethod.post ? null : (options.nullParams == true ? null : options.data ?? params);
-      final contentTypeString = httpMethod == HttpMethod.probuf ? kProtobufContentType : contentTypeStr;
-      final finalUrl = options.isFullUrl ? url : (_host + url);
+      final queryParameters = httpMethod == HttpMethod.post
+          ? null
+          : (options.nullParams == true ? null : options.data ?? params);
+      final contentTypeString = httpMethod == HttpMethod.probuf
+          ? kProtobufContentType
+          : contentTypeStr;
+      final finalUrl = fullUrl ?? (_host + url);
       await options.dioStart?.call(d, finalUrl);
-      printLog("url---$finalUrl");
-      printLog("params---$queryParameters");
-      var uri = (options.urlParseFormat ?? (v, p) => v).call(finalUrl, queryParameters);
+      var uri = (options.urlParseFormat ?? (v, p) => v)
+          .call(finalUrl, queryParameters);
       final bodyData = httpMethod == HttpMethod.get ? null : bodyParams;
-      printLog("body--$bodyData");
       final response = await d.request(uri,
           options: dio.Options(
             method: httpMethod.method,
@@ -117,7 +122,8 @@ abstract class BaseApi<T> {
             responseType: options.responseType,
             requestEncoder: options.requestEncoder,
           ),
-          queryParameters: httpMethod == HttpMethod.get ? queryParameters : null,
+          queryParameters:
+              httpMethod == HttpMethod.get ? queryParameters : null,
           data: bodyData,
           onReceiveProgress: options.onReceiveProgress,
           onSendProgress: options.onSendCallback,
@@ -126,9 +132,9 @@ abstract class BaseApi<T> {
       if (options.showDefaultLoading) {
         closeLoading();
       }
-
       final data = response.data;
       var model = DartTypeModel.createFrom(data);
+      beforeHandleDartTypeModel(model, options, response);
       return covertToModel(model, options);
     } on dio.DioException catch (e) {
       throw BaseApiException.createFromDioException(e);
@@ -139,7 +145,31 @@ abstract class BaseApi<T> {
     }
   }
 
+  ///下载文件
+  Future<T> download([RequestParams options = const RequestParams()]) async {
+    final baseOptions = await getOptions(options);
+    final d = await getDio(baseOptions);
+    assert(options.downloadUrl != null, "请传入下载链接");
+    assert(options.savePath != null, "请传入保存路径");
+    try {
+      final response = await d.download(
+          options.downloadUrl!, options.savePath!.path,
+          onReceiveProgress: options.onReceiveProgress,
+          data: options.data,
+          cancelToken: options.cancelToken);
+      options.responseResultCallback?.call(response);
+      var model = DartTypeModel.createFrom(response.data);
+      beforeHandleDartTypeModel(model, options, response);
+      return covertToModel(model, options);
+    } on dio.DioException catch (e) {
+      throw BaseApiException.createFromDioException(e);
+    }
+  }
+
   T covertToModel(DartTypeModel data, RequestParams param);
+
+  void beforeHandleDartTypeModel(DartTypeModel model,
+      RequestParams requestParams, dio.Response<dynamic> response) {}
 
   @Doc(message: "页面中间显示loading等待框")
   void showLoading({String? loadingText}) {
@@ -151,7 +181,8 @@ abstract class BaseApi<T> {
     SmartDialog.dismiss(status: SmartStatus.loading);
   }
 
-  Future<dio.BaseOptions> getOptions(RequestParams param) async => dio.BaseOptions();
+  Future<dio.BaseOptions> getOptions(RequestParams param) async =>
+      dio.BaseOptions();
 
   Future<dio.Dio> getDio(dio.BaseOptions baseOptions) async {
     if (_dio != null) {
@@ -212,9 +243,10 @@ class FetchRawByUrl extends BaseApi<DartTypeModel> {
   }
 
   @override
-  Future<DartTypeModel> request([RequestParams options = const RequestParams()]) {
-    return super.request(RequestParams(
-        showDefaultLoading: false, urlParseFormat: (uri, queryParameters) => requestUrl, isFullUrl: true));
+  Future<DartTypeModel> request(
+      [RequestParams options = const RequestParams()]) {
+    return super
+        .request(RequestParams(showDefaultLoading: false, fullUrl: requestUrl));
   }
 }
 

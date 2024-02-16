@@ -1428,4 +1428,7 @@ class MyZhCupertinoLocalizations implements CupertinoLocalizations {
 
   @override
   String get shareButtonLabel => "分享";
+
+  @override
+  String get clearButtonLabel => "清理";
 }

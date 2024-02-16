@@ -76,19 +76,7 @@ extension IntExt on int {
   int get add => this + 1;
 }
 
-class Gap {
-  Gap._();
 
-  static Gap get _instance => Gap._();
-
-  factory Gap() => _instance;
-
-  static Widget get defaultV => const SizedBox(height: 12);
-
-  static Widget get defaultH => const SizedBox(width: 12);
-
-
-}
 
 Widget get k24Height => const SizedBox(
       height: 24,

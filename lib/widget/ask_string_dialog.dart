@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
-
-import '../dd_js_util.dart';
-import '../model/ask_int_dialog_params.dart';
+part of '../dd_js_util.dart';
 
 extension AskStringDialogEx on BuildContext {
   Future<String> askString([AskStringDialogParams? params]) async {

@@ -3,6 +3,7 @@ library dd_js_util;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io' as io;
+import 'dart:io';
 import 'dart:math' as math;
 import 'dart:math';
 
@@ -10,6 +11,7 @@ import 'package:async/async.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart' as dio;
+import 'package:dio/dio.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
@@ -24,6 +26,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -37,17 +40,7 @@ import 'package:path/path.dart' as path;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:saver_gallery/saver_gallery.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'api/request_params.dart';
-import 'model/app_local_setting_model.dart';
-import 'model/ask_ok_dialog_params.dart';
-import 'model/base_api_exception.dart';
-import 'model/dart_type_model.dart';
-import 'model/my_image.dart';
-import 'model/my_platform.dart';
-import 'model/picture_selection_i18n_config.dart';
-import 'model/picture_selection_item.dart';
 import 'theme/model.dart';
-import 'widget/ask_ok_dialog.dart';
 import 'widget/search/search_support.dart';
 import 'widget/search/search_support_manager.dart';
 
@@ -101,6 +94,8 @@ part './widget/simple_textfield_wrapper.dart';
 part './widget/switch_anim_show.dart';
 part './widget/time.dart';
 
+part './ext/ref.dart';
+
 part 'api/base.dart';
 part 'api/loading.dart';
 part 'ext/file.dart';
@@ -115,7 +110,12 @@ part 'widget/build_widget.dart';
 part 'widget/lazy_stack_widget.dart';
 
 part 'widget/right_popup_menu.dart';
-
+part 'model/models.dart';
+part 'model/models.freezed.dart';
+part 'model/models.g.dart';
+part 'widget/ask_ok_dialog.dart';
+part 'widget/ask_int_dialog.dart';
+part 'widget/ask_string_dialog.dart';
 typedef MyHiveBox<T> = Box<T>;
 
 class DdJsUtil {

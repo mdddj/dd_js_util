@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-
-import '../dd_js_util.dart';
-import '../model/ask_int_dialog_params.dart';
+part of '../dd_js_util.dart';
 
 class AskIntDialog extends StatefulWidget {
   final AskIntDialogParams params;
