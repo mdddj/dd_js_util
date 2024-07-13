@@ -834,10 +834,10 @@ class _RightPopupMenuDefaultsM3 extends PopupMenuThemeData {
   late final TextTheme _textTheme = _theme.textTheme;
 
   @override
-  MaterialStateProperty<TextStyle?>? get labelTextStyle {
-    return MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+  WidgetStateProperty<TextStyle?>? get labelTextStyle {
+    return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
       final TextStyle style = _textTheme.labelLarge!;
-      if (states.contains(MaterialState.disabled)) {
+      if (states.contains(WidgetState.disabled)) {
         return style.apply(color: _colors.onSurface.withOpacity(0.38));
       }
       return style.apply(color: _colors.onSurface);

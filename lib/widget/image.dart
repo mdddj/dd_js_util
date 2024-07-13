@@ -159,7 +159,7 @@ class ImageView extends StatelessWidget {
   ImageProvider<Object> _buildFileImage(String filePath, ImageParams params) {
     return ExtendedResizeImage.resizeIfNeeded(
       provider: ExtendedFileImageProvider(
-        io.File(filePath),
+        ex_image.File(filePath),
         scale: params.scale ?? 1,
         cacheRawData: params.cacheRawData,
         imageCacheName: params.imageCacheName,

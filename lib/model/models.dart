@@ -14,7 +14,7 @@
 // part 'models.g.dart';
 // part 'models.freezed.dart';
 
-part of dd_js_util;
+part of '../dd_js_util.dart';
 
 const igFreezedJson = JsonKey(
     fromJson: null, toJson: null, includeFromJson: false, includeToJson: false);
@@ -329,7 +329,7 @@ class DartTypeModel with _$DartTypeModel {
       try {
         final dec = jsonDecode(data);
         if (dec is Map<String, dynamic>) {
-          model = DartTypeModel.fromJson(dec);
+          model = DartTypeModel.json(dec);
         } else if (dec is List) {
           model = DartTypeModel.list(dec);
         }
@@ -480,6 +480,9 @@ extension MyPlatformEx on MyPlatform {
   ///判断是否为 ios 平台
   bool get isIos =>
       myPlatform.whenOrNull(ios: () => true, macos: () => true) ?? false;
+  bool get isAndroid => myPlatform.whenOrNull(android: () => true) ?? false;
+  bool get isDesktop => myPlatform.whenOrNull(android: () => false,ios: () => false) ?? true;
+  bool get isMobile => !isDesktop;
 }
 
 @freezed

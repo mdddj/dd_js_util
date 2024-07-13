@@ -7,7 +7,7 @@ void showToast(String msg) {
 
 @Doc(message: '显示一个iOS弹窗')
 void showIosDialog(String msg,
-    {String okText = 'Ok',
+    {String okText = 'Done',
     List<Widget>? startActions,
     List<Widget>? endActions,
     Widget? title,

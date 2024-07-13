@@ -32,12 +32,16 @@ class AppThemeUtil {
   ///前往切换主题页面
   Future<void> toThemeSettingPage(BuildContext context,
       {CustomBuildThemeItems? builder, PreferredSizeWidget? appbar}) async {
-    await context.navToWidget(to: ThemeSettingPage(builder: builder, appbar: appbar));
+    await context.navToWidget(
+        to: ThemeSettingPage(builder: builder, appbar: appbar));
   }
 
   Future<void> changeThemeMode(ThemeMode themeModel) async {
-    await AppSettingCache().saveAndUpdate((oldValue) => oldValue?.copyWith(themeModel: themeModel.getThemeModeIndex),
-        AppSettingCache().themeKey, const AppLocalSettingModel());
+    await AppSettingCache().saveAndUpdate(
+        (oldValue) =>
+            oldValue?.copyWith(themeModel: themeModel.getThemeModeIndex),
+        AppSettingCache().themeKey,
+        const AppLocalSettingModel());
   }
 }
 
@@ -67,7 +71,8 @@ typedef BuildTheme = ThemeData Function(ThemeData defaultTheme);
 
 class MyAppTheme {
   ///默认主题
-  static ThemeData getTheme(int index, {FlexSubThemesData? subThemesData, BuildTheme? buildDefaultTheme}) {
+  static ThemeData getTheme(int index,
+      {FlexSubThemesData? subThemesData, BuildTheme? buildDefaultTheme}) {
     final defaultTheme = FlexThemeData.light();
     return buildDefaultTheme?.call(defaultTheme) ??
         FlexThemeData.light(

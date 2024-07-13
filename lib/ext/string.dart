@@ -13,7 +13,7 @@ extension StringExtension on String {
   /// 错误码[401] - 没有获取访问相册的权限
   /// 错误码[201] - 保存失败,重试
   ///
-  Future<void> downloadImage({bool? isAsset, bool? checkPermission, String? imageName, int quality = 80}) async {
+  Future<void> downloadImage({bool? isAsset, bool? checkPermission, String? imageName, int quality = 80,VoidCallback? noPermission}) async {
     try {
       // 访问相册权限检测
       if (checkPermission == true) {

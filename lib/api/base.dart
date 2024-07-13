@@ -61,15 +61,6 @@ mixin BasePagedApiMixin<T> on BaseApi<T> {
   String get pageParamsKey => 'page';
 }
 
-extension BaseApiProviderEx<T> on BaseApi<T> {
-  ChangeNotifierProvider<BaseApi<T>> get provider =>
-      ChangeNotifierProvider((ref) => this);
-  AutoDisposeFutureProviderFamily<T, RequestParams> get cancelFuture =>
-      FutureProvider.autoDispose
-          .family<T, RequestParams>((ref, params) => request(params));
-  FutureProviderFamily<T, RequestParams> get future =>
-      FutureProvider.family<T, RequestParams>((ref, params) => request(params));
-}
 
 abstract class BaseApi<T> extends ChangeNotifier {
   dio.BaseOptions options = dio.BaseOptions(

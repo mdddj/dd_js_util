@@ -13,6 +13,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:dio/dio.dart';
 import 'package:extended_image/extended_image.dart';
+import 'package:extended_image_library/extended_image_library.dart' as ex_image;
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
@@ -40,6 +41,7 @@ import 'package:path/path.dart' as path;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:saver_gallery/saver_gallery.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+
 import 'theme/model.dart';
 import 'widget/search/search_support.dart';
 import 'widget/search/search_support_manager.dart';
@@ -62,6 +64,7 @@ part './ext/ilist.dart';
 part './ext/int.dart';
 part './ext/map.dart';
 part './ext/navigator.dart';
+part './ext/ref.dart';
 part './ext/splash_factory.dart';
 part './ext/string.dart';
 part './ext/widget.dart';
@@ -93,29 +96,24 @@ part './widget/search_support.dart';
 part './widget/simple_textfield_wrapper.dart';
 part './widget/switch_anim_show.dart';
 part './widget/time.dart';
-
-part './ext/ref.dart';
-
 part 'api/base.dart';
 part 'api/loading.dart';
 part 'ext/file.dart';
 part 'ext/function.dart';
-part 'theme/index.dart';
-part 'theme/theme_setting.dart';
-part 'util/always_scrollable_clamping_scroll_physics.dart';
-
-part 'util/image.dart';
-part 'util/platforms.dart';
-part 'widget/build_widget.dart';
-part 'widget/lazy_stack_widget.dart';
-
-part 'widget/right_popup_menu.dart';
 part 'model/models.dart';
 part 'model/models.freezed.dart';
 part 'model/models.g.dart';
-part 'widget/ask_ok_dialog.dart';
+part 'theme/index.dart';
+part 'theme/theme_setting.dart';
+part 'util/always_scrollable_clamping_scroll_physics.dart';
+part 'util/image.dart';
+part 'util/platforms.dart';
 part 'widget/ask_int_dialog.dart';
+part 'widget/ask_ok_dialog.dart';
 part 'widget/ask_string_dialog.dart';
+part 'widget/build_widget.dart';
+part 'widget/lazy_stack_widget.dart';
+part 'widget/right_popup_menu.dart';
 typedef MyHiveBox<T> = Box<T>;
 
 class DdJsUtil {

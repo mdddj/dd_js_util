@@ -62,7 +62,7 @@ class PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMixi
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: widget.background ?? Theme.of(context).colorScheme.background,
+      color: widget.background ?? Theme.of(context).colorScheme.surface,
       child: LayoutBuilder(builder: (context, constraints) {
         return ExtendedImageSlidePage(
           slideAxis: SlideAxis.both,
