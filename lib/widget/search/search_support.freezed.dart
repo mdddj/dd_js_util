@@ -12,7 +12,7 @@ part of 'search_support.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SearchSupportParams<T> {
@@ -25,7 +25,9 @@ mixin _$SearchSupportParams<T> {
   SearchSupportActionListening? get listening =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchSupportParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SearchSupportParamsCopyWith<T, SearchSupportParams<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +56,8 @@ class _$SearchSupportParamsCopyWithImpl<T, $Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SearchSupportParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$SearchSupportParamsImplCopyWithImpl<T, $Res>
       $Res Function(_$SearchSupportParamsImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchSupportParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -182,7 +188,9 @@ class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
   int get hashCode =>
       Object.hash(runtimeType, autoShow, controller, childBuilder, listening);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchSupportParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SearchSupportParamsImplCopyWith<T, _$SearchSupportParamsImpl<T>>
@@ -198,18 +206,20 @@ abstract class _SearchSupportParams<T> implements SearchSupportParams<T> {
           final SearchSupportActionListening? listening}) =
       _$SearchSupportParamsImpl<T>;
 
-  @override
-
   ///是否自动显示搜索结果
-  bool get autoShow;
-  @override //搜索控制器
-  RefreshController<T>? get controller;
-  @override //展示组件的容器,需要固定高度
+  @override
+  bool get autoShow; //搜索控制器
+  @override
+  RefreshController<T>? get controller; //展示组件的容器,需要固定高度
+  @override
   SearchSupportCoreUiBuild get childBuilder;
   @override
   SearchSupportActionListening? get listening;
+
+  /// Create a copy of SearchSupportParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SearchSupportParamsImplCopyWith<T, _$SearchSupportParamsImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }

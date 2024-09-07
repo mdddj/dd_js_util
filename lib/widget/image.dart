@@ -10,9 +10,7 @@ class ImageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return params.heroTag != null
-        ? Hero(tag: params.heroTag!, child: _isSelectedWrapper(context))
-        : _isSelectedWrapper(context);
+    return params.heroTag != null ? Hero(tag: params.heroTag!, child: _isSelectedWrapper(context)) : _isSelectedWrapper(context);
   }
 
   Widget _isSelectedWrapper(BuildContext context) {
@@ -29,8 +27,7 @@ class ImageView extends StatelessWidget {
           right: 4,
           child: Container(
             padding: const EdgeInsets.all(4),
-            decoration:
-                BoxDecoration(color: context.colorScheme.primaryContainer, borderRadius: BorderRadius.circular(20)),
+            decoration: BoxDecoration(color: context.colorScheme.primaryContainer, borderRadius: BorderRadius.circular(20)),
             child: Icon(
               Icons.check,
               size: 16,
@@ -60,16 +57,13 @@ class ImageView extends StatelessWidget {
   }
 
   ImageProvider get getImage {
-    return image.when(
-        network: _buildNetwork, base64: _buildBaseImage, filePath: _buildFileImage, asset: _buildAssetImage);
+    return image.when(network: _buildNetwork, base64: _buildBaseImage, filePath: _buildFileImage, asset: _buildAssetImage);
   }
-
-
 
   Widget? _stateChange(ExtendedImageState state) {
     switch (state.extendedImageLoadState) {
       case LoadState.loading:
-        return Skeleton(width: params.getWidth ?? 0, height: params.getHeight ?? 0, borderRadius: params.borderRadius);
+        return params.customLoadingWidget ?? Skeleton(width: params.getWidth ?? 0, height: params.getHeight ?? 0, borderRadius: params.borderRadius);
       case LoadState.completed:
         final child = _ImageRawWidget(state: state, params: params);
         return params.customCompletedWidget?.call(state, params, child) ?? child;
@@ -233,11 +227,7 @@ class SkeletonState extends State<Skeleton> with SingleTickerProviderStateMixin 
         gradient: LinearGradient(
           begin: Alignment(gradientPosition.value, 0),
           end: const Alignment(-1, 0),
-          colors: [
-            context.theme.highlightColor,
-            context.theme.highlightColor.withOpacity(.01),
-            context.theme.highlightColor.withOpacity(.3)
-          ],
+          colors: [context.theme.highlightColor, context.theme.highlightColor.withOpacity(.01), context.theme.highlightColor.withOpacity(.3)],
         ),
       ),
     );

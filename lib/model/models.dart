@@ -1,20 +1,20 @@
 // import 'dart:convert';
-// import 'dart:io';
+import 'dart:convert';
+import 'dart:io';
 
-// import 'package:dio/dio.dart';
-// import 'package:extended_image/extended_image.dart';
-// import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-// import 'package:flutter/foundation.dart';
-// import 'package:flutter/material.dart';
-// import 'package:freezed_annotation/freezed_annotation.dart';
-// import 'package:hive_flutter/hive_flutter.dart';
+import 'package:dio/dio.dart';
+import 'package:extended_image/extended_image.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-// import '../dd_js_util.dart';
+import '../dd_js_util.dart';
 
-// part 'models.g.dart';
-// part 'models.freezed.dart';
+part 'models.g.dart';
+part 'models.freezed.dart';
 
-part of '../dd_js_util.dart';
 
 const igFreezedJson = JsonKey(
     fromJson: null, toJson: null, includeFromJson: false, includeToJson: false);
@@ -428,7 +428,10 @@ class ImageParams with _$ImageParams {
       @igFreezedJson AssetBundle? bundle,
       @Doc(message: '自定义完成小部件')
       @igFreezedJson
-      CustomCompletedWidget? customCompletedWidget}) = _ImageParams;
+      CustomCompletedWidget? customCompletedWidget,
+      @igFreezedJson
+      Widget? customLoadingWidget
+      }) = _ImageParams;
 
   factory ImageParams.fromJson(Map<String, dynamic> json) =>
       _$ImageParamsFromJson(json);

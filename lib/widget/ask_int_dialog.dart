@@ -52,14 +52,14 @@ final controller = TextEditingController();
         ]),
       ),
       actions: [
-        CupertinoActionSheetAction(
+        CupertinoDialogAction(
           onPressed: () {
             context.pop();
           },
           isDestructiveAction: true,
           child: Text(widget.params.cancelBtnText),
         ),
-        CupertinoActionSheetAction(
+        CupertinoDialogAction(
           onPressed: disableOkButton ? (){} : () {
             final text = controller.text;
             if (text.isNotEmpty) {

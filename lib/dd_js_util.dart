@@ -3,7 +3,6 @@ library dd_js_util;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io' as io;
-import 'dart:io';
 import 'dart:math' as math;
 import 'dart:math';
 
@@ -11,7 +10,6 @@ import 'package:async/async.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart' as dio;
-import 'package:dio/dio.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:extended_image_library/extended_image_library.dart' as ex_image;
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
@@ -27,7 +25,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -42,6 +39,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:saver_gallery/saver_gallery.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
+import 'model/models.dart';
 import 'theme/model.dart';
 import 'widget/search/search_support.dart';
 import 'widget/search/search_support_manager.dart';
@@ -100,9 +98,6 @@ part 'api/base.dart';
 part 'api/loading.dart';
 part 'ext/file.dart';
 part 'ext/function.dart';
-part 'model/models.dart';
-part 'model/models.freezed.dart';
-part 'model/models.g.dart';
 part 'theme/index.dart';
 part 'theme/theme_setting.dart';
 part 'util/always_scrollable_clamping_scroll_physics.dart';
@@ -113,7 +108,12 @@ part 'widget/ask_ok_dialog.dart';
 part 'widget/ask_string_dialog.dart';
 part 'widget/build_widget.dart';
 part 'widget/lazy_stack_widget.dart';
+
+
 part 'widget/right_popup_menu.dart';
+
+
+
 typedef MyHiveBox<T> = Box<T>;
 
 class DdJsUtil {
@@ -129,3 +129,6 @@ class DdJsUtil {
     return await _channel.invokeMethod('isWeChatBrowser');
   }
 }
+
+
+

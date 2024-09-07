@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../dd_js_util.dart';
+import '../model/models.dart';
 
 const ddJsUtilAppSettingHiveKey = 'ddjsutil-app-local-setting';
 

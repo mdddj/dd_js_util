@@ -3,8 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-// part of 'models.dart';
-part of dd_js_util;
+part of 'models.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,7 +12,7 @@ part of dd_js_util;
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 RequestParams _$RequestParamsFromJson(Map<String, dynamic> json) {
   return _RequestParams.fromJson(json);
@@ -55,8 +54,12 @@ mixin _$RequestParams {
   @igFreezedJson
   File? get savePath => throw _privateConstructorUsedError;
 
+  /// Serializes this RequestParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RequestParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RequestParamsCopyWith<RequestParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -101,6 +104,8 @@ class _$RequestParamsCopyWithImpl<$Res, $Val extends RequestParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RequestParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -255,6 +260,8 @@ class __$$RequestParamsImplCopyWithImpl<$Res>
       _$RequestParamsImpl _value, $Res Function(_$RequestParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RequestParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -523,7 +530,7 @@ class _$RequestParamsImpl extends _RequestParams {
                 other.savePath == savePath));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -550,7 +557,9 @@ class _$RequestParamsImpl extends _RequestParams {
         savePath
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RequestParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RequestParamsImplCopyWith<_$RequestParamsImpl> get copyWith =>
@@ -645,8 +654,11 @@ abstract class _RequestParams extends RequestParams {
   @override
   @igFreezedJson
   File? get savePath;
+
+  /// Create a copy of RequestParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RequestParamsImplCopyWith<_$RequestParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -658,7 +670,9 @@ mixin _$AppLocalSettingModel {
   @HiveField(1, defaultValue: 0)
   int get themeModel => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppLocalSettingModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppLocalSettingModelCopyWith<AppLocalSettingModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -685,6 +699,8 @@ class _$AppLocalSettingModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppLocalSettingModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -725,6 +741,8 @@ class __$$AppLocalSettingModelImplCopyWithImpl<$Res>
       $Res Function(_$AppLocalSettingModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppLocalSettingModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -780,7 +798,9 @@ class _$AppLocalSettingModelImpl extends _AppLocalSettingModel {
   @override
   int get hashCode => Object.hash(runtimeType, themeIndex, themeModel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppLocalSettingModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppLocalSettingModelImplCopyWith<_$AppLocalSettingModelImpl>
@@ -802,8 +822,11 @@ abstract class _AppLocalSettingModel extends AppLocalSettingModel {
   @override
   @HiveField(1, defaultValue: 0)
   int get themeModel;
+
+  /// Create a copy of AppLocalSettingModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppLocalSettingModelImplCopyWith<_$AppLocalSettingModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -815,7 +838,9 @@ mixin _$AskStringDialogParams {
   String get okBtnText => throw _privateConstructorUsedError;
   String get cancelBtnText => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AskStringDialogParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AskStringDialogParamsCopyWith<AskStringDialogParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -844,6 +869,8 @@ class _$AskStringDialogParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AskStringDialogParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -898,6 +925,8 @@ class __$$AskStringDialogParamsImplCopyWithImpl<$Res>
       $Res Function(_$AskStringDialogParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AskStringDialogParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -972,7 +1001,9 @@ class _$AskStringDialogParamsImpl implements _AskStringDialogParams {
   int get hashCode =>
       Object.hash(runtimeType, placeholder, title, okBtnText, cancelBtnText);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AskStringDialogParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AskStringDialogParamsImplCopyWith<_$AskStringDialogParamsImpl>
@@ -995,8 +1026,11 @@ abstract class _AskStringDialogParams implements AskStringDialogParams {
   String get okBtnText;
   @override
   String get cancelBtnText;
+
+  /// Create a copy of AskStringDialogParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AskStringDialogParamsImplCopyWith<_$AskStringDialogParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1012,7 +1046,9 @@ mixin _$AskIntDialogParams {
   @igFreezedJson
   String? Function(int)? get errorMessage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AskIntDialogParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AskIntDialogParamsCopyWith<AskIntDialogParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1042,6 +1078,8 @@ class _$AskIntDialogParamsCopyWithImpl<$Res, $Val extends AskIntDialogParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AskIntDialogParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1106,6 +1144,8 @@ class __$$AskIntDialogParamsImplCopyWithImpl<$Res>
       $Res Function(_$AskIntDialogParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AskIntDialogParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1202,7 +1242,9 @@ class _$AskIntDialogParamsImpl implements _AskIntDialogParams {
   int get hashCode => Object.hash(runtimeType, placeholder, title, okBtnText,
       cancelBtnText, disableOkButton, errorMessage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AskIntDialogParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AskIntDialogParamsImplCopyWith<_$AskIntDialogParamsImpl> get copyWith =>
@@ -1234,8 +1276,11 @@ abstract class _AskIntDialogParams implements AskIntDialogParams {
   @override
   @igFreezedJson
   String? Function(int)? get errorMessage;
+
+  /// Create a copy of AskIntDialogParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AskIntDialogParamsImplCopyWith<_$AskIntDialogParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1250,7 +1295,9 @@ mixin _$AskOkDialogParams {
   @igFreezedJson
   Widget? get title => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AskOkDialogParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AskOkDialogParamsCopyWith<AskOkDialogParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1279,6 +1326,8 @@ class _$AskOkDialogParamsCopyWithImpl<$Res, $Val extends AskOkDialogParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AskOkDialogParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1337,6 +1386,8 @@ class __$$AskOkDialogParamsImplCopyWithImpl<$Res>
       $Res Function(_$AskOkDialogParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AskOkDialogParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1420,7 +1471,9 @@ class _$AskOkDialogParamsImpl implements _AskOkDialogParams {
   int get hashCode =>
       Object.hash(runtimeType, contentText, okText, cancelText, content, title);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AskOkDialogParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AskOkDialogParamsImplCopyWith<_$AskOkDialogParamsImpl> get copyWith =>
@@ -1448,8 +1501,11 @@ abstract class _AskOkDialogParams implements AskOkDialogParams {
   @override
   @igFreezedJson
   Widget? get title;
+
+  /// Create a copy of AskOkDialogParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AskOkDialogParamsImplCopyWith<_$AskOkDialogParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1573,6 +1629,8 @@ mixin _$BaseApiException {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this BaseApiException to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -1592,6 +1650,9 @@ class _$BaseApiExceptionCopyWithImpl<$Res, $Val extends BaseApiException>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1610,6 +1671,9 @@ class __$$BaseApiCancelExceptionImplCopyWithImpl<$Res>
       _$BaseApiCancelExceptionImpl _value,
       $Res Function(_$BaseApiCancelExceptionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1637,7 +1701,7 @@ class _$BaseApiCancelExceptionImpl extends BaseApiCancelException {
             other is _$BaseApiCancelExceptionImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -1790,6 +1854,9 @@ class __$$BaseApiConnectionTimeoutExceptionImplCopyWithImpl<$Res>
       _$BaseApiConnectionTimeoutExceptionImpl _value,
       $Res Function(_$BaseApiConnectionTimeoutExceptionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1819,7 +1886,7 @@ class _$BaseApiConnectionTimeoutExceptionImpl
             other is _$BaseApiConnectionTimeoutExceptionImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -1974,6 +2041,9 @@ class __$$BaseApiSendTimeoutExceptionImplCopyWithImpl<$Res>
       _$BaseApiSendTimeoutExceptionImpl _value,
       $Res Function(_$BaseApiSendTimeoutExceptionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2002,7 +2072,7 @@ class _$BaseApiSendTimeoutExceptionImpl extends BaseApiSendTimeoutException {
             other is _$BaseApiSendTimeoutExceptionImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -2156,6 +2226,9 @@ class __$$BaseApiReceiveTimeoutExceptionImplCopyWithImpl<$Res>
       _$BaseApiReceiveTimeoutExceptionImpl _value,
       $Res Function(_$BaseApiReceiveTimeoutExceptionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2185,7 +2258,7 @@ class _$BaseApiReceiveTimeoutExceptionImpl
             other is _$BaseApiReceiveTimeoutExceptionImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -2339,6 +2412,9 @@ class __$$BaseApiBadCertificateExceptionImplCopyWithImpl<$Res>
       _$BaseApiBadCertificateExceptionImpl _value,
       $Res Function(_$BaseApiBadCertificateExceptionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2368,7 +2444,7 @@ class _$BaseApiBadCertificateExceptionImpl
             other is _$BaseApiBadCertificateExceptionImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -2522,6 +2598,9 @@ class __$$BaseApiConnectionErrorExceptionImplCopyWithImpl<$Res>
       _$BaseApiConnectionErrorExceptionImpl _value,
       $Res Function(_$BaseApiConnectionErrorExceptionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2551,7 +2630,7 @@ class _$BaseApiConnectionErrorExceptionImpl
             other is _$BaseApiConnectionErrorExceptionImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -2708,6 +2787,8 @@ class __$$BaseApiBadResponseExceptionImplCopyWithImpl<$Res>
       $Res Function(_$BaseApiBadResponseExceptionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2764,11 +2845,13 @@ class _$BaseApiBadResponseExceptionImpl extends BaseApiBadResponseException {
                 other.statusCode == statusCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, response, statusCode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BaseApiBadResponseExceptionImplCopyWith<_$BaseApiBadResponseExceptionImpl>
@@ -2911,7 +2994,10 @@ abstract class BaseApiBadResponseException extends BaseApiException {
   @igFreezedJson
   Response<dynamic>? get response;
   int? get statusCode;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BaseApiBadResponseExceptionImplCopyWith<_$BaseApiBadResponseExceptionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2938,6 +3024,8 @@ class __$$BaseApiBusinessExceptionImplCopyWithImpl<$Res>
       $Res Function(_$BaseApiBusinessExceptionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3001,12 +3089,14 @@ class _$BaseApiBusinessExceptionImpl extends BaseApiBusinessException {
                 other.stackTrace == stackTrace));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, message,
       const DeepCollectionEquality().hash(error), stackTrace);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BaseApiBusinessExceptionImplCopyWith<_$BaseApiBusinessExceptionImpl>
@@ -3153,7 +3243,10 @@ abstract class BaseApiBusinessException extends BaseApiException {
   Object? get error;
   @igFreezedJson
   StackTrace? get stackTrace;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BaseApiBusinessExceptionImplCopyWith<_$BaseApiBusinessExceptionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3218,7 +3311,9 @@ mixin _$ByteModel {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ByteModelCopyWith<ByteModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3241,6 +3336,8 @@ class _$ByteModelCopyWithImpl<$Res, $Val extends ByteModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3274,6 +3371,8 @@ class __$$BytesModelImplCopyWithImpl<$Res>
       _$BytesModelImpl _value, $Res Function(_$BytesModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3312,7 +3411,9 @@ class _$BytesModelImpl extends BytesModel {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BytesModelImplCopyWith<_$BytesModelImpl> get copyWith =>
@@ -3405,8 +3506,11 @@ abstract class BytesModel extends ByteModel {
 
   @override
   double get value;
+
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BytesModelImplCopyWith<_$BytesModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3430,6 +3534,8 @@ class __$$KbModelImplCopyWithImpl<$Res>
       _$KbModelImpl _value, $Res Function(_$KbModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3468,7 +3574,9 @@ class _$KbModelImpl extends KbModel {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KbModelImplCopyWith<_$KbModelImpl> get copyWith =>
@@ -3561,8 +3669,11 @@ abstract class KbModel extends ByteModel {
 
   @override
   double get value;
+
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KbModelImplCopyWith<_$KbModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3586,6 +3697,8 @@ class __$$MbModelImplCopyWithImpl<$Res>
       _$MbModelImpl _value, $Res Function(_$MbModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3624,7 +3737,9 @@ class _$MbModelImpl extends MbModel {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MbModelImplCopyWith<_$MbModelImpl> get copyWith =>
@@ -3717,8 +3832,11 @@ abstract class MbModel extends ByteModel {
 
   @override
   double get value;
+
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MbModelImplCopyWith<_$MbModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3742,6 +3860,8 @@ class __$$GbModelImplCopyWithImpl<$Res>
       _$GbModelImpl _value, $Res Function(_$GbModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3780,7 +3900,9 @@ class _$GbModelImpl extends GbModel {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GbModelImplCopyWith<_$GbModelImpl> get copyWith =>
@@ -3873,8 +3995,11 @@ abstract class GbModel extends ByteModel {
 
   @override
   double get value;
+
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GbModelImplCopyWith<_$GbModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -3898,6 +4023,8 @@ class __$$TbModelImplCopyWithImpl<$Res>
       _$TbModelImpl _value, $Res Function(_$TbModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3936,7 +4063,9 @@ class _$TbModelImpl extends TbModel {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TbModelImplCopyWith<_$TbModelImpl> get copyWith =>
@@ -4029,8 +4158,11 @@ abstract class TbModel extends ByteModel {
 
   @override
   double get value;
+
+  /// Create a copy of ByteModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TbModelImplCopyWith<_$TbModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4136,6 +4268,8 @@ mixin _$DartTypeModel {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this DartTypeModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -4155,6 +4289,9 @@ class _$DartTypeModelCopyWithImpl<$Res, $Val extends DartTypeModel>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4174,6 +4311,8 @@ class __$$StringDataImplCopyWithImpl<$Res>
       _$StringDataImpl _value, $Res Function(_$StringDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4217,11 +4356,13 @@ class _$StringDataImpl extends StringData {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StringDataImplCopyWith<_$StringDataImpl> get copyWith =>
@@ -4341,7 +4482,10 @@ abstract class StringData extends DartTypeModel {
       _$StringDataImpl.fromJson;
 
   String get value;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StringDataImplCopyWith<_$StringDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4363,6 +4507,8 @@ class __$$NumDataImplCopyWithImpl<$Res>
       _$NumDataImpl _value, $Res Function(_$NumDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4406,11 +4552,13 @@ class _$NumDataImpl extends NumData {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NumDataImplCopyWith<_$NumDataImpl> get copyWith =>
@@ -4529,7 +4677,10 @@ abstract class NumData extends DartTypeModel {
   factory NumData.fromJson(Map<String, dynamic> json) = _$NumDataImpl.fromJson;
 
   num get value;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NumDataImplCopyWith<_$NumDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4551,6 +4702,8 @@ class __$$BoolDataImplCopyWithImpl<$Res>
       _$BoolDataImpl _value, $Res Function(_$BoolDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4594,11 +4747,13 @@ class _$BoolDataImpl extends BoolData {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BoolDataImplCopyWith<_$BoolDataImpl> get copyWith =>
@@ -4718,7 +4873,10 @@ abstract class BoolData extends DartTypeModel {
       _$BoolDataImpl.fromJson;
 
   bool get value;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BoolDataImplCopyWith<_$BoolDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4740,6 +4898,8 @@ class __$$ListDataImplCopyWithImpl<$Res>
       _$ListDataImpl _value, $Res Function(_$ListDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4789,12 +4949,14 @@ class _$ListDataImpl extends ListData {
             const DeepCollectionEquality().equals(other._value, _value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ListDataImplCopyWith<_$ListDataImpl> get copyWith =>
@@ -4914,7 +5076,10 @@ abstract class ListData extends DartTypeModel {
       _$ListDataImpl.fromJson;
 
   List<dynamic> get value;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ListDataImplCopyWith<_$ListDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4936,6 +5101,8 @@ class __$$JsonDataImplCopyWithImpl<$Res>
       _$JsonDataImpl _value, $Res Function(_$JsonDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4985,12 +5152,14 @@ class _$JsonDataImpl extends JsonData {
             const DeepCollectionEquality().equals(other._value, _value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$JsonDataImplCopyWith<_$JsonDataImpl> get copyWith =>
@@ -5110,7 +5279,10 @@ abstract class JsonData extends DartTypeModel {
       _$JsonDataImpl.fromJson;
 
   Map<String, dynamic> get value;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$JsonDataImplCopyWith<_$JsonDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -5132,6 +5304,8 @@ class __$$DynamicDataImplCopyWithImpl<$Res>
       _$DynamicDataImpl _value, $Res Function(_$DynamicDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5175,12 +5349,14 @@ class _$DynamicDataImpl extends DynamicData {
             const DeepCollectionEquality().equals(other.value, value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DynamicDataImplCopyWith<_$DynamicDataImpl> get copyWith =>
@@ -5300,7 +5476,10 @@ abstract class DynamicData extends DartTypeModel {
       _$DynamicDataImpl.fromJson;
 
   dynamic get value;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DynamicDataImplCopyWith<_$DynamicDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -5319,6 +5498,9 @@ class __$$NullDataImplCopyWithImpl<$Res>
   __$$NullDataImplCopyWithImpl(
       _$NullDataImpl _value, $Res Function(_$NullDataImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -5345,7 +5527,7 @@ class _$NullDataImpl extends NullData {
         (other.runtimeType == runtimeType && other is _$NullDataImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -5480,6 +5662,8 @@ class __$$JsonStringDataImplCopyWithImpl<$Res>
       _$JsonStringDataImpl _value, $Res Function(_$JsonStringDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5524,11 +5708,13 @@ class _$JsonStringDataImpl extends JsonStringData {
                 other.jsonString == jsonString));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, jsonString);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$JsonStringDataImplCopyWith<_$JsonStringDataImpl> get copyWith =>
@@ -5649,7 +5835,10 @@ abstract class JsonStringData extends DartTypeModel {
       _$JsonStringDataImpl.fromJson;
 
   String get jsonString;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DartTypeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$JsonStringDataImplCopyWith<_$JsonStringDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -5709,9 +5898,15 @@ mixin _$ImageParams {
   @igFreezedJson
   CustomCompletedWidget? get customCompletedWidget =>
       throw _privateConstructorUsedError;
+  @igFreezedJson
+  Widget? get customLoadingWidget => throw _privateConstructorUsedError;
 
+  /// Serializes this ImageParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ImageParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ImageParamsCopyWith<ImageParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -5758,7 +5953,8 @@ abstract class $ImageParamsCopyWith<$Res> {
       @igFreezedJson AssetBundle? bundle,
       @Doc(message: '自定义完成小部件')
       @igFreezedJson
-      CustomCompletedWidget? customCompletedWidget});
+      CustomCompletedWidget? customCompletedWidget,
+      @igFreezedJson Widget? customLoadingWidget});
 }
 
 /// @nodoc
@@ -5771,6 +5967,8 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ImageParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5808,6 +6006,7 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
     Object? package = freezed,
     Object? bundle = freezed,
     Object? customCompletedWidget = freezed,
+    Object? customLoadingWidget = freezed,
   }) {
     return _then(_value.copyWith(
       width: freezed == width
@@ -5946,6 +6145,10 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
           ? _value.customCompletedWidget
           : customCompletedWidget // ignore: cast_nullable_to_non_nullable
               as CustomCompletedWidget?,
+      customLoadingWidget: freezed == customLoadingWidget
+          ? _value.customLoadingWidget
+          : customLoadingWidget // ignore: cast_nullable_to_non_nullable
+              as Widget?,
     ) as $Val);
   }
 }
@@ -5994,7 +6197,8 @@ abstract class _$$ImageParamsImplCopyWith<$Res>
       @igFreezedJson AssetBundle? bundle,
       @Doc(message: '自定义完成小部件')
       @igFreezedJson
-      CustomCompletedWidget? customCompletedWidget});
+      CustomCompletedWidget? customCompletedWidget,
+      @igFreezedJson Widget? customLoadingWidget});
 }
 
 /// @nodoc
@@ -6005,6 +6209,8 @@ class __$$ImageParamsImplCopyWithImpl<$Res>
       _$ImageParamsImpl _value, $Res Function(_$ImageParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ImageParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6042,6 +6248,7 @@ class __$$ImageParamsImplCopyWithImpl<$Res>
     Object? package = freezed,
     Object? bundle = freezed,
     Object? customCompletedWidget = freezed,
+    Object? customLoadingWidget = freezed,
   }) {
     return _then(_$ImageParamsImpl(
       width: freezed == width
@@ -6180,6 +6387,10 @@ class __$$ImageParamsImplCopyWithImpl<$Res>
           ? _value.customCompletedWidget
           : customCompletedWidget // ignore: cast_nullable_to_non_nullable
               as CustomCompletedWidget?,
+      customLoadingWidget: freezed == customLoadingWidget
+          ? _value.customLoadingWidget
+          : customLoadingWidget // ignore: cast_nullable_to_non_nullable
+              as Widget?,
     ));
   }
 }
@@ -6221,7 +6432,8 @@ class _$ImageParamsImpl extends _ImageParams {
       this.maxBytes,
       this.package,
       @igFreezedJson this.bundle,
-      @Doc(message: '自定义完成小部件') @igFreezedJson this.customCompletedWidget})
+      @Doc(message: '自定义完成小部件') @igFreezedJson this.customCompletedWidget,
+      @igFreezedJson this.customLoadingWidget})
       : _headers = headers,
         super._();
 
@@ -6326,10 +6538,13 @@ class _$ImageParamsImpl extends _ImageParams {
   @Doc(message: '自定义完成小部件')
   @igFreezedJson
   final CustomCompletedWidget? customCompletedWidget;
+  @override
+  @igFreezedJson
+  final Widget? customLoadingWidget;
 
   @override
   String toString() {
-    return 'ImageParams(width: $width, height: $height, size: $size, fit: $fit, borderRadius: $borderRadius, shape: $shape, enableMemoryCache: $enableMemoryCache, heroTag: $heroTag, isSelected: $isSelected, errorWidget: $errorWidget, onTap: $onTap, color: $color, clearMemoryCacheIfFailed: $clearMemoryCacheIfFailed, gaplessPlayback: $gaplessPlayback, colorBlendMode: $colorBlendMode, scale: $scale, headers: $headers, cache: $cache, retries: $retries, timeLimit: $timeLimit, timeRetry: $timeRetry, cancelToken: $cancelToken, cacheKey: $cacheKey, printError: $printError, cacheRawData: $cacheRawData, imageCacheName: $imageCacheName, cacheMaxAge: $cacheMaxAge, cacheWidth: $cacheWidth, cacheHeight: $cacheHeight, compressionRatio: $compressionRatio, maxBytes: $maxBytes, package: $package, bundle: $bundle, customCompletedWidget: $customCompletedWidget)';
+    return 'ImageParams(width: $width, height: $height, size: $size, fit: $fit, borderRadius: $borderRadius, shape: $shape, enableMemoryCache: $enableMemoryCache, heroTag: $heroTag, isSelected: $isSelected, errorWidget: $errorWidget, onTap: $onTap, color: $color, clearMemoryCacheIfFailed: $clearMemoryCacheIfFailed, gaplessPlayback: $gaplessPlayback, colorBlendMode: $colorBlendMode, scale: $scale, headers: $headers, cache: $cache, retries: $retries, timeLimit: $timeLimit, timeRetry: $timeRetry, cancelToken: $cancelToken, cacheKey: $cacheKey, printError: $printError, cacheRawData: $cacheRawData, imageCacheName: $imageCacheName, cacheMaxAge: $cacheMaxAge, cacheWidth: $cacheWidth, cacheHeight: $cacheHeight, compressionRatio: $compressionRatio, maxBytes: $maxBytes, package: $package, bundle: $bundle, customCompletedWidget: $customCompletedWidget, customLoadingWidget: $customLoadingWidget)';
   }
 
   @override
@@ -6391,10 +6606,12 @@ class _$ImageParamsImpl extends _ImageParams {
             (identical(other.package, package) || other.package == package) &&
             (identical(other.bundle, bundle) || other.bundle == bundle) &&
             (identical(other.customCompletedWidget, customCompletedWidget) ||
-                other.customCompletedWidget == customCompletedWidget));
+                other.customCompletedWidget == customCompletedWidget) &&
+            (identical(other.customLoadingWidget, customLoadingWidget) ||
+                other.customLoadingWidget == customLoadingWidget));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -6431,10 +6648,13 @@ class _$ImageParamsImpl extends _ImageParams {
         maxBytes,
         package,
         bundle,
-        customCompletedWidget
+        customCompletedWidget,
+        customLoadingWidget
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImageParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImageParamsImplCopyWith<_$ImageParamsImpl> get copyWith =>
@@ -6485,7 +6705,8 @@ abstract class _ImageParams extends ImageParams {
       @igFreezedJson final AssetBundle? bundle,
       @Doc(message: '自定义完成小部件')
       @igFreezedJson
-      final CustomCompletedWidget? customCompletedWidget}) = _$ImageParamsImpl;
+      final CustomCompletedWidget? customCompletedWidget,
+      @igFreezedJson final Widget? customLoadingWidget}) = _$ImageParamsImpl;
   const _ImageParams._() : super._();
 
   factory _ImageParams.fromJson(Map<String, dynamic> json) =
@@ -6527,8 +6748,8 @@ abstract class _ImageParams extends ImageParams {
   bool get gaplessPlayback;
   @override
   @igFreezedJson
-  BlendMode? get colorBlendMode;
-  @override //---net
+  BlendMode? get colorBlendMode; //---net
+  @override
   double? get scale;
   @override
   Map<String, String> get headers;
@@ -6574,7 +6795,13 @@ abstract class _ImageParams extends ImageParams {
   @igFreezedJson
   CustomCompletedWidget? get customCompletedWidget;
   @override
-  @JsonKey(ignore: true)
+  @igFreezedJson
+  Widget? get customLoadingWidget;
+
+  /// Create a copy of ImageParams
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImageParamsImplCopyWith<_$ImageParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -6649,8 +6876,13 @@ mixin _$MyImage {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Serializes this MyImage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MyImageCopyWith<MyImage> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -6674,6 +6906,8 @@ class _$MyImageCopyWithImpl<$Res, $Val extends MyImage>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6687,6 +6921,8 @@ class _$MyImageCopyWithImpl<$Res, $Val extends MyImage>
     ) as $Val);
   }
 
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ImageParamsCopyWith<$Res> get params {
@@ -6718,6 +6954,8 @@ class __$$MyNetworkImageImplCopyWithImpl<$Res>
       _$MyNetworkImageImpl _value, $Res Function(_$MyNetworkImageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6773,11 +7011,13 @@ class _$MyNetworkImageImpl extends MyNetworkImage {
             (identical(other.params, params) || other.params == params));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, url, params);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyNetworkImageImplCopyWith<_$MyNetworkImageImpl> get copyWith =>
@@ -6878,8 +7118,11 @@ abstract class MyNetworkImage extends MyImage {
   String get url;
   @override
   ImageParams get params;
+
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyNetworkImageImplCopyWith<_$MyNetworkImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -6906,6 +7149,8 @@ class __$$MyBase64ImageImplCopyWithImpl<$Res>
       _$MyBase64ImageImpl _value, $Res Function(_$MyBase64ImageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6962,11 +7207,13 @@ class _$MyBase64ImageImpl extends MyBase64Image {
             (identical(other.params, params) || other.params == params));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, base64Code, params);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyBase64ImageImplCopyWith<_$MyBase64ImageImpl> get copyWith =>
@@ -7066,8 +7313,11 @@ abstract class MyBase64Image extends MyImage {
   String get base64Code;
   @override
   ImageParams get params;
+
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyBase64ImageImplCopyWith<_$MyBase64ImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -7094,6 +7344,8 @@ class __$$MyFilePathImageImplCopyWithImpl<$Res>
       _$MyFilePathImageImpl _value, $Res Function(_$MyFilePathImageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7150,11 +7402,13 @@ class _$MyFilePathImageImpl extends MyFilePathImage {
             (identical(other.params, params) || other.params == params));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, filePath, params);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyFilePathImageImplCopyWith<_$MyFilePathImageImpl> get copyWith =>
@@ -7255,8 +7509,11 @@ abstract class MyFilePathImage extends MyImage {
   String get filePath;
   @override
   ImageParams get params;
+
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyFilePathImageImplCopyWith<_$MyFilePathImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -7283,6 +7540,8 @@ class __$$MyAssetImageImplCopyWithImpl<$Res>
       _$MyAssetImageImpl _value, $Res Function(_$MyAssetImageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -7339,11 +7598,13 @@ class _$MyAssetImageImpl extends MyAssetImage {
             (identical(other.params, params) || other.params == params));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, assetPath, params);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MyAssetImageImplCopyWith<_$MyAssetImageImpl> get copyWith =>
@@ -7443,8 +7704,11 @@ abstract class MyAssetImage extends MyImage {
   String get assetPath;
   @override
   ImageParams get params;
+
+  /// Create a copy of MyImage
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MyAssetImageImplCopyWith<_$MyAssetImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -7537,6 +7801,9 @@ class _$MyPlatformCopyWithImpl<$Res, $Val extends MyPlatform>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of MyPlatform
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -7553,6 +7820,9 @@ class __$$AndroidPlatformImplCopyWithImpl<$Res>
   __$$AndroidPlatformImplCopyWithImpl(
       _$AndroidPlatformImpl _value, $Res Function(_$AndroidPlatformImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MyPlatform
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -7685,6 +7955,9 @@ class __$$IosPlatformImplCopyWithImpl<$Res>
   __$$IosPlatformImplCopyWithImpl(
       _$IosPlatformImpl _value, $Res Function(_$IosPlatformImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MyPlatform
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -7817,6 +8090,9 @@ class __$$MacosPlatformImplCopyWithImpl<$Res>
   __$$MacosPlatformImplCopyWithImpl(
       _$MacosPlatformImpl _value, $Res Function(_$MacosPlatformImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MyPlatform
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -7949,6 +8225,9 @@ class __$$WebPlatformImplCopyWithImpl<$Res>
   __$$WebPlatformImplCopyWithImpl(
       _$WebPlatformImpl _value, $Res Function(_$WebPlatformImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MyPlatform
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -8081,6 +8360,9 @@ class __$$LinuxPlatformImplCopyWithImpl<$Res>
   __$$LinuxPlatformImplCopyWithImpl(
       _$LinuxPlatformImpl _value, $Res Function(_$LinuxPlatformImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MyPlatform
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -8213,6 +8495,9 @@ class __$$WindowsPlatformImplCopyWithImpl<$Res>
   __$$WindowsPlatformImplCopyWithImpl(
       _$WindowsPlatformImpl _value, $Res Function(_$WindowsPlatformImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MyPlatform
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -8345,6 +8630,9 @@ class __$$FuchsiaPlatformImplCopyWithImpl<$Res>
   __$$FuchsiaPlatformImplCopyWithImpl(
       _$FuchsiaPlatformImpl _value, $Res Function(_$FuchsiaPlatformImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of MyPlatform
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -8474,8 +8762,12 @@ mixin _$PictureSelectionI18nConfig {
   String get photoAlbumMenuText => throw _privateConstructorUsedError;
   String get goShootText => throw _privateConstructorUsedError;
 
+  /// Serializes this PictureSelectionI18nConfig to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PictureSelectionI18nConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PictureSelectionI18nConfigCopyWith<PictureSelectionI18nConfig>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -8503,6 +8795,8 @@ class _$PictureSelectionI18nConfigCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PictureSelectionI18nConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -8546,6 +8840,8 @@ class __$$PictureSelectionI18nConfigImplCopyWithImpl<$Res>
       $Res Function(_$PictureSelectionI18nConfigImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PictureSelectionI18nConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -8600,11 +8896,13 @@ class _$PictureSelectionI18nConfigImpl extends _PictureSelectionI18nConfig {
                 other.goShootText == goShootText));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, photoAlbumMenuText, goShootText);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PictureSelectionI18nConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PictureSelectionI18nConfigImplCopyWith<_$PictureSelectionI18nConfigImpl>
@@ -8633,8 +8931,11 @@ abstract class _PictureSelectionI18nConfig extends PictureSelectionI18nConfig {
   String get photoAlbumMenuText;
   @override
   String get goShootText;
+
+  /// Create a copy of PictureSelectionI18nConfig
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PictureSelectionI18nConfigImplCopyWith<_$PictureSelectionI18nConfigImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -8698,6 +8999,9 @@ class _$PictureSelectionItemModelCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PictureSelectionItemModel
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -8717,6 +9021,8 @@ class __$$XXFileImplCopyWithImpl<$Res>
       _$XXFileImpl _value, $Res Function(_$XXFileImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PictureSelectionItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -8755,7 +9061,9 @@ class _$XXFileImpl extends XXFile {
   @override
   int get hashCode => Object.hash(runtimeType, file);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PictureSelectionItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$XXFileImplCopyWith<_$XXFileImpl> get copyWith =>
@@ -8829,7 +9137,10 @@ abstract class XXFile extends PictureSelectionItemModel {
   XXFile._() : super._();
 
   File get file;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PictureSelectionItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$XXFileImplCopyWith<_$XXFileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -8851,6 +9162,8 @@ class __$$XXImageImplCopyWithImpl<$Res>
       _$XXImageImpl _value, $Res Function(_$XXImageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PictureSelectionItemModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -8889,7 +9202,9 @@ class _$XXImageImpl extends XXImage {
   @override
   int get hashCode => Object.hash(runtimeType, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PictureSelectionItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$XXImageImplCopyWith<_$XXImageImpl> get copyWith =>
@@ -8963,7 +9278,10 @@ abstract class XXImage extends PictureSelectionItemModel {
   XXImage._() : super._();
 
   String get url;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PictureSelectionItemModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$XXImageImplCopyWith<_$XXImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

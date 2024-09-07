@@ -1,7 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// part of 'models.dart';
-part of dd_js_util;
+part of 'models.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -162,7 +161,7 @@ Map<String, dynamic> _$$BaseApiConnectionErrorExceptionImplToJson(
 _$BaseApiBadResponseExceptionImpl _$$BaseApiBadResponseExceptionImplFromJson(
         Map<String, dynamic> json) =>
     _$BaseApiBadResponseExceptionImpl(
-      statusCode: json['statusCode'] as int?,
+      statusCode: (json['statusCode'] as num?)?.toInt(),
       $type: json['runtimeType'] as String?,
     );
 
@@ -299,15 +298,15 @@ _$ImageParamsImpl _$$ImageParamsImplFromJson(Map<String, dynamic> json) =>
           ) ??
           const {},
       cache: json['cache'] as bool? ?? true,
-      retries: json['retries'] as int? ?? 3,
+      retries: (json['retries'] as num?)?.toInt() ?? 3,
       cacheKey: json['cacheKey'] as String?,
       printError: json['printError'] as bool? ?? false,
       cacheRawData: json['cacheRawData'] as bool? ?? true,
       imageCacheName: json['imageCacheName'] as String?,
-      cacheWidth: json['cacheWidth'] as int?,
-      cacheHeight: json['cacheHeight'] as int?,
+      cacheWidth: (json['cacheWidth'] as num?)?.toInt(),
+      cacheHeight: (json['cacheHeight'] as num?)?.toInt(),
       compressionRatio: (json['compressionRatio'] as num?)?.toDouble(),
-      maxBytes: json['maxBytes'] as int?,
+      maxBytes: (json['maxBytes'] as num?)?.toInt(),
       package: json['package'] as String?,
     );
 

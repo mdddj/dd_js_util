@@ -52,14 +52,14 @@ class AskStringDialog extends StatelessWidget {
         ]),
       ),
       actions: [
-        CupertinoActionSheetAction(
+        CupertinoDialogAction(
           onPressed: () {
             context.pop();
           },
           isDestructiveAction: true,
           child: Text(params.cancelBtnText),
         ),
-        CupertinoActionSheetAction(
+        CupertinoDialogAction(
           onPressed: () {
             final text = controller.text;
             if (text.isNotEmpty) {
