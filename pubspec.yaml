@@ -1,6 +1,6 @@
 name: dd_js_util
 description: flutter tools and widgets and extends
-version: 6.3.4
+version: 6.3.6
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
@@ -24,7 +24,7 @@ dependencies:
   flutter_smart_dialog: ^4.9.8+1
   image_picker: ^1.1.2
   dio: ^5.7.0
-  extended_image: ^8.2.1
+  extended_image: ^8.2.3
   flutter_swiper_null_safety_flutter3: ^4.0.3
   url_launcher: ^6.3.0
   ffloat_nullsafety: ^3.3.6
