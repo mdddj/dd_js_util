@@ -13,11 +13,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../dd_js_util.dart';
 
 part 'models.g.dart';
+
 part 'models.freezed.dart';
 
-
-const igFreezedJson = JsonKey(
-    fromJson: null, toJson: null, includeFromJson: false, includeToJson: false);
+const igFreezedJson = JsonKey(fromJson: null, toJson: null, includeFromJson: false, includeToJson: false);
 
 typedef DioStart = Future<void> Function(Dio dio, String url);
 typedef InterceptorCall = ISet<Interceptor> Function(ISet<Interceptor> old);
@@ -53,8 +52,7 @@ class RequestParams with _$RequestParams {
     @igFreezedJson File? savePath,
   }) = _RequestParams;
 
-  factory RequestParams.fromJson(Map<String, dynamic> json) =>
-      _$RequestParamsFromJson(json);
+  factory RequestParams.fromJson(Map<String, dynamic> json) => _$RequestParamsFromJson(json);
 }
 
 extension RequestParamsex on RequestParams {
@@ -158,39 +156,30 @@ class BaseApiException with _$BaseApiException {
   const BaseApiException._();
 
   ///请求被主动关闭异常
-  const factory BaseApiException.cancel() = BaseApiCancelException;
+  const factory BaseApiException.cancel({@igFreezedJson Object? error, @igFreezedJson RequestOptions? options}) = BaseApiCancelException;
 
   /// 由连接超时引起的异常
-  const factory BaseApiException.connectionTimeout() =
-      BaseApiConnectionTimeoutException;
+  const factory BaseApiException.connectionTimeout() = BaseApiConnectionTimeoutException;
 
   /// 当url发送超时时会发生这种情况。
   const factory BaseApiException.sendTimeout() = BaseApiSendTimeoutException;
 
   ///它发生在接收超时时。
-  const factory BaseApiException.receiveTimeout() =
-      BaseApiReceiveTimeoutException;
+  const factory BaseApiException.receiveTimeout() = BaseApiReceiveTimeoutException;
 
   ///由[ValidateCertificate]配置的证书不正确引起
-  const factory BaseApiException.badCertificate() =
-      BaseApiBadCertificateException;
+  const factory BaseApiException.badCertificate() = BaseApiBadCertificateException;
 
   ///例如由“xhr.onError”或SocketExceptions引起。
-  const factory BaseApiException.connectionError() =
-      BaseApiConnectionErrorException;
+  const factory BaseApiException.connectionError() = BaseApiConnectionErrorException;
 
   ///服务器错误
-  const factory BaseApiException.badResponse(
-      {@igFreezedJson Response? response,
-      int? statusCode}) = BaseApiBadResponseException;
+  const factory BaseApiException.badResponse({@igFreezedJson Response? response, int? statusCode}) = BaseApiBadResponseException;
 
-  const factory BaseApiException.businessException(
-      {required String message,
-      @igFreezedJson Object? error,
-      @igFreezedJson StackTrace? stackTrace}) = BaseApiBusinessException;
+  const factory BaseApiException.businessException({required String message, @igFreezedJson Object? error, @igFreezedJson StackTrace? stackTrace}) =
+      BaseApiBusinessException;
 
-  factory BaseApiException.fromJson(Map<String, dynamic> json) =>
-      _$BaseApiExceptionFromJson(json);
+  factory BaseApiException.fromJson(Map<String, dynamic> json) => _$BaseApiExceptionFromJson(json);
 
   factory BaseApiException.createFromDioException(DioException dioException) {
     switch (dioException.type) {
@@ -203,18 +192,14 @@ class BaseApiException with _$BaseApiException {
       case DioExceptionType.badCertificate:
         return const BaseApiException.badCertificate();
       case DioExceptionType.badResponse:
-        return BaseApiException.badResponse(
-            response: dioException.response,
-            statusCode: dioException.response?.statusCode);
+        return BaseApiException.badResponse(response: dioException.response, statusCode: dioException.response?.statusCode);
       case DioExceptionType.cancel:
-        return const BaseApiException.cancel();
+        return BaseApiException.cancel(error: dioException.message, options: dioException.requestOptions);
       case DioExceptionType.connectionError:
         return const BaseApiException.connectionError();
       case DioExceptionType.unknown:
         return BaseApiException.businessException(
-            message: 'unknown : ${dioException.error}',
-            error: dioException.error,
-            stackTrace: dioException.stackTrace);
+            message: 'unknown : ${dioException.error}', error: dioException.error, stackTrace: dioException.stackTrace);
     }
   }
 }
@@ -317,8 +302,7 @@ class DartTypeModel with _$DartTypeModel {
 
   const factory DartTypeModel.jsonString(String jsonString) = JsonStringData;
 
-  factory DartTypeModel.fromJson(Map<String, dynamic> json) =>
-      _$DartTypeModelFromJson(json);
+  factory DartTypeModel.fromJson(Map<String, dynamic> json) => _$DartTypeModelFromJson(json);
 
   factory DartTypeModel.createFrom(dynamic data) {
     if (data == null) {
@@ -348,12 +332,10 @@ class DartTypeModel with _$DartTypeModel {
     return model;
   }
 
-  static DartTypeModel freezedFromJson(dynamic v) =>
-      DartTypeModel.createFrom(v);
+  static DartTypeModel freezedFromJson(dynamic v) => DartTypeModel.createFrom(v);
 }
 
-T tryString2Model<T>(String data, T Function(Map<String, dynamic> json) parse,
-    T Function() orElse) {
+T tryString2Model<T>(String data, T Function(Map<String, dynamic> json) parse, T Function() orElse) {
   try {
     return parse(jsonDecode(data));
   } catch (_) {
@@ -361,8 +343,7 @@ T tryString2Model<T>(String data, T Function(Map<String, dynamic> json) parse,
   }
 }
 
-T? decodeModelOrNull<T>(
-    String jsonString, T Function(Map<String, dynamic> jsonMap) decode) {
+T? decodeModelOrNull<T>(String jsonString, T Function(Map<String, dynamic> jsonMap) decode) {
   try {
     final map = jsonDecode(jsonString);
     return decode(map);
@@ -381,8 +362,7 @@ extension ImageParamsEx on ImageParams {
   }
 }
 
-typedef CustomCompletedWidget = Widget? Function(
-    ExtendedImageState state, ImageParams params, Widget child);
+typedef CustomCompletedWidget = Widget? Function(ExtendedImageState state, ImageParams params, Widget child);
 
 //--ok
 
@@ -426,39 +406,25 @@ class ImageParams with _$ImageParams {
       int? maxBytes,
       String? package,
       @igFreezedJson AssetBundle? bundle,
-      @Doc(message: '自定义完成小部件')
-      @igFreezedJson
-      CustomCompletedWidget? customCompletedWidget,
-      @igFreezedJson
-      Widget? customLoadingWidget
-      }) = _ImageParams;
+      @Doc(message: '自定义完成小部件') @igFreezedJson CustomCompletedWidget? customCompletedWidget,
+      @igFreezedJson Widget? customLoadingWidget}) = _ImageParams;
 
-  factory ImageParams.fromJson(Map<String, dynamic> json) =>
-      _$ImageParamsFromJson(json);
+  factory ImageParams.fromJson(Map<String, dynamic> json) => _$ImageParamsFromJson(json);
 }
 
 @freezed
 class MyImage with _$MyImage {
   const MyImage._();
 
-  factory MyImage.network(
-      {required String url,
-      @Default(ImageParams()) ImageParams params}) = MyNetworkImage;
+  factory MyImage.network({required String url, @Default(ImageParams()) ImageParams params}) = MyNetworkImage;
 
-  factory MyImage.base64(
-      {required String base64Code,
-      @Default(ImageParams()) ImageParams params}) = MyBase64Image;
+  factory MyImage.base64({required String base64Code, @Default(ImageParams()) ImageParams params}) = MyBase64Image;
 
-  factory MyImage.filePath(
-      {required String filePath,
-      @Default(ImageParams()) ImageParams params}) = MyFilePathImage;
+  factory MyImage.filePath({required String filePath, @Default(ImageParams()) ImageParams params}) = MyFilePathImage;
 
-  factory MyImage.asset(
-      {required String assetPath,
-      @Default(ImageParams()) ImageParams params}) = MyAssetImage;
+  factory MyImage.asset({required String assetPath, @Default(ImageParams()) ImageParams params}) = MyAssetImage;
 
-  factory MyImage.fromJson(Map<String, dynamic> json) =>
-      _$MyImageFromJson(json);
+  factory MyImage.fromJson(Map<String, dynamic> json) => _$MyImageFromJson(json);
 }
 
 MyPlatform get myPlatform {
@@ -481,10 +447,12 @@ MyPlatform get myPlatform {
 
 extension MyPlatformEx on MyPlatform {
   ///判断是否为 ios 平台
-  bool get isIos =>
-      myPlatform.whenOrNull(ios: () => true, macos: () => true) ?? false;
+  bool get isIos => myPlatform.whenOrNull(ios: () => true, macos: () => true) ?? false;
+
   bool get isAndroid => myPlatform.whenOrNull(android: () => true) ?? false;
-  bool get isDesktop => myPlatform.whenOrNull(android: () => false,ios: () => false) ?? true;
+
+  bool get isDesktop => myPlatform.whenOrNull(android: () => false, ios: () => false) ?? true;
+
   bool get isMobile => !isDesktop;
 }
 
@@ -510,13 +478,10 @@ class PictureSelectionI18nConfig with _$PictureSelectionI18nConfig {
   const PictureSelectionI18nConfig._();
 
   const factory PictureSelectionI18nConfig(
-      {@JsonKey(name: 'photoAlbumMenuText')
-      @Default('相册')
-      String photoAlbumMenuText,
+      {@JsonKey(name: 'photoAlbumMenuText') @Default('相册') String photoAlbumMenuText,
       @Default('去拍摄') String goShootText}) = _PictureSelectionI18nConfig;
 
-  factory PictureSelectionI18nConfig.fromJson(Map<String, dynamic> json) =>
-      _$PictureSelectionI18nConfigFromJson(json);
+  factory PictureSelectionI18nConfig.fromJson(Map<String, dynamic> json) => _$PictureSelectionI18nConfigFromJson(json);
 }
 
 extension PictureSelectionItemModelEx on PictureSelectionItemModel {

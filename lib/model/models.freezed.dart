@@ -1539,7 +1539,9 @@ BaseApiException _$BaseApiExceptionFromJson(Map<String, dynamic> json) {
 mixin _$BaseApiException {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancel,
+    required TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)
+        cancel,
     required TResult Function() connectionTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
@@ -1555,7 +1557,9 @@ mixin _$BaseApiException {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancel,
+    TResult? Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult? Function()? connectionTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function()? receiveTimeout,
@@ -1571,7 +1575,9 @@ mixin _$BaseApiException {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancel,
+    TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult Function()? connectionTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
@@ -1661,6 +1667,9 @@ abstract class _$$BaseApiCancelExceptionImplCopyWith<$Res> {
           _$BaseApiCancelExceptionImpl value,
           $Res Function(_$BaseApiCancelExceptionImpl) then) =
       __$$BaseApiCancelExceptionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {@igFreezedJson Object? error, @igFreezedJson RequestOptions? options});
 }
 
 /// @nodoc
@@ -1674,41 +1683,79 @@ class __$$BaseApiCancelExceptionImplCopyWithImpl<$Res>
 
   /// Create a copy of BaseApiException
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = freezed,
+    Object? options = freezed,
+  }) {
+    return _then(_$BaseApiCancelExceptionImpl(
+      error: freezed == error ? _value.error : error,
+      options: freezed == options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
+              as RequestOptions?,
+    ));
+  }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$BaseApiCancelExceptionImpl extends BaseApiCancelException {
-  const _$BaseApiCancelExceptionImpl({final String? $type})
+  const _$BaseApiCancelExceptionImpl(
+      {@igFreezedJson this.error,
+      @igFreezedJson this.options,
+      final String? $type})
       : $type = $type ?? 'cancel',
         super._();
 
   factory _$BaseApiCancelExceptionImpl.fromJson(Map<String, dynamic> json) =>
       _$$BaseApiCancelExceptionImplFromJson(json);
 
+  @override
+  @igFreezedJson
+  final Object? error;
+  @override
+  @igFreezedJson
+  final RequestOptions? options;
+
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'BaseApiException.cancel()';
+    return 'BaseApiException.cancel(error: $error, options: $options)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BaseApiCancelExceptionImpl);
+            other is _$BaseApiCancelExceptionImpl &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.options, options) || other.options == options));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(error), options);
+
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BaseApiCancelExceptionImplCopyWith<_$BaseApiCancelExceptionImpl>
+      get copyWith => __$$BaseApiCancelExceptionImplCopyWithImpl<
+          _$BaseApiCancelExceptionImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancel,
+    required TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)
+        cancel,
     required TResult Function() connectionTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
@@ -1721,13 +1768,15 @@ class _$BaseApiCancelExceptionImpl extends BaseApiCancelException {
             @igFreezedJson StackTrace? stackTrace)
         businessException,
   }) {
-    return cancel();
+    return cancel(error, options);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancel,
+    TResult? Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult? Function()? connectionTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function()? receiveTimeout,
@@ -1740,13 +1789,15 @@ class _$BaseApiCancelExceptionImpl extends BaseApiCancelException {
             @igFreezedJson StackTrace? stackTrace)?
         businessException,
   }) {
-    return cancel?.call();
+    return cancel?.call(error, options);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancel,
+    TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult Function()? connectionTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
@@ -1761,7 +1812,7 @@ class _$BaseApiCancelExceptionImpl extends BaseApiCancelException {
     required TResult orElse(),
   }) {
     if (cancel != null) {
-      return cancel();
+      return cancel(error, options);
     }
     return orElse();
   }
@@ -1830,11 +1881,25 @@ class _$BaseApiCancelExceptionImpl extends BaseApiCancelException {
 }
 
 abstract class BaseApiCancelException extends BaseApiException {
-  const factory BaseApiCancelException() = _$BaseApiCancelExceptionImpl;
+  const factory BaseApiCancelException(
+          {@igFreezedJson final Object? error,
+          @igFreezedJson final RequestOptions? options}) =
+      _$BaseApiCancelExceptionImpl;
   const BaseApiCancelException._() : super._();
 
   factory BaseApiCancelException.fromJson(Map<String, dynamic> json) =
       _$BaseApiCancelExceptionImpl.fromJson;
+
+  @igFreezedJson
+  Object? get error;
+  @igFreezedJson
+  RequestOptions? get options;
+
+  /// Create a copy of BaseApiException
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BaseApiCancelExceptionImplCopyWith<_$BaseApiCancelExceptionImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1893,7 +1958,9 @@ class _$BaseApiConnectionTimeoutExceptionImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancel,
+    required TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)
+        cancel,
     required TResult Function() connectionTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
@@ -1912,7 +1979,9 @@ class _$BaseApiConnectionTimeoutExceptionImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancel,
+    TResult? Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult? Function()? connectionTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function()? receiveTimeout,
@@ -1931,7 +2000,9 @@ class _$BaseApiConnectionTimeoutExceptionImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancel,
+    TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult Function()? connectionTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
@@ -2079,7 +2150,9 @@ class _$BaseApiSendTimeoutExceptionImpl extends BaseApiSendTimeoutException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancel,
+    required TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)
+        cancel,
     required TResult Function() connectionTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
@@ -2098,7 +2171,9 @@ class _$BaseApiSendTimeoutExceptionImpl extends BaseApiSendTimeoutException {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancel,
+    TResult? Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult? Function()? connectionTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function()? receiveTimeout,
@@ -2117,7 +2192,9 @@ class _$BaseApiSendTimeoutExceptionImpl extends BaseApiSendTimeoutException {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancel,
+    TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult Function()? connectionTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
@@ -2265,7 +2342,9 @@ class _$BaseApiReceiveTimeoutExceptionImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancel,
+    required TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)
+        cancel,
     required TResult Function() connectionTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
@@ -2284,7 +2363,9 @@ class _$BaseApiReceiveTimeoutExceptionImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancel,
+    TResult? Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult? Function()? connectionTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function()? receiveTimeout,
@@ -2303,7 +2384,9 @@ class _$BaseApiReceiveTimeoutExceptionImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancel,
+    TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult Function()? connectionTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
@@ -2451,7 +2534,9 @@ class _$BaseApiBadCertificateExceptionImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancel,
+    required TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)
+        cancel,
     required TResult Function() connectionTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
@@ -2470,7 +2555,9 @@ class _$BaseApiBadCertificateExceptionImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancel,
+    TResult? Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult? Function()? connectionTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function()? receiveTimeout,
@@ -2489,7 +2576,9 @@ class _$BaseApiBadCertificateExceptionImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancel,
+    TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult Function()? connectionTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
@@ -2637,7 +2726,9 @@ class _$BaseApiConnectionErrorExceptionImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancel,
+    required TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)
+        cancel,
     required TResult Function() connectionTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
@@ -2656,7 +2747,9 @@ class _$BaseApiConnectionErrorExceptionImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancel,
+    TResult? Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult? Function()? connectionTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function()? receiveTimeout,
@@ -2675,7 +2768,9 @@ class _$BaseApiConnectionErrorExceptionImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancel,
+    TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult Function()? connectionTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
@@ -2861,7 +2956,9 @@ class _$BaseApiBadResponseExceptionImpl extends BaseApiBadResponseException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancel,
+    required TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)
+        cancel,
     required TResult Function() connectionTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
@@ -2880,7 +2977,9 @@ class _$BaseApiBadResponseExceptionImpl extends BaseApiBadResponseException {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancel,
+    TResult? Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult? Function()? connectionTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function()? receiveTimeout,
@@ -2899,7 +2998,9 @@ class _$BaseApiBadResponseExceptionImpl extends BaseApiBadResponseException {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancel,
+    TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult Function()? connectionTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,
@@ -3106,7 +3207,9 @@ class _$BaseApiBusinessExceptionImpl extends BaseApiBusinessException {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() cancel,
+    required TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)
+        cancel,
     required TResult Function() connectionTimeout,
     required TResult Function() sendTimeout,
     required TResult Function() receiveTimeout,
@@ -3125,7 +3228,9 @@ class _$BaseApiBusinessExceptionImpl extends BaseApiBusinessException {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? cancel,
+    TResult? Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult? Function()? connectionTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function()? receiveTimeout,
@@ -3144,7 +3249,9 @@ class _$BaseApiBusinessExceptionImpl extends BaseApiBusinessException {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? cancel,
+    TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
     TResult Function()? connectionTimeout,
     TResult Function()? sendTimeout,
     TResult Function()? receiveTimeout,

@@ -1,4 +1,4 @@
-library dd_js_util;
+library;
 
 import 'dart:async';
 import 'dart:convert';

@@ -55,3 +55,14 @@ extension IListEx<T> on IList<T> {
     }
   }
 }
+
+
+extension MyListEx<T> on List<T> {
+  T? find(bool Function(T element) filter){
+    try{
+      return firstWhere(filter);
+    }catch(_){
+      return null;
+    }
+  }
+}
