@@ -45,7 +45,7 @@ extension StringExtension on String {
       }
       // 保存图片
 
-      final result = await SaverGallery.saveImage(imageBytes, name: imageName ?? '', androidExistNotSave: false);
+      final result = await SaverGallery.saveImage(imageBytes, fileName: imageName ?? '', skipIfExists: false);
 
       if (result.isSuccess.not) throw '201'; // 保存失败,请重试
     } catch (e) {
@@ -58,7 +58,7 @@ extension StringExtension on String {
   /// "/data/a/b/c/demo.png".fileDownloadImage()
   ///
   Future<SaveResult> fileDownloadImage([String name = 'filename']) async {
-    return await SaverGallery.saveFile(file: this, name: name, androidExistNotSave: false);
+    return await SaverGallery.saveFile(filePath: this, fileName: name, skipIfExists: false);
   }
 
 

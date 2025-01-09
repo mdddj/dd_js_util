@@ -1,4 +1,3 @@
-
 part of '../dd_js_util.dart';
 
 extension MapExt2 on Map<String, Object> {
@@ -35,16 +34,21 @@ extension MapExt on Map<String, dynamic> {
   Map<String, Object> get asMapObject {
     final map = <String, Object>{};
     forEach((key, value) {
-      map[key] = value;
+      if (value != Null && value != null) {
+        map[key] = value;
+      }
     });
     return map;
+  }
+
+  Map<String, Object> get firbaseAnalysisParams {
+    return asMapObject
+      ..removeWhere((key, value) => value is! String || value is! num);
   }
 
   WrapJson get json {
     return WrapJson(this);
   }
-
-
 }
 
 ///递归处理函数
@@ -64,7 +68,8 @@ Map<String, dynamic> deepCastMap(Map<Object?, Object?> original) {
 
 ///freezed工具
 class FreezedTool {
-  static double? toDouble(dynamic v) => v is double ? v : (double.tryParse('$v'));
+  static double? toDouble(dynamic v) =>
+      v is double ? v : (double.tryParse('$v'));
 
   static String toStringValue(dynamic v) => v is String ? v : '$v';
 }
@@ -77,7 +82,7 @@ extension ObjectObjectExt on Map<Object?, Object?> {
 
 class WrapJson {
   final Map<String, dynamic> data;
-  Map<String,dynamic> extMap = {};
+  Map<String, dynamic> extMap = {};
 
   WrapJson(this.data);
 
@@ -108,71 +113,69 @@ class WrapJson {
     return defaultValue;
   }
 
-
   List<dynamic> getListValue(String key) {
     final value = data[key];
-    if(value == null){
+    if (value == null) {
       return [];
     }
-    if(value is List<dynamic>){
+    if (value is List<dynamic>) {
       return value;
     }
     return [];
   }
 
-  dynamic getValue(String key){
+  dynamic getValue(String key) {
     return data[key];
   }
 
-  void print([VoidCallback? doSomeing]){
+  void print([VoidCallback? doSomeing]) {
     doSomeing?.call();
     Logger().f(data);
   }
 
-  Map<String,dynamic> getMap(String key,[Map<String,dynamic>? defaultValue]) {
+  Map<String, dynamic> getMap(String key,
+      [Map<String, dynamic>? defaultValue]) {
     final v = data[key];
-    if(v is Map<String,dynamic>){
+    if (v is Map<String, dynamic>) {
       return v;
     }
-    return defaultValue ?? <String,dynamic>{};
+    return defaultValue ?? <String, dynamic>{};
   }
 
-  Map<String,dynamic> getMap2(String key1,String key2) {
+  Map<String, dynamic> getMap2(String key1, String key2) {
     final value1 = data[key1];
-    if(value1 is Map<String,dynamic>){
+    if (value1 is Map<String, dynamic>) {
       final value2 = value1[key2];
-      if(value2 is Map<String,dynamic>){
+      if (value2 is Map<String, dynamic>) {
         return value2;
       }
     }
     return {};
   }
 
-
   ///---- 一些扩展工具类
   bool get isSuccess {
-    return getInt('state',defaultValue: 0) == 200;
+    return getInt('state', defaultValue: 0) == 200;
   }
 
   String get message {
-    return getString('message',defaultValue: '未知消息');
+    return getString('message', defaultValue: '未知消息');
   }
 
   dynamic get resultApiData {
     return getValue('data');
   }
 
-  void ifNotNull(String key,ValueChanged<dynamic> value) {
-    if(data[key]!=null){
+  void ifNotNull(String key, ValueChanged<dynamic> value) {
+    if (data[key] != null) {
       value.call(data[key]);
     }
   }
 }
 
-
-extension IMapEx<K,V> on IMap<K,V> {
-  IMap<K,V> replace(K key,V value) {
-    final Map<K,V> newMap = Map<K,V>.from(unlock);
+extension IMapEx<K, V> on IMap<K, V> {
+  IMap<K, V> replace(K key, V value) {
+    final Map<K, V> newMap = Map<K, V>.from(unlock);
     newMap[key] = value;
     return newMap.lock;
   }

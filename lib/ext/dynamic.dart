@@ -13,33 +13,30 @@ extension DynamicExt on dynamic {
 
   @Doc(message: '将一个dynamic的值尝试转换成double类型,如果转换失败了, 则返回一个0.0的默认值')
   double get doubleValueIfNullReturnZero {
-    switch (runtimeType) {
-      case double:
-        return this as double;
-      case int:
-        return asInt.toDouble();
-      case String:
-        return double.tryParse(asString) ?? 0.0;
-      default:
-        return 0.0;
+    if (this case double d) {
+      return d;
+    } else if (this case int d) {
+      return d.toDouble();
+    } else if (this case String s) {
+      return double.tryParse(s) ?? 0;
     }
+    return 0;
   }
 
   @Doc(message: '将一个dynamic的值尝试转换成double类型,如果转换失败了, 则返回null')
   double? get tryParseToDoubleValue {
-    switch (runtimeType) {
-      case double:
-        return this as double;
-      case int:
-        return asInt.toDouble();
-      default:
-        return double.tryParse(asString);
+    if (this case double d) {
+      return d;
+    } else if (this case int d) {
+      return d.toDouble();
+    } else if (this case String s) {
+      return double.tryParse(s);
     }
+    return null;
   }
 
   @Doc(message: "将一个dynamic转换成一个数组,如果不是数组类型,则返回一个空数组")
   List<dynamic> get asList {
     return this is List<dynamic> ? this as List<dynamic> : <dynamic>[];
   }
-
 }

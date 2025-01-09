@@ -10,7 +10,9 @@ class ImageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return params.heroTag != null ? Hero(tag: params.heroTag!, child: _isSelectedWrapper(context)) : _isSelectedWrapper(context);
+    return params.heroTag != null
+        ? Hero(tag: params.heroTag!, child: _isSelectedWrapper(context))
+        : _isSelectedWrapper(context);
   }
 
   Widget _isSelectedWrapper(BuildContext context) {
@@ -27,7 +29,9 @@ class ImageView extends StatelessWidget {
           right: 4,
           child: Container(
             padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(color: context.colorScheme.primaryContainer, borderRadius: BorderRadius.circular(20)),
+            decoration: BoxDecoration(
+                color: context.colorScheme.primaryContainer,
+                borderRadius: BorderRadius.circular(20)),
             child: Icon(
               Icons.check,
               size: 16,
@@ -47,33 +51,47 @@ class ImageView extends StatelessWidget {
       fit: params.fit,
       borderRadius: params.borderRadius,
       shape: params.shape,
-      enableMemoryCache: params.enableMemoryCache,
       clearMemoryCacheIfFailed: params.clearMemoryCacheIfFailed,
+      clearMemoryCacheWhenDispose: params.clearMemoryCacheWhenDispose,
       loadStateChanged: _stateChange,
       gaplessPlayback: params.gaplessPlayback,
       color: params.color,
       colorBlendMode: params.colorBlendMode,
+      initEditorConfigHandler: params.initEditorConfigHandler,
+      extendedImageEditorKey: params.extendedImageEditorKey,
+      mode: params.mode ?? ExtendedImageMode.none,
     );
   }
 
   ImageProvider get getImage {
-    return image.when(network: _buildNetwork, base64: _buildBaseImage, filePath: _buildFileImage, asset: _buildAssetImage);
+    return image.when(
+        network: _buildNetwork,
+        base64: _buildBaseImage,
+        filePath: _buildFileImage,
+        asset: _buildAssetImage);
   }
 
   Widget? _stateChange(ExtendedImageState state) {
     switch (state.extendedImageLoadState) {
       case LoadState.loading:
-        return params.customLoadingWidget ?? Skeleton(width: params.getWidth ?? 0, height: params.getHeight ?? 0, borderRadius: params.borderRadius);
+        return params.customLoadingWidget ??
+            Skeleton(
+                width: params.getWidth ?? 0,
+                height: params.getHeight ?? 0,
+                borderRadius: params.borderRadius);
       case LoadState.completed:
         final child = _ImageRawWidget(state: state, params: params);
-        return params.customCompletedWidget?.call(state, params, child) ?? child;
+        return params.customCompletedWidget?.call(state, params, child) ??
+            child;
       case LoadState.failed:
         return params.errorWidget ??
             Container(
               width: params.getWidth,
               height: params.getHeight,
               alignment: Alignment.center,
-              decoration: BoxDecoration(borderRadius: params.borderRadius, color: Colors.grey.shade200),
+              decoration: BoxDecoration(
+                  borderRadius: params.borderRadius,
+                  color: Colors.grey.shade200),
               child: params.errorWidget,
             ).click(state.reLoadImage);
     }
@@ -184,7 +202,8 @@ class Skeleton extends StatefulWidget {
   SkeletonState createState() => SkeletonState();
 }
 
-class SkeletonState extends State<Skeleton> with SingleTickerProviderStateMixin {
+class SkeletonState extends State<Skeleton>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   late Animation gradientPosition;
@@ -227,7 +246,11 @@ class SkeletonState extends State<Skeleton> with SingleTickerProviderStateMixin 
         gradient: LinearGradient(
           begin: Alignment(gradientPosition.value, 0),
           end: const Alignment(-1, 0),
-          colors: [context.theme.highlightColor, context.theme.highlightColor.withOpacity(.01), context.theme.highlightColor.withOpacity(.3)],
+          colors: [
+            context.theme.highlightColor,
+            context.theme.highlightColor.withValues(alpha: .01),
+            context.theme.highlightColor.withValues(alpha: .3)
+          ],
         ),
       ),
     );

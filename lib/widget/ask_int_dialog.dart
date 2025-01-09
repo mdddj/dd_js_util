@@ -3,7 +3,8 @@ part of '../dd_js_util.dart';
 class AskIntDialog extends StatefulWidget {
   final AskIntDialogParams params;
 
-  static Future<int?> show(BuildContext context, {AskIntDialogParams? params}) async {
+  static Future<int?> show(BuildContext context,
+      {AskIntDialogParams? params}) async {
     return await showCupertinoDialog<int>(
         context: context,
         builder: (_) => AskIntDialog(
@@ -21,10 +22,9 @@ class _AskIntDialogState extends State<AskIntDialog> {
   String? errorMessage;
   bool disableOkButton = false;
 
-final controller = TextEditingController();
+  final controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    
     return CupertinoAlertDialog(
       content: SingleChildScrollView(
         child: Column(children: [
@@ -37,18 +37,21 @@ final controller = TextEditingController();
             controller: controller,
             textInputAction: TextInputAction.go,
             keyboardType: TextInputType.number,
-            style: TextStyle(color: context.primaryColor),
+            style: TextStyle(color: CupertinoColors.activeBlue),
             placeholder: widget.params.placeholder,
             onChanged: (value) {
               final intValue = int.tryParse(value) ?? 0;
               errorMessage = widget.params.errorMessage?.call(intValue);
-              disableOkButton = widget.params.disableOkButton?.call(intValue) ?? false;
+              disableOkButton =
+                  widget.params.disableOkButton?.call(intValue) ?? false;
               setState(() {});
             },
           ),
-          if(errorMessage!=null)
-            Text(errorMessage!,style: const TextStyle(color: Colors.red),).marginOnly(top: 12)
-          
+          if (errorMessage != null)
+            Text(
+              errorMessage!,
+              style: const TextStyle(color: Colors.red),
+            ).marginOnly(top: 12)
         ]),
       ),
       actions: [
@@ -57,22 +60,29 @@ final controller = TextEditingController();
             context.pop();
           },
           isDestructiveAction: true,
-          child: Text(widget.params.cancelBtnText),
+          child: Text(widget.params.cancelBtnText,
+              style: widget.params.cancelButtonTextStyle),
         ),
         CupertinoDialogAction(
-          onPressed: disableOkButton ? (){} : () {
-            final text = controller.text;
-            if (text.isNotEmpty) {
-              final count = int.tryParse(controller.text);
-              if (count != null && count != 0) {
-                Navigator.pop(context, int.tryParse(controller.text));
-              }
-            }
-          },
+          onPressed: disableOkButton
+              ? () {}
+              : () {
+                  final text = controller.text;
+                  if (text.isNotEmpty) {
+                    final count = int.tryParse(controller.text);
+                    if (count != null && count != 0) {
+                      Navigator.pop(context, int.tryParse(controller.text));
+                    }
+                  }
+                },
           isDefaultAction: true,
           child: Text(
             widget.params.okBtnText,
-            style: TextStyle(color: disableOkButton? Colors.grey : context.primaryColor),
+            style: widget.params.okButtonTextStyle ??
+                TextStyle(
+                    color: disableOkButton
+                        ? Colors.grey
+                        : CupertinoColors.activeBlue),
           ),
         )
       ],

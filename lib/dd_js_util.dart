@@ -45,6 +45,7 @@ import 'widget/search/search_support.dart';
 import 'widget/search/search_support_manager.dart';
 
 part './api/util.dart';
+
 ///组件模块
 part './common/circle.dart';
 part './common/edit_page.dart';
@@ -54,6 +55,7 @@ part './common/functions.dart';
 part './common/hive.dart';
 part './common/string_ext.dart';
 part './common/w.dart';
+
 /// ext 模块
 part './ext/bool.dart';
 part './ext/context.dart';
@@ -109,10 +111,7 @@ part 'widget/ask_string_dialog.dart';
 part 'widget/build_widget.dart';
 part 'widget/lazy_stack_widget.dart';
 
-
 part 'widget/right_popup_menu.dart';
-
-
 
 typedef MyHiveBox<T> = Box<T>;
 
@@ -129,6 +128,3 @@ class DdJsUtil {
     return await _channel.invokeMethod('isWeChatBrowser');
   }
 }
-
-
-

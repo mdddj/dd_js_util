@@ -291,6 +291,8 @@ _$ImageParamsImpl _$$ImageParamsImplFromJson(Map<String, dynamic> json) =>
       isSelected: json['isSelected'] as bool? ?? false,
       clearMemoryCacheIfFailed:
           json['clearMemoryCacheIfFailed'] as bool? ?? true,
+      clearMemoryCacheWhenDispose:
+          json['clearMemoryCacheWhenDispose'] as bool? ?? false,
       gaplessPlayback: json['gaplessPlayback'] as bool? ?? true,
       scale: (json['scale'] as num?)?.toDouble(),
       headers: (json['headers'] as Map<String, dynamic>?)?.map(
@@ -319,6 +321,7 @@ Map<String, dynamic> _$$ImageParamsImplToJson(_$ImageParamsImpl instance) =>
       'heroTag': instance.heroTag,
       'isSelected': instance.isSelected,
       'clearMemoryCacheIfFailed': instance.clearMemoryCacheIfFailed,
+      'clearMemoryCacheWhenDispose': instance.clearMemoryCacheWhenDispose,
       'gaplessPlayback': instance.gaplessPlayback,
       'scale': instance.scale,
       'headers': instance.headers,

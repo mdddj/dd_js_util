@@ -8,6 +8,7 @@ mixin DialogSupport<T extends StatefulWidget> on State<T> {
     SmartDialog.showLoading(msg: loading);
   }
 
+
   @Doc(message: "显示一个error类型弹窗")
   void pageErrorDialog(String msg){
     SmartDialog.dismiss(tag: "error-dialog");
@@ -28,7 +29,7 @@ mixin DialogSupport<T extends StatefulWidget> on State<T> {
   
   @Doc(message: "关闭loading弹窗")
   void pageCloseLoadingDialog(){
-    SmartDialog.dismiss();
+    SmartDialog.dismiss(status: SmartStatus.loading);
   }
 
   @Doc(message: "关闭error弹窗")

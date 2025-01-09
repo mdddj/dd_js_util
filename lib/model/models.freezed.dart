@@ -962,7 +962,7 @@ class _$AskStringDialogParamsImpl implements _AskStringDialogParams {
   const _$AskStringDialogParamsImpl(
       {this.placeholder = "",
       this.title = "",
-      this.okBtnText = "Ok",
+      this.okBtnText = "Confirm",
       this.cancelBtnText = "Cancel"});
 
   @override
@@ -1045,6 +1045,10 @@ mixin _$AskIntDialogParams {
   bool Function(int)? get disableOkButton => throw _privateConstructorUsedError;
   @igFreezedJson
   String? Function(int)? get errorMessage => throw _privateConstructorUsedError;
+  @igFreezedJson
+  TextStyle? get okButtonTextStyle => throw _privateConstructorUsedError;
+  @igFreezedJson
+  TextStyle? get cancelButtonTextStyle => throw _privateConstructorUsedError;
 
   /// Create a copy of AskIntDialogParams
   /// with the given fields replaced by the non-null parameter values.
@@ -1065,7 +1069,9 @@ abstract class $AskIntDialogParamsCopyWith<$Res> {
       String okBtnText,
       String cancelBtnText,
       @igFreezedJson bool Function(int)? disableOkButton,
-      @igFreezedJson String? Function(int)? errorMessage});
+      @igFreezedJson String? Function(int)? errorMessage,
+      @igFreezedJson TextStyle? okButtonTextStyle,
+      @igFreezedJson TextStyle? cancelButtonTextStyle});
 }
 
 /// @nodoc
@@ -1089,6 +1095,8 @@ class _$AskIntDialogParamsCopyWithImpl<$Res, $Val extends AskIntDialogParams>
     Object? cancelBtnText = null,
     Object? disableOkButton = freezed,
     Object? errorMessage = freezed,
+    Object? okButtonTextStyle = freezed,
+    Object? cancelButtonTextStyle = freezed,
   }) {
     return _then(_value.copyWith(
       placeholder: null == placeholder
@@ -1115,6 +1123,14 @@ class _$AskIntDialogParamsCopyWithImpl<$Res, $Val extends AskIntDialogParams>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String? Function(int)?,
+      okButtonTextStyle: freezed == okButtonTextStyle
+          ? _value.okButtonTextStyle
+          : okButtonTextStyle // ignore: cast_nullable_to_non_nullable
+              as TextStyle?,
+      cancelButtonTextStyle: freezed == cancelButtonTextStyle
+          ? _value.cancelButtonTextStyle
+          : cancelButtonTextStyle // ignore: cast_nullable_to_non_nullable
+              as TextStyle?,
     ) as $Val);
   }
 }
@@ -1133,7 +1149,9 @@ abstract class _$$AskIntDialogParamsImplCopyWith<$Res>
       String okBtnText,
       String cancelBtnText,
       @igFreezedJson bool Function(int)? disableOkButton,
-      @igFreezedJson String? Function(int)? errorMessage});
+      @igFreezedJson String? Function(int)? errorMessage,
+      @igFreezedJson TextStyle? okButtonTextStyle,
+      @igFreezedJson TextStyle? cancelButtonTextStyle});
 }
 
 /// @nodoc
@@ -1155,6 +1173,8 @@ class __$$AskIntDialogParamsImplCopyWithImpl<$Res>
     Object? cancelBtnText = null,
     Object? disableOkButton = freezed,
     Object? errorMessage = freezed,
+    Object? okButtonTextStyle = freezed,
+    Object? cancelButtonTextStyle = freezed,
   }) {
     return _then(_$AskIntDialogParamsImpl(
       placeholder: null == placeholder
@@ -1181,6 +1201,14 @@ class __$$AskIntDialogParamsImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String? Function(int)?,
+      okButtonTextStyle: freezed == okButtonTextStyle
+          ? _value.okButtonTextStyle
+          : okButtonTextStyle // ignore: cast_nullable_to_non_nullable
+              as TextStyle?,
+      cancelButtonTextStyle: freezed == cancelButtonTextStyle
+          ? _value.cancelButtonTextStyle
+          : cancelButtonTextStyle // ignore: cast_nullable_to_non_nullable
+              as TextStyle?,
     ));
   }
 }
@@ -1191,10 +1219,12 @@ class _$AskIntDialogParamsImpl implements _AskIntDialogParams {
   const _$AskIntDialogParamsImpl(
       {this.placeholder = "",
       this.title = "",
-      this.okBtnText = "Ok",
+      this.okBtnText = "Confirm",
       this.cancelBtnText = "Cancel",
       @igFreezedJson this.disableOkButton,
-      @igFreezedJson this.errorMessage});
+      @igFreezedJson this.errorMessage,
+      @igFreezedJson this.okButtonTextStyle,
+      @igFreezedJson this.cancelButtonTextStyle});
 
   @override
   @JsonKey()
@@ -1214,10 +1244,16 @@ class _$AskIntDialogParamsImpl implements _AskIntDialogParams {
   @override
   @igFreezedJson
   final String? Function(int)? errorMessage;
+  @override
+  @igFreezedJson
+  final TextStyle? okButtonTextStyle;
+  @override
+  @igFreezedJson
+  final TextStyle? cancelButtonTextStyle;
 
   @override
   String toString() {
-    return 'AskIntDialogParams(placeholder: $placeholder, title: $title, okBtnText: $okBtnText, cancelBtnText: $cancelBtnText, disableOkButton: $disableOkButton, errorMessage: $errorMessage)';
+    return 'AskIntDialogParams(placeholder: $placeholder, title: $title, okBtnText: $okBtnText, cancelBtnText: $cancelBtnText, disableOkButton: $disableOkButton, errorMessage: $errorMessage, okButtonTextStyle: $okButtonTextStyle, cancelButtonTextStyle: $cancelButtonTextStyle)';
   }
 
   @override
@@ -1235,12 +1271,24 @@ class _$AskIntDialogParamsImpl implements _AskIntDialogParams {
             (identical(other.disableOkButton, disableOkButton) ||
                 other.disableOkButton == disableOkButton) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.okButtonTextStyle, okButtonTextStyle) ||
+                other.okButtonTextStyle == okButtonTextStyle) &&
+            (identical(other.cancelButtonTextStyle, cancelButtonTextStyle) ||
+                other.cancelButtonTextStyle == cancelButtonTextStyle));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, placeholder, title, okBtnText,
-      cancelBtnText, disableOkButton, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType,
+      placeholder,
+      title,
+      okBtnText,
+      cancelBtnText,
+      disableOkButton,
+      errorMessage,
+      okButtonTextStyle,
+      cancelButtonTextStyle);
 
   /// Create a copy of AskIntDialogParams
   /// with the given fields replaced by the non-null parameter values.
@@ -1259,7 +1307,9 @@ abstract class _AskIntDialogParams implements AskIntDialogParams {
           final String okBtnText,
           final String cancelBtnText,
           @igFreezedJson final bool Function(int)? disableOkButton,
-          @igFreezedJson final String? Function(int)? errorMessage}) =
+          @igFreezedJson final String? Function(int)? errorMessage,
+          @igFreezedJson final TextStyle? okButtonTextStyle,
+          @igFreezedJson final TextStyle? cancelButtonTextStyle}) =
       _$AskIntDialogParamsImpl;
 
   @override
@@ -1276,6 +1326,12 @@ abstract class _AskIntDialogParams implements AskIntDialogParams {
   @override
   @igFreezedJson
   String? Function(int)? get errorMessage;
+  @override
+  @igFreezedJson
+  TextStyle? get okButtonTextStyle;
+  @override
+  @igFreezedJson
+  TextStyle? get cancelButtonTextStyle;
 
   /// Create a copy of AskIntDialogParams
   /// with the given fields replaced by the non-null parameter values.
@@ -1427,7 +1483,7 @@ class __$$AskOkDialogParamsImplCopyWithImpl<$Res>
 class _$AskOkDialogParamsImpl implements _AskOkDialogParams {
   const _$AskOkDialogParamsImpl(
       {this.contentText = "",
-      this.okText = "Ok",
+      this.okText = "Confirm",
       this.cancelText = "Cancel",
       @igFreezedJson this.content,
       @igFreezedJson this.title});
@@ -5975,6 +6031,7 @@ mixin _$ImageParams {
   @igFreezedJson
   Color? get color => throw _privateConstructorUsedError;
   bool get clearMemoryCacheIfFailed => throw _privateConstructorUsedError;
+  bool get clearMemoryCacheWhenDispose => throw _privateConstructorUsedError;
   bool get gaplessPlayback => throw _privateConstructorUsedError;
   @igFreezedJson
   BlendMode? get colorBlendMode => throw _privateConstructorUsedError; //---net
@@ -6007,6 +6064,13 @@ mixin _$ImageParams {
       throw _privateConstructorUsedError;
   @igFreezedJson
   Widget? get customLoadingWidget => throw _privateConstructorUsedError;
+  @igFreezedJson
+  InitEditorConfigHandler? get initEditorConfigHandler =>
+      throw _privateConstructorUsedError;
+  @igFreezedJson
+  Key? get extendedImageEditorKey => throw _privateConstructorUsedError;
+  @igFreezedJson
+  ExtendedImageMode? get mode => throw _privateConstructorUsedError;
 
   /// Serializes this ImageParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -6038,6 +6102,7 @@ abstract class $ImageParamsCopyWith<$Res> {
       @igFreezedJson VoidCallback? onTap,
       @igFreezedJson Color? color,
       bool clearMemoryCacheIfFailed,
+      bool clearMemoryCacheWhenDispose,
       bool gaplessPlayback,
       @igFreezedJson BlendMode? colorBlendMode,
       double? scale,
@@ -6061,7 +6126,10 @@ abstract class $ImageParamsCopyWith<$Res> {
       @Doc(message: '自定义完成小部件')
       @igFreezedJson
       CustomCompletedWidget? customCompletedWidget,
-      @igFreezedJson Widget? customLoadingWidget});
+      @igFreezedJson Widget? customLoadingWidget,
+      @igFreezedJson InitEditorConfigHandler? initEditorConfigHandler,
+      @igFreezedJson Key? extendedImageEditorKey,
+      @igFreezedJson ExtendedImageMode? mode});
 }
 
 /// @nodoc
@@ -6092,6 +6160,7 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
     Object? onTap = freezed,
     Object? color = freezed,
     Object? clearMemoryCacheIfFailed = null,
+    Object? clearMemoryCacheWhenDispose = null,
     Object? gaplessPlayback = null,
     Object? colorBlendMode = freezed,
     Object? scale = freezed,
@@ -6114,6 +6183,9 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
     Object? bundle = freezed,
     Object? customCompletedWidget = freezed,
     Object? customLoadingWidget = freezed,
+    Object? initEditorConfigHandler = freezed,
+    Object? extendedImageEditorKey = freezed,
+    Object? mode = freezed,
   }) {
     return _then(_value.copyWith(
       width: freezed == width
@@ -6167,6 +6239,10 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
       clearMemoryCacheIfFailed: null == clearMemoryCacheIfFailed
           ? _value.clearMemoryCacheIfFailed
           : clearMemoryCacheIfFailed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      clearMemoryCacheWhenDispose: null == clearMemoryCacheWhenDispose
+          ? _value.clearMemoryCacheWhenDispose
+          : clearMemoryCacheWhenDispose // ignore: cast_nullable_to_non_nullable
               as bool,
       gaplessPlayback: null == gaplessPlayback
           ? _value.gaplessPlayback
@@ -6256,6 +6332,18 @@ class _$ImageParamsCopyWithImpl<$Res, $Val extends ImageParams>
           ? _value.customLoadingWidget
           : customLoadingWidget // ignore: cast_nullable_to_non_nullable
               as Widget?,
+      initEditorConfigHandler: freezed == initEditorConfigHandler
+          ? _value.initEditorConfigHandler
+          : initEditorConfigHandler // ignore: cast_nullable_to_non_nullable
+              as InitEditorConfigHandler?,
+      extendedImageEditorKey: freezed == extendedImageEditorKey
+          ? _value.extendedImageEditorKey
+          : extendedImageEditorKey // ignore: cast_nullable_to_non_nullable
+              as Key?,
+      mode: freezed == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as ExtendedImageMode?,
     ) as $Val);
   }
 }
@@ -6282,6 +6370,7 @@ abstract class _$$ImageParamsImplCopyWith<$Res>
       @igFreezedJson VoidCallback? onTap,
       @igFreezedJson Color? color,
       bool clearMemoryCacheIfFailed,
+      bool clearMemoryCacheWhenDispose,
       bool gaplessPlayback,
       @igFreezedJson BlendMode? colorBlendMode,
       double? scale,
@@ -6305,7 +6394,10 @@ abstract class _$$ImageParamsImplCopyWith<$Res>
       @Doc(message: '自定义完成小部件')
       @igFreezedJson
       CustomCompletedWidget? customCompletedWidget,
-      @igFreezedJson Widget? customLoadingWidget});
+      @igFreezedJson Widget? customLoadingWidget,
+      @igFreezedJson InitEditorConfigHandler? initEditorConfigHandler,
+      @igFreezedJson Key? extendedImageEditorKey,
+      @igFreezedJson ExtendedImageMode? mode});
 }
 
 /// @nodoc
@@ -6334,6 +6426,7 @@ class __$$ImageParamsImplCopyWithImpl<$Res>
     Object? onTap = freezed,
     Object? color = freezed,
     Object? clearMemoryCacheIfFailed = null,
+    Object? clearMemoryCacheWhenDispose = null,
     Object? gaplessPlayback = null,
     Object? colorBlendMode = freezed,
     Object? scale = freezed,
@@ -6356,6 +6449,9 @@ class __$$ImageParamsImplCopyWithImpl<$Res>
     Object? bundle = freezed,
     Object? customCompletedWidget = freezed,
     Object? customLoadingWidget = freezed,
+    Object? initEditorConfigHandler = freezed,
+    Object? extendedImageEditorKey = freezed,
+    Object? mode = freezed,
   }) {
     return _then(_$ImageParamsImpl(
       width: freezed == width
@@ -6409,6 +6505,10 @@ class __$$ImageParamsImplCopyWithImpl<$Res>
       clearMemoryCacheIfFailed: null == clearMemoryCacheIfFailed
           ? _value.clearMemoryCacheIfFailed
           : clearMemoryCacheIfFailed // ignore: cast_nullable_to_non_nullable
+              as bool,
+      clearMemoryCacheWhenDispose: null == clearMemoryCacheWhenDispose
+          ? _value.clearMemoryCacheWhenDispose
+          : clearMemoryCacheWhenDispose // ignore: cast_nullable_to_non_nullable
               as bool,
       gaplessPlayback: null == gaplessPlayback
           ? _value.gaplessPlayback
@@ -6498,6 +6598,18 @@ class __$$ImageParamsImplCopyWithImpl<$Res>
           ? _value.customLoadingWidget
           : customLoadingWidget // ignore: cast_nullable_to_non_nullable
               as Widget?,
+      initEditorConfigHandler: freezed == initEditorConfigHandler
+          ? _value.initEditorConfigHandler
+          : initEditorConfigHandler // ignore: cast_nullable_to_non_nullable
+              as InitEditorConfigHandler?,
+      extendedImageEditorKey: freezed == extendedImageEditorKey
+          ? _value.extendedImageEditorKey
+          : extendedImageEditorKey // ignore: cast_nullable_to_non_nullable
+              as Key?,
+      mode: freezed == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as ExtendedImageMode?,
     ));
   }
 }
@@ -6519,6 +6631,7 @@ class _$ImageParamsImpl extends _ImageParams {
       @igFreezedJson this.onTap,
       @igFreezedJson this.color,
       this.clearMemoryCacheIfFailed = true,
+      this.clearMemoryCacheWhenDispose = false,
       this.gaplessPlayback = true,
       @igFreezedJson this.colorBlendMode,
       this.scale,
@@ -6540,7 +6653,10 @@ class _$ImageParamsImpl extends _ImageParams {
       this.package,
       @igFreezedJson this.bundle,
       @Doc(message: '自定义完成小部件') @igFreezedJson this.customCompletedWidget,
-      @igFreezedJson this.customLoadingWidget})
+      @igFreezedJson this.customLoadingWidget,
+      @igFreezedJson this.initEditorConfigHandler,
+      @igFreezedJson this.extendedImageEditorKey,
+      @igFreezedJson this.mode})
       : _headers = headers,
         super._();
 
@@ -6582,6 +6698,9 @@ class _$ImageParamsImpl extends _ImageParams {
   @override
   @JsonKey()
   final bool clearMemoryCacheIfFailed;
+  @override
+  @JsonKey()
+  final bool clearMemoryCacheWhenDispose;
   @override
   @JsonKey()
   final bool gaplessPlayback;
@@ -6648,10 +6767,19 @@ class _$ImageParamsImpl extends _ImageParams {
   @override
   @igFreezedJson
   final Widget? customLoadingWidget;
+  @override
+  @igFreezedJson
+  final InitEditorConfigHandler? initEditorConfigHandler;
+  @override
+  @igFreezedJson
+  final Key? extendedImageEditorKey;
+  @override
+  @igFreezedJson
+  final ExtendedImageMode? mode;
 
   @override
   String toString() {
-    return 'ImageParams(width: $width, height: $height, size: $size, fit: $fit, borderRadius: $borderRadius, shape: $shape, enableMemoryCache: $enableMemoryCache, heroTag: $heroTag, isSelected: $isSelected, errorWidget: $errorWidget, onTap: $onTap, color: $color, clearMemoryCacheIfFailed: $clearMemoryCacheIfFailed, gaplessPlayback: $gaplessPlayback, colorBlendMode: $colorBlendMode, scale: $scale, headers: $headers, cache: $cache, retries: $retries, timeLimit: $timeLimit, timeRetry: $timeRetry, cancelToken: $cancelToken, cacheKey: $cacheKey, printError: $printError, cacheRawData: $cacheRawData, imageCacheName: $imageCacheName, cacheMaxAge: $cacheMaxAge, cacheWidth: $cacheWidth, cacheHeight: $cacheHeight, compressionRatio: $compressionRatio, maxBytes: $maxBytes, package: $package, bundle: $bundle, customCompletedWidget: $customCompletedWidget, customLoadingWidget: $customLoadingWidget)';
+    return 'ImageParams(width: $width, height: $height, size: $size, fit: $fit, borderRadius: $borderRadius, shape: $shape, enableMemoryCache: $enableMemoryCache, heroTag: $heroTag, isSelected: $isSelected, errorWidget: $errorWidget, onTap: $onTap, color: $color, clearMemoryCacheIfFailed: $clearMemoryCacheIfFailed, clearMemoryCacheWhenDispose: $clearMemoryCacheWhenDispose, gaplessPlayback: $gaplessPlayback, colorBlendMode: $colorBlendMode, scale: $scale, headers: $headers, cache: $cache, retries: $retries, timeLimit: $timeLimit, timeRetry: $timeRetry, cancelToken: $cancelToken, cacheKey: $cacheKey, printError: $printError, cacheRawData: $cacheRawData, imageCacheName: $imageCacheName, cacheMaxAge: $cacheMaxAge, cacheWidth: $cacheWidth, cacheHeight: $cacheHeight, compressionRatio: $compressionRatio, maxBytes: $maxBytes, package: $package, bundle: $bundle, customCompletedWidget: $customCompletedWidget, customLoadingWidget: $customLoadingWidget, initEditorConfigHandler: $initEditorConfigHandler, extendedImageEditorKey: $extendedImageEditorKey, mode: $mode)';
   }
 
   @override
@@ -6675,9 +6803,12 @@ class _$ImageParamsImpl extends _ImageParams {
                 other.errorWidget == errorWidget) &&
             (identical(other.onTap, onTap) || other.onTap == onTap) &&
             (identical(other.color, color) || other.color == color) &&
-            (identical(
-                    other.clearMemoryCacheIfFailed, clearMemoryCacheIfFailed) ||
+            (identical(other.clearMemoryCacheIfFailed, clearMemoryCacheIfFailed) ||
                 other.clearMemoryCacheIfFailed == clearMemoryCacheIfFailed) &&
+            (identical(other.clearMemoryCacheWhenDispose,
+                    clearMemoryCacheWhenDispose) ||
+                other.clearMemoryCacheWhenDispose ==
+                    clearMemoryCacheWhenDispose) &&
             (identical(other.gaplessPlayback, gaplessPlayback) ||
                 other.gaplessPlayback == gaplessPlayback) &&
             (identical(other.colorBlendMode, colorBlendMode) ||
@@ -6715,7 +6846,12 @@ class _$ImageParamsImpl extends _ImageParams {
             (identical(other.customCompletedWidget, customCompletedWidget) ||
                 other.customCompletedWidget == customCompletedWidget) &&
             (identical(other.customLoadingWidget, customLoadingWidget) ||
-                other.customLoadingWidget == customLoadingWidget));
+                other.customLoadingWidget == customLoadingWidget) &&
+            (identical(other.initEditorConfigHandler, initEditorConfigHandler) ||
+                other.initEditorConfigHandler == initEditorConfigHandler) &&
+            (identical(other.extendedImageEditorKey, extendedImageEditorKey) ||
+                other.extendedImageEditorKey == extendedImageEditorKey) &&
+            (identical(other.mode, mode) || other.mode == mode));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -6735,6 +6871,7 @@ class _$ImageParamsImpl extends _ImageParams {
         onTap,
         color,
         clearMemoryCacheIfFailed,
+        clearMemoryCacheWhenDispose,
         gaplessPlayback,
         colorBlendMode,
         scale,
@@ -6756,7 +6893,10 @@ class _$ImageParamsImpl extends _ImageParams {
         package,
         bundle,
         customCompletedWidget,
-        customLoadingWidget
+        customLoadingWidget,
+        initEditorConfigHandler,
+        extendedImageEditorKey,
+        mode
       ]);
 
   /// Create a copy of ImageParams
@@ -6790,6 +6930,7 @@ abstract class _ImageParams extends ImageParams {
       @igFreezedJson final VoidCallback? onTap,
       @igFreezedJson final Color? color,
       final bool clearMemoryCacheIfFailed,
+      final bool clearMemoryCacheWhenDispose,
       final bool gaplessPlayback,
       @igFreezedJson final BlendMode? colorBlendMode,
       final double? scale,
@@ -6813,7 +6954,10 @@ abstract class _ImageParams extends ImageParams {
       @Doc(message: '自定义完成小部件')
       @igFreezedJson
       final CustomCompletedWidget? customCompletedWidget,
-      @igFreezedJson final Widget? customLoadingWidget}) = _$ImageParamsImpl;
+      @igFreezedJson final Widget? customLoadingWidget,
+      @igFreezedJson final InitEditorConfigHandler? initEditorConfigHandler,
+      @igFreezedJson final Key? extendedImageEditorKey,
+      @igFreezedJson final ExtendedImageMode? mode}) = _$ImageParamsImpl;
   const _ImageParams._() : super._();
 
   factory _ImageParams.fromJson(Map<String, dynamic> json) =
@@ -6851,6 +6995,8 @@ abstract class _ImageParams extends ImageParams {
   Color? get color;
   @override
   bool get clearMemoryCacheIfFailed;
+  @override
+  bool get clearMemoryCacheWhenDispose;
   @override
   bool get gaplessPlayback;
   @override
@@ -6904,6 +7050,15 @@ abstract class _ImageParams extends ImageParams {
   @override
   @igFreezedJson
   Widget? get customLoadingWidget;
+  @override
+  @igFreezedJson
+  InitEditorConfigHandler? get initEditorConfigHandler;
+  @override
+  @igFreezedJson
+  Key? get extendedImageEditorKey;
+  @override
+  @igFreezedJson
+  ExtendedImageMode? get mode;
 
   /// Create a copy of ImageParams
   /// with the given fields replaced by the non-null parameter values.

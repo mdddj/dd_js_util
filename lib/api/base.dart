@@ -44,7 +44,7 @@ typedef MySwiper = Swiper;
 @Doc(message: "简单toast弹窗")
 void toast(String msg) {
   SmartDialog.dismiss(status: SmartStatus.toast);
-  SmartDialog.showToast(msg);
+  SmartDialog.showToast(msg,);
 }
 
 extension Tex3<T> on T? {
@@ -112,6 +112,7 @@ abstract class BaseApi<T> extends ChangeNotifier {
             headers: options.headers,
             responseType: options.responseType,
             requestEncoder: options.requestEncoder,
+            extra: options.extra
           ),
           queryParameters:
               httpMethod == HttpMethod.get ? queryParameters : null,

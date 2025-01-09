@@ -5,18 +5,23 @@ void showToast(String msg) {
   SmartDialog.showToast(msg);
 }
 
+void closeIosDialog() {
+  SmartDialog.dismiss(tag: "s-dialog-simple-ok-btn");
+}
+
 @Doc(message: '显示一个iOS弹窗')
 void showIosDialog(String msg,
     {String okText = 'Done',
     List<Widget>? startActions,
     List<Widget>? endActions,
     Widget? title,
+    SmartAnimationType? animationType = SmartAnimationType.centerFade_otherSlide,
     String cancelText = 'Cancel',
-      Widget? content
-    }) {
+    Widget? content}) {
   if (msg.isNotEmpty) {
     const tag = 's-dialog-simple-ok-btn';
     SmartDialog.show(
+        animationType: animationType,
         builder: (_) {
           final isIos = io.Platform.isIOS;
           if (isIos) {

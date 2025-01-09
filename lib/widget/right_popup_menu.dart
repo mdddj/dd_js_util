@@ -22,7 +22,8 @@ class _RightMenuItem extends SingleChildRenderObjectWidget {
   }
 
   @override
-  void updateRenderObject(BuildContext context, covariant _RenderMenuItem renderObject) {
+  void updateRenderObject(
+      BuildContext context, covariant _RenderMenuItem renderObject) {
     renderObject.onLayout = onLayout;
   }
 }
@@ -70,12 +71,15 @@ class _RightPopupMenu<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double unit = 1.0 / (route.items.length + 1.5); // 1.0 for the width and 0.5 for the last item's fade.
+    final double unit = 1.0 /
+        (route.items.length +
+            1.5); // 1.0 for the width and 0.5 for the last item's fade.
     final List<Widget> children = <Widget>[];
     final ThemeData theme = Theme.of(context);
     final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(context);
-    final PopupMenuThemeData defaults =
-        theme.useMaterial3 ? _RightPopupMenuDefaultsM3(context) : _RightPopupMenuDefaultsM2(context);
+    final PopupMenuThemeData defaults = theme.useMaterial3
+        ? _RightPopupMenuDefaultsM3(context)
+        : _RightPopupMenuDefaultsM2(context);
 
     for (int i = 0; i < route.items.length; i += 1) {
       final double start = (i + 1) * unit;
@@ -85,7 +89,8 @@ class _RightPopupMenu<T> extends StatelessWidget {
         curve: Interval(start, end),
       );
       Widget item = route.items[i];
-      if (route.initialValue != null && route.items[i].represents(route.initialValue)) {
+      if (route.initialValue != null &&
+          route.items[i].represents(route.initialValue)) {
         item = ColoredBox(
           color: Theme.of(context).highlightColor,
           child: item,
@@ -104,9 +109,11 @@ class _RightPopupMenu<T> extends StatelessWidget {
       );
     }
 
-    final CurveTween opacity = CurveTween(curve: const Interval(0.0, 1.0 / 3.0));
+    final CurveTween opacity =
+        CurveTween(curve: const Interval(0.0, 1.0 / 3.0));
     final CurveTween width = CurveTween(curve: Interval(0.0, unit));
-    final CurveTween height = CurveTween(curve: Interval(0.0, unit * route.items.length));
+    final CurveTween height =
+        CurveTween(curve: Interval(0.0, unit * route.items.length));
 
     final Widget child = ConstrainedBox(
       constraints: constraints ??
@@ -141,9 +148,15 @@ class _RightPopupMenu<T> extends StatelessWidget {
             color: route.color ?? popupMenuTheme.color ?? defaults.color,
             clipBehavior: clipBehavior,
             type: MaterialType.card,
-            elevation: route.elevation ?? popupMenuTheme.elevation ?? defaults.elevation!,
-            shadowColor: route.shadowColor ?? popupMenuTheme.shadowColor ?? defaults.shadowColor,
-            surfaceTintColor: route.surfaceTintColor ?? popupMenuTheme.surfaceTintColor ?? defaults.surfaceTintColor,
+            elevation: route.elevation ??
+                popupMenuTheme.elevation ??
+                defaults.elevation!,
+            shadowColor: route.shadowColor ??
+                popupMenuTheme.shadowColor ??
+                defaults.shadowColor,
+            surfaceTintColor: route.surfaceTintColor ??
+                popupMenuTheme.surfaceTintColor ??
+                defaults.surfaceTintColor,
             child: Align(
               alignment: AlignmentDirectional.topEnd,
               widthFactor: width.evaluate(route.animation!),
@@ -241,7 +254,9 @@ class _PopupMenuRouteLayout extends SingleChildLayoutDelegate {
     }
     final Offset wantedPosition = Offset(x, y);
     final Offset originCenter = position.toRect(Offset.zero & size).center;
-    final Iterable<Rect> subScreens = DisplayFeatureSubScreen.subScreensInBounds(Offset.zero & size, avoidBounds);
+    final Iterable<Rect> subScreens =
+        DisplayFeatureSubScreen.subScreensInBounds(
+            Offset.zero & size, avoidBounds);
     final Rect subScreen = _closestScreen(subScreens, originCenter);
     return _fitInsideScreen(subScreen, childSize, wantedPosition);
   }
@@ -249,7 +264,8 @@ class _PopupMenuRouteLayout extends SingleChildLayoutDelegate {
   Rect _closestScreen(Iterable<Rect> screens, Offset point) {
     Rect closest = screens.first;
     for (final Rect screen in screens) {
-      if ((screen.center - point).distance < (closest.center - point).distance) {
+      if ((screen.center - point).distance <
+          (closest.center - point).distance) {
         closest = screen;
       }
     }
@@ -263,13 +279,18 @@ class _PopupMenuRouteLayout extends SingleChildLayoutDelegate {
     // edge of the screen in every direction.
     if (x < screen.left + _kMenuScreenPadding + padding.left) {
       x = screen.left + _kMenuScreenPadding + padding.left;
-    } else if (x + childSize.width > screen.right - _kMenuScreenPadding - padding.right) {
+    } else if (x + childSize.width >
+        screen.right - _kMenuScreenPadding - padding.right) {
       x = screen.right - childSize.width - _kMenuScreenPadding - padding.right;
     }
     if (y < screen.top + _kMenuScreenPadding + padding.top) {
       y = _kMenuScreenPadding + padding.top;
-    } else if (y + childSize.height > screen.bottom - _kMenuScreenPadding - padding.bottom) {
-      y = screen.bottom - childSize.height - _kMenuScreenPadding - padding.bottom;
+    } else if (y + childSize.height >
+        screen.bottom - _kMenuScreenPadding - padding.bottom) {
+      y = screen.bottom -
+          childSize.height -
+          _kMenuScreenPadding -
+          padding.bottom;
     }
 
     return Offset(x, y);
@@ -348,10 +369,13 @@ class _RightPopupMenuRoute<T> extends PopupRoute<T> {
   final String barrierLabel;
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
     int? selectedItemIndex;
     if (initialValue != null) {
-      for (int index = 0; selectedItemIndex == null && index < items.length; index += 1) {
+      for (int index = 0;
+          selectedItemIndex == null && index < items.length;
+          index += 1) {
         if (items[index].represents(initialValue)) {
           selectedItemIndex = index;
         }
@@ -411,7 +435,8 @@ typedef PopupMenuCanceled = void Function();
 /// the button is pressed.
 ///
 /// Used by [PopupMenuButton.itemBuilder].
-typedef PopupMenuItemBuilder<T> = List<PopupMenuEntry<T>> Function(BuildContext context);
+typedef PopupMenuItemBuilder<T> = List<PopupMenuEntry<T>> Function(
+    BuildContext context);
 
 /// Displays a menu when pressed and calls [onSelected] when the menu is dismissed
 /// because an item was selected. The value passed to [onSelected] is the value of
@@ -679,7 +704,9 @@ class RightPopupMenuButton<T> extends StatefulWidget {
 
   final bool isRightMenu;
 
-  final RelativeRect? Function(TapDownDetails? detail, RelativeRect rect, RelativeRect? current)? rightMenuDetailHandle;
+  final RelativeRect? Function(
+          TapDownDetails? detail, RelativeRect rect, RelativeRect? current)?
+      rightMenuDetailHandle;
 
   @override
   RightPopupMenuButtonState<T> createState() => RightPopupMenuButtonState<T>();
@@ -701,8 +728,10 @@ class RightPopupMenuButtonState<T> extends State<RightPopupMenuButton<T>> {
   void showButtonMenu({TapDownDetails? detail}) {
     final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(context);
     final RenderBox button = context.findRenderObject()! as RenderBox;
-    final RenderBox overlay = Navigator.of(context).overlay!.context.findRenderObject()! as RenderBox;
-    final PopupMenuPosition popupMenuPosition = widget.position ?? popupMenuTheme.position ?? PopupMenuPosition.over;
+    final RenderBox overlay =
+        Navigator.of(context).overlay!.context.findRenderObject()! as RenderBox;
+    final PopupMenuPosition popupMenuPosition =
+        widget.position ?? popupMenuTheme.position ?? PopupMenuPosition.over;
     late Offset offset;
     switch (popupMenuPosition) {
       case PopupMenuPosition.over:
@@ -719,13 +748,18 @@ class RightPopupMenuButtonState<T> extends State<RightPopupMenuButton<T>> {
     RelativeRect position = RelativeRect.fromRect(
       Rect.fromPoints(
         button.localToGlobal(offset, ancestor: overlay),
-        button.localToGlobal(button.size.bottomRight(Offset.zero) + offset, ancestor: overlay),
+        button.localToGlobal(button.size.bottomRight(Offset.zero) + offset,
+            ancestor: overlay),
       ),
       Offset.zero & overlay.size,
     );
     final pos = detail?.globalPosition;
-    final position2 = widget.rightMenuDetailHandle
-        ?.call(detail, position, pos != null ? RelativeRect.fromLTRB(pos.dx, pos.dy, pos.dx, pos.dy) : null);
+    final position2 = widget.rightMenuDetailHandle?.call(
+        detail,
+        position,
+        pos != null
+            ? RelativeRect.fromLTRB(pos.dx, pos.dy, pos.dx, pos.dy)
+            : null);
     if (position2 != null) {
       position = position2;
     }
@@ -737,7 +771,8 @@ class RightPopupMenuButtonState<T> extends State<RightPopupMenuButton<T>> {
         context: context,
         elevation: widget.elevation ?? popupMenuTheme.elevation,
         shadowColor: widget.shadowColor ?? popupMenuTheme.shadowColor,
-        surfaceTintColor: widget.surfaceTintColor ?? popupMenuTheme.surfaceTintColor,
+        surfaceTintColor:
+            widget.surfaceTintColor ?? popupMenuTheme.surfaceTintColor,
         items: items,
         initialValue: widget.initialValue,
         position: position,
@@ -759,7 +794,8 @@ class RightPopupMenuButtonState<T> extends State<RightPopupMenuButton<T>> {
   }
 
   bool get _canRequestFocus {
-    final NavigationMode mode = MediaQuery.maybeNavigationModeOf(context) ?? NavigationMode.traditional;
+    final NavigationMode mode =
+        MediaQuery.maybeNavigationModeOf(context) ?? NavigationMode.traditional;
     switch (mode) {
       case NavigationMode.traditional:
         return widget.enabled;
@@ -772,20 +808,25 @@ class RightPopupMenuButtonState<T> extends State<RightPopupMenuButton<T>> {
   Widget build(BuildContext context) {
     final IconThemeData iconTheme = IconTheme.of(context);
     final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(context);
-    final bool enableFeedback = widget.enableFeedback ?? PopupMenuTheme.of(context).enableFeedback ?? true;
+    final bool enableFeedback = widget.enableFeedback ??
+        PopupMenuTheme.of(context).enableFeedback ??
+        true;
 
     assert(debugCheckHasMaterialLocalizations(context));
 
     if (widget.child != null) {
       return Tooltip(
-        message: widget.tooltip ?? MaterialLocalizations.of(context).showMenuTooltip,
+        message:
+            widget.tooltip ?? MaterialLocalizations.of(context).showMenuTooltip,
         child: InkWell(
           onSecondaryTapDown: widget.enabled && widget.isRightMenu == true
               ? (detail) {
                   showButtonMenu(detail: detail);
                 }
               : null,
-          onTap: widget.enabled && widget.isRightMenu == false ? showButtonMenu : null,
+          onTap: widget.enabled && widget.isRightMenu == false
+              ? showButtonMenu
+              : null,
           canRequestFocus: _canRequestFocus,
           radius: widget.splashRadius,
           enableFeedback: enableFeedback,
@@ -800,7 +841,8 @@ class RightPopupMenuButtonState<T> extends State<RightPopupMenuButton<T>> {
       splashRadius: widget.splashRadius,
       iconSize: widget.iconSize ?? popupMenuTheme.iconSize ?? iconTheme.size,
       color: widget.iconColor ?? popupMenuTheme.iconColor ?? iconTheme.color,
-      tooltip: widget.tooltip ?? MaterialLocalizations.of(context).showMenuTooltip,
+      tooltip:
+          widget.tooltip ?? MaterialLocalizations.of(context).showMenuTooltip,
       onPressed: widget.enabled ? showButtonMenu : null,
       enableFeedback: enableFeedback,
     );
@@ -838,7 +880,7 @@ class _RightPopupMenuDefaultsM3 extends PopupMenuThemeData {
     return WidgetStateProperty.resolveWith((Set<WidgetState> states) {
       final TextStyle style = _textTheme.labelLarge!;
       if (states.contains(WidgetState.disabled)) {
-        return style.apply(color: _colors.onSurface.withOpacity(0.38));
+        return style.apply(color: _colors.onSurface.withValues(alpha: .38));
       }
       return style.apply(color: _colors.onSurface);
     });
@@ -854,5 +896,6 @@ class _RightPopupMenuDefaultsM3 extends PopupMenuThemeData {
   Color? get surfaceTintColor => _colors.surfaceTint;
 
   @override
-  ShapeBorder? get shape => const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4.0)));
+  ShapeBorder? get shape => const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(4.0)));
 }
