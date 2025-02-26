@@ -44,7 +44,9 @@ typedef MySwiper = Swiper;
 @Doc(message: "简单toast弹窗")
 void toast(String msg) {
   SmartDialog.dismiss(status: SmartStatus.toast);
-  SmartDialog.showToast(msg,);
+  SmartDialog.showToast(
+    msg,
+  );
 }
 
 extension Tex3<T> on T? {
@@ -60,7 +62,6 @@ extension Tex3<T> on T? {
 mixin BasePagedApiMixin<T> on BaseApi<T> {
   String get pageParamsKey => 'page';
 }
-
 
 abstract class BaseApi<T> extends ChangeNotifier {
   dio.BaseOptions options = dio.BaseOptions(
@@ -107,13 +108,12 @@ abstract class BaseApi<T> extends ChangeNotifier {
       final bodyData = httpMethod == HttpMethod.get ? null : bodyParams;
       final response = await d.request(uri,
           options: dio.Options(
-            method: httpMethod.method,
-            contentType: contentTypeString,
-            headers: options.headers,
-            responseType: options.responseType,
-            requestEncoder: options.requestEncoder,
-            extra: options.extra
-          ),
+              method: httpMethod.method,
+              contentType: contentTypeString,
+              headers: options.headers,
+              responseType: options.responseType,
+              requestEncoder: options.requestEncoder,
+              extra: options.extra),
           queryParameters:
               httpMethod == HttpMethod.get ? queryParameters : null,
           data: bodyData,

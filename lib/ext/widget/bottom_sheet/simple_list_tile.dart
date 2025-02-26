@@ -53,7 +53,7 @@ class SimpleListTileWidget<T> extends StatelessWidget {
           Container(
             alignment: Alignment.center,
             width: double.infinity,
-            color: context.kTheme.dialogBackgroundColor,
+            color: context.kTheme.dialogTheme.backgroundColor,
             padding:
                 EdgeInsets.only(top: 12, bottom: context.paddingBottom + 12),
             child: Text(cancelText ?? 'Close'),

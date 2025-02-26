@@ -60,15 +60,17 @@ class ImageView extends StatelessWidget {
       initEditorConfigHandler: params.initEditorConfigHandler,
       extendedImageEditorKey: params.extendedImageEditorKey,
       mode: params.mode ?? ExtendedImageMode.none,
+      filterQuality: params.filterQuality,
     );
   }
 
   ImageProvider get getImage {
-    return image.when(
-        network: _buildNetwork,
-        base64: _buildBaseImage,
-        filePath: _buildFileImage,
-        asset: _buildAssetImage);
+    return switch(image){
+      MyNetworkImage(:final url,:final params) => _buildNetwork(url, params),
+      MyBase64Image(:final base64Code,:final params) => _buildBaseImage(base64Code, params),
+      MyFilePathImage(:final filePath,:final params) => _buildFileImage(filePath, params),
+      MyAssetImage(:final assetPath,:final params) => _buildAssetImage(assetPath, params),
+    };
   }
 
   Widget? _stateChange(ExtendedImageState state) {
@@ -274,6 +276,7 @@ class _ImageRawWidget extends StatelessWidget {
         color: params.color,
         width: params.getWidth,
         height: params.getHeight,
+        filterQuality: params.filterQuality,
       ),
     );
   }

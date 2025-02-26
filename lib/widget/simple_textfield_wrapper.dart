@@ -17,7 +17,7 @@ class _SimpleInputWrapperState extends State<SimpleInputWrapper> {
   final _focusNode = FocusNode();
 
   KeyboardActionsConfig _buildConfig() {
-    return KeyboardActionsConfig(keyboardBarColor: context.theme.dialogBackgroundColor, nextFocus: false, actions: [
+    return KeyboardActionsConfig(keyboardBarColor: context.theme.dialogTheme.backgroundColor, nextFocus: false, actions: [
       KeyboardActionsItem(
         focusNode: _focusNode,
       )

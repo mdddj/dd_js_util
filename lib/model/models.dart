@@ -1,4 +1,3 @@
-// import 'dart:convert';
 import 'dart:convert';
 import 'dart:io';
 
@@ -26,7 +25,7 @@ typedef ResponseResultCallback = void Function(dynamic response); //接口返回
 typedef ReLoginSuccess = void Function();
 
 @freezed
-class RequestParams with _$RequestParams {
+sealed class RequestParams with _$RequestParams {
   const RequestParams._();
 
   const factory RequestParams({
@@ -90,7 +89,7 @@ extension ThemeModeEx on ThemeMode {
 /// [2] - 深色模式
 @HiveType(typeId: 88)
 @freezed
-class AppLocalSettingModel with _$AppLocalSettingModel {
+sealed class AppLocalSettingModel with _$AppLocalSettingModel {
   const AppLocalSettingModel._();
 
   const factory AppLocalSettingModel({
@@ -117,7 +116,7 @@ extension AppLocalSettingModelEx on AppLocalSettingModel {
 }
 
 @freezed
-class AskStringDialogParams with _$AskStringDialogParams {
+sealed class AskStringDialogParams with _$AskStringDialogParams {
   const factory AskStringDialogParams(
       {@Default("") String placeholder,
       @Default("") String title,
@@ -128,7 +127,7 @@ class AskStringDialogParams with _$AskStringDialogParams {
 // -- ok
 
 @freezed
-class AskIntDialogParams with _$AskIntDialogParams {
+sealed class AskIntDialogParams with _$AskIntDialogParams {
   const factory AskIntDialogParams({
     @Default("") String placeholder,
     @Default("") String title,
@@ -144,7 +143,7 @@ class AskIntDialogParams with _$AskIntDialogParams {
 // --- ok
 
 @freezed
-class AskOkDialogParams with _$AskOkDialogParams {
+sealed class AskOkDialogParams with _$AskOkDialogParams {
   const factory AskOkDialogParams(
       {@Default("") String contentText,
       @Default("Confirm") String okText,
@@ -157,23 +156,28 @@ class AskOkDialogParams with _$AskOkDialogParams {
 
 extension BaseApiExceptionEx on BaseApiException {
   Response? tryGetResponse() {
-    return whenOrNull(
-      badResponse: (response, statusCode) => response,
-    );
+    return switch (this) {
+      BaseApiBadResponseException(
+        :final response,
+      ) =>
+        response,
+      _ => null
+    };
   }
 
   RequestOptions? tryGetRequestOptions() {
-    return whenOrNull(
-      cancel: (error, options) => options,
-      badResponse: (response, statusCode) => response?.requestOptions,
-    );
+    return switch (this) {
+      BaseApiCancelException(:final options) => options,
+      BaseApiBadResponseException(:final response) => response?.requestOptions,
+      _ => null
+    };
   }
 
   int? get statusCode => tryGetResponse()?.statusCode;
 }
 
 @freezed
-class BaseApiException with _$BaseApiException {
+sealed class BaseApiException with _$BaseApiException {
   const BaseApiException._();
 
   ///请求被主动关闭异常
@@ -245,13 +249,13 @@ class BaseApiException with _$BaseApiException {
 
 extension ByteModelEx on ByteModel {
   String get unit {
-    return map(
-      bytes: (value) => "B",
-      kb: (value) => "KB",
-      mb: (value) => "MB",
-      gb: (value) => 'GB',
-      tb: (value) => "TB",
-    );
+    return switch (this) {
+      BytesModel() => "B",
+      KbModel() => "KB",
+      MbModel() => "MB",
+      GbModel() => "GB",
+      TbModel() => "TB",
+    };
   }
 
   ///格式化显示大小
@@ -259,7 +263,7 @@ extension ByteModelEx on ByteModel {
 }
 
 @freezed
-class ByteModel with _$ByteModel {
+sealed class ByteModel with _$ByteModel {
   const ByteModel._();
 
   const factory ByteModel.bytes(double value) = BytesModel;
@@ -308,7 +312,7 @@ extension JsonStringDataEx on JsonStringData {
     }
     try {
       final mapData = jsonDecode(jsonString);
-      if (map is Map<String, dynamic>) {
+      if (mapData is Map<String, dynamic>) {
         run?.call(mapData);
         return mapData;
       }
@@ -319,35 +323,48 @@ extension JsonStringDataEx on JsonStringData {
 
 //--ok--
 extension DartTypeModelEx on DartTypeModel {
-  bool isNull() => whenOrNull(nil: () => true) ?? false;
+  bool isNull() => switch (this) {
+        NullData() => true,
+        _ => false,
+      };
 
-  bool isList() => whenOrNull(list: (value) => true) ?? false;
+  bool isList() => switch (this) { ListData() => true, _ => false };
 
-  bool isJson() => whenOrNull(json: (value) => true) ?? false;
+  bool isJson() => switch (this) { JsonData() => true, _ => false };
 
-  bool isString() =>
-      whenOrNull(string: (value) => true, jsonString: (jsonString) => true) ??
-      false;
+  bool isString() => switch (this) {
+        StringData() => true,
+        JsonStringData() => true,
+        _ => false
+      };
 
-  bool isTrue() => whenOrNull(bool: (value) => value) ?? false;
+  bool isTrue() => switch (this) { BoolData() => true, _ => false };
 
-  bool isBool() =>
-      whenOrNull(
-        bool: (value) => true,
-      ) ??
-      false;
+  bool isBool() => switch (this) { BoolData() => true, _ => false };
 
   List<T> form<T>(T Function(dynamic e) call) {
-    return List<T>.from((whenOrNull(list: (value) => value) ?? []).map(call));
+    return switch (this) {
+      ListData(:final value) => List<T>.from(value.map(call)),
+      _ => []
+    };
+  }
+
+  List<T> formWithField<T>(String field, T Function(dynamic e) call) {
+    return switch (this) {
+      JsonData(:final value)
+          when value.containsKey(field) && value[field] is List<dynamic> =>
+        List<T>.from((value[field] as List<dynamic>).map(call)),
+      _ => []
+    };
   }
 
   T model<T>(T Function(Map<String, dynamic> e) call) {
-    return call(whenOrNull(json: (value) => value) ?? {});
+    return call(switch (this) { JsonData(:final value) => value, _ => {} });
   }
 }
 
 @freezed
-class DartTypeModel with _$DartTypeModel {
+sealed class DartTypeModel with _$DartTypeModel {
   const DartTypeModel._();
 
   const factory DartTypeModel.string(String value) = StringData;
@@ -436,7 +453,7 @@ typedef CustomCompletedWidget = Widget? Function(
 //--ok
 
 @freezed
-class ImageParams with _$ImageParams {
+sealed class ImageParams with _$ImageParams {
   const ImageParams._();
 
   const factory ImageParams(
@@ -456,6 +473,7 @@ class ImageParams with _$ImageParams {
       @Default(false) bool clearMemoryCacheWhenDispose,
       @Default(true) bool gaplessPlayback,
       @igFreezedJson BlendMode? colorBlendMode,
+      @Default(FilterQuality.medium) FilterQuality filterQuality,
 
       //---net
       double? scale,
@@ -489,7 +507,7 @@ class ImageParams with _$ImageParams {
 }
 
 @freezed
-class MyImage with _$MyImage {
+sealed class MyImage with _$MyImage {
   const MyImage._();
 
   factory MyImage.network(
@@ -532,19 +550,27 @@ MyPlatform get myPlatform {
 
 extension MyPlatformEx on MyPlatform {
   ///判断是否为 ios 平台
-  bool get isIos =>
-      myPlatform.whenOrNull(ios: () => true, macos: () => true) ?? false;
+  // bool get isIos =>
+  //     myPlatform.whenOrNull(ios: () => true, macos: () => true) ?? false;
+  bool get isIos => switch (this) {
+        IosPlatform() => true,
+        MacosPlatform() => true,
+        _ => false
+      };
 
-  bool get isAndroid => myPlatform.whenOrNull(android: () => true) ?? false;
+  bool get isAndroid => switch (this) { AndroidPlatform() => true, _ => false };
 
-  bool get isDesktop =>
-      myPlatform.whenOrNull(android: () => false, ios: () => false) ?? true;
+  bool get isDesktop => switch (this) {
+        AndroidPlatform() => false,
+        IosPlatform() => false,
+        _ => true
+      };
 
   bool get isMobile => !isDesktop;
 }
 
 @freezed
-class MyPlatform with _$MyPlatform {
+sealed class MyPlatform with _$MyPlatform {
   const factory MyPlatform.android() = AndroidPlatform;
 
   const factory MyPlatform.ios() = IosPlatform;
@@ -561,7 +587,7 @@ class MyPlatform with _$MyPlatform {
 }
 
 @freezed
-class PictureSelectionI18nConfig with _$PictureSelectionI18nConfig {
+sealed class PictureSelectionI18nConfig with _$PictureSelectionI18nConfig {
   const PictureSelectionI18nConfig._();
 
   const factory PictureSelectionI18nConfig(
@@ -612,7 +638,7 @@ typedef PM = PictureSelectionItemModel;
 
 ///图片选择器模型
 @freezed
-class PictureSelectionItemModel with _$PictureSelectionItemModel {
+sealed class PictureSelectionItemModel with _$PictureSelectionItemModel {
   const PictureSelectionItemModel._();
 
   factory PictureSelectionItemModel.file({required File file}) = XXFile;

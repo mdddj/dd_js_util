@@ -12,7 +12,7 @@ typedef SearchSupportCoreUiBuild = Widget Function(SearchSupportManager manager,
 
 ///参数列表
 @freezed
-class SearchSupportParams<T> with _$SearchSupportParams<T> {
+sealed class SearchSupportParams<T> with _$SearchSupportParams<T> {
   const factory SearchSupportParams(
       {
       ///是否自动显示搜索结果

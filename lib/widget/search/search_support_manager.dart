@@ -5,7 +5,7 @@ part 'search_support_manager.freezed.dart';
 
 
 @freezed
-class SearchSupportManager with _$SearchSupportManager {
+sealed class SearchSupportManager with _$SearchSupportManager {
   const factory SearchSupportManager({
     required BuildContext context,
     required StateSetter floatStateSetter,

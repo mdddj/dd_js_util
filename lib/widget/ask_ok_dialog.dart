@@ -16,7 +16,11 @@ class AskOkDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     _DefaultStyle defaultStyle = _DefaultStyle(params: params);
     _AskOkIosStyle iosStyle = _AskOkIosStyle(param: params);
-    return myPlatform.whenOrNull(ios: () => iosStyle, macos: () => iosStyle) ?? defaultStyle;
+    return switch(myPlatform){
+      IosPlatform() => iosStyle,
+      MacosPlatform() => iosStyle,
+      _ => defaultStyle
+    };
   }
 }
 
@@ -27,16 +31,18 @@ class _AskOkIosStyle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoAlertDialog(
-      title: param.title,
-      content: param.content ?? Text(param.contentText),
-      actions: [
-        CupertinoDialogAction(
-          onPressed: context.pop,
-          child: Text(param.cancelText),
-        ),
-        CupertinoDialogAction(child: Text(param.okText), onPressed: () => Navigator.pop(context, true)),
-      ],
+    return Center(
+      child: CupertinoAlertDialog(
+        title: param.title,
+        content: param.content ?? Text(param.contentText),
+        actions: [
+          CupertinoDialogAction(
+            onPressed: context.pop,
+            child: Text(param.cancelText),
+          ),
+          CupertinoDialogAction(child: Text(param.okText), onPressed: () => Navigator.pop(context, true)),
+        ],
+      ),
     );
   }
 }

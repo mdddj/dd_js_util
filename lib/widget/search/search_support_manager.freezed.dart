@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,146 +10,28 @@ part of 'search_support_manager.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SearchSupportManager {
-  BuildContext get context => throw _privateConstructorUsedError;
-  StateSetter get floatStateSetter => throw _privateConstructorUsedError;
-  State<StatefulWidget> get floatState => throw _privateConstructorUsedError;
+  BuildContext get context;
+  StateSetter get floatStateSetter;
+  State get floatState;
 
   /// Create a copy of SearchSupportManager
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $SearchSupportManagerCopyWith<SearchSupportManager> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SearchSupportManagerCopyWith<$Res> {
-  factory $SearchSupportManagerCopyWith(SearchSupportManager value,
-          $Res Function(SearchSupportManager) then) =
-      _$SearchSupportManagerCopyWithImpl<$Res, SearchSupportManager>;
-  @useResult
-  $Res call(
-      {BuildContext context,
-      StateSetter floatStateSetter,
-      State<StatefulWidget> floatState});
-}
-
-/// @nodoc
-class _$SearchSupportManagerCopyWithImpl<$Res,
-        $Val extends SearchSupportManager>
-    implements $SearchSupportManagerCopyWith<$Res> {
-  _$SearchSupportManagerCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SearchSupportManager
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? context = null,
-    Object? floatStateSetter = null,
-    Object? floatState = null,
-  }) {
-    return _then(_value.copyWith(
-      context: null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-      floatStateSetter: null == floatStateSetter
-          ? _value.floatStateSetter
-          : floatStateSetter // ignore: cast_nullable_to_non_nullable
-              as StateSetter,
-      floatState: null == floatState
-          ? _value.floatState
-          : floatState // ignore: cast_nullable_to_non_nullable
-              as State<StatefulWidget>,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$SearchSupportManagerImplCopyWith<$Res>
-    implements $SearchSupportManagerCopyWith<$Res> {
-  factory _$$SearchSupportManagerImplCopyWith(_$SearchSupportManagerImpl value,
-          $Res Function(_$SearchSupportManagerImpl) then) =
-      __$$SearchSupportManagerImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {BuildContext context,
-      StateSetter floatStateSetter,
-      State<StatefulWidget> floatState});
-}
-
-/// @nodoc
-class __$$SearchSupportManagerImplCopyWithImpl<$Res>
-    extends _$SearchSupportManagerCopyWithImpl<$Res, _$SearchSupportManagerImpl>
-    implements _$$SearchSupportManagerImplCopyWith<$Res> {
-  __$$SearchSupportManagerImplCopyWithImpl(_$SearchSupportManagerImpl _value,
-      $Res Function(_$SearchSupportManagerImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of SearchSupportManager
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? context = null,
-    Object? floatStateSetter = null,
-    Object? floatState = null,
-  }) {
-    return _then(_$SearchSupportManagerImpl(
-      context: null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-      floatStateSetter: null == floatStateSetter
-          ? _value.floatStateSetter
-          : floatStateSetter // ignore: cast_nullable_to_non_nullable
-              as StateSetter,
-      floatState: null == floatState
-          ? _value.floatState
-          : floatState // ignore: cast_nullable_to_non_nullable
-              as State<StatefulWidget>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SearchSupportManagerImpl implements _SearchSupportManager {
-  const _$SearchSupportManagerImpl(
-      {required this.context,
-      required this.floatStateSetter,
-      required this.floatState});
-
-  @override
-  final BuildContext context;
-  @override
-  final StateSetter floatStateSetter;
-  @override
-  final State<StatefulWidget> floatState;
-
-  @override
-  String toString() {
-    return 'SearchSupportManager(context: $context, floatStateSetter: $floatStateSetter, floatState: $floatState)';
-  }
+      _$SearchSupportManagerCopyWithImpl<SearchSupportManager>(
+          this as SearchSupportManager, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SearchSupportManagerImpl &&
+            other is SearchSupportManager &&
             (identical(other.context, context) || other.context == context) &&
             (identical(other.floatStateSetter, floatStateSetter) ||
                 other.floatStateSetter == floatStateSetter) &&
@@ -160,35 +43,150 @@ class _$SearchSupportManagerImpl implements _SearchSupportManager {
   int get hashCode =>
       Object.hash(runtimeType, context, floatStateSetter, floatState);
 
+  @override
+  String toString() {
+    return 'SearchSupportManager(context: $context, floatStateSetter: $floatStateSetter, floatState: $floatState)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $SearchSupportManagerCopyWith<$Res> {
+  factory $SearchSupportManagerCopyWith(SearchSupportManager value,
+          $Res Function(SearchSupportManager) _then) =
+      _$SearchSupportManagerCopyWithImpl;
+  @useResult
+  $Res call(
+      {BuildContext context,
+      StateSetter floatStateSetter,
+      State<StatefulWidget> floatState});
+}
+
+/// @nodoc
+class _$SearchSupportManagerCopyWithImpl<$Res>
+    implements $SearchSupportManagerCopyWith<$Res> {
+  _$SearchSupportManagerCopyWithImpl(this._self, this._then);
+
+  final SearchSupportManager _self;
+  final $Res Function(SearchSupportManager) _then;
+
   /// Create a copy of SearchSupportManager
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+    Object? floatStateSetter = null,
+    Object? floatState = null,
+  }) {
+    return _then(_self.copyWith(
+      context: null == context
+          ? _self.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      floatStateSetter: null == floatStateSetter
+          ? _self.floatStateSetter
+          : floatStateSetter // ignore: cast_nullable_to_non_nullable
+              as StateSetter,
+      floatState: null == floatState
+          ? _self.floatState!
+          : floatState // ignore: cast_nullable_to_non_nullable
+              as State<StatefulWidget>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _SearchSupportManager implements SearchSupportManager {
+  const _SearchSupportManager(
+      {required this.context,
+      required this.floatStateSetter,
+      required this.floatState});
+
+  @override
+  final BuildContext context;
+  @override
+  final StateSetter floatStateSetter;
+  @override
+  final State<StatefulWidget> floatState;
+
+  /// Create a copy of SearchSupportManager
+  /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SearchSupportManagerCopyWith<_SearchSupportManager> get copyWith =>
+      __$SearchSupportManagerCopyWithImpl<_SearchSupportManager>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SearchSupportManager &&
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.floatStateSetter, floatStateSetter) ||
+                other.floatStateSetter == floatStateSetter) &&
+            (identical(other.floatState, floatState) ||
+                other.floatState == floatState));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, context, floatStateSetter, floatState);
+
+  @override
+  String toString() {
+    return 'SearchSupportManager(context: $context, floatStateSetter: $floatStateSetter, floatState: $floatState)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$SearchSupportManagerCopyWith<$Res>
+    implements $SearchSupportManagerCopyWith<$Res> {
+  factory _$SearchSupportManagerCopyWith(_SearchSupportManager value,
+          $Res Function(_SearchSupportManager) _then) =
+      __$SearchSupportManagerCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {BuildContext context,
+      StateSetter floatStateSetter,
+      State<StatefulWidget> floatState});
+}
+
+/// @nodoc
+class __$SearchSupportManagerCopyWithImpl<$Res>
+    implements _$SearchSupportManagerCopyWith<$Res> {
+  __$SearchSupportManagerCopyWithImpl(this._self, this._then);
+
+  final _SearchSupportManager _self;
+  final $Res Function(_SearchSupportManager) _then;
+
+  /// Create a copy of SearchSupportManager
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$SearchSupportManagerImplCopyWith<_$SearchSupportManagerImpl>
-      get copyWith =>
-          __$$SearchSupportManagerImplCopyWithImpl<_$SearchSupportManagerImpl>(
-              this, _$identity);
+  $Res call({
+    Object? context = null,
+    Object? floatStateSetter = null,
+    Object? floatState = null,
+  }) {
+    return _then(_SearchSupportManager(
+      context: null == context
+          ? _self.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      floatStateSetter: null == floatStateSetter
+          ? _self.floatStateSetter
+          : floatStateSetter // ignore: cast_nullable_to_non_nullable
+              as StateSetter,
+      floatState: null == floatState
+          ? _self.floatState
+          : floatState // ignore: cast_nullable_to_non_nullable
+              as State<StatefulWidget>,
+    ));
+  }
 }
 
-abstract class _SearchSupportManager implements SearchSupportManager {
-  const factory _SearchSupportManager(
-          {required final BuildContext context,
-          required final StateSetter floatStateSetter,
-          required final State<StatefulWidget> floatState}) =
-      _$SearchSupportManagerImpl;
-
-  @override
-  BuildContext get context;
-  @override
-  StateSetter get floatStateSetter;
-  @override
-  State<StatefulWidget> get floatState;
-
-  /// Create a copy of SearchSupportManager
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SearchSupportManagerImplCopyWith<_$SearchSupportManagerImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on

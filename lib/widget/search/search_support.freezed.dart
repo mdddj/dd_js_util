@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,91 +10,55 @@ part of 'search_support.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SearchSupportParams<T> {
   ///是否自动显示搜索结果
-  bool get autoShow => throw _privateConstructorUsedError; //搜索控制器
-  RefreshController<T>? get controller =>
-      throw _privateConstructorUsedError; //展示组件的容器,需要固定高度
-  SearchSupportCoreUiBuild get childBuilder =>
-      throw _privateConstructorUsedError;
-  SearchSupportActionListening? get listening =>
-      throw _privateConstructorUsedError;
+  bool get autoShow; //搜索控制器
+  RefreshController<T>? get controller; //展示组件的容器,需要固定高度
+  SearchSupportCoreUiBuild get childBuilder;
+  SearchSupportActionListening? get listening;
 
   /// Create a copy of SearchSupportParams
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $SearchSupportParamsCopyWith<T, SearchSupportParams<T>> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SearchSupportParamsCopyWith<T, $Res> {
-  factory $SearchSupportParamsCopyWith(SearchSupportParams<T> value,
-          $Res Function(SearchSupportParams<T>) then) =
-      _$SearchSupportParamsCopyWithImpl<T, $Res, SearchSupportParams<T>>;
-  @useResult
-  $Res call(
-      {bool autoShow,
-      RefreshController<T>? controller,
-      SearchSupportCoreUiBuild childBuilder,
-      SearchSupportActionListening? listening});
-}
-
-/// @nodoc
-class _$SearchSupportParamsCopyWithImpl<T, $Res,
-        $Val extends SearchSupportParams<T>>
-    implements $SearchSupportParamsCopyWith<T, $Res> {
-  _$SearchSupportParamsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of SearchSupportParams
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $SearchSupportParamsCopyWith<T, SearchSupportParams<T>> get copyWith =>
+      _$SearchSupportParamsCopyWithImpl<T, SearchSupportParams<T>>(
+          this as SearchSupportParams<T>, _$identity);
+
   @override
-  $Res call({
-    Object? autoShow = null,
-    Object? controller = freezed,
-    Object? childBuilder = null,
-    Object? listening = freezed,
-  }) {
-    return _then(_value.copyWith(
-      autoShow: null == autoShow
-          ? _value.autoShow
-          : autoShow // ignore: cast_nullable_to_non_nullable
-              as bool,
-      controller: freezed == controller
-          ? _value.controller
-          : controller // ignore: cast_nullable_to_non_nullable
-              as RefreshController<T>?,
-      childBuilder: null == childBuilder
-          ? _value.childBuilder
-          : childBuilder // ignore: cast_nullable_to_non_nullable
-              as SearchSupportCoreUiBuild,
-      listening: freezed == listening
-          ? _value.listening
-          : listening // ignore: cast_nullable_to_non_nullable
-              as SearchSupportActionListening?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SearchSupportParams<T> &&
+            (identical(other.autoShow, autoShow) ||
+                other.autoShow == autoShow) &&
+            (identical(other.controller, controller) ||
+                other.controller == controller) &&
+            (identical(other.childBuilder, childBuilder) ||
+                other.childBuilder == childBuilder) &&
+            (identical(other.listening, listening) ||
+                other.listening == listening));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, autoShow, controller, childBuilder, listening);
+
+  @override
+  String toString() {
+    return 'SearchSupportParams<$T>(autoShow: $autoShow, controller: $controller, childBuilder: $childBuilder, listening: $listening)';
   }
 }
 
 /// @nodoc
-abstract class _$$SearchSupportParamsImplCopyWith<T, $Res>
-    implements $SearchSupportParamsCopyWith<T, $Res> {
-  factory _$$SearchSupportParamsImplCopyWith(_$SearchSupportParamsImpl<T> value,
-          $Res Function(_$SearchSupportParamsImpl<T>) then) =
-      __$$SearchSupportParamsImplCopyWithImpl<T, $Res>;
-  @override
+abstract mixin class $SearchSupportParamsCopyWith<T, $Res> {
+  factory $SearchSupportParamsCopyWith(SearchSupportParams<T> value,
+          $Res Function(SearchSupportParams<T>) _then) =
+      _$SearchSupportParamsCopyWithImpl;
   @useResult
   $Res call(
       {bool autoShow,
@@ -103,13 +68,12 @@ abstract class _$$SearchSupportParamsImplCopyWith<T, $Res>
 }
 
 /// @nodoc
-class __$$SearchSupportParamsImplCopyWithImpl<T, $Res>
-    extends _$SearchSupportParamsCopyWithImpl<T, $Res,
-        _$SearchSupportParamsImpl<T>>
-    implements _$$SearchSupportParamsImplCopyWith<T, $Res> {
-  __$$SearchSupportParamsImplCopyWithImpl(_$SearchSupportParamsImpl<T> _value,
-      $Res Function(_$SearchSupportParamsImpl<T>) _then)
-      : super(_value, _then);
+class _$SearchSupportParamsCopyWithImpl<T, $Res>
+    implements $SearchSupportParamsCopyWith<T, $Res> {
+  _$SearchSupportParamsCopyWithImpl(this._self, this._then);
+
+  final SearchSupportParams<T> _self;
+  final $Res Function(SearchSupportParams<T>) _then;
 
   /// Create a copy of SearchSupportParams
   /// with the given fields replaced by the non-null parameter values.
@@ -121,21 +85,21 @@ class __$$SearchSupportParamsImplCopyWithImpl<T, $Res>
     Object? childBuilder = null,
     Object? listening = freezed,
   }) {
-    return _then(_$SearchSupportParamsImpl<T>(
+    return _then(_self.copyWith(
       autoShow: null == autoShow
-          ? _value.autoShow
+          ? _self.autoShow
           : autoShow // ignore: cast_nullable_to_non_nullable
               as bool,
       controller: freezed == controller
-          ? _value.controller
+          ? _self.controller
           : controller // ignore: cast_nullable_to_non_nullable
               as RefreshController<T>?,
       childBuilder: null == childBuilder
-          ? _value.childBuilder
+          ? _self.childBuilder
           : childBuilder // ignore: cast_nullable_to_non_nullable
               as SearchSupportCoreUiBuild,
       listening: freezed == listening
-          ? _value.listening
+          ? _self.listening
           : listening // ignore: cast_nullable_to_non_nullable
               as SearchSupportActionListening?,
     ));
@@ -144,8 +108,8 @@ class __$$SearchSupportParamsImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
-  const _$SearchSupportParamsImpl(
+class _SearchSupportParams<T> implements SearchSupportParams<T> {
+  const _SearchSupportParams(
       {this.autoShow = true,
       this.controller,
       required this.childBuilder,
@@ -164,16 +128,20 @@ class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
   @override
   final SearchSupportActionListening? listening;
 
+  /// Create a copy of SearchSupportParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'SearchSupportParams<$T>(autoShow: $autoShow, controller: $controller, childBuilder: $childBuilder, listening: $listening)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SearchSupportParamsCopyWith<T, _SearchSupportParams<T>> get copyWith =>
+      __$SearchSupportParamsCopyWithImpl<T, _SearchSupportParams<T>>(
+          this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SearchSupportParamsImpl<T> &&
+            other is _SearchSupportParams<T> &&
             (identical(other.autoShow, autoShow) ||
                 other.autoShow == autoShow) &&
             (identical(other.controller, controller) ||
@@ -188,38 +156,64 @@ class _$SearchSupportParamsImpl<T> implements _SearchSupportParams<T> {
   int get hashCode =>
       Object.hash(runtimeType, autoShow, controller, childBuilder, listening);
 
+  @override
+  String toString() {
+    return 'SearchSupportParams<$T>(autoShow: $autoShow, controller: $controller, childBuilder: $childBuilder, listening: $listening)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$SearchSupportParamsCopyWith<T, $Res>
+    implements $SearchSupportParamsCopyWith<T, $Res> {
+  factory _$SearchSupportParamsCopyWith(_SearchSupportParams<T> value,
+          $Res Function(_SearchSupportParams<T>) _then) =
+      __$SearchSupportParamsCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {bool autoShow,
+      RefreshController<T>? controller,
+      SearchSupportCoreUiBuild childBuilder,
+      SearchSupportActionListening? listening});
+}
+
+/// @nodoc
+class __$SearchSupportParamsCopyWithImpl<T, $Res>
+    implements _$SearchSupportParamsCopyWith<T, $Res> {
+  __$SearchSupportParamsCopyWithImpl(this._self, this._then);
+
+  final _SearchSupportParams<T> _self;
+  final $Res Function(_SearchSupportParams<T>) _then;
+
   /// Create a copy of SearchSupportParams
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SearchSupportParamsImplCopyWith<T, _$SearchSupportParamsImpl<T>>
-      get copyWith => __$$SearchSupportParamsImplCopyWithImpl<T,
-          _$SearchSupportParamsImpl<T>>(this, _$identity);
+  $Res call({
+    Object? autoShow = null,
+    Object? controller = freezed,
+    Object? childBuilder = null,
+    Object? listening = freezed,
+  }) {
+    return _then(_SearchSupportParams<T>(
+      autoShow: null == autoShow
+          ? _self.autoShow
+          : autoShow // ignore: cast_nullable_to_non_nullable
+              as bool,
+      controller: freezed == controller
+          ? _self.controller
+          : controller // ignore: cast_nullable_to_non_nullable
+              as RefreshController<T>?,
+      childBuilder: null == childBuilder
+          ? _self.childBuilder
+          : childBuilder // ignore: cast_nullable_to_non_nullable
+              as SearchSupportCoreUiBuild,
+      listening: freezed == listening
+          ? _self.listening
+          : listening // ignore: cast_nullable_to_non_nullable
+              as SearchSupportActionListening?,
+    ));
+  }
 }
 
-abstract class _SearchSupportParams<T> implements SearchSupportParams<T> {
-  const factory _SearchSupportParams(
-          {final bool autoShow,
-          final RefreshController<T>? controller,
-          required final SearchSupportCoreUiBuild childBuilder,
-          final SearchSupportActionListening? listening}) =
-      _$SearchSupportParamsImpl<T>;
-
-  ///是否自动显示搜索结果
-  @override
-  bool get autoShow; //搜索控制器
-  @override
-  RefreshController<T>? get controller; //展示组件的容器,需要固定高度
-  @override
-  SearchSupportCoreUiBuild get childBuilder;
-  @override
-  SearchSupportActionListening? get listening;
-
-  /// Create a copy of SearchSupportParams
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SearchSupportParamsImplCopyWith<T, _$SearchSupportParamsImpl<T>>
-      get copyWith => throw _privateConstructorUsedError;
-}
+// dart format on
