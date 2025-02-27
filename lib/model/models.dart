@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
@@ -338,6 +337,15 @@ extension DartTypeModelEx on DartTypeModel {
         _ => false
       };
 
+  T? getFieldByJson<T>(String key) {
+    return switch (this) {
+      JsonData(:final value)
+          when value.isNotEmpty && value.containsKey(key) && value[key] is T =>
+        value[key] as T?,
+      _ => null
+    };
+  }
+
   bool isTrue() => switch (this) { BoolData() => true, _ => false };
 
   bool isBool() => switch (this) { BoolData() => true, _ => false };
@@ -360,6 +368,29 @@ extension DartTypeModelEx on DartTypeModel {
 
   T model<T>(T Function(Map<String, dynamic> e) call) {
     return call(switch (this) { JsonData(:final value) => value, _ => {} });
+  }
+
+  T? whenOrNull<T>({
+    T? Function(String value)? string,
+    T? Function(num value)? num,
+    T? Function(bool value)? bool,
+    T? Function(List<dynamic> value)? list,
+    T? Function(Map<String, dynamic> value)? json,
+    T? Function(dynamic value)? dynamic,
+    T? Function()? nil,
+    T? Function(String value)? jsonStringCall,
+  }) {
+    final value = switch (this) {
+      StringData(:final value) => string?.call(value),
+      NumData(:final value) => num?.call(value),
+      BoolData(:final value) => bool?.call(value),
+      ListData(:final value) => list?.call(value),
+      JsonData(:final value) => json?.call(value),
+      DynamicData(:final value) => dynamic?.call(value),
+      NullData() => nil?.call(),
+      JsonStringData(:final jsonString) => jsonStringCall?.call(jsonString),
+    };
+    return value;
   }
 }
 
@@ -506,6 +537,25 @@ sealed class ImageParams with _$ImageParams {
       _$ImageParamsFromJson(json);
 }
 
+extension MyImageEx on MyImage {
+  T? whenOrNull<T>({
+    T? Function(String url, ImageParams params)? network,
+    T? Function(String base64Code, ImageParams params)? base64,
+    T? Function(String filePath, ImageParams params)? filePathCall,
+    T? Function(String assetPath, ImageParams params)? asset,
+  }) {
+    return switch (this) {
+      MyNetworkImage(:final url, :final params) => network?.call(url, params),
+      MyBase64Image(:final base64Code, :final params) =>
+        base64?.call(base64Code, params),
+      MyFilePathImage(:final filePath, :final params) =>
+        filePathCall?.call(filePath, params),
+      MyAssetImage(:final assetPath, :final params) =>
+        asset?.call(assetPath, params),
+    };
+  }
+}
+
 @freezed
 sealed class MyImage with _$MyImage {
   const MyImage._();
@@ -567,6 +617,58 @@ extension MyPlatformEx on MyPlatform {
       };
 
   bool get isMobile => !isDesktop;
+
+  Future<void> runInAndroid(VoidCallback call) async {
+    switch (this) {
+      case AndroidPlatform():
+        call();
+        break;
+      default:
+        {
+          break;
+        }
+    }
+  }
+
+  Future<void> runInIos(VoidCallback call) async {
+    switch (this) {
+      case IosPlatform():
+        call();
+        break;
+      default:
+        {
+          break;
+        }
+    }
+  }
+
+  Future<T?> runInAndroidAndIos<T>(Future<T> Function() call) async {
+    return await (switch (this) {
+      AndroidPlatform() => call,
+      IosPlatform() => call,
+      _ => null
+    })
+        ?.call();
+  }
+
+  Future<T?> runInAndroidAndIos2<T>(
+      {Future<T?> Function()? ios, Future<T?> Function()? android}) async {
+    return await (switch (this) {
+      AndroidPlatform() => android,
+      IosPlatform() => ios,
+      _ => null
+    })
+        ?.call();
+  }
+
+  T? runInAndroidAndIos3<T>({T? Function()? ios, T? Function()? android}) {
+    return (switch (this) {
+      AndroidPlatform() => android,
+      IosPlatform() => ios,
+      _ => null
+    })
+        ?.call();
+  }
 }
 
 @freezed

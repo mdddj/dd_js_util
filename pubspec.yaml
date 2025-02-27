@@ -1,6 +1,6 @@
 name: dd_js_util
 description: flutter tools and widgets and extends
-version: 6.6.0
+version: 6.6.2
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
@@ -42,7 +42,7 @@ dependencies:
   json_annotation: ^4.9.0
   mime: ^2.0.0
   package_info_plus: ^8.3.0
-  device_info_plus: ^11.3.0
+  device_info_plus: ^11.3.2
   async: ^2.13.0
   waterfall_flow: ^3.1.1
   extended_image_library: ^4.0.6

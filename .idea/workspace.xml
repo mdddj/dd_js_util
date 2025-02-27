@@ -9,24 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="07c65531-a961-4360-aed6-f4b7cf70859d" name="变更" comment="release 6.3.6">
       <change beforePath="$PROJECT_DIR$/.idea/ldd_project_timer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ldd_project_timer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis_options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/api/base.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/base.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ext/widget/bottom_sheet/simple_list_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ext/widget/bottom_sheet/simple_list_tile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/models.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/models.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/models.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/models.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/models.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/models.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/ask_ok_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/ask_ok_dialog.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/date/custom_year_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/date/custom_year_picker.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/image.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/search/search_support.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/search/search_support.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/search/search_support.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/search/search_support.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/search/search_support_manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/search/search_support_manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/search/search_support_manager.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/search/search_support_manager.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/simple_textfield_wrapper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/simple_textfield_wrapper.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,41 +113,41 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.Enable generate summary features in internal mode": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "dart.webdev.port": "53324",
-    "git-widget-placeholder": "master",
-    "io.flutter.reload.alreadyRun": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/ldd/dd_js_util",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.31573802",
-    "settings.editor.selected.configurable": "setting.flutterx",
-    "show.migrate.to.gradle.popup": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.Enable generate summary features in internal mode&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;dart.webdev.port&quot;: &quot;53324&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ldd/dd_js_util&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.31573802&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;setting.flutterx&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "stardust.markdown.MarkdownSplitEditorSuppressor:keyList": []
+  &quot;keyToStringList&quot;: {
+    &quot;stardust.markdown.MarkdownSplitEditorSuppressor:keyList&quot;: []
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -185,7 +170,7 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
-    <configuration>$USER_HOME$/.subversion</configuration>
+    <configuration>$PROJECT_DIR$/../.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
