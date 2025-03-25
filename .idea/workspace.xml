@@ -7,11 +7,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07c65531-a961-4360-aed6-f4b7cf70859d" name="变更" comment="release 6.3.6">
+    <list default="true" id="07c65531-a961-4360-aed6-f4b7cf70859d" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/DDGenerateAssetsClassConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/FlutterxFullConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/ldd_project_timer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ldd_project_timer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/models.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/models.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ext/context.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ext/context.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/models.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/models.freezed.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +175,7 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
-    <configuration>$PROJECT_DIR$/../.subversion</configuration>
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -904,7 +909,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="release 3.4.3" />
     <MESSAGE value="release 3.5.0" />
     <MESSAGE value="release 3.5.4" />
     <MESSAGE value="release 3.5.8" />
@@ -929,7 +933,8 @@
     <MESSAGE value="release 6.2.6" />
     <MESSAGE value="release 6.3.4" />
     <MESSAGE value="release 6.3.6" />
-    <option name="LAST_COMMIT_MESSAGE" value="release 6.3.6" />
+    <MESSAGE value="release 6.6.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="release 6.6.2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

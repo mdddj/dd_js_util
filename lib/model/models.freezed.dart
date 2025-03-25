@@ -1574,6 +1574,12 @@ mixin _$BaseApiException {
 }
 
 /// @nodoc
+class $BaseApiExceptionCopyWith<$Res> {
+  $BaseApiExceptionCopyWith(
+      BaseApiException _, $Res Function(BaseApiException) __);
+}
+
+/// @nodoc
 @JsonSerializable()
 class BaseApiCancelException extends BaseApiException {
   const BaseApiCancelException(
@@ -1629,7 +1635,8 @@ class BaseApiCancelException extends BaseApiException {
 }
 
 /// @nodoc
-abstract mixin class $BaseApiCancelExceptionCopyWith<$Res> {
+abstract mixin class $BaseApiCancelExceptionCopyWith<$Res>
+    implements $BaseApiExceptionCopyWith<$Res> {
   factory $BaseApiCancelExceptionCopyWith(BaseApiCancelException value,
           $Res Function(BaseApiCancelException) _then) =
       _$BaseApiCancelExceptionCopyWithImpl;
@@ -1898,7 +1905,8 @@ class BaseApiBadResponseException extends BaseApiException {
 }
 
 /// @nodoc
-abstract mixin class $BaseApiBadResponseExceptionCopyWith<$Res> {
+abstract mixin class $BaseApiBadResponseExceptionCopyWith<$Res>
+    implements $BaseApiExceptionCopyWith<$Res> {
   factory $BaseApiBadResponseExceptionCopyWith(
           BaseApiBadResponseException value,
           $Res Function(BaseApiBadResponseException) _then) =
@@ -1995,7 +2003,8 @@ class BaseApiBusinessException extends BaseApiException {
 }
 
 /// @nodoc
-abstract mixin class $BaseApiBusinessExceptionCopyWith<$Res> {
+abstract mixin class $BaseApiBusinessExceptionCopyWith<$Res>
+    implements $BaseApiExceptionCopyWith<$Res> {
   factory $BaseApiBusinessExceptionCopyWith(BaseApiBusinessException value,
           $Res Function(BaseApiBusinessException) _then) =
       _$BaseApiBusinessExceptionCopyWithImpl;
@@ -2473,6 +2482,11 @@ mixin _$DartTypeModel {
 }
 
 /// @nodoc
+class $DartTypeModelCopyWith<$Res> {
+  $DartTypeModelCopyWith(DartTypeModel _, $Res Function(DartTypeModel) __);
+}
+
+/// @nodoc
 @JsonSerializable()
 class StringData extends DartTypeModel {
   const StringData(this.value, {final String? $type})
@@ -2519,7 +2533,8 @@ class StringData extends DartTypeModel {
 }
 
 /// @nodoc
-abstract mixin class $StringDataCopyWith<$Res> {
+abstract mixin class $StringDataCopyWith<$Res>
+    implements $DartTypeModelCopyWith<$Res> {
   factory $StringDataCopyWith(
           StringData value, $Res Function(StringData) _then) =
       _$StringDataCopyWithImpl;
@@ -2596,7 +2611,8 @@ class NumData extends DartTypeModel {
 }
 
 /// @nodoc
-abstract mixin class $NumDataCopyWith<$Res> {
+abstract mixin class $NumDataCopyWith<$Res>
+    implements $DartTypeModelCopyWith<$Res> {
   factory $NumDataCopyWith(NumData value, $Res Function(NumData) _then) =
       _$NumDataCopyWithImpl;
   @useResult
@@ -2672,7 +2688,8 @@ class BoolData extends DartTypeModel {
 }
 
 /// @nodoc
-abstract mixin class $BoolDataCopyWith<$Res> {
+abstract mixin class $BoolDataCopyWith<$Res>
+    implements $DartTypeModelCopyWith<$Res> {
   factory $BoolDataCopyWith(BoolData value, $Res Function(BoolData) _then) =
       _$BoolDataCopyWithImpl;
   @useResult
@@ -2755,7 +2772,8 @@ class ListData extends DartTypeModel {
 }
 
 /// @nodoc
-abstract mixin class $ListDataCopyWith<$Res> {
+abstract mixin class $ListDataCopyWith<$Res>
+    implements $DartTypeModelCopyWith<$Res> {
   factory $ListDataCopyWith(ListData value, $Res Function(ListData) _then) =
       _$ListDataCopyWithImpl;
   @useResult
@@ -2777,7 +2795,7 @@ class _$ListDataCopyWithImpl<$Res> implements $ListDataCopyWith<$Res> {
   }) {
     return _then(ListData(
       null == value
-          ? _self.value
+          ? _self._value
           : value // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
     ));
@@ -2838,7 +2856,8 @@ class JsonData extends DartTypeModel {
 }
 
 /// @nodoc
-abstract mixin class $JsonDataCopyWith<$Res> {
+abstract mixin class $JsonDataCopyWith<$Res>
+    implements $DartTypeModelCopyWith<$Res> {
   factory $JsonDataCopyWith(JsonData value, $Res Function(JsonData) _then) =
       _$JsonDataCopyWithImpl;
   @useResult
@@ -2860,7 +2879,7 @@ class _$JsonDataCopyWithImpl<$Res> implements $JsonDataCopyWith<$Res> {
   }) {
     return _then(JsonData(
       null == value
-          ? _self.value
+          ? _self._value
           : value // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
     ));
@@ -2915,7 +2934,8 @@ class DynamicData extends DartTypeModel {
 }
 
 /// @nodoc
-abstract mixin class $DynamicDataCopyWith<$Res> {
+abstract mixin class $DynamicDataCopyWith<$Res>
+    implements $DartTypeModelCopyWith<$Res> {
   factory $DynamicDataCopyWith(
           DynamicData value, $Res Function(DynamicData) _then) =
       _$DynamicDataCopyWithImpl;
@@ -3028,7 +3048,8 @@ class JsonStringData extends DartTypeModel {
 }
 
 /// @nodoc
-abstract mixin class $JsonStringDataCopyWith<$Res> {
+abstract mixin class $JsonStringDataCopyWith<$Res>
+    implements $DartTypeModelCopyWith<$Res> {
   factory $JsonStringDataCopyWith(
           JsonStringData value, $Res Function(JsonStringData) _then) =
       _$JsonStringDataCopyWithImpl;
@@ -4643,6 +4664,11 @@ mixin _$MyPlatform {
 }
 
 /// @nodoc
+class $MyPlatformCopyWith<$Res> {
+  $MyPlatformCopyWith(MyPlatform _, $Res Function(MyPlatform) __);
+}
+
+/// @nodoc
 
 class AndroidPlatform implements MyPlatform {
   const AndroidPlatform();
@@ -4977,6 +5003,12 @@ mixin _$PictureSelectionItemModel {
 }
 
 /// @nodoc
+class $PictureSelectionItemModelCopyWith<$Res> {
+  $PictureSelectionItemModelCopyWith(
+      PictureSelectionItemModel _, $Res Function(PictureSelectionItemModel) __);
+}
+
+/// @nodoc
 
 class XXFile extends PictureSelectionItemModel {
   XXFile({required this.file}) : super._();
@@ -5008,7 +5040,8 @@ class XXFile extends PictureSelectionItemModel {
 }
 
 /// @nodoc
-abstract mixin class $XXFileCopyWith<$Res> {
+abstract mixin class $XXFileCopyWith<$Res>
+    implements $PictureSelectionItemModelCopyWith<$Res> {
   factory $XXFileCopyWith(XXFile value, $Res Function(XXFile) _then) =
       _$XXFileCopyWithImpl;
   @useResult
@@ -5069,7 +5102,8 @@ class XXImage extends PictureSelectionItemModel {
 }
 
 /// @nodoc
-abstract mixin class $XXImageCopyWith<$Res> {
+abstract mixin class $XXImageCopyWith<$Res>
+    implements $PictureSelectionItemModelCopyWith<$Res> {
   factory $XXImageCopyWith(XXImage value, $Res Function(XXImage) _then) =
       _$XXImageCopyWithImpl;
   @useResult

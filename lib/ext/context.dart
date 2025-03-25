@@ -47,14 +47,18 @@ extension ContextExt on BuildContext {
 
   void pop() => Navigator.pop(this);
 
-  Future<void> showSimpleDialog(String tip, {String? title, String? cancelText}) async {
+  Future<void> showSimpleDialog(String tip,
+      {String? title, String? cancelText}) async {
     await showCupertinoDialog(
       context: this,
       builder: (c) {
         return CupertinoAlertDialog(
           title: Text(title ?? "提示"),
           content: Text(tip),
-          actions: [CupertinoDialogAction(onPressed: pop, child: Text(cancelText ?? 'Cancel'))],
+          actions: [
+            CupertinoDialogAction(
+                onPressed: pop, child: Text(cancelText ?? 'Cancel'))
+          ],
         );
       },
     );
@@ -68,13 +72,14 @@ extension ContextExt on BuildContext {
     return AskOkDialog.show(this, params);
   }
 
-  Future<void> simpleAskOk(String content, VoidCallback trueCall, [AskOkDialogParams Function(AskOkDialogParams old)? paramsHandle]) async {
+  Future<void> simpleAskOk(String content, VoidCallback trueCall,
+      [AskOkDialogParams Function(AskOkDialogParams old)? paramsHandle]) async {
     var params = AskOkDialogParams(contentText: content);
     if (paramsHandle != null) {
       params = paramsHandle.call(params);
     }
     final isOk = await askOk(params);
-    if(isOk){
+    if (isOk) {
       trueCall.call();
     }
   }
