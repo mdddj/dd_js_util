@@ -608,6 +608,7 @@ extension MyPlatformEx on MyPlatform {
         _ => false
       };
 
+  bool get isMacos => switch (this) { MacosPlatform() => true, _ => false };
   bool get isAndroid => switch (this) { AndroidPlatform() => true, _ => false };
 
   bool get isDesktop => switch (this) {

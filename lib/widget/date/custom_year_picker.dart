@@ -180,6 +180,7 @@ class _CalendarDatePickerState extends State<CalendarDatePicker> {
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
       case TargetPlatform.windows:
+      case TargetPlatform.ohos:
         HapticFeedback.vibrate();
         break;
       case TargetPlatform.iOS:
@@ -1492,4 +1493,10 @@ class MyZhCupertinoLocalizations implements CupertinoLocalizations {
 
   @override
   String get clearButtonLabel => "清理";
+
+  @override
+  String get backButtonLabel => "返回";
+
+  @override
+  String get cancelButtonLabel => "关闭";
 }
