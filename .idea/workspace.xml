@@ -8,10 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07c65531-a961-4360-aed6-f4b7cf70859d" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FlutterxFullConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FlutterxFullConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ldd_project_timer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ldd_project_timer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
@@ -19,7 +16,6 @@
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/w.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/w.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/dd_js_util.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dd_js_util.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/models.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/models.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/theme/model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/theme/theme_setting.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme/theme_setting.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widget/date/custom_year_picker.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widget/date/custom_year_picker.dart" afterDir="false" />
@@ -144,6 +140,7 @@
     "WebServerToolWindowFactoryState": "false",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
     "dart.webdev.port": "53324",
     "git-widget-placeholder": "master-ohos",
     "io.flutter.reload.alreadyRun": "true",

@@ -14,6 +14,7 @@ import 'package:extended_image/extended_image.dart';
 import 'package:extended_image_library/extended_image_library.dart' as ex_image;
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';

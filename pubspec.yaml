@@ -1,6 +1,6 @@
 name: dd_js_util
 description: flutter tools and widgets and extends
-version: 6.7.3
+version: 6.7.4
 homepage: https://github.com/mdddj/dd_js_util
 
 environment:
@@ -24,7 +24,7 @@ dependencies:
   flutter_smart_dialog: ^4.9.8+9
   image_picker: ^1.2.0
   dio: ^5.9.0
-  extended_image: ^9.1.0
+  extended_image: ^10.0.1
   flutter_swiper_null_safety_flutter3: ^4.0.3
   url_launcher: ^6.3.2
   ffloat_nullsafety: ^3.3.6
@@ -33,7 +33,7 @@ dependencies:
   logger: ^2.6.1
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-#  flex_color_scheme: ^8.3.0
+  flex_color_scheme: ^8.3.0
   freezed_annotation: ^3.1.0
   fast_immutable_collections: ^11.0.4
   loading_more_list_fast: ^7.2.4
@@ -42,10 +42,10 @@ dependencies:
   json_annotation: ^4.9.0
   mime: ^2.0.0
   package_info_plus: ^8.3.1
-  device_info_plus: any
+  device_info_plus: ^11.5.0
   async: ^2.13.0
   waterfall_flow: ^3.1.1
-  extended_image_library: ^4.0.1
+  extended_image_library: ^5.0.1
   image_editor: ^1.6.0
   path_provider: ^2.1.5
 
@@ -56,9 +56,6 @@ dev_dependencies:
   freezed: ^3.0.6
   hive_generator_plus: ^4.0.2
 
-dependency_overrides:
-  meta: ^1.16.0
-  path: ^1.9.0
 
 
 
