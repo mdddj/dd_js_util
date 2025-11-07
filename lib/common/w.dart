@@ -10,6 +10,7 @@ class NoShadowScrollBehavior extends ScrollBehavior {
       case TargetPlatform.macOS:
         return child;
       case TargetPlatform.android:
+      case TargetPlatform.ohos:
         return GlowingOverscrollIndicator(
           showLeading: false,
           showTrailing: false,
