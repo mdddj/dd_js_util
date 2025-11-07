@@ -15,9 +15,11 @@ void showIosDialog(String msg,
     List<Widget>? startActions,
     List<Widget>? endActions,
     Widget? title,
-    SmartAnimationType? animationType = SmartAnimationType.centerFade_otherSlide,
+    SmartAnimationType? animationType =
+        SmartAnimationType.centerFade_otherSlide,
     String cancelText = 'Cancel',
-    Widget? content}) {
+    Widget? content,
+    bool? removeCancelButton}) {
   if (msg.isNotEmpty) {
     const tag = 's-dialog-simple-ok-btn';
     SmartDialog.show(
@@ -30,33 +32,34 @@ void showIosDialog(String msg,
               content: content ?? Text(msg),
               actions: [
                 if (startActions != null) ...startActions,
-                CupertinoDialogAction(child: Text(okText), onPressed: () => SmartDialog.dismiss(tag: tag)),
+                CupertinoDialogAction(
+                    child: Text(okText),
+                    onPressed: () => SmartDialog.dismiss(tag: tag)),
                 if (endActions != null) ...endActions
               ],
             );
           } else {
             final allEmpty = startActions == null && endActions == null;
             return AlertDialog(
-              title: title ?? const Text(''),
+              title: title,
               content: content ?? Text(msg),
               actions: allEmpty
                   ? [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          TextButton(
-                                  onPressed: () {
-                                    SmartDialog.dismiss(tag: tag);
-                                  },
-                                  child: Text(cancelText))
-                              .marginOnly(right: 12),
-                          FilledButton(onPressed: () => SmartDialog.dismiss(tag: tag), child: Text(okText)).center
-                        ],
-                      )
+                      if (removeCancelButton != true)
+                        TextButton(
+                            onPressed: () {
+                              SmartDialog.dismiss(tag: tag);
+                            },
+                            child: Text(cancelText)),
+                      TextButton(
+                          onPressed: () => SmartDialog.dismiss(tag: tag),
+                          child: Text(okText))
                     ]
                   : [
                       if (startActions != null) ...startActions,
-                      ElevatedButton(onPressed: () => SmartDialog.dismiss(tag: tag), child: Text(okText)),
+                      TextButton(
+                          onPressed: () => SmartDialog.dismiss(tag: tag),
+                          child: Text(okText)),
                       if (endActions != null) ...endActions
                     ],
             );

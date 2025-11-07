@@ -6,7 +6,6 @@ import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 import '../dd_js_util.dart';
 
@@ -66,53 +65,9 @@ DartTypeModel _dataToJson(dynamic data) {
   return model;
 }
 
-//----
 
-extension ThemeModeEx on ThemeMode {
-  ///根据主题获取下标
-  int get getThemeModeIndex {
-    switch (this) {
-      case ThemeMode.system:
-        return 0;
-      case ThemeMode.light:
-        return 1;
-      case ThemeMode.dark:
-        return 2;
-    }
-  }
-}
 
-///选择的模式
-/// [0] - 跟随系统 (默认)
-/// [1] - 亮色模式
-/// [2] - 深色模式
-@HiveType(typeId: 88)
-@freezed
-sealed class AppLocalSettingModel with _$AppLocalSettingModel {
-  const AppLocalSettingModel._();
 
-  const factory AppLocalSettingModel({
-    @HiveField(0, defaultValue: 0) @Default(0) int themeIndex,
-    @HiveField(1, defaultValue: 0) @Default(0) int themeModel,
-  }) = _AppLocalSettingModel;
-}
-
-// -- ok
-
-extension AppLocalSettingModelEx on AppLocalSettingModel {
-  ///获取系统主题mode
-  ThemeMode get getThemeMode {
-    switch (themeModel) {
-      case 0:
-        return ThemeMode.system;
-      case 1:
-        return ThemeMode.light;
-      case 2:
-        return ThemeMode.dark;
-    }
-    return ThemeMode.system;
-  }
-}
 
 @freezed
 sealed class AskStringDialogParams with _$AskStringDialogParams {
@@ -370,28 +325,28 @@ extension DartTypeModelEx on DartTypeModel {
     return call(switch (this) { JsonData(:final value) => value, _ => {} });
   }
 
-  T? whenOrNull<T>({
-    T? Function(String value)? string,
-    T? Function(num value)? num,
-    T? Function(bool value)? bool,
-    T? Function(List<dynamic> value)? list,
-    T? Function(Map<String, dynamic> value)? json,
-    T? Function(dynamic value)? dynamic,
-    T? Function()? nil,
-    T? Function(String value)? jsonStringCall,
-  }) {
-    final value = switch (this) {
-      StringData(:final value) => string?.call(value),
-      NumData(:final value) => num?.call(value),
-      BoolData(:final value) => bool?.call(value),
-      ListData(:final value) => list?.call(value),
-      JsonData(:final value) => json?.call(value),
-      DynamicData(:final value) => dynamic?.call(value),
-      NullData() => nil?.call(),
-      JsonStringData(:final jsonString) => jsonStringCall?.call(jsonString),
-    };
-    return value;
-  }
+  // T? whenOrNull<T>({
+  //   T? Function(String value)? string,
+  //   T? Function(num value)? num,
+  //   T? Function(bool value)? bool,
+  //   T? Function(List<dynamic> value)? list,
+  //   T? Function(Map<String, dynamic> value)? json,
+  //   T? Function(dynamic value)? dynamic,
+  //   T? Function()? nil,
+  //   T? Function(String value)? jsonStringCall,
+  // }) {
+  //   final value = switch (this) {
+  //     StringData(:final value) => string?.call(value),
+  //     NumData(:final value) => num?.call(value),
+  //     BoolData(:final value) => bool?.call(value),
+  //     ListData(:final value) => list?.call(value),
+  //     JsonData(:final value) => json?.call(value),
+  //     DynamicData(:final value) => dynamic?.call(value),
+  //     NullData() => nil?.call(),
+  //     JsonStringData(:final jsonString) => jsonStringCall?.call(jsonString),
+  //   };
+  //   return value;
+  // }
 }
 
 @freezed
@@ -537,24 +492,24 @@ sealed class ImageParams with _$ImageParams {
       _$ImageParamsFromJson(json);
 }
 
-extension MyImageEx on MyImage {
-  T? whenOrNull<T>({
-    T? Function(String url, ImageParams params)? network,
-    T? Function(String base64Code, ImageParams params)? base64,
-    T? Function(String filePath, ImageParams params)? filePathCall,
-    T? Function(String assetPath, ImageParams params)? asset,
-  }) {
-    return switch (this) {
-      MyNetworkImage(:final url, :final params) => network?.call(url, params),
-      MyBase64Image(:final base64Code, :final params) =>
-        base64?.call(base64Code, params),
-      MyFilePathImage(:final filePath, :final params) =>
-        filePathCall?.call(filePath, params),
-      MyAssetImage(:final assetPath, :final params) =>
-        asset?.call(assetPath, params),
-    };
-  }
-}
+// extension MyImageEx on MyImage {
+//   T? whenOrNull<T>({
+//     T? Function(String url, ImageParams params)? network,
+//     T? Function(String base64Code, ImageParams params)? base64,
+//     T? Function(String filePath, ImageParams params)? filePathCall,
+//     T? Function(String assetPath, ImageParams params)? asset,
+//   }) {
+//     return switch (this) {
+//       MyNetworkImage(:final url, :final params) => network?.call(url, params),
+//       MyBase64Image(:final base64Code, :final params) =>
+//         base64?.call(base64Code, params),
+//       MyFilePathImage(:final filePath, :final params) =>
+//         filePathCall?.call(filePath, params),
+//       MyAssetImage(:final assetPath, :final params) =>
+//         asset?.call(assetPath, params),
+//     };
+//   }
+// }
 
 @freezed
 sealed class MyImage with _$MyImage {

@@ -16,7 +16,7 @@ class KPermissionUtil {
       return Permission.photosAddOnly;
     }
     final androidInfo = await DeviceInfoPlugin().androidInfo;
-    if (androidInfo.version.sdkInt <= 32) {
+    if (androidInfo.version.sdkInt < 33) {
       return Permission.storage;
     } else {
       return Permission.photos;
@@ -26,29 +26,39 @@ class KPermissionUtil {
   @Doc(message: '问用户申请访问相册的权限')
   static Future<bool> askPhotoPermissioin(BuildContext context) async {
     final status = await Permission.photos.request();
-    if (status == PermissionStatus.permanentlyDenied) {
+    if (status.isGranted) {
+      return true;
+    } else if (status.isPermanentlyDenied) {
+      // If permanently denied, consider guiding the user to app settings using `openAppSettings()`.
       return false;
     } else {
-      return true;
+      return false;
     }
   }
 
   @Doc(message: '问用户申请地理位置的权限')
   static Future<bool> askLocationPermissioin() async {
     final status = await Permission.location.request();
-    if (status == PermissionStatus.permanentlyDenied) {
+    if (status.isGranted) {
+      return true;
+    } else if (status.isPermanentlyDenied) {
+      // If permanently denied, consider guiding the user to app settings using `openAppSettings()`.
       return false;
     } else {
-      return true;
+      return false;
     }
   }
 
   @Doc(message: '申请麦克风权限')
   static Future<bool> askMicrophonePermission() async {
     final status = await Permission.microphone.request();
-    if (status != PermissionStatus.granted) {
+    if (status.isGranted) {
+      return true;
+    } else if (status.isPermanentlyDenied) {
+      // If permanently denied, consider guiding the user to app settings using `openAppSettings()`.
+      throw Exception("麦克风权限被永久拒绝，请在设置中授予APP录音权限");
+    } else {
       throw Exception("请先授予APP录音权限");
     }
-    return true;
   }
 }

@@ -1,4 +1,20 @@
-# 6.7.4
+# 7.1.1
+
+依赖升级
+
+# 7.1.0
+
+主题移动到simple_ui_theme这个包
+
+# 7.0.0
+
+* hive update to hive_ce
+
+# 6.9.0
+
+* update riverpod 3.0
+
+# 6.8.0
 
 * update
 

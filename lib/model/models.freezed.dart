@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -288,6 +287,288 @@ class _$RequestParamsCopyWithImpl<$Res>
           : savePath // ignore: cast_nullable_to_non_nullable
               as File?,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [RequestParams].
+extension RequestParamsPatterns on RequestParams {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_RequestParams value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _RequestParams() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_RequestParams value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RequestParams():
+        return $default(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_RequestParams value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RequestParams() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            bool showErrorMsg,
+            String loadingText,
+            String? contentType,
+            Map<String, dynamic> headers,
+            bool showDefaultLoading,
+            @JsonKey(name: 'data', toJson: _dataToJson) dynamic data,
+            ResponseType? responseType,
+            bool? nullParams,
+            @igFreezedJson RequestEncoder? requestEncoder,
+            @igFreezedJson DioStart? dioStart,
+            bool? returnIsString,
+            @igFreezedJson String? fullUrl,
+            @igFreezedJson InterceptorCall? interceptorCall,
+            @igFreezedJson UrlParseFormat? urlParseFormat,
+            @igFreezedJson ResponseResultCallback? responseResultCallback,
+            Map<String, dynamic>? extra,
+            @igFreezedJson CancelToken? cancelToken,
+            @igFreezedJson ProgressCallback? onSendCallback,
+            @igFreezedJson ProgressCallback? onReceiveProgress,
+            String? downloadUrl,
+            @igFreezedJson File? savePath)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _RequestParams() when $default != null:
+        return $default(
+            _that.showErrorMsg,
+            _that.loadingText,
+            _that.contentType,
+            _that.headers,
+            _that.showDefaultLoading,
+            _that.data,
+            _that.responseType,
+            _that.nullParams,
+            _that.requestEncoder,
+            _that.dioStart,
+            _that.returnIsString,
+            _that.fullUrl,
+            _that.interceptorCall,
+            _that.urlParseFormat,
+            _that.responseResultCallback,
+            _that.extra,
+            _that.cancelToken,
+            _that.onSendCallback,
+            _that.onReceiveProgress,
+            _that.downloadUrl,
+            _that.savePath);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            bool showErrorMsg,
+            String loadingText,
+            String? contentType,
+            Map<String, dynamic> headers,
+            bool showDefaultLoading,
+            @JsonKey(name: 'data', toJson: _dataToJson) dynamic data,
+            ResponseType? responseType,
+            bool? nullParams,
+            @igFreezedJson RequestEncoder? requestEncoder,
+            @igFreezedJson DioStart? dioStart,
+            bool? returnIsString,
+            @igFreezedJson String? fullUrl,
+            @igFreezedJson InterceptorCall? interceptorCall,
+            @igFreezedJson UrlParseFormat? urlParseFormat,
+            @igFreezedJson ResponseResultCallback? responseResultCallback,
+            Map<String, dynamic>? extra,
+            @igFreezedJson CancelToken? cancelToken,
+            @igFreezedJson ProgressCallback? onSendCallback,
+            @igFreezedJson ProgressCallback? onReceiveProgress,
+            String? downloadUrl,
+            @igFreezedJson File? savePath)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RequestParams():
+        return $default(
+            _that.showErrorMsg,
+            _that.loadingText,
+            _that.contentType,
+            _that.headers,
+            _that.showDefaultLoading,
+            _that.data,
+            _that.responseType,
+            _that.nullParams,
+            _that.requestEncoder,
+            _that.dioStart,
+            _that.returnIsString,
+            _that.fullUrl,
+            _that.interceptorCall,
+            _that.urlParseFormat,
+            _that.responseResultCallback,
+            _that.extra,
+            _that.cancelToken,
+            _that.onSendCallback,
+            _that.onReceiveProgress,
+            _that.downloadUrl,
+            _that.savePath);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            bool showErrorMsg,
+            String loadingText,
+            String? contentType,
+            Map<String, dynamic> headers,
+            bool showDefaultLoading,
+            @JsonKey(name: 'data', toJson: _dataToJson) dynamic data,
+            ResponseType? responseType,
+            bool? nullParams,
+            @igFreezedJson RequestEncoder? requestEncoder,
+            @igFreezedJson DioStart? dioStart,
+            bool? returnIsString,
+            @igFreezedJson String? fullUrl,
+            @igFreezedJson InterceptorCall? interceptorCall,
+            @igFreezedJson UrlParseFormat? urlParseFormat,
+            @igFreezedJson ResponseResultCallback? responseResultCallback,
+            Map<String, dynamic>? extra,
+            @igFreezedJson CancelToken? cancelToken,
+            @igFreezedJson ProgressCallback? onSendCallback,
+            @igFreezedJson ProgressCallback? onReceiveProgress,
+            String? downloadUrl,
+            @igFreezedJson File? savePath)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _RequestParams() when $default != null:
+        return $default(
+            _that.showErrorMsg,
+            _that.loadingText,
+            _that.contentType,
+            _that.headers,
+            _that.showDefaultLoading,
+            _that.data,
+            _that.responseType,
+            _that.nullParams,
+            _that.requestEncoder,
+            _that.dioStart,
+            _that.returnIsString,
+            _that.fullUrl,
+            _that.interceptorCall,
+            _that.urlParseFormat,
+            _that.responseResultCallback,
+            _that.extra,
+            _that.cancelToken,
+            _that.onSendCallback,
+            _that.onReceiveProgress,
+            _that.downloadUrl,
+            _that.savePath);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -644,169 +925,6 @@ class __$RequestParamsCopyWithImpl<$Res>
 }
 
 /// @nodoc
-mixin _$AppLocalSettingModel {
-  @HiveField(0, defaultValue: 0)
-  int get themeIndex;
-  @HiveField(1, defaultValue: 0)
-  int get themeModel;
-
-  /// Create a copy of AppLocalSettingModel
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $AppLocalSettingModelCopyWith<AppLocalSettingModel> get copyWith =>
-      _$AppLocalSettingModelCopyWithImpl<AppLocalSettingModel>(
-          this as AppLocalSettingModel, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is AppLocalSettingModel &&
-            (identical(other.themeIndex, themeIndex) ||
-                other.themeIndex == themeIndex) &&
-            (identical(other.themeModel, themeModel) ||
-                other.themeModel == themeModel));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, themeIndex, themeModel);
-
-  @override
-  String toString() {
-    return 'AppLocalSettingModel(themeIndex: $themeIndex, themeModel: $themeModel)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $AppLocalSettingModelCopyWith<$Res> {
-  factory $AppLocalSettingModelCopyWith(AppLocalSettingModel value,
-          $Res Function(AppLocalSettingModel) _then) =
-      _$AppLocalSettingModelCopyWithImpl;
-  @useResult
-  $Res call(
-      {@HiveField(0, defaultValue: 0) int themeIndex,
-      @HiveField(1, defaultValue: 0) int themeModel});
-}
-
-/// @nodoc
-class _$AppLocalSettingModelCopyWithImpl<$Res>
-    implements $AppLocalSettingModelCopyWith<$Res> {
-  _$AppLocalSettingModelCopyWithImpl(this._self, this._then);
-
-  final AppLocalSettingModel _self;
-  final $Res Function(AppLocalSettingModel) _then;
-
-  /// Create a copy of AppLocalSettingModel
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? themeIndex = null,
-    Object? themeModel = null,
-  }) {
-    return _then(_self.copyWith(
-      themeIndex: null == themeIndex
-          ? _self.themeIndex
-          : themeIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      themeModel: null == themeModel
-          ? _self.themeModel
-          : themeModel // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _AppLocalSettingModel extends AppLocalSettingModel {
-  const _AppLocalSettingModel(
-      {@HiveField(0, defaultValue: 0) this.themeIndex = 0,
-      @HiveField(1, defaultValue: 0) this.themeModel = 0})
-      : super._();
-
-  @override
-  @JsonKey()
-  @HiveField(0, defaultValue: 0)
-  final int themeIndex;
-  @override
-  @JsonKey()
-  @HiveField(1, defaultValue: 0)
-  final int themeModel;
-
-  /// Create a copy of AppLocalSettingModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$AppLocalSettingModelCopyWith<_AppLocalSettingModel> get copyWith =>
-      __$AppLocalSettingModelCopyWithImpl<_AppLocalSettingModel>(
-          this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _AppLocalSettingModel &&
-            (identical(other.themeIndex, themeIndex) ||
-                other.themeIndex == themeIndex) &&
-            (identical(other.themeModel, themeModel) ||
-                other.themeModel == themeModel));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, themeIndex, themeModel);
-
-  @override
-  String toString() {
-    return 'AppLocalSettingModel(themeIndex: $themeIndex, themeModel: $themeModel)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$AppLocalSettingModelCopyWith<$Res>
-    implements $AppLocalSettingModelCopyWith<$Res> {
-  factory _$AppLocalSettingModelCopyWith(_AppLocalSettingModel value,
-          $Res Function(_AppLocalSettingModel) _then) =
-      __$AppLocalSettingModelCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {@HiveField(0, defaultValue: 0) int themeIndex,
-      @HiveField(1, defaultValue: 0) int themeModel});
-}
-
-/// @nodoc
-class __$AppLocalSettingModelCopyWithImpl<$Res>
-    implements _$AppLocalSettingModelCopyWith<$Res> {
-  __$AppLocalSettingModelCopyWithImpl(this._self, this._then);
-
-  final _AppLocalSettingModel _self;
-  final $Res Function(_AppLocalSettingModel) _then;
-
-  /// Create a copy of AppLocalSettingModel
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? themeIndex = null,
-    Object? themeModel = null,
-  }) {
-    return _then(_AppLocalSettingModel(
-      themeIndex: null == themeIndex
-          ? _self.themeIndex
-          : themeIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      themeModel: null == themeModel
-          ? _self.themeModel
-          : themeModel // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
 mixin _$AskStringDialogParams {
   String get placeholder;
   String get title;
@@ -894,6 +1012,168 @@ class _$AskStringDialogParamsCopyWithImpl<$Res>
           : cancelBtnText // ignore: cast_nullable_to_non_nullable
               as String,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [AskStringDialogParams].
+extension AskStringDialogParamsPatterns on AskStringDialogParams {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_AskStringDialogParams value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AskStringDialogParams() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_AskStringDialogParams value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskStringDialogParams():
+        return $default(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_AskStringDialogParams value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskStringDialogParams() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String placeholder, String title, String okBtnText,
+            String cancelBtnText)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AskStringDialogParams() when $default != null:
+        return $default(_that.placeholder, _that.title, _that.okBtnText,
+            _that.cancelBtnText);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String placeholder, String title, String okBtnText,
+            String cancelBtnText)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskStringDialogParams():
+        return $default(_that.placeholder, _that.title, _that.okBtnText,
+            _that.cancelBtnText);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String placeholder, String title, String okBtnText,
+            String cancelBtnText)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskStringDialogParams() when $default != null:
+        return $default(_that.placeholder, _that.title, _that.okBtnText,
+            _that.cancelBtnText);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -1080,8 +1360,8 @@ abstract mixin class $AskIntDialogParamsCopyWith<$Res> {
       String title,
       String okBtnText,
       String cancelBtnText,
-      @igFreezedJson bool Function(int)? disableOkButton,
-      @igFreezedJson String? Function(int)? errorMessage,
+      @igFreezedJson bool Function(int value)? disableOkButton,
+      @igFreezedJson String? Function(int value)? errorMessage,
       @igFreezedJson TextStyle? okButtonTextStyle,
       @igFreezedJson TextStyle? cancelButtonTextStyle});
 }
@@ -1126,13 +1406,13 @@ class _$AskIntDialogParamsCopyWithImpl<$Res>
           : cancelBtnText // ignore: cast_nullable_to_non_nullable
               as String,
       disableOkButton: freezed == disableOkButton
-          ? _self.disableOkButton!
+          ? _self.disableOkButton
           : disableOkButton // ignore: cast_nullable_to_non_nullable
-              as bool Function(int)?,
+              as bool Function(int value)?,
       errorMessage: freezed == errorMessage
-          ? _self.errorMessage!
+          ? _self.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String? Function(int)?,
+              as String? Function(int value)?,
       okButtonTextStyle: freezed == okButtonTextStyle
           ? _self.okButtonTextStyle
           : okButtonTextStyle // ignore: cast_nullable_to_non_nullable
@@ -1142,6 +1422,210 @@ class _$AskIntDialogParamsCopyWithImpl<$Res>
           : cancelButtonTextStyle // ignore: cast_nullable_to_non_nullable
               as TextStyle?,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [AskIntDialogParams].
+extension AskIntDialogParamsPatterns on AskIntDialogParams {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_AskIntDialogParams value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AskIntDialogParams() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_AskIntDialogParams value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskIntDialogParams():
+        return $default(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_AskIntDialogParams value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskIntDialogParams() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String placeholder,
+            String title,
+            String okBtnText,
+            String cancelBtnText,
+            @igFreezedJson bool Function(int value)? disableOkButton,
+            @igFreezedJson String? Function(int value)? errorMessage,
+            @igFreezedJson TextStyle? okButtonTextStyle,
+            @igFreezedJson TextStyle? cancelButtonTextStyle)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AskIntDialogParams() when $default != null:
+        return $default(
+            _that.placeholder,
+            _that.title,
+            _that.okBtnText,
+            _that.cancelBtnText,
+            _that.disableOkButton,
+            _that.errorMessage,
+            _that.okButtonTextStyle,
+            _that.cancelButtonTextStyle);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String placeholder,
+            String title,
+            String okBtnText,
+            String cancelBtnText,
+            @igFreezedJson bool Function(int value)? disableOkButton,
+            @igFreezedJson String? Function(int value)? errorMessage,
+            @igFreezedJson TextStyle? okButtonTextStyle,
+            @igFreezedJson TextStyle? cancelButtonTextStyle)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskIntDialogParams():
+        return $default(
+            _that.placeholder,
+            _that.title,
+            _that.okBtnText,
+            _that.cancelBtnText,
+            _that.disableOkButton,
+            _that.errorMessage,
+            _that.okButtonTextStyle,
+            _that.cancelButtonTextStyle);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String placeholder,
+            String title,
+            String okBtnText,
+            String cancelBtnText,
+            @igFreezedJson bool Function(int value)? disableOkButton,
+            @igFreezedJson String? Function(int value)? errorMessage,
+            @igFreezedJson TextStyle? okButtonTextStyle,
+            @igFreezedJson TextStyle? cancelButtonTextStyle)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskIntDialogParams() when $default != null:
+        return $default(
+            _that.placeholder,
+            _that.title,
+            _that.okBtnText,
+            _that.cancelBtnText,
+            _that.disableOkButton,
+            _that.errorMessage,
+            _that.okButtonTextStyle,
+            _that.cancelButtonTextStyle);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -1172,10 +1656,10 @@ class _AskIntDialogParams implements AskIntDialogParams {
   final String cancelBtnText;
   @override
   @igFreezedJson
-  final bool Function(int)? disableOkButton;
+  final bool Function(int value)? disableOkButton;
   @override
   @igFreezedJson
-  final String? Function(int)? errorMessage;
+  final String? Function(int value)? errorMessage;
   @override
   @igFreezedJson
   final TextStyle? okButtonTextStyle;
@@ -1244,8 +1728,8 @@ abstract mixin class _$AskIntDialogParamsCopyWith<$Res>
       String title,
       String okBtnText,
       String cancelBtnText,
-      @igFreezedJson bool Function(int)? disableOkButton,
-      @igFreezedJson String? Function(int)? errorMessage,
+      @igFreezedJson bool Function(int value)? disableOkButton,
+      @igFreezedJson String? Function(int value)? errorMessage,
       @igFreezedJson TextStyle? okButtonTextStyle,
       @igFreezedJson TextStyle? cancelButtonTextStyle});
 }
@@ -1292,11 +1776,11 @@ class __$AskIntDialogParamsCopyWithImpl<$Res>
       disableOkButton: freezed == disableOkButton
           ? _self.disableOkButton
           : disableOkButton // ignore: cast_nullable_to_non_nullable
-              as bool Function(int)?,
+              as bool Function(int value)?,
       errorMessage: freezed == errorMessage
           ? _self.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String? Function(int)?,
+              as String? Function(int value)?,
       okButtonTextStyle: freezed == okButtonTextStyle
           ? _self.okButtonTextStyle
           : okButtonTextStyle // ignore: cast_nullable_to_non_nullable
@@ -1406,6 +1890,168 @@ class _$AskOkDialogParamsCopyWithImpl<$Res>
           : title // ignore: cast_nullable_to_non_nullable
               as Widget?,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [AskOkDialogParams].
+extension AskOkDialogParamsPatterns on AskOkDialogParams {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_AskOkDialogParams value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AskOkDialogParams() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_AskOkDialogParams value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskOkDialogParams():
+        return $default(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_AskOkDialogParams value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskOkDialogParams() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String contentText, String okText, String cancelText,
+            @igFreezedJson Widget? content, @igFreezedJson Widget? title)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AskOkDialogParams() when $default != null:
+        return $default(_that.contentText, _that.okText, _that.cancelText,
+            _that.content, _that.title);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String contentText, String okText, String cancelText,
+            @igFreezedJson Widget? content, @igFreezedJson Widget? title)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskOkDialogParams():
+        return $default(_that.contentText, _that.okText, _that.cancelText,
+            _that.content, _that.title);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String contentText, String okText, String cancelText,
+            @igFreezedJson Widget? content, @igFreezedJson Widget? title)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AskOkDialogParams() when $default != null:
+        return $default(_that.contentText, _that.okText, _that.cancelText,
+            _that.content, _that.title);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -1577,6 +2223,307 @@ mixin _$BaseApiException {
 class $BaseApiExceptionCopyWith<$Res> {
   $BaseApiExceptionCopyWith(
       BaseApiException _, $Res Function(BaseApiException) __);
+}
+
+/// Adds pattern-matching-related methods to [BaseApiException].
+extension BaseApiExceptionPatterns on BaseApiException {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BaseApiCancelException value)? cancel,
+    TResult Function(BaseApiConnectionTimeoutException value)?
+        connectionTimeout,
+    TResult Function(BaseApiSendTimeoutException value)? sendTimeout,
+    TResult Function(BaseApiReceiveTimeoutException value)? receiveTimeout,
+    TResult Function(BaseApiBadCertificateException value)? badCertificate,
+    TResult Function(BaseApiConnectionErrorException value)? connectionError,
+    TResult Function(BaseApiBadResponseException value)? badResponse,
+    TResult Function(BaseApiBusinessException value)? businessException,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BaseApiCancelException() when cancel != null:
+        return cancel(_that);
+      case BaseApiConnectionTimeoutException() when connectionTimeout != null:
+        return connectionTimeout(_that);
+      case BaseApiSendTimeoutException() when sendTimeout != null:
+        return sendTimeout(_that);
+      case BaseApiReceiveTimeoutException() when receiveTimeout != null:
+        return receiveTimeout(_that);
+      case BaseApiBadCertificateException() when badCertificate != null:
+        return badCertificate(_that);
+      case BaseApiConnectionErrorException() when connectionError != null:
+        return connectionError(_that);
+      case BaseApiBadResponseException() when badResponse != null:
+        return badResponse(_that);
+      case BaseApiBusinessException() when businessException != null:
+        return businessException(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BaseApiCancelException value) cancel,
+    required TResult Function(BaseApiConnectionTimeoutException value)
+        connectionTimeout,
+    required TResult Function(BaseApiSendTimeoutException value) sendTimeout,
+    required TResult Function(BaseApiReceiveTimeoutException value)
+        receiveTimeout,
+    required TResult Function(BaseApiBadCertificateException value)
+        badCertificate,
+    required TResult Function(BaseApiConnectionErrorException value)
+        connectionError,
+    required TResult Function(BaseApiBadResponseException value) badResponse,
+    required TResult Function(BaseApiBusinessException value) businessException,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BaseApiCancelException():
+        return cancel(_that);
+      case BaseApiConnectionTimeoutException():
+        return connectionTimeout(_that);
+      case BaseApiSendTimeoutException():
+        return sendTimeout(_that);
+      case BaseApiReceiveTimeoutException():
+        return receiveTimeout(_that);
+      case BaseApiBadCertificateException():
+        return badCertificate(_that);
+      case BaseApiConnectionErrorException():
+        return connectionError(_that);
+      case BaseApiBadResponseException():
+        return badResponse(_that);
+      case BaseApiBusinessException():
+        return businessException(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BaseApiCancelException value)? cancel,
+    TResult? Function(BaseApiConnectionTimeoutException value)?
+        connectionTimeout,
+    TResult? Function(BaseApiSendTimeoutException value)? sendTimeout,
+    TResult? Function(BaseApiReceiveTimeoutException value)? receiveTimeout,
+    TResult? Function(BaseApiBadCertificateException value)? badCertificate,
+    TResult? Function(BaseApiConnectionErrorException value)? connectionError,
+    TResult? Function(BaseApiBadResponseException value)? badResponse,
+    TResult? Function(BaseApiBusinessException value)? businessException,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BaseApiCancelException() when cancel != null:
+        return cancel(_that);
+      case BaseApiConnectionTimeoutException() when connectionTimeout != null:
+        return connectionTimeout(_that);
+      case BaseApiSendTimeoutException() when sendTimeout != null:
+        return sendTimeout(_that);
+      case BaseApiReceiveTimeoutException() when receiveTimeout != null:
+        return receiveTimeout(_that);
+      case BaseApiBadCertificateException() when badCertificate != null:
+        return badCertificate(_that);
+      case BaseApiConnectionErrorException() when connectionError != null:
+        return connectionError(_that);
+      case BaseApiBadResponseException() when badResponse != null:
+        return badResponse(_that);
+      case BaseApiBusinessException() when businessException != null:
+        return businessException(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
+    TResult Function()? connectionTimeout,
+    TResult Function()? sendTimeout,
+    TResult Function()? receiveTimeout,
+    TResult Function()? badCertificate,
+    TResult Function()? connectionError,
+    TResult Function(@igFreezedJson Response? response, int? statusCode)?
+        badResponse,
+    TResult Function(String message, @igFreezedJson Object? error,
+            @igFreezedJson StackTrace? stackTrace)?
+        businessException,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BaseApiCancelException() when cancel != null:
+        return cancel(_that.error, _that.options);
+      case BaseApiConnectionTimeoutException() when connectionTimeout != null:
+        return connectionTimeout();
+      case BaseApiSendTimeoutException() when sendTimeout != null:
+        return sendTimeout();
+      case BaseApiReceiveTimeoutException() when receiveTimeout != null:
+        return receiveTimeout();
+      case BaseApiBadCertificateException() when badCertificate != null:
+        return badCertificate();
+      case BaseApiConnectionErrorException() when connectionError != null:
+        return connectionError();
+      case BaseApiBadResponseException() when badResponse != null:
+        return badResponse(_that.response, _that.statusCode);
+      case BaseApiBusinessException() when businessException != null:
+        return businessException(_that.message, _that.error, _that.stackTrace);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)
+        cancel,
+    required TResult Function() connectionTimeout,
+    required TResult Function() sendTimeout,
+    required TResult Function() receiveTimeout,
+    required TResult Function() badCertificate,
+    required TResult Function() connectionError,
+    required TResult Function(
+            @igFreezedJson Response? response, int? statusCode)
+        badResponse,
+    required TResult Function(String message, @igFreezedJson Object? error,
+            @igFreezedJson StackTrace? stackTrace)
+        businessException,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BaseApiCancelException():
+        return cancel(_that.error, _that.options);
+      case BaseApiConnectionTimeoutException():
+        return connectionTimeout();
+      case BaseApiSendTimeoutException():
+        return sendTimeout();
+      case BaseApiReceiveTimeoutException():
+        return receiveTimeout();
+      case BaseApiBadCertificateException():
+        return badCertificate();
+      case BaseApiConnectionErrorException():
+        return connectionError();
+      case BaseApiBadResponseException():
+        return badResponse(_that.response, _that.statusCode);
+      case BaseApiBusinessException():
+        return businessException(_that.message, _that.error, _that.stackTrace);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(@igFreezedJson Object? error,
+            @igFreezedJson RequestOptions? options)?
+        cancel,
+    TResult? Function()? connectionTimeout,
+    TResult? Function()? sendTimeout,
+    TResult? Function()? receiveTimeout,
+    TResult? Function()? badCertificate,
+    TResult? Function()? connectionError,
+    TResult? Function(@igFreezedJson Response? response, int? statusCode)?
+        badResponse,
+    TResult? Function(String message, @igFreezedJson Object? error,
+            @igFreezedJson StackTrace? stackTrace)?
+        businessException,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BaseApiCancelException() when cancel != null:
+        return cancel(_that.error, _that.options);
+      case BaseApiConnectionTimeoutException() when connectionTimeout != null:
+        return connectionTimeout();
+      case BaseApiSendTimeoutException() when sendTimeout != null:
+        return sendTimeout();
+      case BaseApiReceiveTimeoutException() when receiveTimeout != null:
+        return receiveTimeout();
+      case BaseApiBadCertificateException() when badCertificate != null:
+        return badCertificate();
+      case BaseApiConnectionErrorException() when connectionError != null:
+        return connectionError();
+      case BaseApiBadResponseException() when badResponse != null:
+        return badResponse(_that.response, _that.statusCode);
+      case BaseApiBusinessException() when businessException != null:
+        return businessException(_that.message, _that.error, _that.stackTrace);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
@@ -1862,7 +2809,7 @@ class BaseApiBadResponseException extends BaseApiException {
       _$BaseApiBadResponseExceptionFromJson(json);
 
   @igFreezedJson
-  final Response<dynamic>? response;
+  final Response? response;
   final int? statusCode;
 
   @JsonKey(name: 'runtimeType')
@@ -1912,7 +2859,7 @@ abstract mixin class $BaseApiBadResponseExceptionCopyWith<$Res>
           $Res Function(BaseApiBadResponseException) _then) =
       _$BaseApiBadResponseExceptionCopyWithImpl;
   @useResult
-  $Res call({@igFreezedJson Response<dynamic>? response, int? statusCode});
+  $Res call({@igFreezedJson Response? response, int? statusCode});
 }
 
 /// @nodoc
@@ -1934,7 +2881,7 @@ class _$BaseApiBadResponseExceptionCopyWithImpl<$Res>
       response: freezed == response
           ? _self.response
           : response // ignore: cast_nullable_to_non_nullable
-              as Response<dynamic>?,
+              as Response?,
       statusCode: freezed == statusCode
           ? _self.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
@@ -2101,6 +3048,231 @@ class _$ByteModelCopyWithImpl<$Res> implements $ByteModelCopyWith<$Res> {
           : value // ignore: cast_nullable_to_non_nullable
               as double,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [ByteModel].
+extension ByteModelPatterns on ByteModel {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BytesModel value)? bytes,
+    TResult Function(KbModel value)? kb,
+    TResult Function(MbModel value)? mb,
+    TResult Function(GbModel value)? gb,
+    TResult Function(TbModel value)? tb,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BytesModel() when bytes != null:
+        return bytes(_that);
+      case KbModel() when kb != null:
+        return kb(_that);
+      case MbModel() when mb != null:
+        return mb(_that);
+      case GbModel() when gb != null:
+        return gb(_that);
+      case TbModel() when tb != null:
+        return tb(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BytesModel value) bytes,
+    required TResult Function(KbModel value) kb,
+    required TResult Function(MbModel value) mb,
+    required TResult Function(GbModel value) gb,
+    required TResult Function(TbModel value) tb,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BytesModel():
+        return bytes(_that);
+      case KbModel():
+        return kb(_that);
+      case MbModel():
+        return mb(_that);
+      case GbModel():
+        return gb(_that);
+      case TbModel():
+        return tb(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BytesModel value)? bytes,
+    TResult? Function(KbModel value)? kb,
+    TResult? Function(MbModel value)? mb,
+    TResult? Function(GbModel value)? gb,
+    TResult? Function(TbModel value)? tb,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BytesModel() when bytes != null:
+        return bytes(_that);
+      case KbModel() when kb != null:
+        return kb(_that);
+      case MbModel() when mb != null:
+        return mb(_that);
+      case GbModel() when gb != null:
+        return gb(_that);
+      case TbModel() when tb != null:
+        return tb(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(double value)? bytes,
+    TResult Function(double value)? kb,
+    TResult Function(double value)? mb,
+    TResult Function(double value)? gb,
+    TResult Function(double value)? tb,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BytesModel() when bytes != null:
+        return bytes(_that.value);
+      case KbModel() when kb != null:
+        return kb(_that.value);
+      case MbModel() when mb != null:
+        return mb(_that.value);
+      case GbModel() when gb != null:
+        return gb(_that.value);
+      case TbModel() when tb != null:
+        return tb(_that.value);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(double value) bytes,
+    required TResult Function(double value) kb,
+    required TResult Function(double value) mb,
+    required TResult Function(double value) gb,
+    required TResult Function(double value) tb,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BytesModel():
+        return bytes(_that.value);
+      case KbModel():
+        return kb(_that.value);
+      case MbModel():
+        return mb(_that.value);
+      case GbModel():
+        return gb(_that.value);
+      case TbModel():
+        return tb(_that.value);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(double value)? bytes,
+    TResult? Function(double value)? kb,
+    TResult? Function(double value)? mb,
+    TResult? Function(double value)? gb,
+    TResult? Function(double value)? tb,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case BytesModel() when bytes != null:
+        return bytes(_that.value);
+      case KbModel() when kb != null:
+        return kb(_that.value);
+      case MbModel() when mb != null:
+        return mb(_that.value);
+      case GbModel() when gb != null:
+        return gb(_that.value);
+      case TbModel() when tb != null:
+        return tb(_that.value);
+      case _:
+        return null;
+    }
   }
 }
 
@@ -2484,6 +3656,285 @@ mixin _$DartTypeModel {
 /// @nodoc
 class $DartTypeModelCopyWith<$Res> {
   $DartTypeModelCopyWith(DartTypeModel _, $Res Function(DartTypeModel) __);
+}
+
+/// Adds pattern-matching-related methods to [DartTypeModel].
+extension DartTypeModelPatterns on DartTypeModel {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StringData value)? string,
+    TResult Function(NumData value)? num,
+    TResult Function(BoolData value)? bool,
+    TResult Function(ListData value)? list,
+    TResult Function(JsonData value)? json,
+    TResult Function(DynamicData value)? dynamic,
+    TResult Function(NullData value)? nil,
+    TResult Function(JsonStringData value)? jsonString,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case StringData() when string != null:
+        return string(_that);
+      case NumData() when num != null:
+        return num(_that);
+      case BoolData() when bool != null:
+        return bool(_that);
+      case ListData() when list != null:
+        return list(_that);
+      case JsonData() when json != null:
+        return json(_that);
+      case DynamicData() when dynamic != null:
+        return dynamic(_that);
+      case NullData() when nil != null:
+        return nil(_that);
+      case JsonStringData() when jsonString != null:
+        return jsonString(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StringData value) string,
+    required TResult Function(NumData value) num,
+    required TResult Function(BoolData value) bool,
+    required TResult Function(ListData value) list,
+    required TResult Function(JsonData value) json,
+    required TResult Function(DynamicData value) dynamic,
+    required TResult Function(NullData value) nil,
+    required TResult Function(JsonStringData value) jsonString,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case StringData():
+        return string(_that);
+      case NumData():
+        return num(_that);
+      case BoolData():
+        return bool(_that);
+      case ListData():
+        return list(_that);
+      case JsonData():
+        return json(_that);
+      case DynamicData():
+        return dynamic(_that);
+      case NullData():
+        return nil(_that);
+      case JsonStringData():
+        return jsonString(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StringData value)? string,
+    TResult? Function(NumData value)? num,
+    TResult? Function(BoolData value)? bool,
+    TResult? Function(ListData value)? list,
+    TResult? Function(JsonData value)? json,
+    TResult? Function(DynamicData value)? dynamic,
+    TResult? Function(NullData value)? nil,
+    TResult? Function(JsonStringData value)? jsonString,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case StringData() when string != null:
+        return string(_that);
+      case NumData() when num != null:
+        return num(_that);
+      case BoolData() when bool != null:
+        return bool(_that);
+      case ListData() when list != null:
+        return list(_that);
+      case JsonData() when json != null:
+        return json(_that);
+      case DynamicData() when dynamic != null:
+        return dynamic(_that);
+      case NullData() when nil != null:
+        return nil(_that);
+      case JsonStringData() when jsonString != null:
+        return jsonString(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String value)? string,
+    TResult Function(num value)? num,
+    TResult Function(bool value)? bool,
+    TResult Function(List<dynamic> value)? list,
+    TResult Function(Map<String, dynamic> value)? json,
+    TResult Function(dynamic value)? dynamic,
+    TResult Function()? nil,
+    TResult Function(String jsonString)? jsonString,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case StringData() when string != null:
+        return string(_that.value);
+      case NumData() when num != null:
+        return num(_that.value);
+      case BoolData() when bool != null:
+        return bool(_that.value);
+      case ListData() when list != null:
+        return list(_that.value);
+      case JsonData() when json != null:
+        return json(_that.value);
+      case DynamicData() when dynamic != null:
+        return dynamic(_that.value);
+      case NullData() when nil != null:
+        return nil();
+      case JsonStringData() when jsonString != null:
+        return jsonString(_that.jsonString);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String value) string,
+    required TResult Function(num value) num,
+    required TResult Function(bool value) bool,
+    required TResult Function(List<dynamic> value) list,
+    required TResult Function(Map<String, dynamic> value) json,
+    required TResult Function(dynamic value) dynamic,
+    required TResult Function() nil,
+    required TResult Function(String jsonString) jsonString,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case StringData():
+        return string(_that.value);
+      case NumData():
+        return num(_that.value);
+      case BoolData():
+        return bool(_that.value);
+      case ListData():
+        return list(_that.value);
+      case JsonData():
+        return json(_that.value);
+      case DynamicData():
+        return dynamic(_that.value);
+      case NullData():
+        return nil();
+      case JsonStringData():
+        return jsonString(_that.jsonString);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String value)? string,
+    TResult? Function(num value)? num,
+    TResult? Function(bool value)? bool,
+    TResult? Function(List<dynamic> value)? list,
+    TResult? Function(Map<String, dynamic> value)? json,
+    TResult? Function(dynamic value)? dynamic,
+    TResult? Function()? nil,
+    TResult? Function(String jsonString)? jsonString,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case StringData() when string != null:
+        return string(_that.value);
+      case NumData() when num != null:
+        return num(_that.value);
+      case BoolData() when bool != null:
+        return bool(_that.value);
+      case ListData() when list != null:
+        return list(_that.value);
+      case JsonData() when json != null:
+        return json(_that.value);
+      case DynamicData() when dynamic != null:
+        return dynamic(_that.value);
+      case NullData() when nil != null:
+        return nil();
+      case JsonStringData() when jsonString != null:
+        return jsonString(_that.jsonString);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
@@ -3546,6 +4997,408 @@ class _$ImageParamsCopyWithImpl<$Res> implements $ImageParamsCopyWith<$Res> {
   }
 }
 
+/// Adds pattern-matching-related methods to [ImageParams].
+extension ImageParamsPatterns on ImageParams {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ImageParams value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ImageParams() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ImageParams value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ImageParams():
+        return $default(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ImageParams value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ImageParams() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            double? width,
+            double? height,
+            double? size,
+            @igFreezedJson BoxFit? fit,
+            @igFreezedJson BorderRadius? borderRadius,
+            @igFreezedJson BoxShape? shape,
+            bool enableMemoryCache,
+            String? heroTag,
+            bool isSelected,
+            @igFreezedJson Widget? errorWidget,
+            @igFreezedJson VoidCallback? onTap,
+            @igFreezedJson Color? color,
+            bool clearMemoryCacheIfFailed,
+            bool clearMemoryCacheWhenDispose,
+            bool gaplessPlayback,
+            @igFreezedJson BlendMode? colorBlendMode,
+            FilterQuality filterQuality,
+            double? scale,
+            Map<String, String> headers,
+            bool cache,
+            int retries,
+            @igFreezedJson Duration? timeLimit,
+            @igFreezedJson Duration timeRetry,
+            @igFreezedJson CancellationToken? cancelToken,
+            String? cacheKey,
+            bool printError,
+            bool cacheRawData,
+            String? imageCacheName,
+            @igFreezedJson Duration? cacheMaxAge,
+            int? cacheWidth,
+            int? cacheHeight,
+            double? compressionRatio,
+            int? maxBytes,
+            String? package,
+            @igFreezedJson AssetBundle? bundle,
+            @Doc(message: '自定义完成小部件')
+            @igFreezedJson
+            CustomCompletedWidget? customCompletedWidget,
+            @igFreezedJson Widget? customLoadingWidget,
+            @igFreezedJson InitEditorConfigHandler? initEditorConfigHandler,
+            @igFreezedJson Key? extendedImageEditorKey,
+            @igFreezedJson ExtendedImageMode? mode)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ImageParams() when $default != null:
+        return $default(
+            _that.width,
+            _that.height,
+            _that.size,
+            _that.fit,
+            _that.borderRadius,
+            _that.shape,
+            _that.enableMemoryCache,
+            _that.heroTag,
+            _that.isSelected,
+            _that.errorWidget,
+            _that.onTap,
+            _that.color,
+            _that.clearMemoryCacheIfFailed,
+            _that.clearMemoryCacheWhenDispose,
+            _that.gaplessPlayback,
+            _that.colorBlendMode,
+            _that.filterQuality,
+            _that.scale,
+            _that.headers,
+            _that.cache,
+            _that.retries,
+            _that.timeLimit,
+            _that.timeRetry,
+            _that.cancelToken,
+            _that.cacheKey,
+            _that.printError,
+            _that.cacheRawData,
+            _that.imageCacheName,
+            _that.cacheMaxAge,
+            _that.cacheWidth,
+            _that.cacheHeight,
+            _that.compressionRatio,
+            _that.maxBytes,
+            _that.package,
+            _that.bundle,
+            _that.customCompletedWidget,
+            _that.customLoadingWidget,
+            _that.initEditorConfigHandler,
+            _that.extendedImageEditorKey,
+            _that.mode);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            double? width,
+            double? height,
+            double? size,
+            @igFreezedJson BoxFit? fit,
+            @igFreezedJson BorderRadius? borderRadius,
+            @igFreezedJson BoxShape? shape,
+            bool enableMemoryCache,
+            String? heroTag,
+            bool isSelected,
+            @igFreezedJson Widget? errorWidget,
+            @igFreezedJson VoidCallback? onTap,
+            @igFreezedJson Color? color,
+            bool clearMemoryCacheIfFailed,
+            bool clearMemoryCacheWhenDispose,
+            bool gaplessPlayback,
+            @igFreezedJson BlendMode? colorBlendMode,
+            FilterQuality filterQuality,
+            double? scale,
+            Map<String, String> headers,
+            bool cache,
+            int retries,
+            @igFreezedJson Duration? timeLimit,
+            @igFreezedJson Duration timeRetry,
+            @igFreezedJson CancellationToken? cancelToken,
+            String? cacheKey,
+            bool printError,
+            bool cacheRawData,
+            String? imageCacheName,
+            @igFreezedJson Duration? cacheMaxAge,
+            int? cacheWidth,
+            int? cacheHeight,
+            double? compressionRatio,
+            int? maxBytes,
+            String? package,
+            @igFreezedJson AssetBundle? bundle,
+            @Doc(message: '自定义完成小部件')
+            @igFreezedJson
+            CustomCompletedWidget? customCompletedWidget,
+            @igFreezedJson Widget? customLoadingWidget,
+            @igFreezedJson InitEditorConfigHandler? initEditorConfigHandler,
+            @igFreezedJson Key? extendedImageEditorKey,
+            @igFreezedJson ExtendedImageMode? mode)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ImageParams():
+        return $default(
+            _that.width,
+            _that.height,
+            _that.size,
+            _that.fit,
+            _that.borderRadius,
+            _that.shape,
+            _that.enableMemoryCache,
+            _that.heroTag,
+            _that.isSelected,
+            _that.errorWidget,
+            _that.onTap,
+            _that.color,
+            _that.clearMemoryCacheIfFailed,
+            _that.clearMemoryCacheWhenDispose,
+            _that.gaplessPlayback,
+            _that.colorBlendMode,
+            _that.filterQuality,
+            _that.scale,
+            _that.headers,
+            _that.cache,
+            _that.retries,
+            _that.timeLimit,
+            _that.timeRetry,
+            _that.cancelToken,
+            _that.cacheKey,
+            _that.printError,
+            _that.cacheRawData,
+            _that.imageCacheName,
+            _that.cacheMaxAge,
+            _that.cacheWidth,
+            _that.cacheHeight,
+            _that.compressionRatio,
+            _that.maxBytes,
+            _that.package,
+            _that.bundle,
+            _that.customCompletedWidget,
+            _that.customLoadingWidget,
+            _that.initEditorConfigHandler,
+            _that.extendedImageEditorKey,
+            _that.mode);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            double? width,
+            double? height,
+            double? size,
+            @igFreezedJson BoxFit? fit,
+            @igFreezedJson BorderRadius? borderRadius,
+            @igFreezedJson BoxShape? shape,
+            bool enableMemoryCache,
+            String? heroTag,
+            bool isSelected,
+            @igFreezedJson Widget? errorWidget,
+            @igFreezedJson VoidCallback? onTap,
+            @igFreezedJson Color? color,
+            bool clearMemoryCacheIfFailed,
+            bool clearMemoryCacheWhenDispose,
+            bool gaplessPlayback,
+            @igFreezedJson BlendMode? colorBlendMode,
+            FilterQuality filterQuality,
+            double? scale,
+            Map<String, String> headers,
+            bool cache,
+            int retries,
+            @igFreezedJson Duration? timeLimit,
+            @igFreezedJson Duration timeRetry,
+            @igFreezedJson CancellationToken? cancelToken,
+            String? cacheKey,
+            bool printError,
+            bool cacheRawData,
+            String? imageCacheName,
+            @igFreezedJson Duration? cacheMaxAge,
+            int? cacheWidth,
+            int? cacheHeight,
+            double? compressionRatio,
+            int? maxBytes,
+            String? package,
+            @igFreezedJson AssetBundle? bundle,
+            @Doc(message: '自定义完成小部件')
+            @igFreezedJson
+            CustomCompletedWidget? customCompletedWidget,
+            @igFreezedJson Widget? customLoadingWidget,
+            @igFreezedJson InitEditorConfigHandler? initEditorConfigHandler,
+            @igFreezedJson Key? extendedImageEditorKey,
+            @igFreezedJson ExtendedImageMode? mode)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ImageParams() when $default != null:
+        return $default(
+            _that.width,
+            _that.height,
+            _that.size,
+            _that.fit,
+            _that.borderRadius,
+            _that.shape,
+            _that.enableMemoryCache,
+            _that.heroTag,
+            _that.isSelected,
+            _that.errorWidget,
+            _that.onTap,
+            _that.color,
+            _that.clearMemoryCacheIfFailed,
+            _that.clearMemoryCacheWhenDispose,
+            _that.gaplessPlayback,
+            _that.colorBlendMode,
+            _that.filterQuality,
+            _that.scale,
+            _that.headers,
+            _that.cache,
+            _that.retries,
+            _that.timeLimit,
+            _that.timeRetry,
+            _that.cancelToken,
+            _that.cacheKey,
+            _that.printError,
+            _that.cacheRawData,
+            _that.imageCacheName,
+            _that.cacheMaxAge,
+            _that.cacheWidth,
+            _that.cacheHeight,
+            _that.compressionRatio,
+            _that.maxBytes,
+            _that.package,
+            _that.bundle,
+            _that.customCompletedWidget,
+            _that.customLoadingWidget,
+            _that.initEditorConfigHandler,
+            _that.extendedImageEditorKey,
+            _that.mode);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
 class _ImageParams extends ImageParams {
@@ -4216,6 +6069,213 @@ class _$MyImageCopyWithImpl<$Res> implements $MyImageCopyWith<$Res> {
   }
 }
 
+/// Adds pattern-matching-related methods to [MyImage].
+extension MyImagePatterns on MyImage {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MyNetworkImage value)? network,
+    TResult Function(MyBase64Image value)? base64,
+    TResult Function(MyFilePathImage value)? filePath,
+    TResult Function(MyAssetImage value)? asset,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyNetworkImage() when network != null:
+        return network(_that);
+      case MyBase64Image() when base64 != null:
+        return base64(_that);
+      case MyFilePathImage() when filePath != null:
+        return filePath(_that);
+      case MyAssetImage() when asset != null:
+        return asset(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MyNetworkImage value) network,
+    required TResult Function(MyBase64Image value) base64,
+    required TResult Function(MyFilePathImage value) filePath,
+    required TResult Function(MyAssetImage value) asset,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyNetworkImage():
+        return network(_that);
+      case MyBase64Image():
+        return base64(_that);
+      case MyFilePathImage():
+        return filePath(_that);
+      case MyAssetImage():
+        return asset(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MyNetworkImage value)? network,
+    TResult? Function(MyBase64Image value)? base64,
+    TResult? Function(MyFilePathImage value)? filePath,
+    TResult? Function(MyAssetImage value)? asset,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyNetworkImage() when network != null:
+        return network(_that);
+      case MyBase64Image() when base64 != null:
+        return base64(_that);
+      case MyFilePathImage() when filePath != null:
+        return filePath(_that);
+      case MyAssetImage() when asset != null:
+        return asset(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String url, ImageParams params)? network,
+    TResult Function(String base64Code, ImageParams params)? base64,
+    TResult Function(String filePath, ImageParams params)? filePath,
+    TResult Function(String assetPath, ImageParams params)? asset,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyNetworkImage() when network != null:
+        return network(_that.url, _that.params);
+      case MyBase64Image() when base64 != null:
+        return base64(_that.base64Code, _that.params);
+      case MyFilePathImage() when filePath != null:
+        return filePath(_that.filePath, _that.params);
+      case MyAssetImage() when asset != null:
+        return asset(_that.assetPath, _that.params);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String url, ImageParams params) network,
+    required TResult Function(String base64Code, ImageParams params) base64,
+    required TResult Function(String filePath, ImageParams params) filePath,
+    required TResult Function(String assetPath, ImageParams params) asset,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyNetworkImage():
+        return network(_that.url, _that.params);
+      case MyBase64Image():
+        return base64(_that.base64Code, _that.params);
+      case MyFilePathImage():
+        return filePath(_that.filePath, _that.params);
+      case MyAssetImage():
+        return asset(_that.assetPath, _that.params);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String url, ImageParams params)? network,
+    TResult? Function(String base64Code, ImageParams params)? base64,
+    TResult? Function(String filePath, ImageParams params)? filePath,
+    TResult? Function(String assetPath, ImageParams params)? asset,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case MyNetworkImage() when network != null:
+        return network(_that.url, _that.params);
+      case MyBase64Image() when base64 != null:
+        return base64(_that.base64Code, _that.params);
+      case MyFilePathImage() when filePath != null:
+        return filePath(_that.filePath, _that.params);
+      case MyAssetImage() when asset != null:
+        return asset(_that.assetPath, _that.params);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
 class MyNetworkImage extends MyImage {
@@ -4668,6 +6728,267 @@ class $MyPlatformCopyWith<$Res> {
   $MyPlatformCopyWith(MyPlatform _, $Res Function(MyPlatform) __);
 }
 
+/// Adds pattern-matching-related methods to [MyPlatform].
+extension MyPlatformPatterns on MyPlatform {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AndroidPlatform value)? android,
+    TResult Function(IosPlatform value)? ios,
+    TResult Function(MacosPlatform value)? macos,
+    TResult Function(WebPlatform value)? web,
+    TResult Function(LinuxPlatform value)? linux,
+    TResult Function(WindowsPlatform value)? windows,
+    TResult Function(FuchsiaPlatform value)? fuchsia,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AndroidPlatform() when android != null:
+        return android(_that);
+      case IosPlatform() when ios != null:
+        return ios(_that);
+      case MacosPlatform() when macos != null:
+        return macos(_that);
+      case WebPlatform() when web != null:
+        return web(_that);
+      case LinuxPlatform() when linux != null:
+        return linux(_that);
+      case WindowsPlatform() when windows != null:
+        return windows(_that);
+      case FuchsiaPlatform() when fuchsia != null:
+        return fuchsia(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AndroidPlatform value) android,
+    required TResult Function(IosPlatform value) ios,
+    required TResult Function(MacosPlatform value) macos,
+    required TResult Function(WebPlatform value) web,
+    required TResult Function(LinuxPlatform value) linux,
+    required TResult Function(WindowsPlatform value) windows,
+    required TResult Function(FuchsiaPlatform value) fuchsia,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AndroidPlatform():
+        return android(_that);
+      case IosPlatform():
+        return ios(_that);
+      case MacosPlatform():
+        return macos(_that);
+      case WebPlatform():
+        return web(_that);
+      case LinuxPlatform():
+        return linux(_that);
+      case WindowsPlatform():
+        return windows(_that);
+      case FuchsiaPlatform():
+        return fuchsia(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AndroidPlatform value)? android,
+    TResult? Function(IosPlatform value)? ios,
+    TResult? Function(MacosPlatform value)? macos,
+    TResult? Function(WebPlatform value)? web,
+    TResult? Function(LinuxPlatform value)? linux,
+    TResult? Function(WindowsPlatform value)? windows,
+    TResult? Function(FuchsiaPlatform value)? fuchsia,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AndroidPlatform() when android != null:
+        return android(_that);
+      case IosPlatform() when ios != null:
+        return ios(_that);
+      case MacosPlatform() when macos != null:
+        return macos(_that);
+      case WebPlatform() when web != null:
+        return web(_that);
+      case LinuxPlatform() when linux != null:
+        return linux(_that);
+      case WindowsPlatform() when windows != null:
+        return windows(_that);
+      case FuchsiaPlatform() when fuchsia != null:
+        return fuchsia(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? android,
+    TResult Function()? ios,
+    TResult Function()? macos,
+    TResult Function()? web,
+    TResult Function()? linux,
+    TResult Function()? windows,
+    TResult Function()? fuchsia,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AndroidPlatform() when android != null:
+        return android();
+      case IosPlatform() when ios != null:
+        return ios();
+      case MacosPlatform() when macos != null:
+        return macos();
+      case WebPlatform() when web != null:
+        return web();
+      case LinuxPlatform() when linux != null:
+        return linux();
+      case WindowsPlatform() when windows != null:
+        return windows();
+      case FuchsiaPlatform() when fuchsia != null:
+        return fuchsia();
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() android,
+    required TResult Function() ios,
+    required TResult Function() macos,
+    required TResult Function() web,
+    required TResult Function() linux,
+    required TResult Function() windows,
+    required TResult Function() fuchsia,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AndroidPlatform():
+        return android();
+      case IosPlatform():
+        return ios();
+      case MacosPlatform():
+        return macos();
+      case WebPlatform():
+        return web();
+      case LinuxPlatform():
+        return linux();
+      case WindowsPlatform():
+        return windows();
+      case FuchsiaPlatform():
+        return fuchsia();
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? android,
+    TResult? Function()? ios,
+    TResult? Function()? macos,
+    TResult? Function()? web,
+    TResult? Function()? linux,
+    TResult? Function()? windows,
+    TResult? Function()? fuchsia,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case AndroidPlatform() when android != null:
+        return android();
+      case IosPlatform() when ios != null:
+        return ios();
+      case MacosPlatform() when macos != null:
+        return macos();
+      case WebPlatform() when web != null:
+        return web();
+      case LinuxPlatform() when linux != null:
+        return linux();
+      case WindowsPlatform() when windows != null:
+        return windows();
+      case FuchsiaPlatform() when fuchsia != null:
+        return fuchsia();
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
 class AndroidPlatform implements MyPlatform {
@@ -4887,6 +7208,168 @@ class _$PictureSelectionI18nConfigCopyWithImpl<$Res>
   }
 }
 
+/// Adds pattern-matching-related methods to [PictureSelectionI18nConfig].
+extension PictureSelectionI18nConfigPatterns on PictureSelectionI18nConfig {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_PictureSelectionI18nConfig value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PictureSelectionI18nConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_PictureSelectionI18nConfig value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PictureSelectionI18nConfig():
+        return $default(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_PictureSelectionI18nConfig value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PictureSelectionI18nConfig() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'photoAlbumMenuText') String photoAlbumMenuText,
+            String goShootText)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _PictureSelectionI18nConfig() when $default != null:
+        return $default(_that.photoAlbumMenuText, _that.goShootText);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            @JsonKey(name: 'photoAlbumMenuText') String photoAlbumMenuText,
+            String goShootText)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PictureSelectionI18nConfig():
+        return $default(_that.photoAlbumMenuText, _that.goShootText);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            @JsonKey(name: 'photoAlbumMenuText') String photoAlbumMenuText,
+            String goShootText)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _PictureSelectionI18nConfig() when $default != null:
+        return $default(_that.photoAlbumMenuText, _that.goShootText);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 @JsonSerializable()
 class _PictureSelectionI18nConfig extends PictureSelectionI18nConfig {
@@ -5006,6 +7489,177 @@ mixin _$PictureSelectionItemModel {
 class $PictureSelectionItemModelCopyWith<$Res> {
   $PictureSelectionItemModelCopyWith(
       PictureSelectionItemModel _, $Res Function(PictureSelectionItemModel) __);
+}
+
+/// Adds pattern-matching-related methods to [PictureSelectionItemModel].
+extension PictureSelectionItemModelPatterns on PictureSelectionItemModel {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(XXFile value)? file,
+    TResult Function(XXImage value)? network,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case XXFile() when file != null:
+        return file(_that);
+      case XXImage() when network != null:
+        return network(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(XXFile value) file,
+    required TResult Function(XXImage value) network,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case XXFile():
+        return file(_that);
+      case XXImage():
+        return network(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(XXFile value)? file,
+    TResult? Function(XXImage value)? network,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case XXFile() when file != null:
+        return file(_that);
+      case XXImage() when network != null:
+        return network(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(File file)? file,
+    TResult Function(String url)? network,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case XXFile() when file != null:
+        return file(_that.file);
+      case XXImage() when network != null:
+        return network(_that.url);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(File file) file,
+    required TResult Function(String url) network,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case XXFile():
+        return file(_that.file);
+      case XXImage():
+        return network(_that.url);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(File file)? file,
+    TResult? Function(String url)? network,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case XXFile() when file != null:
+        return file(_that.file);
+      case XXImage() when network != null:
+        return network(_that.url);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc

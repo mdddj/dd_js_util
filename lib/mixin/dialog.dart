@@ -5,7 +5,7 @@ mixin DialogSupport<T extends StatefulWidget> on State<T> {
 
   @Doc(message: "显示loading弹窗")
   void pageLoading(String loading) {
-    SmartDialog.showLoading(msg: loading);
+    SmartDialog.showLoading(msg: loading,useAnimation: false,maskWidget: SizedBox.shrink(),maskColor: Colors.transparent);
   }
 
 

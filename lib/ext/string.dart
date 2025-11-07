@@ -13,16 +13,32 @@ extension StringExtension on String {
   /// 错误码[401] - 没有获取访问相册的权限
   /// 错误码[201] - 保存失败,重试
   ///
-  Future<void> downloadImage({bool? isAsset, bool? checkPermission, String? imageName, int quality = 80,VoidCallback? noPermission}) async {
+  Future<void> downloadImage(
+      {bool? isAsset,
+      bool? checkPermission,
+      String? imageName,
+      int quality = 80,
+      VoidCallback? noPermission,
+      Map<String, String>? headers,
+      VoidCallback? onFailed,
+      VoidCallback? onSuccess}) async {
     try {
       // 访问相册权限检测
       if (checkPermission == true) {
-        final permission = await KPermissionUtil.instance.getAndroidSdkPermissionWithPicture();
-        PermissionStatus storageStatus = await permission.status;
-        if (storageStatus != PermissionStatus.granted) {
-          storageStatus = await permission.request();
-          if (storageStatus != PermissionStatus.granted) {
-            throw '401';
+        if (myPlatform.isAndroid) {
+          final androidInfo = await DeviceInfoPlugin().androidInfo;
+          if (androidInfo.version.sdkInt < 33) {
+            final result = await Permission.storage.request();
+            if (result != PermissionStatus.granted) {
+              noPermission?.call();
+              return;
+            }
+          }
+        } else {
+          final result = await Permission.photosAddOnly.request();
+          if (result != PermissionStatus.granted) {
+            noPermission?.call();
+            return;
           }
         }
       }
@@ -34,22 +50,30 @@ extension StringExtension on String {
         imageBytes = bytes.buffer.asUint8List();
       } else {
         // 保存网络图片
-        final image = CachedNetworkImage(imageUrl: this);
-        final manager = image.cacheManager ?? DefaultCacheManager();
-        final headers = image.httpHeaders ?? {};
-        final file = await manager.getSingleFile(
-          image.imageUrl,
-          headers: headers,
+        final dioInstance = dio.Dio();
+        final response = await dioInstance.get<List<int>>(
+          this,
+          options: dio.Options(
+              responseType: dio.ResponseType.bytes, headers: headers),
         );
-        imageBytes = await file.readAsBytes();
+        if (response.statusCode == 200 && response.data != null) {
+          imageBytes = Uint8List.fromList(response.data!);
+        } else {
+          onFailed?.call();
+        }
       }
       // 保存图片
 
-      final result = await SaverGallery.saveImage(imageBytes, fileName: imageName ?? '', skipIfExists: false);
+      final result = await SaverGallery.saveImage(imageBytes,
+          fileName: imageName ?? '', skipIfExists: false);
 
-      if (result.isSuccess.not) throw '201'; // 保存失败,请重试
+      if (result.isSuccess.not) {
+        onFailed?.call();
+      } else {
+        onSuccess?.call();
+      }
     } catch (e) {
-      rethrow;
+      onFailed?.call();
     }
   }
 
@@ -58,9 +82,9 @@ extension StringExtension on String {
   /// "/data/a/b/c/demo.png".fileDownloadImage()
   ///
   Future<SaveResult> fileDownloadImage([String name = 'filename']) async {
-    return await SaverGallery.saveFile(filePath: this, fileName: name, skipIfExists: false);
+    return await SaverGallery.saveFile(
+        filePath: this, fileName: name, skipIfExists: false);
   }
-
 
   @Doc(message: '打开浏览器访问页面')
   Future<void> browser() async {
@@ -82,7 +106,8 @@ extension StringExtension on String {
   }
 
   @Doc(message: '判断是否为网络图片')
-  bool isNetworkImage([String regExpString = r'^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp)$']) {
+  bool isNetworkImage(
+      [String regExpString = r'^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp)$']) {
     RegExp regExp = RegExp(regExpString);
     return regExp.hasMatch(this);
   }
@@ -90,7 +115,8 @@ extension StringExtension on String {
   @Doc(message: '是否为邮箱')
   bool get stringIsEmail => _isEmailValid(this);
 
-  T? decodeModel<T>(T Function(Map<String, dynamic> jsonMap) decode) => decodeModelOrNull(this, decode);
+  T? decodeModel<T>(T Function(Map<String, dynamic> jsonMap) decode) =>
+      decodeModelOrNull(this, decode);
 }
 
 class HtmlTitleAndIconModel {
@@ -102,7 +128,6 @@ class HtmlTitleAndIconModel {
 
 bool _isEmailValid(String email) {
   return RegExp(
-      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
       .hasMatch(email);
 }
-

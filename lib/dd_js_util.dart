@@ -1,5 +1,6 @@
 library;
 
+import 'dart:typed_data';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io' as io;
@@ -14,7 +15,6 @@ import 'package:extended_image/extended_image.dart';
 import 'package:extended_image_library/extended_image_library.dart' as ex_image;
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -25,8 +25,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/adapters.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:hooks_riverpod/legacy.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:loading_more_list_fast/loading_more_list_fast.dart';
@@ -40,7 +41,6 @@ import 'package:saver_gallery/saver_gallery.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'model/models.dart';
-import 'theme/model.dart';
 import 'widget/search/search_support.dart';
 import 'widget/search/search_support_manager.dart';
 
@@ -100,8 +100,6 @@ part 'api/base.dart';
 part 'api/loading.dart';
 part 'ext/file.dart';
 part 'ext/function.dart';
-part 'theme/index.dart';
-part 'theme/theme_setting.dart';
 part 'util/always_scrollable_clamping_scroll_physics.dart';
 part 'util/image.dart';
 part 'util/platforms.dart';
