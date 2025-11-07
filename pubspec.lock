@@ -731,17 +731,19 @@ packages:
   loading_more_list_fast:
     dependency: "direct main"
     description:
-      path: "../../hlx/github/loading_more_list_fast-7.1.3"
-      relative: true
-    source: path
-    version: "7.2.5"
+      name: loading_more_list_fast
+      sha256: bf8367c499e7032925b90d295b550f8548de01da0c2da223d9b10965e648743d
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.3.0"
   loading_more_list_library_fast:
     dependency: "direct main"
     description:
-      path: "../../hlx/github/loading_more_list_library_fast-4.1.2"
-      relative: true
-    source: path
-    version: "4.2.3"
+      name: loading_more_list_library_fast
+      sha256: "540e926dcf0f3720e332afa82dd7ef0db2e5bee4d9c639671d0db40c7ea360d7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.3.0"
   logger:
     dependency: "direct main"
     description:
