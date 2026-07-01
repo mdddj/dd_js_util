@@ -195,6 +195,8 @@ sealed class BaseApiException with _$BaseApiException {
             message: 'unknown : ${dioException.error}',
             error: dioException.error,
             stackTrace: dioException.stackTrace);
+      case DioExceptionType.transformTimeout:
+        return const BaseApiException.receiveTimeout();
     }
   }
 }

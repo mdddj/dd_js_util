@@ -1,6 +1,5 @@
 library;
 
-import 'dart:typed_data';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io' as io;
@@ -8,7 +7,6 @@ import 'dart:math' as math;
 import 'dart:math';
 
 import 'package:async/async.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:extended_image/extended_image.dart';
@@ -17,19 +15,16 @@ import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:flutter_swiper_null_safety_flutter3/flutter_swiper_null_safety_flutter3.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:hooks_riverpod/legacy.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:keyboard_actions/keyboard_actions.dart';
+import 'package:keyboard_actions_plus/keyboard_actions_plus.dart';
 import 'package:loading_more_list_fast/loading_more_list_fast.dart';
 import 'package:loading_more_list_library_fast/loading_more_list_library_fast.dart';
 import 'package:loading_more_list_library_fast/model/status.dart';
@@ -83,13 +78,13 @@ part './widget/base/row_min.dart';
 part './widget/base/simple_api_page.dart';
 part './widget/body_expanded_widget.dart';
 part './widget/count_down.dart';
-part './widget/date/custom_year_picker.dart';
 part './widget/date/date_picker_2.dart';
 part './widget/expanded_row.dart';
 part './widget/flip_animated_card.dart';
 part './widget/hide_keyboard_widget.dart';
 part './widget/image.dart';
 part './widget/image_show.dart';
+part './widget/my_swiper.dart';
 part './widget/picture_selection.dart';
 part './widget/record_widget.dart';
 part './widget/search_support.dart';
@@ -108,7 +103,6 @@ part 'widget/ask_ok_dialog.dart';
 part 'widget/ask_string_dialog.dart';
 part 'widget/build_widget.dart';
 part 'widget/lazy_stack_widget.dart';
-
 part 'widget/right_popup_menu.dart';
 
 typedef MyHiveBox<T> = Box<T>;

@@ -39,7 +39,6 @@ typedef MySliverListConfig<T> = SliverListConfig<T>;
 typedef MyLoadingMoreCustomScrollView = LoadingMoreCustomScrollView;
 typedef MyIndicatorStatus = IndicatorStatusModel;
 typedef R = RequestParams;
-typedef MySwiper = Swiper;
 
 @Doc(message: "简单toast弹窗")
 void toast(String msg) {

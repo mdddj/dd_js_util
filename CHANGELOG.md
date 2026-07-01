@@ -1,3 +1,24 @@
+# 9.1.0
+
+* 依赖升级
+
+# 9.0.1
+
+* 移除 flutter_swiper_null_safety_flutter3 依赖
+* 使用 Flutter 内置 PageView 实现 MySwiper 兼容轮播
+
+# 9.0.0
+
+依赖升级
+
+# 8.0.1
+
+* 适配部分插件
+
+# 8.0.0
+
+* 适配 flutter 3.38.0
+
 # 7.1.1
 
 依赖升级
