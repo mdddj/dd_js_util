@@ -5,3 +5,6 @@
 .pub/
 
 build/
+
+# IDE user-specific state
+.idea/workspace.xml
