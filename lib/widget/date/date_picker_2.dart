@@ -453,7 +453,12 @@ class CupertinoDatePicker extends StatefulWidget {
     // laying out the text.
     painter.layout();
 
-    return painter.maxIntrinsicWidth;
+    try {
+      return painter.maxIntrinsicWidth;
+    } finally {
+      //TextPainter持有native paragraph,不释放只能等GC
+      painter.dispose();
+    }
   }
 }
 
@@ -892,11 +897,11 @@ class _CupertinoDatePickerDateTimeState extends State<CupertinoDatePicker> {
     if (minCheck || maxCheck) {
       // We have minCheck === !maxCheck.
       final DateTime targetDate = minCheck ? widget.minimumDate! : widget.maximumDate!;
-      _scrollToDate(targetDate, selectedDate);
+      _scrollToDate(targetDate, selectedDate, minCheck);
     }
   }
 
-  void _scrollToDate(DateTime newDate, DateTime fromDate) {
+  void _scrollToDate(DateTime newDate, DateTime fromDate, bool minCheck) {
     SchedulerBinding.instance.addPostFrameCallback((Duration timestamp) {
       if (fromDate.year != newDate.year || fromDate.month != newDate.month || fromDate.day != newDate.day) {
         _animateColumnControllerToItem(dateController, selectedDayFromInitial);
@@ -920,7 +925,10 @@ class _CupertinoDatePickerDateTimeState extends State<CupertinoDatePicker> {
       }
 
       if (fromDate.minute != newDate.minute) {
-        _animateColumnControllerToItem(minuteController, newDate.minute);
+        //滚轮的单位是[minuteInterval]分钟,位置要用"第几个可选分钟"而不是分钟数本身
+        final double positionDouble = newDate.minute / widget.minuteInterval;
+        final int position = minCheck ? positionDouble.ceil() : positionDouble.floor();
+        _animateColumnControllerToItem(minuteController, position);
       }
     });
   }
@@ -1273,7 +1281,16 @@ class _CupertinoDatePickerDateState extends State<CupertinoDatePicker> {
     // if the selectedDay exceeds the maximum.
     if (minSelectDate.day != selectedDay) {
       final DateTime lastDay = _lastDayInMonth(selectedYear, selectedMonth);
-      _scrollToDate(lastDay);
+      if (widget.hideDay == true) {
+        //没有day滚轮时[_scrollToDate]不会触发day的[onSelectedItemChanged],
+        //只能直接夹取selectedDay并主动回调,否则[_isCurrentDateValid]恒为false
+        selectedDay = lastDay.day;
+        if (_isCurrentDateValid) {
+          widget.onDateTimeChanged(DateTime(selectedYear, selectedMonth, selectedDay));
+        }
+      } else {
+        _scrollToDate(lastDay);
+      }
     }
   }
 
@@ -1356,7 +1373,7 @@ class _CupertinoDatePickerDateState extends State<CupertinoDatePicker> {
     for (int i = 0; i < columnWidths.length; i++) {
       double offAxisFraction = (i - 1) * 0.3 * textDirectionFactor;
       if (widget.hideDay == true && i == 1) {
-        offAxisFraction = 0.5;
+        offAxisFraction = 0.5 * textDirectionFactor;
       }
 
       EdgeInsets padding = const EdgeInsets.only(right: _kDatePickerPadSize);
@@ -1554,6 +1571,11 @@ class _CupertinoTimerPickerState extends State<CupertinoTimerPicker> {
   int? lastSelectedSecond;
 
   final TextPainter textPainter = TextPainter();
+
+  ///滚轮controller会被[CupertinoPicker]长期持有,必须跨重建复用并在dispose里释放
+  FixedExtentScrollController? _hourScrollController;
+  FixedExtentScrollController? _minuteScrollController;
+  FixedExtentScrollController? _secondScrollController;
   final List<String> numbers = List<String>.generate(10, (int i) => '${9 - i}');
   late double numberLabelWidth;
   late double numberLabelHeight;
@@ -1590,6 +1612,10 @@ class _CupertinoTimerPickerState extends State<CupertinoTimerPicker> {
   @override
   void dispose() {
     PaintingBinding.instance.systemFonts.removeListener(_handleSystemFontsChange);
+    textPainter.dispose();
+    _hourScrollController?.dispose();
+    _minuteScrollController?.dispose();
+    _secondScrollController?.dispose();
     super.dispose();
   }
 
@@ -1724,8 +1750,9 @@ class _CupertinoTimerPickerState extends State<CupertinoTimerPicker> {
   }
 
   Widget _buildHourPicker(EdgeInsetsDirectional additionalPadding, Widget selectionOverlay) {
+    _hourScrollController ??= FixedExtentScrollController(initialItem: selectedHour!);
     return CupertinoPicker(
-      scrollController: FixedExtentScrollController(initialItem: selectedHour!),
+      scrollController: _hourScrollController,
       magnification: _kMagnification,
       offAxisFraction: _calculateOffAxisFraction(additionalPadding.start, 0),
       itemExtent: _kItemExtent,
@@ -1784,10 +1811,11 @@ class _CupertinoTimerPickerState extends State<CupertinoTimerPicker> {
   }
 
   Widget _buildMinutePicker(EdgeInsetsDirectional additionalPadding, Widget selectionOverlay) {
+    _minuteScrollController ??= FixedExtentScrollController(
+      initialItem: selectedMinute ~/ widget.minuteInterval,
+    );
     return CupertinoPicker(
-      scrollController: FixedExtentScrollController(
-        initialItem: selectedMinute ~/ widget.minuteInterval,
-      ),
+      scrollController: _minuteScrollController,
       magnification: _kMagnification,
       offAxisFraction: _calculateOffAxisFraction(
         additionalPadding.start,
@@ -1851,10 +1879,11 @@ class _CupertinoTimerPickerState extends State<CupertinoTimerPicker> {
   }
 
   Widget _buildSecondPicker(EdgeInsetsDirectional additionalPadding, Widget selectionOverlay) {
+    _secondScrollController ??= FixedExtentScrollController(
+      initialItem: selectedSecond! ~/ widget.secondInterval,
+    );
     return CupertinoPicker(
-      scrollController: FixedExtentScrollController(
-        initialItem: selectedSecond! ~/ widget.secondInterval,
-      ),
+      scrollController: _secondScrollController,
       magnification: _kMagnification,
       offAxisFraction: _calculateOffAxisFraction(
         additionalPadding.start,

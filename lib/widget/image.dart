@@ -1,12 +1,32 @@
 part of '../dd_js_util.dart';
 
 /// base 64 图片的展示
-class ImageView extends StatelessWidget {
+class ImageView extends StatefulWidget {
   final MyImage image;
 
   const ImageView({super.key, required this.image});
 
+  @override
+  State<ImageView> createState() => _ImageViewState();
+}
+
+class _ImageViewState extends State<ImageView> {
+  MyImage get image => widget.image;
+
   ImageParams get params => image.params;
+
+  ///base64解码只和内容有关,缓存起来避免每次rebuild都重新解码;
+  ///每次解码出的Uint8List互不相等,还会让图片缓存永远命中不了
+  String? _base64CodeCache;
+  Uint8List? _base64BytesCache;
+
+  Uint8List _decodeBase64(String code) {
+    if (_base64BytesCache == null || _base64CodeCache != code) {
+      _base64CodeCache = code;
+      _base64BytesCache = base64Decode(code);
+    }
+    return _base64BytesCache!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +114,6 @@ class ImageView extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: params.borderRadius,
                   color: Colors.grey.shade200),
-              child: params.errorWidget,
             ).click(state.reLoadImage);
     }
   }
@@ -126,7 +145,7 @@ class ImageView extends StatelessWidget {
   }
 
   ImageProvider<Object> _buildBaseImage(String base64Code, ImageParams params) {
-    final m = base64Decode(base64Code);
+    final m = _decodeBase64(base64Code);
     return ExtendedResizeImage.resizeIfNeeded(
       provider: ExtendedMemoryImageProvider(
         m,

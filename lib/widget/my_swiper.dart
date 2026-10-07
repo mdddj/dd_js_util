@@ -284,7 +284,12 @@ class _MySwiperState extends State<MySwiper> {
     if (widget.index != null && widget.index != oldWidget.index) {
       _moveToIndex(_normalizeIndex(widget.index!), animation: true);
     }
-    _handleAutoplay();
+    //父级频繁重建时无条件重启计时器,autoplay会永远等不到下一次触发
+    if (oldWidget.autoplay != widget.autoplay ||
+        oldWidget.autoplayDelay != widget.autoplayDelay ||
+        _timer == null) {
+      _handleAutoplay();
+    }
   }
 
   @override
@@ -411,8 +416,17 @@ class _MySwiperState extends State<MySwiper> {
     }
     _timer = Timer.periodic(
       Duration(milliseconds: widget.autoplayDelay),
-      (_) => _moveToIndex(_activeIndex + 1, animation: true),
+      (_) => _autoplayNext(),
     );
+  }
+
+  void _autoplayNext() {
+    //非循环模式走到最后一页就停下,继续调[_moveToIndex]会被clamp回来,空转且不再回调
+    if (!widget.loop && _activeIndex >= widget.itemCount - 1) {
+      _stopAutoplay();
+      return;
+    }
+    _moveToIndex(_activeIndex + 1, animation: true);
   }
 
   void _stopAutoplay() {

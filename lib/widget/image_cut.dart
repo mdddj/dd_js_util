@@ -59,16 +59,26 @@ class ImageCutWidgetState extends State<ImageCutWidget> {
     if (_cropping) {
       return;
     }
-    _cropping = true;
+    setState(() {
+      _cropping = true;
+    });
     try {
       final fileData = await cropImageDataWithNativeLibrary(_editorController);
+      final data = fileData.data;
+      if (data == null || data.isEmpty) {
+        //裁剪失败,不关闭页面,让用户可以重试
+        return;
+      }
       final result = await ImageSaver.saveImage(
-          '${DateTime.now().millisecondsSinceEpoch}.jpg', fileData.data!);
+          '${DateTime.now().millisecondsSinceEpoch}.jpg', data);
       nav.pop(result);
+    } catch (e) {
+      debugPrint('cropImage fail $e');
     } finally {
-      _cropping = false;
+      setState(() {
+        _cropping = false;
+      });
     }
-    setState(() {});
   }
 
   String get currPath => widget.file.path;
@@ -125,17 +135,22 @@ Future<EditImageInfo> cropImageDataWithNativeLibrary(
         is ExtendedResizeImage) {
       final ImmutableBuffer buffer = await ImmutableBuffer.fromUint8List(img);
       final ImageDescriptor descriptor = await ImageDescriptor.encoded(buffer);
-
-      final double widthRatio =
-          descriptor.width / imageEditorController.state!.image!.width;
-      final double heightRatio =
-          descriptor.height / imageEditorController.state!.image!.height;
-      cropRect = Rect.fromLTRB(
-        cropRect.left * widthRatio,
-        cropRect.top * heightRatio,
-        cropRect.right * widthRatio,
-        cropRect.bottom * heightRatio,
-      );
+      try {
+        final double widthRatio =
+            descriptor.width / imageEditorController.state!.image!.width;
+        final double heightRatio =
+            descriptor.height / imageEditorController.state!.image!.height;
+        cropRect = Rect.fromLTRB(
+          cropRect.left * widthRatio,
+          cropRect.top * heightRatio,
+          cropRect.right * widthRatio,
+          cropRect.bottom * heightRatio,
+        );
+      } finally {
+        //native内存,必须手动释放
+        descriptor.dispose();
+        buffer.dispose();
+      }
     }
     option.addOption(ClipOption.fromRect(cropRect));
   }
@@ -154,7 +169,8 @@ class ImageSaver {
   ///存储图片
   static Future<File?> saveImage(String fileName, Uint8List fileData) async {
     try {
-      var tempDir = await getApplicationDocumentsDirectory();
+      //裁剪结果是中间产物,放缓存目录,避免Documents目录只增不减
+      var tempDir = await getTemporaryDirectory();
       var path = "${tempDir.path}/$fileName";
       var file = File(path);
       file = await file.writeAsBytes(fileData);

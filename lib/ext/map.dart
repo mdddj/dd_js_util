@@ -23,12 +23,20 @@ extension MapExt3 on Map<dynamic, dynamic> {
 extension MapExt on Map<String, dynamic> {
   @Doc(message: 'List<dynamic> to List<String>')
   List<String> mapValueGetWithListString(String key) {
-    return List<String>.from(([key]).map((e) => e.toString())).toList();
+    final value = this[key];
+    if (value is List) {
+      return value.map((e) => e.toString()).toList();
+    }
+    return <String>[];
   }
 
   @Doc(message: 'get List<dynamic>')
   List<dynamic> getDynamicList(String key) {
-    return List<dynamic>.from(([key]).map((e) => e)).toList();
+    final value = this[key];
+    if (value is List) {
+      return List<dynamic>.from(value);
+    }
+    return <dynamic>[];
   }
 
   Map<String, Object> get asMapObject {
@@ -43,7 +51,7 @@ extension MapExt on Map<String, dynamic> {
 
   Map<String, Object> get firbaseAnalysisParams {
     return asMapObject
-      ..removeWhere((key, value) => value is! String || value is! num);
+      ..removeWhere((key, value) => !(value is String || value is num));
   }
 
   WrapJson get json {
@@ -130,7 +138,7 @@ class WrapJson {
 
   void print([VoidCallback? doSomeing]) {
     doSomeing?.call();
-    Logger().f(data);
+    _kLogger.f(data);
   }
 
   Map<String, dynamic> getMap(String key,

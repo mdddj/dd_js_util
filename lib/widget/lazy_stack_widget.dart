@@ -33,7 +33,7 @@ class LazyIndexedStack extends StatefulWidget {
 }
 
 class _LazyIndexedStackState extends State<LazyIndexedStack> {
-  late final List<bool> _activatedList = List<bool>.generate(
+  late List<bool> _activatedList = List<bool>.generate(
     widget.children.length,
         (int i) => i == widget.index,
   );
@@ -41,6 +41,15 @@ class _LazyIndexedStackState extends State<LazyIndexedStack> {
   @override
   void didUpdateWidget(LazyIndexedStack oldWidget) {
     super.didUpdateWidget(oldWidget);
+    //children 数量变化时同步扩容/裁剪,否则[_buildChildren]会越界
+    if (oldWidget.children.length != widget.children.length) {
+      _activatedList = List<bool>.generate(
+        widget.children.length,
+            (int i) => i < oldWidget.children.length
+            ? _activatedList[i]
+            : i == widget.index,
+      );
+    }
     // Activate new index when it's changed between widgets update.
     if (oldWidget.index != widget.index) {
       _activateIndex(widget.index);
@@ -48,7 +57,7 @@ class _LazyIndexedStackState extends State<LazyIndexedStack> {
   }
 
   void _activateIndex(int? index) {
-    if (index == null) {
+    if (index == null || index >= _activatedList.length) {
       return;
     }
     if (!_activatedList[index]) {

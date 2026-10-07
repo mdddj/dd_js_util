@@ -52,6 +52,9 @@ class FlipCardComponentState extends State<FlipCardComponent>
   bool isFront = true;
   bool hasHalf = false;
 
+  ///上一次通知过的面,避免在动画的每一帧都回调[valueChanged]
+  bool _lastReported = true;
+
   void _bind(){
     widget.controller._bind(this);
   }
@@ -68,7 +71,10 @@ class FlipCardComponentState extends State<FlipCardComponent>
         }
         hasHalf = true;
       }
-      widget.valueChanged?.call(isFront);
+      if (isFront != _lastReported) {
+        _lastReported = isFront;
+        widget.valueChanged?.call(isFront);
+      }
       if(mounted){
         setState(() {});
       }
@@ -98,8 +104,9 @@ class FlipCardComponentState extends State<FlipCardComponent>
 
   @override
   void dispose() {
-    super.dispose();
+    //AnimationController 必须在 super.dispose() 之前释放,否则动画未结束时销毁会触发断言
     animationController.dispose();
+    super.dispose();
   }
 
   @override

@@ -1,6 +1,9 @@
 part of '../dd_js_util.dart';
 
-Color getRandomColor() => Color.fromRGBO(Random().nextInt(256), Random().nextInt(256), Random().nextInt(256), 1);
+///[Random]复用同一个实例,不要每次调用都新建
+final Random _kRandom = Random();
+
+Color getRandomColor() => Color.fromRGBO(_kRandom.nextInt(256), _kRandom.nextInt(256), _kRandom.nextInt(256), 1);
 // 时间戳转时间
 String customStampStr({
   int? timestamp, // 为空则显示当前时间

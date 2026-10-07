@@ -16,22 +16,22 @@ extension IListEx<T> on IList<T> {
   }
 
   IList<T> updateLast(T Function(T old) callUpdate) {
-    return updateItemEx(last, callUpdate);
+    return replaceBy(length - 1, callUpdate);
   }
 
   IList<T> updateFirst(T Function(T old) callUpdate) {
-    return updateItemEx(first, callUpdate);
+    return replaceBy(0, callUpdate);
   }
 
   IList<T> updateItemWithIndex(int index, T Function(T old) callUpdate) {
-    return updateItemEx(this.get(index), callUpdate);
+    return replaceBy(index, callUpdate);
   }
 
   ///修改列表全部的元素
   IList<T> updateAll(ValueCopyWith<T> update) {
     var list = this;
-    for (var element in list) {
-      list = list.updateItemEx(element, update);
+    for (var i = 0; i < list.length; i++) {
+      list = list.replaceBy(i, update);
     }
     return list;
   }
@@ -39,9 +39,10 @@ extension IListEx<T> on IList<T> {
   ///有条件的修改全部
   IList<T> updateAllWhere(bool Function(T element) where, ValueCopyWith<T> update) {
     var list = this;
-    for (var element in list) {
+    for (var i = 0; i < list.length; i++) {
+      final element = list.get(i);
       if (where(element)) {
-        list = list.updateItemEx(element, update);
+        list = list.replaceBy(i, update);
       }
     }
     return list;

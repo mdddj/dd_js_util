@@ -6,7 +6,7 @@ extension AskStringDialogEx on BuildContext {
   }
 }
 
-class AskStringDialog extends StatelessWidget {
+class AskStringDialog extends StatefulWidget {
   final AskStringDialogParams params;
 
 
@@ -34,8 +34,22 @@ class AskStringDialog extends StatelessWidget {
   const AskStringDialog({super.key, required this.params});
 
   @override
+  State<AskStringDialog> createState() => _AskStringDialogState();
+}
+
+class _AskStringDialogState extends State<AskStringDialog> {
+  ///控制器由State持有并在[dispose]里释放;放在build里每次重建都会丢输入并泄漏一个
+  final TextEditingController controller = TextEditingController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final controller = TextEditingController();
+    final params = widget.params;
     return CupertinoAlertDialog(
       content: SingleChildScrollView(
         child: Column(children: [

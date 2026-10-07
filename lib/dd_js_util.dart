@@ -16,7 +16,6 @@ import 'package:ffloat_nullsafety/ffloat_nullsafety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -38,6 +37,11 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'model/models.dart';
 import 'widget/search/search_support.dart';
 import 'widget/search/search_support_manager.dart';
+
+///以下文件是独立library(不是part),没有导出的话使用者只能deep import
+export 'mixin/catch_base_mixin.dart';
+export 'widget/base/simple_api_page_v2.dart';
+export 'widget/image_cut.dart';
 
 part './api/util.dart';
 

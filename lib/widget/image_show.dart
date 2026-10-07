@@ -43,6 +43,9 @@ class PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMixi
   int? currentIndex;
   bool _showSwiper = true;
 
+  ///[ExtendedPageController]不能建在build里,否则每次rebuild都会新建一个(旧的从不释放)
+  ExtendedPageController? _pageController;
+
   @override
   void initState() {
     currentIndex = widget.initIndex;
@@ -55,6 +58,7 @@ class PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMixi
     rebuildIndex.close();
     rebuildSwiper.close();
     _animationController?.dispose();
+    _pageController?.dispose();
     clearGestureDetailsCache();
     super.dispose();
   }
@@ -128,7 +132,7 @@ class PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMixi
                   currentIndex = index;
                   rebuildIndex.add(index);
                 },
-                controller: ExtendedPageController(
+                controller: _pageController ??= ExtendedPageController(
                   initialPage: currentIndex!,
                 ),
                 scrollDirection: Axis.horizontal,

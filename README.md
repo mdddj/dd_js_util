@@ -9,51 +9,22 @@ pub地址: <https://pub.dev/packages/dd_js_util>
 
 # 开始使用
 
-### 2022.11.16 更新: 让你的APP添加强大的更换主题能力
+### 主题能力已拆分(7.1.0 起)
 
-只需要3步.
-
-* 注册
-```dart
-void main(){
-  AppThemeUtil().registerAdapterAndOpenBox();
-}
-```
-
-* 开始使用
-
-使用`ThemeBuildWidget`包裹`MaterialApp`
-```dart
-      ThemeBuildWidget(themeBuild: (appThemeSetting) {
-        return MaterialApp(
-          theme: MyAppTheme.getTheme(appThemeSetting.themeIndex),
-          themeMode: appThemeSetting.getThemeMode
-        );
-      })
-```
-
-* 前往更换主题设置页面
-```dart
-context.navToWidget(to: ThemeSettingPage());
-```
-
-* 更换主题API
-```dart
-AppThemeUtil().changeThemeWithEnum(CustomAppThemeData theme);//参数是主题枚举
-```
+`AppThemeUtil` / `ThemeBuildWidget` / `ThemeSettingPage` / `changeThemeWithEnum` 已移到独立包
+[`simple_ui_theme`](https://pub.dev/packages/simple_ui_theme)，本包不再提供这些 API。
 
 # dio 封装
 
 ```dart
-//1.初始化,换成你的域名
-BaseApi.host='https://itbug.shop';
-
-//2.声明接口
+//1.声明接口,域名放在 options 里(BaseApi.host 已移除)
 class BlogsApi extends BaseApi {
-  BlogsApi():super("/blogs");
+  BlogsApi() : super("/blogs") {
+    options = options.copyWith(baseUrl: 'https://itbug.shop');
+  }
 }
 
-//3.使用接口
+//2.使用接口
 void fetchBlogs(){
   BlogsApi().request(); //发起请求
 }
@@ -62,8 +33,8 @@ void fetchBlogs(){
 ///如果有特殊需求,比如添加拦截器等等
 class UserProfileApi extends BaseApi{
   UserProfileApi():super('/user/profile',httpMethod:HttpMethod.post){
-    //添加拦截器
-    intrtceptors.add(TokenIntrtceptors());
+    //添加拦截器(interceptions 是 ISet,base 里的拦截器每次请求只会注册一次)
+    interceptions = interceptions.add(TokenInterceptor());
   }
 
   ///获取添加参数

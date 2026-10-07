@@ -2,7 +2,8 @@ part of '../dd_js_util.dart';
 
 extension ContextExt on BuildContext {
   void hideKeyBoard() {
-    FocusScope.of(this).requestFocus(FocusNode());
+    //不要requestFocus一个新建的FocusNode,那个节点不会被释放
+    FocusScope.of(this).unfocus();
   }
 
   TextTheme get kTextTheme => theme.textTheme;
@@ -13,13 +14,14 @@ extension ContextExt on BuildContext {
 
   ThemeData get kTheme => Theme.of(this);
 
-  double get screenWidth => MediaQuery.of(this).size.width;
+  ///[MediaQuery.sizeOf]只在尺寸变化时通知,用[MediaQuery.of]会被键盘/安全区等任何变化牵连重建
+  double get screenWidth => MediaQuery.sizeOf(this).width;
 
-  double get screenHeight => MediaQuery.of(this).size.height;
+  double get screenHeight => MediaQuery.sizeOf(this).height;
 
-  double get paddingBottom => MediaQuery.of(this).padding.bottom;
+  double get paddingBottom => MediaQuery.paddingOf(this).bottom;
 
-  double get paddingTop => MediaQuery.of(this).padding.top;
+  double get paddingTop => MediaQuery.paddingOf(this).top;
 
   double get kBodyHeight => screenHeight - paddingTop - kToolbarHeight;
 

@@ -144,17 +144,18 @@ class _CountDownState extends State<CountDown> {
 
   DateTime refreshDiff() {
     final now = DateTime.now();
-    final vEndDate = DateTime.parse(_endTime);
+    //endTime为空时(secondBuild模式)不能直接parse,否则抛FormatException
+    final vEndDate = DateTime.tryParse(_endTime) ?? now;
     final diff = vEndDate.difference(now); // 毫秒
 
     /// diffDay < 1  小于一天才显示
     if (now.isBefore(vEndDate)) {
       showComm = true;
       _day = diff.inDays;
-      _hour = diff.inHours;
+      _hour = diff.inHours % 24;
       _minute = diff.inMinutes % 60;
       _second = diff.inSeconds % 60;
-      _mill = diff.inMilliseconds % 60;
+      _mill = diff.inMilliseconds % 1000;
       _refreshUi();
     }
     return vEndDate;

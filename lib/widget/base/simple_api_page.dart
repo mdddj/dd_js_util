@@ -32,6 +32,8 @@ mixin MyBasePage<T extends BaseApi, S, W extends StatefulWidget, R> on State<W> 
     if (mounted) {
       setState(() {
         exception = null;
+        //复位上一次的空数据状态,否则重试成功后仍然渲染[emptyWidget]
+        _empty = false;
       });
     }
     try {

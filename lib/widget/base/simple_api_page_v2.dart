@@ -20,6 +20,9 @@ class SimpleApiPageV2State extends State<SimpleApiPageV2> {
   WrapJson? _json;
   bool loading = true;
 
+  ///请求/解析失败时的异常,便于调用方自行渲染错误态
+  Object? error;
+
   @override
   void initState() {
     super.initState();
@@ -27,19 +30,28 @@ class SimpleApiPageV2State extends State<SimpleApiPageV2> {
   }
 
   Future<void> _fetchData() async {
-    if(loading != true){
+    if (loading != true) {
       setState(() {
         loading = true;
+        error = null;
       });
     }
-    final response = await api.request();
-    if (response is WrapJson) {
+    try {
+      final response = await api.request();
+      if (response is! WrapJson) {
+        throw UnimplementedError("不支持解析对象!!");
+      }
       setState(() {
         loading = false;
         _json = response;
       });
-    }else{
-      throw UnimplementedError("不支持解析对象!!");
+    } catch (e) {
+      //失败时必须关掉loading,否则页面会一直转圈
+      setState(() {
+        loading = false;
+        _json = null;
+        error = e;
+      });
     }
   }
 

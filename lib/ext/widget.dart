@@ -50,7 +50,7 @@ extension WidgetExt on Widget {
 
   Widget maxWidth(double width) => ConstrainedBox(constraints: BoxConstraints(maxWidth: width), child: this);
 
-  Widget paddingWithObj(EdgeInsets edgeInsets) => Padding(padding: edgeInsets);
+  Widget paddingWithObj(EdgeInsets edgeInsets) => Padding(padding: edgeInsets, child: this);
 
   Widget get maxWidthButton => SizedBox(width: double.infinity,child: this);
 
@@ -96,12 +96,13 @@ extension WidgetExt on Widget {
 
   ///添加滚动条
   Widget addScrollbar({ScrollController? controller}) {
-    if (io.Platform.isAndroid) {
+    //web上访问[io.Platform]会抛UnsupportedError
+    if (!kIsWeb && io.Platform.isAndroid) {
       return Scrollbar(
         controller: controller,
         child: this,
       );
-    } else if (io.Platform.isIOS) {
+    } else if (!kIsWeb && io.Platform.isIOS) {
       return CupertinoScrollbar(
         controller: controller,
         child: this,

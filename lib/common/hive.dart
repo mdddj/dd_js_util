@@ -109,29 +109,38 @@ class CatchException implements Exception {
   }
 }
 
-abstract class HiveConsumerWidget<S> extends StatelessWidget {
+abstract class HiveConsumerWidget<S> extends StatefulWidget {
   const HiveConsumerWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<Box<S>>(
-      future: AsyncMemoizer<Box<S>>().runOnce(() => box),
-      builder: (context, snapshot) {
-        final openedBox = snapshot.data;
-        if (openedBox != null) {
-          return ValueListenableBuilder<Box<S>>(
-            valueListenable: openedBox.listenable(),
-            builder: builder,
-          );
-        }
-        return errorWidget;
-      },
-    );
-  }
+  State<HiveConsumerWidget<S>> createState() => _HiveConsumerWidgetState<S>();
 
   Future<Box<S>> get box;
 
   Widget builder(BuildContext context, Box<S> hiveBox, Widget? child);
 
   Widget get errorWidget => const SizedBox.shrink();
+}
+
+class _HiveConsumerWidgetState<S> extends State<HiveConsumerWidget<S>> {
+  ///[AsyncMemoizer]必须跨重建复用;建在build里等于每次重建都重新[openBox],
+  ///并给[FutureBuilder]换一个新Future,会闪回errorWidget
+  final AsyncMemoizer<Box<S>> _memoizer = AsyncMemoizer<Box<S>>();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<Box<S>>(
+      future: _memoizer.runOnce(() => widget.box),
+      builder: (context, snapshot) {
+        final openedBox = snapshot.data;
+        if (openedBox != null) {
+          return ValueListenableBuilder<Box<S>>(
+            valueListenable: openedBox.listenable(),
+            builder: widget.builder,
+          );
+        }
+        return widget.errorWidget;
+      },
+    );
+  }
 }

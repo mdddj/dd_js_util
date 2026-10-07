@@ -9,6 +9,10 @@ class ImageEx {
 
   ImageEx(this.url);
 
+  ///正则不要每次调用都重新编译
+  static final RegExp _imagePattern =
+      RegExp(r'\.(jpeg|jpg|gif|png)$', caseSensitive: false);
+
   ///获取文件名字,不带扩展
   String get filename => path.basenameWithoutExtension(url);
 
@@ -23,8 +27,7 @@ class ImageEx {
 
   ///判断是不是一个图片地址
   bool get isImageURL {
-    final pattern = RegExp(r'\.(jpeg|jpg|gif|png)$', caseSensitive: false);
-    return pattern.hasMatch(url);
+    return _imagePattern.hasMatch(url);
   }
 
   ///判断是不是一个网络图片

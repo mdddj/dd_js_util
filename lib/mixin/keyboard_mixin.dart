@@ -32,12 +32,22 @@ mixin KeyboardMixin<T extends ConsumerStatefulWidget> on ConsumerState<T>   {
 
 
   void reset(){
-    Future.microtask(() => ref.read(myKeyBoardHeight.notifier).state = 0.0);
+    Future.microtask(() {
+      //microtask执行时组件可能已经dispose,此时ref.read会抛StateError
+      if (!mounted) {
+        return;
+      }
+      ref.read(myKeyBoardHeight.notifier).state = 0.0;
+    });
   }
 
   ///当键盘高度变化时执行
   void didChangeMetrics(){
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        //回调在下一帧执行,期间可能已经dispose
+        if (!mounted) {
+          return;
+        }
         final height =  MediaQuery.of(context).viewInsets.bottom;
         ref.read(myKeyBoardHeight.notifier).state = height;
         if(height == 0.0){
@@ -64,8 +74,9 @@ mixin KeyboardMixin<T extends ConsumerStatefulWidget> on ConsumerState<T>   {
 
   @override
   void dispose() {
-    super.dispose();
+    //先移除观察者,避免释放后回调进来
     WidgetsBinding.instance.removeObserver(binds);
+    super.dispose();
   }
 
   void hideKeyboard(){

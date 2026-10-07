@@ -369,36 +369,49 @@ class ImageDefaultShow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double devicePixelRatio = MediaQuery.devicePixelRatioOf(context);
     return AspectRatio(
       aspectRatio: 1,
-      child: Stack(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            height: double.infinity,
-            child: file.isLocalFile
-                ? Image.file(
-                    (file as XXFile).file,
-                    fit: BoxFit.cover,
-                  )
-                : Image.network((file as XXImage).url),
-          ),
-          (removeWidget ?? const SizedBox()).addTap(() {
-            onRemove?.call(file);
-          }),
-          if (removeWidget == null)
-            Positioned(
-                right: 6,
-                top: 6,
-                child: const SizedBox(
-                        width: 26,
-                        height: 26,
-                        child: CircleAvatar(backgroundColor: Colors.black45, child: Icon(Icons.delete, size: 12)))
-                    .addTap(() {
-                  onRemove?.call(file);
-                }))
-        ],
-      ),
+      child: LayoutBuilder(builder: (context, constraints) {
+        //按控件尺寸解码,否则相册原图会按原始分辨率进内存(一张1200万像素照片约48MB)
+        final int? cacheSize = constraints.maxWidth.isFinite
+            ? (constraints.maxWidth * devicePixelRatio).round()
+            : null;
+        return Stack(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              height: double.infinity,
+              child: file.isLocalFile
+                  ? Image.file(
+                      (file as XXFile).file,
+                      fit: BoxFit.cover,
+                      cacheWidth: cacheSize,
+                      cacheHeight: cacheSize,
+                    )
+                  : Image.network(
+                      (file as XXImage).url,
+                      cacheWidth: cacheSize,
+                      cacheHeight: cacheSize,
+                    ),
+            ),
+            (removeWidget ?? const SizedBox()).addTap(() {
+              onRemove?.call(file);
+            }),
+            if (removeWidget == null)
+              Positioned(
+                  right: 6,
+                  top: 6,
+                  child: const SizedBox(
+                          width: 26,
+                          height: 26,
+                          child: CircleAvatar(backgroundColor: Colors.black45, child: Icon(Icons.delete, size: 12)))
+                      .addTap(() {
+                    onRemove?.call(file);
+                  }))
+          ],
+        );
+      }),
     );
   }
 }

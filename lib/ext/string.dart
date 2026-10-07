@@ -1,5 +1,14 @@
 part of '../dd_js_util.dart';
 
+const String _kNetworkImageRegExpString =
+    r'^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp)$';
+
+///默认正则只编译一次
+final RegExp _kNetworkImageRegExp = RegExp(_kNetworkImageRegExpString);
+
+final RegExp _kEmailRegExp = RegExp(
+    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+
 ///字符串相关扩展
 extension StringExtension on String {
   ///下载图片资源到相册
@@ -60,6 +69,8 @@ extension StringExtension on String {
           imageBytes = Uint8List.fromList(response.data!);
         } else {
           onFailed?.call();
+          //避免继续用null去保存,那样会走到catch里二次触发onFailed
+          return;
         }
       }
       // 保存图片
@@ -101,14 +112,17 @@ extension StringExtension on String {
 
   @Doc(message: '获取时间')
   String get getMessageTimeWithString {
-    final date = DateTime.parse(this).millisecondsSinceEpoch;
+    //[IntExt.messageTime]按"秒"计算
+    final date = DateTime.parse(this).millisecondsSinceEpoch ~/ 1000;
     return date.messageTime;
   }
 
   @Doc(message: '判断是否为网络图片')
   bool isNetworkImage(
-      [String regExpString = r'^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp)$']) {
-    RegExp regExp = RegExp(regExpString);
+      [String regExpString = _kNetworkImageRegExpString]) {
+    final regExp = regExpString == _kNetworkImageRegExpString
+        ? _kNetworkImageRegExp
+        : RegExp(regExpString);
     return regExp.hasMatch(this);
   }
 
@@ -127,7 +141,5 @@ class HtmlTitleAndIconModel {
 }
 
 bool _isEmailValid(String email) {
-  return RegExp(
-          r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-      .hasMatch(email);
+  return _kEmailRegExp.hasMatch(email);
 }

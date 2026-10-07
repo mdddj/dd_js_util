@@ -50,20 +50,22 @@ class _RecordWidgetState extends State<RecordWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    //原来直接返回空Container,customBuild和recordState都没有任何作用
+    return widget.customBuild?.call(recordState) ?? const SizedBox.shrink();
   }
 
 
   @Doc(message: '初始化组件,询问是否有权限')
   Future<void> _initRec() async {
     _changeState(RecordState.initLoading);
-    bool p = await KPermissionUtil.askMicrophonePermission();
-    if(p){
-      _changeState(RecordState.initComplete);
-
-    }else{
-      _changeState(RecordState.noPermission);
+    bool p = false;
+    try {
+      p = await KPermissionUtil.askMicrophonePermission();
+    } catch (e) {
+      //权限查询失败不能让状态一直停在initLoading
+      debugPrint('askMicrophonePermission fail $e');
     }
+    _changeState(p ? RecordState.initComplete : RecordState.noPermission);
   }
   
   @Doc(message: '更新录音小部件状态')

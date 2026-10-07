@@ -36,12 +36,13 @@ void showIosDialog(String msg,
     String cancelText = 'Cancel',
     Widget? content,
     bool? removeCancelButton}) {
-  if (msg.isNotEmpty) {
+  if (msg.isNotEmpty || content != null) {
     const tag = 's-dialog-simple-ok-btn';
     SmartDialog.show(
         animationType: animationType,
         builder: (context) {
-          final isIos = io.Platform.isIOS;
+          //web上访问[io.Platform]会抛UnsupportedError
+          final isIos = !kIsWeb && io.Platform.isIOS;
           if (isIos) {
             return CupertinoAlertDialog(
               title: title,

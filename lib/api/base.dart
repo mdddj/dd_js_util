@@ -87,8 +87,8 @@ abstract class BaseApi<T> extends ChangeNotifier {
       }
       final baseOptions = await getOptions(options);
       final d = await getDio(baseOptions);
-      d.interceptors.addAll(
-          options.interceptorCall?.call(interceptions) ?? interceptions);
+      _addInterceptorsOnce(
+          d, options.interceptorCall?.call(interceptions) ?? interceptions);
       final contentTypeStr = options.contentType ??
           (httpMethod == HttpMethod.post
               ? io.ContentType.json.value
@@ -172,8 +172,7 @@ abstract class BaseApi<T> extends ChangeNotifier {
     SmartDialog.dismiss(status: SmartStatus.loading);
   }
 
-  Future<dio.BaseOptions> getOptions(RequestParams param) async =>
-      dio.BaseOptions();
+  Future<dio.BaseOptions> getOptions(RequestParams param) async => options;
 
   Future<dio.Dio> getDio(dio.BaseOptions baseOptions) async {
     if (_dio != null) {
@@ -182,6 +181,15 @@ abstract class BaseApi<T> extends ChangeNotifier {
     _host = baseOptions.baseUrl;
     _dio ??= dio.Dio(baseOptions);
     return _dio!;
+  }
+
+  ///[getDio]返回的[dio.Dio]会跨请求复用,直接[addAll]会让同一个拦截器在单次请求里被调用多次
+  void _addInterceptorsOnce(dio.Dio d, Iterable<dio.Interceptor> interceptors) {
+    for (final interceptor in interceptors) {
+      if (!d.interceptors.contains(interceptor)) {
+        d.interceptors.add(interceptor);
+      }
+    }
   }
 
   void handle(CallIf callIf, ValueChanged<BaseApi> call) {

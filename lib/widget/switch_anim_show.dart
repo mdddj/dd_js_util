@@ -11,7 +11,11 @@ class SwitchAnimShow extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 300),
-      child: condition ? show : elseShow,
+      //同类型的两个child必须换key,否则AnimatedSwitcher认为还是同一个child,直接替换不播动画
+      child: KeyedSubtree(
+        key: ValueKey<bool>(condition),
+        child: condition ? show : elseShow,
+      ),
     );
   }
 }

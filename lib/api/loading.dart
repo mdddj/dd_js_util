@@ -147,7 +147,7 @@ mixin ApiMixin<M, T extends BaseApi<M>, S extends StatefulWidget> on State<S> {
       requestEnd(false);
     } catch (e, s) {
       if (showLogs) {
-        Logger().e("请求失败.", error: e, stackTrace: s);
+        _kLogger.e("请求失败.", error: e, stackTrace: s);
       }
       _error = e;
       requestEnd(true);
