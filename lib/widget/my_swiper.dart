@@ -9,6 +9,16 @@ typedef MySwiperDataBuilder = Widget Function(
     BuildContext context, dynamic data, int index);
 
 /// Flutter built-in replacement for the old swiper dependency.
+///
+/// Only the subset of the old `Swiper` API listed below is actually
+/// implemented: [autoplay], [autoplayDelay], [duration], [curve], [loop],
+/// [index], [reverse], [scrollDirection], [viewportFraction], [scale],
+/// [fade], [itemHeight], [itemWidth], [onIndexChanged] and [onTap].
+///
+/// The legacy arguments documented as ignored placeholders are accepted so
+/// that existing call sites keep compiling, but they have no effect: a
+/// `pagination`, `transformer`, `control` or `plugins` value passed in will
+/// be silently discarded instead of rendering or animating anything.
 class MySwiper extends StatefulWidget {
   final IndexedWidgetBuilder itemBuilder;
   final int itemCount;
@@ -28,19 +38,45 @@ class MySwiper extends StatefulWidget {
   final double? containerWidth;
   final double itemHeight;
   final double itemWidth;
+
+  /// Ignored placeholder, kept for source compatibility. Has no effect.
   final bool outer;
   final double? scale;
   final double? fade;
   final bool reverse;
 
-  /// Kept as compatibility placeholders for common old Swiper constructor args.
+  // ---------------------------------------------------------------------
+  // Ignored placeholders.
+  //
+  // These fields exist only so old flutter_swiper call sites keep compiling.
+  // None of them are read by `build`, so passing a value has NO effect and
+  // raises no error at analysis time or at runtime. Migrating code that
+  // relies on them (a `SwiperPagination` indicator, a `SwiperTransformer`,
+  // a `SwiperControl`, or custom plugins) has to be rewritten by hand.
+  // ---------------------------------------------------------------------
+
+  /// Ignored placeholder, kept for source compatibility. Has no effect.
   final Object? transformer;
+
+  /// Ignored placeholder, kept for source compatibility. Has no effect.
   final Object? pagination;
+
+  /// Ignored placeholder, kept for source compatibility. Has no effect.
   final Object? control;
+
+  /// Ignored placeholder, kept for source compatibility. Has no effect.
   final List<Object?>? plugins;
+
+  /// Ignored placeholder, kept for source compatibility. Has no effect.
   final Object? controller;
+
+  /// Ignored placeholder, kept for source compatibility. Has no effect.
   final Object? customLayoutOption;
+
+  /// Ignored placeholder, kept for source compatibility. Has no effect.
   final Object? indicatorLayout;
+
+  /// Ignored placeholder, kept for source compatibility. Has no effect.
   final Object? layout;
 
   const MySwiper({
