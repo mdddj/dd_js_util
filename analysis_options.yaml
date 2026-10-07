@@ -11,6 +11,13 @@ analyzer:
     - lib/generated_plugin_registrant.dart
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
 linter:
   rules:
     - camel_case_types

@@ -7,19 +7,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07c65531-a961-4360-aed6-f4b7cf70859d" name="变更" comment="release 7.1.1-0h0s">
+    <list default="true" id="07c65531-a961-4360-aed6-f4b7cf70859d" name="变更" comment="release 9.1.0">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/api/base.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/base.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dd_js_util.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dd_js_util.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/models.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/models.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/util/dialog.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widget/date/custom_year_picker.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis_options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
@@ -130,6 +124,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "CidrDebugProfileConversion": "true",
     "RunOnceActivity.Enable generate summary features in internal mode": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -144,6 +139,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
+    "dart.analysis.tool.window.visible": "false",
     "dart.webdev.port": "53324",
     "git-widget-placeholder": "7.1.1",
     "io.flutter.project.isFirstOpen": "true",
@@ -158,7 +154,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.31573802",
-    "settings.editor.selected.configurable": "dart.vm.test",
+    "settings.editor.selected.configurable": "flutter.settings",
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
   },
@@ -188,7 +184,7 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
-    <configuration>$PROJECT_DIR$/../.subversion</configuration>
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -923,7 +919,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="bug fixed" />
     <MESSAGE value="release 4.1.2" />
     <MESSAGE value="release 4.1.5" />
     <MESSAGE value="变更" />
@@ -948,7 +943,8 @@
     <MESSAGE value="release 6.7.4" />
     <MESSAGE value="release 7.1.1" />
     <MESSAGE value="release 7.1.1-0h0s" />
-    <option name="LAST_COMMIT_MESSAGE" value="release 7.1.1-0h0s" />
+    <MESSAGE value="release 9.1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="release 9.1.0" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
