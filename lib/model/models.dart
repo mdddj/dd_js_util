@@ -386,6 +386,15 @@ sealed class DartTypeModel with _$DartTypeModel {
           model = DartTypeModel.json(dec);
         } else if (dec is List) {
           model = DartTypeModel.list(dec);
+        } else if (dec is num) {
+          //'123' 这种标量JSON字符串也要按解码结果归类,否则 isString/isNum 判断不到
+          model = DartTypeModel.num(dec);
+        } else if (dec is bool) {
+          model = DartTypeModel.bool(dec);
+        } else if (dec is String) {
+          model = DartTypeModel.string(dec);
+        } else if (dec == null) {
+          model = const DartTypeModel.nil();
         }
       } catch (e) {
         model = DartTypeModel.string(data);

@@ -183,9 +183,13 @@ class PictureSelection extends StatefulWidget {
 
 class _PictureSelectionState extends State<PictureSelection> {
   /// 用户已选择的图片
-  late final List<PictureSelectionItemModel> _renderImages = widget.initUrls ?? <PictureSelectionItemModel>[];
+  /// 复制一份,直接持有调用方的List时 remove/clean 会把调用方的数据一起改掉
+  late final List<PictureSelectionItemModel> _renderImages =
+      List<PictureSelectionItemModel>.of(
+          widget.initUrls ?? const <PictureSelectionItemModel>[]);
 
-  late final PictureSelectionController _controller = widget.controller ?? PictureSelectionController();
+  late PictureSelectionController _controller =
+      widget.controller ?? PictureSelectionController();
 
   @override
   Widget build(BuildContext context) {
@@ -213,9 +217,24 @@ class _PictureSelectionState extends State<PictureSelection> {
   @override
   void didUpdateWidget(covariant PictureSelection oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.controller != _controller) {
-      _bindController();
+    if (oldWidget.controller == widget.controller) {
+      return;
     }
+    //先解绑旧的controller(包括内部自己创建的那个),否则它会一直指向这个State
+    if (identical(_controller._state, this)) {
+      _controller.bind(null);
+    }
+    _controller = widget.controller ?? PictureSelectionController();
+    _bindController();
+  }
+
+  @override
+  void dispose() {
+    //解绑,否则外部持有的controller会一直引用已销毁的State
+    if (identical(_controller._state, this)) {
+      _controller.bind(null);
+    }
+    super.dispose();
   }
 
   /// 渲染"添加小部件"
@@ -441,7 +460,7 @@ class PictureSelectionController {
   _PictureSelectionState? _state;
 
   // ignore: library_private_types_in_public_api
-  void bind(_PictureSelectionState state) {
+  void bind(_PictureSelectionState? state) {
     _state = state;
   }
 

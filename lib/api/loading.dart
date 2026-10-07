@@ -142,10 +142,17 @@ mixin ApiMixin<M, T extends BaseApi<M>, S extends StatefulWidget> on State<S> {
         setState(() => pageState = PageState.loading);
       }
       final r = await api.request(requestParams);
+      //await期间widget可能已经被销毁,不能再回调使用方
+      if (!mounted) {
+        return;
+      }
       responseModelHandle(r);
       setState(() => pageState = PageState.hasData);
       requestEnd(false);
     } catch (e, s) {
+      if (!mounted) {
+        return;
+      }
       if (showLogs) {
         _kLogger.e("请求失败.", error: e, stackTrace: s);
       }

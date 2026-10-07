@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'dart:io' as io;
 import 'dart:math' as math;
 import 'dart:math';
+import 'dart:ui' as ui;
 
 import 'package:async/async.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -40,6 +41,7 @@ import 'widget/search/search_support_manager.dart';
 
 ///以下文件是独立library(不是part),没有导出的话使用者只能deep import
 export 'mixin/catch_base_mixin.dart';
+export 'model/models.dart';
 export 'widget/base/simple_api_page_v2.dart';
 export 'widget/image_cut.dart';
 

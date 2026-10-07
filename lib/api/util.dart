@@ -20,6 +20,9 @@ T? asT<T extends Object?>(dynamic value, [T? defaultValue]) {
       final valueS = value.toString();
       if ('' is T) {
         return valueS as T;
+      } else if (0 is T && 0.0 is T) {
+        //T是num:必须用num.parse,否则 '1.5' 会走int.parse抛异常后返回默认值
+        return num.parse(valueS) as T;
       } else if (0 is T) {
         return int.parse(valueS) as T;
       } else if (0.0 is T) {
@@ -42,7 +45,11 @@ T? asT<T extends Object?>(dynamic value, [T? defaultValue]) {
 
 void tryCatch(Function? f) {
   try {
-    f?.call();
+    final result = f?.call();
+    if (result is Future) {
+      //异步异常不会被上面的catch接住,必须消费掉,否则会变成未捕获异常
+      result.ignore();
+    }
   } catch (_) {
   }
 }

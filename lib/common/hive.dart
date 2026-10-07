@@ -127,6 +127,18 @@ class _HiveConsumerWidgetState<S> extends State<HiveConsumerWidget<S>> {
   ///并给[FutureBuilder]换一个新Future,会闪回errorWidget
   final AsyncMemoizer<Box<S>> _memoizer = AsyncMemoizer<Box<S>>();
 
+  Box<S>? _listenableBox;
+  ValueListenable<Box<S>>? _boxListenable;
+
+  ///[listenable]不要每次重建都新建一个,否则[ValueListenableBuilder]会重复订阅
+  ValueListenable<Box<S>> _listenableOf(Box<S> box) {
+    if (_listenableBox != box) {
+      _listenableBox = box;
+      _boxListenable = box.listenable();
+    }
+    return _boxListenable!;
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Box<S>>(
@@ -135,7 +147,7 @@ class _HiveConsumerWidgetState<S> extends State<HiveConsumerWidget<S>> {
         final openedBox = snapshot.data;
         if (openedBox != null) {
           return ValueListenableBuilder<Box<S>>(
-            valueListenable: openedBox.listenable(),
+            valueListenable: _listenableOf(openedBox),
             builder: widget.builder,
           );
         }

@@ -332,7 +332,12 @@ class _MySwiperState extends State<MySwiper> {
 
   Widget _buildItem(BuildContext context, int pageIndex) {
     final int realIndex = _realIndex(pageIndex);
-    Widget child = widget.itemBuilder(context, realIndex);
+    //PageView会复用槽位,没有key时换页会把槽位的State交给另一个数据项;
+    //itemCount<=1时所有页面都是同一项,用页号区分避免key重复
+    Widget child = KeyedSubtree(
+      key: ValueKey<int>(widget.itemCount > 1 ? realIndex : pageIndex),
+      child: widget.itemBuilder(context, realIndex),
+    );
 
     if (widget.scale != null || widget.fade != null) {
       child = AnimatedBuilder(

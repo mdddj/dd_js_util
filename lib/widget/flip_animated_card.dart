@@ -8,13 +8,15 @@ enum FlipCardShowType{
 
 
 class FlipCardComponentController {
-  late FlipCardComponentState state;
+  ///当前挂载的State,组件销毁后会置空,所以调用前要用[state]判空
+  FlipCardComponentState? state;
+
   void _bind(FlipCardComponentState vState){
     state = vState;
   }
 
   void switchComponent() {
-    state.animate();
+    state?.animate();
   }
 }
 
@@ -104,6 +106,10 @@ class FlipCardComponentState extends State<FlipCardComponent>
 
   @override
   void dispose() {
+    //解绑,否则外部持有的controller会一直引用已销毁的State
+    if (identical(widget.controller.state, this)) {
+      widget.controller.state = null;
+    }
     //AnimationController 必须在 super.dispose() 之前释放,否则动画未结束时销毁会触发断言
     animationController.dispose();
     super.dispose();
@@ -134,6 +140,10 @@ class FlipCardComponentState extends State<FlipCardComponent>
   @override
   void didUpdateWidget(covariant FlipCardComponent oldWidget) {
     if(widget.controller!=oldWidget.controller){
+      //旧controller要解绑,否则它会一直指向这个State
+      if (identical(oldWidget.controller.state, this)) {
+        oldWidget.controller.state = null;
+      }
       _bind();
     }
     super.didUpdateWidget(oldWidget);

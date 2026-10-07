@@ -151,13 +151,23 @@ abstract class BaseApi<T> extends ChangeNotifier {
 
   ///下载文件
   Future<T> download([RequestParams options = const RequestParams()]) async {
+    final downloadUrl = options.downloadUrl;
+    final savePath = options.savePath;
+    //assert在release里会被去掉,这里显式抛业务异常
+    if (downloadUrl == null) {
+      throw BaseApiException.businessException(message: "请传入下载链接");
+    }
+    if (savePath == null) {
+      throw BaseApiException.businessException(message: "请传入保存路径");
+    }
     final baseOptions = await getOptions(options);
     final d = await getDio(baseOptions);
-    assert(options.downloadUrl != null, "请传入下载链接");
-    assert(options.savePath != null, "请传入保存路径");
+    if (options.showDefaultLoading) {
+      showLoading(loadingText: options.loadingText);
+    }
     try {
       final response = await d.download(
-          options.downloadUrl!, options.savePath!.path,
+          downloadUrl, savePath.path,
           onReceiveProgress: options.onReceiveProgress,
           data: options.data,
           cancelToken: options.cancelToken);
@@ -167,6 +177,10 @@ abstract class BaseApi<T> extends ChangeNotifier {
       return covertToModel(model, options);
     } on dio.DioException catch (e) {
       throw BaseApiException.createFromDioException(e);
+    } finally {
+      if (options.showDefaultLoading) {
+        closeLoading();
+      }
     }
   }
 
@@ -257,8 +271,11 @@ class FetchRawByUrl extends BaseApi<DartTypeModel> {
   @override
   Future<DartTypeModel> request(
       [RequestParams options = const RequestParams()]) {
-    return super
-        .request(RequestParams(showDefaultLoading: false, fullUrl: requestUrl));
+    //保留调用方传入的cancelToken/headers/回调等,只覆盖这两项
+    return super.request(options.copyWith(
+      showDefaultLoading: false,
+      fullUrl: requestUrl,
+    ));
   }
 }
 

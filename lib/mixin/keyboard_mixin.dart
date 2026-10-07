@@ -29,15 +29,15 @@ mixin KeyboardMixin<T extends ConsumerStatefulWidget> on ConsumerState<T>   {
   // ignore: library_private_types_in_public_api
   late _Binds binds;
 
+  ///initState里取到notifier后持有,dispose阶段不能再使用ref
+  late final StateController<double> _keyboardHeightNotifier;
+
 
 
   void reset(){
     Future.microtask(() {
-      //microtask执行时组件可能已经dispose,此时ref.read会抛StateError
-      if (!mounted) {
-        return;
-      }
-      ref.read(myKeyBoardHeight.notifier).state = 0.0;
+      //不用ref:执行时组件可能已经dispose
+      _keyboardHeightNotifier.state = 0.0;
     });
   }
 
@@ -49,7 +49,7 @@ mixin KeyboardMixin<T extends ConsumerStatefulWidget> on ConsumerState<T>   {
           return;
         }
         final height =  MediaQuery.of(context).viewInsets.bottom;
-        ref.read(myKeyBoardHeight.notifier).state = height;
+        _keyboardHeightNotifier.state = height;
         if(height == 0.0){
           onClose();
         }else{
@@ -67,6 +67,7 @@ mixin KeyboardMixin<T extends ConsumerStatefulWidget> on ConsumerState<T>   {
   @override
   void initState() {
     super.initState();
+    _keyboardHeightNotifier = ref.read(myKeyBoardHeight.notifier);
     binds = _Binds(didChangeMetricsFun:didChangeMetrics);
     WidgetsBinding.instance.addObserver(binds);
 
@@ -76,6 +77,8 @@ mixin KeyboardMixin<T extends ConsumerStatefulWidget> on ConsumerState<T>   {
   void dispose() {
     //先移除观察者,避免释放后回调进来
     WidgetsBinding.instance.removeObserver(binds);
+    //全局键盘高度复位,否则页面退出后其他页面会读到上一次的残留高度
+    _keyboardHeightNotifier.state = 0.0;
     super.dispose();
   }
 

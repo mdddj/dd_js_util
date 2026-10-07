@@ -20,77 +20,11 @@ typedef PopupMenuCanceled = void Function();
 typedef PopupMenuItemBuilder<T> = List<PopupMenuEntry<T>> Function(
     BuildContext context);
 
-/// Displays a menu when pressed and calls [onSelected] when the menu is dismissed
-/// because an item was selected. The value passed to [onSelected] is the value of
-/// the selected menu item.
+///和Material的[PopupMenuButton]用法一致,额外支持右键菜单:
 ///
-/// One of [child] or [icon] may be provided, but not both. If [icon] is provided,
-/// then [PopupMenuButton] behaves like an [IconButton].
-///
-/// If both are null, then a standard overflow icon is created (depending on the
-/// platform).
-///
-/// /// ## Updating to [MenuAnchor]
-///
-/// There is a Material 3 component,
-/// [MenuAnchor] that is preferred for applications that are configured
-/// for Material 3 (see [ThemeData.useMaterial3]).
-/// The [MenuAnchor] widget's visuals
-/// are a little bit different, see the Material 3 spec at
-/// <https://m3.material.io/components/menus/guidelines> for
-/// more details.
-///
-/// The [MenuAnchor] widget's API is also slightly different.
-/// [MenuAnchor]'s were built to be lower level interface for
-/// creating menus that are displayed from an anchor.
-///
-/// There are a few steps you would take to migrate from
-/// [PopupMenuButton] to [MenuAnchor]:
-///
-/// 1. Instead of using the [PopupMenuButton.itemBuilder] to build
-/// a list of [PopupMenuEntry]s, you would use the [MenuAnchor.menuChildren]
-/// which takes a list of [Widget]s. Usually, you would use a list of
-/// [MenuItemButton]s as shown in the example below.
-///
-/// 2. Instead of using the [PopupMenuButton.onSelected] callback, you would
-/// set individual callbacks for each of the [MenuItemButton]s using the
-/// [MenuItemButton.onPressed] property.
-///
-/// 3. To anchor the [MenuAnchor] to a widget, you would use the [MenuAnchor.builder]
-/// to return the widget of choice - usually a [TextButton] or an [IconButton].
-///
-/// 4. You may want to style the [MenuItemButton]s, see the [MenuItemButton]
-/// documentation for details.
-///
-/// Use the sample below for an example of migrating from [PopupMenuButton] to
-/// [MenuAnchor].
-///
-/// {@tool dartpad}
-/// This example shows a menu with three items, selecting between an enum's
-/// values and setting a `selectedMenu` field based on the selection.
-///
-/// ** See code in examples/api/lib/material/popup_menu/popup_menu.0.dart **
-/// {@end-tool}
-///
-/// {@tool dartpad}
-/// This example shows how to migrate the above to a [MenuAnchor].
-///
-/// ** See code in examples/api/lib/material/menu_anchor/menu_anchor.2.dart **
-/// {@end-tool}
-///
-/// {@tool dartpad}
-/// This sample shows the creation of a popup menu, as described in:
-/// https://m3.material.io/components/menus/overview
-///
-/// ** See code in examples/api/lib/material/popup_menu/popup_menu.1.dart **
-/// {@end-tool}
-///
-/// See also:
-///
-///  * [PopupMenuItem], a popup menu entry for a single value.
-///  * [PopupMenuDivider], a popup menu entry that is just a horizontal line.
-///  * [CheckedPopupMenuItem], a popup menu item with a checkmark.
-///  * [showMenu], a method to dynamically show a popup menu at a given location.
+/// * [isRightMenu] 为`true`时只响应右键(默认`false`,左键点击打开)
+/// * [rightMenuDetailHandle] 拿得到右键按下的位置,可以自定义菜单弹出的[RelativeRect]
+/// * [child] 和 [icon] 二选一,都不传时使用默认的更多图标
 class RightPopupMenuButton<T> extends StatefulWidget {
   /// Creates a button that shows a popup menu.
   const RightPopupMenuButton(

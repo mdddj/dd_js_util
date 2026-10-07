@@ -19,7 +19,10 @@ enum RecordState {
 ///[recordState] - 组件状态回调,可以根据状态来显示不同的组件
 typedef CustomRecordWidget = Widget Function(RecordState recordState);
 
-/// 录音小部件
+/// 录音小部件(只提供麦克风权限检查与[RecordState]状态机)
+///
+/// 本组件不包含具体的录音实现,接入录音插件后由使用方实现:
+/// [customBuild] 会按当前[recordState]回调,在这里驱动自己的录音逻辑与界面。
 class RecordWidget extends StatefulWidget {
 
   ///自定义的小部件构建

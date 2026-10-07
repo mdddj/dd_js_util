@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:dd_js_util/dd_js_util.dart';
-import 'package:dd_js_util/model/models.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:flutter_test/flutter_test.dart';
 

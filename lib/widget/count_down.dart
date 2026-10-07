@@ -57,7 +57,6 @@ class _CountDownState extends State<CountDown> {
   var _minute = 00; // 分
   var _second = 00; // 秒
   var _mill = 00; // 毫秒
-  bool showComm = true; // 是否显示倒计时组件
   Timer? timer;
 
   @override
@@ -76,6 +75,11 @@ class _CountDownState extends State<CountDown> {
   void didUpdateWidget(covariant CountDown oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.controller != widget.controller) {
+      //旧controller要解绑
+      final old = oldWidget.controller;
+      if (old != null && identical(old._state, this)) {
+        old._state = null;
+      }
       _bind();
     }
   }
@@ -150,14 +154,20 @@ class _CountDownState extends State<CountDown> {
 
     /// diffDay < 1  小于一天才显示
     if (now.isBefore(vEndDate)) {
-      showComm = true;
       _day = diff.inDays;
       _hour = diff.inHours % 24;
       _minute = diff.inMinutes % 60;
       _second = diff.inSeconds % 60;
       _mill = diff.inMilliseconds % 1000;
-      _refreshUi();
+    } else {
+      //倒计时结束后归零,否则界面会冻结在最后一次刷新的数字上
+      _day = 0;
+      _hour = 0;
+      _minute = 0;
+      _second = 0;
+      _mill = 0;
     }
+    _refreshUi();
     return vEndDate;
   }
 
@@ -176,8 +186,6 @@ class _CountDownState extends State<CountDown> {
         final now = DateTime.now();
         if (now.isAfter(vEndDate)) {
           /// 倒计时结束了
-          showComm = false;
-          _refreshUi();
           if (timer.isActive) {
             timer.cancel();
           }
@@ -204,10 +212,19 @@ class _CountDownState extends State<CountDown> {
 
   @override
   void dispose() {
-    super.dispose();
     if (timer != null && timer!.isActive) {
       timer!.cancel();
       timer = null;
+    }
+    //解绑,否则外部controller会一直引用已销毁的State
+    _unbindController();
+    super.dispose();
+  }
+
+  void _unbindController() {
+    final controller = widget.controller;
+    if (controller != null && identical(controller._state, this)) {
+      controller._state = null;
     }
   }
 }
