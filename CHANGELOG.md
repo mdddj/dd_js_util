@@ -1,3 +1,53 @@
+# 10.0.0
+
+## 破坏性/行为变更
+
+* `FlipCardComponentController.state` 改为可空(`FlipCardComponentState?`),组件销毁后为 `null`,读取处需要判空
+* `CatchBaseMixin<S>` 改为 `CatchBaseMixin<T extends StatefulWidget, S>`(原来 `on State` 会被推断成 `State<StatefulWidget>`,任何 `State<具体组件>` 都无法混入)
+* `BaseApi.getOptions` 默认返回 `options` 字段,字段里的 `connectTimeout 30s / receiveTimeout 5s` 开始真正生效
+* `HttpMethod.probuf` 发 `POST`、`HttpMethod.update` 发 `PATCH`(之前会把 `probuf` / `UPDATE` 当成 verb 发出去)
+* `KPermissionUtil.askMicrophonePermission()` 被拒绝时返回 `false`(之前抛异常)
+* `customStampStr(toInt: true)` 不再去掉时分秒的前导零(`hh:mm:ss` 之前会渲染成 `9:5:3`)
+* `DartTypeModel.createFrom` 对 `123`/`true`/`abc`/`null` 这类标量 JSON 字符串按解码结果归类
+* `ImageSaver.saveImage` 改为写入临时目录(之前写 Documents 目录,只增不减)
+* `BaseApi.download` 缺少参数时抛 `BaseApiException`(之前用 assert,release 下会裸崩)
+* `MyPlatformEx.isDesktop` 不再把 web 当作桌面端
+* `RightPopupMenuButton.isRightMenu` 为 `true` 时图标只响应右键(之前图标左键也会弹菜单)
+* `ImageView` / `HiveConsumerWidget` 由 `StatelessWidget` 改为 `StatefulWidget`(子类用法不变)
+
+## bug 修复
+
+* `MapExt.mapValueGetWithListString` / `getDynamicList` 返回的是 key 不是 value;`firbaseAnalysisParams` 判断恒真导致永远为空 Map
+* `paddingWithObj` 丢失 child;`ImageView` 失败态的错误 widget 永远为 null
+* `StringExtension.downloadImage` 失败后仍保存 null 并二次回调 `onFailed`;`getMessageTimeWithString` 毫秒/秒混用
+* `MyBasePage._empty` 不复位,失败后重试成功仍显示空态
+* `BaseApi` 拦截器随请求数重复注册,`FetchRawByUrl` 丢弃调用方传入的 options
+* `CountDown` 小时/毫秒未取模、不传 `endTime` 抛 FormatException、结束后数字冻结
+* `CupertinoDatePicker` 的 `minuteInterval` 下分钟位置算错、`hideDay` 切到短月不回调、RTL 下偏角方向错
+* `showIosDialog` 只传 `content` 时不显示、web 上访问 `Platform` 崩溃
+* `LazyIndexedStack` 的 children 数量变化后越界;`FlipCardComponent` 的 dispose 顺序与每帧回调
+* `AskStringDialog` 在 build 里新建 controller 导致重建丢输入;`AskIntDialog` 的 controller 未释放
+* `SimpleApiPageV2` 请求失败永久转圈;`ApiMixin.startRequest` 在页面销毁后仍回调使用方
+* `KeyboardMixin` 的 post-frame 回调在 dispose 后使用 `ref`;页面退出后全局键盘高度残留
+* `ImageCutWidget` 裁剪空值崩溃、native buffer 未释放;`RecordWidget` 的 `customBuild` 从不调用
+* `SwitchAnimShow` 同类型 child 没有过渡动画;`MySwiper` 数据项无 key 会串状态
+* Android 13 以下申请相册权限不弹窗
+
+## 性能
+
+* `ContextExt` 的尺寸/安全区改用 `MediaQuery.sizeOf` / `paddingOf`,键盘弹出不再牵连重建
+* `IList` 的 `updateAll` / `updateItemWithIndex` 等改为按下标替换(原来按值 `indexOf`,O(n^2) 且重复元素会改错位置)
+* `HiveConsumerWidget` 的 `AsyncMemoizer` / `listenable` 跨重建复用
+* `ImageView` 的 base64 解码结果缓存;`PictureSelection` 缩略图按控件尺寸解码
+* `CupertinoTimerPicker` 的滚轮 controller 与 `TextPainter` 释放;`PicSwiper` 的 `PageController` 提为字段
+* `Logger` / `RegExp` / `Random` 复用;`ImageUtil` 反差色先解码再统计并限制解码尺寸
+
+## 其他
+
+* 入口库导出 `model/models.dart`、`CatchBaseMixin`、`SimpleApiPageV2`、`ImageCutWidget`,不再需要 deep import
+* 删除 469 行永不生效的右键菜单 fork 代码与空的 `util/platforms.dart`
+* 新增 `test/` 回归测试(61 条)
+
 # 9.2.0
 
 * 依赖升级
