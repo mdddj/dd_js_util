@@ -15,6 +15,19 @@ enum HttpMethod {
   const HttpMethod(this.method);
 }
 
+///[HttpMethod.probuf]与[HttpMethod.update]不是标准 HTTP verb,
+///直接当method发出服务端无法识别(dart:io 只会把它大写),这里映射成真实的方法
+String _httpMethodValue(HttpMethod method) {
+  switch (method) {
+    case HttpMethod.probuf:
+      return 'post';
+    case HttpMethod.update:
+      return 'patch';
+    default:
+      return method.method;
+  }
+}
+
 const kMultipartFormDataHeader = 'multipart/form-data';
 
 typedef MyFormData = dio.FormData;
@@ -107,7 +120,7 @@ abstract class BaseApi<T> extends ChangeNotifier {
       final bodyData = httpMethod == HttpMethod.get ? null : bodyParams;
       final response = await d.request(uri,
           options: dio.Options(
-              method: httpMethod.method,
+              method: _httpMethodValue(httpMethod),
               contentType: contentTypeString,
               headers: options.headers,
               responseType: options.responseType,

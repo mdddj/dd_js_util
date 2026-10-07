@@ -26,12 +26,10 @@ String customStampStr({
 
   sss = sss.split('.')[0];
 
-  // 去除0开头
+  // 去除0开头(月/日才用单数字写法,时分秒保持两位,否则'hh:mm:ss'会渲染成'9:5:30')
   if (toInt) {
     mm = (int.parse(mm)).toString();
     dd = (int.parse(dd)).toString();
-    hhh = (int.parse(hhh)).toString();
-    mmm = (int.parse(mmm)).toString();
   }
 
   if (date == null) {

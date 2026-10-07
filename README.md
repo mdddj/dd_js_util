@@ -105,10 +105,17 @@ File? file = "file path".fileImageCompress("to file path",quality: 50);
 # 图片放大
 
 ```dart
-/// 参数1: 图片列表
-/// 参数2: 初始化显示第几张图片
-/// 参数3: 是否为本地类型图片,如果是,参数1需要替换为File的路径
-ImageView(images: ["网络图片","网络图片"],initCurrent: 0,isFile: false);
+/// [images] 支持网络图与本地文件, [index] 是初始显示第几张
+ImagePreview(
+  images: [
+    PictureSelectionItemModel.network(url: 'https://a.com/a.png'),
+    PictureSelectionItemModel.file(file: File('/sdcard/a.png')),
+  ],
+  index: 0,
+);
+
+/// 需要自定义转场/指示器时直接用 PicSwiper
+PicSwiper(pics, initIndex: 0, indexBuilder: (index, count) => Text('$index/$count'));
 ```
 
 # 日期选择组件

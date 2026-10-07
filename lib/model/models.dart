@@ -568,13 +568,20 @@ extension MyPlatformEx on MyPlatform {
   bool get isMacos => switch (this) { MacosPlatform() => true, _ => false };
   bool get isAndroid => switch (this) { AndroidPlatform() => true, _ => false };
 
+  ///只有真正的桌面平台才为true;原来用`_ => true`兜底会把web也当成桌面
   bool get isDesktop => switch (this) {
-        AndroidPlatform() => false,
-        IosPlatform() => false,
-        _ => true
+        LinuxPlatform() => true,
+        MacosPlatform() => true,
+        WindowsPlatform() => true,
+        _ => false
       };
 
-  bool get isMobile => !isDesktop;
+  ///只有移动端系统才为true(web 两者都不是)
+  bool get isMobile => switch (this) {
+        AndroidPlatform() => true,
+        IosPlatform() => true,
+        _ => false
+      };
 
   Future<void> runInAndroid(VoidCallback call) async {
     switch (this) {

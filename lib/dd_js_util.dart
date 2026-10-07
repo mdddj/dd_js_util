@@ -101,7 +101,6 @@ part 'ext/file.dart';
 part 'ext/function.dart';
 part 'util/always_scrollable_clamping_scroll_physics.dart';
 part 'util/image.dart';
-part 'util/platforms.dart';
 part 'widget/ask_int_dialog.dart';
 part 'widget/ask_ok_dialog.dart';
 part 'widget/ask_string_dialog.dart';
