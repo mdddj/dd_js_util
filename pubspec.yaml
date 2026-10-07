@@ -27,8 +27,8 @@ dependencies:
   extended_image: ^10.1.0
   url_launcher: ^6.3.3
   ffloat_nullsafety: ^3.3.6
-  riverpod: any
-  hooks_riverpod: any
+  riverpod: ^3.2.1
+  hooks_riverpod: ^3.3.1
   logger: ^2.8.0
   hive_ce: ^2.19.3
   hive_ce_flutter: ^2.3.4
@@ -37,7 +37,7 @@ dependencies:
   loading_more_list_fast: ^7.3.1
   loading_more_list_library_fast: ^4.3.1
   keyboard_actions_plus: ^5.0.0
-  json_annotation: any
+  json_annotation: ^4.11.0
   mime: ^2.1.0
   package_info_plus: ^10.2.2
   device_info_plus: ^13.3.0
