@@ -5,3 +5,13 @@
 .pub/
 
 build/
+
+# IDE / 编辑器
+.idea/
+*.iml
+.vscode/
+*.iws
+
+# flutter 工具生成(含本地 pub-cache 绝对路径)
+.flutter-plugins
+.flutter-plugins-dependencies
