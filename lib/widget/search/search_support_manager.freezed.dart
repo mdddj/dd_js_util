@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'search_support_manager.dart';
@@ -9,6 +9,7 @@ part of 'search_support_manager.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -16,7 +17,7 @@ T _$identity<T>(T value) => value;
 mixin _$SearchSupportManager {
   BuildContext get context;
   StateSetter get floatStateSetter;
-  State get floatState;
+  State<StatefulWidget> get floatState;
 
   /// Create a copy of SearchSupportManager
   /// with the given fields replaced by the non-null parameter values.
@@ -28,23 +29,29 @@ mixin _$SearchSupportManager {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as SearchSupportManager;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is SearchSupportManager &&
-            (identical(other.context, context) || other.context == context) &&
-            (identical(other.floatStateSetter, floatStateSetter) ||
-                other.floatStateSetter == floatStateSetter) &&
-            (identical(other.floatState, floatState) ||
-                other.floatState == floatState));
+            (identical(other.context, _this.context) ||
+                other.context == _this.context) &&
+            (identical(other.floatStateSetter, _this.floatStateSetter) ||
+                other.floatStateSetter == _this.floatStateSetter) &&
+            (identical(other.floatState, _this.floatState) ||
+                other.floatState == _this.floatState));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, context, floatStateSetter, floatState);
+  int get hashCode {
+    final _this = this as SearchSupportManager;
+    return Object.hash(
+        runtimeType, _this.context, _this.floatStateSetter, _this.floatState);
+  }
 
   @override
   String toString() {
-    return 'SearchSupportManager(context: $context, floatStateSetter: $floatStateSetter, floatState: $floatState)';
+    final _this = this as SearchSupportManager;
+    return 'SearchSupportManager(context: ${_this.context}, floatStateSetter: ${_this.floatStateSetter}, floatState: ${_this.floatState})';
   }
 }
 
@@ -55,7 +62,9 @@ abstract mixin class $SearchSupportManagerCopyWith<$Res> {
       _$SearchSupportManagerCopyWithImpl;
   @useResult
   $Res call(
-      {BuildContext context, StateSetter floatStateSetter, State floatState});
+      {BuildContext context,
+      StateSetter floatStateSetter,
+      State<StatefulWidget> floatState});
 }
 
 /// @nodoc
@@ -75,7 +84,7 @@ class _$SearchSupportManagerCopyWithImpl<$Res>
     Object? floatStateSetter = null,
     Object? floatState = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(SearchSupportManager(
       context: null == context
           ? _self.context
           : context // ignore: cast_nullable_to_non_nullable
@@ -87,7 +96,7 @@ class _$SearchSupportManagerCopyWithImpl<$Res>
       floatState: null == floatState
           ? _self.floatState
           : floatState // ignore: cast_nullable_to_non_nullable
-              as State,
+              as State<StatefulWidget>,
     ));
   }
 }
@@ -184,7 +193,7 @@ extension SearchSupportManagerPatterns on SearchSupportManager {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(BuildContext context, StateSetter floatStateSetter,
-            State floatState)?
+            State<StatefulWidget> floatState)?
         $default, {
     required TResult orElse(),
   }) {
@@ -214,7 +223,7 @@ extension SearchSupportManagerPatterns on SearchSupportManager {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(BuildContext context, StateSetter floatStateSetter,
-            State floatState)
+            State<StatefulWidget> floatState)
         $default,
   ) {
     final _that = this;
@@ -240,7 +249,7 @@ extension SearchSupportManagerPatterns on SearchSupportManager {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(BuildContext context, StateSetter floatStateSetter,
-            State floatState)?
+            State<StatefulWidget> floatState)?
         $default,
   ) {
     final _that = this;
@@ -267,7 +276,7 @@ class _SearchSupportManager implements SearchSupportManager {
   @override
   final StateSetter floatStateSetter;
   @override
-  final State floatState;
+  final State<StatefulWidget> floatState;
 
   /// Create a copy of SearchSupportManager
   /// with the given fields replaced by the non-null parameter values.
@@ -291,8 +300,9 @@ class _SearchSupportManager implements SearchSupportManager {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, context, floatStateSetter, floatState);
+  int get hashCode {
+    return Object.hash(runtimeType, context, floatStateSetter, floatState);
+  }
 
   @override
   String toString() {
@@ -309,7 +319,9 @@ abstract mixin class _$SearchSupportManagerCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {BuildContext context, StateSetter floatStateSetter, State floatState});
+      {BuildContext context,
+      StateSetter floatStateSetter,
+      State<StatefulWidget> floatState});
 }
 
 /// @nodoc
@@ -341,7 +353,7 @@ class __$SearchSupportManagerCopyWithImpl<$Res>
       floatState: null == floatState
           ? _self.floatState
           : floatState // ignore: cast_nullable_to_non_nullable
-              as State,
+              as State<StatefulWidget>,
     ));
   }
 }

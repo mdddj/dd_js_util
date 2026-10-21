@@ -51,7 +51,7 @@ typedef MyListConfig<T> = ListConfig<T>;
 typedef MySliverListConfig<T> = SliverListConfig<T>;
 typedef MyLoadingMoreCustomScrollView = LoadingMoreCustomScrollView;
 typedef MyIndicatorStatus = IndicatorStatusModel;
-typedef R = RequestParams;
+typedef R = RequestConfig;
 
 @Doc(message: "简单toast弹窗")
 void toast(String msg) {
@@ -92,7 +92,7 @@ abstract class BaseApi<T> extends ChangeNotifier {
 
   /// [isFullUrl] - url传入的是否为完整的一个URL,如果为[true],将忽略[host]
   @Doc(message: "向服务器发起http请求")
-  Future<T> request([RequestParams options = const RequestParams()]) async {
+  Future<T> request([RequestConfig options = const RequestConfig()]) async {
     final fullUrl = options.fullUrl;
     try {
       if (options.showDefaultLoading) {
@@ -150,7 +150,7 @@ abstract class BaseApi<T> extends ChangeNotifier {
   }
 
   ///下载文件
-  Future<T> download([RequestParams options = const RequestParams()]) async {
+  Future<T> download([RequestConfig options = const RequestConfig()]) async {
     final downloadUrl = options.downloadUrl;
     final savePath = options.savePath;
     //assert在release里会被去掉,这里显式抛业务异常
@@ -184,10 +184,10 @@ abstract class BaseApi<T> extends ChangeNotifier {
     }
   }
 
-  T covertToModel(DartTypeModel data, RequestParams param);
+  T covertToModel(DartTypeModel data, RequestConfig param);
 
   void beforeHandleDartTypeModel(DartTypeModel model,
-      RequestParams requestParams, dio.Response<dynamic> response) {}
+      RequestConfig requestParams, dio.Response<dynamic> response) {}
 
   @Doc(message: "页面中间显示loading等待框")
   void showLoading({String? loadingText}) {
@@ -199,7 +199,7 @@ abstract class BaseApi<T> extends ChangeNotifier {
     SmartDialog.dismiss(status: SmartStatus.loading);
   }
 
-  Future<dio.BaseOptions> getOptions(RequestParams param) async => options;
+  Future<dio.BaseOptions> getOptions(RequestConfig param) async => options;
 
   Future<dio.Dio> getDio(dio.BaseOptions baseOptions) async {
     if (_dio != null) {
@@ -264,13 +264,13 @@ class FetchRawByUrl extends BaseApi<DartTypeModel> {
   FetchRawByUrl(this.requestUrl) : super(requestUrl);
 
   @override
-  DartTypeModel covertToModel(DartTypeModel data, RequestParams param) {
+  DartTypeModel covertToModel(DartTypeModel data, RequestConfig param) {
     return data;
   }
 
   @override
   Future<DartTypeModel> request(
-      [RequestParams options = const RequestParams()]) {
+      [RequestConfig options = const RequestConfig()]) {
     //保留调用方传入的cancelToken/headers/回调等,只覆盖这两项
     return super.request(options.copyWith(
       showDefaultLoading: false,

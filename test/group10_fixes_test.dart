@@ -46,7 +46,7 @@ void main() {
 
   test('FetchRawByUrl: 保留调用方传入的 headers', () async {
     final api = _RawApi();
-    await api.request(const RequestParams(
+    await api.request(const RequestConfig(
       showDefaultLoading: false,
       headers: <String, dynamic>{'X-Test': '1'},
     ));
@@ -59,11 +59,11 @@ void main() {
   test('BaseApi.download: 缺少参数抛业务异常而不是 assert', () async {
     final api = _DownloadApi();
     await expectLater(
-      api.download(const RequestParams(showDefaultLoading: false)),
+      api.download(const RequestConfig(showDefaultLoading: false)),
       throwsA(isA<BaseApiException>()),
     );
     await expectLater(
-      api.download(const RequestParams(
+      api.download(const RequestConfig(
         showDefaultLoading: false,
         downloadUrl: 'http://example.test/a.png',
       )),
@@ -193,7 +193,7 @@ class _DownloadApi extends BaseApi<DartTypeModel> {
   _DownloadApi() : super('/download');
 
   @override
-  DartTypeModel covertToModel(DartTypeModel data, RequestParams param) => data;
+  DartTypeModel covertToModel(DartTypeModel data, RequestConfig param) => data;
 }
 
 class _CatchPage extends StatefulWidget {

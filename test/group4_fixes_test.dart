@@ -95,12 +95,12 @@ class _FailApi extends BaseApi<WrapJson> {
   _FailApi() : super('/fail');
 
   @override
-  Future<WrapJson> request([RequestParams options = const RequestParams()]) {
+  Future<WrapJson> request([RequestConfig options = const RequestConfig()]) {
     throw BaseApiException.businessException(message: 'boom');
   }
 
   @override
-  WrapJson covertToModel(DartTypeModel data, RequestParams param) {
+  WrapJson covertToModel(DartTypeModel data, RequestConfig param) {
     throw UnimplementedError();
   }
 }

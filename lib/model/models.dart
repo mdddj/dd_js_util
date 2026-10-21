@@ -23,10 +23,10 @@ typedef ResponseResultCallback = void Function(dynamic response); //接口返回
 typedef ReLoginSuccess = void Function();
 
 @freezed
-sealed class RequestParams with _$RequestParams {
-  const RequestParams._();
+sealed class RequestConfig with _$RequestConfig {
+  const RequestConfig._();
 
-  const factory RequestParams({
+  const factory RequestConfig({
     @Default(true) bool showErrorMsg,
     @Default("loading...") String loadingText,
     String? contentType,
@@ -48,13 +48,13 @@ sealed class RequestParams with _$RequestParams {
     @igFreezedJson ProgressCallback? onReceiveProgress,
     String? downloadUrl,
     @igFreezedJson File? savePath,
-  }) = _RequestParams;
+  }) = _RequestConfig;
 
-  factory RequestParams.fromJson(Map<String, dynamic> json) =>
-      _$RequestParamsFromJson(json);
+  factory RequestConfig.fromJson(Map<String, dynamic> json) =>
+      _$RequestConfigFromJson(json);
 }
 
-extension RequestParamsex on RequestParams {
+extension RequestConfigEx on RequestConfig {
   DartTypeModel get dataModel {
     return DartTypeModel.createFrom(data);
   }

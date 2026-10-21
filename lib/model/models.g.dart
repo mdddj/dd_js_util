@@ -6,8 +6,8 @@ part of 'models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_RequestParams _$RequestParamsFromJson(Map<String, dynamic> json) =>
-    _RequestParams(
+_RequestConfig _$RequestConfigFromJson(Map<String, dynamic> json) =>
+    _RequestConfig(
       showErrorMsg: json['showErrorMsg'] as bool? ?? true,
       loadingText: json['loadingText'] as String? ?? "loading...",
       contentType: json['contentType'] as String?,
@@ -22,7 +22,7 @@ _RequestParams _$RequestParamsFromJson(Map<String, dynamic> json) =>
       downloadUrl: json['downloadUrl'] as String?,
     );
 
-Map<String, dynamic> _$RequestParamsToJson(_RequestParams instance) =>
+Map<String, dynamic> _$RequestConfigToJson(_RequestConfig instance) =>
     <String, dynamic>{
       'showErrorMsg': instance.showErrorMsg,
       'loadingText': instance.loadingText,

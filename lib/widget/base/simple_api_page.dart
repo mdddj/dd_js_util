@@ -38,7 +38,7 @@ mixin MyBasePage<T extends BaseApi, S, W extends StatefulWidget, R> on State<W> 
     }
     try {
       final response = await api.request(
-         const RequestParams(showDefaultLoading: false)
+         const RequestConfig(showDefaultLoading: false)
       );
       if (response == null) {
         if (mounted) {

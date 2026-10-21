@@ -36,7 +36,7 @@ void main() {
   group('HttpMethod 映射成真实 verb', () {
     test('probuf 走 POST', () async {
       final api = _VerbApi(HttpMethod.probuf);
-      final model = await api.request(const RequestParams(showDefaultLoading: false));
+      final model = await api.request(const RequestConfig(showDefaultLoading: false));
       expect(model, isNotNull);
       expect(api.adapter.lastRequest?.method.toUpperCase(), 'POST');
       expect(api.adapter.lastRequest?.contentType, kProtobufContentType);
@@ -44,17 +44,17 @@ void main() {
 
     test('update 走 PATCH', () async {
       final api = _VerbApi(HttpMethod.update);
-      await api.request(const RequestParams(showDefaultLoading: false));
+      await api.request(const RequestConfig(showDefaultLoading: false));
       expect(api.adapter.lastRequest?.method.toUpperCase(), 'PATCH');
     });
 
     test('get/post 保持原样', () async {
       final getApi = _VerbApi(HttpMethod.get);
-      await getApi.request(const RequestParams(showDefaultLoading: false));
+      await getApi.request(const RequestConfig(showDefaultLoading: false));
       expect(getApi.adapter.lastRequest?.method.toUpperCase(), 'GET');
 
       final postApi = _VerbApi(HttpMethod.post);
-      await postApi.request(const RequestParams(showDefaultLoading: false));
+      await postApi.request(const RequestConfig(showDefaultLoading: false));
       expect(postApi.adapter.lastRequest?.method.toUpperCase(), 'POST');
     });
   });
@@ -98,5 +98,5 @@ class _VerbApi extends BaseApi<DartTypeModel> {
   }
 
   @override
-  DartTypeModel covertToModel(DartTypeModel data, RequestParams param) => data;
+  DartTypeModel covertToModel(DartTypeModel data, RequestConfig param) => data;
 }

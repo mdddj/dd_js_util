@@ -96,7 +96,7 @@ void main() {
     );
 
     for (var i = 0; i < 3; i++) {
-      await api.request(const RequestParams(showDefaultLoading: false));
+      await api.request(const RequestConfig(showDefaultLoading: false));
     }
 
     expect(interceptorHits, 3,
@@ -149,7 +149,7 @@ class _TestApi extends BaseApi<DartTypeModel> {
   }
 
   @override
-  DartTypeModel covertToModel(DartTypeModel data, RequestParams param) => data;
+  DartTypeModel covertToModel(DartTypeModel data, RequestConfig param) => data;
 }
 
 class _FakeApi extends BaseApi<String> {
@@ -159,7 +159,7 @@ class _FakeApi extends BaseApi<String> {
 
   @override
   Future<String> request(
-      [RequestParams options = const RequestParams()]) async {
+      [RequestConfig options = const RequestConfig()]) async {
     if (shouldFail) {
       throw BaseApiException.businessException(message: 'boom');
     }
@@ -167,7 +167,7 @@ class _FakeApi extends BaseApi<String> {
   }
 
   @override
-  String covertToModel(DartTypeModel data, RequestParams param) => 'ok';
+  String covertToModel(DartTypeModel data, RequestConfig param) => 'ok';
 }
 
 class _Page extends StatefulWidget {

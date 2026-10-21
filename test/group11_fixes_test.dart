@@ -109,11 +109,11 @@ class _SlowApi extends BaseApi<String> {
   final Completer<String> completer = Completer<String>();
 
   @override
-  Future<String> request([RequestParams options = const RequestParams()]) =>
+  Future<String> request([RequestConfig options = const RequestConfig()]) =>
       completer.future;
 
   @override
-  String covertToModel(DartTypeModel data, RequestParams param) => 'x';
+  String covertToModel(DartTypeModel data, RequestConfig param) => 'x';
 }
 
 class _TestHiveWidget extends HiveConsumerWidget<String> {

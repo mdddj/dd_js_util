@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'search_support.dart';
@@ -9,14 +9,15 @@ part of 'search_support.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$SearchSupportParams<T> {
   ///是否自动显示搜索结果
-  bool get autoShow; //搜索控制器
-  RefreshController<T>? get controller; //展示组件的容器,需要固定高度
+  bool get autoShow;
+  RefreshController<T>? get controller;
   SearchSupportCoreUiBuild get childBuilder;
   SearchSupportActionListening? get listening;
 
@@ -30,26 +31,31 @@ mixin _$SearchSupportParams<T> {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as SearchSupportParams<T>;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is SearchSupportParams<T> &&
-            (identical(other.autoShow, autoShow) ||
-                other.autoShow == autoShow) &&
-            (identical(other.controller, controller) ||
-                other.controller == controller) &&
-            (identical(other.childBuilder, childBuilder) ||
-                other.childBuilder == childBuilder) &&
-            (identical(other.listening, listening) ||
-                other.listening == listening));
+            (identical(other.autoShow, _this.autoShow) ||
+                other.autoShow == _this.autoShow) &&
+            (identical(other.controller, _this.controller) ||
+                other.controller == _this.controller) &&
+            (identical(other.childBuilder, _this.childBuilder) ||
+                other.childBuilder == _this.childBuilder) &&
+            (identical(other.listening, _this.listening) ||
+                other.listening == _this.listening));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, autoShow, controller, childBuilder, listening);
+  int get hashCode {
+    final _this = this as SearchSupportParams<T>;
+    return Object.hash(runtimeType, _this.autoShow, _this.controller,
+        _this.childBuilder, _this.listening);
+  }
 
   @override
   String toString() {
-    return 'SearchSupportParams<$T>(autoShow: $autoShow, controller: $controller, childBuilder: $childBuilder, listening: $listening)';
+    final _this = this as SearchSupportParams<T>;
+    return 'SearchSupportParams<$T>(autoShow: ${_this.autoShow}, controller: ${_this.controller}, childBuilder: ${_this.childBuilder}, listening: ${_this.listening})';
   }
 }
 
@@ -84,7 +90,7 @@ class _$SearchSupportParamsCopyWithImpl<T, $Res>
     Object? childBuilder = null,
     Object? listening = freezed,
   }) {
-    return _then(_self.copyWith(
+    return _then(SearchSupportParams(
       autoShow: null == autoShow
           ? _self.autoShow
           : autoShow // ignore: cast_nullable_to_non_nullable
@@ -289,10 +295,8 @@ class _SearchSupportParams<T> implements SearchSupportParams<T> {
   @override
   @JsonKey()
   final bool autoShow;
-//搜索控制器
   @override
   final RefreshController<T>? controller;
-//展示组件的容器,需要固定高度
   @override
   final SearchSupportCoreUiBuild childBuilder;
   @override
@@ -323,8 +327,10 @@ class _SearchSupportParams<T> implements SearchSupportParams<T> {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, autoShow, controller, childBuilder, listening);
+  int get hashCode {
+    return Object.hash(
+        runtimeType, autoShow, controller, childBuilder, listening);
+  }
 
   @override
   String toString() {

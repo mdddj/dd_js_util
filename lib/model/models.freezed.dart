@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'models.dart';
@@ -9,11 +9,12 @@ part of 'models.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$RequestParams {
+mixin _$RequestConfig {
   bool get showErrorMsg;
   String get loadingText;
   String? get contentType;
@@ -47,100 +48,108 @@ mixin _$RequestParams {
   @igFreezedJson
   File? get savePath;
 
-  /// Create a copy of RequestParams
+  /// Create a copy of RequestConfig
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $RequestParamsCopyWith<RequestParams> get copyWith =>
-      _$RequestParamsCopyWithImpl<RequestParams>(
-          this as RequestParams, _$identity);
+  $RequestConfigCopyWith<RequestConfig> get copyWith =>
+      _$RequestConfigCopyWithImpl<RequestConfig>(
+          this as RequestConfig, _$identity);
 
-  /// Serializes this RequestParams to a JSON map.
+  /// Serializes this RequestConfig to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
+    final _this = this as RequestConfig;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is RequestParams &&
-            (identical(other.showErrorMsg, showErrorMsg) ||
-                other.showErrorMsg == showErrorMsg) &&
-            (identical(other.loadingText, loadingText) ||
-                other.loadingText == loadingText) &&
-            (identical(other.contentType, contentType) ||
-                other.contentType == contentType) &&
-            const DeepCollectionEquality().equals(other.headers, headers) &&
-            (identical(other.showDefaultLoading, showDefaultLoading) ||
-                other.showDefaultLoading == showDefaultLoading) &&
-            const DeepCollectionEquality().equals(other.data, data) &&
-            (identical(other.responseType, responseType) ||
-                other.responseType == responseType) &&
-            (identical(other.nullParams, nullParams) ||
-                other.nullParams == nullParams) &&
-            (identical(other.requestEncoder, requestEncoder) ||
-                other.requestEncoder == requestEncoder) &&
-            (identical(other.dioStart, dioStart) ||
-                other.dioStart == dioStart) &&
-            (identical(other.returnIsString, returnIsString) ||
-                other.returnIsString == returnIsString) &&
-            (identical(other.fullUrl, fullUrl) || other.fullUrl == fullUrl) &&
-            (identical(other.interceptorCall, interceptorCall) ||
-                other.interceptorCall == interceptorCall) &&
-            (identical(other.urlParseFormat, urlParseFormat) ||
-                other.urlParseFormat == urlParseFormat) &&
-            (identical(other.responseResultCallback, responseResultCallback) ||
-                other.responseResultCallback == responseResultCallback) &&
-            const DeepCollectionEquality().equals(other.extra, extra) &&
-            (identical(other.cancelToken, cancelToken) ||
-                other.cancelToken == cancelToken) &&
-            (identical(other.onSendCallback, onSendCallback) ||
-                other.onSendCallback == onSendCallback) &&
-            (identical(other.onReceiveProgress, onReceiveProgress) ||
-                other.onReceiveProgress == onReceiveProgress) &&
-            (identical(other.downloadUrl, downloadUrl) ||
-                other.downloadUrl == downloadUrl) &&
-            (identical(other.savePath, savePath) ||
-                other.savePath == savePath));
+            other is RequestConfig &&
+            (identical(other.showErrorMsg, _this.showErrorMsg) ||
+                other.showErrorMsg == _this.showErrorMsg) &&
+            (identical(other.loadingText, _this.loadingText) ||
+                other.loadingText == _this.loadingText) &&
+            (identical(other.contentType, _this.contentType) ||
+                other.contentType == _this.contentType) &&
+            const DeepCollectionEquality()
+                .equals(other.headers, _this.headers) &&
+            (identical(other.showDefaultLoading, _this.showDefaultLoading) ||
+                other.showDefaultLoading == _this.showDefaultLoading) &&
+            const DeepCollectionEquality().equals(other.data, _this.data) &&
+            (identical(other.responseType, _this.responseType) ||
+                other.responseType == _this.responseType) &&
+            (identical(other.nullParams, _this.nullParams) ||
+                other.nullParams == _this.nullParams) &&
+            (identical(other.requestEncoder, _this.requestEncoder) ||
+                other.requestEncoder == _this.requestEncoder) &&
+            (identical(other.dioStart, _this.dioStart) ||
+                other.dioStart == _this.dioStart) &&
+            (identical(other.returnIsString, _this.returnIsString) ||
+                other.returnIsString == _this.returnIsString) &&
+            (identical(other.fullUrl, _this.fullUrl) ||
+                other.fullUrl == _this.fullUrl) &&
+            (identical(other.interceptorCall, _this.interceptorCall) ||
+                other.interceptorCall == _this.interceptorCall) &&
+            (identical(other.urlParseFormat, _this.urlParseFormat) ||
+                other.urlParseFormat == _this.urlParseFormat) &&
+            (identical(other.responseResultCallback,
+                    _this.responseResultCallback) ||
+                other.responseResultCallback == _this.responseResultCallback) &&
+            const DeepCollectionEquality().equals(other.extra, _this.extra) &&
+            (identical(other.cancelToken, _this.cancelToken) ||
+                other.cancelToken == _this.cancelToken) &&
+            (identical(other.onSendCallback, _this.onSendCallback) ||
+                other.onSendCallback == _this.onSendCallback) &&
+            (identical(other.onReceiveProgress, _this.onReceiveProgress) ||
+                other.onReceiveProgress == _this.onReceiveProgress) &&
+            (identical(other.downloadUrl, _this.downloadUrl) ||
+                other.downloadUrl == _this.downloadUrl) &&
+            (identical(other.savePath, _this.savePath) ||
+                other.savePath == _this.savePath));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        showErrorMsg,
-        loadingText,
-        contentType,
-        const DeepCollectionEquality().hash(headers),
-        showDefaultLoading,
-        const DeepCollectionEquality().hash(data),
-        responseType,
-        nullParams,
-        requestEncoder,
-        dioStart,
-        returnIsString,
-        fullUrl,
-        interceptorCall,
-        urlParseFormat,
-        responseResultCallback,
-        const DeepCollectionEquality().hash(extra),
-        cancelToken,
-        onSendCallback,
-        onReceiveProgress,
-        downloadUrl,
-        savePath
-      ]);
+  int get hashCode {
+    final _this = this as RequestConfig;
+    return Object.hashAll([
+      runtimeType,
+      _this.showErrorMsg,
+      _this.loadingText,
+      _this.contentType,
+      const DeepCollectionEquality().hash(_this.headers),
+      _this.showDefaultLoading,
+      const DeepCollectionEquality().hash(_this.data),
+      _this.responseType,
+      _this.nullParams,
+      _this.requestEncoder,
+      _this.dioStart,
+      _this.returnIsString,
+      _this.fullUrl,
+      _this.interceptorCall,
+      _this.urlParseFormat,
+      _this.responseResultCallback,
+      const DeepCollectionEquality().hash(_this.extra),
+      _this.cancelToken,
+      _this.onSendCallback,
+      _this.onReceiveProgress,
+      _this.downloadUrl,
+      _this.savePath
+    ]);
+  }
 
   @override
   String toString() {
-    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, fullUrl: $fullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback, extra: $extra, cancelToken: $cancelToken, onSendCallback: $onSendCallback, onReceiveProgress: $onReceiveProgress, downloadUrl: $downloadUrl, savePath: $savePath)';
+    final _this = this as RequestConfig;
+    return 'RequestConfig(showErrorMsg: ${_this.showErrorMsg}, loadingText: ${_this.loadingText}, contentType: ${_this.contentType}, headers: ${_this.headers}, showDefaultLoading: ${_this.showDefaultLoading}, data: ${_this.data}, responseType: ${_this.responseType}, nullParams: ${_this.nullParams}, requestEncoder: ${_this.requestEncoder}, dioStart: ${_this.dioStart}, returnIsString: ${_this.returnIsString}, fullUrl: ${_this.fullUrl}, interceptorCall: ${_this.interceptorCall}, urlParseFormat: ${_this.urlParseFormat}, responseResultCallback: ${_this.responseResultCallback}, extra: ${_this.extra}, cancelToken: ${_this.cancelToken}, onSendCallback: ${_this.onSendCallback}, onReceiveProgress: ${_this.onReceiveProgress}, downloadUrl: ${_this.downloadUrl}, savePath: ${_this.savePath})';
   }
 }
 
 /// @nodoc
-abstract mixin class $RequestParamsCopyWith<$Res> {
-  factory $RequestParamsCopyWith(
-          RequestParams value, $Res Function(RequestParams) _then) =
-      _$RequestParamsCopyWithImpl;
+abstract mixin class $RequestConfigCopyWith<$Res> {
+  factory $RequestConfigCopyWith(
+          RequestConfig value, $Res Function(RequestConfig) _then) =
+      _$RequestConfigCopyWithImpl;
   @useResult
   $Res call(
       {bool showErrorMsg,
@@ -167,14 +176,14 @@ abstract mixin class $RequestParamsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RequestParamsCopyWithImpl<$Res>
-    implements $RequestParamsCopyWith<$Res> {
-  _$RequestParamsCopyWithImpl(this._self, this._then);
+class _$RequestConfigCopyWithImpl<$Res>
+    implements $RequestConfigCopyWith<$Res> {
+  _$RequestConfigCopyWithImpl(this._self, this._then);
 
-  final RequestParams _self;
-  final $Res Function(RequestParams) _then;
+  final RequestConfig _self;
+  final $Res Function(RequestConfig) _then;
 
-  /// Create a copy of RequestParams
+  /// Create a copy of RequestConfig
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -201,7 +210,7 @@ class _$RequestParamsCopyWithImpl<$Res>
     Object? downloadUrl = freezed,
     Object? savePath = freezed,
   }) {
-    return _then(_self.copyWith(
+    return _then(RequestConfig(
       showErrorMsg: null == showErrorMsg
           ? _self.showErrorMsg
           : showErrorMsg // ignore: cast_nullable_to_non_nullable
@@ -290,8 +299,8 @@ class _$RequestParamsCopyWithImpl<$Res>
   }
 }
 
-/// Adds pattern-matching-related methods to [RequestParams].
-extension RequestParamsPatterns on RequestParams {
+/// Adds pattern-matching-related methods to [RequestConfig].
+extension RequestConfigPatterns on RequestConfig {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -306,12 +315,12 @@ extension RequestParamsPatterns on RequestParams {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_RequestParams value)? $default, {
+    TResult Function(_RequestConfig value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _RequestParams() when $default != null:
+      case _RequestConfig() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -333,11 +342,11 @@ extension RequestParamsPatterns on RequestParams {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_RequestParams value) $default,
+    TResult Function(_RequestConfig value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _RequestParams():
+      case _RequestConfig():
         return $default(_that);
     }
   }
@@ -356,11 +365,11 @@ extension RequestParamsPatterns on RequestParams {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_RequestParams value)? $default,
+    TResult? Function(_RequestConfig value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _RequestParams() when $default != null:
+      case _RequestConfig() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -408,7 +417,7 @@ extension RequestParamsPatterns on RequestParams {
   }) {
     final _that = this;
     switch (_that) {
-      case _RequestParams() when $default != null:
+      case _RequestConfig() when $default != null:
         return $default(
             _that.showErrorMsg,
             _that.loadingText,
@@ -477,7 +486,7 @@ extension RequestParamsPatterns on RequestParams {
   ) {
     final _that = this;
     switch (_that) {
-      case _RequestParams():
+      case _RequestConfig():
         return $default(
             _that.showErrorMsg,
             _that.loadingText,
@@ -543,7 +552,7 @@ extension RequestParamsPatterns on RequestParams {
   ) {
     final _that = this;
     switch (_that) {
-      case _RequestParams() when $default != null:
+      case _RequestConfig() when $default != null:
         return $default(
             _that.showErrorMsg,
             _that.loadingText,
@@ -574,12 +583,12 @@ extension RequestParamsPatterns on RequestParams {
 
 /// @nodoc
 @JsonSerializable()
-class _RequestParams extends RequestParams {
-  const _RequestParams(
+class _RequestConfig extends RequestConfig {
+  const _RequestConfig(
       {this.showErrorMsg = true,
       this.loadingText = "loading...",
       this.contentType,
-      final Map<String, dynamic> headers = const {},
+      Map<String, dynamic> headers = const {},
       this.showDefaultLoading = true,
       @JsonKey(name: 'data', toJson: _dataToJson) this.data,
       this.responseType,
@@ -591,7 +600,7 @@ class _RequestParams extends RequestParams {
       @igFreezedJson this.interceptorCall,
       @igFreezedJson this.urlParseFormat,
       @igFreezedJson this.responseResultCallback,
-      final Map<String, dynamic>? extra,
+      Map<String, dynamic>? extra,
       @igFreezedJson this.cancelToken,
       @igFreezedJson this.onSendCallback,
       @igFreezedJson this.onReceiveProgress,
@@ -600,8 +609,8 @@ class _RequestParams extends RequestParams {
       : _headers = headers,
         _extra = extra,
         super._();
-  factory _RequestParams.fromJson(Map<String, dynamic> json) =>
-      _$RequestParamsFromJson(json);
+  factory _RequestConfig.fromJson(Map<String, dynamic> json) =>
+      _$RequestConfigFromJson(json);
 
   @override
   @JsonKey()
@@ -675,17 +684,17 @@ class _RequestParams extends RequestParams {
   @igFreezedJson
   final File? savePath;
 
-  /// Create a copy of RequestParams
+  /// Create a copy of RequestConfig
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$RequestParamsCopyWith<_RequestParams> get copyWith =>
-      __$RequestParamsCopyWithImpl<_RequestParams>(this, _$identity);
+  _$RequestConfigCopyWith<_RequestConfig> get copyWith =>
+      __$RequestConfigCopyWithImpl<_RequestConfig>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$RequestParamsToJson(
+    return _$RequestConfigToJson(
       this,
     );
   }
@@ -694,14 +703,14 @@ class _RequestParams extends RequestParams {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RequestParams &&
+            other is _RequestConfig &&
             (identical(other.showErrorMsg, showErrorMsg) ||
                 other.showErrorMsg == showErrorMsg) &&
             (identical(other.loadingText, loadingText) ||
                 other.loadingText == loadingText) &&
             (identical(other.contentType, contentType) ||
                 other.contentType == contentType) &&
-            const DeepCollectionEquality().equals(other._headers, _headers) &&
+            const DeepCollectionEquality().equals(other.headers, _headers) &&
             (identical(other.showDefaultLoading, showDefaultLoading) ||
                 other.showDefaultLoading == showDefaultLoading) &&
             const DeepCollectionEquality().equals(other.data, data) &&
@@ -722,7 +731,7 @@ class _RequestParams extends RequestParams {
                 other.urlParseFormat == urlParseFormat) &&
             (identical(other.responseResultCallback, responseResultCallback) ||
                 other.responseResultCallback == responseResultCallback) &&
-            const DeepCollectionEquality().equals(other._extra, _extra) &&
+            const DeepCollectionEquality().equals(other.extra, _extra) &&
             (identical(other.cancelToken, cancelToken) ||
                 other.cancelToken == cancelToken) &&
             (identical(other.onSendCallback, onSendCallback) ||
@@ -737,43 +746,45 @@ class _RequestParams extends RequestParams {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        showErrorMsg,
-        loadingText,
-        contentType,
-        const DeepCollectionEquality().hash(_headers),
-        showDefaultLoading,
-        const DeepCollectionEquality().hash(data),
-        responseType,
-        nullParams,
-        requestEncoder,
-        dioStart,
-        returnIsString,
-        fullUrl,
-        interceptorCall,
-        urlParseFormat,
-        responseResultCallback,
-        const DeepCollectionEquality().hash(_extra),
-        cancelToken,
-        onSendCallback,
-        onReceiveProgress,
-        downloadUrl,
-        savePath
-      ]);
+  int get hashCode {
+    return Object.hashAll([
+      runtimeType,
+      showErrorMsg,
+      loadingText,
+      contentType,
+      const DeepCollectionEquality().hash(_headers),
+      showDefaultLoading,
+      const DeepCollectionEquality().hash(data),
+      responseType,
+      nullParams,
+      requestEncoder,
+      dioStart,
+      returnIsString,
+      fullUrl,
+      interceptorCall,
+      urlParseFormat,
+      responseResultCallback,
+      const DeepCollectionEquality().hash(_extra),
+      cancelToken,
+      onSendCallback,
+      onReceiveProgress,
+      downloadUrl,
+      savePath
+    ]);
+  }
 
   @override
   String toString() {
-    return 'RequestParams(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, fullUrl: $fullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback, extra: $extra, cancelToken: $cancelToken, onSendCallback: $onSendCallback, onReceiveProgress: $onReceiveProgress, downloadUrl: $downloadUrl, savePath: $savePath)';
+    return 'RequestConfig(showErrorMsg: $showErrorMsg, loadingText: $loadingText, contentType: $contentType, headers: $headers, showDefaultLoading: $showDefaultLoading, data: $data, responseType: $responseType, nullParams: $nullParams, requestEncoder: $requestEncoder, dioStart: $dioStart, returnIsString: $returnIsString, fullUrl: $fullUrl, interceptorCall: $interceptorCall, urlParseFormat: $urlParseFormat, responseResultCallback: $responseResultCallback, extra: $extra, cancelToken: $cancelToken, onSendCallback: $onSendCallback, onReceiveProgress: $onReceiveProgress, downloadUrl: $downloadUrl, savePath: $savePath)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$RequestParamsCopyWith<$Res>
-    implements $RequestParamsCopyWith<$Res> {
-  factory _$RequestParamsCopyWith(
-          _RequestParams value, $Res Function(_RequestParams) _then) =
-      __$RequestParamsCopyWithImpl;
+abstract mixin class _$RequestConfigCopyWith<$Res>
+    implements $RequestConfigCopyWith<$Res> {
+  factory _$RequestConfigCopyWith(
+          _RequestConfig value, $Res Function(_RequestConfig) _then) =
+      __$RequestConfigCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -801,14 +812,14 @@ abstract mixin class _$RequestParamsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$RequestParamsCopyWithImpl<$Res>
-    implements _$RequestParamsCopyWith<$Res> {
-  __$RequestParamsCopyWithImpl(this._self, this._then);
+class __$RequestConfigCopyWithImpl<$Res>
+    implements _$RequestConfigCopyWith<$Res> {
+  __$RequestConfigCopyWithImpl(this._self, this._then);
 
-  final _RequestParams _self;
-  final $Res Function(_RequestParams) _then;
+  final _RequestConfig _self;
+  final $Res Function(_RequestConfig) _then;
 
-  /// Create a copy of RequestParams
+  /// Create a copy of RequestConfig
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -835,7 +846,7 @@ class __$RequestParamsCopyWithImpl<$Res>
     Object? downloadUrl = freezed,
     Object? savePath = freezed,
   }) {
-    return _then(_RequestParams(
+    return _then(_RequestConfig(
       showErrorMsg: null == showErrorMsg
           ? _self.showErrorMsg
           : showErrorMsg // ignore: cast_nullable_to_non_nullable
@@ -941,25 +952,31 @@ mixin _$AskStringDialogParams {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as AskStringDialogParams;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AskStringDialogParams &&
-            (identical(other.placeholder, placeholder) ||
-                other.placeholder == placeholder) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.okBtnText, okBtnText) ||
-                other.okBtnText == okBtnText) &&
-            (identical(other.cancelBtnText, cancelBtnText) ||
-                other.cancelBtnText == cancelBtnText));
+            (identical(other.placeholder, _this.placeholder) ||
+                other.placeholder == _this.placeholder) &&
+            (identical(other.title, _this.title) ||
+                other.title == _this.title) &&
+            (identical(other.okBtnText, _this.okBtnText) ||
+                other.okBtnText == _this.okBtnText) &&
+            (identical(other.cancelBtnText, _this.cancelBtnText) ||
+                other.cancelBtnText == _this.cancelBtnText));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, placeholder, title, okBtnText, cancelBtnText);
+  int get hashCode {
+    final _this = this as AskStringDialogParams;
+    return Object.hash(runtimeType, _this.placeholder, _this.title,
+        _this.okBtnText, _this.cancelBtnText);
+  }
 
   @override
   String toString() {
-    return 'AskStringDialogParams(placeholder: $placeholder, title: $title, okBtnText: $okBtnText, cancelBtnText: $cancelBtnText)';
+    final _this = this as AskStringDialogParams;
+    return 'AskStringDialogParams(placeholder: ${_this.placeholder}, title: ${_this.title}, okBtnText: ${_this.okBtnText}, cancelBtnText: ${_this.cancelBtnText})';
   }
 }
 
@@ -994,7 +1011,7 @@ class _$AskStringDialogParamsCopyWithImpl<$Res>
     Object? okBtnText = null,
     Object? cancelBtnText = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(AskStringDialogParams(
       placeholder: null == placeholder
           ? _self.placeholder
           : placeholder // ignore: cast_nullable_to_non_nullable
@@ -1223,8 +1240,10 @@ class _AskStringDialogParams implements AskStringDialogParams {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, placeholder, title, okBtnText, cancelBtnText);
+  int get hashCode {
+    return Object.hash(
+        runtimeType, placeholder, title, okBtnText, cancelBtnText);
+  }
 
   @override
   String toString() {
@@ -1311,41 +1330,48 @@ mixin _$AskIntDialogParams {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as AskIntDialogParams;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AskIntDialogParams &&
-            (identical(other.placeholder, placeholder) ||
-                other.placeholder == placeholder) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.okBtnText, okBtnText) ||
-                other.okBtnText == okBtnText) &&
-            (identical(other.cancelBtnText, cancelBtnText) ||
-                other.cancelBtnText == cancelBtnText) &&
-            (identical(other.disableOkButton, disableOkButton) ||
-                other.disableOkButton == disableOkButton) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage) &&
-            (identical(other.okButtonTextStyle, okButtonTextStyle) ||
-                other.okButtonTextStyle == okButtonTextStyle) &&
-            (identical(other.cancelButtonTextStyle, cancelButtonTextStyle) ||
-                other.cancelButtonTextStyle == cancelButtonTextStyle));
+            (identical(other.placeholder, _this.placeholder) ||
+                other.placeholder == _this.placeholder) &&
+            (identical(other.title, _this.title) ||
+                other.title == _this.title) &&
+            (identical(other.okBtnText, _this.okBtnText) ||
+                other.okBtnText == _this.okBtnText) &&
+            (identical(other.cancelBtnText, _this.cancelBtnText) ||
+                other.cancelBtnText == _this.cancelBtnText) &&
+            (identical(other.disableOkButton, _this.disableOkButton) ||
+                other.disableOkButton == _this.disableOkButton) &&
+            (identical(other.errorMessage, _this.errorMessage) ||
+                other.errorMessage == _this.errorMessage) &&
+            (identical(other.okButtonTextStyle, _this.okButtonTextStyle) ||
+                other.okButtonTextStyle == _this.okButtonTextStyle) &&
+            (identical(
+                    other.cancelButtonTextStyle, _this.cancelButtonTextStyle) ||
+                other.cancelButtonTextStyle == _this.cancelButtonTextStyle));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      placeholder,
-      title,
-      okBtnText,
-      cancelBtnText,
-      disableOkButton,
-      errorMessage,
-      okButtonTextStyle,
-      cancelButtonTextStyle);
+  int get hashCode {
+    final _this = this as AskIntDialogParams;
+    return Object.hash(
+        runtimeType,
+        _this.placeholder,
+        _this.title,
+        _this.okBtnText,
+        _this.cancelBtnText,
+        _this.disableOkButton,
+        _this.errorMessage,
+        _this.okButtonTextStyle,
+        _this.cancelButtonTextStyle);
+  }
 
   @override
   String toString() {
-    return 'AskIntDialogParams(placeholder: $placeholder, title: $title, okBtnText: $okBtnText, cancelBtnText: $cancelBtnText, disableOkButton: $disableOkButton, errorMessage: $errorMessage, okButtonTextStyle: $okButtonTextStyle, cancelButtonTextStyle: $cancelButtonTextStyle)';
+    final _this = this as AskIntDialogParams;
+    return 'AskIntDialogParams(placeholder: ${_this.placeholder}, title: ${_this.title}, okBtnText: ${_this.okBtnText}, cancelBtnText: ${_this.cancelBtnText}, disableOkButton: ${_this.disableOkButton}, errorMessage: ${_this.errorMessage}, okButtonTextStyle: ${_this.okButtonTextStyle}, cancelButtonTextStyle: ${_this.cancelButtonTextStyle})';
   }
 }
 
@@ -1388,7 +1414,7 @@ class _$AskIntDialogParamsCopyWithImpl<$Res>
     Object? okButtonTextStyle = freezed,
     Object? cancelButtonTextStyle = freezed,
   }) {
-    return _then(_self.copyWith(
+    return _then(AskIntDialogParams(
       placeholder: null == placeholder
           ? _self.placeholder
           : placeholder // ignore: cast_nullable_to_non_nullable
@@ -1698,16 +1724,18 @@ class _AskIntDialogParams implements AskIntDialogParams {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      placeholder,
-      title,
-      okBtnText,
-      cancelBtnText,
-      disableOkButton,
-      errorMessage,
-      okButtonTextStyle,
-      cancelButtonTextStyle);
+  int get hashCode {
+    return Object.hash(
+        runtimeType,
+        placeholder,
+        title,
+        okBtnText,
+        cancelBtnText,
+        disableOkButton,
+        errorMessage,
+        okButtonTextStyle,
+        cancelButtonTextStyle);
+  }
 
   @override
   String toString() {
@@ -1813,25 +1841,33 @@ mixin _$AskOkDialogParams {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as AskOkDialogParams;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AskOkDialogParams &&
-            (identical(other.contentText, contentText) ||
-                other.contentText == contentText) &&
-            (identical(other.okText, okText) || other.okText == okText) &&
-            (identical(other.cancelText, cancelText) ||
-                other.cancelText == cancelText) &&
-            (identical(other.content, content) || other.content == content) &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.contentText, _this.contentText) ||
+                other.contentText == _this.contentText) &&
+            (identical(other.okText, _this.okText) ||
+                other.okText == _this.okText) &&
+            (identical(other.cancelText, _this.cancelText) ||
+                other.cancelText == _this.cancelText) &&
+            (identical(other.content, _this.content) ||
+                other.content == _this.content) &&
+            (identical(other.title, _this.title) ||
+                other.title == _this.title));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, contentText, okText, cancelText, content, title);
+  int get hashCode {
+    final _this = this as AskOkDialogParams;
+    return Object.hash(runtimeType, _this.contentText, _this.okText,
+        _this.cancelText, _this.content, _this.title);
+  }
 
   @override
   String toString() {
-    return 'AskOkDialogParams(contentText: $contentText, okText: $okText, cancelText: $cancelText, content: $content, title: $title)';
+    final _this = this as AskOkDialogParams;
+    return 'AskOkDialogParams(contentText: ${_this.contentText}, okText: ${_this.okText}, cancelText: ${_this.cancelText}, content: ${_this.content}, title: ${_this.title})';
   }
 }
 
@@ -1868,7 +1904,7 @@ class _$AskOkDialogParamsCopyWithImpl<$Res>
     Object? content = freezed,
     Object? title = freezed,
   }) {
-    return _then(_self.copyWith(
+    return _then(AskOkDialogParams(
       contentText: null == contentText
           ? _self.contentText
           : contentText // ignore: cast_nullable_to_non_nullable
@@ -2104,8 +2140,10 @@ class _AskOkDialogParams implements AskOkDialogParams {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, contentText, okText, cancelText, content, title);
+  int get hashCode {
+    return Object.hash(
+        runtimeType, contentText, okText, cancelText, content, title);
+  }
 
   @override
   String toString() {
@@ -2393,7 +2431,8 @@ extension BaseApiExceptionPatterns on BaseApiException {
     TResult Function()? receiveTimeout,
     TResult Function()? badCertificate,
     TResult Function()? connectionError,
-    TResult Function(@igFreezedJson Response? response, int? statusCode)?
+    TResult Function(
+            @igFreezedJson Response<dynamic>? response, int? statusCode)?
         badResponse,
     TResult Function(String message, @igFreezedJson Object? error,
             @igFreezedJson StackTrace? stackTrace)?
@@ -2447,7 +2486,7 @@ extension BaseApiExceptionPatterns on BaseApiException {
     required TResult Function() badCertificate,
     required TResult Function() connectionError,
     required TResult Function(
-            @igFreezedJson Response? response, int? statusCode)
+            @igFreezedJson Response<dynamic>? response, int? statusCode)
         badResponse,
     required TResult Function(String message, @igFreezedJson Object? error,
             @igFreezedJson StackTrace? stackTrace)
@@ -2496,7 +2535,8 @@ extension BaseApiExceptionPatterns on BaseApiException {
     TResult? Function()? receiveTimeout,
     TResult? Function()? badCertificate,
     TResult? Function()? connectionError,
-    TResult? Function(@igFreezedJson Response? response, int? statusCode)?
+    TResult? Function(
+            @igFreezedJson Response<dynamic>? response, int? statusCode)?
         badResponse,
     TResult? Function(String message, @igFreezedJson Object? error,
             @igFreezedJson StackTrace? stackTrace)?
@@ -2530,9 +2570,7 @@ extension BaseApiExceptionPatterns on BaseApiException {
 @JsonSerializable()
 class BaseApiCancelException extends BaseApiException {
   const BaseApiCancelException(
-      {@igFreezedJson this.error,
-      @igFreezedJson this.options,
-      final String? $type})
+      {@igFreezedJson this.error, @igFreezedJson this.options, String? $type})
       : $type = $type ?? 'cancel',
         super._();
   factory BaseApiCancelException.fromJson(Map<String, dynamic> json) =>
@@ -2572,8 +2610,10 @@ class BaseApiCancelException extends BaseApiException {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(error), options);
+  int get hashCode {
+    return Object.hash(
+        runtimeType, const DeepCollectionEquality().hash(error), options);
+  }
 
   @override
   String toString() {
@@ -2620,7 +2660,7 @@ class _$BaseApiCancelExceptionCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class BaseApiConnectionTimeoutException extends BaseApiException {
-  const BaseApiConnectionTimeoutException({final String? $type})
+  const BaseApiConnectionTimeoutException({String? $type})
       : $type = $type ?? 'connectionTimeout',
         super._();
   factory BaseApiConnectionTimeoutException.fromJson(
@@ -2657,7 +2697,7 @@ class BaseApiConnectionTimeoutException extends BaseApiException {
 /// @nodoc
 @JsonSerializable()
 class BaseApiSendTimeoutException extends BaseApiException {
-  const BaseApiSendTimeoutException({final String? $type})
+  const BaseApiSendTimeoutException({String? $type})
       : $type = $type ?? 'sendTimeout',
         super._();
   factory BaseApiSendTimeoutException.fromJson(Map<String, dynamic> json) =>
@@ -2693,7 +2733,7 @@ class BaseApiSendTimeoutException extends BaseApiException {
 /// @nodoc
 @JsonSerializable()
 class BaseApiReceiveTimeoutException extends BaseApiException {
-  const BaseApiReceiveTimeoutException({final String? $type})
+  const BaseApiReceiveTimeoutException({String? $type})
       : $type = $type ?? 'receiveTimeout',
         super._();
   factory BaseApiReceiveTimeoutException.fromJson(Map<String, dynamic> json) =>
@@ -2729,7 +2769,7 @@ class BaseApiReceiveTimeoutException extends BaseApiException {
 /// @nodoc
 @JsonSerializable()
 class BaseApiBadCertificateException extends BaseApiException {
-  const BaseApiBadCertificateException({final String? $type})
+  const BaseApiBadCertificateException({String? $type})
       : $type = $type ?? 'badCertificate',
         super._();
   factory BaseApiBadCertificateException.fromJson(Map<String, dynamic> json) =>
@@ -2765,7 +2805,7 @@ class BaseApiBadCertificateException extends BaseApiException {
 /// @nodoc
 @JsonSerializable()
 class BaseApiConnectionErrorException extends BaseApiException {
-  const BaseApiConnectionErrorException({final String? $type})
+  const BaseApiConnectionErrorException({String? $type})
       : $type = $type ?? 'connectionError',
         super._();
   factory BaseApiConnectionErrorException.fromJson(Map<String, dynamic> json) =>
@@ -2802,14 +2842,14 @@ class BaseApiConnectionErrorException extends BaseApiException {
 @JsonSerializable()
 class BaseApiBadResponseException extends BaseApiException {
   const BaseApiBadResponseException(
-      {@igFreezedJson this.response, this.statusCode, final String? $type})
+      {@igFreezedJson this.response, this.statusCode, String? $type})
       : $type = $type ?? 'badResponse',
         super._();
   factory BaseApiBadResponseException.fromJson(Map<String, dynamic> json) =>
       _$BaseApiBadResponseExceptionFromJson(json);
 
   @igFreezedJson
-  final Response? response;
+  final Response<dynamic>? response;
   final int? statusCode;
 
   @JsonKey(name: 'runtimeType')
@@ -2843,7 +2883,9 @@ class BaseApiBadResponseException extends BaseApiException {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, response, statusCode);
+  int get hashCode {
+    return Object.hash(runtimeType, response, statusCode);
+  }
 
   @override
   String toString() {
@@ -2859,7 +2901,7 @@ abstract mixin class $BaseApiBadResponseExceptionCopyWith<$Res>
           $Res Function(BaseApiBadResponseException) _then) =
       _$BaseApiBadResponseExceptionCopyWithImpl;
   @useResult
-  $Res call({@igFreezedJson Response? response, int? statusCode});
+  $Res call({@igFreezedJson Response<dynamic>? response, int? statusCode});
 }
 
 /// @nodoc
@@ -2881,7 +2923,7 @@ class _$BaseApiBadResponseExceptionCopyWithImpl<$Res>
       response: freezed == response
           ? _self.response
           : response // ignore: cast_nullable_to_non_nullable
-              as Response?,
+              as Response<dynamic>?,
       statusCode: freezed == statusCode
           ? _self.statusCode
           : statusCode // ignore: cast_nullable_to_non_nullable
@@ -2897,7 +2939,7 @@ class BaseApiBusinessException extends BaseApiException {
       {required this.message,
       @igFreezedJson this.error,
       @igFreezedJson this.stackTrace,
-      final String? $type})
+      String? $type})
       : $type = $type ?? 'businessException',
         super._();
   factory BaseApiBusinessException.fromJson(Map<String, dynamic> json) =>
@@ -2940,8 +2982,10 @@ class BaseApiBusinessException extends BaseApiException {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, message,
-      const DeepCollectionEquality().hash(error), stackTrace);
+  int get hashCode {
+    return Object.hash(runtimeType, message,
+        const DeepCollectionEquality().hash(error), stackTrace);
+  }
 
   @override
   String toString() {
@@ -3005,18 +3049,24 @@ mixin _$ByteModel {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as ByteModel;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ByteModel &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.value, _this.value) ||
+                other.value == _this.value));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode {
+    final _this = this as ByteModel;
+    return Object.hash(runtimeType, _this.value);
+  }
 
   @override
   String toString() {
-    return 'ByteModel(value: $value)';
+    final _this = this as ByteModel;
+    return 'ByteModel(value: ${_this.value})';
   }
 }
 
@@ -3301,7 +3351,9 @@ class BytesModel extends ByteModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode {
+    return Object.hash(runtimeType, value);
+  }
 
   @override
   String toString() {
@@ -3368,7 +3420,9 @@ class KbModel extends ByteModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode {
+    return Object.hash(runtimeType, value);
+  }
 
   @override
   String toString() {
@@ -3434,7 +3488,9 @@ class MbModel extends ByteModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode {
+    return Object.hash(runtimeType, value);
+  }
 
   @override
   String toString() {
@@ -3500,7 +3556,9 @@ class GbModel extends ByteModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode {
+    return Object.hash(runtimeType, value);
+  }
 
   @override
   String toString() {
@@ -3566,7 +3624,9 @@ class TbModel extends ByteModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode {
+    return Object.hash(runtimeType, value);
+  }
 
   @override
   String toString() {
@@ -3940,7 +4000,7 @@ extension DartTypeModelPatterns on DartTypeModel {
 /// @nodoc
 @JsonSerializable()
 class StringData extends DartTypeModel {
-  const StringData(this.value, {final String? $type})
+  const StringData(this.value, {String? $type})
       : $type = $type ?? 'string',
         super._();
   factory StringData.fromJson(Map<String, dynamic> json) =>
@@ -3975,7 +4035,9 @@ class StringData extends DartTypeModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode {
+    return Object.hash(runtimeType, value);
+  }
 
   @override
   String toString() {
@@ -4018,7 +4080,7 @@ class _$StringDataCopyWithImpl<$Res> implements $StringDataCopyWith<$Res> {
 /// @nodoc
 @JsonSerializable()
 class NumData extends DartTypeModel {
-  const NumData(this.value, {final String? $type})
+  const NumData(this.value, {String? $type})
       : $type = $type ?? 'num',
         super._();
   factory NumData.fromJson(Map<String, dynamic> json) =>
@@ -4053,7 +4115,9 @@ class NumData extends DartTypeModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode {
+    return Object.hash(runtimeType, value);
+  }
 
   @override
   String toString() {
@@ -4095,7 +4159,7 @@ class _$NumDataCopyWithImpl<$Res> implements $NumDataCopyWith<$Res> {
 /// @nodoc
 @JsonSerializable()
 class BoolData extends DartTypeModel {
-  const BoolData(this.value, {final String? $type})
+  const BoolData(this.value, {String? $type})
       : $type = $type ?? 'bool',
         super._();
   factory BoolData.fromJson(Map<String, dynamic> json) =>
@@ -4130,7 +4194,9 @@ class BoolData extends DartTypeModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode {
+    return Object.hash(runtimeType, value);
+  }
 
   @override
   String toString() {
@@ -4172,7 +4238,7 @@ class _$BoolDataCopyWithImpl<$Res> implements $BoolDataCopyWith<$Res> {
 /// @nodoc
 @JsonSerializable()
 class ListData extends DartTypeModel {
-  const ListData(final List<dynamic> value, {final String? $type})
+  const ListData(List<dynamic> value, {String? $type})
       : _value = value,
         $type = $type ?? 'list',
         super._();
@@ -4208,13 +4274,15 @@ class ListData extends DartTypeModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ListData &&
-            const DeepCollectionEquality().equals(other._value, _value));
+            const DeepCollectionEquality().equals(other.value, _value));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
+  int get hashCode {
+    return Object.hash(
+        runtimeType, const DeepCollectionEquality().hash(_value));
+  }
 
   @override
   String toString() {
@@ -4256,7 +4324,7 @@ class _$ListDataCopyWithImpl<$Res> implements $ListDataCopyWith<$Res> {
 /// @nodoc
 @JsonSerializable()
 class JsonData extends DartTypeModel {
-  const JsonData(final Map<String, dynamic> value, {final String? $type})
+  const JsonData(Map<String, dynamic> value, {String? $type})
       : _value = value,
         $type = $type ?? 'json',
         super._();
@@ -4292,13 +4360,15 @@ class JsonData extends DartTypeModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is JsonData &&
-            const DeepCollectionEquality().equals(other._value, _value));
+            const DeepCollectionEquality().equals(other.value, _value));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_value));
+  int get hashCode {
+    return Object.hash(
+        runtimeType, const DeepCollectionEquality().hash(_value));
+  }
 
   @override
   String toString() {
@@ -4340,7 +4410,7 @@ class _$JsonDataCopyWithImpl<$Res> implements $JsonDataCopyWith<$Res> {
 /// @nodoc
 @JsonSerializable()
 class DynamicData extends DartTypeModel {
-  const DynamicData(this.value, {final String? $type})
+  const DynamicData(this.value, {String? $type})
       : $type = $type ?? 'dynamic',
         super._();
   factory DynamicData.fromJson(Map<String, dynamic> json) =>
@@ -4375,8 +4445,9 @@ class DynamicData extends DartTypeModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  int get hashCode {
+    return Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+  }
 
   @override
   String toString() {
@@ -4419,7 +4490,7 @@ class _$DynamicDataCopyWithImpl<$Res> implements $DynamicDataCopyWith<$Res> {
 /// @nodoc
 @JsonSerializable()
 class NullData extends DartTypeModel {
-  const NullData({final String? $type})
+  const NullData({String? $type})
       : $type = $type ?? 'nil',
         super._();
   factory NullData.fromJson(Map<String, dynamic> json) =>
@@ -4454,7 +4525,7 @@ class NullData extends DartTypeModel {
 /// @nodoc
 @JsonSerializable()
 class JsonStringData extends DartTypeModel {
-  const JsonStringData(this.jsonString, {final String? $type})
+  const JsonStringData(this.jsonString, {String? $type})
       : $type = $type ?? 'jsonString',
         super._();
   factory JsonStringData.fromJson(Map<String, dynamic> json) =>
@@ -4490,7 +4561,9 @@ class JsonStringData extends DartTypeModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, jsonString);
+  int get hashCode {
+    return Object.hash(runtimeType, jsonString);
+  }
 
   @override
   String toString() {
@@ -4556,7 +4629,7 @@ mixin _$ImageParams {
   bool get gaplessPlayback;
   @igFreezedJson
   BlendMode? get colorBlendMode;
-  FilterQuality get filterQuality; //---net
+  FilterQuality get filterQuality;
   double? get scale;
   Map<String, String> get headers;
   bool get cache;
@@ -4604,127 +4677,137 @@ mixin _$ImageParams {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as ImageParams;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ImageParams &&
-            (identical(other.width, width) || other.width == width) &&
-            (identical(other.height, height) || other.height == height) &&
-            (identical(other.size, size) || other.size == size) &&
-            (identical(other.fit, fit) || other.fit == fit) &&
-            (identical(other.borderRadius, borderRadius) ||
-                other.borderRadius == borderRadius) &&
-            (identical(other.shape, shape) || other.shape == shape) &&
-            (identical(other.enableMemoryCache, enableMemoryCache) ||
-                other.enableMemoryCache == enableMemoryCache) &&
-            (identical(other.heroTag, heroTag) || other.heroTag == heroTag) &&
-            (identical(other.isSelected, isSelected) ||
-                other.isSelected == isSelected) &&
-            (identical(other.errorWidget, errorWidget) ||
-                other.errorWidget == errorWidget) &&
-            (identical(other.onTap, onTap) || other.onTap == onTap) &&
-            (identical(other.color, color) || other.color == color) &&
-            (identical(
-                    other.clearMemoryCacheIfFailed, clearMemoryCacheIfFailed) ||
-                other.clearMemoryCacheIfFailed == clearMemoryCacheIfFailed) &&
-            (identical(other.clearMemoryCacheWhenDispose, clearMemoryCacheWhenDispose) ||
+            (identical(other.width, _this.width) ||
+                other.width == _this.width) &&
+            (identical(other.height, _this.height) ||
+                other.height == _this.height) &&
+            (identical(other.size, _this.size) || other.size == _this.size) &&
+            (identical(other.fit, _this.fit) || other.fit == _this.fit) &&
+            (identical(other.borderRadius, _this.borderRadius) ||
+                other.borderRadius == _this.borderRadius) &&
+            (identical(other.shape, _this.shape) ||
+                other.shape == _this.shape) &&
+            (identical(other.enableMemoryCache, _this.enableMemoryCache) ||
+                other.enableMemoryCache == _this.enableMemoryCache) &&
+            (identical(other.heroTag, _this.heroTag) ||
+                other.heroTag == _this.heroTag) &&
+            (identical(other.isSelected, _this.isSelected) ||
+                other.isSelected == _this.isSelected) &&
+            (identical(other.errorWidget, _this.errorWidget) ||
+                other.errorWidget == _this.errorWidget) &&
+            (identical(other.onTap, _this.onTap) ||
+                other.onTap == _this.onTap) &&
+            (identical(other.color, _this.color) ||
+                other.color == _this.color) &&
+            (identical(other.clearMemoryCacheIfFailed, _this.clearMemoryCacheIfFailed) ||
+                other.clearMemoryCacheIfFailed ==
+                    _this.clearMemoryCacheIfFailed) &&
+            (identical(other.clearMemoryCacheWhenDispose, _this.clearMemoryCacheWhenDispose) ||
                 other.clearMemoryCacheWhenDispose ==
-                    clearMemoryCacheWhenDispose) &&
-            (identical(other.gaplessPlayback, gaplessPlayback) ||
-                other.gaplessPlayback == gaplessPlayback) &&
-            (identical(other.colorBlendMode, colorBlendMode) ||
-                other.colorBlendMode == colorBlendMode) &&
-            (identical(other.filterQuality, filterQuality) ||
-                other.filterQuality == filterQuality) &&
-            (identical(other.scale, scale) || other.scale == scale) &&
-            const DeepCollectionEquality().equals(other.headers, headers) &&
-            (identical(other.cache, cache) || other.cache == cache) &&
-            (identical(other.retries, retries) || other.retries == retries) &&
-            (identical(other.timeLimit, timeLimit) ||
-                other.timeLimit == timeLimit) &&
-            (identical(other.timeRetry, timeRetry) ||
-                other.timeRetry == timeRetry) &&
-            (identical(other.cancelToken, cancelToken) ||
-                other.cancelToken == cancelToken) &&
-            (identical(other.cacheKey, cacheKey) ||
-                other.cacheKey == cacheKey) &&
-            (identical(other.printError, printError) ||
-                other.printError == printError) &&
-            (identical(other.cacheRawData, cacheRawData) ||
-                other.cacheRawData == cacheRawData) &&
-            (identical(other.imageCacheName, imageCacheName) ||
-                other.imageCacheName == imageCacheName) &&
-            (identical(other.cacheMaxAge, cacheMaxAge) ||
-                other.cacheMaxAge == cacheMaxAge) &&
-            (identical(other.cacheWidth, cacheWidth) ||
-                other.cacheWidth == cacheWidth) &&
-            (identical(other.cacheHeight, cacheHeight) ||
-                other.cacheHeight == cacheHeight) &&
-            (identical(other.compressionRatio, compressionRatio) ||
-                other.compressionRatio == compressionRatio) &&
-            (identical(other.maxBytes, maxBytes) ||
-                other.maxBytes == maxBytes) &&
-            (identical(other.package, package) || other.package == package) &&
-            (identical(other.bundle, bundle) || other.bundle == bundle) &&
-            (identical(other.customCompletedWidget, customCompletedWidget) ||
-                other.customCompletedWidget == customCompletedWidget) &&
-            (identical(other.customLoadingWidget, customLoadingWidget) ||
-                other.customLoadingWidget == customLoadingWidget) &&
-            (identical(other.initEditorConfigHandler, initEditorConfigHandler) ||
-                other.initEditorConfigHandler == initEditorConfigHandler) &&
-            (identical(other.extendedImageEditorKey, extendedImageEditorKey) ||
-                other.extendedImageEditorKey == extendedImageEditorKey) &&
-            (identical(other.mode, mode) || other.mode == mode));
+                    _this.clearMemoryCacheWhenDispose) &&
+            (identical(other.gaplessPlayback, _this.gaplessPlayback) ||
+                other.gaplessPlayback == _this.gaplessPlayback) &&
+            (identical(other.colorBlendMode, _this.colorBlendMode) ||
+                other.colorBlendMode == _this.colorBlendMode) &&
+            (identical(other.filterQuality, _this.filterQuality) ||
+                other.filterQuality == _this.filterQuality) &&
+            (identical(other.scale, _this.scale) ||
+                other.scale == _this.scale) &&
+            const DeepCollectionEquality()
+                .equals(other.headers, _this.headers) &&
+            (identical(other.cache, _this.cache) ||
+                other.cache == _this.cache) &&
+            (identical(other.retries, _this.retries) ||
+                other.retries == _this.retries) &&
+            (identical(other.timeLimit, _this.timeLimit) ||
+                other.timeLimit == _this.timeLimit) &&
+            (identical(other.timeRetry, _this.timeRetry) ||
+                other.timeRetry == _this.timeRetry) &&
+            (identical(other.cancelToken, _this.cancelToken) ||
+                other.cancelToken == _this.cancelToken) &&
+            (identical(other.cacheKey, _this.cacheKey) ||
+                other.cacheKey == _this.cacheKey) &&
+            (identical(other.printError, _this.printError) ||
+                other.printError == _this.printError) &&
+            (identical(other.cacheRawData, _this.cacheRawData) ||
+                other.cacheRawData == _this.cacheRawData) &&
+            (identical(other.imageCacheName, _this.imageCacheName) ||
+                other.imageCacheName == _this.imageCacheName) &&
+            (identical(other.cacheMaxAge, _this.cacheMaxAge) ||
+                other.cacheMaxAge == _this.cacheMaxAge) &&
+            (identical(other.cacheWidth, _this.cacheWidth) ||
+                other.cacheWidth == _this.cacheWidth) &&
+            (identical(other.cacheHeight, _this.cacheHeight) ||
+                other.cacheHeight == _this.cacheHeight) &&
+            (identical(other.compressionRatio, _this.compressionRatio) ||
+                other.compressionRatio == _this.compressionRatio) &&
+            (identical(other.maxBytes, _this.maxBytes) || other.maxBytes == _this.maxBytes) &&
+            (identical(other.package, _this.package) || other.package == _this.package) &&
+            (identical(other.bundle, _this.bundle) || other.bundle == _this.bundle) &&
+            (identical(other.customCompletedWidget, _this.customCompletedWidget) || other.customCompletedWidget == _this.customCompletedWidget) &&
+            (identical(other.customLoadingWidget, _this.customLoadingWidget) || other.customLoadingWidget == _this.customLoadingWidget) &&
+            (identical(other.initEditorConfigHandler, _this.initEditorConfigHandler) || other.initEditorConfigHandler == _this.initEditorConfigHandler) &&
+            (identical(other.extendedImageEditorKey, _this.extendedImageEditorKey) || other.extendedImageEditorKey == _this.extendedImageEditorKey) &&
+            (identical(other.mode, _this.mode) || other.mode == _this.mode));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        width,
-        height,
-        size,
-        fit,
-        borderRadius,
-        shape,
-        enableMemoryCache,
-        heroTag,
-        isSelected,
-        errorWidget,
-        onTap,
-        color,
-        clearMemoryCacheIfFailed,
-        clearMemoryCacheWhenDispose,
-        gaplessPlayback,
-        colorBlendMode,
-        filterQuality,
-        scale,
-        const DeepCollectionEquality().hash(headers),
-        cache,
-        retries,
-        timeLimit,
-        timeRetry,
-        cancelToken,
-        cacheKey,
-        printError,
-        cacheRawData,
-        imageCacheName,
-        cacheMaxAge,
-        cacheWidth,
-        cacheHeight,
-        compressionRatio,
-        maxBytes,
-        package,
-        bundle,
-        customCompletedWidget,
-        customLoadingWidget,
-        initEditorConfigHandler,
-        extendedImageEditorKey,
-        mode
-      ]);
+  int get hashCode {
+    final _this = this as ImageParams;
+    return Object.hashAll([
+      runtimeType,
+      _this.width,
+      _this.height,
+      _this.size,
+      _this.fit,
+      _this.borderRadius,
+      _this.shape,
+      _this.enableMemoryCache,
+      _this.heroTag,
+      _this.isSelected,
+      _this.errorWidget,
+      _this.onTap,
+      _this.color,
+      _this.clearMemoryCacheIfFailed,
+      _this.clearMemoryCacheWhenDispose,
+      _this.gaplessPlayback,
+      _this.colorBlendMode,
+      _this.filterQuality,
+      _this.scale,
+      const DeepCollectionEquality().hash(_this.headers),
+      _this.cache,
+      _this.retries,
+      _this.timeLimit,
+      _this.timeRetry,
+      _this.cancelToken,
+      _this.cacheKey,
+      _this.printError,
+      _this.cacheRawData,
+      _this.imageCacheName,
+      _this.cacheMaxAge,
+      _this.cacheWidth,
+      _this.cacheHeight,
+      _this.compressionRatio,
+      _this.maxBytes,
+      _this.package,
+      _this.bundle,
+      _this.customCompletedWidget,
+      _this.customLoadingWidget,
+      _this.initEditorConfigHandler,
+      _this.extendedImageEditorKey,
+      _this.mode
+    ]);
+  }
 
   @override
   String toString() {
-    return 'ImageParams(width: $width, height: $height, size: $size, fit: $fit, borderRadius: $borderRadius, shape: $shape, enableMemoryCache: $enableMemoryCache, heroTag: $heroTag, isSelected: $isSelected, errorWidget: $errorWidget, onTap: $onTap, color: $color, clearMemoryCacheIfFailed: $clearMemoryCacheIfFailed, clearMemoryCacheWhenDispose: $clearMemoryCacheWhenDispose, gaplessPlayback: $gaplessPlayback, colorBlendMode: $colorBlendMode, filterQuality: $filterQuality, scale: $scale, headers: $headers, cache: $cache, retries: $retries, timeLimit: $timeLimit, timeRetry: $timeRetry, cancelToken: $cancelToken, cacheKey: $cacheKey, printError: $printError, cacheRawData: $cacheRawData, imageCacheName: $imageCacheName, cacheMaxAge: $cacheMaxAge, cacheWidth: $cacheWidth, cacheHeight: $cacheHeight, compressionRatio: $compressionRatio, maxBytes: $maxBytes, package: $package, bundle: $bundle, customCompletedWidget: $customCompletedWidget, customLoadingWidget: $customLoadingWidget, initEditorConfigHandler: $initEditorConfigHandler, extendedImageEditorKey: $extendedImageEditorKey, mode: $mode)';
+    final _this = this as ImageParams;
+    return 'ImageParams(width: ${_this.width}, height: ${_this.height}, size: ${_this.size}, fit: ${_this.fit}, borderRadius: ${_this.borderRadius}, shape: ${_this.shape}, enableMemoryCache: ${_this.enableMemoryCache}, heroTag: ${_this.heroTag}, isSelected: ${_this.isSelected}, errorWidget: ${_this.errorWidget}, onTap: ${_this.onTap}, color: ${_this.color}, clearMemoryCacheIfFailed: ${_this.clearMemoryCacheIfFailed}, clearMemoryCacheWhenDispose: ${_this.clearMemoryCacheWhenDispose}, gaplessPlayback: ${_this.gaplessPlayback}, colorBlendMode: ${_this.colorBlendMode}, filterQuality: ${_this.filterQuality}, scale: ${_this.scale}, headers: ${_this.headers}, cache: ${_this.cache}, retries: ${_this.retries}, timeLimit: ${_this.timeLimit}, timeRetry: ${_this.timeRetry}, cancelToken: ${_this.cancelToken}, cacheKey: ${_this.cacheKey}, printError: ${_this.printError}, cacheRawData: ${_this.cacheRawData}, imageCacheName: ${_this.imageCacheName}, cacheMaxAge: ${_this.cacheMaxAge}, cacheWidth: ${_this.cacheWidth}, cacheHeight: ${_this.cacheHeight}, compressionRatio: ${_this.compressionRatio}, maxBytes: ${_this.maxBytes}, package: ${_this.package}, bundle: ${_this.bundle}, customCompletedWidget: ${_this.customCompletedWidget}, customLoadingWidget: ${_this.customLoadingWidget}, initEditorConfigHandler: ${_this.initEditorConfigHandler}, extendedImageEditorKey: ${_this.extendedImageEditorKey}, mode: ${_this.mode})';
   }
 }
 
@@ -4832,7 +4915,7 @@ class _$ImageParamsCopyWithImpl<$Res> implements $ImageParamsCopyWith<$Res> {
     Object? extendedImageEditorKey = freezed,
     Object? mode = freezed,
   }) {
-    return _then(_self.copyWith(
+    return _then(ImageParams(
       width: freezed == width
           ? _self.width
           : width // ignore: cast_nullable_to_non_nullable
@@ -5421,7 +5504,7 @@ class _ImageParams extends ImageParams {
       @igFreezedJson this.colorBlendMode,
       this.filterQuality = FilterQuality.medium,
       this.scale,
-      final Map<String, String> headers = const {},
+      Map<String, String> headers = const {},
       this.cache = true,
       this.retries = 3,
       @igFreezedJson this.timeLimit,
@@ -5495,7 +5578,6 @@ class _ImageParams extends ImageParams {
   @override
   @JsonKey()
   final FilterQuality filterQuality;
-//---net
   @override
   final double? scale;
   final Map<String, String> _headers;
@@ -5614,7 +5696,7 @@ class _ImageParams extends ImageParams {
             (identical(other.filterQuality, filterQuality) ||
                 other.filterQuality == filterQuality) &&
             (identical(other.scale, scale) || other.scale == scale) &&
-            const DeepCollectionEquality().equals(other._headers, _headers) &&
+            const DeepCollectionEquality().equals(other.headers, _headers) &&
             (identical(other.cache, cache) || other.cache == cache) &&
             (identical(other.retries, retries) || other.retries == retries) &&
             (identical(other.timeLimit, timeLimit) ||
@@ -5656,49 +5738,51 @@ class _ImageParams extends ImageParams {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        width,
-        height,
-        size,
-        fit,
-        borderRadius,
-        shape,
-        enableMemoryCache,
-        heroTag,
-        isSelected,
-        errorWidget,
-        onTap,
-        color,
-        clearMemoryCacheIfFailed,
-        clearMemoryCacheWhenDispose,
-        gaplessPlayback,
-        colorBlendMode,
-        filterQuality,
-        scale,
-        const DeepCollectionEquality().hash(_headers),
-        cache,
-        retries,
-        timeLimit,
-        timeRetry,
-        cancelToken,
-        cacheKey,
-        printError,
-        cacheRawData,
-        imageCacheName,
-        cacheMaxAge,
-        cacheWidth,
-        cacheHeight,
-        compressionRatio,
-        maxBytes,
-        package,
-        bundle,
-        customCompletedWidget,
-        customLoadingWidget,
-        initEditorConfigHandler,
-        extendedImageEditorKey,
-        mode
-      ]);
+  int get hashCode {
+    return Object.hashAll([
+      runtimeType,
+      width,
+      height,
+      size,
+      fit,
+      borderRadius,
+      shape,
+      enableMemoryCache,
+      heroTag,
+      isSelected,
+      errorWidget,
+      onTap,
+      color,
+      clearMemoryCacheIfFailed,
+      clearMemoryCacheWhenDispose,
+      gaplessPlayback,
+      colorBlendMode,
+      filterQuality,
+      scale,
+      const DeepCollectionEquality().hash(_headers),
+      cache,
+      retries,
+      timeLimit,
+      timeRetry,
+      cancelToken,
+      cacheKey,
+      printError,
+      cacheRawData,
+      imageCacheName,
+      cacheMaxAge,
+      cacheWidth,
+      cacheHeight,
+      compressionRatio,
+      maxBytes,
+      package,
+      bundle,
+      customCompletedWidget,
+      customLoadingWidget,
+      initEditorConfigHandler,
+      extendedImageEditorKey,
+      mode
+    ]);
+  }
 
   @override
   String toString() {
@@ -6010,19 +6094,25 @@ mixin _$MyImage {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as MyImage;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is MyImage &&
-            (identical(other.params, params) || other.params == params));
+            (identical(other.params, _this.params) ||
+                other.params == _this.params));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, params);
+  int get hashCode {
+    final _this = this as MyImage;
+    return Object.hash(runtimeType, _this.params);
+  }
 
   @override
   String toString() {
-    return 'MyImage(params: $params)';
+    final _this = this as MyImage;
+    return 'MyImage(params: ${_this.params})';
   }
 }
 
@@ -6280,9 +6370,7 @@ extension MyImagePatterns on MyImage {
 @JsonSerializable()
 class MyNetworkImage extends MyImage {
   MyNetworkImage(
-      {required this.url,
-      this.params = const ImageParams(),
-      final String? $type})
+      {required this.url, this.params = const ImageParams(), String? $type})
       : $type = $type ?? 'network',
         super._();
   factory MyNetworkImage.fromJson(Map<String, dynamic> json) =>
@@ -6322,7 +6410,9 @@ class MyNetworkImage extends MyImage {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, url, params);
+  int get hashCode {
+    return Object.hash(runtimeType, url, params);
+  }
 
   @override
   String toString() {
@@ -6389,7 +6479,7 @@ class MyBase64Image extends MyImage {
   MyBase64Image(
       {required this.base64Code,
       this.params = const ImageParams(),
-      final String? $type})
+      String? $type})
       : $type = $type ?? 'base64',
         super._();
   factory MyBase64Image.fromJson(Map<String, dynamic> json) =>
@@ -6430,7 +6520,9 @@ class MyBase64Image extends MyImage {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, base64Code, params);
+  int get hashCode {
+    return Object.hash(runtimeType, base64Code, params);
+  }
 
   @override
   String toString() {
@@ -6497,7 +6589,7 @@ class MyFilePathImage extends MyImage {
   MyFilePathImage(
       {required this.filePath,
       this.params = const ImageParams(),
-      final String? $type})
+      String? $type})
       : $type = $type ?? 'filePath',
         super._();
   factory MyFilePathImage.fromJson(Map<String, dynamic> json) =>
@@ -6538,7 +6630,9 @@ class MyFilePathImage extends MyImage {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, filePath, params);
+  int get hashCode {
+    return Object.hash(runtimeType, filePath, params);
+  }
 
   @override
   String toString() {
@@ -6605,7 +6699,7 @@ class MyAssetImage extends MyImage {
   MyAssetImage(
       {required this.assetPath,
       this.params = const ImageParams(),
-      final String? $type})
+      String? $type})
       : $type = $type ?? 'asset',
         super._();
   factory MyAssetImage.fromJson(Map<String, dynamic> json) =>
@@ -6646,7 +6740,9 @@ class MyAssetImage extends MyImage {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, assetPath, params);
+  int get hashCode {
+    return Object.hash(runtimeType, assetPath, params);
+  }
 
   @override
   String toString() {
@@ -7149,22 +7245,28 @@ mixin _$PictureSelectionI18nConfig {
 
   @override
   bool operator ==(Object other) {
+    final _this = this as PictureSelectionI18nConfig;
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is PictureSelectionI18nConfig &&
-            (identical(other.photoAlbumMenuText, photoAlbumMenuText) ||
-                other.photoAlbumMenuText == photoAlbumMenuText) &&
-            (identical(other.goShootText, goShootText) ||
-                other.goShootText == goShootText));
+            (identical(other.photoAlbumMenuText, _this.photoAlbumMenuText) ||
+                other.photoAlbumMenuText == _this.photoAlbumMenuText) &&
+            (identical(other.goShootText, _this.goShootText) ||
+                other.goShootText == _this.goShootText));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, photoAlbumMenuText, goShootText);
+  int get hashCode {
+    final _this = this as PictureSelectionI18nConfig;
+    return Object.hash(
+        runtimeType, _this.photoAlbumMenuText, _this.goShootText);
+  }
 
   @override
   String toString() {
-    return 'PictureSelectionI18nConfig(photoAlbumMenuText: $photoAlbumMenuText, goShootText: $goShootText)';
+    final _this = this as PictureSelectionI18nConfig;
+    return 'PictureSelectionI18nConfig(photoAlbumMenuText: ${_this.photoAlbumMenuText}, goShootText: ${_this.goShootText})';
   }
 }
 
@@ -7195,7 +7297,7 @@ class _$PictureSelectionI18nConfigCopyWithImpl<$Res>
     Object? photoAlbumMenuText = null,
     Object? goShootText = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(PictureSelectionI18nConfig(
       photoAlbumMenuText: null == photoAlbumMenuText
           ? _self.photoAlbumMenuText
           : photoAlbumMenuText // ignore: cast_nullable_to_non_nullable
@@ -7416,7 +7518,9 @@ class _PictureSelectionI18nConfig extends PictureSelectionI18nConfig {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, photoAlbumMenuText, goShootText);
+  int get hashCode {
+    return Object.hash(runtimeType, photoAlbumMenuText, goShootText);
+  }
 
   @override
   String toString() {
@@ -7685,7 +7789,9 @@ class XXFile extends PictureSelectionItemModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, file);
+  int get hashCode {
+    return Object.hash(runtimeType, file);
+  }
 
   @override
   String toString() {
@@ -7747,7 +7853,9 @@ class XXImage extends PictureSelectionItemModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, url);
+  int get hashCode {
+    return Object.hash(runtimeType, url);
+  }
 
   @override
   String toString() {
