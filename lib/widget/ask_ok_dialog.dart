@@ -1,5 +1,14 @@
 part of '../dd_js_util.dart';
+
 ///询问弹窗
+///
+///内部走`adaptive_platform_ui`,平台分支交给它处理:
+///
+/// * iOS 26+ : 原生 UIAlertController + Liquid Glass
+/// * iOS <26 : CupertinoAlertDialog
+/// * Android  : Material AlertDialog
+///
+///对外API(`AskOkDialog.show` / `AskOkDialogParams`)保持不变。
 class AskOkDialog extends StatelessWidget {
   final AskOkDialogParams params;
 
@@ -7,64 +16,78 @@ class AskOkDialog extends StatelessWidget {
 
   ///显示弹窗
   static Future<bool> show(BuildContext context, [AskOkDialogParams? params]) async {
-    final v = await showDialog<bool?>(
-        context: context, builder: (_) => AskOkDialog(params: params ?? const AskOkDialogParams()));
-    return v ?? false;
+    final p = params ?? const AskOkDialogParams();
+    final content = p.content;
+
+    //带自定义 Widget 时无法走字符串标题/正文的原生通道,退回旧实现
+    if (content != null || p.title != null) {
+      final v = await showDialog<bool?>(
+          context: context, builder: (_) => AskOkDialog(params: p));
+      return v ?? false;
+    }
+
+    var result = false;
+    await AdaptiveAlertDialog.show(
+      context: context,
+      title: p.contentText,
+      actions: [
+        AlertAction(
+          title: p.cancelText,
+          style: AlertActionStyle.cancel,
+          onPressed: () => result = false,
+        ),
+        AlertAction(
+          title: p.okText,
+          style: AlertActionStyle.primary,
+          onPressed: () => result = true,
+        ),
+      ],
+    );
+    return result;
   }
 
   @override
   Widget build(BuildContext context) {
-    _DefaultStyle defaultStyle = _DefaultStyle(params: params);
-    _AskOkIosStyle iosStyle = _AskOkIosStyle(param: params);
-    return switch(myPlatform){
-      IosPlatform() => iosStyle,
-      MacosPlatform() => iosStyle,
-      _ => defaultStyle
+    return switch (myPlatform) {
+      IosPlatform() => _iosStyle(context),
+      MacosPlatform() => _iosStyle(context),
+      _ => _materialStyle(context)
     };
   }
-}
 
-class _AskOkIosStyle extends StatelessWidget {
-  final AskOkDialogParams param;
-
-  const _AskOkIosStyle({required this.param});
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _iosStyle(BuildContext context) {
     return Center(
       child: CupertinoAlertDialog(
-        title: param.title,
-        content: param.content ?? Text(param.contentText),
+        title: params.title,
+        content: params.content ?? Text(params.contentText),
         actions: [
           CupertinoDialogAction(
-            onPressed: context.pop,
-            child: Text(param.cancelText),
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(params.cancelText),
           ),
-          CupertinoDialogAction(child: Text(param.okText), onPressed: () => Navigator.pop(context, true)),
+          CupertinoDialogAction(
+            isDefaultAction: true,
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(params.okText),
+          ),
         ],
       ),
     );
   }
-}
 
-class _DefaultStyle extends StatelessWidget {
-  final AskOkDialogParams params;
-
-  const _DefaultStyle({required this.params});
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _materialStyle(BuildContext context) {
     return AlertDialog(
       title: params.title,
       content: params.content ?? Text(params.contentText),
       actions: [
-        TextButton(onPressed: () => Navigator.pop(context, false), child: Text(params.cancelText)),
-        const SizedBox(width: 12),
+        TextButton(
+          onPressed: () => Navigator.pop(context, false),
+          child: Text(params.cancelText),
+        ),
         FilledButton(
-            onPressed: () {
-              Navigator.pop(context, true);
-            },
-            child: Text(params.okText))
+          onPressed: () => Navigator.pop(context, true),
+          child: Text(params.okText),
+        ),
       ],
     );
   }

@@ -1,3 +1,46 @@
+# 10.1.0
+
+## 新增
+
+* 接入 `adaptive_platform_ui: ^1.0.2`,弹窗与导航栏按平台自动切换,iOS 26+ 走原生 Liquid Glass
+* `AdaptiveSimpleAppbar`:iOS 用 `CupertinoNavigationBar`,Android 用 Material `AppBar`。原 `SimpleAppbar` 保留
+* `context.showAdaptiveSimpleListTile<T>(datas, itemBuild: ...)`:iOS 用 `CupertinoListSection.insetGrouped`,Android 用 Material。原 `showSimpleListTileWidget` 保留
+* `AdaptiveSimplePage`:`AdaptiveScaffold` 的薄封装,一个参数控住整页导航。iOS 26+ 且 `useNativeToolbar: true` 时走原生 UIToolbar + Liquid Glass,其余 iOS 走 `CupertinoPageScaffold`,Android/桌面/Web 走 Material `Scaffold`
+* 接入 `foldable: ^1.0.5`,支持 iPhone Duo 折叠屏
+* `BuildContext` 新增 `horizontalSizeClass` / `verticalSizeClass` / `isRegularWidth` / `isFoldable` / `hingeStatus` / `hingeAngle`。尺寸类比裸宽度断点准,iPad、Split View、iPhone Duo 都能反映;`isRegularWidth` 拿不到尺寸类时退回 600 宽度断点
+* `FoldableScope`: `FoldableProvider` 的薄封装,装在 `MaterialApp` 外面即可让全局 `context.isFoldable` 生效
+* `FoldAwareTwoPane`: 折叠半开时双栏、其余时候单栏。用 `FoldAwareBuilder` 驱动,铰链角度扫动不会带着整个子树重建
+
+## 使用提示
+
+* iOS 26 原生 toolbar 需应用根部装有 `AdaptiveToolbarHost`。用 `AdaptiveApp` / `AdaptiveApp.router` 会自动装;没用的在 `MaterialApp.builder` 里包一层 `AdaptiveToolbarHost(child: child!)`。未装时 toolbar 仍能渲染,但不会固定在导航器之上,页面切换时不滑入滑出
+* `AdaptiveSimplePage.useNativeToolbar` 默认 `false`。普通页面不开就能用,想要玻璃 toolbar 再开
+* 折叠屏相关 API 需要根部装有 `FoldableScope`(或直接 `FoldableProvider`),否则 `context.isFoldable` 恒为 false、`FoldAwareTwoPane` 恒走单栏
+* `FoldableScope.bridgeDisplayFeatures` 默认 `false`。打开后折叠几何会写进 `MediaQuery.displayFeatures`,Flutter 会把所有 `AlertDialog`、底部弹层、日期/时间选择器限制在折叠的一半 —— `AskOkDialog`、`showAdaptiveSimpleListTile`、`DatePicker2` 都会受影响
+* 保留区域(折叠缝、摄像头遮挡)需在 iOS 27.1 SDK 上编译才有。旧 SDK 只能拿到铰链角度与姿态
+
+## 破坏性/行为变更
+
+* `AskOkDialog.show` 内部改为 `AdaptiveAlertDialog.show`。iOS 26+ 是原生 UIAlertController(玻璃效果),iOS <26 是 CupertinoAlertDialog,Android 是 Material AlertDialog。`AskOkDialogParams`、`context.askOk()`、`context.simpleAskOk()` 签名均未变
+* `AskOkDialogParams` 传了自定义 `content` 或 `title` Widget 时,自动退回旧的 Cupertino/Material 双分支渲染(原生通道只接受字符串标题与正文)
+* `RequestParams` 重命名为 `RequestConfig`,扩展 `RequestParamsex` 改名 `RequestConfigEx`。这次请求的配置与钩子都在这个类里,原名容易被误解为只装 query/body;`RequestOptions` / `BaseOptions` 与 dio 重名,未采用
+* `typedef R = RequestConfig`,`BaseApi.request` / `download` / `covertToModel` / `getOptions` 的形参类型全部跟着变。调用方把 `RequestParams(...)` 改成 `RequestConfig(...)` 即可,具名参数没动
+
+## 依赖升级
+
+* 新增 `adaptive_platform_ui: ^1.0.2`(含 iOS/Android 原生插件,升级后需要重新 `flutter pub get` + `pod install`)
+* 新增 `foldable: ^1.0.5`(iOS 原生插件,同上)。之前只是 `adaptive_platform_ui` 的传递依赖,现在提升为直接依赖
+* `riverpod` / `hooks_riverpod` 由 `any` 收紧到 `^3.4.3`
+* `hive_ce` 升到 `^2.22.0`,`hive_ce_flutter` 升到 `^2.5.0`
+* `json_annotation` 由 `any` 收紧到 `^4.12.0`,`image` 升到 `^4.12.0`
+* dev 依赖补上 `build_runner` / `freezed` / `json_serializable` / `hive_ce_generator`,之前只声明了注解库,生成代码要靠下游自己配
+
+## 其他
+
+* 全部依赖改为带版本约束,消除 `pub publish` 的 `any` 警告
+* 移除已废弃的 `custom_lint` analyzer plugin 配置
+* `.pubignore` 排除 `.idea/`、`*.iml`、`.vscode/`,以及含本地 pub-cache 绝对路径的 `.flutter-plugins` / `.flutter-plugins-dependencies`
+
 # 10.0.0
 
 ## 破坏性/行为变更
