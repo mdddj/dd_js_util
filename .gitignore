@@ -8,3 +8,6 @@ build/
 
 # IDE user-specific state
 .idea/workspace.xml
+
+# IDE 生成的库索引,含本机 pub-cache 绝对路径
+.idea/libraries/
